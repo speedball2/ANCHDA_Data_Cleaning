@@ -1,0 +1,512 @@
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%", "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+fill(NDSHS_STE_top_level, .direction = c("down"))
+install.packages("tidyr")
+fill(NDSHS_STE_top_level, .direction = c("down"))
+library(readxl)
+library(dplyr)
+library(tidyr)
+NDSHS_STE_top_level <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:AJ50"))
+colnames(NDSHS_STE_top_level) <- c("STE_NAME16", "calendar_year",
+"current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%",
+"current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+"ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%", "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+fill(NDSHS_STE_top_level, ..., .direction = c("down"))
+fill(NDSHS_STE_top_level, .direction = c("down"))
+install.packages("janitor")
+test_df <- NDSHS_STE_top_level
+test_df %>%
+clean_names()
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(janitor)
+test_df <- NDSHS_STE_top_level
+test_df %>%
+clean_names()
+fill(test_df, .direction = c("down"))
+NDSHS_STE <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50"))
+View(NDSHS_STE)
+NDSHS_STE <- clean_names()
+fill(NDSHS_STE, .direction = c("down"))
+View(NDSHS_STE)
+fill(NDSHS_STE, .direction = c("down"))
+fill(NDSHS_STE, .direction = c("up"))
+colnames(NDSHS_STE) <- c"calendar_year"
+colnames(NDSHS_STE) <- c("calendar_year")
+colnames(NDSHS_STE) <- c("calendar_year")
+NDSHS_STE <- clean_names()
+colnames(NDSHS_STE) <- c("calendar_year")
+NDSHS_STE <- clean_names()
+fill(NDSHS_STE, .direction = c("down"))
+fill(NDSHS_STE, .direction = "down")
+fill(NDSHS_STE, .direction = "down")
+fill(NDSHS_STE, .direction = "down")
+fill(NDSHS_STE, .direction = "down")
+fill(calendar_year, .direction = c("down"))
+fill(test_df, calendar_year .direction = c("down"))
+fill(test_df, "calendar_year" .direction = c("down"))
+fill(test_df,  .direction = "down")
+fill(NDSHS_STE,  .direction = "down")
+fill(NDSHS_STE,  .direction = "down")
+df1 <- test_df %>% fill(c, .direction = 'down')
+df1 <- test_df %>% fill("calendar_year", .direction = 'down')
+View(test_df)
+df1 <- NDSHS_STE %>% fill("calendar_year", .direction = 'down')
+View(NDSHS_STE)
+df1 <- NDSHS_STE %>% fill("calendar_year", .direction = "down"
+View(df1)
+View(df1)
+NDSHS_STE_top_level <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:AJ50"))
+colnames(NDSHS_STE_top_level) <- c("STE_NAME16", "calendar_year",
+"current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%",
+"current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+"ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%", "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+NDSHS_STE <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50"))
+colnames(NDSHS_STE) <- c("calendar_year")
+df1 <- NDSHS_STE %>% fill("calendar_year", .direction = "down")
+View(df1)
+df1 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:AJ50"))
+colnames(df1) <- c("STE_NAME16", "calendar_year",
+"current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%",
+"current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+"ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%", "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+df_STE <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+colnames(df_STE) <- c("calendar_year")
+df1 <- df_STE %>% fill("calendar_year", .direction = "down") #filling in NAs in state values
+NDSHS_STE_top_level <- merge(x=df_STE,y=df1 by = "STE_NAME16")
+NDSHS_STE_top_level <- merge(x=df_STE,y=df1, by = "STE_NAME16")
+df_STE <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+colnames(df_STE) <- c("STE_NAME16")
+df1 <- df_STE %>% fill("STE_NAME16", .direction = "down") #filling in NAs in state values
+NDSHS_STE_top_level <- merge(x=df_STE,y=df1, by = "STE_NAME16")
+View(NDSHS_STE_top_level)
+View(NDSHS_STE)
+View(NDSHS_STE_top_level)
+View(NDSHS_STE_top_level)
+View(NDSHS_STE)
+View(NDSHS_STE_top_level)
+View(test_df)
+View(df1)
+View(df_STE)
+NDSHS_STE_top_level <- merge(x=df_STE,y=df1, by = "STE_NAME16")
+NDSHS_STE_top_level <- merge(x=df_STE,y=df1, by = "STE_NAME16")
+NDSHS_STE_top_level <- merge(x=df_STE,y=df1, by = "STE_NAME16")
+NDSHS_STE_top_level <- merge(x=df_STE,y=df1, by = "STE_NAME16")
+df2 <- df_STE %>% fill("STE_NAME16", .direction = "down") #filling in NAs in state values
+NDSHS_STE_top_level <- merge(x=df_STE,y=df2, by = "STE_NAME16")
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST 2.csv",
+sheet = 1,
+range = "E2:F108"))
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+setwd("~/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE")
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+library(readxl)
+library(dplyr)
+library(tidyr)
+library(janitor)
+df_STE_codes <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+install.packages("tidyverse")
+library("tidyverse")
+clean_names(df1)
+df1 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:AJ50"))
+colnames(df1) <- c("STE_NAME16", "calendar_year",
+"current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%",
+"current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+"ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%", "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+clean_names(df1)
+df_STE <- df_STE %>% add_column = "STE_CODE16"
+df_STE2 <- df_STE %>% add_column = "STE_CODE16"
+dataf <- df_STE %>%
+add_column(Add_Column = "Value"
+dataf <- df_STE %>%
+dataf <- df_STE %>%
+add_column(Add_Column = "Value")
+View(dataf)
+dataf <- df_STE %>%
+add_column(STE_CODE16 = "Value") #adding row
+View(dataf)
+col_order <- c ("STE_CODE16", "STE_NAME16")
+View(dataf)
+dataf <- col_order <- c ("STE_CODE16", "STE_NAME16")
+col_order <- c ("STE_CODE16", "STE_NAME16")
+my_data2 <- dataf[, col_order]
+df_STE <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+dataf <- df_STE %>%
+add_column(STE_CODE16 = "Value") #adding row
+col_order <- c ("STE_CODE16","STE_NAME16")
+my_data2 <- dataf[, col_order]
+colnames(dataf) <- c("STE_CODE16")
+col_order <- c ("STE_CODE16","STE_NAME16")
+my_data2 <- dataf[, col_order]
+colnames(dataf) <- c("STE_CODE16")
+View(dataf)
+colnames(dataf) <- c("STE_NAME16","STE_CODE16")
+col_order <- c ("STE_CODE16","STE_NAME16")
+my_data2 <- dataf[, col_order]
+View(my_data2)
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+test <- cbind(
+read_xls(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+test <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+test <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+test <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+test <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.csv",
+sheet = 1,
+range = "E2:F108"))
+test <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.xlxs",
+sheet = 1,
+range = "E2:F108"))
+test <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.xlsx",
+sheet = 1,
+range = "E2:F108"))
+View(test)
+df_STE <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+state_combined <- merge(x = df_STE, y = test, by = "STE_NAME16")
+View(df_STE)
+colnames(df_STE) <- c("STE_NAME16")
+View(test)
+View(test)
+View(test)
+df_STE <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+colnames(df_STE) <- c("STE_NAME16")
+test <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.xlsx",
+sheet = 1,
+range = "E3:F108"))
+colnames(test) <- c("STE_CODE16","STE_NAME16")
+# df = merge(x=df1,y=df2,by="CustomerId")
+state_combined <- merge(x = df_STE, y = test, by = "STE_NAME16")
+View(state_combined)
+View(test_df)
+View(test)
+test$new <- c(1, 2, 3, 4, 5,6,7,8,9)
+View(dataf)
+if ("NSW")
+{dataf$new <- c(1)}
+df1 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:AJ50"))
+colnames(df1) <- c("STE_NAME16", "calendar_year",
+"current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%",
+"current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+"ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%", "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+clean_names(df1)
+df_STE <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+colnames(df_STE) <- c("STE_NAME16")
+df2 <- df_STE %>% fill("STE_NAME16", .direction = "down"
+NDSHS_STE_top_level <- merge(x=df_STE,y=df2, by = "STE_NAME16")
+df2 <- df_STE %>% fill("STE_NAME16", .direction = "down")
+NDSHS_STE_top_level <- merge(x=df_STE,y=df2, by = "STE_NAME16")
+View(NDSHS_STE_top_level)
+remove(dataf)
+remove(df_STE)
+remove(df1)
+remove(df2)
+remove(my_data2)
+remove(NDSHS_STE)
+(remove(NDSHS_STE_top_level)
+remove(NDSHS_STE_top_level)
+remove(NDSHS_STE_top_level)
+remove(state_combined)
+remove(test)
+remove(test_df)
+df1 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:AJ50"))
+colnames(df1) <- c("STE_NAME16", "calendar_year",
+"current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%",
+"current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+"ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%", "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+clean_names(df1)
+df_STE <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+colnames(df_STE) <- c("STE_NAME16")
+df2 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+colnames(df2) <- c("STE_NAME16")
+remove(df_STE)
+df2 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+colnames(df2) <- c("STE_NAME16")
+df3 <- df2 %>% fill("STE_NAME16", .direction = "down") #filling in NAs in state values
+View(df3)
+View(df2)
+View(df3)
+NDSHS_STE_top_level <- merge(x=df2,y=df1, by = "STE_NAME16")
+View(NDSHS_STE_top_level)
+df3 <- df1 %>% fill("STE_NAME16", .direction = "down") #filling in NAs in state values
+View(df3)
+View(df1)
+View(df3)
+View(df2)
+NDSHS_STE_top_level <- merge(x=df1,y=df2, by = "STE_NAME16")
+View(NDSHS_STE_top_level)
+NDSHS_STE_top_level <- merge(x=df2,y=df1, by = "STE_NAME16")
+df1 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:AJ50"))
+df1 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:AJ50"))
+df3 <- df1 %>% fill("STE_NAME16", .direction = "down")
+colnames(df1) <- c("STE_NAME16")
+View(df1)
+df3 <- df1 %>% fill("STE_NAME16", .direction = "down")
+View(df1)
+colnames(df1) <- c("STE_NAME16", 1-35)
+View(df1)
+colnames(df1) <- c("STE_NAME16", 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,.19,20,21,22,23,24,25,26,27,29,30,31,32,33,34,35)
+df3 <- df1 %>% fill("STE_NAME16", .direction = "down")
+View(df1)
+clean_names(df1)
+View(df1)
+df3 <- df1 %>% fill("STE_NAME16", .direction = "down")
+View(df1)
+View(df2)
+View(df3)
+View(NDSHS_STE_top_level)
+df4 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.xlsx",
+sheet = 1,
+range = "E3:F108"))
+View(df4)
+View(df4)
+View(df1)
+View(df2)
+View(df3)
+View(df2)
+View(df3)
+View(df3)
+View(df4)
+df3$new <- c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5,6,6,6,6,6,8,8,8,8,8,7,7,7,7,7,0,0,0,0,0)
+colnames(df3) <- c("STE_NAME16", "STE_CODE16")
+col_order <- c ("STE_CODE16","STE_NAME16")
+df3 <- dataf[, col_order]
+col_order <- c ("STE_CODE16","STE_NAME16")
+df3 <- df3[, col_order]
+View(NDSHS_STE_top_level)
+df1 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:AJ50"))
+View(df1)
+colnames(df1) <- c("STE_NAME16", "calendar_year",
+"current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%",
+"current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+"ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%", "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+View(df1)
+View(NDSHS_STE_top_level)
+NDSHS_STE_top_level <- merge(x=df2,y=df1, by = "STE_NAME16")
+remove(NDSHS_STE_top_level)
+NDSHS_STE_top_level <- inner_join(x=df2,y=df1, by = "STE_NAME16")
+NDSHS_STE_top_level <- inner_join(x=df2,y=df1, by = "STE_NAME16")
+colnames(df1) <- c("STE_NAME16", "calendar_year",
+"current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%",
+"current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+"ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_No_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+clean_names(df1)
+NDSHS_STE_top_level <- inner_join(x=df2,y=df1, by = "STE_NAME16")
+full <- merge(df1, df4, by = mergeCols, all = TRUE)
+full_dyplr <- merge(df1, df4, by = mergeCols, all = TRUE)
+d <- merge(df1, df4, by = "STE_NAME16", all = TRUE)
+colnames(df4) <- c("STE_CODE16","STE_NAME16")
+d <- merge(df1, df4, by = "STE_NAME16", all = TRUE)
+View(d)
+remove(d)
+View(df1)
+df5 <- cbind(df4,df1)
+View(df4)
+df5 <- cbind(df3,df1)
+View(df5)
+df5[-c(3,),]
+df5[-c("dead",),]
+df1 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A7:AJ50"))
+colnames(df1) <- c("calendar_year",
+"current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%",
+"current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+"ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%",
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_NO_N", "recently_used_illicit_drugs_NO_%",
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+df2 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+colnames(df2) <- c("STE_NAME16")
+df4 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/SA4_2016_AUST.xlsx",
+sheet = 1,
+range = "E3:F108")) # New south wales not NSW so cannot not combine
+df2 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 2,
+range = "A6:A50")) #state column only
+colnames(df2) <- c("STE_NAME16")
+df3 <- df2 %>% fill("STE_NAME16", .direction = "down") #filling in NAs in state values
+df3$new <- c(1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4,5,5,5,5,5,6,6,6,6,6,8,8,8,8,8,7,7,7,7,7,0,0,0,0,0)
+#national assigned value of 0, ACT and NT flipped in data set 7/8 flipped as above^, x5 of each
+colnames(df3) <- c("STE_NAME16", "STE_CODE16")
+col_order <- c ("STE_CODE16","STE_NAME16")
+df3 <- df3[, col_order]
+#flipping columns so Code is first
+#----------------------------#
+#---------combining----------#
+#----------------------------#
+# df = merge(x=df1,y=df2,by="CustomerId")
+NDSHS_STE_top_level <- inner_join(x=df2,y=df1, by = "STE_NAME16")
+df5 <- df5[,-3]
+NDSHS_STE_top_level <- df5
+View(NDSHS_STE_top_level)
+clean_names(NDSHS_STE_top_level)
+head(NDSHS_STE_top_level)
+options(max.print = 1000000)
+clean_names(NDSHS_STE_top_level)
+df6 <- cbind(
+read_xlsx(col_names = F, path = "/Users/harriettephillips/Library/CloudStorage/OneDrive-QueenslandUniversityofTechnology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE/NDSHS_Final data tables.xlsx",
+sheet = 3, #AOD Qs by State
+range = "A6:T50"))
+View(df6)
+remove(df1)
+remove(df2)
+remove(df3)
+remove(df4)
+remove(df5)
+View(df6)
