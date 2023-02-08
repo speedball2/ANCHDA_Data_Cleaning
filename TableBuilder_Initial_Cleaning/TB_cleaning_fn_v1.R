@@ -20,6 +20,18 @@ TB_cleaning_fn <- function(data_file_base, data_item, calendar_year, geography, 
   for(i in 1:length(geog_list)){ #loop over the 6 geography types
     data_temp_name <- paste0(data_file_base,"_",geog_list[i],"_",calendar_year,".csv")
     data_temp <- read.csv(data_temp_name)
+    
+    
+    # delete leading and trailing crap rows
+    
+    
+    # fill down vars
+    
+    # check column names
+    
+    # save clean csv
+    
+    # path to destination (interim cleaned data folder)
   }
   
 }
@@ -28,5 +40,5 @@ TB_cleaning_fn <- function(data_file_base, data_item, calendar_year, geography, 
 # TEST
 
 #setwd("~/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/Census/Census_2006")
-TB_cleaning_fn(data_file_base = "census_year12")
+TB_cleaning_fn(data_file_base = "census_year12", data_item="HSCP Highest Year of School Completed")
 
