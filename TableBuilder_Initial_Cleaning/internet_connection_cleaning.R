@@ -1,4 +1,4 @@
-# Cleaning code for TableBuilder Data - CENSUS - Religion
+# Cleaning code for TableBuilder Data - CENSUS - Internet Connection
 
 library(tidyverse)
 library(readr)
@@ -8,8 +8,7 @@ library(readr)
 # Run ONCE per census year for each data item
 
 
-# Set WD to Census year folder
-#setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
+#-----------
 
 
 # Load cleaning function
@@ -19,37 +18,46 @@ source("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT
 
 
 
+
 #-------------------
 
-# APPLY to Religion
+# APPLY
 
 #2006
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
-TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2006,code_or_name = "code")
+TB_Census_cleaning_fn(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2006,code_or_name = "code")
+
+#------
 
 
-
-#---------
-
-#2011 - NAME
+#2011
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
-TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2011,code_or_name = "name")
+TB_Census_cleaning_fn(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2011,code_or_name = "code")
 
-#--------
-#2016 - NAME
+
+#-----
+
+
+#2016
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
 
-TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2016,code_or_name = "name")
+TB_Census_cleaning_fn(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2016,code_or_name = "code")
 
-#-----------
 
-#2021 - NAME
+#------
+
+
+#2021
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2021")
 
-TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2021,code_or_name = "name")
+TB_Census_cleaning_fn(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2021,code_or_name = "code")
+
+
+
+

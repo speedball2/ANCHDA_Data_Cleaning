@@ -1,4 +1,4 @@
-# Cleaning code for TableBuilder Data - CENSUS - Religion
+# Cleaning code for TableBuilder Data - CENSUS - country_of_birth
 
 library(tidyverse)
 library(readr)
@@ -21,13 +21,13 @@ source("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT
 
 #-------------------
 
-# APPLY to Religion
+# APPLY to country_of_birth
 
-#2006
+#2006 - NAME
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
-TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2006,code_or_name = "code")
+TB_Census_cleaning_fn(data_file_base = "census_countryofbirth", data_item_name ="country_of_birth", calendar_year=2006,code_or_name = "name")
 
 
 
@@ -37,14 +37,14 @@ TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="relig
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
-TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2011,code_or_name = "name")
+TB_Census_cleaning_fn(data_file_base = "census_countryofbirth", data_item_name ="country_of_birth", calendar_year=2011,code_or_name = "name")
 
 #--------
 #2016 - NAME
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
 
-TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2016,code_or_name = "name")
+TB_Census_cleaning_fn(data_file_base = "census_countryofbirth", data_item_name ="country_of_birth", calendar_year=2016,code_or_name = "name")
 
 #-----------
 
@@ -52,4 +52,4 @@ TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="relig
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2021")
 
-TB_Census_cleaning_fn(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2021,code_or_name = "name")
+TB_Census_cleaning_fn(data_file_base = "census_countryofbirth", data_item_name ="country_of_birth", calendar_year=2021,code_or_name = "name")
