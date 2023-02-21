@@ -3,8 +3,7 @@
 
 # To use on your system, make sure you update file paths to the relevant local directory for OneDrive - find/replace "/Users/Current/" below
 
-library(tidyverse)
-library(readr)
+library(tidyverse) #for tidyr::fill()
 
 # function (data_item(s), calendar_year, geography)
 
@@ -48,11 +47,15 @@ TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,
     data_temp <- data_temp[-trailing_rows,] #deleting trailing rows (4)
     
     
-    # fill down vars
+    # fill down variables
     data_temp <- data_temp %>% fill(everything(),.direction="down")
     
     # check column names
     names(data_temp)
+    
+    # AGREE ON STANDARD FILTER NAMES
+    
+    # ADD HERE
     
     
     #---------
@@ -86,7 +89,7 @@ TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,
     # save clean csv
     # path to destination (interim cleaned data folder)
     
-    interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Correspondence/"
+    interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
     write.csv(data_temp,file=paste0(interim_folder,data_file_base,"_",geog_list[i],"_",calendar_year,"_INTERIM.csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
   }
   
