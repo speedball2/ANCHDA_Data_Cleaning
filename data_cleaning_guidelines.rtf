@@ -1,6 +1,6 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2513
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Calibri-Bold;\f2\fnil\fcharset0 Calibri;
-\f3\froman\fcharset0 TimesNewRomanPSMT;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fswiss\fcharset0 Helvetica-Bold;\f2\fnil\fcharset0 Calibri-Bold;
+\f3\fnil\fcharset0 Calibri;\f4\froman\fcharset0 TimesNewRomanPSMT;}
 {\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red0\green0\blue0;\red255\green255\blue10;
 }
 {\*\expandedcolortbl;;\cssrgb\c0\c0\c0;\csgray\c0\c0;\cssrgb\c99942\c98555\c0;
@@ -11,37 +11,42 @@
 \f0\fs24 \cf0 Data cleaning guidelines\
 \
 \
-\'97> ADD TO DATA DICTIONARY when item is cleaned (in Metadata folder)\
+
+\f1\b \ul \'97> ADD TO DATA DICTIONARY
+\f0\b0 \ulnone  when item is cleaned (in Metadata folder)\
 \
+\'97> Including Data_Sheet (file name)\
+\
+for final cleaned data sheet file names \'97> include ARACY structure 3-digit domain at end e.g. variable_geography_1-1-1.csv = 1.1.1 low birthweight\
 \
 \pard\pardeftab720\sl313\sa213\partightenfactor0
 
-\f1\b\fs29\fsmilli14667 \cf2 \expnd0\expndtw0\kerning0
+\f2\b\fs29\fsmilli14667 \cf2 \expnd0\expndtw0\kerning0
 \ul \ulc2 NOTES FOR CLEANING\
 \'97> \ulnone We need to agree on a standard set of names for filter variables (geographies, age, sex, etc)\cb3 \
 
-\f2\b0 \
+\f3\b0 \
 \cb4 - to be discussed with team
-\f1\b \cb1 \ul \
+\f2\b \cb1 \ul \
 
-\f2\b0 \ulnone \
+\f3\b0 \ulnone \
 \'97> Also need to 
-\f1\b create set of standard unique levels for each filter var\
+\f2\b create set of standard unique levels for each filter var\
 - e.g. age_group = \'930-4 years\'94, \'935-9 years\'94,\'85 , \'93Total\'94 (?? Total varies by age group set)\
 
-\f2\b0 - sex = \'93Male\'94 \'93Female\'94 \'93Persons\'94\
+\f3\b0 - sex = \'93Male\'94 \'93Female\'94 \'93Persons\'94\
 - ?? IRSAD quintiles\
 \
 \'97 
-\f1\b need to match levels of filter variables to a standard set - e.g. age groups \'930-4 years\'94 standard from ABS (where from custodian might be \'930 - 4 years\'94, \'930\'964\'94 (m-dash), etc\
+\f2\b need to match levels of filter variables to a standard set - e.g. age groups \'930-4 years\'94 standard from ABS (where from custodian might be \'930 - 4 years\'94, \'930\'964\'94 (m-dash), etc\
 
-\f2\b0 \
+\f3\b0 \
 \pard\pardeftab720\li960\fi-480\sl313\partightenfactor0
 \cf2 -
-\f3\fs18\fsmilli9333 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 
-\f2\fs29\fsmilli14667 Need to include CODE and NAME columns for geography\
+\f4\fs18\fsmilli9333 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f3\fs29\fsmilli14667 Need to include CODE and NAME columns for geography\
 \pard\pardeftab720\li960\fi-480\sl313\sa213\partightenfactor0
 \cf2 -
-\f3\fs18\fsmilli9333 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 
-\f2\fs29\fsmilli14667 For each year and geography, need to DL / merge two columns of geom CODE and geom NAME \'96 so that we can have both in each. Currently all only have geom NAME\
+\f4\fs18\fsmilli9333 \'a0\'a0\'a0\'a0\'a0\'a0\'a0 
+\f3\fs29\fsmilli14667 For each year and geography, need to DL / merge two columns of geom CODE and geom NAME \'96 so that we can have both in each. Currently all only have geom NAME\
 }
