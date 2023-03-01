@@ -53,9 +53,9 @@ TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,
     # check column names
     names(data_temp)
     
-    # AGREE ON STANDARD FILTER NAMES
+    # AGREE ON STANDARD FILTER NAMES - for now leave as what comes from TableBuilder
     
-    # ADD HERE
+    # ADD HERE - Filter LEVELS
     
     
     #---------
