@@ -3,6 +3,11 @@
 #------------------------------------------------------------------------------#
 
 
+# Before running, set working directory to source file location.
+# Session > Set Working Directory > To Source File Location
+
+
+# setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE_National")
 
 #dfnames-----------------------------------------------------------------------
 
@@ -17,17 +22,163 @@
 
 
 
-# Before running, set working directory to source file location.
-# Session > Set Working Directory > To Source File Location
-
-
-
 # Libraries --------------------------------------------------------------------
 
 library(readxl)
 library(dplyr)
 library(tidyr)
 library(stringr)
+
+
+
+# Read in excel files ----------------------------------------------------------
+
+xlxs <- function(x,y){
+  
+  read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
+            sheet = x, 
+            range = y)
+  
+}
+
+df1 <- xlxs(x = 2, y = "A6:AJ50") #AOD status by state
+df2 <- xlxs(x = 3, y = "A6:T50") #AOD Qs by Status 
+df3 <- xlxs(x = 4, y = "A7:AJ16") #AOD Status - disaggs (national, age)
+df4 <- xlxs(x = 4, y = "A44:AJ53") #AOD Status - disaggs (national, sex) 
+df5 <- xlxs(x = 4, y = "A62:AJ86") #AOD Status - disaggs (national, IRSD) 
+df6 <- xlxs(x = 5, y = "A7:T16") #AOD Qs - disaggs (national, age)
+df7 <- xlxs(x = 5, y = "A39:T48") #AOD Qs - disaggs (national, sex)
+df8 <- xlxs(x = 5, y = "A57:T81") #AOD Qs - disaggs (national, IRSD)
+
+
+# changing column names  -----------------------------------------------------
+
+
+coln1 <- function(x){
+  
+  names(x) <- c("STE_NAME16", "calendar_year", 
+                "current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+                "current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%", 
+                "current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+                "ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+                "ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%", 
+                "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_NO_N", "recently_used_illicit_drugs_NO_%", 
+                "recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+  return(x)
+  
+  
+}
+
+coln2 <- function(x){
+  
+  names(x) <- c("STE_NAME16","calendar_year","age_of_initiation_of_smoking","age_of_initiation_of_drinking","type_of_alcohol_usually_consumed_bottled_wine",
+                "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
+                "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
+                "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
+                "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a_month", 
+                "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+  return(x)
+  
+}
+
+
+df1 <- coln1(x = df1)
+df2 <- coln2(x = df2)
+df3 <- coln1(x = df3)
+df4 <- coln1(x = df4)
+df5 <- coln1(x = df5)
+df6 <- coln2(x = df6)
+df7 <- coln2(x = df7)
+df8 <- coln2(x = df8)
+ 
+# removing NAs and NPs ---------------------------------------------------------
+
+
+remove_na <- function(x){
+  
+  x[x[,] == "n.a."] <- NA
+  x[x[,] == "n.p."] <- NA
+  
+  return(x)
+  
+}
+
+df1 <- remove_na(x = df1)
+df2 <- remove_na(x = df2)
+df3 <- remove_na(x = df3)
+df4 <- remove_na(x = df4)
+df5 <- remove_na(x = df5)
+df6 <- remove_na(x = df6)
+df7 <- remove_na(x = df7)
+df8 <- remove_na(x = df8)
+  
+  
+# Remove asterisks -------------------------------------------------------------
+  
+  for(i in 2:ncol(df1)){
+    df1[,i] <- str_replace_all(df1[,i],"[*]","")
+    df1[,i] <- as.numeric(df1[,i])
+    df1[,i] <- round(df1[,i],2)
+    
+    return(x)
+  }
+
+  
+df1 <- 
+df2 <- 
+df3 <- 
+df4 <- 
+df5 <- 
+df6 <- 
+df7 <- 
+df8 <- 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #-------------------------#
@@ -42,6 +193,7 @@ df1 <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
                  range = "A6:AJ50")
 
 # Remove NA and NP strings -----------------------------------------------------
+
 df1[df1[,] == "n.a."] <- NA
 df1[df1[,] == "n.p."] <- NA
 
@@ -123,24 +275,6 @@ df1[,2][which(df1[,2] == 10)] <- 0 # Changing AUS code to 0.
 df1$STE_NAME16 <- NULL
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #---------------------#
 #---AOD Qs by state---# #Sheet 3
 #---------------------#
@@ -168,8 +302,8 @@ colnames(df2) <- c("STE_NAME16","calendar_year","age_of_initiation_of_smoking","
                    "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                    "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                    "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                   "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a_month", 
-                   "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
+                   "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a_month", 
+                   "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
 
 
 
@@ -381,9 +515,9 @@ colnames(df6) <- c("age_group","calendar_year","age_of_initiation_of_smoking","a
                    "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                    "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                    "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                   "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
+                   "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
                    _month", 
-                   "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
+                   "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
 
 #fill down to fill in missing---------------------------------------------------
 df6 <- df6 %>% fill("age_group", .direction = "down") 
@@ -397,9 +531,9 @@ col_order <- c ("STE_CODE16","age_group","calendar_year","age_of_initiation_of_s
                 "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                 "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                 "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
+                "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
                    _month", 
-                "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
+                "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
 
 df6 <- df6[, col_order]  #flipping columns 
 #---------------------------#
@@ -429,9 +563,9 @@ colnames(df7) <- c("sex","calendar_year","age_of_initiation_of_smoking","age_of_
                    "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                    "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                    "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                   "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
+                   "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
                    _month", 
-                   "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
+                   "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
 
 #fill down to fill in missing---------------------------------------------------
 
@@ -445,9 +579,9 @@ col_order <- c ("STE_CODE16","sex","calendar_year","age_of_initiation_of_smoking
                 "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                 "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                 "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
+                "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
                    _month", 
-                "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
+                "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
 
 df7 <- df7[, col_order]  #flipping columns 
 
@@ -479,9 +613,9 @@ colnames(df8) <- c("irsd_quintile","calendar_year","age_of_initiation_of_smoking
                    "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                    "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                    "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                   "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
+                   "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
                    _month", 
-                   "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
+                   "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
 
 # Rename IRSD quintiles --------------------------------------------------------
 df8[,1][which(df8[,1] == "Lowest SES")] <- "1"
@@ -499,9 +633,9 @@ col_order <- c ("STE_CODE16","irsd_quintile","calendar_year","age_of_initiation_
                 "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                 "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                 "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
+                "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
                    _month", 
-                "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
+                "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
 
 df8 <- df8[, col_order]  #flipping columns 
 
@@ -670,12 +804,12 @@ drugs1 <- c("ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ev
 
 
 drugs2 <- c("age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-            "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
+            "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
                    _month", 
-            "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
+            "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
 
-drugs3 <- c("age_of_initiation_of_illicit_drug_use_lifetime","age_of_initiation_of_illicit_drug_use_recent","illicit_use_of_drugs_cannabis_use_frequency_every_day","illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more",
-            "illicit_use_of_drugs_cannabis_use_frequency_about_once_a_month","illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
+drugs3 <- c("age_of_initiation_of_illicit_drug_use_lifetime","age_of_initiation_of_illicit_drug_use_recent","cannabis_use_frequency_every_day","cannabis_use_frequency_once_a_week_or_more",
+            "cannabis_use_frequency_about_once_a_month","cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
 
 
 calendar <- c("STE_CODE16","calendar_year")
@@ -730,11 +864,11 @@ full193 <-  merge(acde193,bfgh193,by = intersect(names(acde193), names(bfgh193))
 
 
 
-write.csv(full191, file = "NDSHS_191_smoking.csv", row.names = F)
-write.csv(full192, file = "NDSHS_192_alcohol.csv", row.names = F)
-write.csv(full193, file = "NDSHS_193_drugs.csv", row.names = F)
+#write.csv(full191, file = "NDSHS_191_smoking.csv", row.names = F)
+#write.csv(full192, file = "NDSHS_192_alcohol.csv", row.names = F)
+#write.csv(full193, file = "NDSHS_193_drugs.csv", row.names = F)
 
-
+#add geographies to file names 
 
 
 
