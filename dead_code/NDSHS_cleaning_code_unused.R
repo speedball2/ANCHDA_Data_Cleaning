@@ -35,8 +35,8 @@ library(stringr)
 
 xlxs <- function(x,y){
   df <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
-            sheet = x, 
-            range = y)
+                  sheet = x, 
+                  range = y)
   return(df)
 }
 
@@ -50,7 +50,7 @@ df7 <- xlxs(x = 5, y = "A39:T48") #AOD Qs - disaggs (national, sex)
 df8 <- xlxs(x = 5, y = "A57:T81") #AOD Qs - disaggs (national, IRSD)
 
 
- 
+
 # removing NAs and NPs ---------------------------------------------------------
 
 
@@ -155,19 +155,19 @@ df8 <- unccol(x = df8)
 
 order1 <- function(x){
   
-col_order <- c(1:2, 37, 3:36) 
-x <- x[col_order]
-
-return(x)
+  col_order <- c(1:2, 37, 3:36) 
+  x <- x[col_order]
+  
+  return(x)
 }
 
 
 order2 <- function(x){
-
-col_order <- c(1:2, 21, 3:20)
-x <- x[col_order]
-
-return(x)
+  
+  col_order <- c(1:2, 21, 3:20)
+  x <- x[col_order]
+  
+  return(x)
 }
 
 df1 <- order1(x = df1)

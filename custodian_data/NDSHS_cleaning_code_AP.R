@@ -28,213 +28,104 @@ library(readxl)
 library(dplyr)
 library(tidyr)
 library(stringr)
+library(tibble)
+
+coln1 <- c("STE_NAME16", "calendar_year", 
+           "current_smoker_N","current_smoker_%", "ex_smoker_N","ex_smoker_%","never_smoked_N", "never_smoked_%",
+           "current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%", 
+           "current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+           "ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+           "ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%", 
+           "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_NO_N", "recently_used_illicit_drugs_NO_%", 
+           "recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+
+coln1.1 <- c("age_group",coln1[2:length(coln1)])
+coln1.2 <- c("sex",coln1[2:length(coln1)])
+coln1.3 <- c("irsd_quintile",coln1[2:length(coln1)])
+
+coln2 <- c("STE_NAME16","calendar_year","age_of_initiation_of_smoking","age_of_initiation_of_drinking","type_of_alcohol_usually_consumed_bottled_wine",
+           "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
+           "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
+           "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
+           "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a_month", 
+           "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+
+coln2.1 <- c("age_group",coln2[2:length(coln2)])
+coln2.2 <- c("sex",coln2[2:length(coln2)])
+coln2.3 <- c("irsd_quintile",coln2[2:length(coln2)])
 
 
 
 # Read in excel files ----------------------------------------------------------
 
-xlxs <- function(x,y){
-  df <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
+xlxs <- function(x,y,nv){
+  # x: Spreadsheet file.
+  # y: Spreadsheet range.
+  # nv: Names vector.
+  
+  # READ SHEET:
+  df <- as.data.frame(read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
             sheet = x, 
-            range = y)
+            range = y))
+  
+  # REMOVE NAs & NPs:
+  df[df[,] == "n.a."] <- NA
+  df[df[,] == "n.p."] <- NA
+  
+  # NEW COLUMN NAMES:
+  names(df) <- nv
+  
+  # ADD AND CALCULATE UNCERTAINTY
+  for(i in ncol(df):3){
+    # Insert column using cursed new notation: https://stackoverflow.com/questions/60311773/mutate-with-paste0
+    df <- add_column(df, !!paste0(names(df)[i],"_uncertainty") := NA, .after = i)
+    df[which(substr(df[, i],1,1) == "*"),i+1] <- "*"
+    df[which(substr(df[, i],1,2) == "**"),i+1] <- "**"
+    df[which(substr(df[, i],1,1) == "`"),i+1] <- "`"
+    df[which(substr(df[, i],1,2) == "``"),i+1] <- "``"
+    df[,i] <- str_replace_all(df[,i],"[*]","")
+    df[,i] <- str_replace_all(df[,i],"[`]","")
+  }
+  
+  # RECODING STATE NAMES TO CODES:
+  if(names(df)[1] == "STE_NAME16"){
+    df$STE_NAME16 <- recode(df$STE_NAME16,
+                            "NSW" = 1,
+                            "Vic" = 2,
+                            "NT(l)" = 4,
+                            "NT(h)" = 4) # TO BE FINISHED BY HARRIETTE.
+  }
+  
+  # HARRIETTE TO DO IRSD RECODING.
+  
+  # FILLING FIRST COLUMN:
+  df <- df %>% fill(names(df)[1], .direction = "down")
+  
+  # ROUNDING:
+  for(i in seq(3,ncol(df),2)){
+    df[,i] <- as.numeric(df[,i])
+    df[,i] <- round(df[,i],2)
+    }
+  
+  # OUTPUT:
   return(df)
 }
 
-df1 <- xlxs(x = 2, y = "A6:AJ50") #AOD status by state
-df2 <- xlxs(x = 3, y = "A6:T50") #AOD Qs by Status 
-df3 <- xlxs(x = 4, y = "A7:AJ16") #AOD Status - disaggs (national, age)
-df4 <- xlxs(x = 4, y = "A44:AJ53") #AOD Status - disaggs (national, sex) 
-df5 <- xlxs(x = 4, y = "A62:AJ86") #AOD Status - disaggs (national, IRSD) 
-df6 <- xlxs(x = 5, y = "A7:T16") #AOD Qs - disaggs (national, age)
-df7 <- xlxs(x = 5, y = "A39:T48") #AOD Qs - disaggs (national, sex)
-df8 <- xlxs(x = 5, y = "A57:T81") #AOD Qs - disaggs (national, IRSD)
+df1 <- xlxs(x = 2, y = "A6:AJ50", nv = coln1) #AOD status by state
+df2 <- xlxs(x = 3, y = "A6:T50", nv = coln2) #AOD Qs by Status 
+df3 <- xlxs(x = 4, y = "A7:AJ16", nv = coln1.1) #AOD Status - disaggs (national, age)
+df4 <- xlxs(x = 4, y = "A44:AJ53", nv = coln1.2) #AOD Status - disaggs (national, sex) 
+df5 <- xlxs(x = 4, y = "A62:AJ86", nv = coln1.3) #AOD Status - disaggs (national, IRSD) 
+df6 <- xlxs(x = 5, y = "A7:T16", nv = coln2.1) #AOD Qs - disaggs (national, age)
+df7 <- xlxs(x = 5, y = "A39:T48", nv = coln2.2) #AOD Qs - disaggs (national, sex)
+df8 <- xlxs(x = 5, y = "A57:T81", nv = coln2.3) #AOD Qs - disaggs (national, IRSD)
 
-
+# TO BE DONE
+# Any column/row rearranging.
+# Merging by indicators.
+# Check old code for missed steps.
+# Check guidelines for any other missed steps.
  
-# removing NAs and NPs ---------------------------------------------------------
-
-
-remove_na <- function(x){
-  
-  x[x[,] == "n.a."] <- NA
-  x[x[,] == "n.p."] <- NA
-  
-  return(x)
-  
-}
-
-df1 <- remove_na(x = df1)
-df2 <- remove_na(x = df2)
-df3 <- remove_na(x = df3)
-df4 <- remove_na(x = df4)
-df5 <- remove_na(x = df5)
-df6 <- remove_na(x = df6)
-df7 <- remove_na(x = df7)
-df8 <- remove_na(x = df8)
-
-
-
-# changing column names  -----------------------------------------------------
-
-
-
-coln1 <- function(x){
-  
-  names(x) <- c("STE_NAME16", "calendar_year", 
-                "current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
-                "current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%", 
-                "current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
-                "ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
-                "ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%", 
-                "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_NO_N", "recently_used_illicit_drugs_NO_%", 
-                "recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
-  return(x)
-  
-  
-}
-
-
-coln2 <- function(x){
-  
-  names(x) <- c("STE_NAME16","calendar_year","age_of_initiation_of_smoking","age_of_initiation_of_drinking","type_of_alcohol_usually_consumed_bottled_wine",
-                "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
-                "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
-                "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a_month", 
-                "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
-  return(x)
-  
-}
-
-
-df1 <- coln1(x = df1) #AOD status by state
-df2 <- coln2(x = df2) #AOD Qs by Status 
-df3 <- coln1(x = df3) #AOD Status - disaggs (national, age)
-df4 <- coln1(x = df4) #AOD Status - disaggs (national, sex) 
-df5 <- coln1(x = df5) #AOD Status - disaggs (national, IRSD) 
-df6 <- coln2(x = df6) #AOD Qs - disaggs (national, age)
-df7 <- coln2(x = df7) #AOD Qs - disaggs (national, sex)
-df8 <- coln2(x = df8) #AOD Qs - disaggs (national, IRSD)
-
-
-
-
-# renaming leading row in national data from state to filters as above ---------
-
-names(df3)[names(df3) == "STE_NAME16"] <- "age_group"
-names(df4)[names(df4) == "STE_NAME16"] <- "sex"
-names(df5)[names(df5) == "STE_NAME16"] <- "irsd_quintile"
-
-names(df6)[names(df6) == "STE_NAME16"] <- "age_group"
-names(df7)[names(df7) == "STE_NAME16"] <- "sex"
-names(df8)[names(df8) == "STE_NAME16"] <- "irsd_quintile"
-
-
-
-# uncertainty (*) in a new column ----------------------------------------------
-#new column for uncertainty 
-
-unccol <- function(x){
-  
-  x$uncertainty <- NA  
-  return(x)
-  
-}
-
-df1 <- unccol(x = df1)
-df2 <- unccol(x = df2)
-df3 <- unccol(x = df3)
-df4 <- unccol(x = df4)
-df5 <- unccol(x = df5)
-df6 <- unccol(x = df6)
-df7 <- unccol(x = df7)
-df8 <- unccol(x = df8)
-
-# changing column order --------------------------------------------------------
-
-
-order1 <- function(x){
-  
-col_order <- c(1:2, 37, 3:36) 
-x <- x[col_order]
-
-return(x)
-}
-
-
-order2 <- function(x){
-
-col_order <- c(1:2, 21, 3:20)
-x <- x[col_order]
-
-return(x)
-}
-
-df1 <- order1(x = df1)
-df2 <- order2(x = df2)
-df3 <- order1(x = df3)
-df4 <- order1(x = df4)
-df5 <- order1(x = df5)
-df6 <- order2(x = df6)
-df7 <- order2(x = df7)
-df8 <- order2(x = df8)
-
-
-# moving uncertainty charaters into uncertainty column  ------------------------
-
-# uncert <- function(x){
-# 
-#   #doesn't work ;-;
-#   
-#   x[c(which(substr(x[, 6],1,1) == "*")), "uncertainty"] = "*"
-#   x[c(which(substr(x[, 6],1,2)=="**")), "uncertainty"] = "**"
-#   x[c(which(substr(x[, 6],1,2)=="`")), "uncertainty"] = "`"
-#   x[c(which(substr(x[, 6],1,2)=="``")), "uncertainty"] = "``"
-#   
-#   return(x)
-#   
-# }
-# 
-# 
-# df1 <- unccol(x = df1)
-# df2 <- unccol(x = df2)
-# df3 <- unccol(x = df3)
-# df4 <- unccol(x = df4)
-# df5 <- unccol(x = df5)
-# df6 <- unccol(x = df6)
-# df7 <- unccol(x = df7)
-# df8 <- unccol(x = df8)
-# 
-# 
-# 
-# 
-# 
-# 
-# col_order1 <- c(37, 1:36) 
-# 
-# df1 <- df1[col_order]
-# 
-# 
-# 
-# 
-#  
-#   for(i in 2:ncol(df1)){
-#     df1[,i] <- str_replace_all(df1[,i],"[*]","")
-#     df1[,i] <- as.numeric(df1[,i])
-#     df1[,i] <- round(df1[,i],2)
-#     
-#     return(x)
-#   }
-# 
-#   
-# df1 <- 
-# df2 <- 
-# df3 <- 
-# df4 <- 
-# df5 <- 
-# df6 <- 
-# df7 <- 
-# df8 <- 
 
 
 

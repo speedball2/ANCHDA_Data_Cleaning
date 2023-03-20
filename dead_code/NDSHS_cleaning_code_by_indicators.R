@@ -3,11 +3,6 @@
 #------------------------------------------------------------------------------#
 
 
-# Before running, set working directory to source file location.
-# Session > Set Working Directory > To Source File Location
-
-
-setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE_National")
 
 #dfnames-----------------------------------------------------------------------
 
@@ -22,6 +17,11 @@ setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/ANCHDA_Q
 
 
 
+# Before running, set working directory to source file location.
+# Session > Set Working Directory > To Source File Location
+
+
+
 # Libraries --------------------------------------------------------------------
 
 library(readxl)
@@ -30,348 +30,9 @@ library(tidyr)
 library(stringr)
 
 
-
-# Read in excel files ----------------------------------------------------------
-
-xlxs <- function(x,y){
-  df <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
-            sheet = x, 
-            range = y)
-  return(df)
-}
-
-df1 <- xlxs(x = 2, y = "A6:AJ50") #AOD status by state
-df2 <- xlxs(x = 3, y = "A6:T50") #AOD Qs by Status 
-df3 <- xlxs(x = 4, y = "A7:AJ16") #AOD Status - disaggs (national, age)
-df4 <- xlxs(x = 4, y = "A44:AJ53") #AOD Status - disaggs (national, sex) 
-df5 <- xlxs(x = 4, y = "A62:AJ86") #AOD Status - disaggs (national, IRSD) 
-df6 <- xlxs(x = 5, y = "A7:T16") #AOD Qs - disaggs (national, age)
-df7 <- xlxs(x = 5, y = "A39:T48") #AOD Qs - disaggs (national, sex)
-df8 <- xlxs(x = 5, y = "A57:T81") #AOD Qs - disaggs (national, IRSD)
-
-
- 
-# removing NAs and NPs ---------------------------------------------------------
-
-
-remove_na <- function(x){
-  
-  x[x[,] == "n.a."] <- NA
-  x[x[,] == "n.p."] <- NA
-  
-  return(x)
-  
-}
-
-df1 <- remove_na(x = df1)
-df2 <- remove_na(x = df2)
-df3 <- remove_na(x = df3)
-df4 <- remove_na(x = df4)
-df5 <- remove_na(x = df5)
-df6 <- remove_na(x = df6)
-df7 <- remove_na(x = df7)
-df8 <- remove_na(x = df8)
-
-
-
-# changing column names  -----------------------------------------------------
-
-
-
-coln1 <- function(x){
-  
-  names(x) <- c("STE_NAME16", "calendar_year", 
-                "current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
-                "current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%", 
-                "current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
-                "ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
-                "ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%", 
-                "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_NO_N", "recently_used_illicit_drugs_NO_%", 
-                "recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
-  return(x)
-  
-  
-}
-
-
-coln2 <- function(x){
-  
-  names(x) <- c("STE_NAME16","calendar_year","age_of_initiation_of_smoking","age_of_initiation_of_drinking","type_of_alcohol_usually_consumed_bottled_wine",
-                "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
-                "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
-                "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a_month", 
-                "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
-  return(x)
-  
-}
-
-
-df1 <- coln1(x = df1) #AOD status by state
-df2 <- coln2(x = df2) #AOD Qs by Status 
-df3 <- coln1(x = df3) #AOD Status - disaggs (national, age)
-df4 <- coln1(x = df4) #AOD Status - disaggs (national, sex) 
-df5 <- coln1(x = df5) #AOD Status - disaggs (national, IRSD) 
-df6 <- coln2(x = df6) #AOD Qs - disaggs (national, age)
-df7 <- coln2(x = df7) #AOD Qs - disaggs (national, sex)
-df8 <- coln2(x = df8) #AOD Qs - disaggs (national, IRSD)
-
-
-
-
-# renaming leading row in national data from state to filters as above ---------
-
-names(df3)[names(df3) == "STE_NAME16"] <- "age_group"
-names(df4)[names(df4) == "STE_NAME16"] <- "sex"
-names(df5)[names(df5) == "STE_NAME16"] <- "irsd_quintile"
-
-names(df6)[names(df6) == "STE_NAME16"] <- "age_group"
-names(df7)[names(df7) == "STE_NAME16"] <- "sex"
-names(df8)[names(df8) == "STE_NAME16"] <- "irsd_quintile"
-
-
-
-# uncertainty (*) in a new column ----------------------------------------------
-#new column for uncertainty 
-
-unccol <- function(x){
-  
-  x$uncertainty <- NA  
-  return(x)
-  
-}
-
-df1 <- unccol(x = df1)
-df2 <- unccol(x = df2)
-df3 <- unccol(x = df3)
-df4 <- unccol(x = df4)
-df5 <- unccol(x = df5)
-df6 <- unccol(x = df6)
-df7 <- unccol(x = df7)
-df8 <- unccol(x = df8)
-
-# changing column order --------------------------------------------------------
-
-
-order1 <- function(x){
-  
-col_order <- c(1:2, 37, 3:36) 
-x <- x[col_order]
-
-return(x)
-}
-
-
-order2 <- function(x){
-
-col_order <- c(1:2, 21, 3:20)
-x <- x[col_order]
-
-return(x)
-}
-
-df1 <- order1(x = df1)
-df2 <- order2(x = df2)
-df3 <- order1(x = df3)
-df4 <- order1(x = df4)
-df5 <- order1(x = df5)
-df6 <- order2(x = df6)
-df7 <- order2(x = df7)
-df8 <- order2(x = df8)
-
-
-# moving uncertainty charaters into uncertainty column  ------------------------
-
-# uncert <- function(x){
-# 
-#   #doesn't work ;-;
-#   
-#   x[c(which(substr(x[, 6],1,1) == "*")), "uncertainty"] = "*"
-#   x[c(which(substr(x[, 6],1,2)=="**")), "uncertainty"] = "**"
-#   x[c(which(substr(x[, 6],1,2)=="`")), "uncertainty"] = "`"
-#   x[c(which(substr(x[, 6],1,2)=="``")), "uncertainty"] = "``"
-#   
-#   return(x)
-#   
-# }
-# 
-# 
-# df1 <- unccol(x = df1)
-# df2 <- unccol(x = df2)
-# df3 <- unccol(x = df3)
-# df4 <- unccol(x = df4)
-# df5 <- unccol(x = df5)
-# df6 <- unccol(x = df6)
-# df7 <- unccol(x = df7)
-# df8 <- unccol(x = df8)
-# 
-# 
-# 
-# 
-# 
-# 
-# col_order1 <- c(37, 1:36) 
-# 
-# df1 <- df1[col_order]
-# 
-# 
-# 
-# 
-#  
-#   for(i in 2:ncol(df1)){
-#     df1[,i] <- str_replace_all(df1[,i],"[*]","")
-#     df1[,i] <- as.numeric(df1[,i])
-#     df1[,i] <- round(df1[,i],2)
-#     
-#     return(x)
-#   }
-# 
-#   
-# df1 <- 
-# df2 <- 
-# df3 <- 
-# df4 <- 
-# df5 <- 
-# df6 <- 
-# df7 <- 
-# df8 <- 
-
-
-
-# fill down 1st row ------------------------------------------------------------
-
-# fill down by state 
-# fill1 <- function(x){
-#   
-#   x <- x %>% fill("STE_NAME16", .direction = "down")
-#   
-#   return(x)
-#   
-# }
-# 
-# 
-# #df3 <- df3 %>% fill("age_group", .direction = "down")
-# 
-# #fill down by age 
-# fill2 <- function(x){
-#   
-#   x <- x %>% fill("age_group", .direction = "down")
-#   return(x)
-#   
-# }
-# 
-# #fill down by sex
-# fill3 <- function(x){
-#   
-#   x <- x %>% fill("sex", .direction = "down")
-#   return(x)
-#   
-# }
-# 
-# #fill down by irsd
-# 
-# fill4 <- function(x){
-#   
-#   x <- x %>% fill("irsd_quintile", .direction = "down")
-#   return(x)
-#   
-# }
-# 
-# df1 <- fill1(x = df1) #AOD status by state
-# df2 <- fill1(x = df2) #AOD Qs by Status 
-# df3 <- fill2(x = df3) #AOD Status - disaggs (national, age)
-# df4 <- fill3(x = df4) #AOD Status - disaggs (national, sex) 
-# df5 <- fill4(x = df5) #AOD Status - disaggs (national, IRSD) 
-# df6 <- fill2(x = df6) #AOD Qs - disaggs (national, age)
-# df7 <- fill3(x = df7) #AOD Qs - disaggs (national, sex)
-# df8 <- fill4(x = df8) #AOD Qs - disaggs (national, IRSD)
-
-
-
-# round to two decimal places --------------------------------------------------
-
-
-# rounding <- function(x){
-#   
-#   for(i in 2:ncol(x)){
-#     x[,i] <- as.numeric(x[,i])
-#     x[,i] <- round(x[,i],2)
-#   }
-#   return(x)
-# }
-# 
-# df1 <- rounding(x = df1)
-
-
-# add state codes --------------------------------------------------------------
-
-# add_state <- function(x){
-#   y <- c()
-#   y$STE_NAME16 <- unique(x$STE_NAME16)
-#   y$STE_CODE16 <- c(1,2,3,5,4,6,8,7,0) 
-#   y <- as.data.frame(y)
-#   
-#   return(x)
-#   
-# }
-# 
-# df1 <- add_state(x = df1)
-# df2 <- remove_na(x = df2)
-# df3 <- remove_na(x = df3)
-# df4 <- remove_na(x = df4)
-# df5 <- remove_na(x = df5)
-# df6 <- remove_na(x = df6)
-# df7 <- remove_na(x = df7)
-# df8 <- remove_na(x = df8)
-
-
-
-
-# consistent filter variables --------------------------------------------------
-
-
-# consist_filt <- function(df1,df2,df5,df8){
-#   
-#   df1[,1][which(df1[,1] == "Qld")] <- "QLD"
-#   df1[,1][which(df1[,1] == "Vic")] <- "VIC"
-#   df1[,1][which(df1[,1] == "Tas")] <- "TAS"
-#   df1[,1][which(df1[,1] == "NT(l)")] <- "NT"
-#   df1[,1][which(df1[,1] == "National")] <- "Australia"
-#   
-#   df2[,1][which(df2[,1] == "NT(h)")] <- "NT"
-#   df2[,1][which(df2[,1] == "National")] <- "Australia"
-#   
-#   df5[,1][which(df5[,1] == "Lowest socioeconomic quintile")] <- "1"
-#   df5[,1][which(df5[,1] == "Highest socioeconomic quintile")] <- "5"
-#   
-#   df8[,1][which(df8[,1] == "Lowest SES")] <- "1"
-#   df8[,1][which(df8[,1] == "Highest SES")] <- "5"
-#   
-#   return(df1,df2,df5,df8)
-# }
-# 
-# df1 <- consist_filt(x = df1)
-# 
-#    df1 = df1, df2 = df2, df5 = df5, df8 = df8)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#-------------------------#
-#---AOD Status by State---# #Sheet 2
-#-------------------------#
+                      #-------------------------#
+                      #---AOD Status by State---# #Sheet 2
+                      #-------------------------#
 
 
 
@@ -381,7 +42,6 @@ df1 <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
                  range = "A6:AJ50")
 
 # Remove NA and NP strings -----------------------------------------------------
-
 df1[df1[,] == "n.a."] <- NA
 df1[df1[,] == "n.p."] <- NA
 
@@ -426,10 +86,10 @@ colnames(df1) <- c("STE_NAME16", "calendar_year",
 
 #for(i in 2:ncol(df1)){
 #  df1[,i] <- str_replace_all(df1[,i],["ever_used"],"")
-
+  
 #  for(i in 2:ncol(df1)){
 #    df1[,i] <- str_replace_all(df1[,i],["recently_used"],"")
-
+  
 
 
 # Fill state names -------------------------------------------------------------
@@ -463,15 +123,34 @@ df1[,2][which(df1[,2] == 10)] <- 0 # Changing AUS code to 0.
 df1$STE_NAME16 <- NULL
 
 
-#---------------------#
-#---AOD Qs by state---# #Sheet 3
-#---------------------#
 
 
 
-df2 <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
-                 sheet = 3, #AOD State by Status 
-                 range = "A6:T50")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        #---------------------#
+                        #---AOD Qs by state---# #Sheet 3
+                        #---------------------#
+
+
+
+df2 <- cbind(
+  read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
+            sheet = 3, #AOD State by Status 
+            range = "A6:T50"))
 
 # Remove NA and NP strings -----------------------------------------------------
 df2[df2[,] == "n.a."] <- NA
@@ -490,8 +169,8 @@ colnames(df2) <- c("STE_NAME16","calendar_year","age_of_initiation_of_smoking","
                    "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                    "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                    "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                   "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a_month", 
-                   "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+                   "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a_month", 
+                   "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
 
 
 
@@ -517,14 +196,15 @@ df2 <- merge(dummy2,df2)
 df2$STE_NAME16 <- NULL
 
 
-#---------------------------#
-#---AOD Status - disaggs ---# #Sheet 4
-#---    national, age    ---#
-#---------------------------#
+                        #---------------------------#
+                        #---AOD Status - disaggs ---# #Sheet 4
+                        #---    national, age    ---#
+                        #---------------------------#
 
-df3 <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
-                 sheet = 4, #AOD State by Status 
-                 range = "A7:AJ16")
+df3 <- cbind(
+  read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
+            sheet = 4, #AOD State by Status 
+            range = "A7:AJ16"))
 
 # Remove NA and NP strings -----------------------------------------------------
 df3[df3[,] == "n.a."] <- NA
@@ -556,27 +236,28 @@ df3 <- df3 %>% fill("age_group", .direction = "down")
 df3$STE_CODE16 <- 0
 
 col_order <- c ("STE_CODE16","age_group","calendar_year",
-                "current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
-                "current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%", 
-                "current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
-                "ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
-                "ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%", 
-                "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_NO_N", "recently_used_illicit_drugs_NO_%", 
-                "recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%") 
+                  "current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
+                  "current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%", 
+                  "current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%",
+                  "ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
+                  "ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%", 
+                  "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_NO_N", "recently_used_illicit_drugs_NO_%", 
+                  "recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%") 
 
 df3 <- df3[, col_order]  #flipping columns 
 
+ 
 
 
+                          #---------------------------#
+                          #---AOD Status - disaggs ---# #Sheet 4
+                          #---    national, sex    ---#
+                          #---------------------------#
 
-#---------------------------#
-#---AOD Status - disaggs ---# #Sheet 4
-#---    national, sex    ---#
-#---------------------------#
-
-df4 <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
-                 sheet = 4, #AOD State by Status 
-                 range = "A44:AJ53")
+df4 <- cbind(
+  read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
+            sheet = 4, #AOD State by Status 
+            range = "A44:AJ53"))
 
 # Remove NA and NP strings -----------------------------------------------------
 df4[df4[,] == "n.a."] <- NA
@@ -622,14 +303,15 @@ col_order <- c ("STE_CODE16","sex","calendar_year",
 df4 <- df4[, col_order]  #flipping columns 
 
 
-#---------------------------#
-#---AOD Status - disaggs ---# #Sheet 4
-#---    national, IRSD    ---#
-#---------------------------#
+                      #---------------------------#
+                      #---AOD Status - disaggs ---# #Sheet 4
+                      #---    national, IRSD    ---#
+                      #---------------------------#
 
-df5 <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
-                 sheet = 4, #AOD State by Status 
-                 range = "A62:AJ86")
+df5 <- cbind(
+  read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
+            sheet = 4, #AOD State by Status 
+            range = "A62:AJ86"))
 
 # Remove NA and NP strings -----------------------------------------------------
 df5[df5[,] == "n.a."] <- NA
@@ -676,14 +358,15 @@ col_order <- c ("STE_CODE16","irsd_quintile","calendar_year",
 
 df5 <- df5[, col_order]  #flipping columns 
 
-#---------------------------#
-#---AOD Status - disaggs ---# #Sheet 5
-#---    national, age    ---#
-#---------------------------#
+                        #---------------------------#
+                        #---AOD Status - disaggs ---# #Sheet 5
+                        #---    national, age    ---#
+                        #---------------------------#
 
-df6 <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
-                 sheet = 5, #AOD State by Status 
-                 range = "A7:T16")
+df6 <- cbind(
+  read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
+            sheet = 5, #AOD State by Status 
+            range = "A7:T16"))
 
 # Remove NA and NP strings -----------------------------------------------------
 df6[df6[,] == "n.a."] <- NA
@@ -703,9 +386,9 @@ colnames(df6) <- c("age_group","calendar_year","age_of_initiation_of_smoking","a
                    "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                    "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                    "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                   "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
+                   "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
                    _month", 
-                   "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+                   "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
 
 #fill down to fill in missing---------------------------------------------------
 df6 <- df6 %>% fill("age_group", .direction = "down") 
@@ -719,19 +402,20 @@ col_order <- c ("STE_CODE16","age_group","calendar_year","age_of_initiation_of_s
                 "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                 "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                 "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
+                "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
                    _month", 
-                "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+                "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
 
 df6 <- df6[, col_order]  #flipping columns 
-#---------------------------#
-#---AOD Status - disaggs ---# #Sheet 5
-#---    national,sex    ---#
-#---------------------------#
+                      #---------------------------#
+                      #---AOD Status - disaggs ---# #Sheet 5
+                      #---    national,sex    ---#
+                      #---------------------------#
 
-df7 <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
-                 sheet = 5, #AOD State by Status 
-                 range = "A39:T48")
+df7 <- cbind(
+  read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
+            sheet = 5, #AOD State by Status 
+            range = "A39:T48"))
 
 # Remove NA and NP strings -----------------------------------------------------
 df7[df7[,] == "n.a."] <- NA
@@ -751,9 +435,9 @@ colnames(df7) <- c("sex","calendar_year","age_of_initiation_of_smoking","age_of_
                    "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                    "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                    "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                   "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
+                   "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
                    _month", 
-                   "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+                   "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
 
 #fill down to fill in missing---------------------------------------------------
 
@@ -767,22 +451,23 @@ col_order <- c ("STE_CODE16","sex","calendar_year","age_of_initiation_of_smoking
                 "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                 "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                 "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
+                "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
                    _month", 
-                "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+                "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
 
 df7 <- df7[, col_order]  #flipping columns 
 
 
-#---------------------------#
-#---AOD Status - disaggs ---# #Sheet 5
-#---    national,IRSD    ---#
-#---------------------------#
+                      #---------------------------#
+                      #---AOD Status - disaggs ---# #Sheet 5
+                      #---    national,IRSD    ---#
+                      #---------------------------#
 
 
-df8 <- read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
-                 sheet = 5, #AOD State by Status 
-                 range = "A57:T81")
+df8 <- cbind(
+  read_xlsx(col_names = F, path = "NDSHS_Final data tables.xlsx",
+            sheet = 5, #AOD State by Status 
+            range = "A57:T81"))
 
 # Remove NA and NP strings -----------------------------------------------------
 df8[df8[,] == "n.a."] <- NA
@@ -801,9 +486,9 @@ colnames(df8) <- c("irsd_quintile","calendar_year","age_of_initiation_of_smoking
                    "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                    "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                    "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                   "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
+                   "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
                    _month", 
-                   "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+                   "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
 
 # Rename IRSD quintiles --------------------------------------------------------
 df8[,1][which(df8[,1] == "Lowest SES")] <- "1"
@@ -821,9 +506,9 @@ col_order <- c ("STE_CODE16","irsd_quintile","calendar_year","age_of_initiation_
                 "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
                 "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
                 "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other", "age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-                "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
+                "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
                    _month", 
-                "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+                "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
 
 df8 <- df8[, col_order]  #flipping columns 
 
@@ -872,7 +557,7 @@ df8 <- df8[, col_order]  #flipping columns
 
 
 smoking1 <- c("current_smoker_N","current_smoker_%", "ex-smoker_N","ex-smoker_%","never_smoked_N", "never_smoked_%",
-              "current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%")
+"current_vaper_N", "current_vaper_%","ex_vaper_N","ex_vaper_%", "never_vaped_N", "never_vaped_%")
 smoking2 <- c("age_of_initiation_of_smoking")
 calendar <- c("STE_CODE16","calendar_year")
 age <- c("STE_CODE16","age_group","calendar_year")
@@ -933,14 +618,14 @@ full191 <-  merge(acde191,bfgh191,by = intersect(names(acde191), names(bfgh191))
 
 drinking1 <- c("current_drinker_N","current_drinker_%", "ex_drinker_N","ex_drinker_%", "never_drinker_N", "never_drinker_%")
 drinking2 <- c("age_of_initiation_of_drinking","type_of_alcohol_usually_consumed_bottled_wine",
-               "type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
-               "type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
-               "type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other")
+"type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", "type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", "type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
+"type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", "type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", "type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
+"type_of_alcohol_usually_consumed_cider", "type_of_alcohol_usually_consumed_other")
 calendar <- c("STE_CODE16","calendar_year")
 age <- c("STE_CODE16","age_group","calendar_year")
 sex <- c("STE_CODE16","sex","calendar_year")
 irsd <- c("STE_CODE16","irsd_quintile","calendar_year")
-
+  
 a192 <- df1[,c(calendar, drinking1)]
 c192 <- df3[,c(age, drinking1)]
 d192 <- df4[,c(sex, drinking1)]
@@ -986,18 +671,18 @@ full192 <-  merge(acde192,bfgh192,by = intersect(names(acde192), names(bfgh192))
 
 
 drugs1 <- c("ever_used_illicit_drugs_YES_N","ever_used_illicit_drugs_YES_%", "ever_used_illicit_drugs_NO_N", "ever_used_illicit_drugs_NO_%",
-            "ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%", 
-            "recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_NO_N", "recently_used_illicit_drugs_NO_%", 
-            "recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
+"ever_used_pharmaceuticals_for_non_medical_purposes_YES_N","ever_used_pharmaceuticals_for_non_medical_purposes_YES_%","ever_used_pharmaceuticals_for_non_medical_purposes_NO_N", "ever_used_pharmaceuticals_for_non_medical_purposes_NO_%", 
+"recently_used_illicit_drugs_YES_N", "recently_used_illicit_drugs_YES_%", "recently_used_illicit_drugs_NO_N", "recently_used_illicit_drugs_NO_%", 
+"recently_used_cannabis_YES_N", "recently_used_cannabis_YES_%", "recently_used_cannabis_NO_N","recently_used_cannabis_NO_%")
 
 
 drugs2 <- c("age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation_of_illicit_drug_use_recent",
-            "cannabis_use_frequency_every_day", "cannabis_use_frequency_once_a_week_or_more", "cannabis_use_frequency_about_once_a
+            "illicit_use_of_drugs_cannabis_use_frequency_every_day", "illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more", "illicit_use_of_drugs_cannabis_use_frequency_about_once_a
                    _month", 
-            "cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+            "illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
 
-drugs3 <- c("age_of_initiation_of_illicit_drug_use_lifetime","age_of_initiation_of_illicit_drug_use_recent","cannabis_use_frequency_every_day","cannabis_use_frequency_once_a_week_or_more",
-            "cannabis_use_frequency_about_once_a_month","cannabis_use_frequency_every_few_months", "cannabis_use_frequency_once_or_twice_a_year")
+drugs3 <- c("age_of_initiation_of_illicit_drug_use_lifetime","age_of_initiation_of_illicit_drug_use_recent","illicit_use_of_drugs_cannabis_use_frequency_every_day","illicit_use_of_drugs_cannabis_use_frequency_once_a_week_or_more",
+"illicit_use_of_drugs_cannabis_use_frequency_about_once_a_month","illicit_use_of_drugs_cannabis_use_frequency_every_few_months", "illicit_use_of_drugs_cannabis_use_frequency_once_or_twice_a_year")
 
 
 calendar <- c("STE_CODE16","calendar_year")
@@ -1042,7 +727,7 @@ bfgh193 <- merge(bf193,gh193,by = intersect(names(bf193), names(gh193)), all.x =
 
 full193 <-  merge(acde193,bfgh193,by = intersect(names(acde193), names(bfgh193)), all.x = T)
 
-
+ 
 #----------------------------------#
 #--- writing csv : by indicator ---#
 #----------------------------------#
@@ -1052,11 +737,11 @@ full193 <-  merge(acde193,bfgh193,by = intersect(names(acde193), names(bfgh193))
 
 
 
-#write.csv(full191, file = "NDSHS_191_smoking.csv", row.names = F)
-#write.csv(full192, file = "NDSHS_192_alcohol.csv", row.names = F)
-#write.csv(full193, file = "NDSHS_193_drugs.csv", row.names = F)
+write.csv(full191, file = "NDSHS_191_smoking.csv", row.names = F)
+write.csv(full192, file = "NDSHS_192_alcohol.csv", row.names = F)
+write.csv(full193, file = "NDSHS_193_drugs.csv", row.names = F)
 
-#add geographies to file names 
+
 
 
 
