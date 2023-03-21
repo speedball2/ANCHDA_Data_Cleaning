@@ -102,7 +102,7 @@ xlxs <- function(x,y,nv){
                             "NT(l)" = 7,
                             "NT(h)" = 7,
                             "ACT" = 8, 
-                            "National" = 0) # TO BE FINISHED BY HARRIETTE.
+                            "National" = 0) 
   
   }
   
