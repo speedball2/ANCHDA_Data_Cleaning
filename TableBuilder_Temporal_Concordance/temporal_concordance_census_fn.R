@@ -29,7 +29,7 @@ SA4_2021_SA4_2016 <-
 
 # Stack them together in combined data frame
 
-temporal_concordance_census_fn <- function(data_file_base, data_item_name){
+temporal_concordance_census_fn <- function(data_file_base, data_item_name, original_geography_year){
   
   
   
@@ -37,5 +37,9 @@ temporal_concordance_census_fn <- function(data_file_base, data_item_name){
   # Read in correspondence files for that geography
   
   if (geog_list[i]) = 
+    
+    
+    
+    
   
 }
