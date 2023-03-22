@@ -28,12 +28,6 @@ library(stringr)
 #df10 = NMD_SA3_child_mortality_4_year_rolling, sheet 4
 
 
-# functionalised code - doesn't work: 
-# - removing sa2&3 name 
-# -substring to remove "SA3' from code column
-#calender reading in as NAs
-#adding national column breaks column order code
-
 colnems1.1 <- c("SA3_CODE16", "SA3_NAME16", "calendar_year", "total_deaths", "total_births", 
                 "crude_rate_per_1000")
 
@@ -128,59 +122,142 @@ cleaning <- function(path, sht, range, col, nems, corder){
   
   # REMOVING SA- FROM WITHIN COLUMN 
   
-  # str_sub(df1$SA3_code,4,nchar(df1$SA3_code)) FROM AIDEN :)
+  # str_sub(df1$SA3_code,4,nchar(df1$SA3_code)) FROM AIDEN  :)
   
-  
-  # ADDING NATIONAL COLUMN TO DATA SETS
-  
-  
-  
-  #RENAMING COLUMNS
-  
-  #names(df) <- nems
-  
-  # CHANGING COLUMN ORDER
-  
-  #df2 <- df2[,corder]
-  
+  #TBD NEED TO EMAIL OWEN
   
   return(df)
 }
 
-
-# df <- df[,-SA2_NAME16]
-# df <- df[,-SA3_NAME16]  
-
-
+#DF 1---------------------------------------------------------------------------
 df1 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 3, range = "A2:F3080", col = T)
+#REMOVING SA2_NAME  
+  df1 <- df1[,-2] 
 
+#RENAMING COLUMNS
+  names(df1) <- c("SA3_CODE16", "calendar_year", "total_deaths", "total_births", 
+                  "crude_rate_per_1000")
+# DF2 --------------------------------------------------------------------------
 df2 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 4, range = "A30:E89", col = F)
+#ADDING NATIONAL COLUMN   
+  df2$Australia <- 0 
+  
+#RENAMING COLUMNS
+  
+  names(df2) <- c("irsd_quintiles","calendar_year", "total_deaths", 
+                   "total_births", "crude_rate_per_1000", "Australia")
 
-#ADDING NATIONAL COLUMN 
-df2$Australia <- 0
-
-
-
+#CHANGING COLUMN ORDER - AUS AT FRONT
+  
+  corder <- c("Australia", "irsd_quintiles","calendar_year", "total_deaths", 
+              "total_births", "crude_rate_per_1000")
+  
+  df2 <- df2[,corder]
+  
+# DF 3 -------------------------------------------------------------------------
+  
 df3 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 5, range = "A2:F6965", col = T)
+#REMOVING SA2_NAME  
+  df3 <- df3[,-2] 
+  
+#RENAMING COLUMNS
+  
+  names(df3) <- c("SA2_CODE16", "calendar_year", "total_deaths", "total_births", 
+                  "crude_rate_per_1000")
+
+#DF 4 --------------------------------------------------------------------------
+  
 df4 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 6, range = "A2:F6159", col = T)
 
-#ADDING NATIONAL COLUMN  
-df4$Australia <- 0
+  #ADDING NATIONAL COLUMN   
+  df4$Australia <- 0
+
+#RENAMING COLUMNS
+  
+  names(df4) <- c("SA3_CODE16", "calendar_year", "age_group","total_deaths", 
+  "total_population_NMD")
+  
+# DF 5 -------------------------------------------------------------------------
 
 df5 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 7, range = "A30:E89", col = F)
+
+#REMOVING SA2_NAME
+  df2 <- df2[,-2] 
+
+#RENAMING COLUMNS
+  
+  names(df5) <- c("irsd_quintiles","calendar_year", "total_deaths", 
+  "total_population_NMD", "crude_rate_per_100,000", "Australia")
+  
+#CHANGING COLUMN ORDER 
+  
+  corder <- c("Australia", "irsd_quintiles","calendar_year", "total_deaths", 
+              "total_births", "crude_rate_per_1000")
+  
+  df5 <- df5[,corder]
+  
+# DF 6 -------------------------------------------------------------------------
+
 df6 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 8, range = "A2:F6980", col = T)
 
-#ADDING NATIONAL COLUMN  
-df6$Australia <- 0
+#REMOVING SA2_NAME
+  df6 <- df6[,-2] 
 
+#RENAMING COLUMNS
+
+  
+#DF  7 --------------------------------------------------------------------------
 df7 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 10, range = "A30:E89", col = F)
-df8 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 11, range =  "A2:F6980", col = T)
+#ADDING NATIONAL COLUMN 
+  df7$Australia <- 0 
 
+#RENAMING COLUMNS
+
+df8 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 11, range =  "A2:F6980", col = T)
+#REMOVING SA2_NAME
+  df8 <- df8[,-2] 
+
+#RENAMING COLUMNS
 
 df9 <- cleaning(path = "202211_ANCHDA_suppressed_cells_SA3_persons.xlsx", sht = 3, range = "A2:G3080", col = T )
+#REMOVING SA2_NAME
+  df9 <- df9[,-2] 
+
+#RENAMING COLUMNS
+
 df10 <- cleaning(path = "202211_ANCHDA_suppressed_cells_SA3_persons.xlsx", sht = 4, range = "A2:G3080", col = T)
+#REMOVING SA2_NAME
+  df10 <- df10[,-2] 
+  
+#RENAMING COLUMNS
   
   
+  
+ 
+  colorder1.2 <- c("Australia", "irsd_quintiles","calendar_year", "total_deaths", 
+                   "total_births", "crude_rate_per_1000")
+  
+  colorder1.3 <- c("SA2_CODE16", "calendar_year", "total_deaths", "total_births", 
+                   "crude_rate_per_1000")
+  
+  colorder1.4 <- c("SA3_CODE16", "calendar_year", "age_group","total_deaths", 
+                   "total_population_NMD")
+  
+  colorder1.5 <- c("Australia","irsd_quintiles","calendar_year", "total_deaths", 
+                   "total_population_NMD", "crude_rate_per_100,000")
+  
+  colorder1.6 <- c("SA2_CODE16", "calendar_year", "total_deaths", 
+                   "total_population_NMD","crude_rate_per_100,000")
+  
+  colorder1.7 <- c("Australia","irsd_quintiles","calendar_year", "total_deaths", 
+                   "total_population_NMD", "crude_rate_per_100,000")
+  
+  
+  colorder1.9 <- c("SA3_CODE16",  "calendar_year", "sex", "total_deaths", 
+                   "total_population_NMD","crude_rate_per_100,000")
+  
+  colorder1.10 <- c("SA3_CODE16", "calendar_year", "sex", "total_deaths", 
+                    "total_population_NMD","crude_rate_per_100,000")
   
   
   
