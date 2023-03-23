@@ -1,8 +1,7 @@
 
+
 # Harriette's WD
-
 setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/public_data/Immunisation_SA3")
-
 
 #---------------#
 #---libraries---#
@@ -10,6 +9,7 @@ setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared D
 
 library(readxl)
 library(dplyr)
+library(tidyr)
 
 #-------------------------------#
 #---reading in excel function---#
@@ -22,8 +22,29 @@ cleaning <- function(sht, range){
                                 sht,
                                 range,
                                 T))
+  
+  #REMOVING NP AND # 
   df[df[,] == "NP"] <- NA
   df[df[,] == "#"] <- "*"
+  
+  #REMOVING "YEARS" IN AGE COLUMN
+  
+  #WORKS BUT ADDS AN EXTRA COLUMN NOT SURE HOW TO FIX OTHER THAN REMOVING THE EXTRA "age" COLUMN AT END OF PROCESS -_-
+  
+  # names(df)[names(df) == "Age group" ] <- "age"
+  # 
+  # df$age_char <- df$age
+  # 
+  # df$age <- as.numeric(substr(df$age,1,1))
+
+  
+  #ROUNDING TO TWO DECIMAL PLACES
+
+  # ROUNDING:
+  for(i in seq(3,ncol(df),2)){
+    df[,i] <- as.numeric(df[,i])
+    df[,i] <- round(df[,i],2)
+  }
   
   
   return(df)
@@ -40,7 +61,8 @@ cleaning <- function(sht, range){
                   "N_not_fully_immunised", 
                   "%_full_immunised")
   
-# ADDING NATIONAL COLUMN   
+  
+ # ADDING NATIONAL COLUMN   
 df1$Australia <- 0
 
 #BRINGING NATIONAL COLUMN TO FRONT 
@@ -58,6 +80,7 @@ df1 <- df1[,corder]
 
 
 #REMOVE STATE NAMES COLUMN 
+
 df2 <- df2[,-2]
   
 #RENAMING COLUMNS 
