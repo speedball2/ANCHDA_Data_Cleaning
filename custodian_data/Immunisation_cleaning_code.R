@@ -28,22 +28,23 @@ cleaning <- function(sht, range){
   df[df[,] == "#"] <- "*"
   
   #REMOVING "YEARS" IN AGE COLUMN
+
+
+  names(df)[names(df) == "Age group" ] <- "age"
   
-  #WORKS BUT ADDS AN EXTRA COLUMN NOT SURE HOW TO FIX OTHER THAN REMOVING THE EXTRA "age" COLUMN AT END OF PROCESS -_-
-  
-  # names(df)[names(df) == "Age group" ] <- "age"
-  # 
-  # df$age_char <- df$age
-  # 
-  # df$age <- as.numeric(substr(df$age,1,1))
+  df$age <- as.numeric(substr(df$age,1,1))
 
   
   #ROUNDING TO TWO DECIMAL PLACES
 
   # ROUNDING:
-  for(i in seq(3,ncol(df),2)){
-    df[,i] <- as.numeric(df[,i])
-    df[,i] <- round(df[,i],2)
+  
+  # ROUNDING:
+  for(i in seq(3,ncol(df),1)){
+    if(!(names(df)[i] %in% c("Reporting Year"))){
+      df[,i] <- as.numeric(df[,i])
+      df[,i] <- round(df[,i],1)
+    }
   }
   
   
