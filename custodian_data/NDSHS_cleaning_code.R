@@ -5,7 +5,10 @@
 #Aiden to review 
 #renaming IRSD codes to names 
 
-
+#TO DO
+# add aus column to national data w/ 0 
+#Seperate sheets for national and State 
+#TOP 3 for main alcohol consumed 
 
 
 
@@ -13,7 +16,8 @@
 # Session > Set Working Directory > To Source File Location
 
 
-setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/from_custodians/NDSHS_STE_National")
+#Harriette's WD
+setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/from_custodians/NDSHS_STE_National")
 
 #dfnames-----------------------------------------------------------------------
 
@@ -166,18 +170,19 @@ df8 <- xlxs(x = 5, y = "A57:T81", nv = coln2.3) #AOD Qs - disaggs (national, IRS
 
 # most common alcohol consumed top 3 - don't include others in final data set 
 
-smoking1 <- c("current_smoker_N","current_smoker_N_uncertainty",
-              "current_smoker_%","current_smoker_%_uncertainty", 
-              "ex-smoker_N","ex_smoker_N_uncertainty",
-              "ex-smoker_%", "ex_smoker_%_uncertainty",
-              "never_smoked_N", "never_smoked_N_uncertainty",
-              "never_smoked_%", "never_smoked_%_uncertainty",
-              "current_vaper_N", "current_vaper_N_uncertainty",
-              "current_vaper_%", "current_vaper_%_uncertainty",
-              "ex_vaper_N", "ex_vaper_N_uncertainty",
-              "ex_vaper_%", "ex_vaper_%_uncertainty",
-              "never_vaped_N","never_vaped_N_uncertainty", 
-              "never_vaped_%", "never_vaped_%_uncertainty")
+
+smoking1 <- c("current_smoker_N", "current_smoker_N_uncertainty",
+              "current_smoker_%", "current_smoker_%_uncertainty",
+              "ex_smoker_N", "ex_smoker_N_uncertainty",
+              "ex_smoker_%", "ex_smoker_%_uncertainty",                                             
+              "never_smoked_N", "never_smoked_N_uncertainty",                                          
+               "never_smoked_%","never_smoked_%_uncertainty",                                          
+              "current_vaper_N", "current_vaper_N_uncertainty",                                         
+               "current_vaper_%", "current_vaper_%_uncertainty",                                         
+               "ex_vaper_N", "ex_vaper_N_uncertainty",                                              
+               "ex_vaper_%","ex_vaper_%_uncertainty",                                              
+               "never_vaped_N","never_vaped_N_uncertainty",                                          
+               "never_vaped_%",  "never_vaped_%_uncertainty" )
 
 smoking2 <- c("age_of_initiation_of_smoking", "age_of_initiation_of_smoking_uncertainty")
 
@@ -228,39 +233,38 @@ drugs2 <- c("age_of_initiation_of_illicit_drug_use_lifetime", "age_of_initiation
 
 
 calendar <- c("STE_CODE16","calendar_year")
-age <- c("STE_CODE16","age_group","calendar_year")
-sex <- c("STE_CODE16","sex","calendar_year")
-irsd <- c("STE_CODE16","irsd_quintile","calendar_year")
+age <- c("age_group","calendar_year")
+sex <- c("sex","calendar_year")
+irsd <- c("irsd_quintile","calendar_year")
 
 #MERGING BY INDICATOR FUCTION
 
 
-merging <- function(filter1, filter2){
-  
-  a <- df1[,c(calendar, filter1)]
-  c <- df3[,c(age, filter1)]
-  d <- df4[,c(sex, filter1)]
-  e <- df5[,c(irsd, filter1)]
-  
-  b <- df2[,c(calendar, filter2)]
-  f <- df6[,c(age, filter2)]
-  g <- df7[,c(sex, filter2)]
-  h <- df8[,c(irsd, filter2)]
-  
-  ac <- merge(a,c,by = intersect(names(a), names(c)), all.x = T)
-  de <- merge(d,e,by = intersect(names(d), names(b)), all.x = T)
-  bf <- merge(b,f,by = intersect(names(b), names(f)), all.x = T)
-  gh <- merge(g,h,by = intersect(names(b), names(f)), all.x = T)
-  
-  acde <- merge(ac,de,by = intersect(names(ac), names(de)), all.x = T)
-  bfgh <- merge(bf,gh,by = intersect(names(bf), names(gh)), all.x = T)
-  
-  full <-  merge(acde,bfgh,by = intersect(names(acde), names(bfgh)), all.x = T)
-  
-  return(df)
-}
+# merging <- function(filter1, filter2){
+#   
+#   a <- df1[,c(calendar, filter1)]
+#   c <- df3[,c(age, filter1)]
+#   d <- df4[,c(sex, filter1)]
+#   e <- df5[,c(irsd, filter1)]
+#   
+#   b <- df2[,c(calendar, filter2)]
+#   f <- df6[,c(age, filter2)]
+#   g <- df7[,c(sex, filter2)]
+#   h <- df8[,c(irsd, filter2)]
+#   
+#   ac <- merge(a,c,by = intersect(names(a), names(c)), all.x = T)
+#   de <- merge(d,e,by = intersect(names(d), names(b)), all.x = T)
+#   bf <- merge(b,f,by = intersect(names(b), names(f)), all.x = T)
+#   gh <- merge(g,h,by = intersect(names(b), names(f)), all.x = T)
+#   
+#   acde <- merge(ac,de,by = intersect(names(ac), names(de)), all.x = T)
+#   bfgh <- merge(bf,gh,by = intersect(names(bf), names(gh)), all.x = T)
+#   
+#   full <-  merge(acde,bfgh,by = intersect(names(acde), names(bfgh)), all.x = T)
+#   
+#   return(df)
+# }
 
-test191 <- merging(filter1 = smoking1, filter2 = smoking2)
 
 
 
@@ -324,7 +328,7 @@ test191 <- merging(filter1 = smoking1, filter2 = smoking2)
   d193 <- df4[,c(sex, drugs1)]
   e193 <- df5[,c(irsd, drugs1)]
   
-  b193 <- df2[,c(calendar, drugs3)]
+  b193 <- df2[,c(calendar, drugs2)]
   f193 <- df6[,c(age, drugs2)]
   g193 <- df7[,c(sex, drugs2)]
   h193 <- df8[,c(irsd, drugs2)]
@@ -344,9 +348,9 @@ test191 <- merging(filter1 = smoking1, filter2 = smoking2)
   
   
   
-  #write.csv(full191, file = "NDSHS_191_smoking_STE_National.csv", row.names = F)
-  #write.csv(full192, file = "NDSHS_192_alcohol_STE_National.csv", row.names = F)
-  #write.csv(full193, file = "NDSHS_193_drugs_STE_National.csv", row.names = F)
+  write.csv(full191, file = "NDSHS_191_smoking_STE_National.csv", row.names = F)
+  write.csv(full192, file = "NDSHS_192_alcohol_STE_National.csv", row.names = F)
+  write.csv(full193, file = "NDSHS_193_drugs_STE_National.csv", row.names = F)
   
   
   
