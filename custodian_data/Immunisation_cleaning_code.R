@@ -92,7 +92,7 @@ names(df2) <- c("SA4_CODE16", "calendar_year", "age_group", "N_of_children_regis
 #Note for Aiden
 #  as per sheet one of per raw data "*" in this instance means Interpret with caution:
 #This area’s eligible population is between 26 and 100 registered children. 
-#I have just left it on the end as in raw data but changed the symbol from # to * 
+#I have just left as the end column, as in raw data but changed the symbol from # to * 
 
 
 #SA3 Data 
@@ -103,7 +103,7 @@ df3 <- cleaning(sht = 4,
 df3 <- df3[,-2]
   
 #RENAMING COLUMNS 
-  
+
 names(df3) <- c("SA3_CODE16", "calendar_year", "age_group", "N_of_children_registered_immunisation", "N_fully_immunised","N_not_fully_immunised", 
                   "%_full_immunised", "area_uncertainty_immunisation")
   
@@ -112,8 +112,7 @@ names(df3) <- c("SA3_CODE16", "calendar_year", "age_group", "N_of_children_regis
   #---write csvs---#
   #----------------#
 
-#TO BE RUN AFTER AIDEN HAS CHECKED CODE, AND MOVED INTO INTERIM FOLER 
   
-# write.csv(df1, "AIR_121_fully_immunised_National.csv", row.names = F)
-# write.csv(df2, "AIR_121_fully_immunised_SA4.csv", row.names = F)
-# write.csv(df3, "AIR_121_fully_immunised_SA3.csv", row.names = F)
+ write.csv(df1, "AIR_121_fully_immunised_National.csv", row.names = F)
+ write.csv(df2, "AIR_121_fully_immunised_SA4.csv", row.names = F)
+ write.csv(df3, "AIR_121_fully_immunised_SA3.csv", row.names = F)
