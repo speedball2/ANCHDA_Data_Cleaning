@@ -3,6 +3,9 @@
 #HARRIETTES WD:
 setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/public_data/TableBuilder_Data/Schools/for ANCHDA")
 
+path_out = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_INTERIM"
+
+
 # TO DO:
 # 
 # STUDENTS - GOV, CATH, INDEP COL ONL, REMOVE GOV/NON GOV COLUMN - done 
@@ -291,13 +294,18 @@ if("STE" %in% names(df)){
    # ----------------- #
    # --- write csv --- #
    # ----------------- #
+  
+  path_out = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_INTERIM"
+  
    
-   
-   # write.csv(df1, "ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
-   # write.csv(df2, "ABS_schools_463_continuation_rates_STE.csv", row.names = F)
-   # write.csv(df3, "ABS_schools_461_retention_rate_STE.csv", row.names = F)
-  # write.csv(df3, "ABS_schools_462_school_completion_year_12.csv", row.names = F)
-  # write.csv(df3, "ABS_schools_Attendance_at_primary_school_Year_5_STE.csv", row.names = F)
+ # write.csv(df1,paste(path_out,'ABS_schools_473_full_time_and_part_time_students_STE', sep = '', row.names = F))
+  
+  
+    write.csv(df1, "ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
+    write.csv(df2, "ABS_schools_463_continuation_rates_STE.csv", row.names = F)
+    write.csv(df3, "ABS_schools_461_retention_rate_STE.csv", row.names = F)
+    write.csv(df3, "ABS_schools_462_school_completion_year_12.csv", row.names = F)
+    write.csv(df3, "ABS_schools_Attendance_at_primary_school_Year_5_STE.csv", row.names = F)
 
 
  # _____________________________________________________________________
