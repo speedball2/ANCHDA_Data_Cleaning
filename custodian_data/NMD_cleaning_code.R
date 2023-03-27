@@ -335,23 +335,23 @@ i <- df6[,c(SA2, mort1.2)]
  
  # 1.1.2 INFANT MORTALITY CSVS 
  
- # write.csv(a, "NMD_112_infant_mortality_SA3", row.names = F)
- # write.csv(b, "NMD_112_infant_mortality_National", row.names = F)
- # write.csv(c, "NMD_112_infant_mortality_SA2", row.names = F)
+ write.csv(a, "NMD_112_infant_mortality_SA3", row.names = F)
+ write.csv(b, "NMD_112_infant_mortality_National", row.names = F)
+ write.csv(c, "NMD_112_infant_mortality_SA2", row.names = F)
  # 
  # 
  # # 1.1.1O BIRTHS CSVS
  # 
- # write.csv(d, "NMD_1110_infant_births_SA3", row.names = F)
- # write.csv(e, "NMD_1110_infant_births_National", row.names = F)
- # write.csv(f, "NMD_1110_infant_births_SA2", row.names = F)
+ write.csv(d, "NMD_1110_infant_births_SA3", row.names = F)
+ write.csv(e, "NMD_1110_infant_births_National", row.names = F)
+ write.csv(f, "NMD_1110_infant_births_SA2", row.names = F)
  # 
  # 
  # # 1.21.1 MORTALITY CSVS 
  # 
- # write.csv(hj, "NMD_1211_mortality_National", row.names = F)
- # write.csv(gmn, "NMD_1211_mortality_SA3", row.names = F)
- # write.csv(ik, "NMD_1211_mortality_SA2", row.names = F)
+ write.csv(hj, "NMD_1211_mortality_National", row.names = F)
+ write.csv(gmn, "NMD_1211_mortality_SA3", row.names = F)
+ write.csv(ik, "NMD_1211_mortality_SA2", row.names = F)
  
  
  
