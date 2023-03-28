@@ -51,15 +51,20 @@ list_of_tables <- lapply(naplan_results, function(x) {
   split(x, list(Name = paste(x$Domain, x$`Student Grade Level`, sep = "_")))
 })
 
-
-# Rename the columns to VISER standards and convert to lower case
+# Rename the columns to VISER standards and convert to lower case, and add age_group column
 list_of_tables <- lapply(list_of_tables, function(y) {
   lapply(y, function(x) {
+    x <- x %>% 
+      mutate(age_group = case_when(
+        `Student Grade Level` == "Year 3" ~ "8-9",
+        `Student Grade Level` == "Year 5" ~ "10-11",
+        `Student Grade Level` == "Year 9" ~ "14-15",
+        TRUE ~ NA_character_
+      ))
     setNames(x, tolower(c(paste0(names(x)[1], "_code16"), "year", 
-                          paste0(names(x)[3], "_acara"), "student_grade_level", "naplan_score")))
+                          paste0(names(x)[3], "_acara"), "student_grade_level", "naplan_score", "age_group")))
   })
 })
-
 
 # Define output directory
 path_out <- "Z:/CDA/Claire WD/indicators_outputs/temp/acara_naplan_results/"
@@ -162,10 +167,4 @@ for (i in seq_along(student_attendance_df)) {
   write.csv(student_attendance_df[[i]], file_path, row.names = FALSE)
 } 
 
-
-
-
-
-
-
-
+#End of script#
