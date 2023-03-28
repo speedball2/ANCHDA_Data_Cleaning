@@ -8,10 +8,10 @@ library(readxl)
 library(stringr)
 library(dplyr)
 library(purrr)
-
+library(readr)
 
 #set working directory and options
-acara_folder <- "Z:/CDA/Claire WD/anchda/ACARA"
+acara_folder <- "Z:/CDA/Claire WD/anchda/ACARA/ACARA/"
 path_out = "Z:/CDA/Claire WD/indicators_outputs/temp/"
 
 options(timeout = 600) 
@@ -51,14 +51,28 @@ list_of_tables <- lapply(naplan_results, function(x) {
   split(x, list(Name = paste(x$Domain, x$`Student Grade Level`, sep = "_")))
 })
 
-
-#rename the columns to VISER standards
+# Rename the columns to VISER standards and convert to lower case, and add age_group column
 list_of_tables <- lapply(list_of_tables, function(y) {
   lapply(y, function(x) {
-    setNames(x, c(paste0(names(x)[1], "_code16"), "year", 
-                  paste0(names(x)[3], "_acara"), "student_grade_level", "naplan_score"))
+    x <- x %>% 
+      mutate(age_group = case_when(
+        `Student Grade Level` == "Year 3" ~ "8-9",
+        `Student Grade Level` == "Year 5" ~ "10-11",
+        `Student Grade Level` == "Year 9" ~ "14-15",
+        TRUE ~ NA_character_
+      ))
+    setNames(x, tolower(c(paste0(names(x)[1], "_code16"), "year", 
+                          paste0(names(x)[3], "_acara"), "student_grade_level", "naplan_score", "age_group")))
   })
 })
+
+# Define output directory
+path_out <- "Z:/CDA/Claire WD/indicators_outputs/temp/acara_naplan_results/"
+
+# Create output directory if it doesn't exist
+if (!dir.exists(path_out)) {
+  dir.create(path_out)
+}
 
 
 # Save all the tibbles as individual CSV files, sort the files in sub-folders based on geographies 
@@ -79,7 +93,7 @@ lapply(names(list_of_tables), function(outer_name) {
     folder_name <- paste0(path_out, "/", sa_code)
     dir.create(folder_name, showWarnings = FALSE)
     filename <- paste0(folder_name, "/acara_", tolower(subject_code), "_naplan_results_", tolower(grade), "_", tolower(sa_code), ".csv")
-    write.csv(x, filename, row.names = FALSE)
+    #write.csv(x, filename, row.names = FALSE)
   })
 })
 
@@ -91,4 +105,66 @@ lapply(names(list_of_tables), function(outer_name) {
 
 ##------------------------------------------------------------------------ begin analysis on school attendance ---------------------------------------------------------------------------------------###
 
-# note - on March 24 2023 - the data has been requested - the version that was delivered is not suitable for the analysis - pausing the work here
+# note - alternative data here - new data request sent to acara 
+
+
+# Get list of Student Attendance files, ignoring temp files
+student_attendance <- list.files(pattern = "Student Attendance.*\\.xlsx", ignore.case = TRUE)
+student_attendance <- student_attendance[!grepl("~$", student_attendance)]
+
+# Read each file into a list of data frames
+student_attendance_df <- lapply(student_attendance, read_excel, sheet = 2)
+
+
+# Remove spaces and file extension from file names, and convert to lower case
+names_datasets <- tolower(gsub("\\.xlsx", "", gsub(" ", "_", student_attendance)))
+names(student_attendance_df) <- names_datasets
+
+# Error handling loop to identify NULL data frames
+student_attendance_df <- lapply(student_attendance_df, function(df) {
+  if (is.null(df)) {
+    return(data.frame())
+  } else {
+    return(df)
+  }
+})
+
+# Loop through each tibble in the list and select the required columns
+for (i in seq_along(student_attendance_df)) {
+  student_attendance_df[[i]] <- student_attendance_df[[i]][, c(2, 4, 6)]
+}
+
+# Define output directory
+path_out <- "Z:/CDA/Claire WD/indicators_outputs/temp/acara_student_attendance"
+
+# Create output directory if it doesn't exist
+if (!dir.exists(path_out)) {
+  dir.create(path_out)
+}
+
+
+# Loop through each tibble in student_attendance_df
+for (i in seq_along(student_attendance_df)) {
+  # Rename columns
+  colnames(student_attendance_df[[i]])[1] <- paste0(colnames(student_attendance_df[[i]])[1], "_code16")
+  colnames(student_attendance_df[[i]]) <- gsub(" ", "_", tolower(colnames(student_attendance_df[[i]])))
+  colnames(student_attendance_df[[i]])[3] <- paste0(colnames(student_attendance_df[[i]])[3], "_acara")
+  colnames(student_attendance_df[[i]])[2] <- "year"
+  
+  # Extract suffix from tibble name
+  suffix <- substr(names(student_attendance_df)[i], nchar("student_attendance_by_") + 1, nchar(names(student_attendance_df)[i]))
+  
+  # Create subdirectory based on suffix
+  dir_path <- file.path(path_out, gsub("_", "", suffix))
+  if (!dir.exists(dir_path)) {
+    dir.create(dir_path)
+  }
+  
+  # Define file path
+  file_path <- file.path(dir_path, paste0("acara_472_student_attendance_rate_", suffix, ".csv"))
+  
+  # Write tibble to CSV
+  write.csv(student_attendance_df[[i]], file_path, row.names = FALSE)
+} 
+
+#End of script#
