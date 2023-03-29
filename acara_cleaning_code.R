@@ -61,8 +61,11 @@ list_of_tables <- lapply(list_of_tables, function(y) {
         `Student Grade Level` == "Year 9" ~ "14-15",
         TRUE ~ NA_character_
       ))
-    setNames(x, tolower(c(paste0(names(x)[1], "_code16"), "year", 
-                          paste0(names(x)[3], "_acara"), "student_grade_level", "naplan_score", "age_group")))
+    setNames(x, c(paste0(toupper(names(x)[1]), "_CODE16"), "calendar_year", 
+                  gsub(" ", "_", tolower(names(x)[3])),
+                  gsub(" ", "_", tolower("Student Grade Level")),
+                  gsub(" ", "_", tolower("NAPLAN Score")),
+                  "age_group"))
   })
 })
 
@@ -93,14 +96,9 @@ lapply(names(list_of_tables), function(outer_name) {
     folder_name <- paste0(path_out, "/", sa_code)
     dir.create(folder_name, showWarnings = FALSE)
     filename <- paste0(folder_name, "/acara_", tolower(subject_code), "_naplan_results_", tolower(grade), "_", tolower(sa_code), ".csv")
-    #write.csv(x, filename, row.names = FALSE)
+    write.csv(x, filename, row.names = FALSE)
   })
 })
-
-
-
-
-
 
 
 ##------------------------------------------------------------------------ begin analysis on school attendance ---------------------------------------------------------------------------------------###
@@ -167,4 +165,6 @@ for (i in seq_along(student_attendance_df)) {
   write.csv(student_attendance_df[[i]], file_path, row.names = FALSE)
 } 
 
-#End of script#
+
+
+#end of script#--------------------------------------------------------------------------------------------------------------------------------
