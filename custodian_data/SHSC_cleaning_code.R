@@ -73,6 +73,6 @@ full <- full[,col_order]
 #--------write csv----------#
 #---------------------------#
 
-# write.csv(full291, file = "SHSC_191_homelessness_SA3", row.names = F)
+ write.csv(full, file = "SHSC_191_homelessness_SA3", row.names = F)
 
 
