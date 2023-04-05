@@ -11,7 +11,7 @@ library(tidyverse) #for tidyr::fill()
 
 
 # Set WD to Census year folder
-#setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
+#setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
 TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,code_or_name){
   
@@ -50,8 +50,18 @@ TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,
     # fill down variables
     data_temp <- data_temp %>% fill(everything(),.direction="down")
     
-    # check column names
-    names(data_temp)
+    # Fix column names
+    names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)
+    names(data_temp)[grepl("Sex", names(data_temp)[])] <- "sex"
+    names(data_temp)[grepl("Age", names(data_temp)[])] <- "age_group"
+    
+    
+    if(geog_list[i]=="LGA"){
+      data_temp[,grepl(geog_list[i], names(data_temp)[])] <- data_temp[,grepl(geog_list[i], names(data_temp)[])] %>% stringr::str_replace("^[A-Z]*", "")
+    }
+    
+    
+    
     
     # AGREE ON STANDARD FILTER NAMES - for now leave as what comes from TableBuilder
     
@@ -69,10 +79,10 @@ TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,
       
       current_geog <- ifelse(geog_list[i]=="STE","STATE",geog_list[i]) #STE name only for 2006 - naming "STATE" for 2011 onwards
       
-      relevant_name_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_name.csv"),skip=9,check.names=FALSE)
+      relevant_name_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_name.csv"),skip=9,check.names=FALSE)
       relevant_names <- c(row.names(relevant_name_file)) #get list of relevant geography names
       
-      relevant_code_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_code.csv"),skip=9,check.names=FALSE)
+      relevant_code_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_code.csv"),skip=9,check.names=FALSE)
       relevant_codes <- c(row.names(relevant_code_file)) #get list of relevant geography codes
       
       
@@ -89,7 +99,7 @@ TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,
     # save clean csv
     # path to destination (interim cleaned data folder)
     
-    interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
+    interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
     write.csv(data_temp,file=paste0(interim_folder,data_file_base,"_",geog_list[i],"_",calendar_year,"_INTERIM.csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
   }
   
@@ -100,7 +110,7 @@ TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,
 
 ## Set WD to raw data files
 
-#setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
+#setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
 #TB_Census_cleaning_fn(data_file_base = "census_year12", data_item_name ="Completed_Year12", calendar_year=2006)
 

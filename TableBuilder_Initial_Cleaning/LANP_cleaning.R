@@ -11,7 +11,7 @@ library(tidyverse) #for tidyr::fill()
 
 
 # Set WD to Census year folder
-#setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
+#setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
 LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,code_or_name){
   
@@ -50,10 +50,12 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
     # fill down variables
     data_temp <- data_temp %>% fill(everything(),.direction="down")
     
-    # check column names
-    names(data_temp)[1] <- "Language Spoken at Home (LANP) - 2 Digit"
+    # Fix column names
+    names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)
+    names(data_temp)[grepl("Sex", names(data_temp)[])] <- "sex"
+    names(data_temp)[grepl("Age", names(data_temp)[])] <- "age_group"
+    names(data_temp)[grepl("LANP", names(data_temp)[])] <- "Language Spoken at Home (LANP) - 2 Digit" # fix inconsistent item name
     
-    # AGREE ON STANDARD FILTER NAMES - for now leave as what comes from TableBuilder
     
     # ADD HERE - Filter LEVELS
     
@@ -69,10 +71,10 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
       
       current_geog <- ifelse(geog_list[i]=="STE","STATE",geog_list[i]) #STE name only for 2006 - naming "STATE" for 2011 onwards
       
-      relevant_name_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_name.csv"),skip=9,check.names=FALSE)
+      relevant_name_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_name.csv"),skip=9,check.names=FALSE)
       relevant_names <- c(row.names(relevant_name_file)) #get list of relevant geography names
       
-      relevant_code_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_code.csv"),skip=9,check.names=FALSE)
+      relevant_code_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_code.csv"),skip=9,check.names=FALSE)
       relevant_codes <- c(row.names(relevant_code_file)) #get list of relevant geography codes
       
       
@@ -91,8 +93,8 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
     
     
     #geog_names <- c("Local Government Area (LGA)","Statistical Local Area (SLA)","Statistical Subdivision (SSD)","Statistical Division (SD)","State/Territory (STE)","Australia")
-    #if(calendar_year==2006){
-    data_temp_sumlanguage <- data_temp %>% 
+
+      data_temp_sumlanguage <- data_temp %>% 
       #group_by(geog_names[i],`Age 5 Year Age Groups (AGEP)`,`Sex Male/Female (SEXP)`) %>% 
       group_by_at(c(2,3,4)) %>% 
       filter (`Language Spoken at Home (LANP) - 2 Digit` != "Not stated" & `Language Spoken at Home (LANP) - 2 Digit` != "English") %>% 
@@ -107,25 +109,7 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
       filter (`Language Spoken at Home (LANP) - 2 Digit` == "Not stated" | `Language Spoken at Home (LANP) - 2 Digit` == "English")
     
     data_temp2 <- rbind(data_temp_english,data_temp_sumlanguage)
-    # }else{
-    #   data_temp_sumlanguage <- data_temp %>% 
-    #     #group_by(geog_names[i],`Age 5 Year Age Groups (AGEP)`,`Sex Male/Female (SEXP)`) %>% 
-    #     group_by_at(c(2,3,4)) %>% 
-    #     filter (`LANP - 2 Digit Level` != "Not stated" & `LANP - 2 Digit Level` != "English") %>% 
-    #     mutate(Other = sum(language_spoken_at_home)) %>%  #count sum of not "English" or "Not stated" 
-    #     select(-c(`LANP - 2 Digit Level`,`language_spoken_at_home`)) %>% #drop first column
-    #     ungroup() %>% #undo grouping
-    #     distinct() %>% 
-    #     pivot_longer(cols = Other, names_to = "LANP - 2 Digit Level", values_to = "language_spoken_at_home")#keep unique rows
-    #   
-    #   
-    #   data_temp_english <- data_temp %>% 
-    #     filter (`LANP - 2 Digit Level` == "Not stated" | `LANP - 2 Digit Level` == "English")
-    #   
-    #   data_temp2 <- rbind(data_temp_english,data_temp_sumlanguage)
-    #   
-    #   
-    # }
+    
     
     
     
@@ -138,7 +122,7 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
     
     
     
-    interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
+    interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
     write.csv(data_temp2,file=paste0(interim_folder,data_file_base,"_",geog_list[i],"_",calendar_year,"_INTERIM.csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
   }
   
@@ -149,7 +133,7 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
 
 ## Set WD to raw data files
 
-#setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
+#setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
 #TB_Census_cleaning_fn(data_file_base = "census_year12", data_item_name ="Completed_Year12", calendar_year=2006)
 
@@ -165,28 +149,28 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
 #---------------
 #2006 - NAME
 
-setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
+setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
 LANP_Census_cleaning_fn(data_file_base = "census_LANP", data_item_name ="language_spoken_at_home", calendar_year=2006,code_or_name = "name")
 
 #---------------
 #2011 - NAME
 
-setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
+setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
 LANP_Census_cleaning_fn(data_file_base = "census_LANP", data_item_name ="language_spoken_at_home", calendar_year=2011,code_or_name = "name")
 
 #---------------
 #2016 - NAME
 
-setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
+setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
 
 LANP_Census_cleaning_fn(data_file_base = "census_LANP", data_item_name ="language_spoken_at_home", calendar_year=2016,code_or_name = "name")
 
 #---------------
 #2021 - NAME
 
-setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2021")
+setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2021")
 
 LANP_Census_cleaning_fn(data_file_base = "census_LANP", data_item_name ="language_spoken_at_home", calendar_year=2021,code_or_name = "name")
 

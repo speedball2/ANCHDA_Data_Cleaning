@@ -9,7 +9,7 @@ library(readr)
 
 
 # Set WD to Census year folder
-#setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
+#setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
 
 # Load cleaning function
@@ -51,10 +51,10 @@ one_parent_cleaning_fn <- function(data_file_base, data_item_name, calendar_year
     # fill down variables
     data_temp <- data_temp %>% fill(everything(),.direction="down")
     
-    # check column names
-    names(data_temp)
-    
-    # AGREE ON STANDARD FILTER NAMES - for now leave as what comes from TableBuilder
+    # Fix column names
+    names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)
+    names(data_temp)[grepl("Sex", names(data_temp)[])] <- "sex"
+    names(data_temp)[grepl("Age", names(data_temp)[])] <- "age_group"
     
     # ADD HERE - Filter LEVELS
     
@@ -70,10 +70,10 @@ one_parent_cleaning_fn <- function(data_file_base, data_item_name, calendar_year
       
       current_geog <- ifelse(geog_list[i]=="STE","STATE",geog_list[i]) #STE name only for 2006 - naming "STATE" for 2011 onwards
       
-      relevant_name_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_name.csv"),skip=9,check.names=FALSE)
+      relevant_name_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_name.csv"),skip=9,check.names=FALSE)
       relevant_names <- c(row.names(relevant_name_file)) #get list of relevant geography names
       
-      relevant_code_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_code.csv"),skip=9,check.names=FALSE)
+      relevant_code_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_code.csv"),skip=9,check.names=FALSE)
       relevant_codes <- c(row.names(relevant_code_file)) #get list of relevant geography codes
       
       
@@ -99,7 +99,7 @@ one_parent_cleaning_fn <- function(data_file_base, data_item_name, calendar_year
     # save clean csv
     # path to destination (interim cleaned data folder)
     
-    interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
+    interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
     write.csv(data_temp,file=paste0(interim_folder,data_file_base,"_",geog_list[i],"_",calendar_year,"_INTERIM.csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
   }
   
@@ -114,7 +114,7 @@ one_parent_cleaning_fn <- function(data_file_base, data_item_name, calendar_year
 
 #2006 - CODE
 
-setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
+setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
 one_parent_cleaning_fn(data_file_base = "census_one_parent", data_item_name ="one_parent", calendar_year=2006,code_or_name = "code")
 
@@ -124,14 +124,14 @@ one_parent_cleaning_fn(data_file_base = "census_one_parent", data_item_name ="on
 
 #2011 - CODE
 
-setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
+setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
 one_parent_cleaning_fn(data_file_base = "census_one_parent", data_item_name ="one_parent", calendar_year=2011,code_or_name = "code")
 
 #--------
 #2016 - CODE
 
-setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
+setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
 
 one_parent_cleaning_fn(data_file_base = "census_one_parent", data_item_name ="one_parent", calendar_year=2016,code_or_name = "code")
 
@@ -139,6 +139,6 @@ one_parent_cleaning_fn(data_file_base = "census_one_parent", data_item_name ="on
 
 #2021 - CODE
 
-setwd("/Users/Current/OneDrive - Queensland University of Technology/ANCHDA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2021")
+setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2021")
 
 one_parent_cleaning_fn(data_file_base = "census_one_parent", data_item_name ="one_parent", calendar_year=2021,code_or_name = "code")
