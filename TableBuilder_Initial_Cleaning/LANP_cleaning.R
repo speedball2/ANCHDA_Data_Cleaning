@@ -51,13 +51,15 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
     data_temp <- data_temp %>% fill(everything(),.direction="down")
     
     # Fix column names
-    names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)
+    if(i<5){names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
+    if(i==5){names(data_temp)[grepl("tate|TATE", names(data_temp)[])] <- "State"} #change col name for geography up to state
+    if(i==6){names(data_temp)[grepl("tralia", names(data_temp)[])] <- "National"} #change col name for geography up to state
+    
     names(data_temp)[grepl("Sex", names(data_temp)[])] <- "sex"
     names(data_temp)[grepl("Age", names(data_temp)[])] <- "age_group"
     names(data_temp)[grepl("LANP", names(data_temp)[])] <- "Language Spoken at Home (LANP) - 2 Digit" # fix inconsistent item name
     
     
-    # ADD HERE - Filter LEVELS
     
     
     #---------
@@ -108,7 +110,7 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
     data_temp_english <- data_temp %>% 
       filter (`Language Spoken at Home (LANP) - 2 Digit` == "Not stated" | `Language Spoken at Home (LANP) - 2 Digit` == "English")
     
-    data_temp2 <- rbind(data_temp_english,data_temp_sumlanguage)
+    data_temp <- rbind(data_temp_english,data_temp_sumlanguage)
     
     
     
@@ -121,9 +123,13 @@ LANP_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_yea
     
     
     
+    # Strip "LGA" from front of code
+    if(geog_list[i]=="LGA"){
+      data_temp[,grepl(geog_list[i], names(data_temp)[])] <- data_temp[,grepl(geog_list[i], names(data_temp)[])] %>% stringr::str_replace("^[A-Z]*", "")
+    }
     
     interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
-    write.csv(data_temp2,file=paste0(interim_folder,data_file_base,"_",geog_list[i],"_",calendar_year,"_INTERIM.csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
+    write.csv(data_temp,file=paste0(interim_folder,data_file_base,"_",geog_list[i],"_",calendar_year,"_INTERIM.csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
   }
   
 }

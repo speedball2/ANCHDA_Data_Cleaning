@@ -49,10 +49,12 @@ TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,
     data_temp <- data_temp %>% fill(everything(),.direction="down")
     
     # Fix column names
-    names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)
+    if(i<5){names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
+    if(i==5){names(data_temp)[grepl("tate|TATE", names(data_temp)[])] <- "State"} #change col name for geography up to state
+    if(i==6){names(data_temp)[grepl("tralia", names(data_temp)[])] <- "National"} #change col name for geography up to state
+    
     names(data_temp)[grepl("Sex", names(data_temp)[])] <- "sex"
     names(data_temp)[grepl("Age", names(data_temp)[])] <- "age_group"
-    
     
     
     
@@ -86,6 +88,12 @@ TB_Census_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,
       
       
       #end of if(){} section for geography names -> codes
+    }
+    
+    
+    
+    if(geog_list[i]=="LGA"){
+      data_temp[,grepl(geog_list[i], names(data_temp)[])] <- data_temp[,grepl(geog_list[i], names(data_temp)[])] %>% stringr::str_replace("^[A-Z]*", "")
     }
     
     
