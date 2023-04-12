@@ -1,9 +1,8 @@
 
 
 #HARRIETTE'S WD:
-setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/public_data/TableBuilder_Data/Births")
 
-print("Hello World")
+setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/public_data/TableBuilder_Data/Births")
 
 # ----------------- #
 # --- libraries --- #
@@ -53,7 +52,7 @@ df1 <- cleaning(path = "births_LGA_2011_2021.xlsx", sht = 2, range = "A8:AS138")
 
 
 
-
+# ------------------------------------------------------------------------------
 
 
 
