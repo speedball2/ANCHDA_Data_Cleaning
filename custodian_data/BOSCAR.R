@@ -127,26 +127,35 @@ names(df8)[names(df8) == "indicator"] <- "victims_sexual_touching"
 
 # reading in geographies for codes ---------------------------------------------
 
-sa4 <- read.csv("SA4_2016_AUST 2.csv")
 
-sa4 <- sa4[,-(3:7)]
+# ../ from where R script is saved 
 
-test <- as.data.frame(df1[,3])
+sa4 <- read_xlsx("SA4_2021_AUST (1).xlsx", 1, "A1:B109", T)
 
-#print(match(test, sa4)) this but for the name cols 
 
-test2 <- 
+lga <- read_xlsx("LGA_2021_AUST (1).xlsx", 1, cell_limits(c(1, 1), c(NA, 3)), T)
 
-  
-  # ../ from where R script is saved 
-  lga <- read_xlsx("LGA_2021_AUST (1).xlsx", 1, "A1:C90000", T)
- lga2 <- read_xlsx("LGA_2021_AUST (1).xlsx", 1, "A90001:C100000", T)
-
- lga <- read_xlsx("LGA_2021_AUST (1).xlsx", 1, cell_limits(c(1, 1), c(NA, 3)), T)
-
- lga <- lga[,-1]
+lga <- lga[,-1]
  
-
 lga <- lga[!duplicated(lga),]
 
-print(getwd())
+# ------------------------------------------------------------------------------
+
+# MATCH
+
+#print(match(test(c()), sa4)) this but for the name cols 
+
+s <- c("SA4_CODE_2021","SA4_NAME_2021")
+c <- c("SA4_NAME16")
+
+copy <- df1
+
+copy <- copy[!duplicated(copy),]
+
+dummy <- merge(sa4, copy)
+
+copy <- copy %>%
+  arrange(SA4_NAME16, -victims_domestic_violence_related_assault) %>%
+  filter(!duplicated(SA4_NAME16))
+
+data$test = ifesle(data$)
