@@ -1,0 +1,62 @@
+---
+title: "data_quality_check"
+author: "Claire Boulange"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# edit the path to the directory where the CSV files are located #"Z:/CDA/Claire WD/anchda/QA/census/"
+
+# get a list of CSV files in the directory with census in file name
+
+```{r}
+csv_files <- list.files(path = "Z:/CDA/Claire WD/anchda/QA/census/", pattern = "^census.*\\.csv$")
+```
+
+# print the names of the CSV files
+```{r}
+cat("CSV files found in folder:\n")
+cat(paste(csv_files, collapse = "\n"), "\n")
+```
+
+
+# print the number of files in the folder
+```{r}
+cat("Number of files in folder:", length(csv_files), "\n")
+```
+
+```{r}
+# loop through the CSV files and perform checks on each one
+for (file in csv_files) {
+  
+  # read the CSV file
+  data <- read.csv(file, stringsAsFactors = FALSE)
+  
+  # check that geography column is first column
+  if (!grepl("_CODE16|_code2016", names(data)[1])) {
+    cat("Warning: Geography column is not first column in", file, "\n")
+  }
+  
+  # check that all column names are snake case
+  if (any(!grepl("^[a-z_]+$", names(data)))) {
+    cat("Warning: Not all column names are in snake case in", file, "\n")
+  }
+  
+  # check that values in age_group are all \d-\d 
+  if (any(!grepl("^\\d-\\d$", data$age_group))) {
+    cat("Warning: Not all age_group values are in the format of \\d-\\d in", file, "\n")
+  }
+  
+  # print the names of all column names
+  cat("Column names in", file, ":", paste(names(data), collapse = ", "), "\n")
+  
+  # print a blank line to separate the output for each file
+  cat("\n")
+}
+```
+
+
