@@ -30,7 +30,7 @@ cleaning <- function(sht, ran){
   df <- df %>% 
     rename_with(~ gsub("Base_N", "N", .x, fixed = TRUE))
   
-  #REMOVING SPACES IN COLUMN NAMES AND REPLACING WITH _
+  #REMOVING SPACES/FORMATTING ERRORS IN COLUMN NAMES AND REPLACING WITH _
   df <- df %>% 
     rename_with(~ gsub(" ", "_", .x, fixed = TRUE))
   
@@ -110,6 +110,8 @@ rem <- function(df){
   df[2,4] = "female_total"
   df[7,4] = "total"
   
+  
+  
   #REMOVING COMBINED COLUMN
   df <- df[,-2]
   
@@ -117,13 +119,13 @@ rem <- function(df){
   return(df)
   
 }
+
 #STE ---------------------------------------------------------------------------
 
 #NSW 
 
 df1 <- cleaning(4, "B3:CM13")
 df1 <- rem(df1)
-
 
 #VIC
 
@@ -221,6 +223,10 @@ reorder <- function(df, corder){
   df["sex"][df["sex"] == "F"] <- "female"
   
   colnames(df)[colnames(df) == "N_accessed_last_alcoholic_drink_from_bought_themselves_"] ="N_accessed_last_alcoholic_drink_from_bought_themselves"
+  
+  #REMOVING M/F TOTALS
+  df <-  df[!grepl('_total', df$sex, df$age_group),]
+  
   
 
   return(df)
