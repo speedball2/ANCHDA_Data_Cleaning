@@ -434,7 +434,41 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   
   
-  out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
+  out_df_all_years <- rbind(out_df_2006,out_df_2021,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
+  
+  
+  
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  # FORMATTING CONSISTENCY CHECKS ON FINAL ASSEMBLED DATASET
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  
+  #1. put geography column first, then age_group, sex, then other filter vars, then values column
+  
+  out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], age_group, sex, .data[[FILTER_VARS[3]]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  
+  #2. format geography column to match standard _CODE16 format
+  names(out_df_all_years)[1] <- paste0(GEO_TYPE,"_CODE16")
+  
+  #3. Correct all colnames to snake case
+  
+  # Function from https://github.com/sbha/dfnames/blob/master/R/sc_names.R
+  to_snake_case <- function(names){
+    x <- trimws(names)
+    x <- gsub("([a-z])([A-Z])", "\\1_\\2", x)
+    x <- gsub("[[:punct:] ]", "_", x)
+    x <- gsub("_+", "_", x)
+    x <- gsub("^_|_$", "", x)
+    x <- make.unique(x, sep = "_")
+    x <- tolower(x)
+    x
+  }
+  
+  names(out_df_all_years) <- to_snake_case(names(out_df_all_years))
+  
+  
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  # SAVE OUTPUT TO CSV
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   
   write.csv(out_df_all_years,file=paste0(destination_folder_path_base,data_file_base,"_",GEO_TYPE,".csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
 }
@@ -444,13 +478,159 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
 
 # TEST
 
-# User inputs:
-data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
-  VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
-  GEO_TO <- "SA4_CODE_2016"                                       # Target geography column
-  FILTER_VARS <- c("age_group", "sex")                            # Name of original data set filter variable(s).
-  GEO_TYPE <- "SA4"                                               # Type of target geometry (used for looping over list of correspondence files)
-  GEO_TYPE_2006 <- "SD"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
+# # User inputs:
+# data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
+#   VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
+#   GEO_TO <- "SA4_CODE_2016"                                       # Target geography column
+#   FILTER_VARS <- c("age_group", "sex")                            # Name of original data set filter variable(s).
+#   GEO_TYPE <- "SA4"                                               # Type of target geometry (used for looping over list of correspondence files)
+#   GEO_TYPE_2006 <- "SD"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
+#   
+# temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+
+
+
+
+
+
+
+
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+# Function for STATE and NATIONAL geographies
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+
+state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,data_file_base,VAR_NAME,GEO_TO,FILTER_VARS,GEO_TYPE,GEO_TYPE_2006, GEO_COL_FINAL){
   
-temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  # Import 2006
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  
+  df_2006_name <- paste0(origin_folder_path_base,data_file_base,"_",GEO_TYPE,"_2006_INTERIM.csv")
+  
+  df_2006 <- read.csv(df_2006_name,na.strings=c("","NA"), check.names=FALSE)  
+  
+  df_2006$calendar_year <- rep(2006, length(df_2006$age_group))
+  
+  out_df_2006 <- df_2006 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  
+  
+  
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  # Import 2011
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  
+  df_2011_name <- paste0(origin_folder_path_base,data_file_base,"_",GEO_TYPE,"_2011_INTERIM.csv")
+  
+  df_2011 <- read.csv(df_2011_name,na.strings=c("","NA"), check.names=FALSE)  
+  
+  df_2011$calendar_year <- rep(2011, length(df_2011$age_group))
+  
+  out_df_2011 <- df_2011 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  # Import 2016
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  
+  df_2016_name <- paste0(origin_folder_path_base,data_file_base,"_",GEO_TYPE,"_2016_INTERIM.csv")
+  
+  df_2016 <- read.csv(df_2016_name,na.strings=c("","NA"), check.names=FALSE)  
+  
+  df_2016$calendar_year <- rep(2016, length(df_2016$age_group))
+  
+  out_df_2016 <- df_2016 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  # Import 2021
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  
+  df_2021_name <- paste0(origin_folder_path_base,data_file_base,"_",GEO_TYPE,"_2021_INTERIM.csv")
+  
+  df_2021 <- read.csv(df_2021_name,na.strings=c("","NA"), check.names=FALSE)  
+  
+  df_2021$calendar_year <- rep(2021, length(df_2021$age_group))
+  
+  out_df_2021 <- df_2021 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  # cbind out_df from each year
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  
+  
+  out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) 
+  
+  if(GEO_TYPE == "STE"){out_df_all_years <- out_df_all_years %>% mutate(State = recode(State, "1"=1,"2"=2,"3"=3,"4"=4,"5"=5,"6"=6,"7"=7,"8"=8,"9"=9,
+                                                                                       "New South Wales" = 1, "Victoria" = 2, "Queensland" = 3, "South Australia" = 4, 
+                                                                                       "Western Australia" = 5, "Tasmania" = 6, "Northern Territory" = 7, 
+                                                                                       "Australian Capital Territory" = 8, "Other Territories" = 9))
+  }
+  
+  out_df_all_years <- out_df_all_years %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
+  
+  
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  # FORMATTING CONSISTENCY CHECKS ON FINAL ASSEMBLED DATASET
+  #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  
+  #1. put geography column first, then age_group, sex, then other filter vars, then values column
+  
+  out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], age_group, sex, .data[[FILTER_VARS[3]]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  
+  #2. format geography column to match standard _CODE16 format
+  names(out_df_all_years)[1] <- GEO_COL_FINAL
+  
+  #3. Correct all colnames to snake case
+  
+  # Function from https://github.com/sbha/dfnames/blob/master/R/sc_names.R
+  to_snake_case <- function(names){
+    x <- trimws(names)
+    x <- gsub("([a-z])([A-Z])", "\\1_\\2", x)
+    x <- gsub("[[:punct:] ]", "_", x)
+    x <- gsub("_+", "_", x)
+    x <- gsub("^_|_$", "", x)
+    x <- make.unique(x, sep = "_")
+    x <- tolower(x)
+    x
+  }
+  
+  names(out_df_all_years) <- to_snake_case(names(out_df_all_years))
+  
+  
+  
+  write.csv(out_df_all_years,file=paste0(destination_folder_path_base,data_file_base,"_",GEO_TO,".csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
+}
+
+# TEST EXAMPLE
+
+# 
+# 
+# # User inputs:
+# data_file_base <- "census_religion"                               # Base file name for datasets e.g. census_religion
+# VAR_NAME <- "religion"                                  # Name of the input variable column.
+# GEO_TO <- "State"                                       # Target geography column
+# FILTER_VARS <- c("age_group", "sex","RELP Religious Affiliation - 1-digit level")                            # Name of original data set filter variable(s).
+# GEO_TYPE <- "STE"                                               # Type of target geometry (used for looping over list of correspondence files)
+# GEO_COL_FINAL <- "State"
+# 
+# state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+
+
+
+#---------
+
+# 
+# # NATIONAL
+# 
+# 
+# # User inputs:
+# data_file_base <- "census_religion"                               # Base file name for datasets e.g. census_religion
+# VAR_NAME <- "religion"                                  # Name of the input variable column.
+# GEO_TO <- "National"                                       # Target geography column
+# FILTER_VARS <- c("age_group", "sex","RELP Religious Affiliation - 1-digit level")                            # Name of original data set filter variable(s).
+# GEO_TYPE <- "national"                                               # Type of target geometry (used for looping over list of correspondence files)
+# GEO_COL_FINAL <- "Australia"
+# 
+# state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+
+
 
