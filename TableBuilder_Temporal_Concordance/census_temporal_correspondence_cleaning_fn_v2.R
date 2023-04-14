@@ -12,7 +12,7 @@ library(readxl)
 ### 2006 Files ##
 #################
 
-SLA_2006_SA2_2016 <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SLA_2006_SA2_2016.xls",
+SLA_2006_SA2_2016 <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SLA_2006_SA2_2016.xls",
                                 sheet = 4,
                                 range = "A6:F3858", col_names = TRUE)
 
@@ -21,7 +21,7 @@ SLA_2006_SA2_2016 <-  SLA_2006_SA2_2016[-1,] #remove empty first row
 names(SLA_2006_SA2_2016) <- c("SLA_CODE_2006", "SLA_NAME_2006",     "SA2_CODE_2016", "SA2_NAME_2016",     "RATIO",            "PERCENTAGE")
 
 
-SLA_2006_SA2_2016_quality <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SLA_2006_SA2_2016.xls",
+SLA_2006_SA2_2016_quality <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SLA_2006_SA2_2016.xls",
                                         sheet = 3,
                                         range = "A6:C2286", col_names = TRUE)
 
@@ -34,14 +34,14 @@ SLA_2006_SA2_2016 <-  dplyr::left_join(SLA_2006_SA2_2016,SLA_2006_SA2_2016_quali
 #------------
 
 
-SSD_2006_SA3_2016 <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SSD_2006_SA3_2016.xls",
+SSD_2006_SA3_2016 <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SSD_2006_SA3_2016.xls",
                                 sheet = 4,
                                 range = "A6:F644", col_names = TRUE)
 
 SSD_2006_SA3_2016 <-  SSD_2006_SA3_2016[-1,] #remove empty first row
 
 
-SSD_2006_SA3_2016_quality <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SSD_2006_SA3_2016.xls",
+SSD_2006_SA3_2016_quality <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SSD_2006_SA3_2016.xls",
                                         sheet = 3,
                                         range = "A6:C346", col_names = TRUE)
 
@@ -53,14 +53,14 @@ SSD_2006_SA3_2016 <-  dplyr::left_join(SSD_2006_SA3_2016,SSD_2006_SA3_2016_quali
 
 #-------------
 
-SD_2006_SA4_2016 <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SD_2006_SA4_2016.xls",
+SD_2006_SA4_2016 <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SD_2006_SA4_2016.xls",
                                sheet = 4,
                                range = "A6:F161", col_names = TRUE)
 
 SD_2006_SA4_2016 <-  SD_2006_SA4_2016[-1,] #remove empty first row
 
 
-SD_2006_SA4_2016_quality <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SD_2006_SA4_2016.xls",
+SD_2006_SA4_2016_quality <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_SD_2006_SA4_2016.xls",
                                        sheet = 3,
                                        range = "A6:C96", col_names = TRUE)
 
@@ -71,7 +71,7 @@ SD_2006_SA4_2016 <-  dplyr::left_join(SD_2006_SA4_2016,SD_2006_SA4_2016_quality,
 
 #------------
 
-LGA_2006_LGA_2016 <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_LGA_2006_LGA_2016.xlsx",
+LGA_2006_LGA_2016 <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_LGA_2006_LGA_2016.xlsx",
                                 sheet = 4,
                                 range = "A6:F906", col_names = TRUE)
 
@@ -79,7 +79,7 @@ LGA_2006_LGA_2016 <-  LGA_2006_LGA_2016[-1,] #remove empty first row
 
 
 
-LGA_2006_LGA_2016_quality <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_LGA_2006_LGA_2016.xlsx",
+LGA_2006_LGA_2016_quality <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2006_2016/CG_LGA_2006_LGA_2016.xlsx",
                                         sheet = 3,
                                         range = "A6:C552", col_names = TRUE)
 
@@ -97,7 +97,7 @@ LGA_2006_LGA_2016 <-  dplyr::left_join(LGA_2006_LGA_2016,LGA_2006_LGA_2016_quali
 #################
 
 
-SA2_2011_SA2_2016 <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA2_2011_SA2_2016.xls",
+SA2_2011_SA2_2016 <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA2_2011_SA2_2016.xls",
                                 sheet = 4,
                                 range = "A6:F2433", col_names = TRUE)
 
@@ -107,7 +107,7 @@ names(SA2_2011_SA2_2016) <- c("SA2_CODE_2011", "SA2_NAME_2011",     "SA2_CODE_20
 SA2_2011_SA2_2016 <-  SA2_2011_SA2_2016[-1,] #remove empty first row
 
 
-SA2_2011_SA2_2016_quality <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA2_2011_SA2_2016.xls",
+SA2_2011_SA2_2016_quality <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA2_2011_SA2_2016.xls",
                                         sheet = 3,
                                         range = "A6:C2298", col_names = TRUE)
 
@@ -120,14 +120,14 @@ SA2_2011_SA2_2016 <-  dplyr::left_join(SA2_2011_SA2_2016,SA2_2011_SA2_2016_quali
 #------------
 
 
-SA3_2011_SA3_2016 <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA3_2011_SA3_2016.xls",
+SA3_2011_SA3_2016 <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA3_2011_SA3_2016.xls",
                                 sheet = 4,
                                 range = "A6:F376", col_names = TRUE)
 
 SA3_2011_SA3_2016 <-  SA3_2011_SA3_2016[-1,] #remove empty first row
 
 
-SA3_2011_SA3_2016_quality <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA3_2011_SA3_2016.xls",
+SA3_2011_SA3_2016_quality <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA3_2011_SA3_2016.xls",
                                         sheet = 3,
                                         range = "A6:C346", col_names = TRUE)
 
@@ -139,14 +139,14 @@ SA3_2011_SA3_2016 <-  dplyr::left_join(SA3_2011_SA3_2016,SA3_2011_SA3_2016_quali
 
 #-------------
 
-SA4_2011_SA4_2016 <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA4_2011_SA4_2016.xls",
+SA4_2011_SA4_2016 <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA4_2011_SA4_2016.xls",
                                 sheet = 4,
                                 range = "A6:F117", col_names = TRUE)
 
 SA4_2011_SA4_2016 <-  SA4_2011_SA4_2016[-1,] #remove empty first row
 
 
-SA4_2011_SA4_2016_quality <- read_excel("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA4_2011_SA4_2016.xls",
+SA4_2011_SA4_2016_quality <- read_excel("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_SA4_2011_SA4_2016.xls",
                                         sheet = 3,
                                         range = "A6:C96", col_names = TRUE)
 
@@ -157,7 +157,7 @@ SA4_2011_SA4_2016 <-  dplyr::left_join(SA4_2011_SA4_2016,SA4_2011_SA4_2016_quali
 
 #------------
 
-LGA_2011_LGA_2016 <- read.csv("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_LGA_2011_LGA_2016.csv")
+LGA_2011_LGA_2016 <- read.csv("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2011_2016/CG_LGA_2011_LGA_2016.csv")
 
 
 # quality info already included
@@ -170,11 +170,10 @@ LGA_2011_LGA_2016 <- read.csv("/Users/Current/OneDrive - Queensland University o
 ## 2021 Files ##
 ################
 
-SA2_2021_SA2_2016 <- read.csv("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2016_2021/CG_SA2_2016_SA2_2021.csv")
-SA3_2021_SA3_2016 <- read.csv("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2016_2021/CG_SA3_2016_SA3_2021.csv")
-SA4_2021_SA4_2016 <- read.csv("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2016_2021/CG_SA4_2016_SA4_2021.csv")
-LGA_2021_LGA_2016 <- read.csv("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2016_2021/CG_LGA_2016_LGA_2021.csv")
-
+SA2_2021_SA2_2016 <- read.csv("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2016_2021/CG_SA2_2016_SA2_2021.csv")
+SA3_2021_SA3_2016 <- read.csv("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2016_2021/CG_SA3_2016_SA3_2021.csv")
+SA4_2021_SA4_2016 <- read.csv("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2016_2021/CG_SA4_2016_SA4_2021.csv")
+LGA_2021_LGA_2016 <- read.csv("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Temporal_Concordance/ASGS_Concordance_Files/2016_2021/CG_LGA_2016_LGA_2021.csv")
 
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -259,9 +258,19 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   df_2006 <- df_2006 %>% as.data.frame()
   
-  df_2006$filters_combo <- paste(df_2006[,FILTER_VARS[1]],df_2006[,FILTER_VARS[2]],df_2006[,FILTER_VARS[3]],sep="_")
+  # filters combo
+  if(length(FILTER_VARS) == 1){
+    df_2006$filters_combo <- df_2006[,FILTER_VARS[1]]
+  } else if(length(FILTER_VARS) == 2){
+    df_2006$filters_combo <- paste(df_2006[,FILTER_VARS[1]],df_2006[,FILTER_VARS[2]],sep="_")
+  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+    df_2006$filters_combo <- paste(df_2006[,FILTER_VARS[1]],df_2006[,FILTER_VARS[2]],df_2006[,FILTER_VARS[3]],sep="_")
+  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+    df_2006$filters_combo <- paste(df_2006[,FILTER_VARS[1]],df_2006[,FILTER_VARS[2]],df_2006[,FILTER_VARS[3]],df_2006[,FILTER_VARS[4]],sep="_")
+  } else {print("check number of filter variables in FILTER_VARS argument")}
   
-  df_2006$calendar_year <- rep(2006,length(df_2006$age_group))
+  
+  df_2006$calendar_year <- rep(2006,length(df_2006[,1]))
   
   # Outer join
   merging_df_2006 <- merge(df_2006, df_corr_2006, by = {{paste0(GEO_TYPE_2006,"_CODE_2006")}},all=T)
@@ -284,13 +293,15 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   merging_df_2006 <- merging_df_2006 %>% ungroup()
   
   # Keep only necessary columns
-  if(length(FILTER_VARS) == 2){
-    out_df_2006 <- merging_df_2006 %>% select(age_group, sex, .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-    } 
-     # If there is an additional filter column in the data, use the following line instead
-     else if(length(FILTER_VARS) == 3){
-  out_df_2006 <- merging_df_2006 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-     } else print("check number of filter variables in FILTER_VARS argument")
+  if(length(FILTER_VARS) == 1){
+    out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 2){
+    out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+  out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+      out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    } else {print("check number of filter variables in FILTER_VARS argument")}
  
   
    #rename values column after temporal correspondence
@@ -317,9 +328,19 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   df_2011 <- df_2011 %>% as.data.frame()
   
-  df_2011$filters_combo <- paste(df_2011[,FILTER_VARS[1]],df_2011[,FILTER_VARS[2]],df_2011[,FILTER_VARS[3]],sep="_")
+  # filters combo
+  if(length(FILTER_VARS) == 1){
+    df_2011$filters_combo <- df_2011[,FILTER_VARS[1]]
+  } else if(length(FILTER_VARS) == 2){
+    df_2011$filters_combo <- paste(df_2011[,FILTER_VARS[1]],df_2011[,FILTER_VARS[2]],sep="_")
+  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+    df_2011$filters_combo <- paste(df_2011[,FILTER_VARS[1]],df_2011[,FILTER_VARS[2]],df_2011[,FILTER_VARS[3]],sep="_")
+  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+    df_2011$filters_combo <- paste(df_2011[,FILTER_VARS[1]],df_2011[,FILTER_VARS[2]],df_2011[,FILTER_VARS[3]],df_2011[,FILTER_VARS[4]],sep="_")
+  } else {print("check number of filter variables in FILTER_VARS argument")}
   
-  df_2011$calendar_year <- rep(2011,length(df_2011$age_group))
+  
+  df_2011$calendar_year <- rep(2011,length(df_2011[,1]))
   
   # Outer join
   merging_df_2011 <- merge(df_2011, df_corr_2011, by = {{paste0(GEO_TYPE,"_CODE_2011")}},all=T)
@@ -342,13 +363,15 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   merging_df_2011 <- merging_df_2011 %>% ungroup()
   
   # Keep only necessary columns
-  if(length(FILTER_VARS) == 2){
-    out_df_2011 <- merging_df_2011 %>% select(age_group, sex, .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-  } 
-  # If there is an additional filter column in the data, use the following line instead
-  else if(length(FILTER_VARS) == 3){
-    out_df_2011 <- merging_df_2011 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-  } else print("check number of filter variables in FILTER_VARS argument")
+  if(length(FILTER_VARS) == 1){
+    out_df_2011 <- merging_df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 2){
+    out_df_2011 <- merging_df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+    out_df_2011 <- merging_df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+    out_df_2011 <- merging_df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  } else {print("check number of filter variables in FILTER_VARS argument")}
   
   
   #rename values column after temporal correspondence
@@ -366,11 +389,19 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   df_2016 <- read.csv(df_2016_name,na.strings=c("","NA"), check.names=FALSE)  
   
-  df_2016[[uncertainty_colname]] <- rep(NA, length(df_2016$age_group)) # create uncertainty column (empty for 2016)
+  df_2016[[uncertainty_colname]] <- rep(NA, length(df_2016[,1])) # create uncertainty column (empty for 2016)
   
-  df_2016$calendar_year <- rep(2016, length(df_2016$age_group))
+  df_2016$calendar_year <- rep(2016, length(df_2016[,1]))
   
-  out_df_2016 <- df_2016 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  if(length(FILTER_VARS) == 1){
+    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 2){
+    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]],.data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  } else {print("check number of filter variables in FILTER_VARS argument - writing out_df_2016")}
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # Loop for 2021 - need to use inverse of from/to ratio
@@ -388,9 +419,19 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   df_2021 <- df_2021 %>% as.data.frame()
   
-  df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],df_2021[,FILTER_VARS[3]],sep="_")
+  # filters combo
+  if(length(FILTER_VARS) == 1){
+    df_2021$filters_combo <- df_2021[,FILTER_VARS[1]]
+  } else if(length(FILTER_VARS) == 2){
+    df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],sep="_")
+  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+    df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],df_2021[,FILTER_VARS[3]],sep="_")
+  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+    df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],df_2021[,FILTER_VARS[3]],df_2021[,FILTER_VARS[4]],sep="_")
+  } else {print("check number of filter variables in FILTER_VARS argument")}
   
-  df_2021$calendar_year <- rep(2021,length(df_2021$age_group))
+  
+  df_2021$calendar_year <- rep(2021,length(df_2021[,1]))
   
   # Outer join
   merging_df_2021 <- merge(df_2021, df_corr_2021, by = {{paste0(GEO_TYPE,"_CODE_2021")}},all=T)
@@ -414,13 +455,15 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   merging_df_2021 <- merging_df_2021 %>% ungroup()
   
   # Keep only necessary columns
-  if(length(FILTER_VARS) == 2){
-    out_df_2021 <- merging_df_2021 %>% select(age_group, sex, .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-  } 
-  # If there is an additional filter column in the data, use the following line instead
-  else if(length(FILTER_VARS) == 3){
-    out_df_2021 <- merging_df_2021 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-  } else print("check number of filter variables in FILTER_VARS argument")
+  if(length(FILTER_VARS) == 1){
+    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 2){
+    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  } else {print("check number of filter variables in FILTER_VARS argument")}
   
   #rename values column after temporal correspondence
   out_df_2021 <- rename(out_df_2021, {{VAR_NAME}} := new_vals)
@@ -434,8 +477,13 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   
   
-  out_df_all_years <- rbind(out_df_2006,out_df_2021,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
+  #out_df_all_years <- rbind(out_df_2006,out_df_2021,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
   
+  if(length(FILTER_VARS) <= 2){
+    out_df_all_years <- rbind(out_df_2006,out_df_2021,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]])
+  } else if(length(FILTER_VARS) >= 3){
+    out_df_all_years <- rbind(out_df_2006,out_df_2021,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
+  } else {print("check number of filter variables in FILTER_VARS argument - rbinding out_df_all_years")}
   
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -444,7 +492,18 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   #1. put geography column first, then age_group, sex, then other filter vars, then values column
   
-  out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], age_group, sex, .data[[FILTER_VARS[3]]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  #out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], age_group, sex, .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  
+  if(length(FILTER_VARS) == 1){
+    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 2){
+    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_all_years")}
+  
   
   #2. format geography column to match standard _CODE16 format
   names(out_df_all_years)[1] <- paste0(GEO_TYPE,"_CODE16")
@@ -499,8 +558,11 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
 # Function for STATE and NATIONAL geographies
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-
+state_out_fn <- function(input_df){
+  
+}
 state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,data_file_base,VAR_NAME,GEO_TO,FILTER_VARS,GEO_TYPE,GEO_TYPE_2006, GEO_COL_FINAL){
+  
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # Import 2006
@@ -510,10 +572,20 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   df_2006 <- read.csv(df_2006_name,na.strings=c("","NA"), check.names=FALSE)  
   
-  df_2006$calendar_year <- rep(2006, length(df_2006$age_group))
+  df_2006$calendar_year <- rep(2006, length(df_2006[,1]))
   
-  out_df_2006 <- df_2006 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  #out_df_2006 <- df_2006 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   
+  
+  if(length(FILTER_VARS) == 1){
+    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 2){
+    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+    out_df_2006 <- df_2006 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_all_years")}
   
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -524,7 +596,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   df_2011 <- read.csv(df_2011_name,na.strings=c("","NA"), check.names=FALSE)  
   
-  df_2011$calendar_year <- rep(2011, length(df_2011$age_group))
+  df_2011$calendar_year <- rep(2011, length(df_2011[,1]))
   
   out_df_2011 <- df_2011 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   
@@ -536,7 +608,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   df_2016 <- read.csv(df_2016_name,na.strings=c("","NA"), check.names=FALSE)  
   
-  df_2016$calendar_year <- rep(2016, length(df_2016$age_group))
+  df_2016$calendar_year <- rep(2016, length(df_2016[,1]))
   
   out_df_2016 <- df_2016 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   
@@ -548,7 +620,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   df_2021 <- read.csv(df_2021_name,na.strings=c("","NA"), check.names=FALSE)  
   
-  df_2021$calendar_year <- rep(2021, length(df_2021$age_group))
+  df_2021$calendar_year <- rep(2021, length(df_2021[,1]))
   
   out_df_2021 <- df_2021 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   

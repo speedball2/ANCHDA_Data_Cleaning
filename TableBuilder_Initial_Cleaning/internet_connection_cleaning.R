@@ -11,12 +11,9 @@ library(readr)
 #-----------
 
 
-# Load cleaning function
+# Load cleaning functions
 
 source("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Initial_Cleaning/TB_Census_cleaning_fn_v2.R")
-
-
-
 
 
 #-------------------
@@ -27,7 +24,7 @@ source("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleani
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
-TB_Census_cleaning_fn(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2006,code_or_name = "code")
+TB_Census_cleaning_fn_dwelling(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2006,code_or_name = "code", census_tag = "NEDD", census_filter_col_name = "nedd_type_of_internet_connection")
 
 #------
 
@@ -36,7 +33,7 @@ TB_Census_cleaning_fn(data_file_base = "census_internet_connection", data_item_n
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
-TB_Census_cleaning_fn(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2011,code_or_name = "code")
+TB_Census_cleaning_fn_dwelling(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2011,code_or_name = "code", census_tag = "NEDD", census_filter_col_name = "nedd_type_of_internet_connection")
 
 
 #-----
@@ -46,7 +43,7 @@ TB_Census_cleaning_fn(data_file_base = "census_internet_connection", data_item_n
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
 
-TB_Census_cleaning_fn(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2016,code_or_name = "code")
+TB_Census_cleaning_fn_dwelling(data_file_base = "census_internet_connection", data_item_name ="internet_connection_dwelling", calendar_year=2016,code_or_name = "code", census_tag = "NEDD", census_filter_col_name = "nedd_type_of_internet_connection")
 
 
 #------
