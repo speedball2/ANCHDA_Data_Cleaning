@@ -5,6 +5,15 @@ library(tidyverse) #for tidyr::fill()
 library(readxl)
 
 
+# Load correspondence pipeline
+
+# Temporal concordance function for census data - drafting/testing
+
+
+library(tidyverse) #for tidyr::fill()
+library(readxl)
+
+
 #########################################################################################################################################################
 
 
@@ -240,7 +249,7 @@ data_file_base <- #"census_LANP"                               # Base file name 
 
 # Rather than writing to loop over geogs, run separately for each geography type
 
-temporal_concordance_census_fn <- function(origin_folder_path_base,destination_folder_path_base,data_file_base,VAR_NAME,GEO_TO,FILTER_VARS,GEO_TYPE,GEO_TYPE_2006){
+INTERNET_temporal_concordance_census_fn <- function(origin_folder_path_base,destination_folder_path_base,data_file_base,VAR_NAME,GEO_TO,FILTER_VARS,GEO_TYPE,GEO_TYPE_2006){
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # Loop for 2006 - different names for SA2 = SLA, SA3 = SSD, SA4 = SD
@@ -297,14 +306,14 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
     out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
     out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-    } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-  out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-    }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-      out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-    } else {print("check number of filter variables in FILTER_VARS argument")}
- 
+  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+    out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+    out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  } else {print("check number of filter variables in FILTER_VARS argument")}
   
-   #rename values column after temporal correspondence
+  
+  #rename values column after temporal correspondence
   out_df_2006 <- rename(out_df_2006, {{VAR_NAME}} := new_vals)
   
   # Remove duplicate rows and NA for geom
@@ -406,83 +415,83 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # Loop for 2021 - need to use inverse of from/to ratio
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  
-  # Select appropriate correspondence sheet for 2021
-  df_corr_2021 <- correspondence_sheet_list[[match(paste0(2021,GEO_TYPE),select_correspondence_indices)]]
-  
-  # Read in 2021 data
-  df_2021_name <- paste0(origin_folder_path_base,data_file_base,"_",GEO_TYPE,"_2021_INTERIM.csv")
-  
-  df_2021 <- read.csv(df_2021_name,na.strings=c("","NA"), check.names=FALSE)  
-  
-  
-  
-  df_2021 <- df_2021 %>% as.data.frame()
-  
-  # filters combo
-  if(length(FILTER_VARS) == 1){
-    df_2021$filters_combo <- df_2021[,FILTER_VARS[1]]
-  } else if(length(FILTER_VARS) == 2){
-    df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],sep="_")
-  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],df_2021[,FILTER_VARS[3]],sep="_")
-  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],df_2021[,FILTER_VARS[3]],df_2021[,FILTER_VARS[4]],sep="_")
-  } else {print("check number of filter variables in FILTER_VARS argument")}
-  
-  
-  df_2021$calendar_year <- rep(2021,length(df_2021[,1]))
-  
-  # Outer join
-  merging_df_2021 <- merge(df_2021, df_corr_2021, by = {{paste0(GEO_TYPE,"_CODE_2021")}},all=T)
-  
-  # NB!!!!! USING INVERSE OF RATIO HERE (FROM/TO RATIO NEEDS TO BE TO/FROM RATIO FOR using 2016-->2021 correspondence files to get 2016 values FROM 2021 values)
-  merging_df_2021$new_vals_raw <- merging_df_2021[,VAR_NAME] * 1/merging_df_2021$RATIO
-  
-  # group by filter variables and new_geography, find new correspondence calculated vals as sum over multiple entries for target geom (grouped by filter vars and target geom)
-  merging_df_2021 <- merging_df_2021 %>% 
-    group_by(filters_combo,.data[[GEO_TO]]) %>% mutate(new_vals = round(sum(new_vals_raw)))
-  
-  
-  
-  # Rename uncertainty indicator
-  
-  uncertainty_colname <- paste0(VAR_NAME, "_uncertainty_correspondence")
-  merging_df_2021[[uncertainty_colname]] <- merging_df_2021$QI_INDICATOR
-  
-  
-  # ungroup
-  merging_df_2021 <- merging_df_2021 %>% ungroup()
-  
-  # Keep only necessary columns
-  if(length(FILTER_VARS) == 1){
-    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-  } else if(length(FILTER_VARS) == 2){
-    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
-  } else {print("check number of filter variables in FILTER_VARS argument")}
-  
-  #rename values column after temporal correspondence
-  out_df_2021 <- rename(out_df_2021, {{VAR_NAME}} := new_vals)
-  
-  # Remove duplicate rows and NA for geom
-  out_df_2021 <- distinct(out_df_2021, .keep_all = T) %>% drop_na(.data[[GEO_TO]])
-  
+  # 
+  # # Select appropriate correspondence sheet for 2021
+  # df_corr_2021 <- correspondence_sheet_list[[match(paste0(2021,GEO_TYPE),select_correspondence_indices)]]
+  # 
+  # # Read in 2021 data
+  # df_2021_name <- paste0(origin_folder_path_base,data_file_base,"_",GEO_TYPE,"_2021_INTERIM.csv")
+  # 
+  # df_2021 <- read.csv(df_2021_name,na.strings=c("","NA"), check.names=FALSE)  
+  # 
+  # 
+  # 
+  # df_2021 <- df_2021 %>% as.data.frame()
+  # 
+  # # filters combo
+  # if(length(FILTER_VARS) == 1){
+  #   df_2021$filters_combo <- df_2021[,FILTER_VARS[1]]
+  # } else if(length(FILTER_VARS) == 2){
+  #   df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],sep="_")
+  # } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+  #   df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],df_2021[,FILTER_VARS[3]],sep="_")
+  # }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+  #   df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],df_2021[,FILTER_VARS[3]],df_2021[,FILTER_VARS[4]],sep="_")
+  # } else {print("check number of filter variables in FILTER_VARS argument")}
+  # 
+  # 
+  # df_2021$calendar_year <- rep(2021,length(df_2021[,1]))
+  # 
+  # # Outer join
+  # merging_df_2021 <- merge(df_2021, df_corr_2021, by = {{paste0(GEO_TYPE,"_CODE_2021")}},all=T)
+  # 
+  # # NB!!!!! USING INVERSE OF RATIO HERE (FROM/TO RATIO NEEDS TO BE TO/FROM RATIO FOR using 2016-->2021 correspondence files to get 2016 values FROM 2021 values)
+  # merging_df_2021$new_vals_raw <- merging_df_2021[,VAR_NAME] * 1/merging_df_2021$RATIO
+  # 
+  # # group by filter variables and new_geography, find new correspondence calculated vals as sum over multiple entries for target geom (grouped by filter vars and target geom)
+  # merging_df_2021 <- merging_df_2021 %>% 
+  #   group_by(filters_combo,.data[[GEO_TO]]) %>% mutate(new_vals = round(sum(new_vals_raw)))
+  # 
+  # 
+  # 
+  # # Rename uncertainty indicator
+  # 
+  # uncertainty_colname <- paste0(VAR_NAME, "_uncertainty_correspondence")
+  # merging_df_2021[[uncertainty_colname]] <- merging_df_2021$QI_INDICATOR
+  # 
+  # 
+  # # ungroup
+  # merging_df_2021 <- merging_df_2021 %>% ungroup()
+  # 
+  # # Keep only necessary columns
+  # if(length(FILTER_VARS) == 1){
+  #   out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  # } else if(length(FILTER_VARS) == 2){
+  #   out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  # } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+  #   out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  # }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+  #   out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  # } else {print("check number of filter variables in FILTER_VARS argument")}
+  # 
+  # #rename values column after temporal correspondence
+  # out_df_2021 <- rename(out_df_2021, {{VAR_NAME}} := new_vals)
+  # 
+  # # Remove duplicate rows and NA for geom
+  # out_df_2021 <- distinct(out_df_2021, .keep_all = T) %>% drop_na(.data[[GEO_TO]])
+  # 
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # cbind out_df from each year
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   
   
-  #out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
+  #out_df_all_years <- rbind(out_df_2006,out_df_2021,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
   
   if(length(FILTER_VARS) <= 2){
-    out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]])
+    out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016) %>% arrange(calendar_year,.data[[GEO_TO]])
   } else if(length(FILTER_VARS) >= 3){
-    out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
+    out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
   } else {print("check number of filter variables in FILTER_VARS argument - arranging out_df_all_years")}
   
   
@@ -545,7 +554,7 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
 #   GEO_TYPE <- "SA4"                                               # Type of target geometry (used for looping over list of correspondence files)
 #   GEO_TYPE_2006 <- "SD"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
 #   
-# temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+# INTERNET_temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
 
 
 
@@ -559,9 +568,9 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 
-state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,data_file_base,VAR_NAME,GEO_TO,FILTER_VARS,GEO_TYPE,GEO_TYPE_2006, GEO_COL_FINAL){
+INTERNET_state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,data_file_base,VAR_NAME,GEO_TO,FILTER_VARS,GEO_TYPE,GEO_TYPE_2006, GEO_COL_FINAL){
   
-
+  
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # Import 2006
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -631,30 +640,30 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # Import 2021
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  
-  df_2021_name <- paste0(origin_folder_path_base,data_file_base,"_",GEO_TYPE,"_2021_INTERIM.csv")
-  
-  df_2021 <- read.csv(df_2021_name,na.strings=c("","NA"), check.names=FALSE)  
-  
-  df_2021$calendar_year <- rep(2021, length(df_2021[,1]))
-  
-  
-  if(length(FILTER_VARS) == 1){
-    out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
-  } else if(length(FILTER_VARS) == 2){
-    out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
-  } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
-  }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
-  } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_2021")}
-  
+  # 
+  # df_2021_name <- paste0(origin_folder_path_base,data_file_base,"_",GEO_TYPE,"_2021_INTERIM.csv")
+  # 
+  # df_2021 <- read.csv(df_2021_name,na.strings=c("","NA"), check.names=FALSE)  
+  # 
+  # df_2021$calendar_year <- rep(2021, length(df_2021[,1]))
+  # 
+  # 
+  # if(length(FILTER_VARS) == 1){
+  #   out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  # } else if(length(FILTER_VARS) == 2){
+  #   out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  # } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
+  #   out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  # }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
+  #   out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  # } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_2021")}
+  # 
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # cbind out_df from each year
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   
   
-  out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) 
+  out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016) 
   
   if(GEO_TYPE == "STE"){out_df_all_years <- out_df_all_years %>% mutate(State = recode(State, "1"=1,"2"=2,"3"=3,"4"=4,"5"=5,"6"=6,"7"=7,"8"=8,"9"=9,
                                                                                        "New South Wales" = 1, "Victoria" = 2, "Queensland" = 3, "South Australia" = 4, 
@@ -663,9 +672,9 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   }
   
   if(length(FILTER_VARS) <= 2){
-    out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]])
+    out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016) %>% arrange(calendar_year,.data[[GEO_TO]])
   } else if(length(FILTER_VARS) >= 3){
-    out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
+    out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
   } else {print("check number of filter variables in FILTER_VARS argument - arranging out_df_all_years")}  
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -721,7 +730,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
 # GEO_TYPE <- "STE"                                               # Type of target geometry (used for looping over list of correspondence files)
 # GEO_COL_FINAL <- "State"
 # 
-# state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+# INTERNET_state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
 
 
 
@@ -739,7 +748,107 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
 # GEO_TYPE <- "national"                                               # Type of target geometry (used for looping over list of correspondence files)
 # GEO_COL_FINAL <- "Australia"
 # 
-# state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+# INTERNET_state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+
+
+
+
+
+#===================================================
+# Applying - completed Year 12
+
+#===================================================
+# LGA
+
+# User inputs:
+data_file_base <- "census_internet_connection"                               # Base file name for datasets e.g. census_internet_connection
+VAR_NAME <- "internet_connection_dwelling"                                  # Name of the input variable column.
+GEO_TO <- "LGA_CODE_2016"                                       # Target geography column
+FILTER_VARS <- c("nedd_type_of_internet_connection")                            # Name of original data set filter variable(s).
+GEO_TYPE <- "LGA"                                               # Type of target geometry (used for looping over list of correspondence files)
+GEO_TYPE_2006 <- "LGA"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
+
+INTERNET_temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+
+
+#===================================================
+# SA2
+
+
+# User inputs:
+data_file_base <- "census_internet_connection"                               # Base file name for datasets e.g. census_internet_connection
+VAR_NAME <- "internet_connection_dwelling"                                  # Name of the input variable column.
+GEO_TO <- "SA2_CODE_2016"                                       # Target geography column
+FILTER_VARS <- c("nedd_type_of_internet_connection")                            # Name of original data set filter variable(s).
+GEO_TYPE <- "SA2"                                               # Type of target geometry (used for looping over list of correspondence files)
+GEO_TYPE_2006 <- "SLA"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
+
+INTERNET_temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+
+
+#===================================================
+# SA3
+
+# User inputs:
+data_file_base <- "census_internet_connection"                               # Base file name for datasets e.g. census_internet_connection
+VAR_NAME <- "internet_connection_dwelling"                                  # Name of the input variable column.
+GEO_TO <- "SA3_CODE_2016"                                       # Target geography column
+FILTER_VARS <- c("nedd_type_of_internet_connection")                            # Name of original data set filter variable(s).
+GEO_TYPE <- "SA3"                                               # Type of target geometry (used for looping over list of correspondence files)
+GEO_TYPE_2006 <- "SSD"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
+
+INTERNET_temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+
+
+
+#===================================================
+# SA4
+
+# User inputs:
+data_file_base <- "census_internet_connection"                               # Base file name for datasets e.g. census_internet_connection
+  VAR_NAME <- "internet_connection_dwelling"                                  # Name of the input variable column.
+  GEO_TO <- "SA4_CODE_2016"                                       # Target geography column
+  FILTER_VARS <- c("nedd_type_of_internet_connection")                            # Name of original data set filter variable(s).
+  GEO_TYPE <- "SA4"                                               # Type of target geometry (used for looping over list of correspondence files)
+  GEO_TYPE_2006 <- "SD"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
+  
+INTERNET_temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
+
+
+#==================================================
+
+
+# STATE
+
+# User inputs:
+data_file_base <- "census_internet_connection"                               # Base file name for datasets e.g. census_internet_connection
+VAR_NAME <- "internet_connection_dwelling"                                  # Name of the input variable column.
+GEO_TO <- "State"                                       # Target geography column
+FILTER_VARS <- c("nedd_type_of_internet_connection")                            # Name of original data set filter variable(s).
+GEO_TYPE <- "STE"                                               # Type of target geometry (used for looping over list of correspondence files)
+GEO_COL_FINAL <- "State"
+
+INTERNET_state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006, GEO_COL_FINAL = GEO_COL_FINAL)
+
+
+
+#---------
+
+
+# NATIONAL
+
+
+# User inputs:
+data_file_base <- "census_internet_connection"                               # Base file name for datasets e.g. census_internet_connection
+VAR_NAME <- "internet_connection_dwelling"                                  # Name of the input variable column.
+GEO_TO <- "Australia"                                       # Target geography column
+FILTER_VARS <- c("nedd_type_of_internet_connection")                            # Name of original data set filter variable(s).
+GEO_TYPE <- "national"                                               # Type of target geometry (used for looping over list of correspondence files)
+GEO_COL_FINAL <- "Australia"
+
+
+INTERNET_state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006, GEO_COL_FINAL = GEO_COL_FINAL)
+
 
 
 

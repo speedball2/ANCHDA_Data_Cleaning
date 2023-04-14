@@ -24,7 +24,7 @@ source("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleani
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_item_name ="labour_force_status", calendar_year=2006,code_or_name = "code", census_tag = "LFSP", census_filter_col_name = "lfsp_labour_force_status",claire_redownload = T)
+TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_item_name ="labour_force_status", calendar_year=2006,code_or_name = "code", census_tag = "Labour Force", census_filter_col_name = "lfhrp_labour_force_status",claire_redownload = T)
 
 
 #---------
@@ -33,14 +33,14 @@ TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_it
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_item_name ="labour_force_status", calendar_year=2011,code_or_name = "code", census_tag = "LFSP", census_filter_col_name = "lfsp_labour_force_status",claire_redownload = T)
+TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_item_name ="labour_force_status", calendar_year=2011,code_or_name = "code", census_tag = "Labour Force", census_filter_col_name = "lfhrp_labour_force_status",claire_redownload = T)
 
 #--------
 #2016 - NAME
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_item_name ="labour_force_status", calendar_year=2016,code_or_name = "code", census_tag = "LFSP", census_filter_col_name = "lfsp_labour_force_status",claire_redownload = T)
+TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_item_name ="labour_force_status", calendar_year=2016,code_or_name = "code", census_tag = "Labour Force", census_filter_col_name = "lfhrp_labour_force_status",claire_redownload = T)
 
 #-----------
 
@@ -48,4 +48,4 @@ TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_it
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2021")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_item_name ="labour_force_status", calendar_year=2021,code_or_name = "code", census_tag = "LFSP", census_filter_col_name = "lfsp_labour_force_status",claire_redownload = T)
+TB_Census_cleaning_fn_individual(data_file_base = "census_unemployment", data_item_name ="labour_force_status", calendar_year=2021,code_or_name = "code", census_tag = "Labour Force", census_filter_col_name = "lfhrp_labour_force_status",claire_redownload = T)

@@ -66,7 +66,10 @@ same_sex_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,c
     # Fix column names (FOR DWELLINGS / FAMILIES - ASGC for 2006)
     # Geography
     if(calendar_year==2006){
-      names(data_temp)[grepl("ASGC", names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)
+      if(i==1){names(data_temp)[grepl("Local Government Areas", names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
+      if(i>1 & i<5){names(data_temp)[grepl("ASGC", names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
+      if(i==5){names(data_temp)[grepl("ASGC", names(data_temp)[])] <- "State"} #change col name for geography up to state
+      if(i==6){names(data_temp)[grepl("ASGC", names(data_temp)[])] <- "Australia"} #change col name for geography up to state
     }
     else{
       if(i<5){names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
@@ -74,15 +77,16 @@ same_sex_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,c
       if(i==6){names(data_temp)[grepl("tralia", names(data_temp)[])] <- "Australia"} #change col name for geography up to state
     }
     
+    
     # filters age, sex
-    names(data_temp)[grepl("Sex", names(data_temp)[])] <- "sex"
-    names(data_temp)[grepl("Age", names(data_temp)[])] <- "age_group"
+    # names(data_temp)[grepl("Sex", names(data_temp)[])] <- "sex"
+    # names(data_temp)[grepl("Age", names(data_temp)[])] <- "age_group"
     
     # variable filter levels
     names(data_temp)[grepl(census_tag_1, names(data_temp)[])] <- census_filter_col_name_1
     # extra census filter for same sex parents
     
-    if(calendar_year==2021){
+    if(calendar_year==2021 | calendar_year==2016){
       names(data_temp)[grepl("CACF", names(data_temp)[])] <- census_filter_col_name_2 #kludge fix for 2021
       print(paste0(census_tag_2, " not present, used CACF instead"))
     } else{

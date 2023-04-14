@@ -18,10 +18,10 @@ source("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleani
 # LGA
 
 # User inputs:
-data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
-VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
+data_file_base <- "census_countryofbirth"                               # Base file name for datasets e.g. census_countryofbirth
+VAR_NAME <- "country_of_birth"                                  # Name of the input variable column.
 GEO_TO <- "LGA_CODE_2016"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex", "hscp_highest_year_of_school_completed")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex", "bplp_country_of_birth_of_person")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "LGA"                                               # Type of target geometry (used for looping over list of correspondence files)
 GEO_TYPE_2006 <- "LGA"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
 
@@ -33,10 +33,10 @@ temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base
 
 
 # User inputs:
-data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
-VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
+data_file_base <- "census_countryofbirth"                               # Base file name for datasets e.g. census_countryofbirth
+VAR_NAME <- "country_of_birth"                                  # Name of the input variable column.
 GEO_TO <- "SA2_CODE_2016"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex", "hscp_highest_year_of_school_completed")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex", "bplp_country_of_birth_of_person")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "SA2"                                               # Type of target geometry (used for looping over list of correspondence files)
 GEO_TYPE_2006 <- "SLA"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
 
@@ -47,10 +47,10 @@ temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base
 # SA3
 
 # User inputs:
-data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
-VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
+data_file_base <- "census_countryofbirth"                               # Base file name for datasets e.g. census_countryofbirth
+VAR_NAME <- "country_of_birth"                                  # Name of the input variable column.
 GEO_TO <- "SA3_CODE_2016"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex", "hscp_highest_year_of_school_completed")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex", "bplp_country_of_birth_of_person")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "SA3"                                               # Type of target geometry (used for looping over list of correspondence files)
 GEO_TYPE_2006 <- "SSD"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
 
@@ -62,10 +62,10 @@ temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base
 # SA4
 
 # User inputs:
-data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
-  VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
+data_file_base <- "census_countryofbirth"                               # Base file name for datasets e.g. census_countryofbirth
+  VAR_NAME <- "country_of_birth"                                  # Name of the input variable column.
   GEO_TO <- "SA4_CODE_2016"                                       # Target geography column
-  FILTER_VARS <- c("age_group", "sex", "hscp_highest_year_of_school_completed")                            # Name of original data set filter variable(s).
+  FILTER_VARS <- c("age_group", "sex", "bplp_country_of_birth_of_person")                            # Name of original data set filter variable(s).
   GEO_TYPE <- "SA4"                                               # Type of target geometry (used for looping over list of correspondence files)
   GEO_TYPE_2006 <- "SD"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
   
@@ -78,10 +78,10 @@ temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base
 # STATE
 
 # User inputs:
-data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
-VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
+data_file_base <- "census_countryofbirth"                               # Base file name for datasets e.g. census_countryofbirth
+VAR_NAME <- "country_of_birth"                                  # Name of the input variable column.
 GEO_TO <- "State"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex", "hscp_highest_year_of_school_completed")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex", "bplp_country_of_birth_of_person")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "STE"                                               # Type of target geometry (used for looping over list of correspondence files)
 GEO_COL_FINAL <- "State"
 
@@ -96,10 +96,10 @@ state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_fol
 
 
 # User inputs:
-data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
-VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
+data_file_base <- "census_countryofbirth"                               # Base file name for datasets e.g. census_countryofbirth
+VAR_NAME <- "country_of_birth"                                  # Name of the input variable column.
 GEO_TO <- "Australia"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex", "hscp_highest_year_of_school_completed")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex", "bplp_country_of_birth_of_person")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "national"                                               # Type of target geometry (used for looping over list of correspondence files)
 GEO_COL_FINAL <- "Australia"
 

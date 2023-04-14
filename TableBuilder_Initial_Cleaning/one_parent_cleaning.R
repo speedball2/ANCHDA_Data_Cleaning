@@ -7,12 +7,139 @@ library(readr)
 
 # Run ONCE per census year for each data item
 
+# 
+# 
+# # Bespoke cleaning function for one_parent
+# 
+# 
+# one_parent_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,code_or_name,census_tag, census_filter_col_name, claire_redownload = F){
+#   
+#   # data_file_base = stem for file name e.g. for completed year 12 the files are named like "census_year12_LGA_2011.csv" so the base is "census_year12" (string)
+#   # data_item_name = name for variable in cleaned datasheet e.g. "Completed_Year12" (string)
+#   # calendar_year = one of 2006,2011,2016,2021 (numeric)
+#   # code_or_name = if geographies are exported as name, then "name" will get them converted to codes below (string)
+#   # census_tag = 4-letter code for census variable e.g. "FMCF" = family composition
+#   # census_filter_col_name = desired formatting for column name of census variable e.g. "fmcf_family_composition"
+#   # claire_redownload = if FALSE, year after geography in file name, if TRUE, year before geography
+#   
+#   
+#   if(calendar_year == 2006){
+#     geog_list <- c("LGA","SLA","SSD","SD","STE","national")
+#   }else{
+#     geog_list <- c("LGA","SA2","SA3","SA4","STE","national")
+#   }
+#   
+#   for(i in 1:6){
+#     
+#     if(claire_redownload == T){
+#       
+#       if(calendar_year == 2006){
+#         geog_list <- c("LGA","SLA","SSD","SD","STE","National")
+#       }else{
+#         geog_list <- c("LGA","SA2","SA3","SA4","STE","National")
+#       }
+#       
+#       data_temp_name <- paste0(data_file_base,"_",calendar_year,"_",geog_list[i],".csv")
+#     }else{
+#       data_temp_name <- paste0(data_file_base,"_",geog_list[i],"_",calendar_year,".csv")
+#     }
+#     
+#     data_temp <- read.csv(data_temp_name,skip=8,row.names=NULL,na.strings=c("","NA"), check.names=FALSE)  
+#     #Skips first 10 ("8") lines -- what read.csv sees as the size of the  header from TableBuilder export.
+#     #row.names=NULL was due to an error I was getting - due to mix of tab/comma delimitation in outputs... workaround below
+#     #na.strings to call empty cells NA so they can be filled down with tidyr::fill()
+#     #check.names=FALSE stops read.csv from editing the column names, leaves them unchanged from TableBuilder export
+#     
+#     #issue with header formatting tabs vs commas... need following lines to fix up colnames
+#     colnames(data_temp) <- colnames(data_temp)[2:ncol(data_temp)] #fix colnames issue
+#     data_temp <- data_temp[,1:(ncol(data_temp)-1)] #drop added NA column
+#     
+#     colnames(data_temp)[ncol(data_temp)] <- data_item_name #rename variable column with specified data_item_name
+#     
+#     # delete trailing crap rows
+#     trailing_rows <- which(is.na(data_temp[,ncol(data_temp)])) #identify NA's in final column (variable of interest)
+#     data_temp <- data_temp[-trailing_rows,] #deleting trailing rows (4)
+#     
+#     
+#     # fill down variables
+#     data_temp <- data_temp %>% fill(everything(),.direction="down")
+#     
+#     # Fix column names (FOR DWELLINGS / FAMILIES - ASGC for 2006)
+#     # Geography
+#     if(calendar_year==2006){
+#       if(i==1){names(data_temp)[grepl("Local Government Areas", names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
+#       if(i==2){names(data_temp)[grepl("SLA", names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
+#       if(i==3){names(data_temp)[grepl("SSD", names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
+#       if(i==4){names(data_temp)[grepl("SD", names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
+#       if(i==5){names(data_temp)[grepl("tate", names(data_temp)[])] <- "State"} #change col name for geography up to state
+#       if(i==6){names(data_temp)[grepl("Australia", names(data_temp)[])] <- "Australia"} #change col name for geography up to state
+#     }
+#     else{
+#       if(i<5){names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
+#       if(i==5){names(data_temp)[grepl("tate|TATE", names(data_temp)[])] <- "State"} #change col name for geography up to state
+#       if(i==6){names(data_temp)[grepl("tralia", names(data_temp)[])] <- "Australia"} #change col name for geography up to state
+#     }
+#     
+#     # filters age, sex
+#     names(data_temp)[grepl("Sex", names(data_temp)[])] <- "sex"
+#     names(data_temp)[grepl("Age", names(data_temp)[])] <- "age_group"
+#     
+#     # variable filter levels
+#     names(data_temp)[grepl(census_tag, names(data_temp)[])] <- census_filter_col_name
+#     
+#     # AGREE ON STANDARD FILTER NAMES - for now leave as what comes from TableBuilder
+#     
+#     # ADD HERE - Filter LEVELS
+#     
+#     
+#     #---------
+#     
+#     
+#     # If geog type = name, then  sub in code for name...
+#     
+#     #1. find geo type - geog_list[i]
+#     #2. find geo column 
+#     if(code_or_name == "name" & geog_list[i]!="national"){ #skip national - no code
+#       
+#       current_geog <- ifelse(geog_list[i]=="STE","STATE",geog_list[i]) #STE name only for 2006 - naming "STATE" for 2011 onwards
+#       
+#       relevant_name_file <- read.csv(paste0("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_name.csv"),skip=9,check.names=FALSE)
+#       relevant_names <- c(row.names(relevant_name_file)) #get list of relevant geography names
+#       relevant_code_file <- read.csv(paste0("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_code.csv"),skip=9,check.names=FALSE)
+#       relevant_codes <- c(row.names(relevant_code_file)) #get list of relevant geography codes
+#       
+#       
+#       geo_column_index <- which(grepl(current_geog,names(data_temp))) #What column is the relevant geography?
+#       
+#       #replace geography column with matching codes instead of names
+#       data_temp[,geo_column_index] <- relevant_codes[match(data_temp[,geo_column_index],relevant_names)] 
+#       
+#       
+#       #end of if(){} section for geography names -> codes
+#     }
+#     
+#     
+#     # save clean csv
+#     # path to destination (interim cleaned data folder)
+#     
+#     
+#     # Strip "LGA" string from front of LGA code
+#     if(geog_list[i]=="LGA"){
+#       data_temp[,grepl(geog_list[i], names(data_temp)[])] <- data_temp[,grepl(geog_list[i], names(data_temp)[])] %>% stringr::str_replace("^[A-Z]*", "")
+#     }
+#     
+#     
+#     interim_folder <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
+#     write.csv(data_temp,file=paste0(interim_folder,data_file_base,"_",geog_list[i],"_",calendar_year,"_INTERIM.csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
+#   }
+#   
+# }
 
 
-# Load cleaning function
+
+# Load cleaning functions
 
 source("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Initial_Cleaning/TB_Census_cleaning_fn_v2.R")
-
 
 
 
