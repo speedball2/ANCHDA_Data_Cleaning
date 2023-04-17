@@ -43,58 +43,64 @@ naplan_results <- lapply(naplan_results, function(df) {
 # Run a function to extract columns, filter, and reshape the data
 naplan_results <- lapply(naplan_results, function(x) {
   x[, c(2, 4, 5, 6, 9)] %>%
-    filter(Domain %in% c("Reading", "Writing", "Spelling", "Grammar and Punctuation", "Numeracy"))
+    filter(Domain %in% c("Reading", "Writing", "Spelling", "Grammar and Punctuation", "Numeracy")) %>%
+    filter(`Average NAPLAN Score` >= 0)
 })
 
 
-# Rename the columns to VISER standards and convert to lower case, and add age_group column
 list_of_tables <- lapply(naplan_results, function(x) {
-  x <- x %>% 
+  x <- x %>%
+    rename_with(~paste0(.,"_CODE16"), 1) %>% # Add suffix _CODE16 to the first column name
+    rename(student_grade_level = `Student Grade Level`, # Rename column 4 to "student_grade_level"
+           naplan_score_acara = `Average NAPLAN Score`, # Rename column 5 to "naplan_score_acara"
+           calendar_year = `Calendar Year`, # Rename column 6 to "calendar_year"
+           domain = Domain # Rename column 7 to "domain"
+    ) %>% 
     mutate(age_group = case_when(
-      `Student Grade Level` == "Year 3" ~ "8-9",
-      `Student Grade Level` == "Year 5" ~ "10-11",
-      `Student Grade Level` == "Year 7" ~ "12-13",
-      `Student Grade Level` == "Year 9" ~ "14-15",
+      student_grade_level == "Year 3" ~ "8-9",
+      student_grade_level == "Year 5" ~ "10-11",
+      student_grade_level == "Year 7" ~ "12-13",
+      student_grade_level == "Year 9" ~ "14-15",
       TRUE ~ NA_character_
-    ))
-  setNames(x, c(paste0(toupper(names(x)[1]), "_CODE16"), "calendar_year", 
-                tolower(c(names(x)[3], "Student Grade Level", "NAPLAN Score", "age_group"))))
+    ),
+    sex = "all" # Add a new column called sex and set the value to "all" for all rows
+    ) %>%
+    select(1, sex, age_group, student_grade_level, calendar_year, domain, naplan_score_acara) %>%
+    setNames(c(paste0(toupper(names(x)[1]), "_CODE16"), "sex", "age_group", 
+               "student_grade_level", "calendar_year", "domain", "naplan_score_acara"))
 })
 
-# Define output directory
-path_out <- "Z:/CDA/Claire WD/indicators_outputs/temp/acara_naplan_results/"
 
-# Create output directory if it doesn't exist
-if (!dir.exists(path_out)) {
-  dir.create(path_out)
-}
+# Split the filtered tibbles into separate tables based on domain, student grade level
+list_of_tables <- lapply(list_of_tables, function(x) {
+  split(x, list(Name = paste(x$domain, x$student_grade_level, sep = "_")))
+})
 
-# Loop through each tibble in list_of_tables
-for (i in seq_along(list_of_tables)) {
-  
-  # Clean column names
-  colnames(list_of_tables[[i]])[1] <- toupper(colnames(list_of_tables[[i]])[1])
-  colnames(list_of_tables[[i]]) <- gsub(" ", "_", tolower(colnames(list_of_tables[[i]])))
-  colnames(list_of_tables[[i]])[2] <- "year"
-  colnames(list_of_tables[[i]])[3] <- paste0(colnames(list_of_tables[[i]])[3], "_acara")
-  
-  # Extract suffix from tibble name
-  suffix <- substr(names(list_of_tables)[i], nchar("naplan_results_by_") + 1, nchar(names(list_of_tables)[i]))
-  
-  # Create subdirectory based on suffix
-  dir_path <- file.path(path_out, gsub("_", "", suffix))
-  if (!dir.exists(dir_path)) {
-    dir.create(dir_path)
-  }
-  
-  # Define file path
-  file_path <- file.path(dir_path, paste0("acara_naplan_results_", suffix, ".csv"))
-  
-  # Write tibble to CSV
-  write.csv(list_of_tables[[i]], file_path, row.names = FALSE)
-  
-}
 
+
+
+
+# Save all the tibbles as individual CSV files, sort the files in sub-folders based on geographies 
+# and clean the path names to all lower case and no space
+lapply(names(list_of_tables), function(outer_name) {
+  lapply(names(list_of_tables[[outer_name]]), function(inner_name) {
+    x <- list_of_tables[[outer_name]][[inner_name]]
+    sa_code <- gsub("naplan_results_by_", "", outer_name)
+    subject_grade <- gsub(" ", "_", inner_name)
+    subject_code <- switch(gsub("_.*", "", tolower(subject_grade)), 
+                           "reading" = "451",
+                           "writing" = "452",
+                           "spelling" = "453",
+                           "grammar" = "454",
+                           "numeracy" = "455",
+                           "grammar_and_punctuation" = "454")
+    grade <- gsub(".* ", "", subject_grade)
+    folder_name <- paste0(path_out, "/", sa_code)
+    dir.create(folder_name, showWarnings = FALSE)
+    filename <- paste0(folder_name, "/acara_", tolower(subject_code), "_naplan_results_", tolower(grade), "_", tolower(sa_code), ".csv")
+    write.csv(x, filename, row.names = FALSE)
+  })
+})
 
 
 ##------------------------------------------------------------------------ begin analysis on school attendance ---------------------------------------------------------------------------------------###
