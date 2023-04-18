@@ -224,7 +224,7 @@ correspondence_sheet_list = list(SLA_2006_SA2_2016,SSD_2006_SA3_2016,SD_2006_SA4
 
 origin_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
 
-destination_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/"
+destination_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/"
 
 #-------------
 
@@ -508,7 +508,7 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   #2. format geography column to match standard _CODE16 format
   names(out_df_all_years)[1] <- paste0(GEO_TYPE,"_CODE16")
   
-  #3. Correct all colnames to snake case
+  #3. Correct all colnames to snake case (except geography column)
   
   # Function from https://github.com/sbha/dfnames/blob/master/R/sc_names.R
   to_snake_case <- function(names){
@@ -521,8 +521,12 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
     x <- tolower(x)
     x
   }
+
+  # Snake case all column names except geography
+  names(out_df_all_years)[-1] <- to_snake_case(names(out_df_all_years)[-1])
   
-  names(out_df_all_years) <- to_snake_case(names(out_df_all_years))
+  # remove "total" rows
+  out_df_all_years <- out_df_all_years %>% filter(across(everything(), ~ !str_detect(., "Total")))
   
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@

@@ -42,7 +42,7 @@ for (file in csv_files) {
   }
   
   # check that all column names are snake case
-  if (any(!grepl("^[a-z_]+$", names(data)))) {
+  if (any(!grepl("^[a-z_]+$", names(data)[-1]))) { #Owen: removed first column - geography should not be in snake case
     cat("Warning: Not all column names are in snake case in", file, "\n")
   }
   
