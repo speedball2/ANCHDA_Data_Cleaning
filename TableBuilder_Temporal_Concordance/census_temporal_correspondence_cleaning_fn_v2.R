@@ -294,13 +294,13 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   # Keep only necessary columns
   if(length(FILTER_VARS) == 1){
-    out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2006 <- merging_df_2006 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2006 <- merging_df_2006 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
     } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-  out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  out_df_2006 <- merging_df_2006 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
     }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-      out_df_2006 <- merging_df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+      out_df_2006 <- merging_df_2006 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
     } else {print("check number of filter variables in FILTER_VARS argument")}
  
   
@@ -364,13 +364,13 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   # Keep only necessary columns
   if(length(FILTER_VARS) == 1){
-    out_df_2011 <- merging_df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2011 <- merging_df_2011 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_2011 <- merging_df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2011 <- merging_df_2011 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2011 <- merging_df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2011 <- merging_df_2011 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2011 <- merging_df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2011 <- merging_df_2011 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   } else {print("check number of filter variables in FILTER_VARS argument")}
   
   
@@ -394,13 +394,13 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   df_2016$calendar_year <- rep(2016, length(df_2016[,1]))
   
   if(length(FILTER_VARS) == 1){
-    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_2016 <- df_2016 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]],.data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_2016 <- df_2016 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]],.data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_2016 <- df_2016 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_2016 <- df_2016 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   } else {print("check number of filter variables in FILTER_VARS argument - writing out_df_2016")}
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -456,13 +456,13 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   # Keep only necessary columns
   if(length(FILTER_VARS) == 1){
-    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2021 <- merging_df_2021 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2021 <- merging_df_2021 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2021 <- merging_df_2021 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2021 <- merging_df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+    out_df_2021 <- merging_df_2021 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   } else {print("check number of filter variables in FILTER_VARS argument")}
   
   #rename values column after temporal correspondence
@@ -492,16 +492,16 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   #1. put geography column first, then age_group, sex, then other filter vars, then values column
   
-  #out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], age_group, sex, .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  #out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], age_group, sex, .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   
   if(length(FILTER_VARS) == 1){
-    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_all_years")}
   
   
@@ -526,7 +526,14 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   names(out_df_all_years)[-1] <- to_snake_case(names(out_df_all_years)[-1])
   
   # remove "total" rows
-  out_df_all_years <- out_df_all_years %>% filter(across(everything(), ~ !str_detect(., "Total")))
+  out_df_all_years <- out_df_all_years[rowSums(sapply(out_df_all_years, grepl, pattern = 'Total')) == 0, ]
+  
+  
+  # remove " years" from age_group so it's just number-number e.g. "0-4"
+  if("age_group" %in% names(out_df_all_years)){
+    # remove " years" from age_group
+    out_df_all_years$age_group <- gsub(' years','',out_df_all_years$age_group)
+  }
   
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -576,17 +583,17 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   df_2006$calendar_year <- rep(2006, length(df_2006[,1]))
   
-  #out_df_2006 <- df_2006 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  #out_df_2006 <- df_2006 %>% dplyr::select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   
   
   if(length(FILTER_VARS) == 1){
-    out_df_2006 <- df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2006 <- df_2006 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_2006 <- df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2006 <- df_2006 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2006 <- df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2006 <- df_2006 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2006 <- df_2006 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2006 <- df_2006 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_2006")}
   
   
@@ -602,13 +609,13 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   
   if(length(FILTER_VARS) == 1){
-    out_df_2011 <- df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2011 <- df_2011 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_2011 <- df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2011 <- df_2011 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2011 <- df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2011 <- df_2011 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2011 <- df_2011 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2011 <- df_2011 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_2011")}
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -623,13 +630,13 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   
   if(length(FILTER_VARS) == 1){
-    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2016 <- df_2016 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2016 <- df_2016 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2016 <- df_2016 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2016 <- df_2016 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2016 <- df_2016 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_2016")}
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -644,13 +651,13 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   
   if(length(FILTER_VARS) == 1){
-    out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2021 <- df_2021 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2021 <- df_2021 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2021 <- df_2021 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_2021 <- df_2021 %>% select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+    out_df_2021 <- df_2021 %>% dplyr::select(.data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[FILTER_VARS[4]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_2021")}
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -679,13 +686,13 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   #1. put geography column first, then age_group, sex, then other filter vars, then values column
   
   if(length(FILTER_VARS) == 1){
-    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 2){
-    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], calendar_year)
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], calendar_year)
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], calendar_year)
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_all_years")}
   
   
@@ -693,6 +700,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   names(out_df_all_years)[1] <- GEO_COL_FINAL
   
   #3. Correct all colnames to snake case
+  
   
   # Function from https://github.com/sbha/dfnames/blob/master/R/sc_names.R
   to_snake_case <- function(names){
@@ -706,8 +714,17 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
     x
   }
   
-  names(out_df_all_years) <- to_snake_case(names(out_df_all_years))
+  # Snake case all column names except geography
+  names(out_df_all_years)[-1] <- to_snake_case(names(out_df_all_years)[-1])
   
+  # remove "total" rows
+  out_df_all_years <- out_df_all_years[rowSums(sapply(out_df_all_years, grepl, pattern = 'Total')) == 0, ]
+  
+  
+  if("age_group" %in% names(out_df_all_years)){
+  # remove " years" from age_group
+  out_df_all_years$age_group <- gsub(' years','',out_df_all_years$age_group)
+  }
   
   
   write.csv(out_df_all_years,file=paste0(destination_folder_path_base,data_file_base,"_",GEO_TO,".csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
