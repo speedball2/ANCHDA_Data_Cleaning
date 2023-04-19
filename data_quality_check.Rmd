@@ -2,7 +2,9 @@
 title: "data_quality_check"
 author: "Claire Boulange"
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -13,8 +15,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # get a list of CSV files in the directory with census in file name
 
+# Need to set working directory to that same path
+
 ```{r}
-csv_files <- list.files(path = "Z:/CDA/Claire WD/anchda/QA/census/", pattern = "^census.*\\.csv$")
+csv_files <- list.files(path = "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/", pattern = "^census.*\\.csv$")
+
+# set WD
+# run in console
+#setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/")
 ```
 
 # print the names of the CSV files
@@ -42,7 +50,7 @@ for (file in csv_files) {
   }
   
   # check that all column names are snake case
-  if (any(!grepl("^[a-z_]+$", names(data)))) {
+  if (any(!grepl("^[a-z_]+$", names(data)[-1]))) { #Owen: removed first column - geography should not be in snake case
     cat("Warning: Not all column names are in snake case in", file, "\n")
   }
   

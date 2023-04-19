@@ -230,8 +230,8 @@ destination_folder_path_base <- "/Users/Current/OneDrive - Queensland University
 #-------------
 
 # User inputs:
-data_file_base <- #"census_core_activity_need_assistance"                               # Base file name for datasets e.g. census_core_activity_need_assistance
-VAR_NAME <- #"core_activity_need_for_assistance"                                  # Name of the input variable column.
+data_file_base <- #"census_year12"                               # Base file name for datasets e.g. census_year12
+VAR_NAME <- #"completed_year12"                                  # Name of the input variable column.
 GEO_TO <- #"SA4_CODE_2016"                                       # Target geography column
 FILTER_VARS <- #c("age_group", "sex")                            # Name of original data set filter variable(s).
 GEO_TYPE <- #"SA4"                                               # Type of target geometry (used for looping over list of correspondence files)
@@ -259,7 +259,7 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   df_2006 <- df_2006 %>% as.data.frame()
   
-  df_2006$filters_combo <- paste(df_2006[,FILTER_VARS[1]],df_2006[,FILTER_VARS[2]],df_2006[,FILTER_VARS[3]],sep="_")
+  df_2006$filters_combo <- paste(df_2006[,FILTER_VARS[1]],df_2006[,FILTER_VARS[2]],sep="_")
   
   df_2006$calendar_year <- rep(2006,length(df_2006$age_group))
   
@@ -284,9 +284,9 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   merging_df_2006 <- merging_df_2006 %>% ungroup()
   
   # Keep only necessary columns
-  #out_df_2006 <- merging_df_2006 %>% select(age_group, sex, .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  out_df_2006 <- merging_df_2006 %>% select(age_group, sex, .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   # If there is an additional filter column in the data, use the following line instead
-  out_df_2006 <- merging_df_2006 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  #out_df_2006 <- merging_df_2006 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   
   #rename values column after temporal correspondence
   out_df_2006 <- rename(out_df_2006, {{VAR_NAME}} := new_vals)
@@ -312,7 +312,7 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   df_2011 <- df_2011 %>% as.data.frame()
   
-  df_2011$filters_combo <- paste(df_2011[,FILTER_VARS[1]],df_2011[,FILTER_VARS[2]],df_2011[,FILTER_VARS[3]],sep="_")
+  df_2011$filters_combo <- paste(df_2011[,FILTER_VARS[1]],df_2011[,FILTER_VARS[2]],sep="_")
   
   df_2011$calendar_year <- rep(2011,length(df_2011$age_group))
   
@@ -337,9 +337,9 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   merging_df_2011 <- merging_df_2011 %>% ungroup()
   
   # Keep only necessary columns
-  #out_df_2011 <- merging_df_2011 %>% select(age_group, sex, .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  out_df_2011 <- merging_df_2011 %>% select(age_group, sex, .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   # If there is an additional filter column in the data, use the following line instead
-  out_df_2011 <- merging_df_2011 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  #out_df_2011 <- merging_df_2011 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   
   #rename values column after temporal correspondence
   out_df_2011 <- rename(out_df_2011, {{VAR_NAME}} := new_vals)
@@ -360,7 +360,7 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   df_2016$calendar_year <- rep(2016, length(df_2016$age_group))
   
-  out_df_2016 <- df_2016 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+  out_df_2016 <- df_2016 %>% select(age_group, sex, .data[[GEO_TO]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
     
     #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     # Loop for 2021 - need to use inverse of from/to ratio
@@ -378,7 +378,7 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   
   df_2021 <- df_2021 %>% as.data.frame()
   
-  df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],df_2021[,FILTER_VARS[3]],sep="_")
+  df_2021$filters_combo <- paste(df_2021[,FILTER_VARS[1]],df_2021[,FILTER_VARS[2]],sep="_")
   
   df_2021$calendar_year <- rep(2021,length(df_2021$age_group))
   
@@ -404,9 +404,9 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   merging_df_2021 <- merging_df_2021 %>% ungroup()
   
   # Keep only necessary columns
-  #out_df_2021 <- merging_df_2021 %>% select(age_group, sex, .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  out_df_2021 <- merging_df_2021 %>% select(age_group, sex, .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   # If there is an additional filter column in the data, use the following line instead
-  out_df_2021 <- merging_df_2021 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
+  #out_df_2021 <- merging_df_2021 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], new_vals, .data[[uncertainty_colname]], calendar_year)
   
   #rename values column after temporal correspondence
   out_df_2021 <- rename(out_df_2021, {{VAR_NAME}} := new_vals)
@@ -427,16 +427,16 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
 
 
 #===================================================
-# Applying - core_activity_need_for_assistance
+# Applying - completed Year 12
 
 #===================================================
 # LGA
 
 # User inputs:
-data_file_base <- "census_core_activity_need_assistance"                               # Base file name for datasets e.g. census_core_activity_need_assistance
-VAR_NAME <- "core_activity_need_for_assistance"                                  # Name of the input variable column.
+data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
+VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
 GEO_TO <- "LGA_CODE_2016"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex","ASSNP Core Activity Need for Assistance")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "LGA"                                               # Type of target geometry (used for looping over list of correspondence files)
 GEO_TYPE_2006 <- "LGA"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
 
@@ -448,10 +448,10 @@ temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base
 
 
 # User inputs:
-data_file_base <- "census_core_activity_need_assistance"                               # Base file name for datasets e.g. census_core_activity_need_assistance
-VAR_NAME <- "core_activity_need_for_assistance"                                  # Name of the input variable column.
+data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
+VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
 GEO_TO <- "SA2_CODE_2016"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex","ASSNP Core Activity Need for Assistance")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "SA2"                                               # Type of target geometry (used for looping over list of correspondence files)
 GEO_TYPE_2006 <- "SLA"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
 
@@ -462,10 +462,10 @@ temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base
 # SA3
 
 # User inputs:
-data_file_base <- "census_core_activity_need_assistance"                               # Base file name for datasets e.g. census_core_activity_need_assistance
-VAR_NAME <- "core_activity_need_for_assistance"                                  # Name of the input variable column.
+data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
+VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
 GEO_TO <- "SA3_CODE_2016"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex","ASSNP Core Activity Need for Assistance")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "SA3"                                               # Type of target geometry (used for looping over list of correspondence files)
 GEO_TYPE_2006 <- "SSD"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
 
@@ -477,10 +477,10 @@ temporal_concordance_census_fn(origin_folder_path_base = origin_folder_path_base
 # SA4
 
 # User inputs:
-data_file_base <- "census_core_activity_need_assistance"                               # Base file name for datasets e.g. census_core_activity_need_assistance
-  VAR_NAME <- "core_activity_need_for_assistance"                                  # Name of the input variable column.
+data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
+  VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
   GEO_TO <- "SA4_CODE_2016"                                       # Target geography column
-  FILTER_VARS <- c("age_group", "sex","ASSNP Core Activity Need for Assistance")                            # Name of original data set filter variable(s).
+  FILTER_VARS <- c("age_group", "sex")                            # Name of original data set filter variable(s).
   GEO_TYPE <- "SA4"                                               # Type of target geometry (used for looping over list of correspondence files)
   GEO_TYPE_2006 <- "SD"                                           # 2006 Type of geometry (SLA, SSD, SD, LGA)
   
@@ -507,9 +507,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   df_2006$calendar_year <- rep(2006, length(df_2006$age_group))
   
-  out_df_2006 <- df_2006 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
-  
-
+  out_df_2006 <- df_2006 %>% select(age_group, sex, .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # Import 2011
@@ -521,7 +519,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   df_2011$calendar_year <- rep(2011, length(df_2011$age_group))
   
-  out_df_2011 <- df_2011 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  out_df_2011 <- df_2011 %>% select(age_group, sex, .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # Import 2016
@@ -533,7 +531,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   df_2016$calendar_year <- rep(2016, length(df_2016$age_group))
   
-  out_df_2016 <- df_2016 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  out_df_2016 <- df_2016 %>% select(age_group, sex, .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # Import 2021
@@ -545,14 +543,14 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   
   df_2021$calendar_year <- rep(2021, length(df_2021$age_group))
   
-  out_df_2021 <- df_2021 %>% select(age_group, sex, .data[[FILTER_VARS[3]]], .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
+  out_df_2021 <- df_2021 %>% select(age_group, sex, .data[[GEO_TO]], .data[[VAR_NAME]], calendar_year)
   
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # cbind out_df from each year
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   
   
-  out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) 
+  out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
   
   if(GEO_TYPE == "STE"){out_df_all_years <- out_df_all_years %>% mutate(State = recode(State, "1"=1,"2"=2,"3"=3,"4"=4,"5"=5,"6"=6,"7"=7,"8"=8,"9"=9,
                                                                  "New South Wales" = 1, "Victoria" = 2, "Queensland" = 3, "South Australia" = 4, 
@@ -560,16 +558,14 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
                                                                  "Australian Capital Territory" = 8, "Other Territories" = 9))
   }
   
-  out_df_all_years <- out_df_all_years %>% arrange(calendar_year,.data[[GEO_TO]],age_group,sex)
-  
   write.csv(out_df_all_years,file=paste0(destination_folder_path_base,data_file_base,"_",GEO_TO,".csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
 }
 
 # User inputs:
-data_file_base <- "census_core_activity_need_assistance"                               # Base file name for datasets e.g. census_core_activity_need_assistance
-VAR_NAME <- "core_activity_need_for_assistance"                                  # Name of the input variable column.
+data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
+VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
 GEO_TO <- "State"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex","ASSNP Core Activity Need for Assistance")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "STE"                                               # Type of target geometry (used for looping over list of correspondence files)
 
 
@@ -584,10 +580,10 @@ state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_fol
 
 
 # User inputs:
-data_file_base <- "census_core_activity_need_assistance"                               # Base file name for datasets e.g. census_core_activity_need_assistance
-VAR_NAME <- "core_activity_need_for_assistance"                                  # Name of the input variable column.
+data_file_base <- "census_year12"                               # Base file name for datasets e.g. census_year12
+VAR_NAME <- "completed_year12"                                  # Name of the input variable column.
 GEO_TO <- "National"                                       # Target geography column
-FILTER_VARS <- c("age_group", "sex","ASSNP Core Activity Need for Assistance")                            # Name of original data set filter variable(s).
+FILTER_VARS <- c("age_group", "sex")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "national"                                               # Type of target geometry (used for looping over list of correspondence files)
 
 

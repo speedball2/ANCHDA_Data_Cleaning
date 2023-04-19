@@ -74,7 +74,7 @@ df <- df %>%
 
 
 
-
+#--------------------------------------------------------------------------------------------LGA----------------------------------------------
 LGA_df_PHW <- df %>%
   group_by(LGACode, Year, Gender) %>%
   summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
@@ -83,6 +83,7 @@ LGA_df_PHW <- df %>%
             P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
             N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
             P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            PHW_Valid = sum(PHYSValid == 1),
             .groups = "drop")
 
 
@@ -95,6 +96,7 @@ LGA_df_SC <- df %>%
             P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
             N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
             P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
+            SC_Valid = sum(SOCValid == 1),
             .groups = "drop")
 
 LGA_df_EM <- df %>%
@@ -105,6 +107,7 @@ LGA_df_EM <- df %>%
             P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
             N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
             P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            EM_Valid = sum(EMOTValid == 1),
             .groups = "drop")
 
 LGA_df_LCS <- df %>%
@@ -115,6 +118,7 @@ LGA_df_LCS <- df %>%
             P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
             N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
             P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            LCS_Valid = sum(LANGCOGValid == 1),
             .groups = "drop")
 
 LGA_df_CSGK <- df %>%
@@ -125,6 +129,7 @@ LGA_df_CSGK <- df %>%
             P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
             N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
             P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            CSGK_Valid = sum(COMGENValid == 1),
             .groups = "drop")
 
 
@@ -132,15 +137,16 @@ LGA_df_DV <- df %>%
   group_by(LGACode, Year, Gender) %>%
   summarize(N_V1 = sum(DV1, na.rm = TRUE),
             P_V1 = sum(DV1, na.rm = TRUE)/sum(!is.na(DV1)),
-            N_V2 = sum(DV2, na.rm = TRUE),
-            P_V2 = sum(DV2, na.rm = TRUE)/sum(!is.na(DV2)),
+            V1_Valid = sum(!is.na(DV1)),
+            N_V2 = sum(DV2 == 1, na.rm = TRUE),
+            P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
+            V2_Valid = sum(!is.na(DV2)),
+            N_OT5 = sum(OT5, na.rm = TRUE),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
 
 #--------------------------------------------------------------------------------------------SA3----------------------------------------------
-
-
-
-
 SA3_df_PHW <- df %>%
   group_by(SA3Code, Year, Gender) %>%
   summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
@@ -149,6 +155,7 @@ SA3_df_PHW <- df %>%
             P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
             N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
             P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            PHW_Valid = sum(PHYSValid == 1),
             .groups = "drop")
 
 
@@ -161,6 +168,7 @@ SA3_df_SC <- df %>%
             P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
             N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
             P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
+            SC_Valid = sum(SOCValid == 1),
             .groups = "drop")
 
 SA3_df_EM <- df %>%
@@ -171,6 +179,7 @@ SA3_df_EM <- df %>%
             P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
             N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
             P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            EM_Valid = sum(EMOTValid == 1),
             .groups = "drop")
 
 SA3_df_LCS <- df %>%
@@ -181,6 +190,7 @@ SA3_df_LCS <- df %>%
             P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
             N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
             P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            LCS_Valid = sum(LANGCOGValid == 1),
             .groups = "drop")
 
 SA3_df_CSGK <- df %>%
@@ -191,6 +201,7 @@ SA3_df_CSGK <- df %>%
             P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
             N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
             P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            CSGK_Valid = sum(COMGENValid == 1),
             .groups = "drop")
 
 
@@ -198,13 +209,15 @@ SA3_df_DV <- df %>%
   group_by(SA3Code, Year, Gender) %>%
   summarize(N_V1 = sum(DV1, na.rm = TRUE),
             P_V1 = sum(DV1, na.rm = TRUE)/sum(!is.na(DV1)),
-            N_V2 = sum(DV2, na.rm = TRUE),
-            P_V2 = sum(DV2, na.rm = TRUE)/sum(!is.na(DV2)),
+            V1_Valid = sum(!is.na(DV1)),
+            N_V2 = sum(DV2 == 1, na.rm = TRUE),
+            P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
+            V2_Valid = sum(!is.na(DV2)),
+            N_OT5 = sum(OT5, na.rm = TRUE),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
-
 #--------------------------------------------------------------------------------------------SA2----------------------------------------------
-
-
 SA2_df_PHW <- df %>%
   group_by(SA2Code, Year, Gender) %>%
   summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
@@ -213,6 +226,7 @@ SA2_df_PHW <- df %>%
             P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
             N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
             P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            PHW_Valid = sum(PHYSValid == 1),
             .groups = "drop")
 
 
@@ -225,6 +239,7 @@ SA2_df_SC <- df %>%
             P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
             N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
             P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
+            SC_Valid = sum(SOCValid == 1),
             .groups = "drop")
 
 SA2_df_EM <- df %>%
@@ -235,6 +250,7 @@ SA2_df_EM <- df %>%
             P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
             N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
             P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            EM_Valid = sum(EMOTValid == 1),
             .groups = "drop")
 
 SA2_df_LCS <- df %>%
@@ -245,6 +261,7 @@ SA2_df_LCS <- df %>%
             P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
             N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
             P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            LCS_Valid = sum(LANGCOGValid == 1),
             .groups = "drop")
 
 SA2_df_CSGK <- df %>%
@@ -255,6 +272,7 @@ SA2_df_CSGK <- df %>%
             P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
             N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
             P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            CSGK_Valid = sum(COMGENValid == 1),
             .groups = "drop")
 
 
@@ -262,15 +280,20 @@ SA2_df_CSGK <- df %>%
 SA2_df_DV <- df %>%
   group_by(SA2Code, Year, Gender) %>%
   summarize(N_V1 = sum(DV1, na.rm = TRUE),
-          P_V1 = sum(DV1, na.rm = TRUE)/sum(!is.na(DV1)),
-          N_V2 = sum(DV2, na.rm = TRUE),
-          P_V2 = sum(DV2, na.rm = TRUE)/sum(!is.na(DV2)),
-          .groups = "drop")
+            P_V1 = sum(DV1, na.rm = TRUE)/sum(!is.na(DV1)),
+            V1_Valid = sum(!is.na(DV1)),
+            N_V2 = sum(DV2 == 1, na.rm = TRUE),
+            P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
+            V2_Valid = sum(!is.na(DV2)),
+            N_OT5 = sum(OT5, na.rm = TRUE),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            OT5_Valid = sum(!is.na(OT5)),
+            .groups = "drop")
 
 
 
 
-
+#--------------------------------------------------------------------------------------------tables tidy up ----------------------------------------------
 # Create a list of data frames
 #df_list <- list(LGA_df, SA4_df, SA3_df, SA2_df)
 
@@ -292,7 +315,6 @@ round_and_recode <- function(df) {
     mutate(across(where(is.numeric), round, 2)) %>%
     mutate(Gender = if_else(Gender == 1, "male", "female"))
 }
-
 # Apply the function to all data frames in the list
 df_list <- map(df_list, round_and_recode)
 
@@ -300,6 +322,8 @@ df_list <- map(df_list, round_and_recode)
 rename_cols <- function(df) {
   prefix <- str_replace(names(df)[1], "Code.*", "")
   names(df)[1:3] <- c(paste0(prefix, "_code16"), "calendar_year", "sex")
+  names(df)[4:length(df)] <- paste0(names(df)[4:length(df)], "_aedc")
+  names(df) <- tolower(names(df)) # convert column names to lowercase
   df
 }
 
@@ -307,187 +331,56 @@ rename_cols <- function(df) {
 df_list <- map(df_list, rename_cols)
 
 
+
+
+# Define the function to replace invalid values
+replace_invalid_vals <- function(df) {
+  valid_cols <- names(df)[endsWith(names(df), "_valid_aedc")]
+  for (col in valid_cols) {
+    df[which(df[[col]] < 5), -(1:3)] <- 9999999
+  }
+  return(df)
+}
+
+# Apply the function to each tibble in df_list
+df_list <- lapply(df_list, replace_invalid_vals)
+
+#--------------------------------------------------------------------------------------------save all csv files ----------------------------------------------
 for (df_name in names(df_list)) {
   # Extract the string before _df_ : this is [geography_code]
   geography_code <- str_extract(df_name, "^[^_]+(?=_df_)")
   # Extract the string after _df_ : this is [domain_code]
   domain_code <- str_extract(df_name, "(?<=_df_)[^_]+")
+  
+  # Construct the output file path and name based on domain code
+  if (domain_code == "LCS") {
+    domain_name <- "language_and_cognition"
+    domain_code <- "421"
+  } else if (domain_code == "SC") {
+    domain_name <- "social_competence"
+    domain_code <- "422"
+  } else if (domain_code == "CSGK") {
+    domain_name <- "communication_skills_and_general_knowledge"
+    domain_code <- "423"
+  } else if (domain_code == "EM") {
+    domain_name <- "emotional_maturity"
+    domain_code <- "424"
+  } else if (domain_code == "PHW") {
+    domain_name <- "physical_health_and_wellbeing"
+    domain_code <- "425"
+  } else if (domain_code == "DV") {
+    domain_name <- "combined"
+    domain_code <- "426"
+  } else {
+    stop(paste("Invalid domain code:", domain_code))
+  }
+  
   # Construct the output file path and name
-  output_file <- paste0(path_out, "aedc_", domain_code, "_", geography_code, ".csv")
+  output_file <- paste0(path_out, "aedc_", domain_code,"_", domain_name,"_", geography_code, ".csv")
+  
   # Save the dataframe as a CSV file
   write_csv(df_list[[df_name]], output_file)
+  
+  # Print confirmation message
+  cat("Saved file:", output_file, "\n")
 }
-
-
-
-
-
-
-
-
-
-###----------------------------------------options for wide tables / do not use-------------------------------------------------------------------------------------------####
-
-
-SA3_df <- df %>%
-  group_by(SA3Code, Year, Gender) %>%
-  summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
-            P_DOT_PHW = sum(DOT_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DV_PHW = sum(DV_PHW[PHYSValid == 1]),
-            P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
-            P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
-            P_DOT_SC = sum(DOT_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DV_SC = sum(DV_SC[SOCValid == 1]),
-            P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
-            P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DOT_EM = sum(DOT_EM[EMOTValid == 1]),
-            P_DOT_EM = sum(DOT_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DV_EM = sum(DV_EM[EMOTValid == 1]),
-            P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
-            P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1]),
-            P_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DV_LCS = sum(DV_LCS[LANGCOGValid == 1]),
-            P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
-            P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
-            P_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_DV_CSGK = sum(DV_CSGK[COMGENValid == 1]),
-            P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
-            P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_V1 = sum(DV1),
-            P_V1 = sum(DV1)/n(),
-            N_V2 = sum(DV2),
-            P_V2 = sum(DV2)/n(),
-            #N_V5 = sum(OnTrack5),
-            #P_V5 = sum(OnTrack5)/n(),
-            .groups = "drop")
-
-
-
-
-SA2_df <- df %>%
-  group_by(SA2Code, Year, Gender) %>%
-  summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
-            P_DOT_PHW = sum(DOT_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DV_PHW = sum(DV_PHW[PHYSValid == 1]),
-            P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
-            P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
-            P_DOT_SC = sum(DOT_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DV_SC = sum(DV_SC[SOCValid == 1]),
-            P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
-            P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DOT_EM = sum(DOT_EM[EMOTValid == 1]),
-            P_DOT_EM = sum(DOT_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DV_EM = sum(DV_EM[EMOTValid == 1]),
-            P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
-            P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1]),
-            P_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DV_LCS = sum(DV_LCS[LANGCOGValid == 1]),
-            P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
-            P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
-            P_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_DV_CSGK = sum(DV_CSGK[COMGENValid == 1]),
-            P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
-            P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_V1 = sum(DV1),
-            P_V1 = sum(DV1)/n(),
-            N_V2 = sum(DV2),
-            P_V2 = sum(DV2)/n(),
-            #N_V5 = sum(OnTrack5),
-            #P_V5 = sum(OnTrack5)/n(),
-            .groups = "drop")
-
-
-LGA_df <- df %>%
-  group_by(LGACode, Year, Gender) %>%
-  summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
-            P_DOT_PHW = sum(DOT_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DV_PHW = sum(DV_PHW[PHYSValid == 1]),
-            P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
-            P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
-            P_DOT_SC = sum(DOT_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DV_SC = sum(DV_SC[SOCValid == 1]),
-            P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
-            P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DOT_EM = sum(DOT_EM[EMOTValid == 1]),
-            P_DOT_EM = sum(DOT_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DV_EM = sum(DV_EM[EMOTValid == 1]),
-            P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
-            P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1]),
-            P_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DV_LCS = sum(DV_LCS[LANGCOGValid == 1]),
-            P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
-            P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
-            P_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_DV_CSGK = sum(DV_CSGK[COMGENValid == 1]),
-            P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
-            P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_V1 = sum(DV1),
-            P_V1 = sum(DV1)/n(),
-            N_V2 = sum(DV2),
-            P_V2 = sum(DV2)/n(),
-            N_V5 = sum(OnTrack0),
-            P_V5 = sum(OnTrack0)/n(),
-            .groups = "drop")
-SA4_df <- df %>%
-  group_by(SA4Code, Year, Gender) %>%
-  summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
-            P_DOT_PHW = sum(DOT_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DV_PHW = sum(DV_PHW[PHYSValid == 1]),
-            P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
-            P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
-            N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
-            P_DOT_SC = sum(DOT_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DV_SC = sum(DV_SC[SOCValid == 1]),
-            P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
-            P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
-            N_DOT_EM = sum(DOT_EM[EMOTValid == 1]),
-            P_DOT_EM = sum(DOT_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DV_EM = sum(DV_EM[EMOTValid == 1]),
-            P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
-            P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
-            N_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1]),
-            P_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DV_LCS = sum(DV_LCS[LANGCOGValid == 1]),
-            P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
-            P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
-            N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
-            P_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_DV_CSGK = sum(DV_CSGK[COMGENValid == 1]),
-            P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
-            P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
-            N_V1 = sum(DV1),
-            P_V1 = sum(DV1)/n(),
-            N_V2 = sum(DV2),
-            P_V2 = sum(DV2)/n(),
-            #N_V5 = sum(OnTrack0),
-            #P_V5 = sum(OnTrack0)/n(),
-            .groups = "drop")

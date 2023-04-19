@@ -1,4 +1,4 @@
-# Cleaning code for TableBuilder Data - CENSUS - volunteering
+# Cleaning code for TableBuilder Data - CENSUS - Religion
 
 library(tidyverse)
 library(readr)
@@ -8,27 +8,23 @@ library(readr)
 # Run ONCE per census year for each data item
 
 
-# Set WD to Census year folder
-#setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
+# Load cleaning functions
 
-# Load cleaning function
-
-source("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Initial_Cleaning/TB_Census_cleaning_fn_v1.R")
+source("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/TableBuilder_Initial_Cleaning/TB_Census_cleaning_fn_v2.R")
 
 
 
 
 #-------------------
 
-# APPLY to volunteering
+# APPLY
 
-#2006
+#2006 - CODE
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
-TB_Census_cleaning_fn(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2006,code_or_name = "code")
-
+TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2006,code_or_name = "code", census_tag = "VOLWP", census_filter_col_name = "volwp_voluntary_work_for_an_organisation_or_group", claire_redownload = F)
 
 
 #---------
@@ -37,14 +33,14 @@ TB_Census_cleaning_fn(data_file_base = "census_volunteer", data_item_name ="volu
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
-TB_Census_cleaning_fn(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2011,code_or_name = "name")
+TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2011,code_or_name = "name", census_tag = "VOLWP", census_filter_col_name = "volwp_voluntary_work_for_an_organisation_or_group", claire_redownload = F)
 
 #--------
 #2016 - NAME
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
 
-TB_Census_cleaning_fn(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2016,code_or_name = "name")
+TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2016,code_or_name = "name", census_tag = "VOLWP", census_filter_col_name = "volwp_voluntary_work_for_an_organisation_or_group", claire_redownload = F)
 
 #-----------
 
@@ -52,4 +48,4 @@ TB_Census_cleaning_fn(data_file_base = "census_volunteer", data_item_name ="volu
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2021")
 
-TB_Census_cleaning_fn(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2021,code_or_name = "name")
+TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2021,code_or_name = "name", census_tag = "VOLWP", census_filter_col_name = "volwp_voluntary_work_for_an_organisation_or_group", claire_redownload = F)
