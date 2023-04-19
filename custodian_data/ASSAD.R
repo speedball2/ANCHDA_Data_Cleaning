@@ -114,6 +114,8 @@ rem <- function(df){
   df <- df[,-2]
   
   
+  
+  
   return(df)
   
 }

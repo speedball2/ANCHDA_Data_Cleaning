@@ -1,3 +1,7 @@
+
+# Harriette's WD: 
+setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/from_custodians/NDR_SA4")
+
 #---------------------------#
 #--------libraries----------#
 #---------------------------#
@@ -50,6 +54,9 @@ full <- merge(df1,df2,by = intersect(names(df1), names(df2)), all.x = T)
 
 col_order <- c("SA4_CODE16","calendar_year","sex","age_group","diabetes_prevelance_population", "diabetes_indicence_population")
 full <- full[,col_order]
+
+
+
 
 #---------------------------#
 #--------write csv----------#
