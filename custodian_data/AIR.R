@@ -113,6 +113,6 @@ names(df3) <- c("SA3_CODE16", "calendar_year", "age_group", "N_of_children_regis
   #----------------#
 
   
- write.csv(df1, "AIR_121_fully_immunised_National.csv", row.names = F)
- write.csv(df2, "AIR_121_fully_immunised_SA4.csv", row.names = F)
- write.csv(df3, "AIR_121_fully_immunised_SA3.csv", row.names = F)
+ write.csv(df1, "../../../Data_Collections_INTERIM/AIR_121_fully_immunised_National.csv", row.names = F)
+ write.csv(df2, "../../../Data_Collections_INTERIM/AIR_121_fully_immunised_SA4.csv", row.names = F)
+ write.csv(df3, "../../../Data_Collections_INTERIM/AIR_121_fully_immunised_SA3.csv", row.names = F)

@@ -37,7 +37,7 @@ cleaning <- function(sht, ran){
   df <- df %>% 
     rename_with(~ gsub("__", "_", .x, fixed = TRUE))
   
-  #fixing spelling error in data 
+  #fixing spelling error in raw data 
   df <- df %>% 
     rename_with(~ gsub("cigerette", "cigarette", .x, fixed = TRUE))
   
@@ -58,6 +58,13 @@ cleaning <- function(sht, ran){
   
   #REMOVING NAMES COL
   df <- df[,-2]
+  
+  #CHANGING COL NAMES TO BE SAME AS DATA DICT
+  df <- df %>% 
+    rename_with(~ gsub("%_", "p_", .x, fixed = TRUE))
+  
+  df <- df %>% 
+    rename_with(~ gsub("N_", "n_", .x, fixed = TRUE))
 
   return(df)
     
@@ -92,6 +99,19 @@ df0[19,4] = "total"
 #REMOVING COMBINED COLUMN
 df0 <- df0[,-2]
 
+# REMOVE TOTAL COLS
+
+df0 <- df0[!grepl("_total", df0$sex),]
+
+#CHANGING COL NAMES FOR DATA DIC STANDARD
+
+df0 <- df0 %>% 
+  rename_with(~ gsub("%_", "p_", .x, fixed = TRUE))
+
+df0 <- df0 %>% 
+  rename_with(~ gsub("N_", "n_", .x, fixed = TRUE))
+
+
 # STE SPECIFIC FUNCTIONS -------------------------------------------------------
 
 rem <- function(df){
@@ -113,8 +133,8 @@ rem <- function(df){
   #REMOVING COMBINED COLUMN
   df <- df[,-2]
   
-  
-  
+  #REMOVING TOTAL COL
+  df <- df[!grepl("_total", df$sex),]
   
   return(df)
   
@@ -164,50 +184,50 @@ df8["STE_CODE16"][is.na(df8["STE_CODE16"])] <- 8
 
 
 corder1 <- c("Australia","calendar_year", "sex", "age_group",
-             "N_accessed_last_alcoholic_drink_from_parents", "%_accessed_last_alcoholic_drink_from_parents", 
-             "N_accessed_last_alcoholic_drink_from_sibling", "%_accessed_last_alcoholic_drink_from_sibling",
-             "N_accessed_last_alcoholic_drink_from_took_from_home", "%_accessed_last_alcoholic_drink_from_took_from_home",    
-             "N_accessed_last_alcoholic_drink_from_bought_themselves_", "%_accessed_last_alcoholic_drink_from_bought_themselves", 
-             "N_ever_drinkers","%_ever_drinkers",
-             "N_past_month_drinkers", "%_past_month_drinkers",    
-             "N_past_week_drinkers", "%_past_week_drinkers",
-             "N_ever_smokers", "%_ever_smokers",
-             "N_past_month_smokers", "%_past_month_smokers",
-             "N_past_week_smokers", "%_past_week_smokers",
-             "N_ever_e-cigarette_users", "%_ever_e-cigarette_users",
-             "N_past_month_e-cigarette_users", "%_past_month_e-cigarette_users",
-             "N_ever_cannabis_users", "%_ever_cannabis_users",
-             "N_past_month_cannabis_users", "%_past_month_cannabis_users",  
-             "N_past_week_cannabis_users", "%_past_week_cannabis_users" ,   
-             "N_ever_dexamphetamine_users", "%_ever_dexamphetamine_users",   
-             "N_past_month_dexamphetamine_users", "%_past_month_dexamphetamine_users",
-             "N_past_week_dexamphetamine_users", "%_past_week_dexamphetamine_users",   
-             "N_ever_methamphetamine_users", "%_ever_methamphetamine_users", 
-             "N_past_month_methamphetamine_users", "%_past_month_methamphetamine_users",  
-             "N_past_week_methamphetamine_users", "%_past_week_methamphetamine_users")
+             "n_accessed_last_alcoholic_drink_from_parents", "p_accessed_last_alcoholic_drink_from_parents", 
+             "n_accessed_last_alcoholic_drink_from_sibling", "p_accessed_last_alcoholic_drink_from_sibling",
+             "n_accessed_last_alcoholic_drink_from_took_from_home", "p_accessed_last_alcoholic_drink_from_took_from_home",    
+             "n_accessed_last_alcoholic_drink_from_bought_themselves_", "p_accessed_last_alcoholic_drink_from_bought_themselves", 
+             "n_ever_drinkers","p_ever_drinkers",
+             "n_past_month_drinkers", "p_past_month_drinkers",    
+             "n_past_week_drinkers", "p_past_week_drinkers",
+             "n_ever_smokers", "p_ever_smokers",
+             "n_past_month_smokers", "p_past_month_smokers",
+             "n_past_week_smokers", "p_past_week_smokers",
+             "n_ever_e-cigarette_users", "p_ever_e-cigarette_users",
+             "n_past_month_e-cigarette_users", "p_past_month_e-cigarette_users",
+             "n_ever_cannabis_users", "p_ever_cannabis_users",
+             "n_past_month_cannabis_users", "p_past_month_cannabis_users",  
+             "n_past_week_cannabis_users", "p_past_week_cannabis_users" ,   
+             "n_ever_dexamphetamine_users", "p_ever_dexamphetamine_users",   
+             "n_past_month_dexamphetamine_users", "p_past_month_dexamphetamine_users",
+             "n_past_week_dexamphetamine_users", "p_past_week_dexamphetamine_users",   
+             "n_ever_methamphetamine_users", "p_ever_methamphetamine_users", 
+             "n_past_month_methamphetamine_users", "p_past_month_methamphetamine_users",  
+             "n_past_week_methamphetamine_users", "p_past_week_methamphetamine_users")
 
 corder2 <- c("STE_CODE16","calendar_year", "sex", "age_group",
-             "N_accessed_last_alcoholic_drink_from_parents", "%_accessed_last_alcoholic_drink_from_parents", 
-             "N_accessed_last_alcoholic_drink_from_sibling", "%_accessed_last_alcoholic_drink_from_sibling",
-             "N_accessed_last_alcoholic_drink_from_took_from_home", "%_accessed_last_alcoholic_drink_from_took_from_home",    
-             "N_accessed_last_alcoholic_drink_from_bought_themselves_", "%_accessed_last_alcoholic_drink_from_bought_themselves", 
-             "N_ever_drinkers","%_ever_drinkers",
-             "N_past_month_drinkers", "%_past_month_drinkers",    
-             "N_past_week_drinkers", "%_past_week_drinkers",
-             "N_ever_smokers", "%_ever_smokers",
-             "N_past_month_smokers", "%_past_month_smokers",
-             "N_past_week_smokers", "%_past_week_smokers",
-             "N_ever_e-cigarette_users", "%_ever_e-cigarette_users",
-             "N_past_month_e-cigarette_users", "%_past_month_e-cigarette_users",
-             "N_ever_cannabis_users", "%_ever_cannabis_users",
-             "N_past_month_cannabis_users", "%_past_month_cannabis_users",  
-             "N_past_week_cannabis_users", "%_past_week_cannabis_users" ,   
-             "N_ever_dexamphetamine_users", "%_ever_dexamphetamine_users",   
-             "N_past_month_dexamphetamine_users", "%_past_month_dexamphetamine_users",
-             "N_past_week_dexamphetamine_users", "%_past_week_dexamphetamine_users",   
-             "N_ever_methamphetamine_users", "%_ever_methamphetamine_users", 
-             "N_past_month_methamphetamine_users", "%_past_month_methamphetamine_users",  
-             "N_past_week_methamphetamine_users", "%_past_week_methamphetamine_users")
+             "n_accessed_last_alcoholic_drink_from_parents", "p_accessed_last_alcoholic_drink_from_parents", 
+             "n_accessed_last_alcoholic_drink_from_sibling", "p_accessed_last_alcoholic_drink_from_sibling",
+             "n_accessed_last_alcoholic_drink_from_took_from_home", "p_accessed_last_alcoholic_drink_from_took_from_home",    
+             "n_accessed_last_alcoholic_drink_from_bought_themselves_", "p_accessed_last_alcoholic_drink_from_bought_themselves", 
+             "n_ever_drinkers","p_ever_drinkers",
+             "n_past_month_drinkers", "p_past_month_drinkers",    
+             "n_past_week_drinkers", "p_past_week_drinkers",
+             "n_ever_smokers", "p_ever_smokers",
+             "n_past_month_smokers", "p_past_month_smokers",
+             "n_past_week_smokers", "p_past_week_smokers",
+             "n_ever_e-cigarette_users", "p_ever_e-cigarette_users",
+             "n_past_month_e-cigarette_users", "p_past_month_e-cigarette_users",
+             "n_ever_cannabis_users", "p_ever_cannabis_users",
+             "n_past_month_cannabis_users", "p_past_month_cannabis_users",  
+             "n_past_week_cannabis_users", "p_past_week_cannabis_users" ,   
+             "n_ever_dexamphetamine_users", "p_ever_dexamphetamine_users",   
+             "n_past_month_dexamphetamine_users", "p_past_month_dexamphetamine_users",
+             "n_past_week_dexamphetamine_users", "p_past_week_dexamphetamine_users",   
+             "n_ever_methamphetamine_users", "p_ever_methamphetamine_users", 
+             "n_past_month_methamphetamine_users", "p_past_month_methamphetamine_users",  
+             "n_past_week_methamphetamine_users", "p_past_week_methamphetamine_users")
 
 
 reorder <- function(df, corder){
@@ -222,7 +242,7 @@ reorder <- function(df, corder){
   df["sex"][df["sex"] == "M"] <- "male"
   df["sex"][df["sex"] == "F"] <- "female"
   
-  colnames(df)[colnames(df) == "N_accessed_last_alcoholic_drink_from_bought_themselves_"] ="N_accessed_last_alcoholic_drink_from_bought_themselves"
+  colnames(df)[colnames(df) == "n_accessed_last_alcoholic_drink_from_bought_themselves_"] ="n_accessed_last_alcoholic_drink_from_bought_themselves"
   
 
   return(df)
@@ -250,34 +270,34 @@ s <- c("STE_CODE16","calendar_year", "sex", "age_group")
 
 
 #1.9.1 SMOKING
-smo <- c("N_ever_smokers_ASSAD", "%_ever_smokers_ASSAD",
-         "N_past_month_smokers_ASSAD", "%_past_month_smokers_ASSAD",
-         "N_past_week_smokers_ASSAD", "%_past_week_smokers_ASSAD")
+smo <- c("n_ever_smokers_ASSAD", "p_ever_smokers_ASSAD",
+         "n_past_month_smokers_ASSAD", "p_past_month_smokers_ASSAD",
+         "n_past_week_smokers_ASSAD", "p_past_week_smokers_ASSAD")
 
 #1.9.2 ALCOHOL
-alc <-  c("N_accessed_last_alcoholic_drink_from_parents", "%_accessed_last_alcoholic_drink_from_parents", 
-       "N_accessed_last_alcoholic_drink_from_sibling", "%_accessed_last_alcoholic_drink_from_sibling",
-       "N_accessed_last_alcoholic_drink_from_took_from_home", "%_accessed_last_alcoholic_drink_from_took_from_home",    
-       "N_accessed_last_alcoholic_drink_from_bought_themselves", "%_accessed_last_alcoholic_drink_from_bought_themselves", 
-       "N_ever_drinkers_ASSAD","%_ever_drinkers_ASSAD",
-       "N_past_month_drinkers_ASSAD", "%_past_month_drinkers_ASSAD",    
-       "N_past_week_drinkers_ASSAD", "%_past_week_drinkers_ASSAD")
+alc <-  c("n_accessed_last_alcoholic_drink_from_parents", "p_accessed_last_alcoholic_drink_from_parents", 
+       "n_accessed_last_alcoholic_drink_from_sibling", "p_accessed_last_alcoholic_drink_from_sibling",
+       "n_accessed_last_alcoholic_drink_from_took_from_home", "p_accessed_last_alcoholic_drink_from_took_from_home",    
+       "n_accessed_last_alcoholic_drink_from_bought_themselves", "p_accessed_last_alcoholic_drink_from_bought_themselves", 
+       "n_ever_drinkers_ASSAD","p_ever_drinkers_ASSAD",
+       "n_past_month_drinkers_ASSAD", "p_past_month_drinkers_ASSAD",    
+       "n_past_week_drinkers_ASSAD", "p_past_week_drinkers_ASSAD")
 
 #1.9.3 DRUGS
-dru <- c("N_ever_cannabis_users_ASSAD", "%_ever_cannabis_users_ASSAD",
-         "N_past_month_cannabis_users_ASSAD", "%_past_month_cannabis_users_ASSAD",  
-         "N_past_week_cannabis_users_ASSAD", "%_past_week_cannabis_users_ASSAD",   
-         "N_ever_dexamphetamine_users_ASSAD", "%_ever_dexamphetamine_users_ASSAD",   
-         "N_past_month_dexamphetamine_users_ASSAD", "%_past_month_dexamphetamine_users_ASSAD",
-         "N_past_week_dexamphetamine_users_ASSAD", "%_past_week_dexamphetamine_users_ASSAD",   
-         "N_ever_methamphetamine_users_ASSAD", "%_ever_methamphetamine_users_ASSAD", 
-         "N_past_month_methamphetamine_users_ASSAD", "%_past_month_methamphetamine_users_ASSAD",  
-         "N_past_week_methamphetamine_users_ASSAD", "%_past_week_methamphetamine_users_ASSAD")
+dru <- c("n_ever_cannabis_users_ASSAD", "p_ever_cannabis_users_ASSAD",
+         "n_past_month_cannabis_users_ASSAD", "p_past_month_cannabis_users_ASSAD",  
+         "n_past_week_cannabis_users_ASSAD", "p_past_week_cannabis_users_ASSAD",   
+         "n_ever_dexamphetamine_users_ASSAD", "p_ever_dexamphetamine_users_ASSAD",   
+         "n_past_month_dexamphetamine_users_ASSAD", "p_past_month_dexamphetamine_users_ASSAD",
+         "n_past_week_dexamphetamine_users_ASSAD", "p_past_week_dexamphetamine_users_ASSAD",   
+         "n_ever_methamphetamine_users_ASSAD", "p_ever_methamphetamine_users_ASSAD", 
+         "n_past_month_methamphetamine_users_ASSAD", "p_past_month_methamphetamine_users_ASSAD",  
+         "n_past_week_methamphetamine_users_ASSAD", "p_past_week_methamphetamine_users_ASSAD")
 
 #1.9.4 E-CIGS
 
-cig <- c("N_ever_e-cigarette_users_ASSAD", "%_ever_e-cigarette_users_ASSAD",
-         "N_past_month_e-cigarette_users_ASSAD", "%_past_month_e-cigarette_users_ASSAD")
+cig <- c("n_ever_e-cigarette_users_ASSAD", "p_ever_e-cigarette_users_ASSAD",
+         "n_past_month_e-cigarette_users_ASSAD", "p_past_month_e-cigarette_users_ASSAD")
 
 
 # SEPERATING BY INDICATOR ------------------------------------------------------
@@ -316,7 +336,6 @@ sdru <- STE[,c(s, dru)]
 #1.9.4 E-CIGS
 
 scig <- STE[,c(s, cig)]
-
 
 # WRITE CSVS -------------------------------------------------------------------
 

@@ -62,6 +62,8 @@ full <- rbind(fem2,mal2)
 
 corder <- c("SA2_CODE16","calendar_year", "age_group", "sex", "estimated_regional_population")
 
+full <- full[, corder]
+
 # write csv --------------------------------------------------------------------
 
 

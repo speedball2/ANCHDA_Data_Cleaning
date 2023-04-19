@@ -130,7 +130,7 @@ names(df8)[names(df8) == "indicator"] <- "victims_sexual_touching"
 
 # ../ from where R script is saved 
 
-sa4 <- read_xlsx("SA4_2021_AUST (1).xlsx", 1, "A1:B109", T)
+sa4 <- read_xlsx("SA4_2021_AUST (1).xlsx", 1, "A1:B31", T)
 
 
 lga <- read_xlsx("LGA_2021_AUST (1).xlsx", 1, cell_limits(c(1, 1), c(NA, 3)), T)
@@ -139,23 +139,92 @@ lga <- lga[,-1]
  
 lga <- lga[!duplicated(lga),]
 
+#JUST LGA NAMES AND CODES
+
+write.csv(lga, "lga_names_codes.csv", F)
+
 # ------------------------------------------------------------------------------
 
-# MATCH
+# MATCH FUNCTION FOR SA CODES AND NAMES 
 
-#print(match(test(c()), sa4)) this but for the name cols 
 
-s <- c("SA4_CODE_2021","SA4_NAME_2021")
-c <- c("SA4_NAME16")
+sa4_codes <- function(frame, copy, dummy){
+  
+  copy <- frame
+  
+  # REMOVING JUNK COLS
+  
+  copy <- copy[,-(1:2)]
+  
+  copy$code <- NA
+  
+  copy <- copy[,-(2:3)]
+  
+  # REMOVING DUPLICATE NAMES - SA names only for NSW
+  
+  copy <- copy[!duplicated(copy),]
+  
+  #MERGING TWO DATA FRAMES TOGETHER (CUSTODIAN + ABS ASGS)
+  
+  dummy <- merge(sa4, copy)
+  
+  # REMOVING LEFTOVER JUNK COL (CAL YEAR)
+  dummy <- dummy[,-(4)]
+  
+  #CHANGING NAMES SO FUNC WORKS
+  
+  rep_str = c( "And" = "and", "Exc" = "exc")
+  
+  copy$SA4_NAME16 <- str_replace_all(copy$SA4_NAME16, rep_str)
+  
+  
+  # MATCHING
+  
+  copy$code <- copy$SA4_CODE_2021[match(copy$SA4_NAME16, copy$SA4_NAME_2021)]
+  
+  
+  #REMOVE COLS FROM ASGS 
+  
+  copy <- copy[,-(1:2)]
+  
+  #CHANGE NAMES BACK 
+  rep_str.1 = c( "and" = "And", "exc" = "Exc")
+  
+  copy$SA4_NAME16 <- str_replace_all(copy$SA4_NAME16, rep_str.1)
+  
+  #MERGE DATA FRAMES BY NAME
+  
+  
+  
+  #DELETE NAME COL 
+  
+  return(df)
+}
 
-copy <- df1
 
-copy <- copy[!duplicated(copy),]
 
-dummy <- merge(sa4, copy)
+# CREATING COPY OF SA4 DF
 
-copy <- copy %>%
-  arrange(SA4_NAME16, -victims_domestic_violence_related_assault) %>%
-  filter(!duplicated(SA4_NAME16))
+B <- sa4_codes(df1,copy,dummy)
 
-data$test = ifesle(data$)
+
+df[nrow(df) + 1,] <- c(33, 50, "java")
+
+B[nrow(B) + 1] <- c("SA4_NAME16", "code")
+
+
+
+test <- cbind(df1, c("SA4_NAMES16"), B)
+
+
+
+
+
+
+
+
+
+
+
+
+
