@@ -15,6 +15,8 @@ setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared D
 library(readxl)
 library(dplyr)
 library(tidyr)
+library(tidyverse)
+
 
 # cleaning function ------------------------------------------------------------
 
@@ -146,6 +148,8 @@ write.csv(lga, "lga_names_codes.csv", F)
 # ------------------------------------------------------------------------------
 
 # MATCH FUNCTION FOR SA CODES AND NAMES 
+
+#confirm which ASGS is being used
 
 
 sa4_codes <- function(frame, copy, dummy){
