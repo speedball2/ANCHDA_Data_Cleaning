@@ -1,14 +1,9 @@
 
 
-hello
-
 
 #Harriette's WD: 
 setwd("c:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/from_custodians/YJMDS_SA4")
 
-
-#to do:
-# deal w/ ATSI and m/f disagg 
 
 # ------------------------------------------------------------------------------
 
@@ -180,11 +175,23 @@ df6  <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 4, "A114:R220", F, "Fem
 
 df7 <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 7, "A4:R112", T, "Sentenced", "sentencing_status_yjnmds")
 
+df7 <- df7[-1,]
+
 #UNSENTENCED
 
 df8 <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 7, "A114:R220", T, "Unsentenced", "sentencing_status_yjnmds")
 
-#
+#IN DETENTION 
+
+#SENTENCED
+
+df9 <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 8, "A4:R112", T, "Sentenced", "sentencing_status_yjnmds")
+
+df9 <- df9[-1,]
+
+#UNSENTENCED
+
+df10 <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 8, "A114:R220", T, "Unsentenced", "sentencing_status_yjnmds")
 
 
 # pivoting data wide to long + cleaning it more! -------------------------------
@@ -244,6 +251,10 @@ b <- combine(year_range, indicator, gathercol, df5, df6, "n_detentionon_an_avera
 
 c <- combine(year_range, indicator, gathercol, df7, df8, "n_community_based_supervision_on_an_average_day")
 
+c$sex <- "ALL"
+
+d <- combine(year_range, indicator, gathercol, df9, df10, "n_detentionon_an_average_day")
+
+c$sex <- "ALL"
 
 
-hghhhgh
