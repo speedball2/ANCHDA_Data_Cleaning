@@ -137,7 +137,7 @@ df1 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 1, "A4:Q111", T, "n_commu
 
 
 
-df2 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 2, "A4:Q111", T, "n_detentionon_an_average_day")
+df2 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 2, "A4:Q111", T, "n_detention_an_average_day")
 
 
 #-------------------------------------------------------------------------------
@@ -245,16 +245,50 @@ return(df)
 
 #COMBINING SUPERVISION M/F
 
-a <- combine(year_range, indicator, gathercol, df3, df4, "n_community_based_supervision_on_an_average_day")
+a <- df1
 
-b <- combine(year_range, indicator, gathercol, df5, df6, "n_detentionon_an_average_day")
+b <- df2
 
-c <- combine(year_range, indicator, gathercol, df7, df8, "n_community_based_supervision_on_an_average_day")
+c <- combine(year_range, indicator, gathercol, df3, df4, "n_community_based_supervision_on_an_average_day")
+
+d <- combine(year_range, indicator, gathercol, df5, df6, "n_detention_an_average_day")
+
+e <- combine(year_range, indicator, gathercol, df7, df8, "n_community_based_supervision_on_an_average_day")
 
 c$sex <- "ALL"
 
-d <- combine(year_range, indicator, gathercol, df9, df10, "n_detentionon_an_average_day")
+f <- combine(year_range, indicator, gathercol, df9, df10, "n_detention_an_average_day")
 
 c$sex <- "ALL"
+
+
+
+
+# changing column order --------------------------------------------------------
+
+column_order <- function(corder, columns){
+  #corder = col order changing function
+  
+  
+  corder <- c(columns)
+  df <- df[,corder]
+  
+  return(df)
+  
+  
+  
+}
+
+
+corder <- c("SA4_CODE16", "year_range", "age_group", "sex", "n_community_based_supervision_on_an_average_day")
+a <- a[,corder]
+c <- c[,corder]
+
+corder.1 <- c("SA4_CODE16", "year_range", "age_group", "sex", "n_detentionon_an_average_day")
+b <- b[,corder]
+
+
+
+
 
 
