@@ -16,8 +16,10 @@ library(dplyr)
 
 # cleaning function ------------------------------------------------------------
 
-cleaning <- function(path, sht, range, col){
+cleaning <- function(path, sht, range, col, rename){
   #path = file path, sht = Sheet number, range = column range, col = col names t/f
+  #rename indicator col specific to each sheet in raw data 
+  
   
   #READING IN SPREADSHEETS FROM EXCEL
   df <- as.data.frame(read_xlsx(path,
@@ -41,7 +43,6 @@ cleaning <- function(path, sht, range, col){
   #REMOVING NAME COL
   df <- df[ , !names(df) %in% 
               c("SA4_NAME_2016")]
-  
   
   # PIVOTING DATA FROM WIDE TO LONG
   
@@ -75,46 +76,167 @@ cleaning <- function(path, sht, range, col){
     
   }
   
+  #RENAMING COLUMNS NAMES TO SUITABLE COL NAMES
+  
+  colnames(df)[colnames(df) == "indicator"] = rename
+  colnames(df)[colnames(df) == "SA4_CODE_2016"] = "SA4_CODE16"
+  
+  #ADD FILTER COL (SEX)
+  df$sex <- "ALL"
   df$age_group <- "10-17"
- 
+  
+  
 return(df)
   
  
 }
 
-# reading in data --------------------------------------------------------------
 
-df1 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 1, "A4:Q111", T)
+# cleaning function for disaggrations ------------------------------------------
 
-#RENAME INDICATOR COL SPECIFIC PER SHEET
-colnames(df1)[colnames(df1) == "indicator"] ="n_community_based_supervision_on_an_average_day"
-
-df2 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 2, "A4:Q111", T)
-
-#RENAME INDICATOR COL SPECIFIC PER SHEET
-colnames(df2)[colnames(df2) == "indicator"] ="n_detentionon_an_average_day"
-
-df3 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 3, "A4:R220", T)
-
-
-
-
-df4 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 4, "A4:R220", T)
-df5 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 5, "A4:R220", T)
-df6 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 6, "A4:R220", T)
-df7 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 7, "A4:R220", T)
-df8 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 8, "A4:R220", T)
-
-
-# tidy up/ clean data more -----------------------------------------------------
-
-tidy <- function(df){
+cleaning2 <- function(path, sht, range, col, filter, rename){
+  #path = file path, sht = Sheet number, range = column range, col = col names t/f
   
-  df <- df[-1,]
+  #rename = rename new column added for filter
+  #filter = renaming filter col 
+  
+  #READING IN SPREADSHEETS FROM EXCEL
+  df <- as.data.frame(read_xlsx(path,
+                                sht,
+                                range,
+                                col))
   
   
+  #ROUNDING
+  for(i in seq(3,ncol(df))){
+    if(!(names(df)[i] %in% c("SA4_CODE_2016"))){
+      df[,i] <- as.numeric(df[,i])
+      df[,i] <- round(df[,i],1)
+    }
+  }
+  #REMOVE EMPTY COL (SEE RAW DATA)
+  df <- df[,-3]
+  
+  colnames(df) <- c("SA4_CODE_2016","SA4_NAME_2016", "2006-07","2007-08","2008-09","2009-10","2010-11","2011-12","2012-13","2013-14","2014-15","2015-16","2016-17","2017-18","2018-19","2019-20","2020-21")
+  
+  #REMOVING NAME COL
+  df <- df[ , !names(df) %in% 
+              c("SA4_NAME_2016")]
+  
+  
+  
+  df$column <- filter
+  
+  colnames(df)[colnames(df) == "column"] = rename
   
   return(df)
+  
 }
 
-df3<- tidy(df3)
+# reading in data --------------------------------------------------------------
+
+df1 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 1, "A4:Q111", T, "n_community_based_supervision_on_an_average_day")
+
+
+
+df2 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 2, "A4:Q111", T, "n_detentionon_an_average_day")
+
+
+#-------------------------------------------------------------------------------
+
+# sex break down ---------------------------------------------------------------
+# community based supervision 
+
+#MALES
+df3 <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 3, "A4:R112", T, "Male", "sex")
+
+df3 <- df3[-1,]
+
+#FEMALES
+df4  <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 3, "A114:R220", F, "Feale", "sex")
+
+#detention
+
+#MALES
+
+df5 <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 4, "A4:R112", T, "Male", "sex")
+
+df5 <- df5[-1,]
+
+
+#FEMALES
+
+df6  <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 4, "A114:R220", F, "Female", "sex")
+
+
+# sentencing breakdown ---------------------------------------------------------
+
+#COMMUNITY SUPERVISION
+
+#SENTENCED
+
+df7 <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 7, "A4:R112", T, "Sentenced", "sentencing_status_yjnmds")
+
+#UNSENTENCED
+
+df8 <- cleaning2("ATLAS_data_SA4_AYJA_March_2023.xlsx", 7, "A114:R220", T, "Unsentenced", "sentencing_status_yjnmds")
+
+#
+
+
+# pivoting data wide to long + cleaning it more! -------------------------------
+
+combine <- function(year_range, indicator, gathercol, dataframe1, dataframe2, rename){
+#GATHER COL FUNCTION
+  #DF = DATA FRAME 
+  #INDICATOR = COUNTS FOR RATES IN NEW COL (a new col)
+  #CALENDAR_YEAR = NEW COLUMN FOR "GATHERCOL" VARIABLES (a new col)
+  #OTHER COLUMNNS FOLLOW'
+  
+# DATAFRAME 1&2: dfs rbinded together
+  
+# rename: indicator column that needs to be renamed
+
+df <- rbind(dataframe1, dataframe2)
+
+df <- gather(df, year_range, indicator, gathercol <- c("2006-07","2007-08","2008-09","2009-10","2010-11","2011-12","2012-13","2013-14","2014-15","2015-16","2016-17","2017-18","2018-19","2019-20","2020-21"))
+
+if("year_range" %in% names(df)){
+  df$year_range <- recode(df$year_range,
+                          "2006-07" = "2006-2007",
+                          "2007-08" = "2007-2008",
+                          "2008-09" = "2008-2009",
+                          "2009-10" = "2009-2010",
+                          "2010-11" = "2010-2011",
+                          "2011-12" = "2011-2012",
+                          "2012-13" = "2012-2013", 
+                          "2013-14" = "2013-2014",
+                          "2014-15" = "2014-2015",
+                          "2015-16" = "2015-2016",
+                          "2016-17" = "2016-2017",
+                          "2017-18" = "2017-2018",
+                          "2018-19" = "2018-2019",
+                          "2019-20" = "2019-2020", 
+                          "2020-21" = "2020-2021")
+  
+}
+
+df$age_group <- "10-17"
+
+colnames(df)[colnames(df) == "indicator"] = rename
+colnames(df)[colnames(df) == "SA4_CODE_2016"] = "SA4_CODE16"
+
+return(df)
+
+
+}
+
+# ------------------------------------------------------------------------------
+
+#COMBINING SUPERVISION M/F
+
+a <- combine(year_range, indicator, gathercol, df3, df4, "n_community_based_supervision_on_an_average_day")
+
+b <- combine(year_range, indicator, gathercol, df5, df6, "n_detentionon_an_average_day")
+
+c <- combine(year_range, indicator, gathercol, df7, df8, "n_community_based_supervision_on_an_average_day")
