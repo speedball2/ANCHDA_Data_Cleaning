@@ -1,0 +1,230 @@
+SOSR_CODE_2016,SOSR_NAME_2016,SOSR_CODE_2021,SOSR_NAME_2021,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+101,1 million or more,131,Remainder of State/Territory,0.0007591,Good,Good,1
+101,1 million or more,101,1 million or more,0.9992409,Good,Good,0
+102,"250,000 to 999,999",131,Remainder of State/Territory,0.0004369,Good,Good,1
+102,"250,000 to 999,999",102,"250,000 to 999,999",0.9995631,Good,Good,0
+111,"50,000 to 99,999",131,Remainder of State/Territory,0.0033699,Good,Good,1
+111,"50,000 to 99,999",111,"50,000 to 99,999",0.9966301,Poor,Good,0
+112,"20,000 to 49,999",131,Remainder of State/Territory,0.0009164,Good,Good,1
+112,"20,000 to 49,999",111,"50,000 to 99,999",0.1055496,Poor,Good,0
+112,"20,000 to 49,999",112,"20,000 to 49,999",0.893534,Acceptable,Good,0
+113,"10,000 to 19,999",131,Remainder of State/Territory,0.0036845,Good,Good,1
+113,"10,000 to 19,999",112,"20,000 to 49,999",0.2843523,Acceptable,Good,0
+113,"10,000 to 19,999",113,"10,000 to 19,999",0.7119633,Poor,Good,0
+114,"5,000 to 9,999",131,Remainder of State/Territory,0.003942,Good,Good,1
+114,"5,000 to 9,999",115,"4,999 or less",0.0177385,Acceptable,Good,0
+114,"5,000 to 9,999",113,"10,000 to 19,999",0.0850164,Poor,Good,0
+114,"5,000 to 9,999",114,"5,000 to 9,999",0.8933031,Acceptable,Good,0
+115,"1,000 to 4,999",131,Remainder of State/Territory,0.0023191,Good,Good,1
+115,"1,000 to 4,999",114,"5,000 to 9,999",0.0781488,Acceptable,Good,0
+115,"1,000 to 4,999",115,"4,999 or less",0.9195322,Acceptable,Good,0
+121,500 or more,131,Remainder of State/Territory,0.0051425,Good,Good,1
+121,500 or more,122,499 or less,0.0215513,Acceptable,Good,0
+121,500 or more,115,"4,999 or less",0.0819461,Acceptable,Good,0
+121,500 or more,121,500 or more,0.8913601,Acceptable,Good,0
+122,200 to 499,112,"20,000 to 49,999",0.0060208,Acceptable,Good,1
+122,200 to 499,131,Remainder of State/Territory,0.0220643,Good,Good,0
+122,200 to 499,121,500 or more,0.1147367,Acceptable,Good,0
+122,200 to 499,122,499 or less,0.8571782,Acceptable,Good,0
+131,Remainder of State/Territory,121,500 or more,0.0001967,Acceptable,Good,1
+131,Remainder of State/Territory,102,"250,000 to 999,999",0.000663,Good,Good,1
+131,Remainder of State/Territory,113,"10,000 to 19,999",0.0022413,Poor,Good,1
+131,Remainder of State/Territory,122,499 or less,0.0022497,Acceptable,Good,1
+131,Remainder of State/Territory,111,"50,000 to 99,999",0.0022521,Poor,Good,1
+131,Remainder of State/Territory,112,"20,000 to 49,999",0.0023491,Acceptable,Good,1
+131,Remainder of State/Territory,114,"5,000 to 9,999",0.0029783,Acceptable,Good,1
+131,Remainder of State/Territory,101,1 million or more,0.0056021,Good,Good,1
+131,Remainder of State/Territory,115,"4,999 or less",0.0109471,Acceptable,Good,0
+131,Remainder of State/Territory,131,Remainder of State/Territory,0.9705205,Good,Good,0
+179,Migratory - Offshore - Shipping (NSW),179,Migratory - Offshore - Shipping (NSW),1,Good,Good,0
+199,No usual address (NSW),199,No usual address (NSW),1,Good,Good,0
+201,1 million or more,231,Remainder of State/Territory,4.18E-05,Good,Good,1
+201,1 million or more,201,1 million or more,0.9999582,Good,Good,0
+203,"100,000 to 249,999",231,Remainder of State/Territory,0.0006826,Good,Good,1
+203,"100,000 to 249,999",203,"100,000 to 249,999",0.9993174,Acceptable,Good,0
+211,"50,000 to 99,999",221,500 or more,0.0003553,Poor,Good,1
+211,"50,000 to 99,999",231,Remainder of State/Territory,0.0014247,Good,Good,1
+211,"50,000 to 99,999",211,"50,000 to 99,999",0.3245692,Poor,Good,0
+211,"50,000 to 99,999",203,"100,000 to 249,999",0.6736508,Acceptable,Good,0
+212,"20,000 to 49,999",231,Remainder of State/Territory,0.0017635,Good,Good,1
+212,"20,000 to 49,999",212,"20,000 to 49,999",0.9982365,Acceptable,Good,0
+213,"10,000 to 19,999",231,Remainder of State/Territory,0.0007654,Good,Good,1
+213,"10,000 to 19,999",212,"20,000 to 49,999",0.2599871,Acceptable,Good,0
+213,"10,000 to 19,999",213,"10,000 to 19,999",0.7392476,Poor,Good,0
+214,"5,000 to 9,999",213,"10,000 to 19,999",0.2602738,Poor,Good,0
+214,"5,000 to 9,999",214,"5,000 to 9,999",0.7397262,Poor,Good,0
+215,"1,000 to 4,999",214,"5,000 to 9,999",0.1134584,Poor,Good,0
+215,"1,000 to 4,999",215,"4,999 or less",0.8865416,Acceptable,Good,0
+221,500 or more,222,499 or less,0.0051304,Acceptable,Good,1
+221,500 or more,201,1 million or more,0.0143847,Good,Good,0
+221,500 or more,231,Remainder of State/Territory,0.0294975,Good,Good,0
+221,500 or more,215,"4,999 or less",0.153136,Acceptable,Good,0
+221,500 or more,221,500 or more,0.7978514,Poor,Good,0
+222,200 to 499,201,1 million or more,0.0067854,Good,Good,1
+222,200 to 499,215,"4,999 or less",0.0084368,Acceptable,Good,1
+222,200 to 499,231,Remainder of State/Territory,0.0290314,Good,Good,0
+222,200 to 499,221,500 or more,0.1557577,Poor,Good,0
+222,200 to 499,222,499 or less,0.7999887,Acceptable,Good,0
+231,Remainder of State/Territory,222,499 or less,0.0004158,Acceptable,Good,1
+231,Remainder of State/Territory,221,500 or more,0.0013126,Poor,Good,1
+231,Remainder of State/Territory,203,"100,000 to 249,999",0.0021892,Acceptable,Good,1
+231,Remainder of State/Territory,215,"4,999 or less",0.0027901,Acceptable,Good,1
+231,Remainder of State/Territory,211,"50,000 to 99,999",0.0038735,Poor,Good,1
+231,Remainder of State/Territory,212,"20,000 to 49,999",0.0056576,Acceptable,Good,1
+231,Remainder of State/Territory,214,"5,000 to 9,999",0.0070027,Poor,Good,1
+231,Remainder of State/Territory,213,"10,000 to 19,999",0.0089608,Poor,Good,1
+231,Remainder of State/Territory,201,1 million or more,0.0119898,Good,Good,0
+231,Remainder of State/Territory,231,Remainder of State/Territory,0.9558079,Good,Good,0
+279,Migratory - Offshore - Shipping (Vic.),279,Migratory - Offshore - Shipping (Vic.),1,Good,Good,0
+299,No usual address (Vic.),299,No usual address (Vic.),1,Good,Good,0
+301,1 million or more,331,Remainder of State/Territory,5.97E-05,Good,Good,1
+301,1 million or more,301,1 million or more,0.9999403,Good,Good,0
+302,"250,000 to 999,999",331,Remainder of State/Territory,0.0009678,Good,Good,1
+302,"250,000 to 999,999",302,"250,000 to 999,999",0.9990322,Acceptable,Good,0
+303,"100,000 to 249,999",302,"250,000 to 999,999",0.3704835,Acceptable,Good,0
+303,"100,000 to 249,999",303,"100,000 to 249,999",0.6295164,Poor,Good,0
+311,"50,000 to 99,999",311,"50,000 to 99,999",1,Good,Good,0
+312,"20,000 to 49,999",331,Remainder of State/Territory,0.0023569,Good,Good,1
+312,"20,000 to 49,999",312,"20,000 to 49,999",0.9976431,Poor,Good,0
+313,"10,000 to 19,999",331,Remainder of State/Territory,0.0043253,Good,Good,1
+313,"10,000 to 19,999",312,"20,000 to 49,999",0.2258593,Poor,Good,0
+313,"10,000 to 19,999",313,"10,000 to 19,999",0.7698154,Poor,Good,0
+314,"5,000 to 9,999",331,Remainder of State/Territory,0.0022823,Good,Good,1
+314,"5,000 to 9,999",313,"10,000 to 19,999",0.1184803,Poor,Good,0
+314,"5,000 to 9,999",314,"5,000 to 9,999",0.8792374,Acceptable,Good,0
+315,"1,000 to 4,999",321,500 or more,0.0045353,Acceptable,Good,1
+315,"1,000 to 4,999",331,Remainder of State/Territory,0.0123591,Good,Good,0
+315,"1,000 to 4,999",313,"10,000 to 19,999",0.0142693,Poor,Good,0
+315,"1,000 to 4,999",314,"5,000 to 9,999",0.0584087,Acceptable,Good,0
+315,"1,000 to 4,999",315,"4,999 or less",0.9104275,Acceptable,Good,0
+321,500 or more,302,"250,000 to 999,999",0.0028944,Acceptable,Good,1
+321,500 or more,301,1 million or more,0.0071335,Good,Good,1
+321,500 or more,331,Remainder of State/Territory,0.0322646,Good,Good,0
+321,500 or more,322,499 or less,0.0325504,Acceptable,Good,0
+321,500 or more,315,"4,999 or less",0.0516179,Acceptable,Good,0
+321,500 or more,321,500 or more,0.8735393,Acceptable,Good,0
+322,200 to 499,331,Remainder of State/Territory,0.0286783,Good,Good,0
+322,200 to 499,321,500 or more,0.0822098,Acceptable,Good,0
+322,200 to 499,322,499 or less,0.8891119,Acceptable,Good,0
+331,Remainder of State/Territory,302,"250,000 to 999,999",0.0006425,Acceptable,Good,1
+331,Remainder of State/Territory,321,500 or more,0.0010874,Acceptable,Good,1
+331,Remainder of State/Territory,312,"20,000 to 49,999",0.0012492,Poor,Good,1
+331,Remainder of State/Territory,322,499 or less,0.0012656,Acceptable,Good,1
+331,Remainder of State/Territory,303,"100,000 to 249,999",0.0016062,Poor,Good,1
+331,Remainder of State/Territory,311,"50,000 to 99,999",0.0017176,Good,Good,1
+331,Remainder of State/Territory,313,"10,000 to 19,999",0.0017753,Poor,Good,1
+331,Remainder of State/Territory,314,"5,000 to 9,999",0.0046757,Acceptable,Good,1
+331,Remainder of State/Territory,301,1 million or more,0.011059,Good,Good,0
+331,Remainder of State/Territory,315,"4,999 or less",0.0139375,Acceptable,Good,0
+331,Remainder of State/Territory,331,Remainder of State/Territory,0.960984,Good,Good,0
+379,Migratory - Offshore - Shipping (Qld),379,Migratory - Offshore - Shipping (Qld),1,Good,Good,0
+399,No usual address (Qld),399,No usual address (Qld),1,Good,Good,0
+401,1 million or more,431,Remainder of State/Territory,2.60E-06,Good,Good,1
+401,1 million or more,401,1 million or more,0.9999974,Good,Good,0
+412,"20,000 to 49,999",412,"20,000 to 49,999",1,Acceptable,Good,0
+413,"10,000 to 19,999",431,Remainder of State/Territory,0.0017395,Good,Good,1
+413,"10,000 to 19,999",412,"20,000 to 49,999",0.1589139,Acceptable,Good,0
+413,"10,000 to 19,999",413,"10,000 to 19,999",0.8393465,Acceptable,Good,0
+414,"5,000 to 9,999",431,Remainder of State/Territory,0.0013387,Good,Good,1
+414,"5,000 to 9,999",414,"5,000 to 9,999",0.9986613,Acceptable,Good,0
+415,"1,000 to 4,999",431,Remainder of State/Territory,0.0007423,Good,Good,1
+415,"1,000 to 4,999",414,"5,000 to 9,999",0.0441506,Acceptable,Good,0
+415,"1,000 to 4,999",415,"4,999 or less",0.9551072,Good,Good,0
+421,500 or more,431,Remainder of State/Territory,0.0022462,Good,Good,1
+421,500 or more,401,1 million or more,0.0169606,Good,Good,0
+421,500 or more,422,499 or less,0.0172666,Acceptable,Good,0
+421,500 or more,415,"4,999 or less",0.1067044,Good,Good,0
+421,500 or more,421,500 or more,0.8568222,Acceptable,Good,0
+422,200 to 499,431,Remainder of State/Territory,0.0095358,Good,Good,1
+422,200 to 499,421,500 or more,0.1081497,Acceptable,Good,0
+422,200 to 499,422,499 or less,0.8823146,Acceptable,Good,0
+431,Remainder of State/Territory,421,500 or more,0.0011517,Acceptable,Good,1
+431,Remainder of State/Territory,413,"10,000 to 19,999",0.0013113,Acceptable,Good,1
+431,Remainder of State/Territory,414,"5,000 to 9,999",0.0021597,Acceptable,Good,1
+431,Remainder of State/Territory,412,"20,000 to 49,999",0.0023915,Acceptable,Good,1
+431,Remainder of State/Territory,401,1 million or more,0.0035891,Good,Good,1
+431,Remainder of State/Territory,415,"4,999 or less",0.007672,Good,Good,1
+431,Remainder of State/Territory,431,Remainder of State/Territory,0.9817247,Good,Good,0
+479,Migratory - Offshore - Shipping (SA),479,Migratory - Offshore - Shipping (SA),1,Good,Good,0
+499,No usual address (SA),499,No usual address (SA),1,Good,Good,0
+501,1 million or more,531,Remainder of State/Territory,0.001043,Good,Good,1
+501,1 million or more,501,1 million or more,0.998957,Good,Good,0
+511,"50,000 to 99,999",531,Remainder of State/Territory,4.00E-07,Good,Good,1
+511,"50,000 to 99,999",511,"50,000 to 99,999",0.9999996,Good,Good,0
+512,"20,000 to 49,999",531,Remainder of State/Territory,0.001947,Good,Good,1
+512,"20,000 to 49,999",512,"20,000 to 49,999",0.998053,Good,Good,0
+513,"10,000 to 19,999",513,"10,000 to 19,999",1,Acceptable,Good,0
+514,"5,000 to 9,999",513,"10,000 to 19,999",0.2526632,Acceptable,Good,0
+514,"5,000 to 9,999",514,"5,000 to 9,999",0.7473368,Poor,Good,0
+515,"1,000 to 4,999",531,Remainder of State/Territory,0.0026904,Good,Good,1
+515,"1,000 to 4,999",515,"4,999 or less",0.9973096,Good,Good,0
+521,500 or more,501,1 million or more,0.0288657,Good,Good,0
+521,500 or more,531,Remainder of State/Territory,0.0331232,Good,Good,0
+521,500 or more,522,499 or less,0.0582433,Acceptable,Good,0
+521,500 or more,515,"4,999 or less",0.0604902,Good,Good,0
+521,500 or more,521,500 or more,0.8192776,Acceptable,Good,0
+522,200 to 499,531,Remainder of State/Territory,0.0159867,Good,Good,0
+522,200 to 499,521,500 or more,0.0653437,Acceptable,Good,0
+522,200 to 499,522,499 or less,0.9186696,Acceptable,Good,0
+531,Remainder of State/Territory,514,"5,000 to 9,999",6.75E-05,Poor,Good,1
+531,Remainder of State/Territory,512,"20,000 to 49,999",0.0002604,Good,Good,1
+531,Remainder of State/Territory,521,500 or more,0.0004969,Acceptable,Good,1
+531,Remainder of State/Territory,511,"50,000 to 99,999",0.0007266,Good,Good,1
+531,Remainder of State/Territory,522,499 or less,0.0026897,Acceptable,Good,1
+531,Remainder of State/Territory,515,"4,999 or less",0.014465,Good,Good,0
+531,Remainder of State/Territory,501,1 million or more,0.0189177,Good,Good,0
+531,Remainder of State/Territory,531,Remainder of State/Territory,0.9623762,Good,Good,0
+579,Migratory - Offshore - Shipping (WA),579,Migratory - Offshore - Shipping (WA),1,Good,Good,0
+599,No usual address (WA),599,No usual address (WA),1,Good,Good,0
+603,"100,000 to 249,999",631,Remainder of State/Territory,0.0002701,Good,Good,1
+603,"100,000 to 249,999",603,"100,000 to 249,999",0.9997299,Good,Good,0
+611,"50,000 to 99,999",611,"50,000 to 99,999",1,Good,Good,0
+612,"20,000 to 49,999",612,"20,000 to 49,999",1,Acceptable,Good,0
+613,"10,000 to 19,999",613,"10,000 to 19,999",0.3830485,Poor,Good,0
+613,"10,000 to 19,999",612,"20,000 to 49,999",0.6169515,Acceptable,Good,0
+614,"5,000 to 9,999",631,Remainder of State/Territory,0.0247457,Good,Good,0
+614,"5,000 to 9,999",614,"5,000 to 9,999",0.9752543,Poor,Good,0
+615,"1,000 to 4,999",614,"5,000 to 9,999",0.0763284,Poor,Good,0
+615,"1,000 to 4,999",615,"4,999 or less",0.9236716,Acceptable,Good,0
+621,500 or more,631,Remainder of State/Territory,5.00E-07,Good,Good,1
+621,500 or more,615,"4,999 or less",0.0787467,Acceptable,Good,0
+621,500 or more,621,500 or more,0.9212527,Acceptable,Good,0
+622,200 to 499,615,"4,999 or less",0.0323017,Acceptable,Good,0
+622,200 to 499,631,Remainder of State/Territory,0.0325577,Good,Good,0
+622,200 to 499,621,500 or more,0.2294471,Acceptable,Good,0
+622,200 to 499,622,499 or less,0.7056935,Poor,Good,0
+631,Remainder of State/Territory,621,500 or more,7.59E-05,Acceptable,Good,1
+631,Remainder of State/Territory,612,"20,000 to 49,999",0.002096,Acceptable,Good,1
+631,Remainder of State/Territory,603,"100,000 to 249,999",0.0027779,Good,Good,1
+631,Remainder of State/Territory,615,"4,999 or less",0.0071201,Acceptable,Good,1
+631,Remainder of State/Territory,631,Remainder of State/Territory,0.98793,Good,Good,0
+679,Migratory - Offshore - Shipping (Tas.),679,Migratory - Offshore - Shipping (Tas.),1,Good,Good,0
+699,No usual address (Tas.),699,No usual address (Tas.),1,Good,Good,0
+703,"100,000 to 249,999",703,"100,000 to 249,999",1,Good,Good,0
+712,"20,000 to 49,999",712,"20,000 to 49,999",1,Good,Good,0
+714,"5,000 to 9,999",714,"5,000 to 9,999",1,Good,Good,0
+715,"1,000 to 4,999",731,Remainder of State/Territory,0.0089323,Good,Good,1
+715,"1,000 to 4,999",715,"4,999 or less",0.9910677,Good,Good,0
+721,500 or more,731,Remainder of State/Territory,0.0154099,Good,Good,0
+721,500 or more,722,499 or less,0.0355562,Good,Good,0
+721,500 or more,721,500 or more,0.9490339,Good,Good,0
+722,200 to 499,731,Remainder of State/Territory,0.008112,Good,Good,1
+722,200 to 499,722,499 or less,0.991888,Good,Good,0
+731,Remainder of State/Territory,731,Remainder of State/Territory,1,Good,Good,0
+779,Migratory - Offshore - Shipping (NT),779,Migratory - Offshore - Shipping (NT),1,Good,Good,0
+799,No usual address (NT),799,No usual address (NT),1,Good,Good,0
+802,"250,000 to 999,999",802,"250,000 to 999,999",1,Good,Good,0
+822,200 to 499,822,499 or less,1,Poor,Good,0
+831,Remainder of State/Territory,802,"250,000 to 999,999",0.0185526,Good,Good,0
+831,Remainder of State/Territory,822,499 or less,0.4413937,Poor,Good,0
+831,Remainder of State/Territory,831,Remainder of State/Territory,0.5400537,Poor,Good,0
+879,Migratory - Offshore - Shipping (ACT),879,Migratory - Offshore - Shipping (ACT),1,Good,Good,0
+899,No usual address (ACT),899,No usual address (ACT),1,Good,Good,0
+915,"1,000 to 4,999",915,"4,999 or less",1,Good,Good,0
+921,500 or more,921,500 or more,1,Poor,Good,0
+922,200 to 499,922,499 or less,1,Good,Good,0
+931,Remainder of State/Territory,921,500 or more,0.4312792,Poor,Good,0
+931,Remainder of State/Territory,931,Remainder of State/Territory,0.5687208,Poor,Good,0
+979,Migratory - Offshore - Shipping (OT),979,Migratory - Offshore - Shipping (OT),1,Good,Good,0
+999,No usual address (OT),999,No usual address (OT),1,Good,Good,0
+,,ZZZ,Outside Australia,,NA,Good,3

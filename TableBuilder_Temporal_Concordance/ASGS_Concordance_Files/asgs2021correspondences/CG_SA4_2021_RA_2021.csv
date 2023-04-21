@@ -1,0 +1,220 @@
+SA4_CODE_2021,SA4_NAME_2021,RA_CODE_2021,RA_NAME_2021,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+101,Capital Region,10,Major Cities of Australia,0.1918204,Good,Acceptable,0
+101,Capital Region,11,Inner Regional Australia,0.5369049,Poor,Acceptable,0
+101,Capital Region,12,Outer Regional Australia,0.2712747,Poor,Acceptable,0
+102,Central Coast,10,Major Cities of Australia,0.9808336,Good,Acceptable,0
+102,Central Coast,11,Inner Regional Australia,0.0191664,Poor,Acceptable,0
+103,Central West,11,Inner Regional Australia,0.7058978,Poor,Acceptable,0
+103,Central West,12,Outer Regional Australia,0.2789925,Poor,Acceptable,0
+103,Central West,13,Remote Australia,0.0151097,Poor,Acceptable,0
+104,Coffs Harbour - Grafton,11,Inner Regional Australia,0.973737,Poor,Acceptable,0
+104,Coffs Harbour - Grafton,12,Outer Regional Australia,0.026263,Poor,Acceptable,0
+105,Far West and Orana,11,Inner Regional Australia,0.354602,Poor,Acceptable,0
+105,Far West and Orana,12,Outer Regional Australia,0.4465609,Poor,Acceptable,0
+105,Far West and Orana,13,Remote Australia,0.144738,Poor,Acceptable,0
+105,Far West and Orana,14,Very Remote Australia,0.054099,Poor,Acceptable,0
+106,Hunter Valley exc Newcastle,10,Major Cities of Australia,0.4921522,Good,Acceptable,0
+106,Hunter Valley exc Newcastle,11,Inner Regional Australia,0.4814374,Poor,Acceptable,0
+106,Hunter Valley exc Newcastle,12,Outer Regional Australia,0.0264105,Poor,Acceptable,0
+107,Illawarra,10,Major Cities of Australia,0.9713736,Good,Acceptable,0
+107,Illawarra,11,Inner Regional Australia,0.0286264,Poor,Acceptable,0
+108,Mid North Coast,11,Inner Regional Australia,0.9736553,Poor,Acceptable,0
+108,Mid North Coast,12,Outer Regional Australia,0.0244128,Poor,Acceptable,0
+108,Mid North Coast,14,Very Remote Australia,0.0019319,Poor,Acceptable,1
+109,Murray,11,Inner Regional Australia,0.7969332,Poor,Acceptable,0
+109,Murray,12,Outer Regional Australia,0.1866086,Poor,Acceptable,0
+109,Murray,13,Remote Australia,0.0164582,Poor,Acceptable,0
+110,New England and North West,11,Inner Regional Australia,0.4893147,Poor,Acceptable,0
+110,New England and North West,12,Outer Regional Australia,0.4975775,Poor,Acceptable,0
+110,New England and North West,13,Remote Australia,0.0131077,Poor,Acceptable,0
+111,Newcastle and Lake Macquarie,10,Major Cities of Australia,0.989375,Good,Acceptable,0
+111,Newcastle and Lake Macquarie,11,Inner Regional Australia,0.010625,Poor,Acceptable,0
+112,Richmond - Tweed,10,Major Cities of Australia,0.2900262,Good,Acceptable,0
+112,Richmond - Tweed,11,Inner Regional Australia,0.6995733,Poor,Acceptable,0
+112,Richmond - Tweed,12,Outer Regional Australia,0.0104005,Poor,Acceptable,0
+113,Riverina,11,Inner Regional Australia,0.5831807,Poor,Acceptable,0
+113,Riverina,12,Outer Regional Australia,0.4053615,Poor,Acceptable,0
+113,Riverina,13,Remote Australia,0.0114577,Poor,Acceptable,0
+114,Southern Highlands and Shoalhaven,11,Inner Regional Australia,1,Poor,Acceptable,0
+115,Sydney - Baulkham Hills and Hawkesbury,10,Major Cities of Australia,0.8751218,Good,Acceptable,0
+115,Sydney - Baulkham Hills and Hawkesbury,11,Inner Regional Australia,0.1235982,Poor,Acceptable,0
+115,Sydney - Baulkham Hills and Hawkesbury,12,Outer Regional Australia,0.00128,Poor,Acceptable,1
+116,Sydney - Blacktown,10,Major Cities of Australia,1,Good,Acceptable,0
+117,Sydney - City and Inner South,10,Major Cities of Australia,1,Good,Acceptable,0
+118,Sydney - Eastern Suburbs,10,Major Cities of Australia,1,Good,Acceptable,0
+119,Sydney - Inner South West,10,Major Cities of Australia,1,Good,Acceptable,0
+120,Sydney - Inner West,10,Major Cities of Australia,1,Good,Acceptable,0
+121,Sydney - North Sydney and Hornsby,10,Major Cities of Australia,0.9959623,Good,Acceptable,0
+121,Sydney - North Sydney and Hornsby,11,Inner Regional Australia,0.0040377,Poor,Acceptable,1
+122,Sydney - Northern Beaches,10,Major Cities of Australia,0.9987699,Good,Acceptable,0
+122,Sydney - Northern Beaches,11,Inner Regional Australia,0.0012301,Poor,Acceptable,1
+123,Sydney - Outer South West,10,Major Cities of Australia,0.8554046,Good,Acceptable,0
+123,Sydney - Outer South West,11,Inner Regional Australia,0.1445954,Poor,Acceptable,0
+124,Sydney - Outer West and Blue Mountains,10,Major Cities of Australia,0.9511771,Good,Acceptable,0
+124,Sydney - Outer West and Blue Mountains,11,Inner Regional Australia,0.0488229,Poor,Acceptable,0
+125,Sydney - Parramatta,10,Major Cities of Australia,1,Good,Acceptable,0
+126,Sydney - Ryde,10,Major Cities of Australia,1,Good,Acceptable,0
+127,Sydney - South West,10,Major Cities of Australia,0.9961798,Good,Acceptable,0
+127,Sydney - South West,11,Inner Regional Australia,0.0038202,Poor,Acceptable,1
+128,Sydney - Sutherland,10,Major Cities of Australia,0.9858388,Good,Acceptable,0
+128,Sydney - Sutherland,11,Inner Regional Australia,0.0141612,Poor,Acceptable,0
+197,Migratory - Offshore - Shipping (NSW),15,Migratory - Offshore - Shipping (NSW),1,Good,Good,0
+199,No usual address (NSW),19,No usual address (NSW),1,Good,Good,0
+201,Ballarat,21,Inner Regional Australia,0.9964819,Acceptable,Acceptable,0
+201,Ballarat,22,Outer Regional Australia,0.0035181,Poor,Acceptable,1
+202,Bendigo,21,Inner Regional Australia,0.9727215,Acceptable,Acceptable,0
+202,Bendigo,22,Outer Regional Australia,0.0272785,Poor,Acceptable,0
+203,Geelong,20,Major Cities of Australia,0.6533337,Good,Acceptable,0
+203,Geelong,21,Inner Regional Australia,0.3466663,Acceptable,Acceptable,0
+204,Hume,21,Inner Regional Australia,0.871731,Acceptable,Acceptable,0
+204,Hume,22,Outer Regional Australia,0.128269,Poor,Acceptable,0
+205,Latrobe - Gippsland,21,Inner Regional Australia,0.8101183,Acceptable,Acceptable,0
+205,Latrobe - Gippsland,22,Outer Regional Australia,0.1873183,Poor,Acceptable,0
+205,Latrobe - Gippsland,23,Remote Australia,0.0025634,Poor,Acceptable,1
+206,Melbourne - Inner,20,Major Cities of Australia,1,Good,Acceptable,0
+207,Melbourne - Inner East,20,Major Cities of Australia,1,Good,Acceptable,0
+208,Melbourne - Inner South,20,Major Cities of Australia,1,Good,Acceptable,0
+209,Melbourne - North East,20,Major Cities of Australia,0.9733605,Good,Acceptable,0
+209,Melbourne - North East,21,Inner Regional Australia,0.0266395,Acceptable,Acceptable,0
+210,Melbourne - North West,20,Major Cities of Australia,0.9206794,Good,Acceptable,0
+210,Melbourne - North West,21,Inner Regional Australia,0.0793206,Acceptable,Acceptable,0
+211,Melbourne - Outer East,20,Major Cities of Australia,0.9373123,Good,Acceptable,0
+211,Melbourne - Outer East,21,Inner Regional Australia,0.0626877,Acceptable,Acceptable,0
+212,Melbourne - South East,20,Major Cities of Australia,0.9752452,Good,Acceptable,0
+212,Melbourne - South East,21,Inner Regional Australia,0.0247548,Acceptable,Acceptable,0
+213,Melbourne - West,20,Major Cities of Australia,0.9927301,Good,Acceptable,0
+213,Melbourne - West,21,Inner Regional Australia,0.0072699,Acceptable,Acceptable,1
+214,Mornington Peninsula,20,Major Cities of Australia,0.9816667,Good,Acceptable,0
+214,Mornington Peninsula,21,Inner Regional Australia,0.0183333,Acceptable,Acceptable,0
+215,North West,21,Inner Regional Australia,0.1088768,Acceptable,Acceptable,0
+215,North West,22,Outer Regional Australia,0.8747476,Poor,Acceptable,0
+215,North West,23,Remote Australia,0.0163756,Poor,Acceptable,0
+216,Shepparton,21,Inner Regional Australia,0.9891984,Acceptable,Acceptable,0
+216,Shepparton,22,Outer Regional Australia,0.0108016,Poor,Acceptable,0
+217,Warrnambool and South West,21,Inner Regional Australia,0.7285084,Acceptable,Acceptable,0
+217,Warrnambool and South West,22,Outer Regional Australia,0.2714916,Poor,Acceptable,0
+297,Migratory - Offshore - Shipping (Vic.),25,Migratory - Offshore - Shipping (Vic.),1,Good,Good,0
+299,No usual address (Vic.),29,No usual address (Vic.),1,Good,Good,0
+301,Brisbane - East,30,Major Cities of Australia,0.955454,Good,Acceptable,0
+301,Brisbane - East,31,Inner Regional Australia,0.0191062,Poor,Acceptable,0
+301,Brisbane - East,32,Outer Regional Australia,0.0163947,Acceptable,Acceptable,0
+301,Brisbane - East,33,Remote Australia,0.009045,Poor,Acceptable,1
+302,Brisbane - North,30,Major Cities of Australia,1,Good,Acceptable,0
+303,Brisbane - South,30,Major Cities of Australia,1,Good,Acceptable,0
+304,Brisbane - West,30,Major Cities of Australia,0.9982886,Good,Acceptable,0
+304,Brisbane - West,31,Inner Regional Australia,0.0017114,Poor,Acceptable,1
+305,Brisbane Inner City,30,Major Cities of Australia,1,Good,Acceptable,0
+306,Cairns,32,Outer Regional Australia,0.9847081,Acceptable,Acceptable,0
+306,Cairns,33,Remote Australia,0.0152715,Poor,Acceptable,0
+306,Cairns,34,Very Remote Australia,2.04E-05,Poor,Acceptable,1
+307,Darling Downs - Maranoa,31,Inner Regional Australia,0.5007872,Poor,Acceptable,0
+307,Darling Downs - Maranoa,32,Outer Regional Australia,0.3987689,Acceptable,Acceptable,0
+307,Darling Downs - Maranoa,33,Remote Australia,0.0828312,Poor,Acceptable,0
+307,Darling Downs - Maranoa,34,Very Remote Australia,0.0176127,Poor,Acceptable,0
+308,Central Queensland,31,Inner Regional Australia,0.7587006,Poor,Acceptable,0
+308,Central Queensland,32,Outer Regional Australia,0.1955687,Acceptable,Acceptable,0
+308,Central Queensland,33,Remote Australia,0.0448821,Poor,Acceptable,0
+308,Central Queensland,34,Very Remote Australia,0.0008486,Poor,Acceptable,1
+309,Gold Coast,30,Major Cities of Australia,0.9752923,Good,Acceptable,0
+309,Gold Coast,31,Inner Regional Australia,0.0247077,Poor,Acceptable,0
+310,Ipswich,30,Major Cities of Australia,0.8271011,Good,Acceptable,0
+310,Ipswich,31,Inner Regional Australia,0.1728989,Poor,Acceptable,0
+311,Logan - Beaudesert,30,Major Cities of Australia,0.9261352,Good,Acceptable,0
+311,Logan - Beaudesert,31,Inner Regional Australia,0.0726779,Poor,Acceptable,0
+311,Logan - Beaudesert,32,Outer Regional Australia,0.0011869,Acceptable,Acceptable,1
+312,Mackay - Isaac - Whitsunday,31,Inner Regional Australia,0.4977923,Poor,Acceptable,0
+312,Mackay - Isaac - Whitsunday,32,Outer Regional Australia,0.4345801,Acceptable,Acceptable,0
+312,Mackay - Isaac - Whitsunday,33,Remote Australia,0.0619115,Poor,Acceptable,0
+312,Mackay - Isaac - Whitsunday,34,Very Remote Australia,0.0057161,Poor,Acceptable,1
+313,Moreton Bay - North,30,Major Cities of Australia,0.8555863,Good,Acceptable,0
+313,Moreton Bay - North,31,Inner Regional Australia,0.1404372,Poor,Acceptable,0
+313,Moreton Bay - North,32,Outer Regional Australia,0.0027822,Acceptable,Acceptable,1
+313,Moreton Bay - North,33,Remote Australia,0.0011943,Poor,Acceptable,1
+314,Moreton Bay - South,30,Major Cities of Australia,0.9421068,Good,Acceptable,0
+314,Moreton Bay - South,31,Inner Regional Australia,0.0578932,Poor,Acceptable,0
+315,Queensland - Outback,32,Outer Regional Australia,0.0687368,Acceptable,Acceptable,0
+315,Queensland - Outback,33,Remote Australia,0.3257152,Poor,Acceptable,0
+315,Queensland - Outback,34,Very Remote Australia,0.6055479,Poor,Acceptable,0
+316,Sunshine Coast,30,Major Cities of Australia,0.832168,Good,Acceptable,0
+316,Sunshine Coast,31,Inner Regional Australia,0.167832,Poor,Acceptable,0
+317,Toowoomba,31,Inner Regional Australia,1,Poor,Acceptable,0
+318,Townsville,32,Outer Regional Australia,0.9693314,Acceptable,Acceptable,0
+318,Townsville,33,Remote Australia,0.0277085,Poor,Acceptable,0
+318,Townsville,34,Very Remote Australia,0.0029601,Poor,Acceptable,1
+319,Wide Bay,31,Inner Regional Australia,0.9125828,Poor,Acceptable,0
+319,Wide Bay,32,Outer Regional Australia,0.0863006,Acceptable,Acceptable,0
+319,Wide Bay,33,Remote Australia,0.0011166,Poor,Acceptable,1
+397,Migratory - Offshore - Shipping (Qld),35,Migratory - Offshore - Shipping (Qld),1,Good,Good,0
+399,No usual address (Qld),39,No usual address (Qld),1,Good,Good,0
+401,Adelaide - Central and Hills,40,Major Cities of Australia,0.9107033,Good,Acceptable,0
+401,Adelaide - Central and Hills,41,Inner Regional Australia,0.0892967,Poor,Acceptable,0
+402,Adelaide - North,40,Major Cities of Australia,0.9778035,Good,Acceptable,0
+402,Adelaide - North,41,Inner Regional Australia,0.0221965,Poor,Acceptable,0
+403,Adelaide - South,40,Major Cities of Australia,0.9865778,Good,Acceptable,0
+403,Adelaide - South,41,Inner Regional Australia,0.0134222,Poor,Acceptable,0
+404,Adelaide - West,40,Major Cities of Australia,1,Good,Acceptable,0
+405,Barossa - Yorke - Mid North,41,Inner Regional Australia,0.4473852,Poor,Acceptable,0
+405,Barossa - Yorke - Mid North,42,Outer Regional Australia,0.5168986,Poor,Acceptable,0
+405,Barossa - Yorke - Mid North,43,Remote Australia,0.0357161,Poor,Acceptable,0
+406,South Australia - Outback,42,Outer Regional Australia,0.4470303,Poor,Acceptable,0
+406,South Australia - Outback,43,Remote Australia,0.3865491,Poor,Acceptable,0
+406,South Australia - Outback,44,Very Remote Australia,0.1664206,Poor,Acceptable,0
+407,South Australia - South East,41,Inner Regional Australia,0.4178421,Poor,Acceptable,0
+407,South Australia - South East,42,Outer Regional Australia,0.5432864,Poor,Acceptable,0
+407,South Australia - South East,43,Remote Australia,0.0388715,Poor,Acceptable,0
+497,Migratory - Offshore - Shipping (SA),45,Migratory - Offshore - Shipping (SA),1,Good,Good,0
+499,No usual address (SA),49,No usual address (SA),1,Good,Good,0
+501,Bunbury,51,Inner Regional Australia,0.91598,Poor,Acceptable,0
+501,Bunbury,52,Outer Regional Australia,0.0798914,Poor,Acceptable,0
+501,Bunbury,53,Remote Australia,0.0041285,Poor,Acceptable,1
+502,Mandurah,50,Major Cities of Australia,0.9608871,Good,Acceptable,0
+502,Mandurah,51,Inner Regional Australia,0.0391129,Poor,Acceptable,0
+503,Perth - Inner,50,Major Cities of Australia,1,Good,Acceptable,0
+504,Perth - North East,50,Major Cities of Australia,0.9511281,Good,Acceptable,0
+504,Perth - North East,51,Inner Regional Australia,0.0488719,Poor,Acceptable,0
+505,Perth - North West,50,Major Cities of Australia,0.993188,Good,Acceptable,0
+505,Perth - North West,51,Inner Regional Australia,0.006812,Poor,Acceptable,1
+506,Perth - South East,50,Major Cities of Australia,0.9886849,Good,Acceptable,0
+506,Perth - South East,51,Inner Regional Australia,0.0113151,Poor,Acceptable,0
+507,Perth - South West,50,Major Cities of Australia,0.9970283,Good,Acceptable,0
+507,Perth - South West,51,Inner Regional Australia,0.0025974,Poor,Acceptable,1
+507,Perth - South West,53,Remote Australia,0.0003743,Poor,Acceptable,1
+509,Western Australia - Wheat Belt,51,Inner Regional Australia,0.2166109,Poor,Acceptable,0
+509,Western Australia - Wheat Belt,52,Outer Regional Australia,0.6719098,Poor,Acceptable,0
+509,Western Australia - Wheat Belt,53,Remote Australia,0.1077983,Poor,Acceptable,0
+509,Western Australia - Wheat Belt,54,Very Remote Australia,0.0036809,Poor,Acceptable,1
+510,Western Australia - Outback (North),53,Remote Australia,0.5746867,Poor,Acceptable,0
+510,Western Australia - Outback (North),54,Very Remote Australia,0.4253133,Poor,Acceptable,0
+511,Western Australia - Outback (South),52,Outer Regional Australia,0.6483663,Poor,Acceptable,0
+511,Western Australia - Outback (South),53,Remote Australia,0.1674448,Poor,Acceptable,0
+511,Western Australia - Outback (South),54,Very Remote Australia,0.1841889,Poor,Acceptable,0
+597,Migratory - Offshore - Shipping (WA),55,Migratory - Offshore - Shipping (WA),1,Good,Good,0
+599,No usual address (WA),59,No usual address (WA),1,Good,Good,0
+601,Hobart,61,Inner Regional Australia,0.9748709,Acceptable,Acceptable,0
+601,Hobart,62,Outer Regional Australia,0.0251291,Poor,Acceptable,0
+602,Launceston and North East,61,Inner Regional Australia,0.6759609,Acceptable,Acceptable,0
+602,Launceston and North East,62,Outer Regional Australia,0.3168123,Poor,Acceptable,0
+602,Launceston and North East,63,Remote Australia,0.001126,Poor,Acceptable,1
+602,Launceston and North East,64,Very Remote Australia,0.0061008,Poor,Acceptable,1
+603,South East,61,Inner Regional Australia,0.0577664,Acceptable,Acceptable,0
+603,South East,62,Outer Regional Australia,0.86442,Poor,Acceptable,0
+603,South East,63,Remote Australia,0.0778136,Poor,Acceptable,0
+604,West and North West,62,Outer Regional Australia,0.9428005,Poor,Acceptable,0
+604,West and North West,63,Remote Australia,0.0432067,Poor,Acceptable,0
+604,West and North West,64,Very Remote Australia,0.0139929,Poor,Acceptable,0
+697,Migratory - Offshore - Shipping (Tas.),65,Migratory - Offshore - Shipping (Tas.),1,Good,Good,0
+699,No usual address (Tas.),69,No usual address (Tas.),1,Good,Good,0
+701,Darwin,72,Outer Regional Australia,1,Good,Acceptable,0
+702,Northern Territory - Outback,73,Remote Australia,0.5279179,Poor,Acceptable,0
+702,Northern Territory - Outback,74,Very Remote Australia,0.4720821,Poor,Acceptable,0
+797,Migratory - Offshore - Shipping (NT),75,Migratory - Offshore - Shipping (NT),1,Good,Good,0
+799,No usual address (NT),79,No usual address (NT),1,Good,Good,0
+801,Australian Capital Territory,80,Major Cities of Australia,0.9984703,Good,Acceptable,0
+801,Australian Capital Territory,81,Inner Regional Australia,0.0015297,Poor,Acceptable,1
+897,Migratory - Offshore - Shipping (ACT),85,Migratory - Offshore - Shipping (ACT),1,Good,Good,0
+899,No usual address (ACT),89,No usual address (ACT),1,Good,Good,0
+901,Other Territories,91,Inner Regional Australia,0.0643689,Poor,Acceptable,0
+901,Other Territories,94,Very Remote Australia,0.9356311,Good,Acceptable,0
+997,Migratory - Offshore - Shipping (OT),95,Migratory - Offshore - Shipping (OT),1,Good,Good,0
+999,No usual address (OT),99,No usual address (OT),1,Good,Good,0
+ZZZ,Outside Australia,ZZ,Outside Australia,1,Good,Good,0

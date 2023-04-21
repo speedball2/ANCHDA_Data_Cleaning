@@ -1,0 +1,44 @@
+﻿ADD_CODE_2016,ADD_NAME_2016,ADD_CODE_2021,ADD_NAME_2021,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+D01,Carpentaria Coast,D01,Carpentaria Coast,0.9771803,Good,Good,0
+D01,Carpentaria Coast,D04,North East Coast,0.0009241,Good,Good,1
+D01,Carpentaria Coast,D12,Tanami-Timor Sea Coast,0.0218949,Good,Good,0
+D02,Lake Eyre Basin,D02,Lake Eyre Basin,0.9900378,Good,Good,0
+D02,Lake Eyre Basin,D04,North East Coast,0.0085682,Good,Good,1
+D02,Lake Eyre Basin,D12,Tanami-Timor Sea Coast,0.0013935,Good,Good,1
+D02,Lake Eyre Basin,D01,Carpentaria Coast,5.00E-07,Good,Good,1
+D03,Murray-Darling Basin,D02,Lake Eyre Basin,0.0088777,Good,Good,1
+D03,Murray-Darling Basin,D03,Murray-Darling Basin,0.9903284,Good,Good,0
+D03,Murray-Darling Basin,D07,South Australian Gulf,0.0001761,Acceptable,Good,1
+D03,Murray-Darling Basin,D08,South East Coast (NSW),0.0001418,Good,Good,1
+D03,Murray-Darling Basin,D09,South East Coast (Victoria),0.0004411,Good,Good,1
+D03,Murray-Darling Basin,D04,North East Coast,3.49E-05,Good,Good,1
+D04,North East Coast,D01,Carpentaria Coast,0.0001345,Good,Good,1
+D04,North East Coast,D04,North East Coast,0.9998078,Good,Good,0
+D04,North East Coast,D08,South East Coast (NSW),1.33E-05,Good,Good,1
+D04,North East Coast,D03,Murray-Darling Basin,4.40E-05,Good,Good,1
+D05,North Western Plateau,D05,North Western Plateau,0.9095885,Acceptable,Good,0
+D05,North Western Plateau,D11,South Western Plateau,0.0881006,Acceptable,Good,0
+D05,North Western Plateau,D12,Tanami-Timor Sea Coast,0.0023109,Good,Good,1
+D06,Pilbara-Gascoyne,D06,Pilbara-Gascoyne,1,Good,Good,0
+D07,South Australian Gulf,D11,South Western Plateau,0.0209122,Acceptable,Good,0
+D07,South Australian Gulf,D07,South Australian Gulf,0.884553,Acceptable,Good,0
+D07,South Australian Gulf,D03,Murray-Darling Basin,0.0009656,Good,Good,1
+D07,South Australian Gulf,D02,Lake Eyre Basin,0.0932585,Good,Good,0
+D08,South East Coast (NSW),D03,Murray-Darling Basin,0.0044703,Good,Good,1
+D08,South East Coast (NSW),D09,South East Coast (Victoria),0.0008242,Good,Good,1
+D08,South East Coast (NSW),D08,South East Coast (NSW),0.9946874,Good,Good,0
+D08,South East Coast (NSW),D04,North East Coast,1.68E-05,Good,Good,1
+D09,South East Coast (Victoria),D03,Murray-Darling Basin,0.0042284,Good,Good,1
+D09,South East Coast (Victoria),D09,South East Coast (Victoria),0.9957705,Good,Good,0
+D09,South East Coast (Victoria),D08,South East Coast (NSW),8.00E-07,Good,Good,1
+D10,South West Coast,D10,South West Coast,0.999998,Good,Good,0
+D10,South West Coast,D11,South Western Plateau,1.90E-06,Acceptable,Good,1
+D11,South Western Plateau,D05,North Western Plateau,0.112419,Acceptable,Good,0
+D11,South Western Plateau,D11,South Western Plateau,0.887581,Acceptable,Good,0
+D12,Tanami-Timor Sea Coast,D11,South Western Plateau,0.0110859,Acceptable,Good,0
+D12,Tanami-Timor Sea Coast,D12,Tanami-Timor Sea Coast,0.988914,Good,Good,0
+D13,Tasmania,D13,Tasmania,1,Good,Good,0
+D91,Unclassified (Aust.),D91,Unclassified (Aust.),0.9999998,Good,Good,0
+D94,No usual address (Aust.),D94,No usual address (Aust.),1,Good,Good,0
+D97,Migratory - Offshore - Shipping (Aust.),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+,,DZZ,Outside Australia,,NA,Good,3

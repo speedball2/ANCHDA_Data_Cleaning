@@ -1,0 +1,611 @@
+LGA_CODE_2021,LGA_NAME_2021,PHN_CODE_2017,PHN_NAME_2017,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+10050,Albury,PHN205,Murray,1,Good,Good,0
+10180,Armidale Regional,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+10250,Ballina,PHN109,North Coast,1,Good,Good,0
+10300,Balranald,PHN107,Western NSW,1,Good,Good,0
+10470,Bathurst Regional,PHN107,Western NSW,1,Good,Good,0
+10500,Bayside (NSW),PHN101,Central and Eastern Sydney,1,Good,Good,0
+10550,Bega Valley,PHN106,South Eastern NSW,1,Good,Good,0
+10600,Bellingen,PHN109,North Coast,1,Good,Good,0
+10650,Berrigan,PHN110,Murrumbidgee,1,Good,Good,0
+10750,Blacktown,PHN103,Western Sydney,1,Good,Good,0
+10800,Bland,PHN110,Murrumbidgee,1,Good,Good,0
+10850,Blayney,PHN107,Western NSW,1,Good,Good,0
+10900,Blue Mountains,PHN104,Nepean Blue Mountains,1,Good,Good,0
+10950,Bogan,PHN107,Western NSW,1,Good,Good,0
+11150,Bourke,PHN107,Western NSW,1,Good,Good,0
+11200,Brewarrina,PHN107,Western NSW,1,Good,Good,0
+11250,Broken Hill,PHN107,Western NSW,1,Good,Good,0
+11300,Burwood,PHN101,Central and Eastern Sydney,1,Good,Good,0
+11350,Byron,PHN109,North Coast,1,Good,Good,0
+11400,Cabonne,PHN107,Western NSW,1,Good,Good,0
+11450,Camden,PHN105,South Western Sydney,1,Good,Good,0
+11500,Campbelltown (NSW),PHN105,South Western Sydney,1,Good,Good,0
+11520,Canada Bay,PHN101,Central and Eastern Sydney,1,Good,Good,0
+11570,Canterbury-Bankstown,PHN101,Central and Eastern Sydney,0.4214125,Good,Good,0
+11570,Canterbury-Bankstown,PHN105,South Western Sydney,0.5785875,Good,Good,0
+11600,Carrathool,PHN110,Murrumbidgee,1,Good,Good,0
+11650,Central Coast (NSW),PHN108,Hunter New England and Central Coast,1,Good,Good,0
+11700,Central Darling,PHN107,Western NSW,1,Good,Good,0
+11720,Cessnock,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+11730,Clarence Valley,PHN109,North Coast,1,Good,Good,0
+11750,Cobar,PHN107,Western NSW,1,Good,Good,0
+11800,Coffs Harbour,PHN109,North Coast,1,Good,Good,0
+12000,Coolamon,PHN110,Murrumbidgee,1,Good,Good,0
+12150,Coonamble,PHN107,Western NSW,1,Good,Good,0
+12160,Cootamundra-Gundagai Regional,PHN110,Murrumbidgee,1,Good,Good,0
+12350,Cowra,PHN107,Western NSW,1,Good,Good,0
+12380,Cumberland,PHN103,Western Sydney,1,Good,Good,0
+12390,Dubbo Regional,PHN107,Western NSW,1,Good,Good,0
+12700,Dungog,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+12730,Edward River,PHN110,Murrumbidgee,1,Good,Good,0
+12750,Eurobodalla,PHN106,South Eastern NSW,1,Good,Good,0
+12850,Fairfield,PHN105,South Western Sydney,1,Good,Good,0
+12870,Federation,PHN110,Murrumbidgee,1,Good,Good,0
+12900,Forbes,PHN107,Western NSW,1,Good,Good,0
+12930,Georges River,PHN101,Central and Eastern Sydney,1,Good,Good,0
+12950,Gilgandra,PHN107,Western NSW,1,Good,Good,0
+13010,Glen Innes Severn,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+13310,Goulburn Mulwaree,PHN106,South Eastern NSW,1,Good,Good,0
+13340,Greater Hume Shire,PHN110,Murrumbidgee,1,Good,Good,0
+13450,Griffith,PHN110,Murrumbidgee,1,Good,Good,0
+13550,Gunnedah,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+13660,Gwydir,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+13800,Hawkesbury,PHN104,Nepean Blue Mountains,1,Good,Good,0
+13850,Hay,PHN110,Murrumbidgee,1,Good,Good,0
+13910,Hilltops,PHN110,Murrumbidgee,1,Good,Good,0
+14000,Hornsby,PHN102,Northern Sydney,1,Good,Good,0
+14100,Hunters Hill,PHN102,Northern Sydney,1,Good,Good,0
+14170,Inner West,PHN101,Central and Eastern Sydney,1,Good,Good,0
+14220,Inverell,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+14300,Junee,PHN110,Murrumbidgee,1,Good,Good,0
+14350,Kempsey,PHN109,North Coast,1,Good,Good,0
+14400,Kiama,PHN106,South Eastern NSW,1,Good,Good,0
+14500,Ku-ring-gai,PHN102,Northern Sydney,1,Good,Good,0
+14550,Kyogle,PHN109,North Coast,1,Good,Good,0
+14600,Lachlan,PHN110,Murrumbidgee,0.2941696,Good,Good,0
+14600,Lachlan,PHN107,Western NSW,0.7058304,Good,Good,0
+14650,Lake Macquarie,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+14700,Lane Cove,PHN102,Northern Sydney,1,Good,Good,0
+14750,Leeton,PHN110,Murrumbidgee,1,Good,Good,0
+14850,Lismore,PHN109,North Coast,1,Good,Good,0
+14870,Lithgow,PHN104,Nepean Blue Mountains,1,Good,Good,0
+14900,Liverpool,PHN105,South Western Sydney,1,Good,Good,0
+14920,Liverpool Plains,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+14950,Lockhart,PHN110,Murrumbidgee,1,Good,Good,0
+15050,Maitland,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+15240,Mid-Coast,PHN109,North Coast,1.00E-07,Good,Good,1
+15240,Mid-Coast,PHN108,Hunter New England and Central Coast,0.9999999,Good,Good,0
+15270,Mid-Western Regional,PHN104,Nepean Blue Mountains,0.0001565,Good,Good,1
+15270,Mid-Western Regional,PHN107,Western NSW,0.9998435,Good,Good,0
+15300,Moree Plains,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+15350,Mosman,PHN102,Northern Sydney,1,Good,Good,0
+15520,Murray River,PHN110,Murrumbidgee,1,Good,Good,0
+15560,Murrumbidgee,PHN110,Murrumbidgee,1,Good,Good,0
+15650,Muswellbrook,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+15700,Nambucca Valley,PHN109,North Coast,1,Good,Good,0
+15750,Narrabri,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+15800,Narrandera,PHN110,Murrumbidgee,1,Good,Good,0
+15850,Narromine,PHN107,Western NSW,1,Good,Good,0
+15900,Newcastle,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+15950,North Sydney,PHN102,Northern Sydney,1,Good,Good,0
+15990,Northern Beaches,PHN102,Northern Sydney,1,Good,Good,0
+16100,Oberon,PHN107,Western NSW,1,Good,Good,0
+16150,Orange,PHN107,Western NSW,1,Good,Good,0
+16200,Parkes,PHN107,Western NSW,1,Good,Good,0
+16260,Parramatta,PHN102,Northern Sydney,0.10832,Good,Good,0
+16260,Parramatta,PHN103,Western Sydney,0.89168,Good,Good,0
+16350,Penrith,PHN104,Nepean Blue Mountains,1,Good,Good,0
+16380,Port Macquarie-Hastings,PHN109,North Coast,1,Good,Good,0
+16400,Port Stephens,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+16490,Queanbeyan-Palerang Regional,PHN106,South Eastern NSW,1,Good,Good,0
+16550,Randwick,PHN101,Central and Eastern Sydney,1,Good,Good,0
+16610,Richmond Valley,PHN109,North Coast,1,Good,Good,0
+16700,Ryde,PHN102,Northern Sydney,1,Good,Good,0
+16900,Shellharbour,PHN106,South Eastern NSW,1,Good,Good,0
+16950,Shoalhaven,PHN106,South Eastern NSW,1,Good,Good,0
+17000,Singleton,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+17040,Snowy Monaro Regional,PHN106,South Eastern NSW,1,Good,Good,0
+17080,Snowy Valleys,PHN110,Murrumbidgee,1,Good,Good,0
+17100,Strathfield,PHN101,Central and Eastern Sydney,1,Good,Good,0
+17150,Sutherland Shire,PHN101,Central and Eastern Sydney,1,Good,Good,0
+17200,Sydney,,,8.60E-06,Acceptable,Good,4
+17200,Sydney,PHN101,Central and Eastern Sydney,0.9999914,Good,Good,0
+17310,Tamworth Regional,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+17350,Temora,PHN110,Murrumbidgee,1,Good,Good,0
+17400,Tenterfield,PHN109,North Coast,0.0689786,Good,Good,0
+17400,Tenterfield,PHN108,Hunter New England and Central Coast,0.9310214,Good,Good,0
+17420,The Hills Shire,PHN103,Western Sydney,1,Good,Good,0
+17550,Tweed,PHN109,North Coast,1,Good,Good,0
+17620,Upper Hunter Shire,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+17640,Upper Lachlan Shire,PHN106,South Eastern NSW,1,Good,Good,0
+17650,Uralla,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+17750,Wagga Wagga,PHN110,Murrumbidgee,1,Good,Good,0
+17850,Walcha,PHN108,Hunter New England and Central Coast,1,Good,Good,0
+17900,Walgett,PHN107,Western NSW,1,Good,Good,0
+17950,Warren,PHN107,Western NSW,1,Good,Good,0
+18020,Warrumbungle Shire,PHN107,Western NSW,1,Good,Good,0
+18050,Waverley,PHN101,Central and Eastern Sydney,1,Good,Good,0
+18100,Weddin,PHN107,Western NSW,1,Good,Good,0
+18200,Wentworth,PHN107,Western NSW,1,Good,Good,0
+18250,Willoughby,PHN102,Northern Sydney,1,Good,Good,0
+18350,Wingecarribee,PHN105,South Western Sydney,1,Good,Good,0
+18400,Wollondilly,PHN105,South Western Sydney,1,Good,Good,0
+18450,Wollongong,,,7.37E-05,Acceptable,Good,4
+18450,Wollongong,PHN106,South Eastern NSW,0.9999263,Good,Good,0
+18500,Woollahra,PHN101,Central and Eastern Sydney,1,Good,Good,0
+18710,Yass Valley,PHN106,South Eastern NSW,1,Good,Good,0
+19399,Unincorporated NSW,PHN101,Central and Eastern Sydney,0.4502562,Good,Good,0
+19399,Unincorporated NSW,PHN107,Western NSW,0.5497438,Good,Good,0
+19499,No usual address (NSW),,,,NA,Good,2
+19799,Migratory - Offshore - Shipping (NSW),,,,NA,Good,2
+20110,Alpine,PHN205,Murray,1,Good,Good,0
+20260,Ararat,PHN206,Western Victoria,1,Good,Good,0
+20570,Ballarat,PHN206,Western Victoria,1,Good,Good,0
+20660,Banyule,PHN202,Eastern Melbourne,1,Good,Good,0
+20740,Bass Coast,PHN204,Gippsland,1,Good,Good,0
+20830,Baw Baw,PHN204,Gippsland,1,Good,Good,0
+20910,Bayside (Vic.),PHN203,South Eastern Melbourne,1,Good,Good,0
+21010,Benalla,PHN205,Murray,1,Good,Good,0
+21110,Boroondara,PHN202,Eastern Melbourne,1,Good,Good,0
+21180,Brimbank,PHN201,North Western Melbourne,1,Good,Good,0
+21270,Buloke,PHN205,Murray,1,Good,Good,0
+21370,Campaspe,PHN205,Murray,1,Good,Good,0
+21450,Cardinia,PHN202,Eastern Melbourne,0.0014969,Good,Good,1
+21450,Cardinia,PHN203,South Eastern Melbourne,0.9985031,Good,Good,0
+21610,Casey,PHN203,South Eastern Melbourne,1,Good,Good,0
+21670,Central Goldfields,PHN205,Murray,0.0006721,Good,Good,1
+21670,Central Goldfields,PHN206,Western Victoria,0.9993279,Good,Good,0
+21750,Colac Otway,PHN206,Western Victoria,1,Good,Good,0
+21830,Corangamite,PHN206,Western Victoria,1,Good,Good,0
+21890,Darebin,PHN201,North Western Melbourne,1,Good,Good,0
+22110,East Gippsland,PHN204,Gippsland,1,Good,Good,0
+22170,Frankston,PHN203,South Eastern Melbourne,1,Good,Good,0
+22250,Gannawarra,PHN205,Murray,1,Good,Good,0
+22310,Glen Eira,PHN203,South Eastern Melbourne,1,Good,Good,0
+22410,Glenelg,PHN206,Western Victoria,1,Good,Good,0
+22490,Golden Plains,PHN206,Western Victoria,1,Good,Good,0
+22620,Greater Bendigo,PHN205,Murray,1,Good,Good,0
+22670,Greater Dandenong,PHN203,South Eastern Melbourne,1,Good,Good,0
+22750,Greater Geelong,PHN206,Western Victoria,1,Good,Good,0
+22830,Greater Shepparton,PHN205,Murray,1,Good,Good,0
+22910,Hepburn,PHN206,Western Victoria,1,Good,Good,0
+22980,Hindmarsh,PHN206,Western Victoria,1,Good,Good,0
+23110,Hobsons Bay,PHN201,North Western Melbourne,1,Good,Good,0
+23190,Horsham,PHN206,Western Victoria,1,Good,Good,0
+23270,Hume,PHN201,North Western Melbourne,1,Good,Good,0
+23350,Indigo,PHN205,Murray,1,Good,Good,0
+23430,Kingston (Vic.),PHN203,South Eastern Melbourne,1,Good,Good,0
+23670,Knox,PHN202,Eastern Melbourne,1,Good,Good,0
+23810,Latrobe (Vic.),PHN204,Gippsland,1,Good,Good,0
+23940,Loddon,PHN206,Western Victoria,0.0276384,Good,Good,0
+23940,Loddon,PHN205,Murray,0.9723616,Good,Good,0
+24130,Macedon Ranges,PHN205,Murray,0.3589435,Good,Good,0
+24130,Macedon Ranges,PHN201,North Western Melbourne,0.6410565,Good,Good,0
+24210,Manningham,PHN202,Eastern Melbourne,1,Good,Good,0
+24250,Mansfield,PHN205,Murray,1,Good,Good,0
+24330,Maribyrnong,PHN201,North Western Melbourne,1,Good,Good,0
+24410,Maroondah,PHN202,Eastern Melbourne,1,Good,Good,0
+24600,Melbourne,PHN203,South Eastern Melbourne,0.0001022,Good,Good,1
+24600,Melbourne,PHN201,North Western Melbourne,0.9998978,Good,Good,0
+24650,Melton,PHN201,North Western Melbourne,1,Good,Good,0
+24780,Mildura,PHN205,Murray,1,Good,Good,0
+24850,Mitchell,PHN202,Eastern Melbourne,0.4572489,Good,Good,0
+24850,Mitchell,PHN205,Murray,0.5427511,Good,Good,0
+24900,Moira,PHN205,Murray,1,Good,Good,0
+24970,Monash,PHN203,South Eastern Melbourne,0.0396261,Good,Good,0
+24970,Monash,PHN202,Eastern Melbourne,0.9603739,Good,Good,0
+25060,Moonee Valley,PHN201,North Western Melbourne,1,Good,Good,0
+25150,Moorabool,PHN206,Western Victoria,0.3433069,Good,Good,0
+25150,Moorabool,PHN201,North Western Melbourne,0.6566931,Good,Good,0
+25250,Moreland,PHN201,North Western Melbourne,1,Good,Good,0
+25340,Mornington Peninsula,PHN203,South Eastern Melbourne,1,Good,Good,0
+25430,Mount Alexander,PHN206,Western Victoria,0.0005931,Good,Good,1
+25430,Mount Alexander,PHN205,Murray,0.9994069,Good,Good,0
+25490,Moyne,PHN206,Western Victoria,1,Good,Good,0
+25620,Murrindindi,PHN202,Eastern Melbourne,0.2762979,Good,Good,0
+25620,Murrindindi,PHN205,Murray,0.7237021,Good,Good,0
+25710,Nillumbik,PHN202,Eastern Melbourne,1,Good,Good,0
+25810,Northern Grampians,PHN206,Western Victoria,1,Good,Good,0
+25900,Port Phillip,PHN203,South Eastern Melbourne,1,Good,Good,0
+25990,Pyrenees,PHN206,Western Victoria,1,Good,Good,0
+26080,Queenscliffe,PHN206,Western Victoria,1,Good,Good,0
+26170,South Gippsland,PHN204,Gippsland,1,Good,Good,0
+26260,Southern Grampians,PHN206,Western Victoria,1,Good,Good,0
+26350,Stonnington,PHN203,South Eastern Melbourne,1,Good,Good,0
+26430,Strathbogie,PHN205,Murray,1,Good,Good,0
+26490,Surf Coast,PHN206,Western Victoria,1,Good,Good,0
+26610,Swan Hill,PHN205,Murray,1,Good,Good,0
+26670,Towong,PHN205,Murray,1,Good,Good,0
+26700,Wangaratta,PHN205,Murray,1,Good,Good,0
+26730,Warrnambool,PHN206,Western Victoria,1,Good,Good,0
+26810,Wellington,PHN204,Gippsland,1,Good,Good,0
+26890,West Wimmera,PHN206,Western Victoria,1,Good,Good,0
+26980,Whitehorse,PHN202,Eastern Melbourne,1,Good,Good,0
+27070,Whittlesea,PHN202,Eastern Melbourne,1,Good,Good,0
+27170,Wodonga,PHN205,Murray,1,Good,Good,0
+27260,Wyndham,PHN201,North Western Melbourne,1,Good,Good,0
+27350,Yarra,PHN201,North Western Melbourne,1,Good,Good,0
+27450,Yarra Ranges,PHN205,Murray,0.0015507,Good,Good,1
+27450,Yarra Ranges,PHN203,South Eastern Melbourne,0.0021072,Good,Good,1
+27450,Yarra Ranges,PHN202,Eastern Melbourne,0.9963421,Good,Good,0
+27630,Yarriambiack,PHN206,Western Victoria,1,Good,Good,0
+29399,Unincorporated Vic,PHN203,South Eastern Melbourne,1.05E-05,Good,Good,1
+29399,Unincorporated Vic,PHN206,Western Victoria,1.05E-05,Good,Good,1
+29399,Unincorporated Vic,PHN204,Gippsland,0.1766793,Good,Good,0
+29399,Unincorporated Vic,PHN205,Murray,0.8232997,Good,Good,0
+29499,No usual address (Vic.),,,,NA,Good,2
+29799,Migratory - Offshore - Shipping (Vic.),,,,NA,Good,2
+30250,Aurukun,PHN307,Northern Queensland,1,Good,Good,0
+30300,Balonne,PHN305,Western Queensland,1,Good,Good,0
+30370,Banana,PHN304,Darling Downs and West Moreton,0.0650817,Good,Good,0
+30370,Banana,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",0.9349183,Good,Good,0
+30410,Barcaldine,PHN305,Western Queensland,1,Good,Good,0
+30450,Barcoo,PHN305,Western Queensland,1,Good,Good,0
+30760,Blackall Tambo,PHN305,Western Queensland,1,Good,Good,0
+30900,Boulia,PHN305,Western Queensland,1,Good,Good,0
+31000,Brisbane,PHN304,Darling Downs and West Moreton,0.0049176,Good,Good,1
+31000,Brisbane,PHN301,Brisbane North,0.4534771,Poor,Good,0
+31000,Brisbane,PHN302,Brisbane South,0.5416053,Poor,Good,0
+31750,Bulloo,PHN305,Western Queensland,1,Good,Good,0
+31820,Bundaberg,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",1,Good,Good,0
+31900,Burdekin,PHN307,Northern Queensland,1,Good,Good,0
+31950,Burke,PHN305,Western Queensland,1,Good,Good,0
+32080,Cairns,PHN307,Northern Queensland,1,Good,Good,0
+32250,Carpentaria,PHN305,Western Queensland,1,Good,Good,0
+32260,Cassowary Coast,PHN307,Northern Queensland,1,Good,Good,0
+32270,Central Highlands (Qld),PHN306,"Central Queensland, Wide Bay, Sunshine Coast",1,Good,Good,0
+32310,Charters Towers,PHN307,Northern Queensland,1,Good,Good,0
+32330,Cherbourg,PHN304,Darling Downs and West Moreton,1,Good,Good,0
+32450,Cloncurry,PHN305,Western Queensland,1,Good,Good,0
+32500,Cook,PHN307,Northern Queensland,1,Good,Good,0
+32600,Croydon,PHN307,Northern Queensland,1,Good,Good,0
+32750,Diamantina,PHN305,Western Queensland,1,Good,Good,0
+32770,Doomadgee,PHN305,Western Queensland,1,Good,Good,0
+32810,Douglas,PHN307,Northern Queensland,1,Good,Good,0
+33100,Etheridge,PHN307,Northern Queensland,1,Good,Good,0
+33200,Flinders (Qld),PHN307,Northern Queensland,1,Good,Good,0
+33220,Fraser Coast,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",1,Good,Good,0
+33360,Gladstone,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",1,Good,Good,0
+33430,Gold Coast,PHN303,Gold Coast,1,Good,Good,0
+33610,Goondiwindi,PHN304,Darling Downs and West Moreton,1,Good,Good,0
+33620,Gympie,,,0.0003151,Acceptable,Good,4
+33620,Gympie,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",0.9996849,Good,Good,0
+33800,Hinchinbrook,PHN307,Northern Queensland,1,Good,Good,0
+33830,Hope Vale,PHN307,Northern Queensland,1,Good,Good,0
+33960,Ipswich,PHN304,Darling Downs and West Moreton,1,Good,Good,0
+33980,Isaac,PHN307,Northern Queensland,1,Good,Good,0
+34420,Kowanyama,PHN307,Northern Queensland,1,Good,Good,0
+34530,Livingstone,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",1,Good,Good,0
+34570,Lockhart River,PHN307,Northern Queensland,1,Good,Good,0
+34580,Lockyer Valley,PHN304,Darling Downs and West Moreton,1,Good,Good,0
+34590,Logan,PHN302,Brisbane South,1,Poor,Good,0
+34710,Longreach,PHN305,Western Queensland,1,Good,Good,0
+34770,Mackay,PHN307,Northern Queensland,1,Good,Good,0
+34800,McKinlay,PHN305,Western Queensland,1,Good,Good,0
+34830,Mapoon,,,0.0095471,Acceptable,Good,4
+34830,Mapoon,PHN307,Northern Queensland,0.9904529,Good,Good,0
+34860,Maranoa,PHN304,Darling Downs and West Moreton,1.60E-06,Good,Good,1
+34860,Maranoa,PHN305,Western Queensland,0.9999984,Good,Good,0
+34880,Mareeba,PHN307,Northern Queensland,1,Good,Good,0
+35010,Moreton Bay,PHN301,Brisbane North,1,Poor,Good,0
+35250,Mornington,PHN305,Western Queensland,1,Good,Good,0
+35300,Mount Isa,PHN305,Western Queensland,1,Good,Good,0
+35600,Murweh,PHN305,Western Queensland,1,Good,Good,0
+35670,Napranum,PHN307,Northern Queensland,1,Good,Good,0
+35740,Noosa,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",1,Good,Good,0
+35760,North Burnett,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",1,Good,Good,0
+35780,Northern Peninsula Area,PHN307,Northern Queensland,1,Good,Good,0
+35790,Palm Island,PHN307,Northern Queensland,1,Good,Good,0
+35800,Paroo,PHN305,Western Queensland,1,Good,Good,0
+36070,Pormpuraaw,PHN307,Northern Queensland,1,Good,Good,0
+36150,Quilpie,PHN305,Western Queensland,1,Good,Good,0
+36250,Redland,PHN302,Brisbane South,1,Poor,Good,0
+36300,Richmond,PHN307,Northern Queensland,1,Good,Good,0
+36370,Rockhampton,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",1,Good,Good,0
+36510,Scenic Rim,PHN304,Darling Downs and West Moreton,0.291939,Good,Good,0
+36510,Scenic Rim,PHN302,Brisbane South,0.3439692,Poor,Good,0
+36510,Scenic Rim,PHN303,Gold Coast,0.3640918,Good,Good,0
+36580,Somerset,PHN301,Brisbane North,0.1994526,Poor,Good,0
+36580,Somerset,PHN304,Darling Downs and West Moreton,0.8005474,Good,Good,0
+36630,South Burnett,PHN304,Darling Downs and West Moreton,1,Good,Good,0
+36660,Southern Downs,PHN304,Darling Downs and West Moreton,1,Good,Good,0
+36720,Sunshine Coast,PHN301,Brisbane North,2.00E-07,Poor,Good,1
+36720,Sunshine Coast,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",0.9999998,Good,Good,0
+36820,Tablelands,PHN307,Northern Queensland,1,Good,Good,0
+36910,Toowoomba,PHN304,Darling Downs and West Moreton,1,Good,Good,0
+36950,Torres,,,0.0003427,Acceptable,Good,4
+36950,Torres,PHN307,Northern Queensland,0.9996573,Good,Good,0
+36960,Torres Strait Island,,,0.0039573,Acceptable,Good,4
+36960,Torres Strait Island,PHN307,Northern Queensland,0.9960427,Good,Good,0
+37010,Townsville,PHN307,Northern Queensland,1,Good,Good,0
+37300,Weipa,PHN307,Northern Queensland,1,Good,Good,0
+37310,Western Downs,PHN304,Darling Downs and West Moreton,1,Good,Good,0
+37340,Whitsunday,,,7.61E-05,Acceptable,Good,4
+37340,Whitsunday,PHN307,Northern Queensland,0.9999239,Good,Good,0
+37400,Winton,PHN305,Western Queensland,1,Good,Good,0
+37550,Woorabinda,PHN306,"Central Queensland, Wide Bay, Sunshine Coast",1,Good,Good,0
+37570,Wujal Wujal,PHN307,Northern Queensland,1,Good,Good,0
+37600,Yarrabah,PHN307,Northern Queensland,1,Good,Good,0
+39499,No usual address (Qld),,,,NA,Good,2
+39799,Migratory - Offshore - Shipping (Qld),,,,NA,Good,2
+40070,Adelaide,PHN401,Adelaide,1,Good,Good,0
+40120,Adelaide Hills,PHN402,Country SA,1,Good,Good,0
+40150,Adelaide Plains,PHN402,Country SA,1,Good,Good,0
+40220,Alexandrina,PHN402,Country SA,1,Good,Good,0
+40250,Anangu Pitjantjatjara Yunkunytjatjara,PHN402,Country SA,1,Good,Good,0
+40310,Barossa,PHN402,Country SA,1,Good,Good,0
+40430,Barunga West,PHN402,Country SA,1,Good,Good,0
+40520,Berri Barmera,PHN402,Country SA,1,Good,Good,0
+40700,Burnside,PHN401,Adelaide,1,Good,Good,0
+40910,Campbelltown (SA),PHN401,Adelaide,1,Good,Good,0
+41010,Ceduna,PHN402,Country SA,1,Good,Good,0
+41060,Charles Sturt,PHN401,Adelaide,1,Good,Good,0
+41140,Clare and Gilbert Valleys,PHN402,Country SA,1,Good,Good,0
+41190,Cleve,PHN402,Country SA,1,Good,Good,0
+41330,Coober Pedy,PHN402,Country SA,1,Good,Good,0
+41560,Copper Coast,PHN402,Country SA,1,Good,Good,0
+41750,Elliston,PHN402,Country SA,1,Good,Good,0
+41830,Flinders Ranges,PHN402,Country SA,1,Good,Good,0
+41960,Franklin Harbour,PHN402,Country SA,1,Good,Good,0
+42030,Gawler,PHN402,Country SA,1,Good,Good,0
+42110,Goyder,PHN402,Country SA,1,Good,Good,0
+42250,Grant,PHN402,Country SA,1,Good,Good,0
+42600,Holdfast Bay,PHN401,Adelaide,1,Good,Good,0
+42750,Kangaroo Island,,,6.94E-05,Acceptable,Good,4
+42750,Kangaroo Island,PHN402,Country SA,0.9999306,Good,Good,0
+43080,Karoonda East Murray,PHN402,Country SA,1,Good,Good,0
+43220,Kimba,PHN402,Country SA,1,Good,Good,0
+43360,Kingston (SA),PHN402,Country SA,1,Good,Good,0
+43650,Light,PHN402,Country SA,1,Good,Good,0
+43710,Lower Eyre Peninsula,PHN402,Country SA,1,Good,Good,0
+43790,Loxton Waikerie,PHN402,Country SA,1,Good,Good,0
+44000,Maralinga Tjarutja,PHN402,Country SA,1,Good,Good,0
+44060,Marion,PHN401,Adelaide,1,Good,Good,0
+44210,Mid Murray,PHN402,Country SA,1,Good,Good,0
+44340,Mitcham,PHN401,Adelaide,1,Good,Good,0
+44550,Mount Barker,PHN402,Country SA,1,Good,Good,0
+44620,Mount Gambier,PHN402,Country SA,1,Good,Good,0
+44830,Mount Remarkable,PHN402,Country SA,1,Good,Good,0
+45040,Murray Bridge,PHN402,Country SA,1,Good,Good,0
+45090,Naracoorte Lucindale,PHN402,Country SA,1,Good,Good,0
+45120,Northern Areas,PHN402,Country SA,1,Good,Good,0
+45290,Norwood Payneham and St Peters,PHN401,Adelaide,1,Good,Good,0
+45340,Onkaparinga,PHN401,Adelaide,1,Good,Good,0
+45400,Orroroo Carrieton,PHN402,Country SA,1,Good,Good,0
+45540,Peterborough,PHN402,Country SA,1,Good,Good,0
+45680,Playford,PHN401,Adelaide,1,Good,Good,0
+45890,Port Adelaide Enfield,PHN401,Adelaide,1,Good,Good,0
+46090,Port Augusta,PHN402,Country SA,1,Good,Good,0
+46300,Port Lincoln,PHN402,Country SA,1,Good,Good,0
+46450,Port Pirie,PHN402,Country SA,1,Good,Good,0
+46510,Prospect,PHN401,Adelaide,1,Good,Good,0
+46670,Renmark Paringa,PHN402,Country SA,1,Good,Good,0
+46860,Robe,PHN402,Country SA,1,Good,Good,0
+46970,Roxby Downs,PHN402,Country SA,1,Good,Good,0
+47140,Salisbury,PHN401,Adelaide,1,Good,Good,0
+47290,Southern Mallee,PHN402,Country SA,1,Good,Good,0
+47490,Streaky Bay,PHN402,Country SA,1,Good,Good,0
+47630,Tatiara,PHN402,Country SA,1,Good,Good,0
+47700,Tea Tree Gully,PHN401,Adelaide,1,Good,Good,0
+47800,Coorong,PHN402,Country SA,1,Good,Good,0
+47910,Tumby Bay,PHN402,Country SA,1,Good,Good,0
+47980,Unley,PHN401,Adelaide,1,Good,Good,0
+48050,Victor Harbor,PHN402,Country SA,1,Good,Good,0
+48130,Wakefield,PHN402,Country SA,1,Good,Good,0
+48260,Walkerville,PHN401,Adelaide,1,Good,Good,0
+48340,Wattle Range,PHN402,Country SA,1,Good,Good,0
+48410,West Torrens,PHN401,Adelaide,1,Good,Good,0
+48540,Whyalla,PHN402,Country SA,1,Good,Good,0
+48640,Wudinna,PHN402,Country SA,1,Good,Good,0
+48750,Yankalilla,PHN402,Country SA,1,Good,Good,0
+48830,Yorke Peninsula,PHN402,Country SA,1,Good,Good,0
+49399,Unincorporated SA,PHN401,Adelaide,0.0013583,Good,Good,1
+49399,Unincorporated SA,PHN402,Country SA,0.9986417,Good,Good,0
+49499,No usual address (SA),,,,NA,Good,2
+49799,Migratory - Offshore - Shipping (SA),,,,NA,Good,2
+50080,Albany,PHN503,Country WA,1,Good,Good,0
+50210,Armadale,PHN502,Perth South,1,Good,Good,0
+50250,Ashburton,PHN503,Country WA,1,Good,Good,0
+50280,Augusta Margaret River,PHN503,Country WA,1,Good,Good,0
+50350,Bassendean,PHN501,Perth North,1,Good,Good,0
+50420,Bayswater,PHN501,Perth North,1,Good,Good,0
+50490,Belmont,PHN501,Perth North,2.00E-07,Good,Good,1
+50490,Belmont,PHN502,Perth South,0.9999998,Good,Good,0
+50560,Beverley,PHN503,Country WA,1,Good,Good,0
+50630,Boddington,PHN503,Country WA,1,Good,Good,0
+50770,Boyup Brook,PHN503,Country WA,1,Good,Good,0
+50840,Bridgetown-Greenbushes,PHN503,Country WA,1,Good,Good,0
+50910,Brookton,PHN503,Country WA,1,Good,Good,0
+50980,Broome,PHN503,Country WA,1,Good,Good,0
+51080,Broomehill-Tambellup,PHN503,Country WA,1,Good,Good,0
+51120,Bruce Rock,PHN503,Country WA,1,Good,Good,0
+51190,Bunbury,PHN503,Country WA,1,Good,Good,0
+51260,Busselton,PHN503,Country WA,1,Good,Good,0
+51310,Cambridge,PHN501,Perth North,1,Good,Good,0
+51330,Canning,PHN502,Perth South,1,Good,Good,0
+51400,Capel,PHN503,Country WA,1,Good,Good,0
+51470,Carnamah,PHN503,Country WA,1,Good,Good,0
+51540,Carnarvon,,,0.0003741,Acceptable,Good,4
+51540,Carnarvon,PHN503,Country WA,0.9996259,Good,Good,0
+51610,Chapman Valley,PHN503,Country WA,1,Good,Good,0
+51680,Chittering,PHN503,Country WA,1,Good,Good,0
+51710,Christmas Island,PHN502,Perth South,1,Good,Good,0
+51750,Claremont,PHN501,Perth North,1,Good,Good,0
+51820,Cockburn,PHN502,Perth South,1,Good,Good,0
+51860,Cocos Islands,PHN502,Perth South,1,Good,Good,0
+51890,Collie,PHN503,Country WA,1,Good,Good,0
+51960,Coolgardie,PHN503,Country WA,1,Good,Good,0
+52030,Coorow,PHN503,Country WA,1,Good,Good,0
+52100,Corrigin,PHN503,Country WA,1,Good,Good,0
+52170,Cottesloe,PHN501,Perth North,1,Good,Good,0
+52240,Cranbrook,PHN503,Country WA,1,Good,Good,0
+52310,Cuballing,PHN503,Country WA,1,Good,Good,0
+52380,Cue,PHN503,Country WA,1,Good,Good,0
+52450,Cunderdin,PHN503,Country WA,1,Good,Good,0
+52520,Dalwallinu,PHN503,Country WA,1,Good,Good,0
+52590,Dandaragan,PHN503,Country WA,1,Good,Good,0
+52660,Dardanup,PHN503,Country WA,1,Good,Good,0
+52730,Denmark,PHN503,Country WA,1,Good,Good,0
+52800,Derby-West Kimberley,PHN503,Country WA,1,Good,Good,0
+52870,Donnybrook-Balingup,PHN503,Country WA,1,Good,Good,0
+52940,Dowerin,PHN503,Country WA,1,Good,Good,0
+53010,Dumbleyung,PHN503,Country WA,1,Good,Good,0
+53080,Dundas,PHN503,Country WA,1,Good,Good,0
+53150,East Fremantle,PHN502,Perth South,1,Good,Good,0
+53220,East Pilbara,PHN503,Country WA,1,Good,Good,0
+53290,Esperance,PHN503,Country WA,1,Good,Good,0
+53360,Exmouth,PHN503,Country WA,1,Good,Good,0
+53430,Fremantle,PHN502,Perth South,1,Good,Good,0
+53570,Gingin,PHN503,Country WA,1,Good,Good,0
+53640,Gnowangerup,PHN503,Country WA,1,Good,Good,0
+53710,Goomalling,PHN503,Country WA,1,Good,Good,0
+53780,Gosnells,PHN502,Perth South,1,Good,Good,0
+53800,Greater Geraldton,PHN503,Country WA,1,Good,Good,0
+53920,Halls Creek,PHN503,Country WA,1,Good,Good,0
+53990,Harvey,PHN503,Country WA,1,Good,Good,0
+54060,Irwin,PHN503,Country WA,1,Good,Good,0
+54130,Jerramungup,PHN503,Country WA,1,Good,Good,0
+54170,Joondalup,PHN501,Perth North,1,Good,Good,0
+54200,Kalamunda,PHN501,Perth North,1,Good,Good,0
+54280,Kalgoorlie-Boulder,PHN503,Country WA,1,Good,Good,0
+54310,Karratha,PHN503,Country WA,1,Good,Good,0
+54340,Katanning,PHN503,Country WA,1,Good,Good,0
+54410,Kellerberrin,PHN503,Country WA,1,Good,Good,0
+54480,Kent,PHN503,Country WA,1,Good,Good,0
+54550,Kojonup,PHN503,Country WA,1,Good,Good,0
+54620,Kondinin,PHN503,Country WA,1,Good,Good,0
+54690,Koorda,PHN503,Country WA,1,Good,Good,0
+54760,Kulin,PHN503,Country WA,1,Good,Good,0
+54830,Kwinana,PHN502,Perth South,1,Good,Good,0
+54900,Lake Grace,PHN503,Country WA,1,Good,Good,0
+54970,Laverton,PHN503,Country WA,1,Good,Good,0
+55040,Leonora,PHN503,Country WA,1,Good,Good,0
+55110,Mandurah,PHN502,Perth South,1,Good,Good,0
+55180,Manjimup,PHN503,Country WA,1,Good,Good,0
+55250,Meekatharra,PHN503,Country WA,1,Good,Good,0
+55320,Melville,PHN502,Perth South,1,Good,Good,0
+55390,Menzies,PHN503,Country WA,1,Good,Good,0
+55460,Merredin,PHN503,Country WA,1,Good,Good,0
+55530,Mingenew,PHN503,Country WA,1,Good,Good,0
+55600,Moora,PHN503,Country WA,1,Good,Good,0
+55670,Morawa,PHN503,Country WA,1,Good,Good,0
+55740,Mosman Park,PHN501,Perth North,1,Good,Good,0
+55810,Mount Magnet,PHN503,Country WA,1,Good,Good,0
+55880,Mount Marshall,PHN503,Country WA,1,Good,Good,0
+55950,Mukinbudin,PHN503,Country WA,1,Good,Good,0
+56090,Mundaring,PHN501,Perth North,1,Good,Good,0
+56160,Murchison,PHN503,Country WA,1,Good,Good,0
+56230,Murray,PHN502,Perth South,1,Good,Good,0
+56300,Nannup,PHN503,Country WA,1,Good,Good,0
+56370,Narembeen,PHN503,Country WA,1,Good,Good,0
+56460,Narrogin,PHN503,Country WA,1,Good,Good,0
+56580,Nedlands,PHN501,Perth North,1,Good,Good,0
+56620,Ngaanyatjarraku,PHN503,Country WA,1,Good,Good,0
+56730,Northam,PHN503,Country WA,1,Good,Good,0
+56790,Northampton,PHN503,Country WA,1,Good,Good,0
+56860,Nungarin,PHN503,Country WA,1,Good,Good,0
+56930,Peppermint Grove,PHN501,Perth North,1,Good,Good,0
+57000,Perenjori,PHN503,Country WA,1,Good,Good,0
+57080,Perth,,,2.04E-05,Acceptable,Good,4
+57080,Perth,PHN501,Perth North,0.9999796,Good,Good,0
+57140,Pingelly,PHN503,Country WA,1,Good,Good,0
+57210,Plantagenet,PHN503,Country WA,1,Good,Good,0
+57280,Port Hedland,PHN503,Country WA,1,Good,Good,0
+57350,Quairading,PHN503,Country WA,1,Good,Good,0
+57420,Ravensthorpe,PHN503,Country WA,1,Good,Good,0
+57490,Rockingham,PHN502,Perth South,1,Good,Good,0
+57630,Sandstone,PHN503,Country WA,1,Good,Good,0
+57700,Serpentine-Jarrahdale,PHN502,Perth South,1,Good,Good,0
+57770,Shark Bay,PHN503,Country WA,1,Good,Good,0
+57840,South Perth,PHN502,Perth South,1,Good,Good,0
+57910,Stirling,PHN501,Perth North,1,Good,Good,0
+57980,Subiaco,PHN501,Perth North,1,Good,Good,0
+58050,Swan,PHN501,Perth North,1,Good,Good,0
+58190,Tammin,PHN503,Country WA,1,Good,Good,0
+58260,Three Springs,PHN503,Country WA,1,Good,Good,0
+58330,Toodyay,PHN503,Country WA,1,Good,Good,0
+58400,Trayning,PHN503,Country WA,1,Good,Good,0
+58470,Upper Gascoyne,PHN503,Country WA,1,Good,Good,0
+58510,Victoria Park,PHN502,Perth South,1,Good,Good,0
+58540,Victoria Plains,PHN503,Country WA,1,Good,Good,0
+58570,Vincent,PHN501,Perth North,1,Good,Good,0
+58610,Wagin,PHN503,Country WA,1,Good,Good,0
+58680,Wandering,PHN503,Country WA,1,Good,Good,0
+58760,Wanneroo,PHN501,Perth North,1,Good,Good,0
+58820,Waroona,PHN502,Perth South,1,Good,Good,0
+58890,West Arthur,PHN503,Country WA,1,Good,Good,0
+59030,Westonia,PHN503,Country WA,1,Good,Good,0
+59100,Wickepin,PHN503,Country WA,1,Good,Good,0
+59170,Williams,PHN503,Country WA,1,Good,Good,0
+59250,Wiluna,PHN503,Country WA,1,Good,Good,0
+59310,Wongan-Ballidu,PHN503,Country WA,1,Good,Good,0
+59320,Woodanilling,PHN503,Country WA,1,Good,Good,0
+59330,Wyalkatchem,PHN503,Country WA,1,Good,Good,0
+59340,Wyndham-East Kimberley,PHN503,Country WA,1,Good,Good,0
+59350,Yalgoo,PHN503,Country WA,1,Good,Good,0
+59360,Yilgarn,PHN503,Country WA,1,Good,Good,0
+59370,York,PHN503,Country WA,1,Good,Good,0
+59499,No usual address (WA),,,,NA,Good,2
+59799,Migratory - Offshore - Shipping (WA),,,,NA,Good,2
+60210,Break O'Day,PHN601,Tasmania,1,Good,Good,0
+60410,Brighton,PHN601,Tasmania,1,Good,Good,0
+60610,Burnie,PHN601,Tasmania,1,Good,Good,0
+60810,Central Coast (Tas.),PHN601,Tasmania,1,Good,Good,0
+61010,Central Highlands (Tas.),PHN601,Tasmania,1,Good,Good,0
+61210,Circular Head,PHN601,Tasmania,1,Good,Good,0
+61410,Clarence,PHN601,Tasmania,1,Good,Good,0
+61510,Derwent Valley,PHN601,Tasmania,1,Good,Good,0
+61610,Devonport,PHN601,Tasmania,1,Good,Good,0
+61810,Dorset,PHN601,Tasmania,1,Good,Good,0
+62010,Flinders (Tas.),PHN601,Tasmania,1,Good,Good,0
+62210,George Town,PHN601,Tasmania,1,Good,Good,0
+62410,Glamorgan-Spring Bay,PHN601,Tasmania,1,Good,Good,0
+62610,Glenorchy,PHN601,Tasmania,1,Good,Good,0
+62810,Hobart,PHN601,Tasmania,1,Good,Good,0
+63010,Huon Valley,PHN601,Tasmania,1,Good,Good,0
+63210,Kentish,PHN601,Tasmania,1,Good,Good,0
+63410,King Island,PHN601,Tasmania,1,Good,Good,0
+63610,Kingborough,PHN601,Tasmania,1,Good,Good,0
+63810,Latrobe (Tas.),PHN601,Tasmania,1,Good,Good,0
+64010,Launceston,PHN601,Tasmania,1,Good,Good,0
+64210,Meander Valley,PHN601,Tasmania,1,Good,Good,0
+64610,Northern Midlands,PHN601,Tasmania,1,Good,Good,0
+64810,Sorell,PHN601,Tasmania,1,Good,Good,0
+65010,Southern Midlands,PHN601,Tasmania,1,Good,Good,0
+65210,Tasman,PHN601,Tasmania,1,Good,Good,0
+65410,Waratah-Wynyard,PHN601,Tasmania,1,Good,Good,0
+65610,West Coast,PHN601,Tasmania,1,Good,Good,0
+65810,West Tamar,PHN601,Tasmania,1,Good,Good,0
+69499,No usual address (Tas.),,,,NA,Good,2
+69799,Migratory - Offshore - Shipping (Tas.),,,,NA,Good,2
+70200,Alice Springs,PHN701,Northern Territory,1,Good,Good,0
+70420,Barkly,PHN701,Northern Territory,1,Good,Good,0
+70540,Belyuen,PHN701,Northern Territory,1,Good,Good,0
+70620,Central Desert,PHN701,Northern Territory,1,Good,Good,0
+70700,Coomalie,PHN701,Northern Territory,1,Good,Good,0
+71000,Darwin,PHN701,Northern Territory,1,Good,Good,0
+71150,Darwin Waterfront Precinct,PHN701,Northern Territory,1,Good,Good,0
+71300,East Arnhem,PHN701,Northern Territory,1,Good,Good,0
+72200,Katherine,PHN701,Northern Territory,1,Good,Good,0
+72300,Litchfield,PHN701,Northern Territory,1,Good,Good,0
+72330,MacDonnell,PHN701,Northern Territory,1,Good,Good,0
+72800,Palmerston,PHN701,Northern Territory,1,Good,Good,0
+73600,Roper Gulf,,,0.0019727,Acceptable,Good,4
+73600,Roper Gulf,PHN701,Northern Territory,0.9980273,Good,Good,0
+74050,Tiwi Islands,PHN701,Northern Territory,1,Good,Good,0
+74550,Victoria Daly,PHN701,Northern Territory,1,Good,Good,0
+74560,Wagait,PHN701,Northern Territory,1,Good,Good,0
+74660,West Arnhem,PHN701,Northern Territory,1,Good,Good,0
+74680,West Daly,PHN701,Northern Territory,1,Good,Good,0
+79399,Unincorporated NT,PHN701,Northern Territory,1,Good,Good,0
+79499,No usual address (NT),,,,NA,Good,2
+79799,Migratory - Offshore - Shipping (NT),,,,NA,Good,2
+89399,Unincorporated ACT,PHN801,Australian Capital Territory,1,Good,Good,0
+89499,No usual address (ACT),,,,NA,Good,2
+89799,Migratory - Offshore - Shipping (ACT),,,,NA,Good,2
+99399,Unincorp. Other Territories,PHN106,South Eastern NSW,0.1235493,Good,Good,0
+99399,Unincorp. Other Territories,PHN101,Central and Eastern Sydney,0.8764507,Good,Good,0
+99499,No usual address (OT),,,,NA,Good,2
+99799,Migratory - Offshore - Shipping (OT),,,,NA,Good,2
+ZZZZZ,Outside Australia,,,,NA,Good,2

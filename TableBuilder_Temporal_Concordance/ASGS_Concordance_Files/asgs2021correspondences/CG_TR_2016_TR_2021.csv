@@ -1,0 +1,86 @@
+﻿TR_CODE_2016,TR_NAME_2016,TR_CODE_2021,TR_NAME_2021,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+1R010,South Coast,1R010,South Coast,1,Good,Good,0
+1R040,Sydney,,,1.10E-06,Good,Good,4
+1R040,Sydney,1R040,Sydney,0.9999989,Good,Good,0
+1R050,Snowy Mountains,1R050,Snowy Mountains,1,Good,Good,0
+1R060,Capital Country,1R060,Capital Country,1,Good,Good,0
+1R070,The Murray,1R070,The Murray,1,Good,Good,0
+1R080,Riverina,1R080,Riverina,1,Good,Good,0
+1R090,Central NSW,1R090,Central NSW,1,Good,Good,0
+1R100,Hunter,1R100,Hunter,1,Good,Good,0
+1R140,New England North West,1R140,New England North West,1,Good,Good,0
+1R150,Outback NSW,1R150,Outback NSW,1,Good,Good,0
+1R180,Central Coast,1R180,Central Coast,1,Good,Good,0
+1R190,Blue Mountains,1R190,Blue Mountains,1,Good,Good,0
+1R200,North Coast,1R200,North Coast NSW,1,Good,Good,0
+2R010,Melbourne,2R010,Melbourne,1,Good,Good,0
+2R020,Wimmera,2R020,Wimmera,1,Good,Good,0
+2R030,Mallee,2R030,Mallee,1,Good,Good,0
+2R040,Great Ocean Road,2R040,Great Ocean Road,1,Good,Good,0
+2R050,Western Grampians,2R050,Western Grampians,1,Good,Good,0
+2R060,Bendigo Loddon,2R060,Bendigo Loddon,1,Good,Good,0
+2R070,Peninsula,2R070,Peninsula,1,Good,Good,0
+2R080,Central Murray,2R080,Central Murray,1,Good,Good,0
+2R090,Goulburn,2R090,Goulburn,1,Good,Good,0
+2R100,High Country,2R100,High Country,1,Good,Good,0
+2R110,Lakes,2R110,Lakes,1,Good,Good,0
+2R120,Gippsland,2R120,Gippsland,1,Good,Good,0
+2R130,Melbourne East,2R220,Yarra Valley and the Dandenong Ranges,1,Good,Good,0
+2R140,Geelong and the Bellarine,2R140,Geelong and the Bellarine,1,Good,Good,0
+2R150,Macedon,2R150,Macedon,1,Good,Good,0
+2R160,Spa Country,2R160,Spa Country,1,Good,Good,0
+2R170,Ballarat,2R170,Ballarat,1,Good,Good,0
+2R180,Central Highlands,2R170,Ballarat,0.242073,Good,Good,0
+2R180,Central Highlands,2R180,Central Highlands,0.757927,Acceptable,Good,0
+2R190,Upper Yarra,2R220,Yarra Valley and the Dandenong Ranges,0.0140375,Good,Good,0
+2R190,Upper Yarra,2R100,High Country,0.9859625,Good,Good,0
+2R200,Murray East,2R200,Murray East,1,Good,Good,0
+2R210,Phillip Island,2R210,Phillip Island,1,Good,Good,0
+3R010,Gold Coast,3R020,Brisbane,0.1957455,Good,Good,0
+3R010,Gold Coast,3R010,Gold Coast,0.8042545,Acceptable,Good,0
+3R020,Brisbane,3R060,Southern Queensland Country,0.0173526,Acceptable,Good,0
+3R020,Brisbane,3R020,Brisbane,0.9826474,Good,Good,0
+3R030,Sunshine Coast,3R030,Sunshine Coast,1,Good,Good,0
+3R040,Fraser Coast,3R040,Fraser Coast,1,Good,Good,0
+3R060,Darling Downs,3R140,Outback Queensland,0.0134452,Acceptable,Good,0
+3R060,Darling Downs,3R060,Southern Queensland Country,0.9865548,Acceptable,Good,0
+3R070,Bundaberg,3R070,Bundaberg,1,Good,Good,0
+3R080,Central Queensland,3R140,Outback Queensland,0.0567917,Acceptable,Good,0
+3R080,Central Queensland,3R180,Gladstone,0.282325,Poor,Good,0
+3R080,Central Queensland,3R170,Capricorn,0.6608834,Poor,Good,0
+3R090,Mackay,3R090,Mackay,1,Good,Good,0
+3R100,Whitsundays,3R100,Whitsundays,1,Good,Good,0
+3R110,Northern,3R110,Townsville,1,Good,Good,0
+3R120,Tropical North Queensland,3R120,Tropical North Queensland,1,Good,Good,0
+3R140,Outback,3R140,Outback Queensland,1,Acceptable,Good,0
+3R160,Great Barrier Reef,,,1,NA,Good,2
+4R010,Limestone Coast,4R010,Limestone Coast,1,Good,Good,0
+4R020,Murraylands,4R020,"Murray River, Lakes and Coorong",1,Good,Good,0
+4R030,Fleurieu Peninsula,4R030,Fleurieu Peninsula,1,Good,Good,0
+4R040,Adelaide,4R040,Adelaide,1,Good,Good,0
+4R050,Barossa,4R050,Barossa,1,Good,Good,0
+4R060,Riverland,4R060,Riverland,1,Good,Good,0
+4R070,Flinders Ranges and Outback,4R070,Flinders Ranges and Outback,1,Good,Good,0
+4R080,Clare Valley,4R080,Clare Valley,1,Good,Good,0
+4R110,Eyre Peninsula,4R110,Eyre Peninsula,1,Good,Good,0
+4R120,Yorke Peninsula,4R120,Yorke Peninsula,1,Good,Good,0
+4R130,Kangaroo Island,4R130,Kangaroo Island,1,Good,Good,0
+4R140,Adelaide Hills,4R140,Adelaide Hills,1,Good,Good,0
+5R120,Experience Perth,5R120,Destination Perth,1,Good,Good,0
+5R130,Australia's Golden Outback,5R130,Australia's Golden Outback,1,Good,Good,0
+5R140,Australia's South West,5R140,Australia's South West,1,Good,Good,0
+5R160,Australia's North West,5R160,Australia's North West,1,Good,Good,0
+5R170,Australia's Coral Coast,5R170,Australia's Coral Coast,1,Good,Good,0
+6R030,East Coast,6R030,East Coast,1,Good,Good,0
+6R060,North West,6R060,North West,1,Good,Good,0
+6R080,Wilderness West,6R080,West Coast,1,Good,Good,0
+6R100,Hobart and the South,6R100,Hobart and the South,1,Good,Good,0
+6R110,"Launceston, Tamar and the North",6R110,Launceston and the North,1,Good,Good,0
+7R010,Darwin,7R010,Darwin,1,Good,Good,0
+7R050,Barkly,7R050,Barkly,1,Good,Good,0
+7R070,Alice Springs,7R070,Alice Springs,1,Good,Good,0
+7R100,Kakadu Arnhem,7R100,Litchfield Kakadu Arnhem,1,Good,Good,0
+7R110,Katherine Daly,7R110,Katherine Daly,1,Good,Good,0
+7R140,MacDonnell,7R140,MacDonnell,1,Good,Good,0
+7R150,Lasseter,7R150,Lasseter,1,Good,Good,0
+8R990,Canberra,8R990,Canberra,1,Good,Good,0

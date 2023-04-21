@@ -1,0 +1,327 @@
+﻿CED_CODE_2018,CED_NAME_2018,CED_CODE_2021,CED_NAME_2021,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+101,Banks,101,Banks,1,Good,Good,0
+102,Barton,144,Watson,0.002358,Good,Good,1
+102,Barton,102,Barton,0.997642,Good,Good,0
+103,Bennelong,103,Bennelong,1,Good,Good,0
+104,Berowra,127,Macquarie,0.0003597,Good,Good,1
+104,Berowra,129,Mitchell,0.0010242,Good,Good,1
+104,Berowra,106,Bradfield,0.0011274,Good,Good,1
+104,Berowra,104,Berowra,0.9974888,Good,Good,0
+105,Blaxland,105,Blaxland,1,Good,Good,0
+106,Bradfield,106,Bradfield,1,Good,Good,0
+107,Calare,139,Riverina,7.78E-05,Good,Good,1
+107,Calare,107,Calare,0.9999222,Good,Good,0
+108,Chifley,128,McMahon,1.00E-07,Good,Good,1
+108,Chifley,118,Greenway,0.0009313,Good,Good,1
+108,Chifley,108,Chifley,0.9990686,Good,Good,0
+109,Cook,,,3.56E-05,Poor,Good,4
+109,Cook,101,Banks,0.0016861,Good,Good,1
+109,Cook,109,Cook,0.9982782,Good,Good,0
+110,Cowper,130,New England,0.0002183,Good,Good,1
+110,Cowper,133,Page,0.0003594,Good,Good,1
+110,Cowper,110,Cowper,0.9994223,Good,Good,0
+111,Cunningham,147,Whitlam,0.0009651,Good,Good,1
+111,Cunningham,111,Cunningham,0.9990348,Good,Good,0
+112,Dobell,140,Robertson,0.0030323,Good,Good,1
+112,Dobell,112,Dobell,0.9969677,Good,Good,0
+113,Eden-Monaro,116,Gilmore,7.80E-06,Good,Good,1
+113,Eden-Monaro,113,Eden-Monaro,0.9999922,Good,Good,0
+114,Farrer,114,Farrer,1,Good,Good,0
+115,Fowler,128,McMahon,0.0003364,Good,Good,1
+115,Fowler,115,Fowler,0.9996636,Good,Good,0
+116,Gilmore,116,Gilmore,1,Good,Good,0
+117,Grayndler,144,Watson,0.0008211,Good,Good,1
+117,Grayndler,137,Reid,0.0034248,Good,Good,1
+117,Grayndler,117,Grayndler,0.9957541,Good,Good,0
+118,Greenway,118,Greenway,1,Good,Good,0
+119,Hughes,119,Hughes,1,Good,Good,0
+120,Hume,125,Macarthur,8.19E-05,Good,Good,1
+120,Hume,147,Whitlam,0.0002319,Good,Good,1
+120,Hume,113,Eden-Monaro,0.0014299,Good,Good,1
+120,Hume,120,Hume,0.9982563,Good,Good,0
+121,Hunter,121,Hunter,1,Good,Good,0
+122,Kingsford Smith,122,Kingsford Smith,1,Good,Good,0
+123,Lindsay,128,McMahon,0.0004249,Good,Good,1
+123,Lindsay,120,Hume,0.0012139,Good,Good,1
+123,Lindsay,123,Lindsay,0.9983611,Good,Good,0
+124,Lyne,124,Lyne,1,Good,Good,0
+125,Macarthur,146,Werriwa,2.00E-07,Good,Good,1
+125,Macarthur,120,Hume,0.0017796,Good,Good,1
+125,Macarthur,125,Macarthur,0.9982202,Good,Good,0
+126,Mackellar,126,Mackellar,1,Good,Good,0
+127,Macquarie,127,Macquarie,1,Good,Good,0
+128,McMahon,135,Parramatta,0.0006288,Good,Good,1
+128,McMahon,128,McMahon,0.9993712,Good,Good,0
+129,Mitchell,135,Parramatta,0.0021622,Good,Good,1
+129,Mitchell,129,Mitchell,0.9978378,Good,Good,0
+130,New England,130,New England,1,Good,Good,0
+131,Newcastle,136,Paterson,0.0003952,Good,Good,1
+131,Newcastle,131,Newcastle,0.9996048,Good,Good,0
+132,North Sydney,106,Bradfield,1.00E-07,Good,Good,1
+132,North Sydney,143,Warringah,0.00241,Good,Good,1
+132,North Sydney,132,North Sydney,0.9975899,Good,Good,0
+133,Page,138,Richmond,0.0016931,Good,Good,1
+133,Page,133,Page,0.9983069,Good,Good,0
+134,Parkes,107,Calare,0.0006456,Good,Good,1
+134,Parkes,134,Parkes,0.9993544,Good,Good,0
+135,Parramatta,103,Bennelong,0.0010086,Good,Good,1
+135,Parramatta,135,Parramatta,0.9989914,Good,Good,0
+136,Paterson,121,Hunter,0.001762,Good,Good,1
+136,Paterson,136,Paterson,0.998238,Good,Good,0
+137,Reid,117,Grayndler,0.0005242,Good,Good,1
+137,Reid,137,Reid,0.9994758,Good,Good,0
+138,Richmond,133,Page,0.0014338,Good,Good,1
+138,Richmond,138,Richmond,0.9985662,Good,Good,0
+139,Riverina,107,Calare,0.0004669,Good,Good,1
+139,Riverina,139,Riverina,0.9995331,Good,Good,0
+140,Robertson,140,Robertson,1,Good,Good,0
+141,Shortland,112,Dobell,1.00E-07,Good,Good,1
+141,Shortland,121,Hunter,0.001589,Good,Good,1
+141,Shortland,141,Shortland,0.9984109,Good,Good,0
+142,Sydney,117,Grayndler,7.68E-05,Good,Good,1
+142,Sydney,142,Sydney,0.9999232,Good,Good,0
+143,Warringah,126,Mackellar,0.0013453,Good,Good,1
+143,Warringah,143,Warringah,0.9986547,Good,Good,0
+144,Watson,117,Grayndler,0.0020964,Good,Good,1
+144,Watson,144,Watson,0.9979036,Good,Good,0
+145,Wentworth,122,Kingsford Smith,0.0001724,Good,Good,1
+145,Wentworth,145,Wentworth,0.9998276,Good,Good,0
+146,Werriwa,146,Werriwa,1,Good,Good,0
+147,Whitlam,116,Gilmore,0.0004397,Good,Good,1
+147,Whitlam,147,Whitlam,0.9995603,Good,Good,0
+194,No usual address (NSW),194,No usual address (NSW),1,Good,Good,0
+197,Migratory - Offshore - Shipping (NSW),197,Migratory - Offshore - Shipping (NSW),1,Good,Good,0
+201,Aston,206,Casey,0.0002731,Good,Good,1
+201,Aston,201,Aston,0.9997269,Good,Good,0
+202,Ballarat,238,Wannon,0.0002731,Acceptable,Good,1
+202,Ballarat,219,Hawke,0.1759817,Poor,Good,0
+202,Ballarat,202,Ballarat,0.8237453,Poor,Good,0
+203,Bendigo,230,Mallee,0.0011606,Good,Good,1
+203,Bendigo,232,McEwen,0.0483615,Poor,Good,0
+203,Bendigo,203,Bendigo,0.9504779,Good,Good,0
+204,Bruce,222,Hotham,0.3614154,Poor,Good,0
+204,Bruce,204,Bruce,0.6385846,Poor,Good,0
+205,Calwell,231,Maribyrnong,0.1090247,Poor,Good,0
+205,Calwell,205,Calwell,0.8909753,Acceptable,Good,0
+206,Casey,206,Casey,1,Good,Good,0
+207,Chisholm,226,Kooyong,0.0232696,Good,Good,0
+207,Chisholm,211,Deakin,0.0722186,Acceptable,Good,0
+207,Chisholm,234,Menzies,0.1917639,Poor,Good,0
+207,Chisholm,207,Chisholm,0.7127479,Poor,Good,0
+208,Cooper,233,Melbourne,0.0307037,Acceptable,Good,0
+208,Cooper,208,Cooper,0.9692963,Good,Good,0
+209,Corangamite,210,Corio,0.0002948,Good,Good,1
+209,Corangamite,202,Ballarat,0.0322336,Poor,Good,0
+209,Corangamite,238,Wannon,0.0893764,Acceptable,Good,0
+209,Corangamite,209,Corangamite,0.8780952,Acceptable,Good,0
+210,Corio,209,Corangamite,0.0006924,Acceptable,Good,1
+210,Corio,210,Corio,0.9993076,Good,Good,0
+211,Deakin,234,Menzies,0.0664795,Poor,Good,0
+211,Deakin,211,Deakin,0.9335205,Acceptable,Good,0
+212,Dunkley,212,Dunkley,1,Good,Good,0
+213,Flinders,213,Flinders,1,Good,Good,0
+214,Fraser,218,Gorton,0.3588857,Poor,Good,0
+214,Fraser,214,Fraser,0.6411143,Poor,Good,0
+215,Gellibrand,228,Lalor,0.0402884,Acceptable,Good,0
+215,Gellibrand,214,Fraser,0.1660729,Poor,Good,0
+215,Gellibrand,215,Gellibrand,0.7936386,Poor,Good,0
+216,Gippsland,235,Monash,0.0005516,Good,Good,1
+216,Gippsland,216,Gippsland,0.9994484,Good,Good,0
+217,Goldstein,217,Goldstein,1,Good,Good,0
+218,Gorton,214,Fraser,0.0005218,Poor,Good,1
+218,Gorton,219,Hawke,0.4306375,Poor,Good,0
+218,Gorton,218,Gorton,0.5688406,Poor,Good,0
+219,Higgins,226,Kooyong,0.0253927,Good,Good,0
+219,Higgins,222,Hotham,0.0479867,Poor,Good,0
+219,Higgins,220,Higgins,0.9266206,Acceptable,Good,0
+220,Holt,204,Bruce,0.0971299,Poor,Good,0
+220,Holt,221,Holt,0.9028701,Good,Good,0
+221,Hotham,204,Bruce,0.0261298,Poor,Good,0
+221,Hotham,207,Chisholm,0.3027329,Poor,Good,0
+221,Hotham,222,Hotham,0.6711372,Poor,Good,0
+222,Indi,236,Nicholls,0.0004706,Good,Good,1
+222,Indi,223,Indi,0.9995294,Good,Good,0
+223,Isaacs,224,Isaacs,1,Good,Good,0
+224,Jagajaga,232,McEwen,0.1112168,Poor,Good,0
+224,Jagajaga,225,Jagajaga,0.8887832,Acceptable,Good,0
+225,Kooyong,226,Kooyong,1,Good,Good,0
+226,La Trobe,206,Casey,0.0100422,Good,Good,0
+226,La Trobe,204,Bruce,0.2679678,Poor,Good,0
+226,La Trobe,227,La Trobe,0.72199,Poor,Good,0
+227,Lalor,215,Gellibrand,0.166208,Poor,Good,0
+227,Lalor,228,Lalor,0.833792,Acceptable,Good,0
+228,Macnamara,220,Higgins,0.0389788,Acceptable,Good,0
+228,Macnamara,229,Macnamara,0.9610212,Good,Good,0
+229,Mallee,238,Wannon,0.0011159,Acceptable,Good,1
+229,Mallee,230,Mallee,0.9988841,Good,Good,0
+230,Maribyrnong,214,Fraser,0.2418488,Poor,Good,0
+230,Maribyrnong,231,Maribyrnong,0.7581512,Poor,Good,0
+231,McEwen,236,Nicholls,0.0005983,Good,Good,1
+231,McEwen,203,Bendigo,0.0009472,Good,Good,1
+231,McEwen,219,Hawke,0.2661944,Poor,Good,0
+231,McEwen,232,McEwen,0.7322601,Poor,Good,0
+232,Melbourne,231,Maribyrnong,0.0590408,Poor,Good,0
+232,Melbourne,233,Melbourne,0.9409592,Acceptable,Good,0
+233,Menzies,206,Casey,0.0004671,Good,Good,1
+233,Menzies,211,Deakin,0.0346163,Acceptable,Good,0
+233,Menzies,225,Jagajaga,0.1652338,Acceptable,Good,0
+233,Menzies,234,Menzies,0.7996827,Poor,Good,0
+234,Monash,216,Gippsland,0.0009671,Good,Good,1
+234,Monash,227,La Trobe,0.0982182,Poor,Good,0
+234,Monash,235,Monash,0.9008147,Good,Good,0
+235,Nicholls,203,Bendigo,0.0009422,Good,Good,1
+235,Nicholls,236,Nicholls,0.9990578,Good,Good,0
+236,Scullin,232,McEwen,0.0012552,Poor,Good,1
+236,Scullin,237,Scullin,0.9987448,Good,Good,0
+237,Wannon,230,Mallee,0.0529104,Good,Good,0
+237,Wannon,202,Ballarat,0.0634714,Poor,Good,0
+237,Wannon,238,Wannon,0.8836182,Acceptable,Good,0
+238,Wills,233,Melbourne,0.0243724,Acceptable,Good,0
+238,Wills,239,Wills,0.9756276,Good,Good,0
+294,No usual address (Vic.),294,No usual address (Vic.),1,Good,Good,0
+297,Migratory - Offshore - Shipping (Vic.),297,Migratory - Offshore - Shipping (Vic.),1,Good,Good,0
+301,Blair,325,Oxley,1.00E-07,Good,Good,1
+301,Blair,301,Blair,0.9999999,Good,Good,0
+302,Bonner,313,Griffith,3.00E-07,Good,Good,1
+302,Bonner,302,Bonner,0.9999997,Good,Good,0
+303,Bowman,303,Bowman,1,Good,Good,0
+304,Brisbane,319,Lilley,6.00E-07,Good,Good,1
+304,Brisbane,328,Ryan,0.0011726,Good,Good,1
+304,Brisbane,304,Brisbane,0.9988268,Good,Good,0
+305,Capricornia,306,Dawson,0.0012219,Good,Good,1
+305,Capricornia,305,Capricornia,0.9987781,Good,Good,0
+306,Dawson,317,Kennedy,0.0024113,Good,Good,1
+306,Dawson,306,Dawson,0.9975887,Good,Good,0
+307,Dickson,307,Dickson,1,Good,Good,0
+308,Fadden,330,Wright,0.0024916,Good,Good,1
+308,Fadden,308,Fadden,0.9975084,Good,Good,0
+309,Fairfax,310,Fisher,0.0002671,Good,Good,1
+309,Fairfax,329,Wide Bay,0.0005318,Good,Good,1
+309,Fairfax,309,Fairfax,0.9992011,Good,Good,0
+310,Fisher,309,Fairfax,0.0033811,Good,Good,1
+310,Fisher,310,Fisher,0.9966189,Good,Good,0
+311,Flynn,321,Maranoa,5.56E-05,Good,Good,1
+311,Flynn,305,Capricornia,0.0001458,Good,Good,1
+311,Flynn,316,Hinkler,0.0001458,Good,Good,1
+311,Flynn,311,Flynn,0.9996528,Good,Good,0
+312,Forde,327,Rankin,2.45E-05,Good,Good,1
+312,Forde,330,Wright,0.0011833,Good,Good,1
+312,Forde,312,Forde,0.9987922,Good,Good,0
+313,Griffith,313,Griffith,1,Good,Good,0
+314,Groom,321,Maranoa,0.0023461,Good,Good,1
+314,Groom,314,Groom,0.9976539,Good,Good,0
+315,Herbert,317,Kennedy,0.0036797,Good,Good,1
+315,Herbert,315,Herbert,0.9963203,Good,Good,0
+316,Hinkler,316,Hinkler,1,Good,Good,0
+317,Kennedy,318,Leichhardt,4.66E-05,Good,Good,1
+317,Kennedy,315,Herbert,0.0003919,Good,Good,1
+317,Kennedy,306,Dawson,0.0036558,Good,Good,1
+317,Kennedy,317,Kennedy,0.9959056,Good,Good,0
+318,Leichhardt,317,Kennedy,0.0011177,Good,Good,1
+318,Leichhardt,318,Leichhardt,0.9988823,Good,Good,0
+319,Lilley,304,Brisbane,2.69E-05,Good,Good,1
+319,Lilley,319,Lilley,0.9999731,Good,Good,0
+320,Longman,320,Longman,1,Good,Good,0
+321,Maranoa,314,Groom,0.0034308,Good,Good,1
+321,Maranoa,321,Maranoa,0.9965692,Good,Good,0
+322,McPherson,322,McPherson,1,Good,Good,0
+323,Moncrieff,330,Wright,0.0003859,Good,Good,1
+323,Moncrieff,322,McPherson,0.001176,Good,Good,1
+323,Moncrieff,323,Moncrieff,0.9984381,Good,Good,0
+324,Moreton,324,Moreton,1,Good,Good,0
+325,Oxley,301,Blair,1.00E-07,Good,Good,1
+325,Oxley,325,Oxley,0.9999999,Good,Good,0
+326,Petrie,326,Petrie,1,Good,Good,0
+327,Rankin,327,Rankin,1,Good,Good,0
+328,Ryan,304,Brisbane,0.0005261,Good,Good,1
+328,Ryan,328,Ryan,0.9994739,Good,Good,0
+329,Wide Bay,329,Wide Bay,1,Good,Good,0
+330,Wright,323,Moncrieff,0.0004682,Good,Good,1
+330,Wright,322,McPherson,0.0006988,Good,Good,1
+330,Wright,330,Wright,0.9988329,Good,Good,0
+394,No usual address (Qld),394,No usual address (Qld),1,Good,Good,0
+397,Migratory - Offshore - Shipping (Qld),397,Migratory - Offshore - Shipping (Qld),1,Good,Good,0
+401,Adelaide,401,Adelaide,1,Good,Good,0
+402,Barker,402,Barker,1,Good,Good,0
+403,Boothby,403,Boothby,1,Good,Good,0
+404,Grey,402,Barker,0.0006175,Good,Good,1
+404,Grey,404,Grey,0.9993825,Good,Good,0
+405,Hindmarsh,405,Hindmarsh,1,Good,Good,0
+406,Kingston,403,Boothby,0.0005943,Good,Good,1
+406,Kingston,408,Mayo,0.0007145,Good,Good,1
+406,Kingston,406,Kingston,0.9986912,Good,Good,0
+407,Makin,407,Makin,1,Good,Good,0
+408,Mayo,406,Kingston,0.0009484,Good,Good,1
+408,Mayo,408,Mayo,0.9990516,Good,Good,0
+409,Spence,407,Makin,1.00E-07,Good,Good,1
+409,Spence,409,Spence,0.9999999,Good,Good,0
+410,Sturt,410,Sturt,1,Good,Good,0
+494,No usual address (SA),494,No usual address (SA),1,Good,Good,0
+497,Migratory - Offshore - Shipping (SA),497,Migratory - Offshore - Shipping (SA),1,Good,Good,0
+501,Brand,501,Brand,1,Good,Good,0
+502,Burt,503,Canning,0.0002829,Good,Good,1
+502,Burt,515,Tangney,0.1955387,Acceptable,Good,0
+502,Burt,502,Burt,0.8041784,Poor,Good,0
+503,Canning,509,Hasluck,0.0001253,Poor,Good,1
+503,Canning,502,Burt,0.0098193,Poor,Good,1
+503,Canning,511,O'Connor,0.0114895,Good,Good,0
+503,Canning,503,Canning,0.9785658,Good,Good,0
+504,Cowan,510,Moore,0.0075894,Good,Good,1
+504,Cowan,509,Hasluck,0.0351361,Poor,Good,0
+504,Cowan,512,Pearce,0.4304511,Poor,Good,0
+504,Cowan,504,Cowan,0.5268234,Poor,Good,0
+505,Curtin,505,Curtin,1,Good,Good,0
+506,Durack,511,O'Connor,0.065861,Good,Good,0
+506,Durack,506,Durack,0.934139,Acceptable,Good,0
+507,Forrest,511,O'Connor,0.0070441,Good,Good,1
+507,Forrest,507,Forrest,0.9929559,Good,Good,0
+508,Fremantle,508,Fremantle,1,Good,Good,0
+509,Hasluck,514,Swan,0.1643384,Acceptable,Good,0
+509,Hasluck,502,Burt,0.1745839,Poor,Good,0
+509,Hasluck,509,Hasluck,0.6610777,Poor,Good,0
+510,Moore,510,Moore,1,Good,Good,0
+511,O'Connor,511,O'Connor,1,Good,Good,0
+512,Pearce,511,O'Connor,0.0085157,Good,Good,1
+512,Pearce,506,Durack,0.1761378,Acceptable,Good,0
+512,Pearce,509,Hasluck,0.2896954,Poor,Good,0
+512,Pearce,512,Pearce,0.5256511,Poor,Good,0
+513,Perth,504,Cowan,0.1429553,Poor,Good,0
+513,Perth,513,Perth,0.8570447,Poor,Good,0
+514,Stirling,510,Moore,0.1041579,Good,Good,0
+514,Stirling,505,Curtin,0.1153034,Good,Good,0
+514,Stirling,513,Perth,0.2648801,Poor,Good,0
+514,Stirling,504,Cowan,0.5156587,Poor,Good,0
+515,Swan,515,Tangney,0.0391505,Acceptable,Good,0
+515,Swan,514,Swan,0.9608495,Acceptable,Good,0
+516,Tangney,515,Tangney,1,Acceptable,Good,0
+594,No usual address (WA),594,No usual address (WA),1,Good,Good,0
+597,Migratory - Offshore - Shipping (WA),597,Migratory - Offshore - Shipping (WA),1,Good,Good,0
+601,Bass,605,Lyons,0.0002596,Good,Good,1
+601,Bass,601,Bass,0.9997404,Good,Good,0
+602,Braddon,605,Lyons,3.97E-05,Good,Good,1
+602,Braddon,602,Braddon,0.9999603,Good,Good,0
+603,Clark,605,Lyons,2.95E-05,Good,Good,1
+603,Clark,604,Franklin,0.002052,Good,Good,1
+603,Clark,603,Clark,0.9979185,Good,Good,0
+604,Franklin,604,Franklin,1,Good,Good,0
+605,Lyons,604,Franklin,1.00E-07,Good,Good,1
+605,Lyons,602,Braddon,0.0001527,Good,Good,1
+605,Lyons,601,Bass,0.0003053,Good,Good,1
+605,Lyons,603,Clark,0.0029296,Good,Good,1
+605,Lyons,605,Lyons,0.9966123,Good,Good,0
+694,No usual address (Tas.),694,No usual address (Tas.),1,Good,Good,0
+697,Migratory - Offshore - Shipping (Tas.),697,Migratory - Offshore - Shipping (Tas.),1,Good,Good,0
+701,Lingiari,701,Lingiari,1,Good,Good,0
+702,Solomon,702,Solomon,1,Good,Good,0
+794,No usual address (NT),794,No usual address (NT),1,Good,Good,0
+797,Migratory - Offshore - Shipping (NT),797,Migratory - Offshore - Shipping (NT),1,Good,Good,0
+801,Bean,801,Bean,1,Good,Good,0
+802,Canberra,802,Canberra,1,Good,Good,0
+803,Fenner,802,Canberra,2.23E-05,Good,Good,1
+803,Fenner,803,Fenner,0.9999777,Good,Good,0
+894,No usual address (ACT),894,No usual address (ACT),1,Good,Good,0
+897,Migratory - Offshore - Shipping (ACT),897,Migratory - Offshore - Shipping (ACT),1,Good,Good,0
+994,No usual address (OT),994,No usual address (OT),1,Good,Good,0
+997,Migratory - Offshore - Shipping (OT),997,Migratory - Offshore - Shipping (OT),1,Good,Good,0
+,,506,Durack,1,Acceptable,Good,3
+,,ZZZ,Outside Australia,,NA,Good,3
