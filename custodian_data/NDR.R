@@ -67,4 +67,8 @@ full <- full[!grepl("Total", full$age_group),]
 #--------write csv----------#
 #---------------------------#
 
-write.csv(full, file = "NDR_192_chronic_conditions_diabetes.csv", row.names = F)
+write.csv(full, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_192_chronic_conditions_diabetes.csv", row.names = F)
+
+write.csv(full, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_192_chronic_conditions_diabetes.csv", row.names = F)
+
+
