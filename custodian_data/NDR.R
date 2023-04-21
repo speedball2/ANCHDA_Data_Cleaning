@@ -1,5 +1,6 @@
 
 #Harriette's WD:
+
 setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/from_custodians/NDR_SA4")
 
 
@@ -62,6 +63,8 @@ full <- full[,col_order]
 # REMOVE TOTAL COLS
 
 full <- full[!grepl("Total", full$age_group),]
+
+full <- full[!grepl("Persons", full$sex),]
 
 #---------------------------#
 #--------write csv----------#
