@@ -4,14 +4,23 @@
 #insert WD
 
 # Checklist
-#   1. use snake case
-#   2. append data set collection to end of col name if there is another data collection that covers the same indicators
-#   3. no special characters (% -> p)
-#   4. use filters defined in data dictionary: https://connectqutedu.sharepoint.com/:u:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Data_Cleaning_Links/data_dictionary_LINK.url?csf=1&web=1&e=At4u83
-#   5. No geo name needed
-    # 6. round to two decimal places
-    # 7. filter cols needs to be present 
+# 1. use snake case
+# 2. append data set collection to end of col name if there is another data collection that covers the same indicators
+# 3. no special characters (% -> p)
+# 4. use filters defined in data dictionary: https://connectqutedu.sharepoint.com/:u:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Data_Cleaning_Links/data_dictionary_LINK.url?csf=1&web=1&e=At4u83
+#   - add filter cols if not present (e.g, add col with given age, if no age then use "0-24", no sex parameters use "all")
+# 5. No geo name needed
+# 6. round to two decimal places
+# 7. filter cols needs to be present 
+# 8. supress values 1-4 (tbd)
+# 9. add n_ , p_ to define count or percentage
+# 10. save in a folder by data set in QA
+# 11. check with asgs is used, note for when Owen's correspondance code works 
+#12. concistent cols: code, year, age, sex, indicator, filters
 
+
+
+library(readxl)
 
 # READING IN/CLEANING DATA -----------------------------------------------------
 
@@ -39,6 +48,8 @@ cleaning <- function(path, sht, range, col){
   
   # RENAMING VALUES IN A SPECIFIC COL
   names(df)[names(df) == 'State/Territory'] <- 'STE'
+  
+  library(dplyr)
   
   if("STE" %in% names(df)){
     df$STE <- recode(df$STE,
@@ -97,6 +108,10 @@ cleaning <- function(path, sht, range, col){
              sep = "(?<=[0-9])(?=\\s?[A-Z])", remove = FALSE) %>% 
     mutate(sex = trimws(sex))
   
+  # REMOVE NAs & NPs:
+  df[df[,] == "n.a."] <- NA
+  df[df[,] == "n.p."] <- NA
+  
   return(df)
   
 }
@@ -113,7 +128,19 @@ cleaning <- function(path, sht, range, col){
     
 
 
-
+# ------------------------------------------------------------------------------
+    
+    # BOCSAR 
+    
+    library(tidyr)
+    
+    # PIVOTING DATA FROM WIDE TO LONG
+    df <- gather(df, calendar_year, indicator, gathercol <- c("2006", "2007", "2008", "2009","2010","2011","2012", "2013","2014","2015","2016","2017", "2018","2019","2020","2021")) 
+    
+    #DF = DATA FRAME 
+    #INDICATOR = COUNTS FOR RATES IN NEW COL (a new col)
+    #CALENDAR_YEAR = NEW COLUMN FOR "GATHERCOL" VARIABLES (a new col)
+    #OTHER COLUMNNS FOLLOW
 
 
 

@@ -25,7 +25,7 @@ cleaning <- function(sht, range){
   
   #REMOVING NP AND # 
   df[df[,] == "NP"] <- NA
-  df[df[,] == "#"] <- "*"
+  df[df[,] == "#"] <- "1"
   
   #REMOVING "YEARS" IN AGE COLUMN
 
@@ -47,6 +47,7 @@ cleaning <- function(sht, range){
     }
   }
   
+  df$sex <- "ALL"
   
   return(df)
   
@@ -57,7 +58,7 @@ cleaning <- function(sht, range){
           range = "A16:F34")
   
 #RENAMING COLUMNS  
-  names(df1) <- c("calendar_year", "age_group", "N_of_children_registered_immunisation", 
+  names(df1) <- c("year_range", "age_group", "N_of_children_registered_immunisation", 
                   "N_fully_immunised",
                   "N_not_fully_immunised", 
                   "%_full_immunised")
@@ -66,8 +67,12 @@ cleaning <- function(sht, range){
  # ADDING NATIONAL COLUMN   
 df1$Australia <- 0
 
+
+#ADDING SEX COLUMN
+df1$sex <- "ALL"
+
 #BRINGING NATIONAL COLUMN TO FRONT 
-corder <- c("Australia", "calendar_year", "age_group", "N_of_children_registered_immunisation", 
+corder <- c("Australia", "year_range", "age_group", "sex", "N_of_children_registered_immunisation", 
             "N_fully_immunised",
             "N_not_fully_immunised", 
             "%_full_immunised")
@@ -86,13 +91,21 @@ df2 <- df2[,-2]
   
 #RENAMING COLUMNS 
 
-names(df2) <- c("SA4_CODE16", "calendar_year", "age_group", "N_of_children_registered_immunisation", "N_fully_immunised","N_not_fully_immunised", 
-            "%_full_immunised", "area_uncertainty_immunisation")
+names(df2) <- c("SA4_CODE16", "year_range", "age_group", "N_of_children_registered_immunisation", "N_fully_immunised","N_not_fully_immunised", 
+            "%_full_immunised", "uncertainty_AIR", "sex")
 
-#Note for Aiden
+
+#REORDERING COLS
+corder <- c("SA4_CODE16", "year_range", "age_group", "sex", "N_of_children_registered_immunisation", 
+            "N_fully_immunised", "N_not_fully_immunised", "%_full_immunised", "uncertainty_AIR")
+
+df2 <- df2[,corder]
+
+
+#Note for QA:
 #  as per sheet one of per raw data "*" in this instance means Interpret with caution:
 #This area’s eligible population is between 26 and 100 registered children. 
-#I have just left as the end column, as in raw data but changed the symbol from # to * 
+#I have just left as the end column, as in raw data but changed the symbol from # to 1 
 
 
 #SA3 Data 
@@ -104,8 +117,14 @@ df3 <- df3[,-2]
   
 #RENAMING COLUMNS 
 
-names(df3) <- c("SA3_CODE16", "calendar_year", "age_group", "N_of_children_registered_immunisation", "N_fully_immunised","N_not_fully_immunised", 
-                  "%_full_immunised", "area_uncertainty_immunisation")
+names(df3) <- c("SA3_CODE16", "year_range", "age_group", "N_of_children_registered_immunisation", "N_fully_immunised","N_not_fully_immunised", 
+                  "%_full_immunised", "uncertainty_AIR", "sex")
+
+#REORDERING COLS
+corder <- c("SA3_CODE16", "year_range", "age_group", "sex", "N_of_children_registered_immunisation", 
+            "N_fully_immunised", "N_not_fully_immunised", "%_full_immunised", "uncertainty_AIR")
+
+df3 <- df3[,corder]
   
   
   #----------------#
@@ -113,6 +132,6 @@ names(df3) <- c("SA3_CODE16", "calendar_year", "age_group", "N_of_children_regis
   #----------------#
 
   
- write.csv(df1, "../../../Data_Collections_INTERIM/AIR_121_fully_immunised_National.csv", row.names = F)
- write.csv(df2, "../../../Data_Collections_INTERIM/AIR_121_fully_immunised_SA4.csv", row.names = F)
- write.csv(df3, "../../../Data_Collections_INTERIM/AIR_121_fully_immunised_SA3.csv", row.names = F)
+ write.csv(df1, "../../../Data_Collections_READY_FOR_QA/AIR_public/AIR_121_fully_immunised_National.csv", row.names = F)
+ write.csv(df2, "../../../Data_Collections_READY_FOR_QA/AIR_public/AIR_121_fully_immunised_SA4.csv", row.names = F)
+ write.csv(df3, "../../../Data_Collections_READY_FOR_QA/AIR_public/AIR_121_fully_immunised_SA3.csv", row.names = F)

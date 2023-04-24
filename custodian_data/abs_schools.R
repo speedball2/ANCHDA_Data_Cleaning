@@ -85,7 +85,7 @@ cleaning <- function(path, sht, range, col, nems, corder){
                      "o 18 years" = "18",
                      "p 19 years" = "19",
                      "q 20 years" = "20",
-                     "r 21 years and over" = "21 <", # change this to 21-x
+                     "r 21 years and over" = "21+", # change this to 21-x
                      
                      #DF2
                      "a 14 Turning 15" = "14-15",
@@ -289,21 +289,22 @@ if("school_grade" %in% names(df5)){
   )
 }
 
+# -----------------------------------------------------------------------------
+
+#REMOVING TOTALS FROM DATA 
+
+df2 <- df2[!grepl("Persons", df2$sex),]
+df3 <- df3[!grepl("Persons", df3$sex),]
+
 # ----------------- #
 # --- write csv --- #
 # ----------------- #
 
-path_out = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_INTERIM"
-
-
-# write.csv(df1,paste(path_out,'ABS_schools_473_full_time_and_part_time_students_STE', sep = '', row.names = F))
-
-
-# write.csv(df1, "ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
-# write.csv(df2, "ABS_schools_463_continuation_rates_STE.csv", row.names = F)
-# write.csv(df3, "ABS_schools_461_retention_rate_STE.csv", row.names = F)
-# write.csv(df3, "ABS_schools_462_school_completion_year_12.csv", row.names = F)
-# write.csv(df3, "ABS_schools_Attendance_at_primary_school_Year_5_STE.csv", row.names = F)
+ write.csv(df1, "../../../../../../../Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
+ write.csv(df2, "../../../Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_463_continuation_rates_STE.csv", row.names = F)
+ write.csv(df3, "../../../Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_461_retention_rate_STE.csv", row.names = F)
+ write.csv(df3, "../../../Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_462_school_completion_year_12.csv", row.names = F)
+ write.csv(df3, "../../../Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_Attendance_at_primary_school_Year_5_STE.csv", row.names = F)
 
 
 # _____________________________________________________________________

@@ -59,11 +59,11 @@ df8 <- df8[,-c(2,13,24,35,46)]
 
 # # SA4 --------------------------------------------------------------------------
 
-full <- data.frame(matrix(ncol = 10, nrow = 0))
-namecol <- c("SA4_CODE16", "births_abs","15-19", "c","b","d", "e", "f", "g", "fert", "med","calendar_year")
+full <- data.frame(matrix(ncol = 11, nrow = 0))
+namecol <- c("SA4_CODE16", "births_abs","15-19", "20-24","25-29","30-34", "40-44", "45-49", "total_fertility_rate", "median_age_of_mother","calendar_year")
 names(full) <- namecol
-for (i in seq(10,ncol(df10),10)){
-  test <- df10[,c(1,i:(i+1))] %>% mutate(Year = 2010+(i/2))
+for (i in seq(11,ncol(df8),11)){
+  test <- df8[,c(1,i:(i+1))] %>% mutate(Year = 2010+(i/2))
   names(test) <- namecol
   full <- rbind(full,test)
 }
