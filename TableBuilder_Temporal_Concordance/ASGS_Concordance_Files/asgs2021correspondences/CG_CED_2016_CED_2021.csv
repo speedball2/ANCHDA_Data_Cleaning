@@ -1,0 +1,363 @@
+﻿CED_CODE_2016,CED_NAME_2016,CED_CODE_2021,CED_NAME_2021,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+101,Banks,101,Banks,1,Good,Acceptable,0
+102,Barton,144,Watson,0.002358,Good,Acceptable,1
+102,Barton,102,Barton,0.997642,Good,Acceptable,0
+103,Bennelong,103,Bennelong,1,Good,Acceptable,0
+104,Berowra,127,Macquarie,0.0003597,Good,Acceptable,1
+104,Berowra,129,Mitchell,0.0010242,Good,Acceptable,1
+104,Berowra,106,Bradfield,0.0011274,Good,Acceptable,1
+104,Berowra,104,Berowra,0.9974888,Good,Acceptable,0
+105,Blaxland,105,Blaxland,1,Good,Acceptable,0
+106,Bradfield,106,Bradfield,1,Good,Acceptable,0
+107,Calare,139,Riverina,7.78E-05,Good,Acceptable,1
+107,Calare,107,Calare,0.9999222,Good,Acceptable,0
+108,Chifley,128,McMahon,1.00E-07,Good,Acceptable,1
+108,Chifley,118,Greenway,0.0009313,Good,Acceptable,1
+108,Chifley,108,Chifley,0.9990686,Good,Acceptable,0
+109,Cook,,,3.56E-05,Poor,Acceptable,4
+109,Cook,101,Banks,0.0016861,Good,Acceptable,1
+109,Cook,109,Cook,0.9982782,Good,Acceptable,0
+110,Cowper,130,New England,0.0002183,Good,Acceptable,1
+110,Cowper,133,Page,0.0003594,Good,Acceptable,1
+110,Cowper,110,Cowper,0.9994223,Good,Acceptable,0
+111,Cunningham,147,Whitlam,0.0009651,Good,Acceptable,1
+111,Cunningham,111,Cunningham,0.9990348,Good,Acceptable,0
+112,Dobell,140,Robertson,0.0030323,Good,Acceptable,1
+112,Dobell,112,Dobell,0.9969677,Good,Acceptable,0
+113,Eden-Monaro,116,Gilmore,7.80E-06,Good,Acceptable,1
+113,Eden-Monaro,113,Eden-Monaro,0.9999922,Good,Acceptable,0
+114,Farrer,114,Farrer,1,Good,Acceptable,0
+115,Fowler,128,McMahon,0.0003364,Good,Acceptable,1
+115,Fowler,115,Fowler,0.9996636,Good,Acceptable,0
+116,Gilmore,116,Gilmore,1,Good,Acceptable,0
+117,Grayndler,144,Watson,0.0008211,Good,Acceptable,1
+117,Grayndler,137,Reid,0.0034248,Good,Acceptable,1
+117,Grayndler,117,Grayndler,0.9957541,Good,Acceptable,0
+118,Greenway,118,Greenway,1,Good,Acceptable,0
+119,Hughes,119,Hughes,1,Good,Acceptable,0
+120,Hume,125,Macarthur,8.19E-05,Good,Acceptable,1
+120,Hume,147,Whitlam,0.0002319,Good,Acceptable,1
+120,Hume,113,Eden-Monaro,0.0014299,Good,Acceptable,1
+120,Hume,120,Hume,0.9982563,Good,Acceptable,0
+121,Hunter,121,Hunter,1,Good,Acceptable,0
+122,Kingsford Smith,122,Kingsford Smith,1,Good,Acceptable,0
+123,Lindsay,128,McMahon,0.0004249,Good,Acceptable,1
+123,Lindsay,120,Hume,0.0012139,Good,Acceptable,1
+123,Lindsay,123,Lindsay,0.9983611,Good,Acceptable,0
+124,Lyne,124,Lyne,1,Good,Acceptable,0
+125,Macarthur,146,Werriwa,2.00E-07,Good,Acceptable,1
+125,Macarthur,120,Hume,0.0017796,Good,Acceptable,1
+125,Macarthur,125,Macarthur,0.9982202,Good,Acceptable,0
+126,Mackellar,126,Mackellar,1,Good,Acceptable,0
+127,Macquarie,127,Macquarie,1,Good,Acceptable,0
+128,McMahon,135,Parramatta,0.0006288,Good,Acceptable,1
+128,McMahon,128,McMahon,0.9993712,Good,Acceptable,0
+129,Mitchell,135,Parramatta,0.0021622,Good,Acceptable,1
+129,Mitchell,129,Mitchell,0.9978378,Good,Acceptable,0
+130,New England,130,New England,1,Good,Acceptable,0
+131,Newcastle,136,Paterson,0.0003952,Good,Acceptable,1
+131,Newcastle,131,Newcastle,0.9996048,Good,Acceptable,0
+132,North Sydney,106,Bradfield,1.00E-07,Good,Acceptable,1
+132,North Sydney,143,Warringah,0.00241,Good,Acceptable,1
+132,North Sydney,132,North Sydney,0.9975899,Good,Acceptable,0
+133,Page,138,Richmond,0.0016931,Good,Acceptable,1
+133,Page,133,Page,0.9983069,Good,Acceptable,0
+134,Parkes,107,Calare,0.0006456,Good,Acceptable,1
+134,Parkes,134,Parkes,0.9993544,Good,Acceptable,0
+135,Parramatta,103,Bennelong,0.0010086,Good,Acceptable,1
+135,Parramatta,135,Parramatta,0.9989914,Good,Acceptable,0
+136,Paterson,121,Hunter,0.001762,Good,Acceptable,1
+136,Paterson,136,Paterson,0.998238,Good,Acceptable,0
+137,Reid,117,Grayndler,0.0005242,Good,Acceptable,1
+137,Reid,137,Reid,0.9994758,Good,Acceptable,0
+138,Richmond,133,Page,0.0014338,Good,Acceptable,1
+138,Richmond,138,Richmond,0.9985662,Good,Acceptable,0
+139,Riverina,107,Calare,0.0004669,Good,Acceptable,1
+139,Riverina,139,Riverina,0.9995331,Good,Acceptable,0
+140,Robertson,140,Robertson,1,Good,Acceptable,0
+141,Shortland,112,Dobell,1.00E-07,Good,Acceptable,1
+141,Shortland,121,Hunter,0.001589,Good,Acceptable,1
+141,Shortland,141,Shortland,0.9984109,Good,Acceptable,0
+142,Sydney,117,Grayndler,7.68E-05,Good,Acceptable,1
+142,Sydney,142,Sydney,0.9999232,Good,Acceptable,0
+143,Warringah,126,Mackellar,0.0013453,Good,Acceptable,1
+143,Warringah,143,Warringah,0.9986547,Good,Acceptable,0
+144,Watson,117,Grayndler,0.0020964,Good,Acceptable,1
+144,Watson,144,Watson,0.9979036,Good,Acceptable,0
+145,Wentworth,122,Kingsford Smith,0.0001724,Good,Acceptable,1
+145,Wentworth,145,Wentworth,0.9998276,Good,Acceptable,0
+146,Werriwa,146,Werriwa,1,Good,Acceptable,0
+147,Whitlam,116,Gilmore,0.0004397,Good,Acceptable,1
+147,Whitlam,147,Whitlam,0.9995603,Good,Acceptable,0
+194,No usual address (NSW),194,No usual address (NSW),1,Good,Good,0
+197,Migratory - Offshore - Shipping (NSW),197,Migratory - Offshore - Shipping (NSW),1,Good,Good,0
+201,Aston,206,Casey,0.0003095,Poor,Acceptable,1
+201,Aston,201,Aston,0.9996905,Acceptable,Acceptable,0
+202,Ballarat,238,Wannon,0.0002629,Poor,Acceptable,1
+202,Ballarat,219,Hawke,0.1694429,Poor,Acceptable,0
+202,Ballarat,202,Ballarat,0.8302942,Acceptable,Acceptable,0
+203,Batman,237,Scullin,0.0382929,Poor,Acceptable,0
+203,Batman,233,Melbourne,0.0395241,Acceptable,Acceptable,0
+203,Batman,208,Cooper,0.922183,Acceptable,Acceptable,0
+204,Bendigo,230,Mallee,0.0047324,Acceptable,Acceptable,1
+204,Bendigo,232,McEwen,0.0718442,Poor,Acceptable,0
+204,Bendigo,203,Bendigo,0.9234234,Good,Acceptable,0
+205,Bruce,222,Hotham,0.2455511,Poor,Acceptable,0
+205,Bruce,204,Bruce,0.342988,Poor,Acceptable,0
+205,Bruce,207,Chisholm,0.4114609,Poor,Acceptable,0
+206,Calwell,231,Maribyrnong,0.1071673,Poor,Acceptable,0
+206,Calwell,218,Gorton,0.2653631,Poor,Acceptable,0
+206,Calwell,205,Calwell,0.6274696,Poor,Acceptable,0
+207,Casey,211,Deakin,0.1331369,Poor,Acceptable,0
+207,Casey,206,Casey,0.8668631,Poor,Acceptable,0
+208,Chisholm,211,Deakin,0.0394647,Poor,Acceptable,0
+208,Chisholm,226,Kooyong,0.0833531,Acceptable,Acceptable,0
+208,Chisholm,234,Menzies,0.0950514,Poor,Acceptable,0
+208,Chisholm,222,Hotham,0.1433616,Poor,Acceptable,0
+208,Chisholm,207,Chisholm,0.6387691,Poor,Acceptable,0
+209,Corangamite,202,Ballarat,0.0501546,Acceptable,Acceptable,0
+209,Corangamite,238,Wannon,0.1824109,Poor,Acceptable,0
+209,Corangamite,210,Corio,0.2246341,Poor,Acceptable,0
+209,Corangamite,209,Corangamite,0.5428004,Poor,Acceptable,0
+210,Corio,209,Corangamite,0.237286,Poor,Acceptable,0
+210,Corio,210,Corio,0.762714,Poor,Acceptable,0
+211,Deakin,207,Chisholm,0.0369578,Poor,Acceptable,0
+211,Deakin,234,Menzies,0.1864311,Poor,Acceptable,0
+211,Deakin,211,Deakin,0.7766111,Poor,Acceptable,0
+212,Dunkley,213,Flinders,0.1700504,Poor,Acceptable,0
+212,Dunkley,212,Dunkley,0.8299496,Poor,Acceptable,0
+213,Flinders,227,La Trobe,0.0446216,Poor,Acceptable,0
+213,Flinders,221,Holt,0.1074139,Poor,Acceptable,0
+213,Flinders,235,Monash,0.1143916,Poor,Acceptable,0
+213,Flinders,213,Flinders,0.7335729,Poor,Acceptable,0
+214,Gellibrand,215,Gellibrand,0.4896952,Poor,Acceptable,0
+214,Gellibrand,214,Fraser,0.5103048,Poor,Acceptable,0
+215,Gippsland,235,Monash,0.0005574,Poor,Acceptable,1
+215,Gippsland,216,Gippsland,0.9994426,Good,Acceptable,0
+216,Goldstein,217,Goldstein,1,Good,Acceptable,0
+217,Gorton,214,Fraser,0.0514265,Poor,Acceptable,0
+217,Gorton,219,Hawke,0.3719436,Poor,Acceptable,0
+217,Gorton,218,Gorton,0.5766299,Poor,Acceptable,0
+218,Higgins,222,Hotham,0.0184074,Poor,Acceptable,0
+218,Higgins,226,Kooyong,0.0261315,Acceptable,Acceptable,0
+218,Higgins,220,Higgins,0.9554612,Good,Acceptable,0
+219,Holt,204,Bruce,0.3341661,Poor,Acceptable,0
+219,Holt,221,Holt,0.6658339,Poor,Acceptable,0
+220,Hotham,220,Higgins,0.0407683,Good,Acceptable,0
+220,Hotham,224,Isaacs,0.2839084,Poor,Acceptable,0
+220,Hotham,222,Hotham,0.6753233,Poor,Acceptable,0
+221,Indi,236,Nicholls,0.0070131,Acceptable,Acceptable,1
+221,Indi,223,Indi,0.9929869,Good,Acceptable,0
+222,Isaacs,222,Hotham,0.1327892,Poor,Acceptable,0
+222,Isaacs,212,Dunkley,0.1935733,Poor,Acceptable,0
+222,Isaacs,224,Isaacs,0.6736375,Poor,Acceptable,0
+223,Jagajaga,234,Menzies,0.0208049,Poor,Acceptable,0
+223,Jagajaga,225,Jagajaga,0.9791951,Acceptable,Acceptable,0
+224,Kooyong,226,Kooyong,1,Acceptable,Acceptable,0
+225,La Trobe,221,Holt,0.0015222,Poor,Acceptable,1
+225,La Trobe,201,Aston,0.1159129,Acceptable,Acceptable,0
+225,La Trobe,206,Casey,0.1721218,Poor,Acceptable,0
+225,La Trobe,204,Bruce,0.342521,Poor,Acceptable,0
+225,La Trobe,227,La Trobe,0.3679222,Poor,Acceptable,0
+226,Lalor,215,Gellibrand,0.3476306,Poor,Acceptable,0
+226,Lalor,228,Lalor,0.6523694,Poor,Acceptable,0
+227,Mallee,230,Mallee,1,Acceptable,Acceptable,0
+228,Maribyrnong,214,Fraser,0.4737514,Poor,Acceptable,0
+228,Maribyrnong,231,Maribyrnong,0.5262486,Poor,Acceptable,0
+229,McEwen,203,Bendigo,0.0012956,Good,Acceptable,1
+229,McEwen,236,Nicholls,0.0674112,Acceptable,Acceptable,0
+229,McEwen,237,Scullin,0.0978415,Poor,Acceptable,0
+229,McEwen,219,Hawke,0.1806892,Poor,Acceptable,0
+229,McEwen,205,Calwell,0.1966025,Poor,Acceptable,0
+229,McEwen,232,McEwen,0.45616,Poor,Acceptable,0
+230,McMillan,216,Gippsland,0.0096488,Good,Acceptable,1
+230,McMillan,227,La Trobe,0.3457931,Poor,Acceptable,0
+230,McMillan,235,Monash,0.6445581,Poor,Acceptable,0
+231,Melbourne,231,Maribyrnong,0.1761611,Poor,Acceptable,0
+231,Melbourne,233,Melbourne,0.8238389,Acceptable,Acceptable,0
+232,Melbourne Ports,229,Macnamara,1,Good,Acceptable,0
+233,Menzies,206,Casey,0.0005046,Poor,Acceptable,1
+233,Menzies,211,Deakin,0.156937,Poor,Acceptable,0
+233,Menzies,234,Menzies,0.8425584,Poor,Acceptable,0
+234,Murray,223,Indi,0.0359219,Good,Acceptable,0
+234,Murray,230,Mallee,0.0384115,Acceptable,Acceptable,0
+234,Murray,236,Nicholls,0.9256665,Acceptable,Acceptable,0
+235,Scullin,225,Jagajaga,0.0934972,Acceptable,Acceptable,0
+235,Scullin,232,McEwen,0.1265881,Poor,Acceptable,0
+235,Scullin,237,Scullin,0.7799146,Poor,Acceptable,0
+236,Wannon,202,Ballarat,0.0004054,Acceptable,Acceptable,1
+236,Wannon,230,Mallee,0.1170686,Acceptable,Acceptable,0
+236,Wannon,238,Wannon,0.882526,Poor,Acceptable,0
+237,Wills,208,Cooper,0.0231832,Acceptable,Acceptable,0
+237,Wills,231,Maribyrnong,0.0417332,Poor,Acceptable,0
+237,Wills,233,Melbourne,0.0447044,Acceptable,Acceptable,0
+237,Wills,239,Wills,0.8903792,Acceptable,Acceptable,0
+294,No usual address (Vic.),294,No usual address (Vic.),1,Good,Good,0
+297,Migratory - Offshore - Shipping (Vic.),297,Migratory - Offshore - Shipping (Vic.),1,Good,Good,0
+301,Blair,325,Oxley,1.00E-07,Good,Acceptable,1
+301,Blair,301,Blair,0.9999999,Good,Acceptable,0
+302,Bonner,313,Griffith,3.00E-07,Good,Acceptable,1
+302,Bonner,302,Bonner,0.9999997,Good,Acceptable,0
+303,Bowman,303,Bowman,1,Good,Acceptable,0
+304,Brisbane,319,Lilley,6.00E-07,Good,Acceptable,1
+304,Brisbane,328,Ryan,0.0269837,Good,Acceptable,0
+304,Brisbane,304,Brisbane,0.9730157,Good,Acceptable,0
+305,Capricornia,306,Dawson,0.0012345,Good,Acceptable,1
+305,Capricornia,305,Capricornia,0.9987655,Good,Acceptable,0
+306,Dawson,317,Kennedy,0.0055012,Good,Acceptable,1
+306,Dawson,305,Capricornia,0.0098463,Good,Acceptable,1
+306,Dawson,306,Dawson,0.9846525,Good,Acceptable,0
+307,Dickson,307,Dickson,1,Good,Acceptable,0
+308,Fadden,330,Wright,0.0023972,Good,Acceptable,1
+308,Fadden,323,Moncrieff,0.0378794,Good,Acceptable,0
+308,Fadden,308,Fadden,0.9597235,Good,Acceptable,0
+309,Fairfax,329,Wide Bay,0.000511,Good,Acceptable,1
+309,Fairfax,310,Fisher,0.038781,Good,Acceptable,0
+309,Fairfax,309,Fairfax,0.960708,Good,Acceptable,0
+310,Fisher,309,Fairfax,0.0029249,Good,Acceptable,1
+310,Fisher,310,Fisher,0.9970751,Good,Acceptable,0
+311,Flynn,321,Maranoa,5.56E-05,Good,Acceptable,1
+311,Flynn,316,Hinkler,0.0001458,Good,Acceptable,1
+311,Flynn,305,Capricornia,0.0001458,Good,Acceptable,1
+311,Flynn,311,Flynn,0.9996528,Good,Acceptable,0
+312,Forde,327,Rankin,2.45E-05,Good,Acceptable,1
+312,Forde,330,Wright,0.0011833,Good,Acceptable,1
+312,Forde,312,Forde,0.9987922,Good,Acceptable,0
+313,Griffith,324,Moreton,0.0506604,Good,Acceptable,0
+313,Griffith,313,Griffith,0.9493396,Good,Acceptable,0
+314,Groom,321,Maranoa,0.0023461,Good,Acceptable,1
+314,Groom,314,Groom,0.9976539,Good,Acceptable,0
+315,Herbert,317,Kennedy,0.0036797,Good,Acceptable,1
+315,Herbert,315,Herbert,0.9963203,Good,Acceptable,0
+316,Hinkler,316,Hinkler,1,Good,Acceptable,0
+317,Kennedy,318,Leichhardt,4.96E-05,Good,Acceptable,1
+317,Kennedy,306,Dawson,0.0003935,Good,Acceptable,1
+317,Kennedy,315,Herbert,0.0004166,Good,Acceptable,1
+317,Kennedy,317,Kennedy,0.9991403,Good,Acceptable,0
+318,Leichhardt,317,Kennedy,0.0477119,Good,Acceptable,0
+318,Leichhardt,318,Leichhardt,0.9522881,Good,Acceptable,0
+319,Lilley,304,Brisbane,2.60E-05,Good,Acceptable,1
+319,Lilley,307,Dickson,0.0337823,Good,Acceptable,0
+319,Lilley,319,Lilley,0.9661917,Good,Acceptable,0
+320,Longman,320,Longman,1,Good,Acceptable,0
+321,Maranoa,314,Groom,0.0034308,Good,Acceptable,1
+321,Maranoa,321,Maranoa,0.9965692,Good,Acceptable,0
+322,McPherson,322,McPherson,1,Good,Acceptable,0
+323,Moncrieff,330,Wright,0.0004014,Good,Acceptable,1
+323,Moncrieff,322,McPherson,0.0012234,Good,Acceptable,1
+323,Moncrieff,323,Moncrieff,0.9983752,Good,Acceptable,0
+324,Moreton,325,Oxley,0.02516,Good,Acceptable,0
+324,Moreton,324,Moreton,0.97484,Good,Acceptable,0
+325,Oxley,301,Blair,1.00E-07,Good,Acceptable,1
+325,Oxley,325,Oxley,0.9999999,Good,Acceptable,0
+326,Petrie,326,Petrie,1,Good,Acceptable,0
+327,Rankin,327,Rankin,1,Good,Acceptable,0
+328,Ryan,304,Brisbane,0.00052,Good,Acceptable,1
+328,Ryan,301,Blair,0.0388788,Good,Acceptable,0
+328,Ryan,328,Ryan,0.9606013,Good,Acceptable,0
+329,Wide Bay,316,Hinkler,0.0098156,Good,Acceptable,1
+329,Wide Bay,329,Wide Bay,0.9901844,Good,Acceptable,0
+330,Wright,323,Moncrieff,0.0004682,Good,Acceptable,1
+330,Wright,322,McPherson,0.0006988,Good,Acceptable,1
+330,Wright,330,Wright,0.9988329,Good,Acceptable,0
+394,No usual address (Qld),394,No usual address (Qld),1,Good,Good,0
+397,Migratory - Offshore - Shipping (Qld),397,Migratory - Offshore - Shipping (Qld),1,Good,Good,0
+401,Adelaide,403,Boothby,0.038718,Poor,Acceptable,0
+401,Adelaide,410,Sturt,0.1481168,Acceptable,Acceptable,0
+401,Adelaide,401,Adelaide,0.8131653,Poor,Acceptable,0
+402,Barker,402,Barker,1,Good,Acceptable,0
+403,Boothby,408,Mayo,0.0591761,Acceptable,Acceptable,0
+403,Boothby,406,Kingston,0.165344,Acceptable,Acceptable,0
+403,Boothby,403,Boothby,0.7754798,Poor,Acceptable,0
+404,Grey,404,Grey,1,Acceptable,Acceptable,0
+405,Hindmarsh,401,Adelaide,0.1709753,Poor,Acceptable,0
+405,Hindmarsh,403,Boothby,0.3039265,Poor,Acceptable,0
+405,Hindmarsh,405,Hindmarsh,0.5250983,Poor,Acceptable,0
+406,Kingston,403,Boothby,0.0006376,Poor,Acceptable,1
+406,Kingston,408,Mayo,0.1042756,Acceptable,Acceptable,0
+406,Kingston,406,Kingston,0.8950868,Acceptable,Acceptable,0
+407,Makin,409,Spence,2.08E-05,Poor,Acceptable,1
+407,Makin,407,Makin,0.9999792,Good,Acceptable,0
+408,Mayo,410,Sturt,0.0092452,Acceptable,Acceptable,1
+408,Mayo,402,Barker,0.013331,Good,Acceptable,0
+408,Mayo,406,Kingston,0.0151884,Acceptable,Acceptable,0
+408,Mayo,408,Mayo,0.9622354,Acceptable,Acceptable,0
+409,Port Adelaide,407,Makin,0.1061026,Good,Acceptable,0
+409,Port Adelaide,401,Adelaide,0.1327965,Poor,Acceptable,0
+409,Port Adelaide,409,Spence,0.2689366,Poor,Acceptable,0
+409,Port Adelaide,405,Hindmarsh,0.4921644,Poor,Acceptable,0
+410,Sturt,410,Sturt,1,Acceptable,Acceptable,0
+411,Wakefield,402,Barker,0.0846745,Good,Acceptable,0
+411,Wakefield,404,Grey,0.1456804,Acceptable,Acceptable,0
+411,Wakefield,409,Spence,0.7696451,Poor,Acceptable,0
+494,No usual address (SA),494,No usual address (SA),1,Good,Good,0
+497,Migratory - Offshore - Shipping (SA),497,Migratory - Offshore - Shipping (SA),1,Good,Good,0
+501,Brand,501,Brand,1,Good,Acceptable,0
+502,Burt,503,Canning,0.0002829,Good,Acceptable,1
+502,Burt,515,Tangney,0.1955387,Acceptable,Acceptable,0
+502,Burt,502,Burt,0.8041784,Poor,Acceptable,0
+503,Canning,509,Hasluck,0.0001253,Poor,Acceptable,1
+503,Canning,502,Burt,0.0098193,Poor,Acceptable,1
+503,Canning,511,O'Connor,0.0114895,Good,Acceptable,0
+503,Canning,503,Canning,0.9785658,Good,Acceptable,0
+504,Cowan,510,Moore,0.0075894,Good,Acceptable,1
+504,Cowan,509,Hasluck,0.0351361,Poor,Acceptable,0
+504,Cowan,512,Pearce,0.4304511,Poor,Acceptable,0
+504,Cowan,504,Cowan,0.5268234,Poor,Acceptable,0
+505,Curtin,505,Curtin,1,Good,Acceptable,0
+506,Durack,511,O'Connor,0.065861,Good,Acceptable,0
+506,Durack,506,Durack,0.934139,Acceptable,Acceptable,0
+507,Forrest,511,O'Connor,0.0070441,Good,Acceptable,1
+507,Forrest,507,Forrest,0.9929559,Good,Acceptable,0
+508,Fremantle,508,Fremantle,1,Good,Acceptable,0
+509,Hasluck,514,Swan,0.1643384,Acceptable,Acceptable,0
+509,Hasluck,502,Burt,0.1745839,Poor,Acceptable,0
+509,Hasluck,509,Hasluck,0.6610777,Poor,Acceptable,0
+510,Moore,510,Moore,1,Good,Acceptable,0
+511,O'Connor,511,O'Connor,1,Good,Acceptable,0
+512,Pearce,511,O'Connor,0.0085157,Good,Acceptable,1
+512,Pearce,506,Durack,0.1761378,Acceptable,Acceptable,0
+512,Pearce,509,Hasluck,0.2896954,Poor,Acceptable,0
+512,Pearce,512,Pearce,0.5256511,Poor,Acceptable,0
+513,Perth,504,Cowan,0.1429553,Poor,Acceptable,0
+513,Perth,513,Perth,0.8570447,Poor,Acceptable,0
+514,Stirling,510,Moore,0.1041579,Good,Acceptable,0
+514,Stirling,505,Curtin,0.1153034,Good,Acceptable,0
+514,Stirling,513,Perth,0.2648801,Poor,Acceptable,0
+514,Stirling,504,Cowan,0.5156587,Poor,Acceptable,0
+515,Swan,515,Tangney,0.0391505,Acceptable,Acceptable,0
+515,Swan,514,Swan,0.9608495,Acceptable,Acceptable,0
+516,Tangney,515,Tangney,1,Acceptable,Acceptable,0
+594,No usual address (WA),594,No usual address (WA),1,Good,Good,0
+597,Migratory - Offshore - Shipping (WA),597,Migratory - Offshore - Shipping (WA),1,Good,Good,0
+601,Bass,605,Lyons,0.0887373,Poor,Acceptable,0
+601,Bass,601,Bass,0.9112627,Acceptable,Acceptable,0
+602,Braddon,605,Lyons,4.21E-05,Poor,Acceptable,1
+602,Braddon,602,Braddon,0.9999579,Good,Acceptable,0
+603,Denison,605,Lyons,2.95E-05,Poor,Acceptable,1
+603,Denison,604,Franklin,0.002052,Good,Acceptable,1
+603,Denison,603,Clark,0.9979185,Good,Acceptable,0
+604,Franklin,605,Lyons,0.051496,Poor,Acceptable,0
+604,Franklin,604,Franklin,0.948504,Good,Acceptable,0
+605,Lyons,604,Franklin,1.00E-07,Good,Acceptable,1
+605,Lyons,603,Clark,0.0028991,Good,Acceptable,1
+605,Lyons,602,Braddon,0.0581846,Good,Acceptable,0
+605,Lyons,601,Bass,0.0946278,Acceptable,Acceptable,0
+605,Lyons,605,Lyons,0.8442884,Poor,Acceptable,0
+694,No usual address (Tas.),694,No usual address (Tas.),1,Good,Good,0
+697,Migratory - Offshore - Shipping (Tas.),697,Migratory - Offshore - Shipping (Tas.),1,Good,Good,0
+701,Lingiari,701,Lingiari,1,Good,Acceptable,0
+702,Solomon,701,Lingiari,0.0453078,Good,Acceptable,0
+702,Solomon,702,Solomon,0.9546922,Good,Acceptable,0
+794,No usual address (NT),794,No usual address (NT),1,Good,Good,0
+797,Migratory - Offshore - Shipping (NT),797,Migratory - Offshore - Shipping (NT),1,Good,Good,0
+801,Canberra,802,Canberra,0.2985021,Poor,Acceptable,0
+801,Canberra,801,Bean,0.7014979,Poor,Acceptable,0
+802,Fenner,802,Canberra,0.3237098,Poor,Acceptable,0
+802,Fenner,803,Fenner,0.6762902,Poor,Acceptable,0
+894,No usual address (ACT),894,No usual address (ACT),1,Good,Good,0
+897,Migratory - Offshore - Shipping (ACT),897,Migratory - Offshore - Shipping (ACT),1,Good,Good,0
+994,No usual address (OT),994,No usual address (OT),1,Good,Good,0
+997,Migratory - Offshore - Shipping (OT),997,Migratory - Offshore - Shipping (OT),1,Good,Good,0
+,,506,Durack,1,Acceptable,Acceptable,3
+,,ZZZ,Outside Australia,,NA,Good,3

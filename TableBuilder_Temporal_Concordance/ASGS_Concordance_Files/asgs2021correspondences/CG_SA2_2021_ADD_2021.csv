@@ -1,0 +1,2585 @@
+SA2_CODE_2021,SA2_NAME_2021,ADD_CODE_2021,ADD_NAME_2021,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+101021007,Braidwood,D08,South East Coast (NSW),1,Good,Good,0
+101021008,Karabar,D03,Murray-Darling Basin,1,Good,Good,0
+101021009,Queanbeyan,D03,Murray-Darling Basin,1,Good,Good,0
+101021010,Queanbeyan - East,D03,Murray-Darling Basin,1,Good,Good,0
+101021012,Queanbeyan West - Jerrabomberra,D03,Murray-Darling Basin,1,Good,Good,0
+101021610,Googong,D03,Murray-Darling Basin,1,Good,Good,0
+101021611,Queanbeyan Surrounds,D08,South East Coast (NSW),0.046859,Good,Good,0
+101021611,Queanbeyan Surrounds,D03,Murray-Darling Basin,0.953141,Good,Good,0
+101031013,Bombala,D08,South East Coast (NSW),1.23E-05,Good,Good,1
+101031013,Bombala,D09,South East Coast (Victoria),0.9999877,Good,Good,0
+101031014,Cooma,D03,Murray-Darling Basin,1,Good,Good,0
+101031015,Cooma Surrounds,D08,South East Coast (NSW),0.0080626,Good,Good,1
+101031015,Cooma Surrounds,D09,South East Coast (Victoria),0.1576219,Good,Good,0
+101031015,Cooma Surrounds,D03,Murray-Darling Basin,0.8343156,Good,Good,0
+101031016,Jindabyne - Berridale,D09,South East Coast (Victoria),1,Good,Good,0
+101041017,Batemans Bay,D08,South East Coast (NSW),1,Good,Good,0
+101041018,Batemans Bay - South,D08,South East Coast (NSW),1,Good,Good,0
+101041019,Bega - Tathra,D08,South East Coast (NSW),1,Good,Good,0
+101041020,Bega-Eden Hinterland,D09,South East Coast (Victoria),0.0016931,Good,Good,1
+101041020,Bega-Eden Hinterland,D08,South East Coast (NSW),0.9983069,Good,Good,0
+101041021,Broulee - Tomakin,D08,South East Coast (NSW),1,Good,Good,0
+101041022,Deua - Wadbilliga,D08,South East Coast (NSW),1,Good,Good,0
+101041023,Eden,D08,South East Coast (NSW),1,Good,Good,0
+101041024,Eurobodalla Hinterland,D08,South East Coast (NSW),1,Good,Good,0
+101041025,Merimbula - Tura Beach,D08,South East Coast (NSW),1,Good,Good,0
+101041026,Moruya - Tuross Head,D08,South East Coast (NSW),1,Good,Good,0
+101041027,Narooma - Bermagui,D08,South East Coast (NSW),1,Good,Good,0
+101051539,Goulburn,D08,South East Coast (NSW),1,Good,Good,0
+101051540,Goulburn Surrounds,D03,Murray-Darling Basin,0.4123119,Good,Good,0
+101051540,Goulburn Surrounds,D08,South East Coast (NSW),0.5876881,Good,Good,0
+101061541,Yass,D03,Murray-Darling Basin,1,Good,Good,0
+101061542,Yass Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+101061543,Young,D03,Murray-Darling Basin,1,Good,Good,0
+101061544,Young Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+102011028,Avoca Beach - Copacabana,D08,South East Coast (NSW),1,Good,Good,0
+102011029,Box Head - MacMasters Beach,D08,South East Coast (NSW),1,Good,Good,0
+102011030,Calga - Kulnura,D08,South East Coast (NSW),1,Good,Good,0
+102011031,Erina - Green Point,D08,South East Coast (NSW),1,Good,Good,0
+102011032,Gosford - Springfield,D08,South East Coast (NSW),1,Good,Good,0
+102011033,Kariong,D08,South East Coast (NSW),1,Good,Good,0
+102011034,Kincumber - Picketts Valley,D08,South East Coast (NSW),1,Good,Good,0
+102011035,Narara,D08,South East Coast (NSW),1,Good,Good,0
+102011036,Niagara Park - Lisarow,D08,South East Coast (NSW),1,Good,Good,0
+102011037,Point Clare - Koolewong,D08,South East Coast (NSW),1,Good,Good,0
+102011038,Saratoga - Davistown,D08,South East Coast (NSW),1,Good,Good,0
+102011039,Terrigal - North Avoca,D08,South East Coast (NSW),1,Good,Good,0
+102011040,Umina - Booker Bay - Patonga,D08,South East Coast (NSW),1,Good,Good,0
+102011041,Wamberal - Forresters Beach,D08,South East Coast (NSW),1,Good,Good,0
+102011042,Woy Woy - Blackwall,D08,South East Coast (NSW),1,Good,Good,0
+102011043,Wyoming,D08,South East Coast (NSW),1,Good,Good,0
+102021044,Bateau Bay - Killarney Vale,D08,South East Coast (NSW),1,Good,Good,0
+102021045,Blue Haven - San Remo,D08,South East Coast (NSW),1,Good,Good,0
+102021046,Budgewoi - Buff Point - Halekulani,D08,South East Coast (NSW),1,Good,Good,0
+102021047,Chittaway Bay - Tumbi Umbi,D08,South East Coast (NSW),1,Good,Good,0
+102021048,Gorokan - Kanwal - Charmhaven,D08,South East Coast (NSW),1,Good,Good,0
+102021049,Jilliby - Yarramalong,D08,South East Coast (NSW),1,Good,Good,0
+102021050,Lake Munmorah - Mannering Park,D08,South East Coast (NSW),1,Good,Good,0
+102021051,Ourimbah - Fountaindale,D08,South East Coast (NSW),1,Good,Good,0
+102021052,Summerland Point - Gwandalan,D08,South East Coast (NSW),1,Good,Good,0
+102021053,The Entrance,D08,South East Coast (NSW),1,Good,Good,0
+102021054,Toukley - Norah Head,D08,South East Coast (NSW),1,Good,Good,0
+102021055,Tuggerah - Kangy Angy,D08,South East Coast (NSW),1,Good,Good,0
+102021056,Warnervale - Wadalba,D08,South East Coast (NSW),1,Good,Good,0
+102021057,Wyong,D08,South East Coast (NSW),1,Good,Good,0
+103011059,Bathurst - East,D03,Murray-Darling Basin,1,Good,Good,0
+103011060,Bathurst Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+103011061,Oberon,D08,South East Coast (NSW),0.0278438,Good,Good,0
+103011061,Oberon,D03,Murray-Darling Basin,0.9721562,Good,Good,0
+103011612,Bathurst - South,D03,Murray-Darling Basin,1,Good,Good,0
+103011613,Bathurst - West,D03,Murray-Darling Basin,1,Good,Good,0
+103021062,Condobolin,D03,Murray-Darling Basin,1,Good,Good,0
+103021063,Cowra,D03,Murray-Darling Basin,1,Good,Good,0
+103021064,Cowra Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+103021065,Forbes,D03,Murray-Darling Basin,1,Good,Good,0
+103021066,Grenfell,D03,Murray-Darling Basin,1,Good,Good,0
+103021067,Parkes (NSW),D03,Murray-Darling Basin,1,Good,Good,0
+103021068,Parkes Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+103021069,West Wyalong,D03,Murray-Darling Basin,1,Good,Good,0
+103031070,Lithgow,D08,South East Coast (NSW),1,Good,Good,0
+103031071,Lithgow Surrounds,D03,Murray-Darling Basin,0.3579704,Good,Good,0
+103031071,Lithgow Surrounds,D08,South East Coast (NSW),0.6420296,Good,Good,0
+103031072,Mudgee,D03,Murray-Darling Basin,1,Good,Good,0
+103031073,Mudgee Surrounds - East,D08,South East Coast (NSW),0.0284003,Good,Good,0
+103031073,Mudgee Surrounds - East,D03,Murray-Darling Basin,0.9715997,Good,Good,0
+103031074,Mudgee Surrounds - West,D08,South East Coast (NSW),0.0549087,Good,Good,0
+103031074,Mudgee Surrounds - West,D03,Murray-Darling Basin,0.9450913,Good,Good,0
+103031075,Wollangambe - Wollemi,D08,South East Coast (NSW),1,Good,Good,0
+103041076,Blayney,D03,Murray-Darling Basin,1,Good,Good,0
+103041077,Orange,D03,Murray-Darling Basin,1,Good,Good,0
+103041078,Orange - North,D03,Murray-Darling Basin,1,Good,Good,0
+103041079,Orange Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+104011080,Grafton,D08,South East Coast (NSW),1,Good,Good,0
+104011081,Grafton Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+104011082,Maclean - Yamba - Iluka,D08,South East Coast (NSW),1,Good,Good,0
+104021083,Bellingen,D08,South East Coast (NSW),1,Good,Good,0
+104021084,Coffs Harbour - North,D08,South East Coast (NSW),1,Good,Good,0
+104021085,Coffs Harbour - South,D08,South East Coast (NSW),1,Good,Good,0
+104021086,Coramba - Nana Glen - Bucca,D08,South East Coast (NSW),1,Good,Good,0
+104021087,Dorrigo,D08,South East Coast (NSW),1,Good,Good,0
+104021088,Korora - Emerald Beach,D08,South East Coast (NSW),1,Good,Good,0
+104021089,Sawtell - Boambee,D08,South East Coast (NSW),1,Good,Good,0
+104021090,Urunga,D08,South East Coast (NSW),1,Good,Good,0
+104021091,Woolgoolga - Arrawarra,D08,South East Coast (NSW),1,Good,Good,0
+105011092,Bourke - Brewarrina,D03,Murray-Darling Basin,1,Good,Good,0
+105011093,Cobar,D03,Murray-Darling Basin,1,Good,Good,0
+105011094,Coonamble,D03,Murray-Darling Basin,1,Good,Good,0
+105011095,Nyngan - Warren,D03,Murray-Darling Basin,1,Good,Good,0
+105011096,Walgett - Lightning Ridge,D03,Murray-Darling Basin,1,Good,Good,0
+105021097,Broken Hill,D03,Murray-Darling Basin,1,Good,Good,0
+105021098,Far West,D02,Lake Eyre Basin,0.1904024,Acceptable,Good,0
+105021098,Far West,D03,Murray-Darling Basin,0.8095976,Good,Good,0
+105031099,Coonabarabran,D03,Murray-Darling Basin,1,Good,Good,0
+105031100,Dubbo - East,D03,Murray-Darling Basin,1,Good,Good,0
+105031101,Dubbo - South,D03,Murray-Darling Basin,1,Good,Good,0
+105031102,Dubbo - West,D03,Murray-Darling Basin,1,Good,Good,0
+105031103,Dubbo Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+105031104,Gilgandra,D03,Murray-Darling Basin,1,Good,Good,0
+105031105,Narromine,D03,Murray-Darling Basin,1,Good,Good,0
+105031106,Wellington,D03,Murray-Darling Basin,1,Good,Good,0
+106011107,Branxton - Greta - Pokolbin,D08,South East Coast (NSW),1,Good,Good,0
+106011108,Cessnock,D08,South East Coast (NSW),1,Good,Good,0
+106011109,Cessnock Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+106011110,Dungog,D08,South East Coast (NSW),1,Good,Good,0
+106011111,Kurri Kurri - Abermain,D08,South East Coast (NSW),1,Good,Good,0
+106011112,Singleton,D08,South East Coast (NSW),1,Good,Good,0
+106011113,Singleton Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+106021114,Maitland,D08,South East Coast (NSW),1,Good,Good,0
+106021116,Maitland - North,D08,South East Coast (NSW),1,Good,Good,0
+106021614,East Maitland - Metford,D08,South East Coast (NSW),1,Good,Good,0
+106021615,Rutherford (North) - Aberglasslyn,D08,South East Coast (NSW),1,Good,Good,0
+106021616,Rutherford (South) - Telarah,D08,South East Coast (NSW),1,Good,Good,0
+106021617,Tenambit - East Maitland,D08,South East Coast (NSW),1,Good,Good,0
+106021618,Thornton - Millers Forest,D08,South East Coast (NSW),1,Good,Good,0
+106031119,Anna Bay,D08,South East Coast (NSW),1,Good,Good,0
+106031120,Lemon Tree Passage - Tanilba Bay,D08,South East Coast (NSW),1,Good,Good,0
+106031121,Nelson Bay Peninsula,D08,South East Coast (NSW),1,Good,Good,0
+106031122,Raymond Terrace,D08,South East Coast (NSW),1,Good,Good,0
+106031123,Seaham - Woodville,D08,South East Coast (NSW),1,Good,Good,0
+106031124,Tea Gardens - Hawks Nest,D08,South East Coast (NSW),1,Good,Good,0
+106031125,Williamtown - Medowie - Karuah,D08,South East Coast (NSW),1,Good,Good,0
+106041126,Muswellbrook,D08,South East Coast (NSW),1,Good,Good,0
+106041127,Muswellbrook Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+106041128,Scone,D08,South East Coast (NSW),1,Good,Good,0
+106041129,Scone Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+107011131,Dapto - Avondale,D08,South East Coast (NSW),1,Good,Good,0
+107011132,Horsley - Kembla Grange,D08,South East Coast (NSW),1,Good,Good,0
+107011133,Port Kembla Industrial,D08,South East Coast (NSW),1,Good,Good,0
+107011134,Unanderra - Mount Kembla,D08,South East Coast (NSW),1,Good,Good,0
+107011545,Berkeley - Lake Heights - Cringila,D08,South East Coast (NSW),1,Good,Good,0
+107011546,Port Kembla - Warrawong,D08,South East Coast (NSW),1,Good,Good,0
+107011547,Windang - Primbee,D08,South East Coast (NSW),1,Good,Good,0
+107021135,Illawarra Catchment Reserve,D08,South East Coast (NSW),1,Good,Good,0
+107031136,Albion Park - Macquarie Pass,D08,South East Coast (NSW),1,Good,Good,0
+107031137,Albion Park Rail,D08,South East Coast (NSW),1,Good,Good,0
+107031138,Kiama,D08,South East Coast (NSW),1,Good,Good,0
+107031139,Kiama Downs - Minnamurra,D08,South East Coast (NSW),1,Good,Good,0
+107031140,Kiama Hinterland - Gerringong,D08,South East Coast (NSW),1,Good,Good,0
+107031141,Shellharbour - Flinders,D08,South East Coast (NSW),1,Good,Good,0
+107031142,Shellharbour - Oak Flats,D08,South East Coast (NSW),1,Good,Good,0
+107031143,Warilla,D08,South East Coast (NSW),1,Good,Good,0
+107041144,Balgownie - Fairy Meadow,D08,South East Coast (NSW),1,Good,Good,0
+107041145,Corrimal - Tarrawanna - Bellambi,D08,South East Coast (NSW),1,Good,Good,0
+107041146,Figtree - Keiraville,D08,South East Coast (NSW),1,Good,Good,0
+107041147,Helensburgh,D08,South East Coast (NSW),1,Good,Good,0
+107041148,Thirroul - Austinmer - Coalcliff,D08,South East Coast (NSW),1,Good,Good,0
+107041150,Woonona - Bulli - Russell Vale,D08,South East Coast (NSW),1,Good,Good,0
+107041548,Wollongong - East,D08,South East Coast (NSW),1,Good,Good,0
+107041549,Wollongong - West,D08,South East Coast (NSW),1,Good,Good,0
+108011151,Bulahdelah - Stroud,D08,South East Coast (NSW),1,Good,Good,0
+108011152,Forster,D08,South East Coast (NSW),1,Good,Good,0
+108011153,Forster-Tuncurry Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+108011154,Tuncurry,D08,South East Coast (NSW),1,Good,Good,0
+108021155,Kempsey,D08,South East Coast (NSW),1,Good,Good,0
+108021156,Kempsey Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+108021157,Macksville - Scotts Head,D08,South East Coast (NSW),1,Good,Good,0
+108021158,Nambucca Heads,D08,South East Coast (NSW),1,Good,Good,0
+108021159,Nambucca Heads Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+108021160,South West Rocks,D08,South East Coast (NSW),1,Good,Good,0
+108031161,Lord Howe Island,D08,South East Coast (NSW),1,Good,Good,0
+108041162,Laurieton - Bonny Hills,D08,South East Coast (NSW),1,Good,Good,0
+108041164,Port Macquarie - West,D08,South East Coast (NSW),1,Good,Good,0
+108041165,Port Macquarie Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+108041166,Wauchope,D08,South East Coast (NSW),1,Good,Good,0
+108041619,Port Macquarie - East,D08,South East Coast (NSW),1,Good,Good,0
+108041620,Port Macquarie - South,D08,South East Coast (NSW),1,Good,Good,0
+108051167,Gloucester,D08,South East Coast (NSW),1,Good,Good,0
+108051168,Old Bar - Manning Point - Red Head,D08,South East Coast (NSW),1,Good,Good,0
+108051169,Taree,D08,South East Coast (NSW),1,Good,Good,0
+108051170,Taree Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+108051171,Wingham,D08,South East Coast (NSW),1,Good,Good,0
+109011172,Albury - East,D03,Murray-Darling Basin,1,Good,Good,0
+109011173,Albury - North,D03,Murray-Darling Basin,1,Good,Good,0
+109011174,Albury - South,D03,Murray-Darling Basin,1,Good,Good,0
+109011175,Albury Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+109011176,Lavington,D03,Murray-Darling Basin,1,Good,Good,0
+109021177,Hay,D03,Murray-Darling Basin,1,Good,Good,0
+109021178,Wentworth - Buronga,D03,Murray-Darling Basin,1,Good,Good,0
+109021179,Wentworth-Balranald Region,D03,Murray-Darling Basin,1,Good,Good,0
+109031180,Corowa,D03,Murray-Darling Basin,1,Good,Good,0
+109031181,Corowa Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+109031182,Deniliquin,D03,Murray-Darling Basin,1,Good,Good,0
+109031183,Deniliquin Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+109031184,Moama,D03,Murray-Darling Basin,1,Good,Good,0
+109031185,Tocumwal - Finley - Jerilderie,D03,Murray-Darling Basin,1,Good,Good,0
+110011186,Armidale,D08,South East Coast (NSW),1,Good,Good,0
+110011187,Armidale Surrounds - North,D03,Murray-Darling Basin,0.4931143,Good,Good,0
+110011187,Armidale Surrounds - North,D08,South East Coast (NSW),0.5068857,Good,Good,0
+110011188,Armidale Surrounds - South,D08,South East Coast (NSW),0.2497998,Good,Good,0
+110011188,Armidale Surrounds - South,D03,Murray-Darling Basin,0.7502002,Good,Good,0
+110011189,Walcha,D03,Murray-Darling Basin,0.2033289,Good,Good,0
+110011189,Walcha,D08,South East Coast (NSW),0.7966711,Good,Good,0
+110021190,Glen Innes,D08,South East Coast (NSW),0.1014403,Good,Good,0
+110021190,Glen Innes,D03,Murray-Darling Basin,0.8985597,Good,Good,0
+110021191,Inverell,D03,Murray-Darling Basin,1,Good,Good,0
+110021192,Inverell Surrounds - East,D03,Murray-Darling Basin,1,Good,Good,0
+110021193,Inverell Surrounds - West,D03,Murray-Darling Basin,1,Good,Good,0
+110021194,Tenterfield,D08,South East Coast (NSW),0.3340286,Good,Good,0
+110021194,Tenterfield,D03,Murray-Darling Basin,0.6659714,Good,Good,0
+110031195,Moree,D03,Murray-Darling Basin,1,Good,Good,0
+110031196,Moree Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+110031197,Narrabri,D03,Murray-Darling Basin,1,Good,Good,0
+110031198,Narrabri Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+110041199,Gunnedah,D03,Murray-Darling Basin,1,Good,Good,0
+110041200,Gunnedah Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+110041201,Quirindi,D03,Murray-Darling Basin,1,Good,Good,0
+110041202,Tamworth - East,D03,Murray-Darling Basin,1,Good,Good,0
+110041203,Tamworth - North,D03,Murray-Darling Basin,1,Good,Good,0
+110041204,Tamworth - West,D03,Murray-Darling Basin,1,Good,Good,0
+110041205,Tamworth Surrounds,D08,South East Coast (NSW),0.0025767,Good,Good,1
+110041205,Tamworth Surrounds,D03,Murray-Darling Basin,0.9974233,Good,Good,0
+111011206,Belmont - Bennetts Green,D08,South East Coast (NSW),1,Good,Good,0
+111011207,Belmont South - Blacksmiths,D08,South East Coast (NSW),1,Good,Good,0
+111011208,Charlestown - Dudley,D08,South East Coast (NSW),1,Good,Good,0
+111011209,Glendale - Cardiff - Hillsborough,D08,South East Coast (NSW),1,Good,Good,0
+111011210,Mount Hutton - Windale,D08,South East Coast (NSW),1,Good,Good,0
+111011211,Redhead,D08,South East Coast (NSW),1,Good,Good,0
+111011212,Swansea - Caves Beach,D08,South East Coast (NSW),1,Good,Good,0
+111011213,Valentine - Eleebana,D08,South East Coast (NSW),1,Good,Good,0
+111011214,Warners Bay - Boolaroo,D08,South East Coast (NSW),1,Good,Good,0
+111021215,Bolton Point - Teralba,D08,South East Coast (NSW),1,Good,Good,0
+111021216,Bonnells Bay - Silverwater,D08,South East Coast (NSW),1,Good,Good,0
+111021217,Edgeworth - Cameron Park,D08,South East Coast (NSW),1,Good,Good,0
+111021218,Morisset - Cooranbong,D08,South East Coast (NSW),1,Good,Good,0
+111021219,Toronto - Awaba,D08,South East Coast (NSW),1,Good,Good,0
+111021220,Wangi Wangi - Rathmines,D08,South East Coast (NSW),1,Good,Good,0
+111021221,West Wallsend - Barnsley - Killingworth,D08,South East Coast (NSW),1,Good,Good,0
+111031222,Adamstown - Kotara,D08,South East Coast (NSW),1,Good,Good,0
+111031223,Beresfield - Hexham,D08,South East Coast (NSW),1,Good,Good,0
+111031224,Hamilton - Broadmeadow,D08,South East Coast (NSW),1,Good,Good,0
+111031225,Lambton - New Lambton,D08,South East Coast (NSW),1,Good,Good,0
+111031226,Maryland - Fletcher - Minmi,D08,South East Coast (NSW),1,Good,Good,0
+111031227,Mayfield - Warabrook,D08,South East Coast (NSW),1,Good,Good,0
+111031228,Merewether - The Junction,D08,South East Coast (NSW),1,Good,Good,0
+111031229,Newcastle - Cooks Hill,D08,South East Coast (NSW),1,Good,Good,0
+111031230,Newcastle Port - Kooragang,D08,South East Coast (NSW),1,Good,Good,0
+111031231,Shortland - Jesmond,D08,South East Coast (NSW),1,Good,Good,0
+111031232,Stockton - Fullerton Cove,D08,South East Coast (NSW),1,Good,Good,0
+111031233,Wallsend - Elermore Vale,D08,South East Coast (NSW),1,Good,Good,0
+111031234,Waratah - North Lambton,D08,South East Coast (NSW),1,Good,Good,0
+111031235,Wickham - Carrington - Tighes Hill,D08,South East Coast (NSW),1,Good,Good,0
+112011236,Ballina,D08,South East Coast (NSW),1,Good,Good,0
+112011237,Ballina Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+112011238,Bangalow,D08,South East Coast (NSW),1,Good,Good,0
+112011239,Brunswick Heads - Ocean Shores,D08,South East Coast (NSW),1,Good,Good,0
+112011240,Byron Bay,D08,South East Coast (NSW),1,Good,Good,0
+112011241,Evans Head,D08,South East Coast (NSW),1,Good,Good,0
+112011242,Lennox Head - Skennars Head,D08,South East Coast (NSW),1,Good,Good,0
+112011243,Mullumbimby,D08,South East Coast (NSW),1,Good,Good,0
+112021244,Casino,D08,South East Coast (NSW),1,Good,Good,0
+112021245,Casino Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+112021246,Goonellabah,D08,South East Coast (NSW),1,Good,Good,0
+112021247,Kyogle,D08,South East Coast (NSW),1,Good,Good,0
+112021248,Lismore,D08,South East Coast (NSW),1,Good,Good,0
+112021249,Lismore Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+112031250,Kingscliff - Fingal Head,D08,South East Coast (NSW),1,Good,Good,0
+112031251,Murwillumbah,D08,South East Coast (NSW),1,Good,Good,0
+112031252,Murwillumbah Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+112031253,Pottsville,D08,South East Coast (NSW),1,Good,Good,0
+112031254,Tweed Heads,D04,North East Coast,0.002049,Good,Good,1
+112031254,Tweed Heads,D08,South East Coast (NSW),0.997951,Good,Good,0
+112031550,Banora Point,D08,South East Coast (NSW),1,Good,Good,0
+112031551,Terranora - North Tumbulgum,D08,South East Coast (NSW),1,Good,Good,0
+112031552,Tweed Heads South,D08,South East Coast (NSW),1,Good,Good,0
+113011256,Griffith (NSW),D03,Murray-Darling Basin,1,Good,Good,0
+113011257,Griffith Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+113011258,Leeton,D03,Murray-Darling Basin,1,Good,Good,0
+113011259,Narrandera,D03,Murray-Darling Basin,1,Good,Good,0
+113021260,Tumbarumba,D03,Murray-Darling Basin,1,Good,Good,0
+113021261,Tumut,D03,Murray-Darling Basin,1,Good,Good,0
+113021262,Tumut Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+113031263,Cootamundra,D03,Murray-Darling Basin,1,Good,Good,0
+113031264,Gundagai,D03,Murray-Darling Basin,1,Good,Good,0
+113031265,Junee,D03,Murray-Darling Basin,1,Good,Good,0
+113031266,Temora,D03,Murray-Darling Basin,1,Good,Good,0
+113031267,Wagga Wagga - East,D03,Murray-Darling Basin,1,Good,Good,0
+113031268,Wagga Wagga - North,D03,Murray-Darling Basin,1,Good,Good,0
+113031269,Wagga Wagga - South,D03,Murray-Darling Basin,1,Good,Good,0
+113031270,Wagga Wagga - West,D03,Murray-Darling Basin,1,Good,Good,0
+113031271,Wagga Wagga Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+114011272,Berry - Kangaroo Valley,D08,South East Coast (NSW),1,Good,Good,0
+114011273,Callala Bay - Currarong,D08,South East Coast (NSW),1,Good,Good,0
+114011274,Culburra Beach,D08,South East Coast (NSW),1,Good,Good,0
+114011275,Ettrema - Sassafras - Budawang,D08,South East Coast (NSW),1,Good,Good,0
+114011276,Huskisson - Vincentia,D08,South East Coast (NSW),1,Good,Good,0
+114011277,North Nowra - Bomaderry,D08,South East Coast (NSW),1,Good,Good,0
+114011278,Nowra,D08,South East Coast (NSW),1,Good,Good,0
+114011279,St Georges Basin - Erowal Bay,D08,South East Coast (NSW),1,Good,Good,0
+114011280,Sussex Inlet - Berrara,D08,South East Coast (NSW),1,Good,Good,0
+114011281,Tomerong - Wandandian - Woollamia,D08,South East Coast (NSW),1,Good,Good,0
+114011282,Ulladulla,D08,South East Coast (NSW),1,Good,Good,0
+114011283,Ulladulla Surrounds,D08,South East Coast (NSW),1,Good,Good,0
+114021284,Bowral,D08,South East Coast (NSW),1,Good,Good,0
+114021285,Hill Top - Colo Vale,D08,South East Coast (NSW),1,Good,Good,0
+114021286,Mittagong,D08,South East Coast (NSW),1,Good,Good,0
+114021287,Moss Vale - Berrima,D08,South East Coast (NSW),1,Good,Good,0
+114021288,Robertson - Fitzroy Falls,D08,South East Coast (NSW),1,Good,Good,0
+114021289,Southern Highlands,D08,South East Coast (NSW),1,Good,Good,0
+115011290,Baulkham Hills - East,D08,South East Coast (NSW),1,Good,Good,0
+115011291,Baulkham Hills (West) - Bella Vista,D08,South East Coast (NSW),1,Good,Good,0
+115011294,Glenhaven,D08,South East Coast (NSW),1,Good,Good,0
+115011296,West Pennant Hills,D08,South East Coast (NSW),1,Good,Good,0
+115011553,Castle Hill - Central,D08,South East Coast (NSW),1,Good,Good,0
+115011554,Castle Hill - East,D08,South East Coast (NSW),1,Good,Good,0
+115011555,Castle Hill - North,D08,South East Coast (NSW),1,Good,Good,0
+115011556,Castle Hill - South,D08,South East Coast (NSW),1,Good,Good,0
+115011557,Castle Hill - West,D08,South East Coast (NSW),1,Good,Good,0
+115011558,Cherrybrook,D08,South East Coast (NSW),1,Good,Good,0
+115011621,Kellyville - East,D08,South East Coast (NSW),1,Good,Good,0
+115011622,Kellyville - West,D08,South East Coast (NSW),1,Good,Good,0
+115021297,Dural - Kenthurst - Wisemans Ferry,D08,South East Coast (NSW),1,Good,Good,0
+115021298,Galston - Laughtondale,D08,South East Coast (NSW),1,Good,Good,0
+115031299,Bilpin - Colo - St Albans,D08,South East Coast (NSW),1,Good,Good,0
+115031300,Kurrajong Heights - Ebenezer,D08,South East Coast (NSW),1,Good,Good,0
+115041301,Pitt Town - McGraths Hill,D08,South East Coast (NSW),1,Good,Good,0
+115041623,Box Hill - Nelson,D08,South East Coast (NSW),1,Good,Good,0
+115041624,North Kellyville,D08,South East Coast (NSW),1,Good,Good,0
+115041625,Rouse Hill - Beaumont Hills,D08,South East Coast (NSW),1,Good,Good,0
+116011303,Blacktown (East) - Kings Park,D08,South East Coast (NSW),1,Good,Good,0
+116011304,Blacktown (North) - Marayong,D08,South East Coast (NSW),1,Good,Good,0
+116011306,Doonside - Woodcroft,D08,South East Coast (NSW),1,Good,Good,0
+116011307,Lalor Park - Kings Langley,D08,South East Coast (NSW),1,Good,Good,0
+116011560,Blacktown - South,D08,South East Coast (NSW),1,Good,Good,0
+116011561,Blacktown - West,D08,South East Coast (NSW),1,Good,Good,0
+116011626,Seven Hills - Prospect,D08,South East Coast (NSW),1,Good,Good,0
+116011627,Toongabbie - West,D08,South East Coast (NSW),1,Good,Good,0
+116021309,Glenwood,D08,South East Coast (NSW),1,Good,Good,0
+116021562,Acacia Gardens,D08,South East Coast (NSW),1,Good,Good,0
+116021563,Quakers Hill,D08,South East Coast (NSW),1,Good,Good,0
+116021628,Kellyville Ridge - The Ponds,D08,South East Coast (NSW),1,Good,Good,0
+116021629,Marsden Park - Shanes Park,D08,South East Coast (NSW),1,Good,Good,0
+116021630,Riverstone,D08,South East Coast (NSW),1,Good,Good,0
+116021631,Schofields (West) - Colebee,D08,South East Coast (NSW),1,Good,Good,0
+116021632,Schofields - East,D08,South East Coast (NSW),1,Good,Good,0
+116021633,Stanhope Gardens - Parklea,D08,South East Coast (NSW),1,Good,Good,0
+116031313,Bidwill - Hebersham - Emerton,D08,South East Coast (NSW),1,Good,Good,0
+116031314,Glendenning - Dean Park,D08,South East Coast (NSW),1,Good,Good,0
+116031315,Hassall Grove - Plumpton,D08,South East Coast (NSW),1,Good,Good,0
+116031316,Lethbridge Park - Tregear,D08,South East Coast (NSW),1,Good,Good,0
+116031317,Mount Druitt - Whalan,D08,South East Coast (NSW),1,Good,Good,0
+116031318,Prospect Reservoir,D08,South East Coast (NSW),1,Good,Good,0
+116031319,Rooty Hill - Minchinbury,D08,South East Coast (NSW),1,Good,Good,0
+117011320,Banksmeadow,D08,South East Coast (NSW),1,Good,Good,0
+117011321,Botany,D08,South East Coast (NSW),1,Good,Good,0
+117011323,Pagewood - Hillsdale - Daceyville,D08,South East Coast (NSW),1,Good,Good,0
+117011324,Port Botany Industrial,D08,South East Coast (NSW),1,Good,Good,0
+117011325,Sydney Airport,D08,South East Coast (NSW),1,Good,Good,0
+117011634,Eastlakes,D08,South East Coast (NSW),1,Good,Good,0
+117011635,Mascot,D08,South East Coast (NSW),1,Good,Good,0
+117021327,Petersham - Stanmore,D08,South East Coast (NSW),1,Good,Good,0
+117021328,Sydenham - Tempe - St Peters,D08,South East Coast (NSW),1,Good,Good,0
+117021636,Marrickville - North,D08,South East Coast (NSW),1,Good,Good,0
+117021637,Marrickville - South,D08,South East Coast (NSW),1,Good,Good,0
+117031329,Darlinghurst,D08,South East Coast (NSW),1,Good,Good,0
+117031330,Erskineville - Alexandria,D08,South East Coast (NSW),1,Good,Good,0
+117031331,Glebe - Forest Lodge,D08,South East Coast (NSW),1,Good,Good,0
+117031333,Potts Point - Woolloomooloo,D08,South East Coast (NSW),1,Good,Good,0
+117031336,Surry Hills,D08,South East Coast (NSW),1,Good,Good,0
+117031638,Camperdown - Darlington,D08,South East Coast (NSW),1,Good,Good,0
+117031639,Chippendale,D08,South East Coast (NSW),1,Good,Good,0
+117031640,Newtown (NSW),D08,South East Coast (NSW),1,Good,Good,0
+117031641,Pyrmont,D08,South East Coast (NSW),1,Good,Good,0
+117031642,Redfern,D08,South East Coast (NSW),1,Good,Good,0
+117031643,Rosebery - Beaconsfield,D08,South East Coast (NSW),1,Good,Good,0
+117031644,Sydney (North) - Millers Point,D08,South East Coast (NSW),1,Good,Good,0
+117031645,Sydney (South) - Haymarket,D08,South East Coast (NSW),1,Good,Good,0
+117031646,Ultimo,D08,South East Coast (NSW),1,Good,Good,0
+117031647,Waterloo,D08,South East Coast (NSW),1,Good,Good,0
+117031648,Zetland,D08,South East Coast (NSW),1,Good,Good,0
+118011339,Bondi - Tamarama - Bronte,D08,South East Coast (NSW),1,Good,Good,0
+118011340,Bondi Beach - North Bondi,D08,South East Coast (NSW),1,Good,Good,0
+118011341,Bondi Junction - Waverly,D08,South East Coast (NSW),1,Good,Good,0
+118011342,Centennial Park,D08,South East Coast (NSW),1,Good,Good,0
+118011344,Dover Heights,D08,South East Coast (NSW),1,Good,Good,0
+118011345,Paddington - Moore Park,D08,South East Coast (NSW),1,Good,Good,0
+118011346,Rose Bay - Vaucluse - Watsons Bay,D08,South East Coast (NSW),1,Good,Good,0
+118011347,Woollahra,D08,South East Coast (NSW),1,Good,Good,0
+118011649,Bellevue Hill,D08,South East Coast (NSW),1,Good,Good,0
+118011650,Double Bay - Darling Point,D08,South East Coast (NSW),1,Good,Good,0
+118021564,Kensington (NSW),D08,South East Coast (NSW),1,Good,Good,0
+118021565,Kingsford,D08,South East Coast (NSW),1,Good,Good,0
+118021566,Maroubra - North,D08,South East Coast (NSW),1,Good,Good,0
+118021567,Maroubra - South,D08,South East Coast (NSW),1,Good,Good,0
+118021568,Maroubra - West,D08,South East Coast (NSW),1,Good,Good,0
+118021569,Randwick - North,D08,South East Coast (NSW),1,Good,Good,0
+118021570,Randwick - South,D08,South East Coast (NSW),1,Good,Good,0
+118021651,Coogee - Clovelly,D08,South East Coast (NSW),1,Good,Good,0
+118021652,Malabar - La Perouse,D08,South East Coast (NSW),1,Good,Good,0
+118021653,Matraville - Chifley,D08,South East Coast (NSW),1,Good,Good,0
+118021654,South Coogee,D08,South East Coast (NSW),1,Good,Good,0
+119011354,Bass Hill - Georges Hall,D08,South East Coast (NSW),1,Good,Good,0
+119011355,Chullora,D08,South East Coast (NSW),1,Good,Good,0
+119011356,Condell Park,D08,South East Coast (NSW),1,Good,Good,0
+119011358,Padstow,D08,South East Coast (NSW),1,Good,Good,0
+119011360,Revesby,D08,South East Coast (NSW),1,Good,Good,0
+119011361,Yagoona - Birrong,D08,South East Coast (NSW),1,Good,Good,0
+119011571,Bankstown - North,D08,South East Coast (NSW),1,Good,Good,0
+119011572,Bankstown - South,D08,South East Coast (NSW),1,Good,Good,0
+119011655,Greenacre - North,D08,South East Coast (NSW),1,Good,Good,0
+119011656,Greenacre - South,D08,South East Coast (NSW),1,Good,Good,0
+119011657,Panania (North) - Milperra,D08,South East Coast (NSW),1,Good,Good,0
+119011658,Panania (South) - Picnic Point,D08,South East Coast (NSW),1,Good,Good,0
+119021362,Belmore - Belfield,D08,South East Coast (NSW),1,Good,Good,0
+119021366,Punchbowl,D08,South East Coast (NSW),1,Good,Good,0
+119021367,Roselands,D08,South East Coast (NSW),1,Good,Good,0
+119021573,Lakemba,D08,South East Coast (NSW),1,Good,Good,0
+119021574,Wiley Park,D08,South East Coast (NSW),1,Good,Good,0
+119021659,Campsie - North,D08,South East Coast (NSW),1,Good,Good,0
+119021660,Campsie - South,D08,South East Coast (NSW),1,Good,Good,0
+119021661,Canterbury - South,D08,South East Coast (NSW),1,Good,Good,0
+119021662,Earlwood,D08,South East Coast (NSW),1,Good,Good,0
+119021663,Kingsgrove - North,D08,South East Coast (NSW),1,Good,Good,0
+119031370,Narwee - Beverly Hills,D08,South East Coast (NSW),1,Good,Good,0
+119031371,Oatley - Hurstville Grove,D08,South East Coast (NSW),1,Good,Good,0
+119031372,Peakhurst - Lugarno,D08,South East Coast (NSW),1,Good,Good,0
+119031373,Riverwood,D08,South East Coast (NSW),1,Good,Good,0
+119031374,South Hurstville - Blakehurst,D08,South East Coast (NSW),1,Good,Good,0
+119031664,Hurstville - Central,D08,South East Coast (NSW),1,Good,Good,0
+119031665,Hurstville - North,D08,South East Coast (NSW),1,Good,Good,0
+119031666,Mortdale - Oatley,D08,South East Coast (NSW),1,Good,Good,0
+119031667,Penshurst,D08,South East Coast (NSW),1,Good,Good,0
+119041377,Kingsgrove (South) - Bardwell Park,D08,South East Coast (NSW),1,Good,Good,0
+119041378,Kogarah,D08,South East Coast (NSW),1,Good,Good,0
+119041379,Kogarah Bay - Carlton - Allawah,D08,South East Coast (NSW),1,Good,Good,0
+119041380,Monterey - Brighton-le-Sands - Kyeemagh,D08,South East Coast (NSW),1,Good,Good,0
+119041381,Rockdale - Banksia,D08,South East Coast (NSW),1,Good,Good,0
+119041382,Sans Souci - Ramsgate,D08,South East Coast (NSW),1,Good,Good,0
+119041668,Arncliffe - Bardwell Valley,D08,South East Coast (NSW),1,Good,Good,0
+119041669,Bexley - North,D08,South East Coast (NSW),1,Good,Good,0
+119041670,Bexley - South,D08,South East Coast (NSW),1,Good,Good,0
+119041671,Wolli Creek,D08,South East Coast (NSW),1,Good,Good,0
+120011383,Concord - Mortlake - Cabarita,D08,South East Coast (NSW),1,Good,Good,0
+120011385,Drummoyne - Rodd Point,D08,South East Coast (NSW),1,Good,Good,0
+120011386,Five Dock - Abbotsford,D08,South East Coast (NSW),1,Good,Good,0
+120011672,Concord West - North Strathfield,D08,South East Coast (NSW),1,Good,Good,0
+120011673,Rhodes,D08,South East Coast (NSW),1,Good,Good,0
+120021387,Balmain,D08,South East Coast (NSW),1,Good,Good,0
+120021389,Lilyfield - Rozelle,D08,South East Coast (NSW),1,Good,Good,0
+120021674,Annandale (NSW),D08,South East Coast (NSW),1,Good,Good,0
+120021675,Leichhardt,D08,South East Coast (NSW),1,Good,Good,0
+120031392,Canterbury (North) - Ashbury,D08,South East Coast (NSW),1,Good,Good,0
+120031393,Croydon Park - Enfield,D08,South East Coast (NSW),1,Good,Good,0
+120031394,Dulwich Hill - Lewisham,D08,South East Coast (NSW),1,Good,Good,0
+120031395,Haberfield - Summer Hill,D08,South East Coast (NSW),1,Good,Good,0
+120031396,Homebush,D08,South East Coast (NSW),1,Good,Good,0
+120031576,Strathfield South,D08,South East Coast (NSW),1,Good,Good,0
+120031676,Ashfield - North,D08,South East Coast (NSW),1,Good,Good,0
+120031677,Ashfield - South,D08,South East Coast (NSW),1,Good,Good,0
+120031678,Burwood (NSW),D08,South East Coast (NSW),1,Good,Good,0
+120031679,Croydon,D08,South East Coast (NSW),1,Good,Good,0
+120031680,Strathfield - East,D08,South East Coast (NSW),1,Good,Good,0
+120031681,Strathfield - West,D08,South East Coast (NSW),1,Good,Good,0
+121011399,Chatswood (West) - Lane Cove North,D08,South East Coast (NSW),1,Good,Good,0
+121011401,St Leonards - Naremburn,D08,South East Coast (NSW),1,Good,Good,0
+121011682,Artarmon,D08,South East Coast (NSW),1,Good,Good,0
+121011683,Castle Cove - Northbridge,D08,South East Coast (NSW),1,Good,Good,0
+121011684,Chatswood - East,D08,South East Coast (NSW),1,Good,Good,0
+121011685,Greenwich - Riverview,D08,South East Coast (NSW),1,Good,Good,0
+121011686,Lane Cove,D08,South East Coast (NSW),1,Good,Good,0
+121011687,Willoughby,D08,South East Coast (NSW),1,Good,Good,0
+121021403,Asquith - Mount Colah,D08,South East Coast (NSW),1,Good,Good,0
+121021404,Berowra - Brooklyn - Cowan,D08,South East Coast (NSW),1,Good,Good,0
+121021406,Normanhurst - Thornleigh - Westleigh,D08,South East Coast (NSW),1,Good,Good,0
+121021577,Hornsby - East,D08,South East Coast (NSW),1,Good,Good,0
+121021578,Hornsby - West,D08,South East Coast (NSW),1,Good,Good,0
+121021579,Wahroonga (West) - Waitara,D08,South East Coast (NSW),1,Good,Good,0
+121031407,Gordon - Killara,D08,South East Coast (NSW),1,Good,Good,0
+121031408,Lindfield - Roseville,D08,South East Coast (NSW),1,Good,Good,0
+121031409,Pymble,D08,South East Coast (NSW),1,Good,Good,0
+121031410,St Ives,D08,South East Coast (NSW),1,Good,Good,0
+121031411,Turramurra,D08,South East Coast (NSW),1,Good,Good,0
+121031412,Wahroonga (East) - Warrawee,D08,South East Coast (NSW),1,Good,Good,0
+121041413,Cremorne - Cammeray,D08,South East Coast (NSW),1,Good,Good,0
+121041414,Crows Nest - Waverton,D08,South East Coast (NSW),1,Good,Good,0
+121041416,Neutral Bay - Kirribilli,D08,South East Coast (NSW),1,Good,Good,0
+121041417,North Sydney - Lavender Bay,D08,South East Coast (NSW),1,Good,Good,0
+121041688,Mosman - North,D08,South East Coast (NSW),1,Good,Good,0
+121041689,Mosman - South,D08,South East Coast (NSW),1,Good,Good,0
+122011418,Balgowlah - Clontarf - Seaforth,D08,South East Coast (NSW),1,Good,Good,0
+122011419,Manly - Fairlight,D08,South East Coast (NSW),1,Good,Good,0
+122021420,Avalon - Palm Beach,D08,South East Coast (NSW),1,Good,Good,0
+122021421,Bayview - Elanora Heights,D08,South East Coast (NSW),1,Good,Good,0
+122021422,Newport - Bilgola,D08,South East Coast (NSW),1,Good,Good,0
+122021690,Mona Vale - Warriewood (North),D08,South East Coast (NSW),1,Good,Good,0
+122021691,North Narrabeen - Warriewood (South),D08,South East Coast (NSW),1,Good,Good,0
+122031424,Beacon Hill - Narraweena,D08,South East Coast (NSW),1,Good,Good,0
+122031425,Cromer,D08,South East Coast (NSW),1,Good,Good,0
+122031427,Forestville - Killarney Heights,D08,South East Coast (NSW),1,Good,Good,0
+122031429,Freshwater - Brookvale,D08,South East Coast (NSW),1,Good,Good,0
+122031430,Manly Vale - Allambie Heights,D08,South East Coast (NSW),1,Good,Good,0
+122031432,Terrey Hills - Duffys Forest,D08,South East Coast (NSW),1,Good,Good,0
+122031692,Belrose,D08,South East Coast (NSW),1,Good,Good,0
+122031693,Collaroy - Collaroy Plateau,D08,South East Coast (NSW),1,Good,Good,0
+122031694,Dee Why (South) - North Curl Curl,D08,South East Coast (NSW),1,Good,Good,0
+122031695,Dee Why - North,D08,South East Coast (NSW),1,Good,Good,0
+122031696,Frenchs Forest - Oxford Falls,D08,South East Coast (NSW),1,Good,Good,0
+122031697,Narrabeen - Wheeler Heights,D08,South East Coast (NSW),1,Good,Good,0
+123011433,Camden - Ellis Lane,D08,South East Coast (NSW),1,Good,Good,0
+123011698,Currans Hill,D08,South East Coast (NSW),1,Good,Good,0
+123011699,Elderslie - Narellan,D08,South East Coast (NSW),1,Good,Good,0
+123011700,Harrington Park,D08,South East Coast (NSW),1,Good,Good,0
+123011701,Mount Annan,D08,South East Coast (NSW),1,Good,Good,0
+123011702,Spring Farm,D08,South East Coast (NSW),1,Good,Good,0
+123021436,Bradbury - Wedderburn,D08,South East Coast (NSW),1,Good,Good,0
+123021437,Campbelltown - Woodbine,D08,South East Coast (NSW),1,Good,Good,0
+123021438,Claymore - Eagle Vale - Raby,D08,South East Coast (NSW),1,Good,Good,0
+123021439,Holsworthy Military Area,D08,South East Coast (NSW),1,Good,Good,0
+123021441,Leumeah - Minto Heights,D08,South East Coast (NSW),1,Good,Good,0
+123021443,Minto - St Andrews,D08,South East Coast (NSW),1,Good,Good,0
+123021444,Rosemeadow - Glen Alpine,D08,South East Coast (NSW),1,Good,Good,0
+123021703,Denham Court - Bardia,D08,South East Coast (NSW),1,Good,Good,0
+123021704,Glenfield,D08,South East Coast (NSW),1,Good,Good,0
+123021705,Ingleburn,D08,South East Coast (NSW),1,Good,Good,0
+123021706,Macquarie Fields,D08,South East Coast (NSW),1,Good,Good,0
+123031445,Bargo,D08,South East Coast (NSW),1,Good,Good,0
+123031446,Douglas Park - Appin,D08,South East Coast (NSW),1,Good,Good,0
+123031447,Picton - Tahmoor - Buxton,D08,South East Coast (NSW),1,Good,Good,0
+123031448,The Oaks - Oakdale,D08,South East Coast (NSW),1,Good,Good,0
+124011449,Blackheath - Megalong Valley,D08,South East Coast (NSW),1,Good,Good,0
+124011450,Blaxland - Warrimoo - Lapstone,D08,South East Coast (NSW),1,Good,Good,0
+124011451,Blue Mountains - North,D08,South East Coast (NSW),1,Good,Good,0
+124011452,Katoomba - Leura,D08,South East Coast (NSW),1,Good,Good,0
+124011453,Lawson - Hazelbrook - Linden,D08,South East Coast (NSW),1,Good,Good,0
+124011454,Springwood - Winmalee,D08,South East Coast (NSW),1,Good,Good,0
+124011455,Wentworth Falls,D08,South East Coast (NSW),1,Good,Good,0
+124021456,Blue Mountains - South,D08,South East Coast (NSW),1,Good,Good,0
+124031457,Cambridge Park,D08,South East Coast (NSW),1,Good,Good,0
+124031459,Emu Plains - Leonay,D08,South East Coast (NSW),1,Good,Good,0
+124031460,Glenmore Park - Regentville,D08,South East Coast (NSW),1,Good,Good,0
+124031461,Jamisontown - South Penrith,D08,South East Coast (NSW),1,Good,Good,0
+124031462,Kingswood - Werrington,D08,South East Coast (NSW),1,Good,Good,0
+124031463,Mulgoa - Luddenham - Orchard Hills,D08,South East Coast (NSW),1,Good,Good,0
+124031464,Penrith,D08,South East Coast (NSW),1,Good,Good,0
+124031465,Warragamba - Silverdale,D08,South East Coast (NSW),1,Good,Good,0
+124031707,Cranebrook - Castlereagh,D08,South East Coast (NSW),1,Good,Good,0
+124031708,Jordan Springs - Llandilo,D08,South East Coast (NSW),1,Good,Good,0
+124041466,Richmond - Clarendon,D08,South East Coast (NSW),1,Good,Good,0
+124041467,Windsor - Bligh Park,D08,South East Coast (NSW),1,Good,Good,0
+124041468,Yarramundi - Londonderry,D08,South East Coast (NSW),1,Good,Good,0
+124051469,Erskine Park,D08,South East Coast (NSW),1,Good,Good,0
+124051470,St Clair,D08,South East Coast (NSW),1,Good,Good,0
+124051580,Colyton - Oxley Park,D08,South East Coast (NSW),1,Good,Good,0
+124051581,St Marys - North St Marys,D08,South East Coast (NSW),1,Good,Good,0
+125011475,Rookwood Cemetery,D08,South East Coast (NSW),1,Good,Good,0
+125011582,Auburn - Central,D08,South East Coast (NSW),1,Good,Good,0
+125011583,Auburn - North,D08,South East Coast (NSW),1,Good,Good,0
+125011584,Auburn - South,D08,South East Coast (NSW),1,Good,Good,0
+125011585,Berala,D08,South East Coast (NSW),1,Good,Good,0
+125011586,Lidcombe,D08,South East Coast (NSW),1,Good,Good,0
+125011587,Regents Park,D08,South East Coast (NSW),1,Good,Good,0
+125011709,Silverwater - Newington,D08,South East Coast (NSW),1,Good,Good,0
+125011710,Wentworth Point - Sydney Olympic Park,D08,South East Coast (NSW),1,Good,Good,0
+125021477,Ermington - Rydalmere,D08,South East Coast (NSW),1,Good,Good,0
+125021478,Oatlands - Dundas Valley,D08,South East Coast (NSW),1,Good,Good,0
+125021711,Carlingford - East,D08,South East Coast (NSW),1,Good,Good,0
+125021712,Carlingford - West,D08,South East Coast (NSW),1,Good,Good,0
+125031479,Chester Hill - Sefton,D08,South East Coast (NSW),1,Good,Good,0
+125031480,Fairfield - East,D08,South East Coast (NSW),1,Good,Good,0
+125031481,Granville - Clyde,D08,South East Coast (NSW),1,Good,Good,0
+125031483,Guildford - South Granville,D08,South East Coast (NSW),1,Good,Good,0
+125031484,Guildford West - Merrylands West,D08,South East Coast (NSW),1,Good,Good,0
+125031486,Smithfield Industrial,D08,South East Coast (NSW),1,Good,Good,0
+125031487,Yennora Industrial,D08,South East Coast (NSW),1,Good,Good,0
+125031713,Greystanes - South,D08,South East Coast (NSW),1,Good,Good,0
+125031714,Merrylands - Holroyd,D08,South East Coast (NSW),1,Good,Good,0
+125031715,Pemulwuy - Greystanes (North),D08,South East Coast (NSW),1,Good,Good,0
+125031716,South Wentworthville,D08,South East Coast (NSW),1,Good,Good,0
+125041489,North Parramatta,D08,South East Coast (NSW),1,Good,Good,0
+125041490,North Rocks,D08,South East Coast (NSW),1,Good,Good,0
+125041491,Northmead,D08,South East Coast (NSW),1,Good,Good,0
+125041493,Toongabbie - Constitution Hill,D08,South East Coast (NSW),1,Good,Good,0
+125041494,Winston Hills,D08,South East Coast (NSW),1,Good,Good,0
+125041588,Pendle Hill - Girraween,D08,South East Coast (NSW),1,Good,Good,0
+125041589,Wentworthville - Westmead,D08,South East Coast (NSW),1,Good,Good,0
+125041717,Parramatta - North,D08,South East Coast (NSW),1,Good,Good,0
+125041718,Parramatta - South,D08,South East Coast (NSW),1,Good,Good,0
+125041719,Rosehill - Harris Park,D08,South East Coast (NSW),1,Good,Good,0
+126011496,Pennant Hills - Cheltenham,D08,South East Coast (NSW),1,Good,Good,0
+126011720,Epping (East) - North Epping,D08,South East Coast (NSW),1,Good,Good,0
+126011721,Epping (NSW) - West,D08,South East Coast (NSW),1,Good,Good,0
+126021498,Gladesville - Huntleys Point,D08,South East Coast (NSW),1,Good,Good,0
+126021499,Hunters Hill - Woolwich,D08,South East Coast (NSW),1,Good,Good,0
+126021500,Macquarie Park - Marsfield,D08,South East Coast (NSW),1,Good,Good,0
+126021501,North Ryde - East Ryde,D08,South East Coast (NSW),1,Good,Good,0
+126021503,West Ryde - Meadowbank,D08,South East Coast (NSW),1,Good,Good,0
+126021590,Putney,D08,South East Coast (NSW),1,Good,Good,0
+126021722,Denistone,D08,South East Coast (NSW),1,Good,Good,0
+126021723,Eastwood,D08,South East Coast (NSW),1,Good,Good,0
+126021724,Ryde - North,D08,South East Coast (NSW),1,Good,Good,0
+126021725,Ryde - South,D08,South East Coast (NSW),1,Good,Good,0
+127011504,Ashcroft - Busby - Miller,D08,South East Coast (NSW),1,Good,Good,0
+127011505,Austral - Greendale,D08,South East Coast (NSW),1,Good,Good,0
+127011592,Badgerys Creek,D08,South East Coast (NSW),1,Good,Good,0
+127011593,Cecil Hills,D08,South East Coast (NSW),1,Good,Good,0
+127011594,Green Valley,D08,South East Coast (NSW),1,Good,Good,0
+127011595,Hinchinbrook,D08,South East Coast (NSW),1,Good,Good,0
+127011596,Hoxton Park - Carnes Hill - Horningsea Park,D08,South East Coast (NSW),1,Good,Good,0
+127011597,West Hoxton - Middleton Grange,D08,South East Coast (NSW),1,Good,Good,0
+127011726,Cobbitty - Bringelly,D08,South East Coast (NSW),1,Good,Good,0
+127011727,Gledswood Hills - Gregory Hills,D08,South East Coast (NSW),1,Good,Good,0
+127011728,Leppington - Catherine Field,D08,South East Coast (NSW),1,Good,Good,0
+127011729,Oran Park,D08,South East Coast (NSW),1,Good,Good,0
+127021509,Bonnyrigg Heights - Bonnyrigg,D08,South East Coast (NSW),1,Good,Good,0
+127021510,Bossley Park - Abbotsbury,D08,South East Coast (NSW),1,Good,Good,0
+127021511,Cabramatta - Lansvale,D08,South East Coast (NSW),1,Good,Good,0
+127021512,Cabramatta West - Mount Pritchard,D08,South East Coast (NSW),1,Good,Good,0
+127021513,Canley Vale - Canley Heights,D08,South East Coast (NSW),1,Good,Good,0
+127021514,Edensor Park,D08,South East Coast (NSW),1,Good,Good,0
+127021515,Fairfield,D08,South East Coast (NSW),1,Good,Good,0
+127021516,Fairfield - West,D08,South East Coast (NSW),1,Good,Good,0
+127021517,Greenfield Park - Prairiewood,D08,South East Coast (NSW),1,Good,Good,0
+127021518,Horsley Park - Kemps Creek,D08,South East Coast (NSW),1,Good,Good,0
+127021519,Smithfield - Wetherill Park,D08,South East Coast (NSW),1,Good,Good,0
+127021520,St Johns Park - Wakeley,D08,South East Coast (NSW),1,Good,Good,0
+127021521,Wetherill Park Industrial,D08,South East Coast (NSW),1,Good,Good,0
+127031522,Casula,D08,South East Coast (NSW),1,Good,Good,0
+127031523,Chipping Norton - Moorebank,D08,South East Coast (NSW),1,Good,Good,0
+127031524,Holsworthy - Wattle Grove,D08,South East Coast (NSW),1,Good,Good,0
+127031599,Lurnea - Cartwright,D08,South East Coast (NSW),1,Good,Good,0
+127031601,Warwick Farm,D08,South East Coast (NSW),1,Good,Good,0
+127031730,Edmondson Park,D08,South East Coast (NSW),1,Good,Good,0
+127031731,Liverpool - East,D08,South East Coast (NSW),1,Good,Good,0
+127031732,Liverpool - West,D08,South East Coast (NSW),1,Good,Good,0
+127031733,Prestons,D08,South East Coast (NSW),1,Good,Good,0
+128011529,Gymea - Grays Point,D08,South East Coast (NSW),1,Good,Good,0
+128011530,Miranda - Yowie Bay,D08,South East Coast (NSW),1,Good,Good,0
+128011531,Sylvania - Taren Point,D08,South East Coast (NSW),1,Good,Good,0
+128011602,Caringbah,D08,South East Coast (NSW),1,Good,Good,0
+128011603,Caringbah South,D08,South East Coast (NSW),1,Good,Good,0
+128011604,Cronulla - Kurnell - Bundeena,D08,South East Coast (NSW),1,Good,Good,0
+128011605,Lilli Pilli - Port Hacking - Dolans Bay,D08,South East Coast (NSW),1,Good,Good,0
+128011606,Woolooware - Burraneer,D08,South East Coast (NSW),1,Good,Good,0
+128021533,Heathcote - Waterfall,D08,South East Coast (NSW),1,Good,Good,0
+128021534,Illawong - Alfords Point,D08,South East Coast (NSW),1,Good,Good,0
+128021535,Menai - Lucas Heights - Woronora,D08,South East Coast (NSW),1,Good,Good,0
+128021536,Oyster Bay - Como - Jannali,D08,South East Coast (NSW),1,Good,Good,0
+128021537,Royal National Park,D08,South East Coast (NSW),1,Good,Good,0
+128021538,Sutherland - Kirrawee,D08,South East Coast (NSW),1,Good,Good,0
+128021607,Engadine,D08,South East Coast (NSW),1,Good,Good,0
+128021608,Loftus - Yarrawarrah,D08,South East Coast (NSW),1,Good,Good,0
+128021609,Woronora Heights,D08,South East Coast (NSW),1,Good,Good,0
+197979799,Migratory - Offshore - Shipping (NSW),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+199999499,No usual address (NSW),D94,No usual address (Aust.),1,Good,Good,0
+201011001,Alfredton,D09,South East Coast (Victoria),1,Good,Good,0
+201011002,Ballarat,D09,South East Coast (Victoria),1,Good,Good,0
+201011005,Buninyong,D09,South East Coast (Victoria),1,Good,Good,0
+201011006,Delacombe,D09,South East Coast (Victoria),1,Good,Good,0
+201011007,Smythes Creek,D09,South East Coast (Victoria),1,Good,Good,0
+201011008,Wendouree - Miners Rest,D09,South East Coast (Victoria),1,Good,Good,0
+201011481,Ballarat East - Warrenheip,D09,South East Coast (Victoria),1,Good,Good,0
+201011482,Ballarat North - Invermay,D03,Murray-Darling Basin,2.00E-06,Good,Good,1
+201011482,Ballarat North - Invermay,D09,South East Coast (Victoria),0.999998,Good,Good,0
+201011483,Canadian - Mount Clear,D09,South East Coast (Victoria),1,Good,Good,0
+201011484,Sebastopol - Redan,D09,South East Coast (Victoria),1,Good,Good,0
+201021009,Bacchus Marsh Surrounds,D09,South East Coast (Victoria),1,Good,Good,0
+201021010,Creswick - Clunes,D09,South East Coast (Victoria),0.0831653,Good,Good,0
+201021010,Creswick - Clunes,D03,Murray-Darling Basin,0.9168347,Good,Good,0
+201021011,Daylesford,D09,South East Coast (Victoria),0.0268165,Good,Good,0
+201021011,Daylesford,D03,Murray-Darling Basin,0.9731835,Good,Good,0
+201021012,Gordon (Vic.),D03,Murray-Darling Basin,0.0111404,Good,Good,0
+201021012,Gordon (Vic.),D09,South East Coast (Victoria),0.9888596,Good,Good,0
+201031013,Avoca,D09,South East Coast (Victoria),0.0085062,Good,Good,1
+201031013,Avoca,D03,Murray-Darling Basin,0.9914938,Good,Good,0
+201031014,Beaufort,D03,Murray-Darling Basin,0.0166949,Good,Good,0
+201031014,Beaufort,D09,South East Coast (Victoria),0.9833051,Good,Good,0
+201031015,Golden Plains - North,D09,South East Coast (Victoria),1,Good,Good,0
+201031016,Maryborough (Vic.),D03,Murray-Darling Basin,1,Good,Good,0
+201031017,Maryborough Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+202011018,Bendigo,D03,Murray-Darling Basin,1,Good,Good,0
+202011019,California Gully - Eaglehawk,D03,Murray-Darling Basin,1,Good,Good,0
+202011020,East Bendigo - Kennington,D03,Murray-Darling Basin,1,Good,Good,0
+202011021,Flora Hill - Spring Gully,D03,Murray-Darling Basin,1,Good,Good,0
+202011022,Kangaroo Flat - Golden Square,D03,Murray-Darling Basin,1,Good,Good,0
+202011023,Maiden Gully,D03,Murray-Darling Basin,1,Good,Good,0
+202011024,Strathfieldsaye,D03,Murray-Darling Basin,1,Good,Good,0
+202011025,White Hills - Ascot,D03,Murray-Darling Basin,1,Good,Good,0
+202021026,Bendigo Surrounds - South,D03,Murray-Darling Basin,1,Good,Good,0
+202021027,Castlemaine,D03,Murray-Darling Basin,1,Good,Good,0
+202021028,Castlemaine Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+202021029,Heathcote,D03,Murray-Darling Basin,1,Good,Good,0
+202021030,Kyneton,D09,South East Coast (Victoria),0.0022774,Good,Good,1
+202021030,Kyneton,D03,Murray-Darling Basin,0.9977226,Good,Good,0
+202021031,Woodend,D09,South East Coast (Victoria),0.0573563,Good,Good,0
+202021031,Woodend,D03,Murray-Darling Basin,0.9426437,Good,Good,0
+202031032,Bendigo Surrounds - North,D03,Murray-Darling Basin,1,Good,Good,0
+202031033,Loddon,D03,Murray-Darling Basin,1,Good,Good,0
+203011034,Bannockburn,D09,South East Coast (Victoria),1,Good,Good,0
+203011035,Golden Plains - South,D09,South East Coast (Victoria),1,Good,Good,0
+203011036,Winchelsea,D09,South East Coast (Victoria),1,Good,Good,0
+203021037,Belmont,D09,South East Coast (Victoria),1,Good,Good,0
+203021039,Geelong,D09,South East Coast (Victoria),1,Good,Good,0
+203021040,Geelong West - Hamlyn Heights,D09,South East Coast (Victoria),1,Good,Good,0
+203021042,Highton,D09,South East Coast (Victoria),1,Good,Good,0
+203021043,Lara,D09,South East Coast (Victoria),1,Good,Good,0
+203021044,Leopold,D09,South East Coast (Victoria),1,Good,Good,0
+203021045,Newcomb - Moolap,D09,South East Coast (Victoria),1,Good,Good,0
+203021046,Newtown (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+203021047,North Geelong - Bell Park,D09,South East Coast (Victoria),1,Good,Good,0
+203021485,Charlemont,D09,South East Coast (Victoria),1,Good,Good,0
+203021486,Corio - Lovely Banks,D09,South East Coast (Victoria),1,Good,Good,0
+203021487,Grovedale - Mount Duneed,D09,South East Coast (Victoria),1,Good,Good,0
+203021488,Norlane,D09,South East Coast (Victoria),1,Good,Good,0
+203031048,Clifton Springs,D09,South East Coast (Victoria),1,Good,Good,0
+203031049,Lorne - Anglesea,D09,South East Coast (Victoria),1,Good,Good,0
+203031051,Portarlington,D09,South East Coast (Victoria),1,Good,Good,0
+203031052,Point Lonsdale - Queenscliff,D09,South East Coast (Victoria),1,Good,Good,0
+203031053,Torquay,D09,South East Coast (Victoria),1,Good,Good,0
+203031489,Barwon Heads - Armstrong Creek,D09,South East Coast (Victoria),1,Good,Good,0
+203031490,Ocean Grove,D09,South East Coast (Victoria),1,Good,Good,0
+204011054,Alexandra,D03,Murray-Darling Basin,1,Good,Good,0
+204011055,Euroa,D03,Murray-Darling Basin,1,Good,Good,0
+204011056,Kilmore - Broadford,D09,South East Coast (Victoria),0.0101308,Good,Good,0
+204011056,Kilmore - Broadford,D03,Murray-Darling Basin,0.9898692,Good,Good,0
+204011057,Mansfield (Vic.),D09,South East Coast (Victoria),3.80E-06,Good,Good,1
+204011057,Mansfield (Vic.),D03,Murray-Darling Basin,0.9999962,Good,Good,0
+204011058,Nagambie,D03,Murray-Darling Basin,1,Good,Good,0
+204011059,Seymour,D03,Murray-Darling Basin,1,Good,Good,0
+204011060,Seymour Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+204011061,Upper Yarra Valley,D03,Murray-Darling Basin,0.0124716,Good,Good,0
+204011061,Upper Yarra Valley,D09,South East Coast (Victoria),0.9875284,Good,Good,0
+204011062,Yea,D03,Murray-Darling Basin,1,Good,Good,0
+204021063,Benalla,D03,Murray-Darling Basin,1,Good,Good,0
+204021064,Benalla Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+204021065,Rutherglen,D03,Murray-Darling Basin,1,Good,Good,0
+204021066,Wangaratta,D03,Murray-Darling Basin,1,Good,Good,0
+204021067,Wangaratta Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+204031068,Beechworth,D03,Murray-Darling Basin,1,Good,Good,0
+204031069,Bright - Mount Beauty,D09,South East Coast (Victoria),0.0108875,Good,Good,0
+204031069,Bright - Mount Beauty,D03,Murray-Darling Basin,0.9891125,Good,Good,0
+204031070,Chiltern - Indigo Valley,D03,Murray-Darling Basin,1,Good,Good,0
+204031071,Myrtleford,D03,Murray-Darling Basin,1,Good,Good,0
+204031072,Towong,D03,Murray-Darling Basin,1,Good,Good,0
+204031073,West Wodonga,D03,Murray-Darling Basin,1,Good,Good,0
+204031075,Yackandandah,D03,Murray-Darling Basin,1,Good,Good,0
+204031491,Baranduda - Leneva,D03,Murray-Darling Basin,1,Good,Good,0
+204031492,Wodonga,D03,Murray-Darling Basin,1,Good,Good,0
+205011076,Drouin,D09,South East Coast (Victoria),1,Good,Good,0
+205011077,Mount Baw Baw Region,D09,South East Coast (Victoria),1,Good,Good,0
+205011078,Trafalgar (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+205011079,Warragul,D09,South East Coast (Victoria),1,Good,Good,0
+205021080,Alps - East,D03,Murray-Darling Basin,0.2857143,Good,Good,0
+205021080,Alps - East,D09,South East Coast (Victoria),0.7142857,Good,Good,0
+205021081,Bairnsdale,D09,South East Coast (Victoria),1,Good,Good,0
+205021082,Bruthen - Omeo,D03,Murray-Darling Basin,0.0867149,Good,Good,0
+205021082,Bruthen - Omeo,D09,South East Coast (Victoria),0.9132851,Good,Good,0
+205021083,Lake King,D09,South East Coast (Victoria),1,Good,Good,0
+205021084,Lakes Entrance,D09,South East Coast (Victoria),1,Good,Good,0
+205021085,Orbost,D09,South East Coast (Victoria),1,Good,Good,0
+205021086,Paynesville,D09,South East Coast (Victoria),1,Good,Good,0
+205031087,Foster,D09,South East Coast (Victoria),1,Good,Good,0
+205031088,French Island,D09,South East Coast (Victoria),1,Good,Good,0
+205031089,Korumburra,D09,South East Coast (Victoria),1,Good,Good,0
+205031090,Leongatha,D09,South East Coast (Victoria),1,Good,Good,0
+205031091,Phillip Island,D09,South East Coast (Victoria),1,Good,Good,0
+205031092,Wilsons Promontory,D09,South East Coast (Victoria),1,Good,Good,0
+205031093,Wonthaggi - Inverloch,D09,South East Coast (Victoria),1,Good,Good,0
+205041094,Churchill,D09,South East Coast (Victoria),1,Good,Good,0
+205041095,Moe - Newborough,D09,South East Coast (Victoria),1,Good,Good,0
+205041096,Morwell,D09,South East Coast (Victoria),1,Good,Good,0
+205041098,Yallourn North - Glengarry,D09,South East Coast (Victoria),1,Good,Good,0
+205041493,Traralgon - East,D09,South East Coast (Victoria),1,Good,Good,0
+205041494,Traralgon - West,D09,South East Coast (Victoria),1,Good,Good,0
+205051099,Alps - West,D03,Murray-Darling Basin,0.0003801,Good,Good,1
+205051099,Alps - West,D09,South East Coast (Victoria),0.9996199,Good,Good,0
+205051100,Longford - Loch Sport,D09,South East Coast (Victoria),1,Good,Good,0
+205051101,Maffra,D09,South East Coast (Victoria),1,Good,Good,0
+205051102,Rosedale,D09,South East Coast (Victoria),1,Good,Good,0
+205051103,Sale,D09,South East Coast (Victoria),1,Good,Good,0
+205051104,Yarram,D09,South East Coast (Victoria),1,Good,Good,0
+206011106,Brunswick East,D09,South East Coast (Victoria),1,Good,Good,0
+206011107,Brunswick West,D09,South East Coast (Victoria),1,Good,Good,0
+206011109,Pascoe Vale South,D09,South East Coast (Victoria),1,Good,Good,0
+206011495,Brunswick - North,D09,South East Coast (Victoria),1,Good,Good,0
+206011496,Brunswick - South,D09,South East Coast (Victoria),1,Good,Good,0
+206011497,Coburg - East,D09,South East Coast (Victoria),1,Good,Good,0
+206011498,Coburg - West,D09,South East Coast (Victoria),1,Good,Good,0
+206021110,Alphington - Fairfield,D09,South East Coast (Victoria),1,Good,Good,0
+206021112,Thornbury,D09,South East Coast (Victoria),1,Good,Good,0
+206021499,Northcote - East,D09,South East Coast (Victoria),1,Good,Good,0
+206021500,Northcote - West,D09,South East Coast (Victoria),1,Good,Good,0
+206031113,Ascot Vale,D09,South East Coast (Victoria),1,Good,Good,0
+206031115,Flemington,D09,South East Coast (Victoria),1,Good,Good,0
+206031116,Moonee Ponds,D09,South East Coast (Victoria),1,Good,Good,0
+206031501,Essendon (West) - Aberfeldie,D09,South East Coast (Victoria),1,Good,Good,0
+206031502,Essendon - East,D09,South East Coast (Victoria),1,Good,Good,0
+206041117,Carlton,D09,South East Coast (Victoria),1,Good,Good,0
+206041118,Docklands,D09,South East Coast (Victoria),1,Good,Good,0
+206041119,East Melbourne,D09,South East Coast (Victoria),1,Good,Good,0
+206041120,Flemington Racecourse,D09,South East Coast (Victoria),1,Good,Good,0
+206041121,Kensington (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+206041124,Parkville,D09,South East Coast (Victoria),1,Good,Good,0
+206041125,South Yarra - West,D09,South East Coast (Victoria),1,Good,Good,0
+206041127,West Melbourne - Industrial,D09,South East Coast (Victoria),1,Good,Good,0
+206041503,Melbourne CBD - East,D09,South East Coast (Victoria),1,Good,Good,0
+206041504,Melbourne CBD - North,D09,South East Coast (Victoria),1,Good,Good,0
+206041505,Melbourne CBD - West,D09,South East Coast (Victoria),1,Good,Good,0
+206041506,North Melbourne,D09,South East Coast (Victoria),1,Good,Good,0
+206041507,Royal Botanic Gardens Victoria,D09,South East Coast (Victoria),1,Good,Good,0
+206041508,Southbank (West) - South Wharf,D09,South East Coast (Victoria),1,Good,Good,0
+206041509,Southbank - East,D09,South East Coast (Victoria),1,Good,Good,0
+206041510,West Melbourne - Residential,D09,South East Coast (Victoria),1,Good,Good,0
+206051128,Albert Park,D09,South East Coast (Victoria),1,Good,Good,0
+206051129,Elwood,D09,South East Coast (Victoria),1,Good,Good,0
+206051130,Port Melbourne,D09,South East Coast (Victoria),1,Good,Good,0
+206051134,St Kilda East,D09,South East Coast (Victoria),1,Good,Good,0
+206051511,Port Melbourne Industrial,D09,South East Coast (Victoria),1,Good,Good,0
+206051512,South Melbourne,D09,South East Coast (Victoria),1,Good,Good,0
+206051513,St Kilda - Central,D09,South East Coast (Victoria),1,Good,Good,0
+206051514,St Kilda - West,D09,South East Coast (Victoria),1,Good,Good,0
+206061135,Armadale,D09,South East Coast (Victoria),1,Good,Good,0
+206061136,Prahran - Windsor,D09,South East Coast (Victoria),1,Good,Good,0
+206061138,Toorak,D09,South East Coast (Victoria),1,Good,Good,0
+206061515,South Yarra - North,D09,South East Coast (Victoria),1,Good,Good,0
+206061516,South Yarra - South,D09,South East Coast (Victoria),1,Good,Good,0
+206071139,Abbotsford,D09,South East Coast (Victoria),1,Good,Good,0
+206071140,Carlton North - Princes Hill,D09,South East Coast (Victoria),1,Good,Good,0
+206071141,Collingwood,D09,South East Coast (Victoria),1,Good,Good,0
+206071142,Fitzroy,D09,South East Coast (Victoria),1,Good,Good,0
+206071143,Fitzroy North,D09,South East Coast (Victoria),1,Good,Good,0
+206071145,Clifton Hill - Alphington,D09,South East Coast (Victoria),1,Good,Good,0
+206071517,Richmond (South) - Cremorne,D09,South East Coast (Victoria),1,Good,Good,0
+206071518,Richmond - North,D09,South East Coast (Victoria),1,Good,Good,0
+207011146,Ashburton (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+207011147,Balwyn,D09,South East Coast (Victoria),1,Good,Good,0
+207011148,Balwyn North,D09,South East Coast (Victoria),1,Good,Good,0
+207011149,Camberwell,D09,South East Coast (Victoria),1,Good,Good,0
+207011150,Glen Iris - East,D09,South East Coast (Victoria),1,Good,Good,0
+207011152,Hawthorn East,D09,South East Coast (Victoria),1,Good,Good,0
+207011154,Kew East,D09,South East Coast (Victoria),1,Good,Good,0
+207011155,Surrey Hills (West) - Canterbury,D09,South East Coast (Victoria),1,Good,Good,0
+207011519,Hawthorn - North,D09,South East Coast (Victoria),1,Good,Good,0
+207011520,Hawthorn - South,D09,South East Coast (Victoria),1,Good,Good,0
+207011521,Kew - South,D09,South East Coast (Victoria),1,Good,Good,0
+207011522,Kew - West,D09,South East Coast (Victoria),1,Good,Good,0
+207021156,Bulleen,D09,South East Coast (Victoria),1,Good,Good,0
+207021157,Doncaster,D09,South East Coast (Victoria),1,Good,Good,0
+207021159,Templestowe,D09,South East Coast (Victoria),1,Good,Good,0
+207021160,Templestowe Lower,D09,South East Coast (Victoria),1,Good,Good,0
+207021424,Doncaster East - North,D09,South East Coast (Victoria),1,Good,Good,0
+207021425,Doncaster East - South,D09,South East Coast (Victoria),1,Good,Good,0
+207031161,Blackburn,D09,South East Coast (Victoria),1,Good,Good,0
+207031162,Blackburn South,D09,South East Coast (Victoria),1,Good,Good,0
+207031163,Box Hill,D09,South East Coast (Victoria),1,Good,Good,0
+207031164,Box Hill North,D09,South East Coast (Victoria),1,Good,Good,0
+207031165,Burwood (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+207031166,Burwood East,D09,South East Coast (Victoria),1,Good,Good,0
+207031167,Surrey Hills (East) - Mont Albert,D09,South East Coast (Victoria),1,Good,Good,0
+208011168,Beaumaris,D09,South East Coast (Victoria),1,Good,Good,0
+208011169,Brighton (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+208011170,Brighton East,D09,South East Coast (Victoria),1,Good,Good,0
+208011171,Highett (West) - Cheltenham,D09,South East Coast (Victoria),1,Good,Good,0
+208011172,Hampton,D09,South East Coast (Victoria),1,Good,Good,0
+208011173,Sandringham - Black Rock,D09,South East Coast (Victoria),1,Good,Good,0
+208021174,Bentleigh - McKinnon,D09,South East Coast (Victoria),1,Good,Good,0
+208021176,Carnegie,D09,South East Coast (Victoria),1,Good,Good,0
+208021177,Caulfield - North,D09,South East Coast (Victoria),1,Good,Good,0
+208021178,Caulfield - South,D09,South East Coast (Victoria),1,Good,Good,0
+208021179,Elsternwick,D09,South East Coast (Victoria),1,Good,Good,0
+208021180,Hughesdale,D09,South East Coast (Victoria),1,Good,Good,0
+208021181,Murrumbeena,D09,South East Coast (Victoria),1,Good,Good,0
+208021182,Ormond - Glen Huntly,D09,South East Coast (Victoria),1,Good,Good,0
+208021426,Bentleigh East - North,D09,South East Coast (Victoria),1,Good,Good,0
+208021427,Bentleigh East - South,D09,South East Coast (Victoria),1,Good,Good,0
+208031183,Aspendale Gardens - Waterways,D09,South East Coast (Victoria),1,Good,Good,0
+208031184,Braeside,D09,South East Coast (Victoria),1,Good,Good,0
+208031185,Carrum - Patterson Lakes,D09,South East Coast (Victoria),1,Good,Good,0
+208031186,Chelsea - Bonbeach,D09,South East Coast (Victoria),1,Good,Good,0
+208031187,Chelsea Heights,D09,South East Coast (Victoria),1,Good,Good,0
+208031188,Highett (East) - Cheltenham,D09,South East Coast (Victoria),1,Good,Good,0
+208031189,Edithvale - Aspendale,D09,South East Coast (Victoria),1,Good,Good,0
+208031190,Mentone,D09,South East Coast (Victoria),1,Good,Good,0
+208031191,Moorabbin - Heatherton,D09,South East Coast (Victoria),1,Good,Good,0
+208031192,Moorabbin Airport,D09,South East Coast (Victoria),1,Good,Good,0
+208031193,Mordialloc - Parkdale,D09,South East Coast (Victoria),1,Good,Good,0
+208041194,Malvern - Glen Iris,D09,South East Coast (Victoria),1,Good,Good,0
+208041195,Malvern East,D09,South East Coast (Victoria),1,Good,Good,0
+209011196,Bundoora - East,D09,South East Coast (Victoria),1,Good,Good,0
+209011197,Greensborough,D09,South East Coast (Victoria),1,Good,Good,0
+209011198,Heidelberg - Rosanna,D09,South East Coast (Victoria),1,Good,Good,0
+209011199,Heidelberg West,D09,South East Coast (Victoria),1,Good,Good,0
+209011200,Ivanhoe,D09,South East Coast (Victoria),1,Good,Good,0
+209011201,Ivanhoe East - Eaglemont,D09,South East Coast (Victoria),1,Good,Good,0
+209011202,Montmorency - Briar Hill,D09,South East Coast (Victoria),1,Good,Good,0
+209011203,Viewbank - Yallambie,D09,South East Coast (Victoria),1,Good,Good,0
+209011204,Watsonia,D09,South East Coast (Victoria),1,Good,Good,0
+209021205,Kingsbury,D09,South East Coast (Victoria),1,Good,Good,0
+209021428,Preston - East,D09,South East Coast (Victoria),1,Good,Good,0
+209021429,Preston - West,D09,South East Coast (Victoria),1,Good,Good,0
+209021523,Reservoir - North East,D09,South East Coast (Victoria),1,Good,Good,0
+209021524,Reservoir - North West,D09,South East Coast (Victoria),1,Good,Good,0
+209021525,Reservoir - South East,D09,South East Coast (Victoria),1,Good,Good,0
+209021526,Reservoir - South West,D09,South East Coast (Victoria),1,Good,Good,0
+209031209,Eltham,D09,South East Coast (Victoria),1,Good,Good,0
+209031210,Hurstbridge,D09,South East Coast (Victoria),1,Good,Good,0
+209031211,Kinglake,D09,South East Coast (Victoria),0.1310535,Good,Good,0
+209031211,Kinglake,D03,Murray-Darling Basin,0.8689465,Good,Good,0
+209031212,Panton Hill - St Andrews,D09,South East Coast (Victoria),1,Good,Good,0
+209031213,Plenty - Yarrambat,D09,South East Coast (Victoria),1,Good,Good,0
+209031214,Research - North Warrandyte,D09,South East Coast (Victoria),1,Good,Good,0
+209031215,Wattle Glen - Diamond Creek,D09,South East Coast (Victoria),1,Good,Good,0
+209041216,Bundoora - North,D09,South East Coast (Victoria),1,Good,Good,0
+209041217,Bundoora - West,D09,South East Coast (Victoria),1,Good,Good,0
+209041220,Mill Park - North,D09,South East Coast (Victoria),1,Good,Good,0
+209041221,Mill Park - South,D09,South East Coast (Victoria),1,Good,Good,0
+209041223,Thomastown,D09,South East Coast (Victoria),1,Good,Good,0
+209041224,Wallan,D03,Murray-Darling Basin,0.1159559,Good,Good,0
+209041224,Wallan,D09,South East Coast (Victoria),0.8840441,Good,Good,0
+209041225,Whittlesea,D09,South East Coast (Victoria),1,Good,Good,0
+209041431,Epping - East,D09,South East Coast (Victoria),1,Good,Good,0
+209041432,Epping - South,D09,South East Coast (Victoria),1,Good,Good,0
+209041433,Epping (Vic.) - West,D09,South East Coast (Victoria),1,Good,Good,0
+209041435,South Morang - North,D09,South East Coast (Victoria),1,Good,Good,0
+209041436,South Morang - South,D09,South East Coast (Victoria),1,Good,Good,0
+209041437,Wollert,D09,South East Coast (Victoria),1,Good,Good,0
+209041527,Doreen - North,D09,South East Coast (Victoria),1,Good,Good,0
+209041528,Doreen - South,D09,South East Coast (Victoria),1,Good,Good,0
+209041529,Lalor - East,D09,South East Coast (Victoria),1,Good,Good,0
+209041530,Lalor - West,D09,South East Coast (Victoria),1,Good,Good,0
+209041531,Mernda - North,D09,South East Coast (Victoria),1,Good,Good,0
+209041532,Mernda - South,D09,South East Coast (Victoria),1,Good,Good,0
+210011226,Airport West,D09,South East Coast (Victoria),1,Good,Good,0
+210011227,Essendon Airport,D09,South East Coast (Victoria),1,Good,Good,0
+210011228,Keilor,D09,South East Coast (Victoria),1,Good,Good,0
+210011230,Niddrie - Essendon West,D09,South East Coast (Victoria),1,Good,Good,0
+210011231,Strathmore,D09,South East Coast (Victoria),1,Good,Good,0
+210011533,Avondale Heights,D09,South East Coast (Victoria),1,Good,Good,0
+210011534,Keilor East,D09,South East Coast (Victoria),1,Good,Good,0
+210021232,Gisborne,D09,South East Coast (Victoria),1,Good,Good,0
+210021233,Macedon,D03,Murray-Darling Basin,0.012217,Good,Good,0
+210021233,Macedon,D09,South East Coast (Victoria),0.987783,Good,Good,0
+210021234,Riddells Creek,D09,South East Coast (Victoria),1,Good,Good,0
+210021235,Romsey,D03,Murray-Darling Basin,0.0243715,Good,Good,0
+210021235,Romsey,D09,South East Coast (Victoria),0.9756285,Good,Good,0
+210031236,Coburg North,D09,South East Coast (Victoria),1,Good,Good,0
+210031237,Fawkner,D09,South East Coast (Victoria),1,Good,Good,0
+210031439,Gowanbrae,D09,South East Coast (Victoria),1,Good,Good,0
+210031440,Hadfield,D09,South East Coast (Victoria),1,Good,Good,0
+210031535,Glenroy - East,D09,South East Coast (Victoria),1,Good,Good,0
+210031536,Glenroy - West,D09,South East Coast (Victoria),1,Good,Good,0
+210031537,Oak Park,D09,South East Coast (Victoria),1,Good,Good,0
+210031538,Pascoe Vale,D09,South East Coast (Victoria),1,Good,Good,0
+210041240,Sunbury,D09,South East Coast (Victoria),1,Good,Good,0
+210041539,Diggers Rest,D09,South East Coast (Victoria),1,Good,Good,0
+210041540,Sunbury - South,D09,South East Coast (Victoria),1,Good,Good,0
+210041541,Sunbury - West,D09,South East Coast (Victoria),1,Good,Good,0
+210051242,Broadmeadows,D09,South East Coast (Victoria),1,Good,Good,0
+210051243,Campbellfield - Coolaroo,D09,South East Coast (Victoria),1,Good,Good,0
+210051245,Gladstone Park - Westmeadows,D09,South East Coast (Victoria),1,Good,Good,0
+210051246,Greenvale - Bulla,D09,South East Coast (Victoria),1,Good,Good,0
+210051247,Meadow Heights,D09,South East Coast (Victoria),1,Good,Good,0
+210051248,Melbourne Airport,D09,South East Coast (Victoria),1,Good,Good,0
+210051250,Tullamarine,D09,South East Coast (Victoria),1,Good,Good,0
+210051441,Craigieburn - Central,D09,South East Coast (Victoria),1,Good,Good,0
+210051442,Craigieburn - North,D09,South East Coast (Victoria),1,Good,Good,0
+210051443,Craigieburn - South,D09,South East Coast (Victoria),1,Good,Good,0
+210051445,Mickleham - Yuroke,D09,South East Coast (Victoria),1,Good,Good,0
+210051542,Craigieburn - North West,D09,South East Coast (Victoria),1,Good,Good,0
+210051543,Craigieburn - West,D09,South East Coast (Victoria),1,Good,Good,0
+210051544,Roxburgh Park (South) - Somerton,D09,South East Coast (Victoria),1,Good,Good,0
+210051545,Roxburgh Park - North,D09,South East Coast (Victoria),1,Good,Good,0
+211011251,Bayswater,D09,South East Coast (Victoria),1,Good,Good,0
+211011254,Knoxfield - Scoresby,D09,South East Coast (Victoria),1,Good,Good,0
+211011255,Lysterfield,D09,South East Coast (Victoria),1,Good,Good,0
+211011256,Rowville - Central,D09,South East Coast (Victoria),1,Good,Good,0
+211011257,Rowville - North,D09,South East Coast (Victoria),1,Good,Good,0
+211011258,Rowville - South,D09,South East Coast (Victoria),1,Good,Good,0
+211011259,Wantirna,D09,South East Coast (Victoria),1,Good,Good,0
+211011260,Wantirna South,D09,South East Coast (Victoria),1,Good,Good,0
+211011446,Boronia,D09,South East Coast (Victoria),1,Good,Good,0
+211011447,Ferntree Gully - North,D09,South East Coast (Victoria),1,Good,Good,0
+211011448,Ferntree Gully (South) - Upper Ferntree Gully,D09,South East Coast (Victoria),1,Good,Good,0
+211011449,The Basin,D09,South East Coast (Victoria),1,Good,Good,0
+211021261,Donvale - Park Orchards,D09,South East Coast (Victoria),1,Good,Good,0
+211021262,Warrandyte - Wonga Park,D09,South East Coast (Victoria),1,Good,Good,0
+211031263,Bayswater North,D09,South East Coast (Victoria),1,Good,Good,0
+211031265,Croydon Hills - Warranwood,D09,South East Coast (Victoria),1,Good,Good,0
+211031266,Ringwood,D09,South East Coast (Victoria),1,Good,Good,0
+211031267,Ringwood East,D09,South East Coast (Victoria),1,Good,Good,0
+211031268,Ringwood North,D09,South East Coast (Victoria),1,Good,Good,0
+211031450,Croydon - East,D09,South East Coast (Victoria),1,Good,Good,0
+211031451,Croydon - West,D09,South East Coast (Victoria),1,Good,Good,0
+211031452,Croydon South,D09,South East Coast (Victoria),1,Good,Good,0
+211041269,Forest Hill,D09,South East Coast (Victoria),1,Good,Good,0
+211041270,Mitcham (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+211041271,Nunawading,D09,South East Coast (Victoria),1,Good,Good,0
+211041272,Vermont,D09,South East Coast (Victoria),1,Good,Good,0
+211041273,Vermont South,D09,South East Coast (Victoria),1,Good,Good,0
+211051274,Belgrave - Selby,D09,South East Coast (Victoria),1,Good,Good,0
+211051275,Chirnside Park,D09,South East Coast (Victoria),1,Good,Good,0
+211051276,Healesville - Yarra Glen,D09,South East Coast (Victoria),1,Good,Good,0
+211051277,Kilsyth,D09,South East Coast (Victoria),1,Good,Good,0
+211051278,Lilydale - Coldstream,D09,South East Coast (Victoria),1,Good,Good,0
+211051279,Monbulk - Silvan,D09,South East Coast (Victoria),1,Good,Good,0
+211051280,Montrose,D09,South East Coast (Victoria),1,Good,Good,0
+211051281,Mooroolbark,D09,South East Coast (Victoria),1,Good,Good,0
+211051282,Mount Dandenong - Olinda,D09,South East Coast (Victoria),1,Good,Good,0
+211051283,Mount Evelyn,D09,South East Coast (Victoria),1,Good,Good,0
+211051284,Upwey - Tecoma,D09,South East Coast (Victoria),1,Good,Good,0
+211051285,Wandin - Seville,D09,South East Coast (Victoria),1,Good,Good,0
+211051286,Yarra Valley,D09,South East Coast (Victoria),1,Good,Good,0
+212011289,Emerald - Cockatoo,D09,South East Coast (Victoria),1,Good,Good,0
+212011546,Beaconsfield - Officer,D09,South East Coast (Victoria),1,Good,Good,0
+212011547,Bunyip - Garfield,D09,South East Coast (Victoria),1,Good,Good,0
+212011548,Koo Wee Rup,D09,South East Coast (Victoria),1,Good,Good,0
+212011549,Pakenham - North East,D09,South East Coast (Victoria),1,Good,Good,0
+212011550,Pakenham - North West,D09,South East Coast (Victoria),1,Good,Good,0
+212011551,Pakenham - South East,D09,South East Coast (Victoria),1,Good,Good,0
+212011552,Pakenham - South West,D09,South East Coast (Victoria),1,Good,Good,0
+212021293,Berwick - North,D09,South East Coast (Victoria),1,Good,Good,0
+212021295,Doveton,D09,South East Coast (Victoria),1,Good,Good,0
+212021297,Hallam,D09,South East Coast (Victoria),1,Good,Good,0
+212021299,Narre Warren North,D09,South East Coast (Victoria),1,Good,Good,0
+212021453,Endeavour Hills - North,D09,South East Coast (Victoria),1,Good,Good,0
+212021454,Endeavour Hills - South,D09,South East Coast (Victoria),1,Good,Good,0
+212021455,Narre Warren - North East,D09,South East Coast (Victoria),1,Good,Good,0
+212021456,Narre Warren - South West,D09,South East Coast (Victoria),1,Good,Good,0
+212021553,Berwick - South East,D09,South East Coast (Victoria),1,Good,Good,0
+212021554,Berwick - South West,D09,South East Coast (Victoria),1,Good,Good,0
+212031300,Cranbourne,D09,South East Coast (Victoria),1,Good,Good,0
+212031303,Cranbourne South,D09,South East Coast (Victoria),1,Good,Good,0
+212031304,Cranbourne West,D09,South East Coast (Victoria),1,Good,Good,0
+212031306,Lynbrook - Lyndhurst,D09,South East Coast (Victoria),1,Good,Good,0
+212031308,Pearcedale - Tooradin,D09,South East Coast (Victoria),1,Good,Good,0
+212031457,Narre Warren South - East,D09,South East Coast (Victoria),1,Good,Good,0
+212031458,Narre Warren South - West,D09,South East Coast (Victoria),1,Good,Good,0
+212031555,Clyde North - North,D09,South East Coast (Victoria),1,Good,Good,0
+212031556,Clyde North - South,D09,South East Coast (Victoria),1,Good,Good,0
+212031557,Cranbourne East - North,D09,South East Coast (Victoria),1,Good,Good,0
+212031558,Cranbourne East - South,D09,South East Coast (Victoria),1,Good,Good,0
+212031559,Cranbourne North - East,D09,South East Coast (Victoria),1,Good,Good,0
+212031560,Cranbourne North - West,D09,South East Coast (Victoria),1,Good,Good,0
+212031561,Hampton Park - East,D09,South East Coast (Victoria),1,Good,Good,0
+212031562,Hampton Park - West,D09,South East Coast (Victoria),1,Good,Good,0
+212041309,Clarinda - Oakleigh South,D09,South East Coast (Victoria),1,Good,Good,0
+212041310,Clayton South,D09,South East Coast (Victoria),1,Good,Good,0
+212041312,Dandenong North,D09,South East Coast (Victoria),1,Good,Good,0
+212041313,Dingley Village,D09,South East Coast (Victoria),1,Good,Good,0
+212041316,Noble Park North,D09,South East Coast (Victoria),1,Good,Good,0
+212041317,Springvale,D09,South East Coast (Victoria),1,Good,Good,0
+212041318,Springvale South,D09,South East Coast (Victoria),1,Good,Good,0
+212041459,Noble Park - East,D09,South East Coast (Victoria),1,Good,Good,0
+212041460,Noble Park - West,D09,South East Coast (Victoria),1,Good,Good,0
+212041563,Dandenong - North,D09,South East Coast (Victoria),1,Good,Good,0
+212041564,Dandenong - South,D09,South East Coast (Victoria),1,Good,Good,0
+212041565,Keysborough - North,D09,South East Coast (Victoria),1,Good,Good,0
+212041566,Keysborough - South,D09,South East Coast (Victoria),1,Good,Good,0
+212051319,Ashwood - Chadstone,D09,South East Coast (Victoria),1,Good,Good,0
+212051321,Glen Waverley - East,D09,South East Coast (Victoria),1,Good,Good,0
+212051322,Glen Waverley - West,D09,South East Coast (Victoria),1,Good,Good,0
+212051323,Mount Waverley - North,D09,South East Coast (Victoria),1,Good,Good,0
+212051324,Mount Waverley - South,D09,South East Coast (Victoria),1,Good,Good,0
+212051325,Mulgrave,D09,South East Coast (Victoria),1,Good,Good,0
+212051326,Oakleigh - Huntingdale,D09,South East Coast (Victoria),1,Good,Good,0
+212051327,Wheelers Hill,D09,South East Coast (Victoria),1,Good,Good,0
+212051567,Clayton (North) - Notting Hill,D09,South East Coast (Victoria),1,Good,Good,0
+212051568,Clayton - Central,D09,South East Coast (Victoria),1,Good,Good,0
+213011328,Ardeer - Albion,D09,South East Coast (Victoria),1,Good,Good,0
+213011329,Cairnlea,D09,South East Coast (Victoria),1,Good,Good,0
+213011331,Delahey,D09,South East Coast (Victoria),1,Good,Good,0
+213011332,Keilor Downs,D09,South East Coast (Victoria),1,Good,Good,0
+213011333,Kings Park (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+213011334,St Albans - North,D09,South East Coast (Victoria),1,Good,Good,0
+213011335,St Albans - South,D09,South East Coast (Victoria),1,Good,Good,0
+213011336,Sunshine,D09,South East Coast (Victoria),1,Good,Good,0
+213011337,Sunshine North,D09,South East Coast (Victoria),1,Good,Good,0
+213011338,Sunshine West,D09,South East Coast (Victoria),1,Good,Good,0
+213011339,Sydenham,D09,South East Coast (Victoria),1,Good,Good,0
+213011340,Taylors Lakes,D09,South East Coast (Victoria),1,Good,Good,0
+213011569,Deer Park,D09,South East Coast (Victoria),1,Good,Good,0
+213011570,Derrimut,D09,South East Coast (Victoria),1,Good,Good,0
+213021341,Altona,D09,South East Coast (Victoria),1,Good,Good,0
+213021342,Altona Meadows,D09,South East Coast (Victoria),1,Good,Good,0
+213021343,Altona North,D09,South East Coast (Victoria),1,Good,Good,0
+213021344,Newport,D09,South East Coast (Victoria),1,Good,Good,0
+213021345,Seabrook,D09,South East Coast (Victoria),1,Good,Good,0
+213021346,Williamstown,D09,South East Coast (Victoria),1,Good,Good,0
+213031347,Braybrook,D09,South East Coast (Victoria),1,Good,Good,0
+213031348,Footscray,D09,South East Coast (Victoria),1,Good,Good,0
+213031349,Maribyrnong,D09,South East Coast (Victoria),1,Good,Good,0
+213031350,Seddon - Kingsville,D09,South East Coast (Victoria),1,Good,Good,0
+213031351,West Footscray - Tottenham,D09,South East Coast (Victoria),1,Good,Good,0
+213031352,Yarraville,D09,South East Coast (Victoria),1,Good,Good,0
+213041353,Bacchus Marsh,D09,South East Coast (Victoria),1,Good,Good,0
+213041358,Melton West,D09,South East Coast (Victoria),1,Good,Good,0
+213041359,Rockbank - Mount Cottrell,D09,South East Coast (Victoria),1,Good,Good,0
+213041360,Taylors Hill,D09,South East Coast (Victoria),1,Good,Good,0
+213041461,Burnside,D09,South East Coast (Victoria),1,Good,Good,0
+213041462,Burnside Heights,D09,South East Coast (Victoria),1,Good,Good,0
+213041463,Caroline Springs,D09,South East Coast (Victoria),1,Good,Good,0
+213041571,Brookfield,D09,South East Coast (Victoria),1,Good,Good,0
+213041572,Cobblebank - Strathtulloh,D09,South East Coast (Victoria),1,Good,Good,0
+213041573,Eynesbury - Exford,D09,South East Coast (Victoria),1,Good,Good,0
+213041574,Fraser Rise - Plumpton,D09,South East Coast (Victoria),1,Good,Good,0
+213041575,Hillside,D09,South East Coast (Victoria),1,Good,Good,0
+213041576,Kurunjang - Toolern Vale,D09,South East Coast (Victoria),1,Good,Good,0
+213041577,Melton,D09,South East Coast (Victoria),1,Good,Good,0
+213041578,Melton South - Weir Views,D09,South East Coast (Victoria),1,Good,Good,0
+213051361,Hoppers Crossing - North,D09,South East Coast (Victoria),1,Good,Good,0
+213051362,Hoppers Crossing - South,D09,South East Coast (Victoria),1,Good,Good,0
+213051363,Laverton,D09,South East Coast (Victoria),1,Good,Good,0
+213051368,Werribee - South,D09,South East Coast (Victoria),1,Good,Good,0
+213051464,Point Cook - East,D09,South East Coast (Victoria),1,Good,Good,0
+213051466,Point Cook - South,D09,South East Coast (Victoria),1,Good,Good,0
+213051467,Werribee - East,D09,South East Coast (Victoria),1,Good,Good,0
+213051468,Werribee - West,D09,South East Coast (Victoria),1,Good,Good,0
+213051579,Manor Lakes - Quandong,D09,South East Coast (Victoria),1,Good,Good,0
+213051580,Point Cook - North East,D09,South East Coast (Victoria),1,Good,Good,0
+213051581,Point Cook - North West,D09,South East Coast (Victoria),1,Good,Good,0
+213051582,Tarneit (West) - Mount Cottrell,D09,South East Coast (Victoria),1,Good,Good,0
+213051583,Tarneit - Central,D09,South East Coast (Victoria),1,Good,Good,0
+213051584,Tarneit - North,D09,South East Coast (Victoria),1,Good,Good,0
+213051585,Tarneit - South,D09,South East Coast (Victoria),1,Good,Good,0
+213051586,Truganina - North,D09,South East Coast (Victoria),1,Good,Good,0
+213051587,Truganina - South East,D09,South East Coast (Victoria),1,Good,Good,0
+213051588,Truganina - South West,D09,South East Coast (Victoria),1,Good,Good,0
+213051589,Wyndham Vale - North,D09,South East Coast (Victoria),1,Good,Good,0
+213051590,Wyndham Vale - South,D09,South East Coast (Victoria),1,Good,Good,0
+214011370,Carrum Downs,D09,South East Coast (Victoria),1,Good,Good,0
+214011371,Frankston,D09,South East Coast (Victoria),1,Good,Good,0
+214011372,Frankston North,D09,South East Coast (Victoria),1,Good,Good,0
+214011373,Frankston South,D09,South East Coast (Victoria),1,Good,Good,0
+214011374,Langwarrin,D09,South East Coast (Victoria),1,Good,Good,0
+214011375,Seaford (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+214011376,Skye - Sandhurst,D09,South East Coast (Victoria),1,Good,Good,0
+214021377,Dromana,D09,South East Coast (Victoria),1,Good,Good,0
+214021378,Flinders,D09,South East Coast (Victoria),1,Good,Good,0
+214021379,Hastings - Somers,D09,South East Coast (Victoria),1,Good,Good,0
+214021381,Mount Eliza,D09,South East Coast (Victoria),1,Good,Good,0
+214021382,Mount Martha,D09,South East Coast (Victoria),1,Good,Good,0
+214021383,Point Nepean,D09,South East Coast (Victoria),1,Good,Good,0
+214021384,Rosebud - McCrae,D09,South East Coast (Victoria),1,Good,Good,0
+214021385,Somerville,D09,South East Coast (Victoria),1,Good,Good,0
+214021591,Mornington - East,D09,South East Coast (Victoria),1,Good,Good,0
+214021592,Mornington - West,D09,South East Coast (Victoria),1,Good,Good,0
+215011386,Ararat,D03,Murray-Darling Basin,0.0203261,Good,Good,0
+215011386,Ararat,D09,South East Coast (Victoria),0.9796739,Good,Good,0
+215011387,Ararat Surrounds,D03,Murray-Darling Basin,0.348908,Good,Good,0
+215011387,Ararat Surrounds,D09,South East Coast (Victoria),0.651092,Good,Good,0
+215011388,Horsham,D03,Murray-Darling Basin,1,Good,Good,0
+215011389,Horsham Surrounds,D09,South East Coast (Victoria),0.0295923,Good,Good,0
+215011389,Horsham Surrounds,D03,Murray-Darling Basin,0.9704077,Good,Good,0
+215011390,Nhill Region,D09,South East Coast (Victoria),0.1760346,Good,Good,0
+215011390,Nhill Region,D03,Murray-Darling Basin,0.8239654,Good,Good,0
+215011391,St Arnaud,D03,Murray-Darling Basin,1,Good,Good,0
+215011392,Stawell,D09,South East Coast (Victoria),3.50E-06,Good,Good,1
+215011392,Stawell,D03,Murray-Darling Basin,0.9999965,Good,Good,0
+215011393,West Wimmera,D03,Murray-Darling Basin,0.0375682,Good,Good,0
+215011393,West Wimmera,D09,South East Coast (Victoria),0.9624318,Good,Good,0
+215011394,Yarriambiack,D03,Murray-Darling Basin,1,Good,Good,0
+215021395,Irymple,D03,Murray-Darling Basin,1,Good,Good,0
+215021396,Merbein,D03,Murray-Darling Basin,1,Good,Good,0
+215021398,Mildura Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+215021399,Red Cliffs,D03,Murray-Darling Basin,1,Good,Good,0
+215021469,Mildura - North,D03,Murray-Darling Basin,1,Good,Good,0
+215021470,Mildura - South,D03,Murray-Darling Basin,1,Good,Good,0
+215031400,Buloke,D03,Murray-Darling Basin,1,Good,Good,0
+215031401,Gannawarra,D03,Murray-Darling Basin,1,Good,Good,0
+215031402,Kerang,D03,Murray-Darling Basin,1,Good,Good,0
+215031403,Robinvale,D03,Murray-Darling Basin,1,Good,Good,0
+215031404,Swan Hill,D03,Murray-Darling Basin,1,Good,Good,0
+215031405,Swan Hill Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+216011406,Echuca,D03,Murray-Darling Basin,1,Good,Good,0
+216011407,Kyabram,D03,Murray-Darling Basin,1,Good,Good,0
+216011408,Lockington - Gunbower,D03,Murray-Darling Basin,1,Good,Good,0
+216011409,Rochester,D03,Murray-Darling Basin,1,Good,Good,0
+216011410,Rushworth,D03,Murray-Darling Basin,1,Good,Good,0
+216021411,Cobram,D03,Murray-Darling Basin,1,Good,Good,0
+216021412,Moira,D03,Murray-Darling Basin,1,Good,Good,0
+216021413,Numurkah,D03,Murray-Darling Basin,1,Good,Good,0
+216021414,Yarrawonga,D03,Murray-Darling Basin,1,Good,Good,0
+216031415,Mooroopna,D03,Murray-Darling Basin,1,Good,Good,0
+216031416,Shepparton - North,D03,Murray-Darling Basin,1,Good,Good,0
+216031418,Shepparton Surrounds - East,D03,Murray-Darling Basin,1,Good,Good,0
+216031419,Shepparton Surrounds - West,D03,Murray-Darling Basin,1,Good,Good,0
+216031593,Kialla,D03,Murray-Darling Basin,1,Good,Good,0
+216031594,Shepparton - South East,D03,Murray-Darling Basin,1,Good,Good,0
+217011420,Glenelg (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+217011421,Hamilton (Vic.),D09,South East Coast (Victoria),1,Good,Good,0
+217011422,Portland,D09,South East Coast (Victoria),1,Good,Good,0
+217011423,Southern Grampians,D09,South East Coast (Victoria),1,Good,Good,0
+217031471,Camperdown,D09,South East Coast (Victoria),1,Good,Good,0
+217031472,Colac,D09,South East Coast (Victoria),1,Good,Good,0
+217031473,Colac Surrounds,D09,South East Coast (Victoria),1,Good,Good,0
+217031474,Corangamite - North,D09,South East Coast (Victoria),1,Good,Good,0
+217031475,Corangamite - South,D09,South East Coast (Victoria),1,Good,Good,0
+217031476,Otway,D09,South East Coast (Victoria),1,Good,Good,0
+217041477,Moyne - East,D09,South East Coast (Victoria),1,Good,Good,0
+217041478,Moyne - West,D09,South East Coast (Victoria),1,Good,Good,0
+217041479,Warrnambool - North,D09,South East Coast (Victoria),1,Good,Good,0
+217041480,Warrnambool - South,D09,South East Coast (Victoria),1,Good,Good,0
+297979799,Migratory - Offshore - Shipping (Vic.),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+299999499,No usual address (Vic.),D94,No usual address (Aust.),1,Good,Good,0
+301011001,Alexandra Hills,D04,North East Coast,1,Good,Good,0
+301011002,Belmont - Gumdale,D04,North East Coast,1,Good,Good,0
+301011003,Birkdale,D04,North East Coast,1,Good,Good,0
+301011004,Capalaba,D04,North East Coast,1,Good,Good,0
+301011005,Thorneside,D04,North East Coast,1,Good,Good,0
+301011006,Wellington Point,D04,North East Coast,1,Good,Good,0
+301021007,Cleveland,D04,North East Coast,1,Good,Good,0
+301021008,Ormiston,D04,North East Coast,1,Good,Good,0
+301021009,Redland Bay,D04,North East Coast,1,Good,Good,0
+301021011,Sheldon - Mount Cotton,D04,North East Coast,1,Good,Good,0
+301021012,Thornlands,D04,North East Coast,1,Good,Good,0
+301021013,Victoria Point,D04,North East Coast,1,Good,Good,0
+301021550,North Stradbroke Island,D04,North East Coast,1,Good,Good,0
+301021551,Southern Moreton Bay Islands,D04,North East Coast,1,Good,Good,0
+301031014,Brisbane Port - Lytton,D04,North East Coast,1,Good,Good,0
+301031015,Manly - Lota,D04,North East Coast,1,Good,Good,0
+301031016,Manly West,D04,North East Coast,1,Good,Good,0
+301031017,Murarrie,D04,North East Coast,1,Good,Good,0
+301031018,Tingalpa,D04,North East Coast,1,Good,Good,0
+301031019,Wakerley,D04,North East Coast,1,Good,Good,0
+301031020,Wynnum,D04,North East Coast,1,Good,Good,0
+301031021,Wynnum West - Hemmant,D04,North East Coast,1,Good,Good,0
+302011022,Bald Hills,D04,North East Coast,1,Good,Good,0
+302011023,Bridgeman Downs,D04,North East Coast,1,Good,Good,0
+302011024,Carseldine,D04,North East Coast,1,Good,Good,0
+302011025,Everton Park,D04,North East Coast,1,Good,Good,0
+302011026,McDowall,D04,North East Coast,1,Good,Good,0
+302021027,Aspley,D04,North East Coast,1,Good,Good,0
+302021028,Chermside,D04,North East Coast,1,Good,Good,0
+302021029,Chermside West,D04,North East Coast,1,Good,Good,0
+302021030,Geebung,D04,North East Coast,1,Good,Good,0
+302021031,Kedron - Gordon Park,D04,North East Coast,1,Good,Good,0
+302021032,Stafford,D04,North East Coast,1,Good,Good,0
+302021033,Stafford Heights,D04,North East Coast,1,Good,Good,0
+302021034,Wavell Heights,D04,North East Coast,1,Good,Good,0
+302031035,Boondall,D04,North East Coast,1,Good,Good,0
+302031036,Brisbane Airport,D04,North East Coast,1,Good,Good,0
+302031037,Eagle Farm - Pinkenba,D04,North East Coast,1,Good,Good,0
+302031038,Northgate - Virginia,D04,North East Coast,1,Good,Good,0
+302031039,Nudgee - Banyo,D04,North East Coast,1,Good,Good,0
+302031040,Nundah,D04,North East Coast,1,Good,Good,0
+302041041,Bracken Ridge,D04,North East Coast,1,Good,Good,0
+302041042,Brighton (Qld),D04,North East Coast,1,Good,Good,0
+302041043,Deagon,D04,North East Coast,1,Good,Good,0
+302041044,Sandgate - Shorncliffe,D04,North East Coast,1,Good,Good,0
+302041045,Taigum - Fitzgibbon,D04,North East Coast,1,Good,Good,0
+302041046,Zillmere,D04,North East Coast,1,Good,Good,0
+303011047,Camp Hill,D04,North East Coast,1,Good,Good,0
+303011048,Cannon Hill,D04,North East Coast,1,Good,Good,0
+303011049,Carina,D04,North East Coast,1,Good,Good,0
+303011050,Carina Heights,D04,North East Coast,1,Good,Good,0
+303011051,Carindale,D04,North East Coast,1,Good,Good,0
+303021052,Annerley,D04,North East Coast,1,Good,Good,0
+303021053,Coorparoo,D04,North East Coast,1,Good,Good,0
+303021054,Fairfield - Dutton Park,D04,North East Coast,1,Good,Good,0
+303021055,Greenslopes,D04,North East Coast,1,Good,Good,0
+303021056,Holland Park,D04,North East Coast,1,Good,Good,0
+303021057,Holland Park West,D04,North East Coast,1,Good,Good,0
+303021058,Woolloongabba,D04,North East Coast,1,Good,Good,0
+303021059,Yeronga,D04,North East Coast,1,Good,Good,0
+303031060,Eight Mile Plains,D04,North East Coast,1,Good,Good,0
+303031061,Macgregor (Qld),D04,North East Coast,1,Good,Good,0
+303031062,Mansfield (Qld),D04,North East Coast,1,Good,Good,0
+303031063,Mount Gravatt,D04,North East Coast,1,Good,Good,0
+303031064,Rochedale - Burbank,D04,North East Coast,1,Good,Good,0
+303031065,Upper Mount Gravatt,D04,North East Coast,1,Good,Good,0
+303031066,Wishart,D04,North East Coast,1,Good,Good,0
+303041067,Coopers Plains,D04,North East Coast,1,Good,Good,0
+303041068,Moorooka,D04,North East Coast,1,Good,Good,0
+303041069,Robertson,D04,North East Coast,1,Good,Good,0
+303041070,Salisbury - Nathan,D04,North East Coast,1,Good,Good,0
+303041071,Tarragindi,D04,North East Coast,1,Good,Good,0
+303051072,Algester,D04,North East Coast,1,Good,Good,0
+303051073,Calamvale - Stretton,D04,North East Coast,1,Good,Good,0
+303051074,Pallara - Willawong,D04,North East Coast,1,Good,Good,0
+303051075,Parkinson - Drewvale,D04,North East Coast,1,Good,Good,0
+303051076,Rocklea - Acacia Ridge,D04,North East Coast,1,Good,Good,0
+303061077,Kuraby,D04,North East Coast,1,Good,Good,0
+303061078,Runcorn,D04,North East Coast,1,Good,Good,0
+303061079,Sunnybank,D04,North East Coast,1,Good,Good,0
+303061080,Sunnybank Hills,D04,North East Coast,1,Good,Good,0
+304011081,Jindalee - Mount Ommaney,D04,North East Coast,1,Good,Good,0
+304011082,Middle Park - Jamboree Heights,D04,North East Coast,1,Good,Good,0
+304011083,Riverhills,D04,North East Coast,1,Good,Good,0
+304011084,Seventeen Mile Rocks - Sinnamon Park,D04,North East Coast,1,Good,Good,0
+304011085,Westlake,D04,North East Coast,1,Good,Good,0
+304021086,Bellbowrie - Moggill,D04,North East Coast,1,Good,Good,0
+304021087,Brookfield - Kenmore Hills,D04,North East Coast,1,Good,Good,0
+304021088,Chapel Hill,D04,North East Coast,1,Good,Good,0
+304021089,Fig Tree Pocket,D04,North East Coast,1,Good,Good,0
+304021090,Kenmore,D04,North East Coast,1,Good,Good,0
+304021091,Pinjarra Hills - Pullenvale,D04,North East Coast,1,Good,Good,0
+304031092,Chelmer - Graceville,D04,North East Coast,1,Good,Good,0
+304031093,Corinda,D04,North East Coast,1,Good,Good,0
+304031094,Indooroopilly,D04,North East Coast,1,Good,Good,0
+304031095,Sherwood,D04,North East Coast,1,Good,Good,0
+304031096,St Lucia,D04,North East Coast,1,Good,Good,0
+304031097,Taringa,D04,North East Coast,1,Good,Good,0
+304041098,Enoggera,D04,North East Coast,1,Good,Good,0
+304041099,Enoggera Reservoir,D04,North East Coast,1,Good,Good,0
+304041100,Keperra,D04,North East Coast,1,Good,Good,0
+304041101,Mitchelton,D04,North East Coast,1,Good,Good,0
+304041102,Mount Coot-tha,D04,North East Coast,1,Good,Good,0
+304041103,The Gap,D04,North East Coast,1,Good,Good,0
+304041104,Upper Kedron - Ferny Grove,D04,North East Coast,1,Good,Good,0
+305011105,Brisbane City,D04,North East Coast,1,Good,Good,0
+305011106,Fortitude Valley,D04,North East Coast,1,Good,Good,0
+305011107,Highgate Hill,D04,North East Coast,1,Good,Good,0
+305011108,Kangaroo Point,D04,North East Coast,1,Good,Good,0
+305011109,New Farm,D04,North East Coast,1,Good,Good,0
+305011110,South Brisbane,D04,North East Coast,1,Good,Good,0
+305011111,Spring Hill,D04,North East Coast,1,Good,Good,0
+305011112,West End,D04,North East Coast,1,Good,Good,0
+305021113,Balmoral,D04,North East Coast,1,Good,Good,0
+305021114,Bulimba,D04,North East Coast,1,Good,Good,0
+305021115,East Brisbane,D04,North East Coast,1,Good,Good,0
+305021116,Hawthorne,D04,North East Coast,1,Good,Good,0
+305021117,Morningside - Seven Hills,D04,North East Coast,1,Good,Good,0
+305021118,Norman Park,D04,North East Coast,1,Good,Good,0
+305031119,Albion,D04,North East Coast,1,Good,Good,0
+305031120,Alderley,D04,North East Coast,1,Good,Good,0
+305031121,Ascot,D04,North East Coast,1,Good,Good,0
+305031122,Clayfield,D04,North East Coast,1,Good,Good,0
+305031123,Grange,D04,North East Coast,1,Good,Good,0
+305031124,Hamilton (Qld),D04,North East Coast,1,Good,Good,0
+305031125,Hendra,D04,North East Coast,1,Good,Good,0
+305031126,Kelvin Grove - Herston,D04,North East Coast,1,Good,Good,0
+305031127,Newmarket,D04,North East Coast,1,Good,Good,0
+305031128,Newstead - Bowen Hills,D04,North East Coast,1,Good,Good,0
+305031129,Wilston,D04,North East Coast,1,Good,Good,0
+305031130,Windsor,D04,North East Coast,1,Good,Good,0
+305031131,Wooloowin - Lutwyche,D04,North East Coast,1,Good,Good,0
+305041132,Ashgrove,D04,North East Coast,1,Good,Good,0
+305041133,Auchenflower,D04,North East Coast,1,Good,Good,0
+305041134,Bardon,D04,North East Coast,1,Good,Good,0
+305041135,Paddington - Milton,D04,North East Coast,1,Good,Good,0
+305041136,Red Hill (Qld),D04,North East Coast,1,Good,Good,0
+305041137,Toowong,D04,North East Coast,1,Good,Good,0
+306011138,Brinsmead,D04,North East Coast,1,Good,Good,0
+306011139,Clifton Beach - Kewarra Beach,D04,North East Coast,1,Good,Good,0
+306011140,Freshwater - Stratford,D04,North East Coast,1,Good,Good,0
+306011141,Redlynch,D04,North East Coast,1,Good,Good,0
+306011142,Trinity Beach - Smithfield,D04,North East Coast,1,Good,Good,0
+306011143,Yorkeys Knob - Machans Beach,D04,North East Coast,1,Good,Good,0
+306021144,Bentley Park,D04,North East Coast,1,Good,Good,0
+306021145,Cairns City,D04,North East Coast,1,Good,Good,0
+306021146,Earlville - Bayview Heights,D04,North East Coast,1,Good,Good,0
+306021147,Edmonton,D04,North East Coast,1,Good,Good,0
+306021148,Gordonvale - Trinity,D04,North East Coast,1,Good,Good,0
+306021149,Kanimbla - Mooroobool,D04,North East Coast,1,Good,Good,0
+306021150,Lamb Range,D04,North East Coast,1,Good,Good,0
+306021151,Manoora,D04,North East Coast,1,Good,Good,0
+306021152,Manunda,D04,North East Coast,1,Good,Good,0
+306021153,Mount Sheridan,D04,North East Coast,1,Good,Good,0
+306021154,Westcourt - Bungalow,D04,North East Coast,1,Good,Good,0
+306021155,White Rock,D04,North East Coast,1,Good,Good,0
+306021156,Whitfield - Edge Hill,D04,North East Coast,1,Good,Good,0
+306021157,Woree,D04,North East Coast,1,Good,Good,0
+306031158,Babinda,D04,North East Coast,1,Good,Good,0
+306031159,Innisfail,D04,North East Coast,1,Good,Good,0
+306031160,Johnstone,D04,North East Coast,1,Good,Good,0
+306031161,Tully,D04,North East Coast,1,Good,Good,0
+306031162,Wooroonooran,D04,North East Coast,1,Good,Good,0
+306031163,Yarrabah,D04,North East Coast,1,Good,Good,0
+306041164,Daintree,D04,North East Coast,1,Good,Good,0
+306041165,Port Douglas,D04,North East Coast,1,Good,Good,0
+306051166,Atherton,D04,North East Coast,1,Good,Good,0
+306051167,Herberton,D01,Carpentaria Coast,1.80E-06,Good,Good,1
+306051167,Herberton,D04,North East Coast,0.9999982,Good,Good,0
+306051168,Kuranda,D04,North East Coast,1,Good,Good,0
+306051169,Malanda - Yungaburra,D04,North East Coast,1,Good,Good,0
+306051170,Mareeba,D01,Carpentaria Coast,0.0074405,Good,Good,1
+306051170,Mareeba,D04,North East Coast,0.9925595,Good,Good,0
+307011171,Balonne,D03,Murray-Darling Basin,1,Good,Good,0
+307011172,Chinchilla,D04,North East Coast,0.0108378,Good,Good,0
+307011172,Chinchilla,D03,Murray-Darling Basin,0.9891622,Good,Good,0
+307011173,Goondiwindi,D03,Murray-Darling Basin,1,Good,Good,0
+307011174,Inglewood - Waggamba,D03,Murray-Darling Basin,1,Good,Good,0
+307011175,Miles - Wandoan,D04,North East Coast,0.2877951,Good,Good,0
+307011175,Miles - Wandoan,D03,Murray-Darling Basin,0.7122049,Good,Good,0
+307011176,Roma,D03,Murray-Darling Basin,1,Good,Good,0
+307011177,Roma Surrounds,D04,North East Coast,0.1252199,Good,Good,0
+307011177,Roma Surrounds,D03,Murray-Darling Basin,0.8747801,Good,Good,0
+307011178,Tara,D03,Murray-Darling Basin,1,Good,Good,0
+307021179,Crows Nest - Rosalie,D03,Murray-Darling Basin,0.3697657,Good,Good,0
+307021179,Crows Nest - Rosalie,D04,North East Coast,0.6302343,Good,Good,0
+307021180,Jondaryan,D03,Murray-Darling Basin,1,Good,Good,0
+307021181,Millmerran,D03,Murray-Darling Basin,1,Good,Good,0
+307021182,Pittsworth,D03,Murray-Darling Basin,1,Good,Good,0
+307021183,Wambo,D03,Murray-Darling Basin,1,Good,Good,0
+307031184,Clifton - Greenmount,D04,North East Coast,0.0588196,Good,Good,0
+307031184,Clifton - Greenmount,D03,Murray-Darling Basin,0.9411804,Good,Good,0
+307031185,Southern Downs - East,D03,Murray-Darling Basin,1,Good,Good,0
+307031186,Southern Downs - West,D03,Murray-Darling Basin,1,Good,Good,0
+307031187,Stanthorpe,D03,Murray-Darling Basin,1,Good,Good,0
+307031188,Stanthorpe Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+307031189,Warwick,D03,Murray-Darling Basin,1,Good,Good,0
+308011190,Central Highlands - East,D04,North East Coast,1,Good,Good,0
+308011191,Central Highlands - West,D04,North East Coast,1,Good,Good,0
+308011192,Emerald,D04,North East Coast,1,Good,Good,0
+308031205,Berserker,D04,North East Coast,1,Good,Good,0
+308031206,Bouldercombe,D04,North East Coast,1,Good,Good,0
+308031207,Emu Park,D04,North East Coast,1,Good,Good,0
+308031208,Frenchville - Mount Archer,D04,North East Coast,1,Good,Good,0
+308031209,Glenlee - Rockyview,D04,North East Coast,1,Good,Good,0
+308031210,Gracemere,D04,North East Coast,1,Good,Good,0
+308031211,Lakes Creek,D04,North East Coast,1,Good,Good,0
+308031212,Mount Morgan,D04,North East Coast,1,Good,Good,0
+308031213,Norman Gardens,D04,North East Coast,1,Good,Good,0
+308031214,Park Avenue,D04,North East Coast,1,Good,Good,0
+308031215,Parkhurst - Kawana,D04,North East Coast,1,Good,Good,0
+308031216,Rockhampton - West,D04,North East Coast,1,Good,Good,0
+308031217,Rockhampton City,D04,North East Coast,1,Good,Good,0
+308031218,Rockhampton Surrounds - East,D04,North East Coast,1,Good,Good,0
+308031219,Rockhampton Surrounds - North,D04,North East Coast,1,Good,Good,0
+308031220,Rockhampton Surrounds - West,D04,North East Coast,1,Good,Good,0
+308031221,Shoalwater Bay,D04,North East Coast,1,Good,Good,0
+308031222,The Range - Allenstown,D04,North East Coast,1,Good,Good,0
+308031223,Yeppoon,D04,North East Coast,1,Good,Good,0
+308041528,Banana,D04,North East Coast,1,Good,Good,0
+308041529,Biloela,D04,North East Coast,1,Good,Good,0
+308051530,Agnes Water - Miriam Vale,D04,North East Coast,1,Good,Good,0
+308051531,Boyne Island - Tannum Sands,D04,North East Coast,1,Good,Good,0
+308051532,Callemondah,D04,North East Coast,1,Good,Good,0
+308051533,Clinton - New Auckland,D04,North East Coast,1,Good,Good,0
+308051534,Gladstone,D04,North East Coast,1,Good,Good,0
+308051535,Gladstone Hinterland,D04,North East Coast,1,Good,Good,0
+308051536,Kin Kora - Sun Valley,D04,North East Coast,1,Good,Good,0
+308051537,South Trees,D04,North East Coast,1,Good,Good,0
+308051538,Telina - Toolooa,D04,North East Coast,1,Good,Good,0
+308051539,West Gladstone,D04,North East Coast,1,Good,Good,0
+309011224,Broadbeach Waters,D04,North East Coast,1,Good,Good,0
+309011225,Burleigh Heads,D04,North East Coast,1,Good,Good,0
+309011226,Burleigh Waters,D04,North East Coast,1,Good,Good,0
+309011227,Mermaid Beach - Broadbeach,D04,North East Coast,1,Good,Good,0
+309011228,Mermaid Waters,D04,North East Coast,1,Good,Good,0
+309011229,Miami,D04,North East Coast,1,Good,Good,0
+309021230,Coolangatta,D04,North East Coast,0.4196856,Good,Good,0
+309021230,Coolangatta,D08,South East Coast (NSW),0.5803144,Good,Good,0
+309021231,Currumbin - Tugun,D08,South East Coast (NSW),0.1301186,Good,Good,0
+309021231,Currumbin - Tugun,D04,North East Coast,0.8698814,Good,Good,0
+309021232,Currumbin Waters,D04,North East Coast,1,Good,Good,0
+309021233,Elanora,D04,North East Coast,1,Good,Good,0
+309021234,Palm Beach,D04,North East Coast,1,Good,Good,0
+309031235,Arundel,D04,North East Coast,1,Good,Good,0
+309031236,Biggera Waters,D04,North East Coast,1,Good,Good,0
+309031237,Coombabah,D04,North East Coast,1,Good,Good,0
+309031238,Labrador,D04,North East Coast,1,Good,Good,0
+309031239,Paradise Point - Hollywell,D04,North East Coast,1,Good,Good,0
+309031240,Runaway Bay,D04,North East Coast,1,Good,Good,0
+309041241,Guanaba - Springbrook,D04,North East Coast,1,Good,Good,0
+309041242,Tamborine - Canungra,D04,North East Coast,1,Good,Good,0
+309051243,Currumbin Valley - Tallebudgera,D04,North East Coast,1,Good,Good,0
+309051244,Mudgeeraba - Bonogin,D04,North East Coast,1,Good,Good,0
+309051245,Reedy Creek - Andrews,D04,North East Coast,1,Good,Good,0
+309061246,Carrara,D04,North East Coast,1,Good,Good,0
+309061247,Highland Park,D04,North East Coast,1,Good,Good,0
+309061248,Nerang - Mount Nathan,D04,North East Coast,1,Good,Good,0
+309061249,Pacific Pines - Gaven,D04,North East Coast,1,Good,Good,0
+309061250,Worongary - Tallai,D04,North East Coast,1,Good,Good,0
+309071251,Coomera,D04,North East Coast,1,Good,Good,0
+309071252,Helensvale,D04,North East Coast,1,Good,Good,0
+309071253,Hope Island,D04,North East Coast,1,Good,Good,0
+309071254,Jacobs Well - Alberton,D04,North East Coast,1,Good,Good,0
+309071256,Oxenford - Maudsland,D04,North East Coast,1,Good,Good,0
+309071552,Ormeau (East) - Stapylton,D04,North East Coast,1,Good,Good,0
+309071553,Ormeau (West) - Yatala,D04,North East Coast,1,Good,Good,0
+309071554,Pimpama - North,D04,North East Coast,1,Good,Good,0
+309071555,Pimpama - South,D04,North East Coast,1,Good,Good,0
+309071556,Upper Coomera (South) - Wongawallan,D04,North East Coast,1,Good,Good,0
+309071557,Upper Coomera - North,D04,North East Coast,1,Good,Good,0
+309071558,Willow Vale - Pimpama (West),D04,North East Coast,1,Good,Good,0
+309081259,Clear Island Waters,D04,North East Coast,1,Good,Good,0
+309081260,Merrimac,D04,North East Coast,1,Good,Good,0
+309081262,Varsity Lakes,D04,North East Coast,1,Good,Good,0
+309081559,Robina - East,D04,North East Coast,1,Good,Good,0
+309081560,Robina - West,D04,North East Coast,1,Good,Good,0
+309091263,Ashmore,D04,North East Coast,1,Good,Good,0
+309091264,Molendinar,D04,North East Coast,1,Good,Good,0
+309091265,Parkwood,D04,North East Coast,1,Good,Good,0
+309091540,Southport - North,D04,North East Coast,1,Good,Good,0
+309091541,Southport - South,D04,North East Coast,1,Good,Good,0
+309101267,Benowa,D04,North East Coast,1,Good,Good,0
+309101268,Bundall,D04,North East Coast,1,Good,Good,0
+309101269,Main Beach,D04,North East Coast,1,Good,Good,0
+309101561,Surfers Paradise - North,D04,North East Coast,1,Good,Good,0
+309101562,Surfers Paradise - South,D04,North East Coast,1,Good,Good,0
+310011271,Darra - Sumner,D04,North East Coast,1,Good,Good,0
+310011272,Durack,D04,North East Coast,1,Good,Good,0
+310011274,Inala - Richlands,D04,North East Coast,1,Good,Good,0
+310011275,Oxley (Qld),D04,North East Coast,1,Good,Good,0
+310011276,Wacol,D04,North East Coast,1,Good,Good,0
+310011563,Doolandella,D04,North East Coast,1,Good,Good,0
+310011564,Forest Lake - Ellen Grove,D04,North East Coast,1,Good,Good,0
+310021277,Boonah,D04,North East Coast,1,Good,Good,0
+310021278,Esk,D04,North East Coast,1,Good,Good,0
+310021279,Lake Manchester - England Creek,D04,North East Coast,1,Good,Good,0
+310021280,Lockyer Valley - East,D04,North East Coast,1,Good,Good,0
+310021281,Lowood,D04,North East Coast,1,Good,Good,0
+310021282,Rosewood,D04,North East Coast,1,Good,Good,0
+310031283,Brassall,D04,North East Coast,1,Good,Good,0
+310031284,Bundamba,D04,North East Coast,1,Good,Good,0
+310031285,Churchill - Yamanto,D04,North East Coast,1,Good,Good,0
+310031286,Ipswich - Central,D04,North East Coast,1,Good,Good,0
+310031287,Ipswich - East,D04,North East Coast,1,Good,Good,0
+310031288,Ipswich - North,D04,North East Coast,1,Good,Good,0
+310031289,Karalee - Barellan Point,D04,North East Coast,1,Good,Good,0
+310031290,Karana Downs,D04,North East Coast,1,Good,Good,0
+310031291,Leichhardt - One Mile,D04,North East Coast,1,Good,Good,0
+310031292,North Ipswich - Tivoli,D04,North East Coast,1,Good,Good,0
+310031293,Raceview,D04,North East Coast,1,Good,Good,0
+310031294,Ripley,D04,North East Coast,1,Good,Good,0
+310031295,Riverview,D04,North East Coast,1,Good,Good,0
+310041297,Camira - Gailes,D04,North East Coast,1,Good,Good,0
+310041298,Carole Park,D04,North East Coast,1,Good,Good,0
+310041299,Collingwood Park - Redbank,D04,North East Coast,1,Good,Good,0
+310041300,Goodna,D04,North East Coast,1,Good,Good,0
+310041301,New Chum,D04,North East Coast,1,Good,Good,0
+310041302,Redbank Plains,D04,North East Coast,1,Good,Good,0
+310041303,Springfield,D04,North East Coast,1,Good,Good,0
+310041304,Springfield Lakes,D04,North East Coast,1,Good,Good,0
+310041565,Augustine Heights - Brookwater,D04,North East Coast,1,Good,Good,0
+310041566,Bellbird Park,D04,North East Coast,1,Good,Good,0
+311011305,Beaudesert,D04,North East Coast,1,Good,Good,0
+311021306,Beenleigh,D04,North East Coast,1,Good,Good,0
+311021307,Eagleby,D04,North East Coast,1,Good,Good,0
+311021308,Edens Landing - Holmview,D04,North East Coast,1,Good,Good,0
+311021309,Mount Warren Park,D04,North East Coast,1,Good,Good,0
+311021310,Wolffdene - Bahrs Scrub,D04,North East Coast,1,Good,Good,0
+311031311,Boronia Heights - Park Ridge,D04,North East Coast,1,Good,Good,0
+311031312,Browns Plains,D04,North East Coast,1,Good,Good,0
+311031313,Chambers Flat - Logan Reserve,D04,North East Coast,1,Good,Good,0
+311031314,Crestmead,D04,North East Coast,1,Good,Good,0
+311031315,Greenbank Military Camp,D04,North East Coast,1,Good,Good,0
+311031316,Hillcrest,D04,North East Coast,1,Good,Good,0
+311031317,Marsden,D04,North East Coast,1,Good,Good,0
+311031318,Munruben - Park Ridge South,D04,North East Coast,1,Good,Good,0
+311031319,Regents Park - Heritage Park,D04,North East Coast,1,Good,Good,0
+311041322,Logan Village,D04,North East Coast,1,Good,Good,0
+311041567,Flagstone (East) - Riverbend,D04,North East Coast,1,Good,Good,0
+311041568,Flagstone (West) - New Beith,D04,North East Coast,1,Good,Good,0
+311041569,Greenbank - North Maclean,D04,North East Coast,1,Good,Good,0
+311041570,Jimboomba - Glenlogan,D04,North East Coast,1,Good,Good,0
+311041571,Yarrabilba,D04,North East Coast,1,Good,Good,0
+311051323,Bethania - Waterford,D04,North East Coast,1,Good,Good,0
+311051324,Cornubia - Carbrook,D04,North East Coast,1,Good,Good,0
+311051325,Loganholme - Tanah Merah,D04,North East Coast,1,Good,Good,0
+311051326,Loganlea,D04,North East Coast,1,Good,Good,0
+311051327,Shailer Park,D04,North East Coast,1,Good,Good,0
+311051328,Waterford West,D04,North East Coast,1,Good,Good,0
+311061329,Daisy Hill,D04,North East Coast,1,Good,Good,0
+311061330,Kingston (Qld),D04,North East Coast,1,Good,Good,0
+311061331,Logan Central,D04,North East Coast,1,Good,Good,0
+311061332,Rochedale South - Priestdale,D04,North East Coast,1,Good,Good,0
+311061333,Slacks Creek,D04,North East Coast,1,Good,Good,0
+311061334,Springwood,D04,North East Coast,1,Good,Good,0
+311061335,Underwood,D04,North East Coast,1,Good,Good,0
+311061336,Woodridge,D04,North East Coast,1,Good,Good,0
+312011337,Bowen,D04,North East Coast,1,Good,Good,0
+312011338,Broadsound - Nebo,D04,North East Coast,1,Good,Good,0
+312011339,Clermont,D04,North East Coast,1,Good,Good,0
+312011340,Collinsville,D04,North East Coast,1,Good,Good,0
+312011341,Moranbah,D04,North East Coast,1,Good,Good,0
+312021342,Andergrove - Beaconsfield,D04,North East Coast,1,Good,Good,0
+312021343,East Mackay,D04,North East Coast,1,Good,Good,0
+312021344,Eimeo - Rural View,D04,North East Coast,1,Good,Good,0
+312021345,Eungella Hinterland,D04,North East Coast,1,Good,Good,0
+312021346,Mackay,D04,North East Coast,1,Good,Good,0
+312021347,Mackay Harbour,D04,North East Coast,1,Good,Good,0
+312021348,Mount Pleasant - Glenella,D04,North East Coast,1,Good,Good,0
+312021349,North Mackay,D04,North East Coast,1,Good,Good,0
+312021350,Ooralea - Bakers Creek,D04,North East Coast,1,Good,Good,0
+312021351,Pioneer Valley,D04,North East Coast,1,Good,Good,0
+312021352,Sarina,D04,North East Coast,1,Good,Good,0
+312021353,Seaforth - Calen,D04,North East Coast,1,Good,Good,0
+312021354,Shoal Point - Bucasia,D04,North East Coast,1,Good,Good,0
+312021355,Slade Point,D04,North East Coast,1,Good,Good,0
+312021356,South Mackay,D04,North East Coast,1,Good,Good,0
+312021357,Walkerston - Eton,D04,North East Coast,1,Good,Good,0
+312021358,West Mackay,D04,North East Coast,1,Good,Good,0
+312031359,Airlie - Whitsundays,D04,North East Coast,1,Good,Good,0
+312031360,Cape Conway,D04,North East Coast,1,Good,Good,0
+312031361,Proserpine,D04,North East Coast,1,Good,Good,0
+313011362,Beachmere - Sandstone Point,D04,North East Coast,1,Good,Good,0
+313011363,Bribie Island,D04,North East Coast,1,Good,Good,0
+313021364,Burpengary - East,D04,North East Coast,1,Good,Good,0
+313021366,Caboolture - South,D04,North East Coast,1,Good,Good,0
+313021367,Elimbah,D04,North East Coast,1,Good,Good,0
+313021368,Morayfield - East,D04,North East Coast,1,Good,Good,0
+313021369,Wamuran,D04,North East Coast,1,Good,Good,0
+313021572,Caboolture - East,D04,North East Coast,1,Good,Good,0
+313021573,Caboolture - West,D04,North East Coast,1,Good,Good,0
+313031370,Kilcoy,D04,North East Coast,1,Good,Good,0
+313031371,Woodford - D'Aguilar,D04,North East Coast,1,Good,Good,0
+313041372,Burpengary,D04,North East Coast,1,Good,Good,0
+313041373,Deception Bay,D04,North East Coast,1,Good,Good,0
+313041374,Morayfield,D04,North East Coast,1,Good,Good,0
+313041375,Narangba,D04,North East Coast,1,Good,Good,0
+313041376,Upper Caboolture,D04,North East Coast,1,Good,Good,0
+313051377,Clontarf,D04,North East Coast,1,Good,Good,0
+313051378,Margate - Woody Point,D04,North East Coast,1,Good,Good,0
+313051379,Redcliffe,D04,North East Coast,1,Good,Good,0
+313051380,Rothwell - Kippa-Ring,D04,North East Coast,1,Good,Good,0
+313051574,Moreton Island,D04,North East Coast,1,Good,Good,0
+313051575,Scarborough - Newport,D04,North East Coast,1,Good,Good,0
+314011382,Albany Creek,D04,North East Coast,1,Good,Good,0
+314011383,Cashmere,D04,North East Coast,1,Good,Good,0
+314011384,Dayboro,D04,North East Coast,1,Good,Good,0
+314011385,Eatons Hill,D04,North East Coast,1,Good,Good,0
+314011386,The Hills District,D04,North East Coast,1,Good,Good,0
+314011387,Samford Valley,D04,North East Coast,1,Good,Good,0
+314021389,Murrumba Downs - Griffin,D04,North East Coast,1,Good,Good,0
+314021576,Dakabin,D04,North East Coast,1,Good,Good,0
+314021577,Kallangur,D04,North East Coast,1,Good,Good,0
+314021578,Mango Hill,D04,North East Coast,1,Good,Good,0
+314021579,North Lakes,D04,North East Coast,1,Good,Good,0
+314031391,Bray Park,D04,North East Coast,1,Good,Good,0
+314031392,Lawnton,D04,North East Coast,1,Good,Good,0
+314031393,Petrie,D04,North East Coast,1,Good,Good,0
+314031394,Strathpine - Brendale,D04,North East Coast,1,Good,Good,0
+315011395,Aurukun,D01,Carpentaria Coast,1,Good,Good,0
+315011396,Cape York,D01,Carpentaria Coast,0.2845466,Good,Good,0
+315011396,Cape York,D04,North East Coast,0.7154534,Good,Good,0
+315011397,Croydon - Etheridge,D01,Carpentaria Coast,1,Good,Good,0
+315011398,Kowanyama - Pormpuraaw,D01,Carpentaria Coast,1,Good,Good,0
+315011399,Northern Peninsula,D04,North East Coast,7.20E-06,Good,Good,1
+315011399,Northern Peninsula,D01,Carpentaria Coast,0.9999928,Good,Good,0
+315011400,Tablelands,D04,North East Coast,0.3301819,Good,Good,0
+315011400,Tablelands,D01,Carpentaria Coast,0.6698181,Good,Good,0
+315011401,Torres,D04,North East Coast,0.0001373,Good,Good,1
+315011401,Torres,D01,Carpentaria Coast,0.9998627,Good,Good,0
+315011402,Torres Strait Islands,D01,Carpentaria Coast,1,Good,Good,0
+315011403,Weipa,D01,Carpentaria Coast,1,Good,Good,0
+315021404,Carpentaria,D01,Carpentaria Coast,1,Good,Good,0
+315021405,Mount Isa,D01,Carpentaria Coast,1,Good,Good,0
+315021406,Mount Isa Surrounds,D02,Lake Eyre Basin,0.0701089,Acceptable,Good,0
+315021406,Mount Isa Surrounds,D01,Carpentaria Coast,0.9298911,Good,Good,0
+315021407,Northern Highlands,D04,North East Coast,0.0022627,Good,Good,1
+315021407,Northern Highlands,D02,Lake Eyre Basin,0.0662077,Acceptable,Good,0
+315021407,Northern Highlands,D01,Carpentaria Coast,0.9315297,Good,Good,0
+315031408,Barcaldine - Blackall,D03,Murray-Darling Basin,0.0302757,Good,Good,0
+315031408,Barcaldine - Blackall,D04,North East Coast,0.1168557,Good,Good,0
+315031408,Barcaldine - Blackall,D02,Lake Eyre Basin,0.8528685,Acceptable,Good,0
+315031409,Charleville,D03,Murray-Darling Basin,1,Good,Good,0
+315031410,Far Central West,D02,Lake Eyre Basin,1,Acceptable,Good,0
+315031411,Far South West,D02,Lake Eyre Basin,0.3657088,Acceptable,Good,0
+315031411,Far South West,D03,Murray-Darling Basin,0.6342912,Good,Good,0
+315031412,Longreach,D02,Lake Eyre Basin,1,Acceptable,Good,0
+316011413,Buderim - North,D04,North East Coast,1,Good,Good,0
+316011414,Buderim - South,D04,North East Coast,1,Good,Good,0
+316011415,Mountain Creek,D04,North East Coast,1,Good,Good,0
+316011416,Sippy Downs,D04,North East Coast,1,Good,Good,0
+316021417,Aroona - Currimundi,D04,North East Coast,1,Good,Good,0
+316021418,Buddina - Minyama,D04,North East Coast,1,Good,Good,0
+316021419,Caloundra - Kings Beach,D04,North East Coast,1,Good,Good,0
+316021421,Golden Beach - Pelican Waters,D04,North East Coast,1,Good,Good,0
+316021422,Moffat Beach - Battery Hill,D04,North East Coast,1,Good,Good,0
+316021423,Parrearra - Warana,D04,North East Coast,1,Good,Good,0
+316021424,Wurtulla - Birtinya,D04,North East Coast,1,Good,Good,0
+316021580,Caloundra West - Baringa,D04,North East Coast,1,Good,Good,0
+316021581,Meridan Plains - Little Mountain (North),D04,North East Coast,1,Good,Good,0
+316031425,Coolum Beach,D04,North East Coast,1,Good,Good,0
+316031426,Marcoola - Mudjimba,D04,North East Coast,1,Good,Good,0
+316031427,Maroochydore - Kuluin,D04,North East Coast,1,Good,Good,0
+316031428,Mooloolaba - Alexandra Headland,D04,North East Coast,1,Good,Good,0
+316051434,Noosa Heads,D04,North East Coast,1,Good,Good,0
+316051435,Noosaville,D04,North East Coast,1,Good,Good,0
+316051437,Sunshine Beach,D04,North East Coast,1,Good,Good,0
+316051438,Tewantin,D04,North East Coast,1,Good,Good,0
+316051543,Peregian Beach - Marcus Beach,D04,North East Coast,1,Good,Good,0
+316051544,Peregian Springs,D04,North East Coast,1,Good,Good,0
+316061439,Beerwah,D04,North East Coast,1,Good,Good,0
+316061440,Caloundra Hinterland,D04,North East Coast,1,Good,Good,0
+316061441,Glass House Mountains,D04,North East Coast,1,Good,Good,0
+316061442,Landsborough,D04,North East Coast,1,Good,Good,0
+316061443,Maroochy Hinterland,D04,North East Coast,1,Good,Good,0
+316061444,Palmwoods,D04,North East Coast,1,Good,Good,0
+316071545,Bli Bli,D04,North East Coast,1,Good,Good,0
+316071546,Diddillibah - Rosemount,D04,North East Coast,1,Good,Good,0
+316071547,Eumundi - Yandina,D04,North East Coast,1,Good,Good,0
+316071548,Nambour,D04,North East Coast,1,Good,Good,0
+316081549,Noosa Hinterland,D04,North East Coast,1,Good,Good,0
+317011445,Cambooya - Wyreema,D03,Murray-Darling Basin,1,Good,Good,0
+317011446,Darling Heights,D04,North East Coast,0.0121272,Good,Good,0
+317011446,Darling Heights,D03,Murray-Darling Basin,0.9878728,Good,Good,0
+317011447,Drayton - Harristown,D03,Murray-Darling Basin,1,Good,Good,0
+317011448,Gatton,D04,North East Coast,1,Good,Good,0
+317011449,Gowrie (Qld),D03,Murray-Darling Basin,1,Good,Good,0
+317011450,Highfields,D04,North East Coast,0.1287477,Good,Good,0
+317011450,Highfields,D03,Murray-Darling Basin,0.8712523,Good,Good,0
+317011451,Lockyer Valley - West,D04,North East Coast,1,Good,Good,0
+317011452,Middle Ridge,D04,North East Coast,0.1667366,Good,Good,0
+317011452,Middle Ridge,D03,Murray-Darling Basin,0.8332634,Good,Good,0
+317011453,Newtown (Qld),D03,Murray-Darling Basin,1,Good,Good,0
+317011454,North Toowoomba - Harlaxton,D04,North East Coast,0.0504258,Good,Good,0
+317011454,North Toowoomba - Harlaxton,D03,Murray-Darling Basin,0.9495742,Good,Good,0
+317011455,Rangeville,D04,North East Coast,0.146258,Good,Good,0
+317011455,Rangeville,D03,Murray-Darling Basin,0.853742,Good,Good,0
+317011456,Toowoomba - Central,D03,Murray-Darling Basin,1,Good,Good,0
+317011457,Toowoomba - East,D04,North East Coast,0.3098969,Good,Good,0
+317011457,Toowoomba - East,D03,Murray-Darling Basin,0.6901031,Good,Good,0
+317011458,Toowoomba - West,D03,Murray-Darling Basin,1,Good,Good,0
+317011459,Wilsonton,D03,Murray-Darling Basin,1,Good,Good,0
+318011460,Ayr,D04,North East Coast,1,Good,Good,0
+318011461,Burdekin,D04,North East Coast,1,Good,Good,0
+318011462,Charters Towers,D04,North East Coast,1,Good,Good,0
+318011463,Dalrymple,D01,Carpentaria Coast,2.70E-06,Good,Good,1
+318011463,Dalrymple,D04,North East Coast,0.9999973,Good,Good,0
+318011464,Ingham,D04,North East Coast,1,Good,Good,0
+318011465,Ingham Surrounds,D04,North East Coast,1,Good,Good,0
+318011466,Palm Island,D04,North East Coast,1,Good,Good,0
+318021467,Aitkenvale,D04,North East Coast,1,Good,Good,0
+318021468,Annandale (Qld),D04,North East Coast,1,Good,Good,0
+318021469,Belgian Gardens - Pallarenda,D04,North East Coast,1,Good,Good,0
+318021470,Bohle Plains,D04,North East Coast,1,Good,Good,0
+318021471,Condon - Rasmussen,D04,North East Coast,1,Good,Good,0
+318021472,Cranbrook,D04,North East Coast,1,Good,Good,0
+318021474,Douglas,D04,North East Coast,1,Good,Good,0
+318021475,Garbutt - West End,D04,North East Coast,1,Good,Good,0
+318021476,Gulliver - Currajong - Vincent,D04,North East Coast,1,Good,Good,0
+318021477,Heatley,D04,North East Coast,1,Good,Good,0
+318021478,Hermit Park - Rosslea,D04,North East Coast,1,Good,Good,0
+318021479,Hyde Park - Pimlico,D04,North East Coast,1,Good,Good,0
+318021480,Kelso,D04,North East Coast,1,Good,Good,0
+318021481,Kirwan - East,D04,North East Coast,1,Good,Good,0
+318021482,Kirwan - West,D04,North East Coast,1,Good,Good,0
+318021483,Magnetic Island,D04,North East Coast,1,Good,Good,0
+318021484,Mount Louisa,D04,North East Coast,1,Good,Good,0
+318021485,Mundingburra,D04,North East Coast,1,Good,Good,0
+318021486,Northern Beaches,D04,North East Coast,1,Good,Good,0
+318021487,Oonoonba,D04,North East Coast,1,Good,Good,0
+318021488,South Townsville - Railway Estate,D04,North East Coast,1,Good,Good,0
+318021489,Townsville - South,D04,North East Coast,1,Good,Good,0
+318021490,Townsville City - North Ward,D04,North East Coast,1,Good,Good,0
+318021491,Wulguru - Roseneath,D04,North East Coast,1,Good,Good,0
+318021582,Burdell - Mount Low,D04,North East Coast,1,Good,Good,0
+318021583,Deeragun - Jensen,D04,North East Coast,1,Good,Good,0
+319011492,Ashfield - Kepnock,D04,North East Coast,1,Good,Good,0
+319011493,Bargara - Burnett Heads,D04,North East Coast,1,Good,Good,0
+319011494,Branyan - Kensington,D04,North East Coast,1,Good,Good,0
+319011495,Bundaberg,D04,North East Coast,1,Good,Good,0
+319011496,Bundaberg East - Kalkie,D04,North East Coast,1,Good,Good,0
+319011497,Bundaberg North - Gooburrum,D04,North East Coast,1,Good,Good,0
+319011498,Bundaberg Surrounds - North,D04,North East Coast,1,Good,Good,0
+319011499,Bundaberg Surrounds - South,D04,North East Coast,1,Good,Good,0
+319011500,Millbank - Avoca,D04,North East Coast,1,Good,Good,0
+319011501,Svensson Heights - Norville,D04,North East Coast,1,Good,Good,0
+319011502,Walkervale - Avenell Heights,D04,North East Coast,1,Good,Good,0
+319021503,Gayndah - Mundubbera,D04,North East Coast,1,Good,Good,0
+319021504,Gin Gin,D04,North East Coast,1,Good,Good,0
+319021505,Kingaroy,D04,North East Coast,1,Good,Good,0
+319021506,Kingaroy Surrounds - North,D03,Murray-Darling Basin,0.0033529,Good,Good,1
+319021506,Kingaroy Surrounds - North,D04,North East Coast,0.9966471,Good,Good,0
+319021507,Kingaroy Surrounds - South,D04,North East Coast,1,Good,Good,0
+319021508,Monto - Eidsvold,D04,North East Coast,1,Good,Good,0
+319021509,Nanango,D04,North East Coast,1,Good,Good,0
+319021510,North Burnett,D04,North East Coast,1,Good,Good,0
+319031511,Cooloola,D04,North East Coast,1,Good,Good,0
+319031512,Gympie - North,D04,North East Coast,1,Good,Good,0
+319031513,Gympie - South,D04,North East Coast,1,Good,Good,0
+319031514,Gympie Surrounds,D04,North East Coast,1,Good,Good,0
+319031515,Kilkivan,D04,North East Coast,1,Good,Good,0
+319041516,Booral - River Heads,D04,North East Coast,1,Good,Good,0
+319041517,Craignish - Dundowran Beach,D04,North East Coast,1,Good,Good,0
+319041518,Pialba - Eli Waters,D04,North East Coast,1,Good,Good,0
+319041519,Point Vernon,D04,North East Coast,1,Good,Good,0
+319041520,Torquay - Scarness - Kawungan,D04,North East Coast,1,Good,Good,0
+319041521,Urangan - Wondunna,D04,North East Coast,1,Good,Good,0
+319051522,Burrum - Fraser,D04,North East Coast,1,Good,Good,0
+319051523,Granville,D04,North East Coast,1,Good,Good,0
+319051524,Maryborough (Qld),D04,North East Coast,1,Good,Good,0
+319051525,Maryborough Surrounds - South,D04,North East Coast,1,Good,Good,0
+319051526,Tinana,D04,North East Coast,1,Good,Good,0
+397979799,Migratory - Offshore - Shipping (Qld),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+399999499,No usual address (Qld),D94,No usual address (Aust.),1,Good,Good,0
+401011001,Adelaide,D07,South Australian Gulf,1,Good,Good,0
+401011002,North Adelaide,D07,South Australian Gulf,1,Good,Good,0
+401021003,Adelaide Hills,D07,South Australian Gulf,1,Good,Good,0
+401021004,Aldgate - Stirling,D07,South Australian Gulf,1,Good,Good,0
+401021005,Hahndorf - Echunga,D03,Murray-Darling Basin,0.0358627,Good,Good,0
+401021005,Hahndorf - Echunga,D07,South Australian Gulf,0.9641373,Good,Good,0
+401021006,Lobethal - Woodside,D03,Murray-Darling Basin,0.0113704,Good,Good,0
+401021006,Lobethal - Woodside,D07,South Australian Gulf,0.9886296,Good,Good,0
+401021007,Mount Barker,D03,Murray-Darling Basin,1,Good,Good,0
+401021008,Mount Barker Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+401021009,Nairne,D03,Murray-Darling Basin,1,Good,Good,0
+401021010,Uraidla - Summertown,D07,South Australian Gulf,1,Good,Good,0
+401031011,Burnside - Wattle Park,D07,South Australian Gulf,1,Good,Good,0
+401031012,Beaumont - Glen Osmond,D07,South Australian Gulf,1,Good,Good,0
+401031013,Toorak Gardens,D07,South Australian Gulf,1,Good,Good,0
+401041014,Athelstone,D07,South Australian Gulf,1,Good,Good,0
+401041015,Paradise - Newton,D07,South Australian Gulf,1,Good,Good,0
+401041016,Rostrevor - Magill,D07,South Australian Gulf,1,Good,Good,0
+401051017,Norwood (SA),D07,South Australian Gulf,1,Good,Good,0
+401051018,Payneham - Felixstow,D07,South Australian Gulf,1,Good,Good,0
+401051019,St Peters - Marden,D07,South Australian Gulf,1,Good,Good,0
+401061020,Nailsworth - Broadview,D07,South Australian Gulf,1,Good,Good,0
+401061021,Prospect,D07,South Australian Gulf,1,Good,Good,0
+401061022,Walkerville,D07,South Australian Gulf,1,Good,Good,0
+401071023,Goodwood - Millswood,D07,South Australian Gulf,1,Good,Good,0
+401071024,Unley - Parkside,D07,South Australian Gulf,1,Good,Good,0
+402011025,Gawler - North,D07,South Australian Gulf,1,Good,Good,0
+402011026,Gawler - South,D07,South Australian Gulf,1,Good,Good,0
+402011027,Lewiston - Two Wells,D07,South Australian Gulf,1,Good,Good,0
+402021028,Craigmore - Blakeview,D07,South Australian Gulf,1,Good,Good,0
+402021029,Davoren Park,D07,South Australian Gulf,1,Good,Good,0
+402021030,Elizabeth,D07,South Australian Gulf,1,Good,Good,0
+402021031,Elizabeth East,D07,South Australian Gulf,1,Good,Good,0
+402021032,Munno Para West - Angle Vale,D07,South Australian Gulf,1,Good,Good,0
+402021033,One Tree Hill,D07,South Australian Gulf,1,Good,Good,0
+402021034,Smithfield - Elizabeth North,D07,South Australian Gulf,1,Good,Good,0
+402021035,Virginia - Waterloo Corner,D07,South Australian Gulf,1,Good,Good,0
+402031036,Enfield - Blair Athol,D07,South Australian Gulf,1,Good,Good,0
+402031038,Windsor Gardens,D07,South Australian Gulf,1,Good,Good,0
+402031175,Northgate - Northfield,D07,South Australian Gulf,1,Good,Good,0
+402031176,Valley View - Gilles Plains,D07,South Australian Gulf,1,Good,Good,0
+402041039,Dry Creek - North,D07,South Australian Gulf,1,Good,Good,0
+402041040,Ingle Farm,D07,South Australian Gulf,1,Good,Good,0
+402041041,Para Hills,D07,South Australian Gulf,1,Good,Good,0
+402041042,Parafield,D07,South Australian Gulf,1,Good,Good,0
+402041043,Parafield Gardens,D07,South Australian Gulf,1,Good,Good,0
+402041044,Paralowie,D07,South Australian Gulf,1,Good,Good,0
+402041046,Salisbury,D07,South Australian Gulf,1,Good,Good,0
+402041047,Salisbury East,D07,South Australian Gulf,1,Good,Good,0
+402041048,Salisbury North,D07,South Australian Gulf,1,Good,Good,0
+402041171,Mawson Lakes - Globe Derby Park,D07,South Australian Gulf,1,Good,Good,0
+402041172,Pooraka - Cavan,D07,South Australian Gulf,1,Good,Good,0
+402051049,Golden Grove,D07,South Australian Gulf,1,Good,Good,0
+402051050,Greenwith,D07,South Australian Gulf,1,Good,Good,0
+402051051,Highbury - Dernancourt,D07,South Australian Gulf,1,Good,Good,0
+402051052,Hope Valley - Modbury,D07,South Australian Gulf,1,Good,Good,0
+402051053,Modbury Heights,D07,South Australian Gulf,1,Good,Good,0
+402051054,Redwood Park,D07,South Australian Gulf,1,Good,Good,0
+402051055,St Agnes - Ridgehaven,D07,South Australian Gulf,1,Good,Good,0
+403011056,Brighton (SA),D07,South Australian Gulf,1,Good,Good,0
+403011057,Glenelg (SA),D07,South Australian Gulf,1,Good,Good,0
+403021058,Edwardstown,D07,South Australian Gulf,1,Good,Good,0
+403021059,Hallett Cove,D07,South Australian Gulf,1,Good,Good,0
+403021060,Marino - Seaview Downs,D07,South Australian Gulf,1,Good,Good,0
+403021061,Mitchell Park,D07,South Australian Gulf,1,Good,Good,0
+403021062,Morphettville,D07,South Australian Gulf,1,Good,Good,0
+403021063,Sheidow Park - Trott Park,D07,South Australian Gulf,1,Good,Good,0
+403021064,Warradale,D07,South Australian Gulf,1,Good,Good,0
+403031065,Belair,D07,South Australian Gulf,1,Good,Good,0
+403031066,Bellevue Heights,D07,South Australian Gulf,1,Good,Good,0
+403031067,Blackwood,D07,South Australian Gulf,1,Good,Good,0
+403031068,Colonel Light Gardens,D07,South Australian Gulf,1,Good,Good,0
+403031069,Mitcham (SA),D07,South Australian Gulf,1,Good,Good,0
+403031070,Panorama,D07,South Australian Gulf,1,Good,Good,0
+403041071,Aberfoyle Park,D07,South Australian Gulf,1,Good,Good,0
+403041072,Aldinga,D07,South Australian Gulf,1,Good,Good,0
+403041073,Christie Downs,D07,South Australian Gulf,1,Good,Good,0
+403041074,Christies Beach,D07,South Australian Gulf,1,Good,Good,0
+403041075,Clarendon,D03,Murray-Darling Basin,0.0206124,Good,Good,0
+403041075,Clarendon,D07,South Australian Gulf,0.9793876,Good,Good,0
+403041076,Coromandel Valley,D07,South Australian Gulf,1,Good,Good,0
+403041077,Flagstaff Hill,D07,South Australian Gulf,1,Good,Good,0
+403041078,Hackham - Onkaparinga Hills,D07,South Australian Gulf,1,Good,Good,0
+403041079,Hackham West - Huntfield Heights,D07,South Australian Gulf,1,Good,Good,0
+403041080,Happy Valley,D07,South Australian Gulf,1,Good,Good,0
+403041081,Happy Valley Reservoir,D07,South Australian Gulf,1,Good,Good,0
+403041082,Lonsdale,D07,South Australian Gulf,1,Good,Good,0
+403041083,McLaren Vale,D07,South Australian Gulf,1,Good,Good,0
+403041084,Morphett Vale - East,D07,South Australian Gulf,1,Good,Good,0
+403041085,Morphett Vale - West,D07,South Australian Gulf,1,Good,Good,0
+403041086,Reynella,D07,South Australian Gulf,1,Good,Good,0
+403041088,Willunga,D07,South Australian Gulf,1,Good,Good,0
+403041089,Woodcroft,D07,South Australian Gulf,1,Good,Good,0
+403041177,Seaford - Seaford Meadows,D07,South Australian Gulf,1,Good,Good,0
+403041178,Seaford Rise - Moana,D07,South Australian Gulf,1,Good,Good,0
+404011090,Beverley,D07,South Australian Gulf,1,Good,Good,0
+404011091,Flinders Park,D07,South Australian Gulf,1,Good,Good,0
+404011092,Henley Beach,D07,South Australian Gulf,1,Good,Good,0
+404011093,Hindmarsh - Brompton,D07,South Australian Gulf,1,Good,Good,0
+404011094,Royal Park - Hendon - Albert Park,D07,South Australian Gulf,1,Good,Good,0
+404011095,Seaton - Grange,D07,South Australian Gulf,1,Good,Good,0
+404011096,West Lakes,D07,South Australian Gulf,1,Good,Good,0
+404011097,Woodville - Cheltenham,D07,South Australian Gulf,1,Good,Good,0
+404021098,Dry Creek - South,D07,South Australian Gulf,1,Good,Good,0
+404021099,Largs Bay - Semaphore,D07,South Australian Gulf,1,Good,Good,0
+404021100,North Haven,D07,South Australian Gulf,1,Good,Good,0
+404021101,Port Adelaide,D07,South Australian Gulf,1,Good,Good,0
+404021102,The Parks,D07,South Australian Gulf,1,Good,Good,0
+404021103,Torrens Island,D07,South Australian Gulf,1,Good,Good,0
+404031104,Adelaide Airport,D07,South Australian Gulf,1,Good,Good,0
+404031105,Fulham,D07,South Australian Gulf,1,Good,Good,0
+404031106,Lockleys,D07,South Australian Gulf,1,Good,Good,0
+404031107,Plympton,D07,South Australian Gulf,1,Good,Good,0
+404031108,Richmond (SA),D07,South Australian Gulf,1,Good,Good,0
+404031109,West Beach,D07,South Australian Gulf,1,Good,Good,0
+405011110,Barossa - Angaston,D03,Murray-Darling Basin,0.1679052,Good,Good,0
+405011110,Barossa - Angaston,D07,South Australian Gulf,0.8320948,Good,Good,0
+405011111,Light,D07,South Australian Gulf,1,Good,Good,0
+405011112,Lyndoch,D07,South Australian Gulf,1,Good,Good,0
+405011113,Mallala,D07,South Australian Gulf,1,Good,Good,0
+405011114,Nuriootpa,D07,South Australian Gulf,1,Good,Good,0
+405011115,Tanunda,D07,South Australian Gulf,1,Good,Good,0
+405021116,Clare,D07,South Australian Gulf,1,Good,Good,0
+405021117,Gilbert Valley,D03,Murray-Darling Basin,0.0097476,Good,Good,1
+405021117,Gilbert Valley,D07,South Australian Gulf,0.9902524,Good,Good,0
+405021118,Goyder,D02,Lake Eyre Basin,0.0071098,Acceptable,Good,1
+405021118,Goyder,D07,South Australian Gulf,0.2289679,Good,Good,0
+405021118,Goyder,D03,Murray-Darling Basin,0.7639223,Good,Good,0
+405021119,Wakefield - Barunga West,D07,South Australian Gulf,1,Good,Good,0
+405031120,Jamestown,D02,Lake Eyre Basin,0.0345202,Acceptable,Good,0
+405031120,Jamestown,D07,South Australian Gulf,0.9654798,Good,Good,0
+405031121,Peterborough - Mount Remarkable,D03,Murray-Darling Basin,0.0020678,Good,Good,1
+405031121,Peterborough - Mount Remarkable,D02,Lake Eyre Basin,0.4264365,Acceptable,Good,0
+405031121,Peterborough - Mount Remarkable,D07,South Australian Gulf,0.5714957,Good,Good,0
+405031122,Port Pirie,D07,South Australian Gulf,1,Good,Good,0
+405031123,Port Pirie Surrounds,D07,South Australian Gulf,1,Good,Good,0
+405041124,Kadina,D07,South Australian Gulf,1,Good,Good,0
+405041125,Moonta,D07,South Australian Gulf,1,Good,Good,0
+405041126,Wallaroo,D07,South Australian Gulf,1,Good,Good,0
+405041127,Yorke Peninsula - North,D07,South Australian Gulf,1,Good,Good,0
+405041128,Yorke Peninsula - South,D07,South Australian Gulf,1,Good,Good,0
+406011129,Ceduna,D11,South Western Plateau,1,Good,Good,0
+406011130,Eyre Peninsula,D11,South Western Plateau,0.2451412,Good,Good,0
+406011130,Eyre Peninsula,D07,South Australian Gulf,0.7548588,Good,Good,0
+406011131,Kimba - Cleve - Franklin Harbour,D11,South Western Plateau,0.1181477,Good,Good,0
+406011131,Kimba - Cleve - Franklin Harbour,D07,South Australian Gulf,0.8818523,Good,Good,0
+406011132,Le Hunte - Elliston,D11,South Western Plateau,1,Good,Good,0
+406011133,Port Lincoln,D07,South Australian Gulf,1,Good,Good,0
+406011134,West Coast (SA),D11,South Western Plateau,1,Good,Good,0
+406011135,Western,D11,South Western Plateau,1,Good,Good,0
+406011136,Whyalla,D07,South Australian Gulf,1,Good,Good,0
+406011137,Whyalla - North,D07,South Australian Gulf,1,Good,Good,0
+406021138,APY Lands,D02,Lake Eyre Basin,0.2614399,Acceptable,Good,0
+406021138,APY Lands,D11,South Western Plateau,0.7385601,Good,Good,0
+406021139,Coober Pedy,D02,Lake Eyre Basin,1,Acceptable,Good,0
+406021140,Quorn - Lake Gilles,D11,South Western Plateau,0.0056149,Good,Good,1
+406021140,Quorn - Lake Gilles,D07,South Australian Gulf,0.9943851,Good,Good,0
+406021141,Outback,D11,South Western Plateau,0.0446842,Good,Good,0
+406021141,Outback,D03,Murray-Darling Basin,0.0917675,Good,Good,0
+406021141,Outback,D07,South Australian Gulf,0.3413152,Good,Good,0
+406021141,Outback,D02,Lake Eyre Basin,0.5222331,Acceptable,Good,0
+406021142,Port Augusta,D07,South Australian Gulf,1,Good,Good,0
+406021143,Roxby Downs,D07,South Australian Gulf,1,Good,Good,0
+407011144,Goolwa - Port Elliot,D07,South Australian Gulf,0.0556632,Good,Good,0
+407011144,Goolwa - Port Elliot,D03,Murray-Darling Basin,0.9443368,Good,Good,0
+407011145,Kangaroo Island,D07,South Australian Gulf,1,Good,Good,0
+407011146,Strathalbyn,D03,Murray-Darling Basin,1,Good,Good,0
+407011147,Strathalbyn Surrounds,D07,South Australian Gulf,0.0232313,Good,Good,0
+407011147,Strathalbyn Surrounds,D03,Murray-Darling Basin,0.9767687,Good,Good,0
+407011148,Victor Harbor,D07,South Australian Gulf,1,Good,Good,0
+407011149,Yankalilla,D07,South Australian Gulf,1,Good,Good,0
+407021150,Grant,D09,South East Coast (Victoria),1,Good,Good,0
+407021151,Kingston - Robe,D03,Murray-Darling Basin,0.0010451,Good,Good,1
+407021151,Kingston - Robe,D09,South East Coast (Victoria),0.9989549,Good,Good,0
+407021152,Millicent,D09,South East Coast (Victoria),1,Good,Good,0
+407021154,Naracoorte,D09,South East Coast (Victoria),1,Good,Good,0
+407021155,Naracoorte Surrounds,D09,South East Coast (Victoria),1,Good,Good,0
+407021156,Penola,D09,South East Coast (Victoria),1,Good,Good,0
+407021157,Tatiara,D09,South East Coast (Victoria),1,Good,Good,0
+407021158,Wattle Range,D09,South East Coast (Victoria),1,Good,Good,0
+407021173,Mount Gambier - East,D09,South East Coast (Victoria),1,Good,Good,0
+407021174,Mount Gambier - West,D09,South East Coast (Victoria),1,Good,Good,0
+407031159,Barmera,D03,Murray-Darling Basin,1,Good,Good,0
+407031160,Berri,D03,Murray-Darling Basin,1,Good,Good,0
+407031161,Karoonda - Lameroo,D09,South East Coast (Victoria),0.0065625,Good,Good,1
+407031161,Karoonda - Lameroo,D03,Murray-Darling Basin,0.9934375,Good,Good,0
+407031162,Loxton,D03,Murray-Darling Basin,1,Good,Good,0
+407031163,Loxton Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+407031164,Mannum,D03,Murray-Darling Basin,1,Good,Good,0
+407031165,Murray Bridge,D03,Murray-Darling Basin,1,Good,Good,0
+407031166,Murray Bridge Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+407031167,Renmark,D03,Murray-Darling Basin,1,Good,Good,0
+407031168,Renmark Surrounds,D03,Murray-Darling Basin,1,Good,Good,0
+407031169,The Coorong,D09,South East Coast (Victoria),0.2170746,Good,Good,0
+407031169,The Coorong,D03,Murray-Darling Basin,0.7829254,Good,Good,0
+407031170,Waikerie,D03,Murray-Darling Basin,1,Good,Good,0
+497979799,Migratory - Offshore - Shipping (SA),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+499999499,No usual address (SA),D94,No usual address (Aust.),1,Good,Good,0
+501011001,Augusta,D10,South West Coast,1,Good,Good,0
+501011003,Busselton Surrounds,D10,South West Coast,1,Good,Good,0
+501011004,Margaret River,D10,South West Coast,1,Good,Good,0
+501011293,Busselton - East,D10,South West Coast,1,Good,Good,0
+501011294,Busselton - West,D10,South West Coast,1,Good,Good,0
+501021005,Australind - Leschenault,D10,South West Coast,1,Good,Good,0
+501021007,Capel,D10,South West Coast,1,Good,Good,0
+501021008,College Grove - Carey Park,D10,South West Coast,1,Good,Good,0
+501021009,Collie,D10,South West Coast,1,Good,Good,0
+501021010,Dardanup,D10,South West Coast,1,Good,Good,0
+501021011,Davenport,D10,South West Coast,1,Good,Good,0
+501021012,Eaton - Pelican Point,D10,South West Coast,1,Good,Good,0
+501021014,Harvey,D10,South West Coast,1,Good,Good,0
+501021015,East Bunbury - Glen Iris,D10,South West Coast,1,Good,Good,0
+501021016,Waroona,D10,South West Coast,1,Good,Good,0
+501021251,Dalyellup,D10,South West Coast,1,Good,Good,0
+501021252,Gelorup - Stratham,D10,South West Coast,1,Good,Good,0
+501021253,South Bunbury - Bunbury,D10,South West Coast,1,Good,Good,0
+501021254,Withers - Usher,D10,South West Coast,1,Good,Good,0
+501031017,Bridgetown - Boyup Brook,D10,South West Coast,1,Good,Good,0
+501031018,Donnybrook - Balingup,D10,South West Coast,1,Good,Good,0
+501031019,Manjimup,D10,South West Coast,1,Good,Good,0
+501031020,Pemberton,D10,South West Coast,1,Good,Good,0
+502011021,Dawesville - Bouvard,D10,South West Coast,1,Good,Good,0
+502011022,Falcon - Wannanup,D10,South West Coast,1,Good,Good,0
+502011023,Greenfields,D10,South West Coast,1,Good,Good,0
+502011024,Halls Head - Erskine,D10,South West Coast,1,Good,Good,0
+502011025,Mandurah,D10,South West Coast,1,Good,Good,0
+502011026,Mandurah - East,D10,South West Coast,1,Good,Good,0
+502011027,Mandurah - North,D10,South West Coast,1,Good,Good,0
+502011028,Mandurah - South,D10,South West Coast,1,Good,Good,0
+502011029,Pinjarra,D10,South West Coast,1,Good,Good,0
+503011030,City Beach,D10,South West Coast,1,Good,Good,0
+503011031,Claremont (WA),D10,South West Coast,1,Good,Good,0
+503011032,Cottesloe,D10,South West Coast,1,Good,Good,0
+503011033,Floreat,D10,South West Coast,1,Good,Good,0
+503011034,Mosman Park - Peppermint Grove,D10,South West Coast,1,Good,Good,0
+503011035,Nedlands - Dalkeith - Crawley,D10,South West Coast,1,Good,Good,0
+503011036,Swanbourne - Mount Claremont,D10,South West Coast,1,Good,Good,0
+503021037,Kings Park (WA),D10,South West Coast,1,Good,Good,0
+503021038,Mount Hawthorn - Leederville,D10,South West Coast,1,Good,Good,0
+503021039,Mount Lawley - Inglewood,D10,South West Coast,1,Good,Good,0
+503021040,North Perth,D10,South West Coast,1,Good,Good,0
+503021042,Subiaco - Shenton Park,D10,South West Coast,1,Good,Good,0
+503021043,Wembley - West Leederville - Glendalough,D10,South West Coast,1,Good,Good,0
+503021295,East Perth,D10,South West Coast,1,Good,Good,0
+503021296,Perth (North) - Highgate,D10,South West Coast,1,Good,Good,0
+503021297,Perth (West) - Northbridge,D10,South West Coast,1,Good,Good,0
+504011044,Bassendean - Eden Hill - Ashfield,D10,South West Coast,1,Good,Good,0
+504011045,Bayswater - Embleton - Bedford,D10,South West Coast,1,Good,Good,0
+504011046,Maylands,D10,South West Coast,1,Good,Good,0
+504011047,Morley,D10,South West Coast,1,Good,Good,0
+504011048,Noranda,D10,South West Coast,1,Good,Good,0
+504021049,Chidlow,D10,South West Coast,1,Good,Good,0
+504021050,Glen Forrest - Darlington,D10,South West Coast,1,Good,Good,0
+504021051,Helena Valley - Koongamia,D10,South West Coast,1,Good,Good,0
+504021052,Malmalling - Reservoir,D10,South West Coast,1,Good,Good,0
+504021053,Mundaring,D10,South West Coast,1,Good,Good,0
+504021054,Swan View - Greenmount - Midvale,D10,South West Coast,1,Good,Good,0
+504031055,Avon Valley National Park,D10,South West Coast,1,Good,Good,0
+504031056,Ballajura,D10,South West Coast,1,Good,Good,0
+504031057,Beechboro,D10,South West Coast,1,Good,Good,0
+504031058,Bullsbrook,D10,South West Coast,1,Good,Good,0
+504031060,Gidgegannup,D10,South West Coast,1,Good,Good,0
+504031061,Hazelmere - Guildford,D10,South West Coast,1,Good,Good,0
+504031062,Lockridge - Kiara,D10,South West Coast,1,Good,Good,0
+504031063,Malaga,D10,South West Coast,1,Good,Good,0
+504031064,Melaleuca - Lexia,D10,South West Coast,1,Good,Good,0
+504031065,Middle Swan - Herne Hill,D10,South West Coast,1,Good,Good,0
+504031066,Midland - Guildford,D10,South West Coast,1,Good,Good,0
+504031067,Stratton - Jane Brook,D10,South West Coast,1,Good,Good,0
+504031068,The Vines,D10,South West Coast,1,Good,Good,0
+504031069,Walyunga National Park,D10,South West Coast,1,Good,Good,0
+504031298,Aveley,D10,South West Coast,1,Good,Good,0
+504031299,Brabham - Henley Brook,D10,South West Coast,1,Good,Good,0
+504031300,Ellenbrook,D10,South West Coast,1,Good,Good,0
+505011070,Craigie - Beldon,D10,South West Coast,1,Good,Good,0
+505011071,Currambine - Kinross,D10,South West Coast,1,Good,Good,0
+505011072,Duncraig,D10,South West Coast,1,Good,Good,0
+505011073,Greenwood - Warwick,D10,South West Coast,1,Good,Good,0
+505011074,Heathridge - Connolly,D10,South West Coast,1,Good,Good,0
+505011075,Hillarys,D10,South West Coast,1,Good,Good,0
+505011076,Iluka - Burns Beach,D10,South West Coast,1,Good,Good,0
+505011077,Joondalup - Edgewater,D10,South West Coast,1,Good,Good,0
+505011078,Kingsley,D10,South West Coast,1,Good,Good,0
+505011079,Mullaloo - Kallaroo,D10,South West Coast,1,Good,Good,0
+505011080,Ocean Reef,D10,South West Coast,1,Good,Good,0
+505011081,Padbury,D10,South West Coast,1,Good,Good,0
+505011082,Sorrento - Marmion,D10,South West Coast,1,Good,Good,0
+505011083,Woodvale,D10,South West Coast,1,Good,Good,0
+505021084,Balcatta - Hamersley,D10,South West Coast,1,Good,Good,0
+505021085,Balga - Mirrabooka,D10,South West Coast,1,Good,Good,0
+505021087,Herdsman,D10,South West Coast,1,Good,Good,0
+505021088,Innaloo - Doubleview,D10,South West Coast,1,Good,Good,0
+505021089,Karrinyup - Gwelup - Carine,D10,South West Coast,1,Good,Good,0
+505021090,Nollamara - Westminster,D10,South West Coast,1,Good,Good,0
+505021091,Osborne Park Industrial,D10,South West Coast,1,Good,Good,0
+505021092,Scarborough,D10,South West Coast,1,Good,Good,0
+505021093,Stirling - Osborne Park,D10,South West Coast,1,Good,Good,0
+505021094,Trigg - North Beach - Watermans Bay,D10,South West Coast,1,Good,Good,0
+505021095,Tuart Hill - Joondanna,D10,South West Coast,1,Good,Good,0
+505021096,Wembley Downs - Churchlands - Woodlands,D10,South West Coast,1,Good,Good,0
+505021097,Yokine - Coolbinia - Menora,D10,South West Coast,1,Good,Good,0
+505021301,Dianella - North,D10,South West Coast,1,Good,Good,0
+505021302,Dianella - South,D10,South West Coast,1,Good,Good,0
+505031098,Alexander Heights - Koondoola,D10,South West Coast,1,Good,Good,0
+505031099,Butler - Merriwa - Ridgewood,D10,South West Coast,1,Good,Good,0
+505031100,Carramar,D10,South West Coast,1,Good,Good,0
+505031101,Clarkson,D10,South West Coast,1,Good,Good,0
+505031102,Girrawheen,D10,South West Coast,1,Good,Good,0
+505031104,Marangaroo,D10,South West Coast,1,Good,Good,0
+505031105,Mindarie - Quinns Rocks - Jindalee,D10,South West Coast,1,Good,Good,0
+505031106,Neerabup National Park,D10,South West Coast,1,Good,Good,0
+505031107,Tapping - Ashby - Sinagra,D10,South West Coast,1,Good,Good,0
+505031255,Alkimos - Eglinton,D10,South West Coast,1,Good,Good,0
+505031256,Carabooda - Pinjar,D10,South West Coast,1,Good,Good,0
+505031257,Two Rocks,D10,South West Coast,1,Good,Good,0
+505031258,Yanchep,D10,South West Coast,1,Good,Good,0
+505031303,Hocking - Pearsall,D10,South West Coast,1,Good,Good,0
+505031304,Landsdale,D10,South West Coast,1,Good,Good,0
+505031305,Madeley - Darch,D10,South West Coast,1,Good,Good,0
+505031306,Wanneroo - Sinagra,D10,South West Coast,1,Good,Good,0
+506011110,Armadale - Wungong - Brookdale,D10,South West Coast,1,Good,Good,0
+506011111,Ashendon - Lesley,D10,South West Coast,1,Good,Good,0
+506011112,Camillo - Champion Lakes,D10,South West Coast,1,Good,Good,0
+506011114,Kelmscott,D10,South West Coast,1,Good,Good,0
+506011115,Mount Nasura - Mount Richon - Bedfordale,D10,South West Coast,1,Good,Good,0
+506011116,Roleystone,D10,South West Coast,1,Good,Good,0
+506011117,Seville Grove,D10,South West Coast,1,Good,Good,0
+506011307,Harrisdale,D10,South West Coast,1,Good,Good,0
+506011308,Piara Waters - Forrestdale,D10,South West Coast,1,Good,Good,0
+506021118,Belmont - Ascot - Redcliffe,D10,South West Coast,1,Good,Good,0
+506021119,East Victoria Park - Carlisle,D10,South West Coast,1,Good,Good,0
+506021120,Kewdale Commercial,D10,South West Coast,1,Good,Good,0
+506021121,Perth Airport,D10,South West Coast,1,Good,Good,0
+506021123,Victoria Park - Lathlain - Burswood,D10,South West Coast,1,Good,Good,0
+506021309,Cloverdale,D10,South West Coast,1,Good,Good,0
+506021310,Kewdale,D10,South West Coast,1,Good,Good,0
+506021311,Rivervale,D10,South West Coast,1,Good,Good,0
+506031124,Bentley - Wilson - St James,D10,South West Coast,1,Good,Good,0
+506031125,Canning Vale - West,D10,South West Coast,1,Good,Good,0
+506031126,Canning Vale Commercial,D10,South West Coast,1,Good,Good,0
+506031127,Cannington - Queens Park,D10,South West Coast,1,Good,Good,0
+506031128,Parkwood - Ferndale - Lynwood,D10,South West Coast,1,Good,Good,0
+506031129,Riverton - Shelley - Rossmoyne,D10,South West Coast,1,Good,Good,0
+506031130,Welshpool,D10,South West Coast,1,Good,Good,0
+506031131,Willetton,D10,South West Coast,1,Good,Good,0
+506041132,Beckenham - Kenwick - Langford,D10,South West Coast,1,Good,Good,0
+506041133,Canning Vale - East,D10,South West Coast,1,Good,Good,0
+506041134,Gosnells,D10,South West Coast,1,Good,Good,0
+506041135,Huntingdale - Southern River,D10,South West Coast,1,Good,Good,0
+506041136,Maddington - Orange Grove - Martin,D10,South West Coast,1,Good,Good,0
+506041137,Thornlie,D10,South West Coast,1,Good,Good,0
+506051138,Forrestfield - Wattle Grove,D10,South West Coast,1,Good,Good,0
+506051139,High Wycombe,D10,South West Coast,1,Good,Good,0
+506051140,Kalamunda - Maida Vale - Gooseberry Hill,D10,South West Coast,1,Good,Good,0
+506051141,Lesmurdie - Bickley - Carmel,D10,South West Coast,1,Good,Good,0
+506061142,Byford,D10,South West Coast,1,Good,Good,0
+506061143,Mundijong,D10,South West Coast,1,Good,Good,0
+506061144,Serpentine - Jarrahdale,D10,South West Coast,1,Good,Good,0
+506071145,Como,D10,South West Coast,1,Good,Good,0
+506071146,Manning - Waterford,D10,South West Coast,1,Good,Good,0
+506071147,South Perth - Kensington,D10,South West Coast,1,Good,Good,0
+507011148,Banjup,D10,South West Coast,1,Good,Good,0
+507011150,Bibra Industrial,D10,South West Coast,1,Good,Good,0
+507011151,Bibra Lake,D10,South West Coast,1,Good,Good,0
+507011152,Coogee,D10,South West Coast,1,Good,Good,0
+507011153,Coolbellup,D10,South West Coast,1,Good,Good,0
+507011154,Hamilton Hill,D10,South West Coast,1,Good,Good,0
+507011155,Henderson,D10,South West Coast,1,Good,Good,0
+507011158,North Coogee,D10,South West Coast,1,Good,Good,0
+507011159,South Lake - Cockburn Central,D10,South West Coast,1,Good,Good,0
+507011160,Spearwood,D10,South West Coast,1,Good,Good,0
+507011161,Success - Hammond Park,D10,South West Coast,1,Good,Good,0
+507011163,Yangebup,D10,South West Coast,1,Good,Good,0
+507011259,Beeliar - Wattleup,D10,South West Coast,1,Good,Good,0
+507011260,Jandakot,D10,South West Coast,1,Good,Good,0
+507021164,East Fremantle,D10,South West Coast,1,Good,Good,0
+507021165,Fremantle,D10,South West Coast,1,Good,Good,0
+507021166,Fremantle - South,D10,South West Coast,1,Good,Good,0
+507021167,O'Connor (WA),D10,South West Coast,1,Good,Good,0
+507031169,Wellard (West) - Bertram,D10,South West Coast,1,Good,Good,0
+507031170,Calista,D10,South West Coast,1,Good,Good,0
+507031172,Hope Valley - Postans,D10,South West Coast,1,Good,Good,0
+507031173,Kwinana Industrial,D10,South West Coast,1,Good,Good,0
+507031174,Parmelia - Orelia,D10,South West Coast,1,Good,Good,0
+507031261,Casuarina - Wandi,D10,South West Coast,1,Good,Good,0
+507041175,Applecross - Ardross,D10,South West Coast,1,Good,Good,0
+507041176,Bateman,D10,South West Coast,1,Good,Good,0
+507041177,Bicton - Palmyra,D10,South West Coast,1,Good,Good,0
+507041178,Booragoon,D10,South West Coast,1,Good,Good,0
+507041179,Bull Creek,D10,South West Coast,1,Good,Good,0
+507041180,Leeming,D10,South West Coast,1,Good,Good,0
+507041181,Melville,D10,South West Coast,1,Good,Good,0
+507041182,Murdoch - Kardinya,D10,South West Coast,1,Good,Good,0
+507041183,Willagee,D10,South West Coast,1,Good,Good,0
+507041184,Winthrop,D10,South West Coast,1,Good,Good,0
+507051186,Cooloongup,D10,South West Coast,1,Good,Good,0
+507051187,Port Kennedy,D10,South West Coast,1,Good,Good,0
+507051188,Rockingham,D10,South West Coast,1,Good,Good,0
+507051189,Rockingham Lakes,D10,South West Coast,1,Good,Good,0
+507051190,Safety Bay - Shoalwater,D10,South West Coast,1,Good,Good,0
+507051191,Singleton - Golden Bay - Secret Harbour,D10,South West Coast,1,Good,Good,0
+507051192,Waikiki,D10,South West Coast,1,Good,Good,0
+507051193,Warnbro,D10,South West Coast,1,Good,Good,0
+507051312,Baldivis - North,D10,South West Coast,1,Good,Good,0
+507051313,Baldivis - South,D10,South West Coast,1,Good,Good,0
+507051314,Karnup,D10,South West Coast,1,Good,Good,0
+509011225,Albany,D10,South West Coast,1,Good,Good,0
+509011226,Albany Surrounds,D10,South West Coast,1,Good,Good,0
+509011227,Bayonet Head - Lower King,D10,South West Coast,1,Good,Good,0
+509011228,Denmark,D10,South West Coast,1,Good,Good,0
+509011229,Gnowangerup,D10,South West Coast,1,Good,Good,0
+509011230,Katanning,D10,South West Coast,1,Good,Good,0
+509011231,Kojonup,D10,South West Coast,1,Good,Good,0
+509011232,Little Grove - Elleker,D10,South West Coast,1,Good,Good,0
+509011233,McKail - Willyung,D10,South West Coast,1,Good,Good,0
+509011234,Plantagenet,D10,South West Coast,1,Good,Good,0
+509011235,Stirling Range National Park,D10,South West Coast,1,Good,Good,0
+509021236,Chittering,D10,South West Coast,1,Good,Good,0
+509021237,Cunderdin,D10,South West Coast,1,Good,Good,0
+509021238,Dowerin,D10,South West Coast,1,Good,Good,0
+509021239,Gingin - Dandaragan,D10,South West Coast,1,Good,Good,0
+509021240,Merredin,D10,South West Coast,1,Good,Good,0
+509021241,Moora,D10,South West Coast,1,Good,Good,0
+509021242,Mukinbudin,D10,South West Coast,1,Good,Good,0
+509021243,Northam,D10,South West Coast,1,Good,Good,0
+509021244,Toodyay,D10,South West Coast,1,Good,Good,0
+509021245,York - Beverley,D10,South West Coast,1,Good,Good,0
+509031246,Brookton,D10,South West Coast,1,Good,Good,0
+509031247,Kulin,D10,South West Coast,1,Good,Good,0
+509031248,Murray,D10,South West Coast,1,Good,Good,0
+509031249,Narrogin,D10,South West Coast,1,Good,Good,0
+509031250,Wagin,D10,South West Coast,1,Good,Good,0
+510011262,Broome,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+510011263,Derby - West Kimberley,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+510011264,Halls Creek,D05,North Western Plateau,0.2648305,Poor,Good,0
+510011264,Halls Creek,D12,Tanami-Timor Sea Coast,0.7351695,Good,Good,0
+510011265,Kununurra,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+510011266,Roebuck,D05,North Western Plateau,0.3286053,Poor,Good,0
+510011266,Roebuck,D12,Tanami-Timor Sea Coast,0.6713947,Good,Good,0
+510021267,East Pilbara,D06,Pilbara-Gascoyne,0.47864,Good,Good,0
+510021267,East Pilbara,D05,North Western Plateau,0.52136,Poor,Good,0
+510021268,Newman,D06,Pilbara-Gascoyne,1,Good,Good,0
+510021269,Port Hedland,D06,Pilbara-Gascoyne,1,Good,Good,0
+510021270,South Hedland,D06,Pilbara-Gascoyne,1,Good,Good,0
+510031271,Ashburton (WA),D06,Pilbara-Gascoyne,1,Good,Good,0
+510031272,Karratha,D06,Pilbara-Gascoyne,1,Good,Good,0
+510031273,Roebourne,D06,Pilbara-Gascoyne,1,Good,Good,0
+511011274,Esperance,D10,South West Coast,0.0062578,Good,Good,1
+511011274,Esperance,D11,South Western Plateau,0.9937422,Good,Good,0
+511011275,Esperance Surrounds,D11,South Western Plateau,0.2271563,Good,Good,0
+511011275,Esperance Surrounds,D10,South West Coast,0.7728437,Good,Good,0
+511021276,Carnarvon,D06,Pilbara-Gascoyne,1,Good,Good,0
+511021277,Exmouth,D06,Pilbara-Gascoyne,1,Good,Good,0
+511031278,Boulder,D11,South Western Plateau,1,Good,Good,0
+511031279,Kalgoorlie,D11,South Western Plateau,1,Good,Good,0
+511031280,Kalgoorlie - North,D11,South Western Plateau,1,Good,Good,0
+511031281,Kalgoorlie Airport,D11,South Western Plateau,1,Good,Good,0
+511031282,Kambalda - Coolgardie - Norseman,D10,South West Coast,0.0096313,Good,Good,1
+511031282,Kambalda - Coolgardie - Norseman,D11,South Western Plateau,0.9903687,Good,Good,0
+511031283,Leinster - Leonora,D05,North Western Plateau,0.0097975,Poor,Good,1
+511031283,Leinster - Leonora,D11,South Western Plateau,0.9902025,Good,Good,0
+511031284,Trafalgar (WA),D11,South Western Plateau,1,Good,Good,0
+511041285,Geraldton,D06,Pilbara-Gascoyne,1,Good,Good,0
+511041286,Geraldton - East,D06,Pilbara-Gascoyne,1,Good,Good,0
+511041287,Geraldton - North,D06,Pilbara-Gascoyne,1,Good,Good,0
+511041288,Geraldton - South,D06,Pilbara-Gascoyne,1,Good,Good,0
+511041289,Irwin,D06,Pilbara-Gascoyne,1,Good,Good,0
+511041290,Meekatharra,D05,North Western Plateau,0.089187,Poor,Good,0
+511041290,Meekatharra,D11,South Western Plateau,0.1394094,Good,Good,0
+511041290,Meekatharra,D10,South West Coast,0.3167713,Good,Good,0
+511041290,Meekatharra,D06,Pilbara-Gascoyne,0.4546323,Good,Good,0
+511041291,Morawa,D06,Pilbara-Gascoyne,0.1382496,Good,Good,0
+511041291,Morawa,D10,South West Coast,0.8617504,Good,Good,0
+511041292,Northampton - Mullewa - Greenough,D06,Pilbara-Gascoyne,1,Good,Good,0
+597979799,Migratory - Offshore - Shipping (WA),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+599999499,No usual address (WA),D94,No usual address (Aust.),1,Good,Good,0
+601011001,Bridgewater - Gagebrook,D13,Tasmania,1,Good,Good,0
+601011002,Brighton - Pontville,D13,Tasmania,1,Good,Good,0
+601011003,Old Beach - Otago,D13,Tasmania,1,Good,Good,0
+601021004,Bellerive - Rosny,D13,Tasmania,1,Good,Good,0
+601021005,Cambridge,D13,Tasmania,1,Good,Good,0
+601021006,Geilston Bay - Risdon,D13,Tasmania,1,Good,Good,0
+601021007,Howrah - Tranmere,D13,Tasmania,1,Good,Good,0
+601021008,Lindisfarne - Rose Bay,D13,Tasmania,1,Good,Good,0
+601021009,Mornington - Warrane,D13,Tasmania,1,Good,Good,0
+601021010,Risdon Vale,D13,Tasmania,1,Good,Good,0
+601021011,Rokeby,D13,Tasmania,1,Good,Good,0
+601021012,South Arm,D13,Tasmania,1,Good,Good,0
+601031013,Austins Ferry - Granton,D13,Tasmania,1,Good,Good,0
+601031014,Berriedale - Chigwell,D13,Tasmania,1,Good,Good,0
+601031015,Claremont (Tas.),D13,Tasmania,1,Good,Good,0
+601031016,Derwent Park - Lutana,D13,Tasmania,1,Good,Good,0
+601031017,Glenorchy,D13,Tasmania,1,Good,Good,0
+601031018,Montrose - Rosetta,D13,Tasmania,1,Good,Good,0
+601031019,Moonah,D13,Tasmania,1,Good,Good,0
+601031020,New Norfolk,D13,Tasmania,1,Good,Good,0
+601031021,West Moonah,D13,Tasmania,1,Good,Good,0
+601041022,Kingston - Huntingfield,D13,Tasmania,1,Good,Good,0
+601041023,Kingston Beach - Blackmans Bay,D13,Tasmania,1,Good,Good,0
+601041024,Margate - Snug,D13,Tasmania,1,Good,Good,0
+601041025,Mount Wellington,D13,Tasmania,1,Good,Good,0
+601041026,Taroona - Bonnet Hill,D13,Tasmania,1,Good,Good,0
+601051027,Hobart,D13,Tasmania,1,Good,Good,0
+601051028,Lenah Valley - Mount Stuart,D13,Tasmania,1,Good,Good,0
+601051029,Mount Nelson - Dynnyrne,D13,Tasmania,1,Good,Good,0
+601051030,New Town,D13,Tasmania,1,Good,Good,0
+601051031,Sandy Bay,D13,Tasmania,1,Good,Good,0
+601051032,South Hobart - Fern Tree,D13,Tasmania,1,Good,Good,0
+601051033,West Hobart,D13,Tasmania,1,Good,Good,0
+601061034,Dodges Ferry - Lewisham,D13,Tasmania,1,Good,Good,0
+601061035,Sorell - Richmond,D13,Tasmania,1,Good,Good,0
+602011036,Invermay,D13,Tasmania,1,Good,Good,0
+602011037,Kings Meadows - Punchbowl,D13,Tasmania,1,Good,Good,0
+602011038,Launceston,D13,Tasmania,1,Good,Good,0
+602011039,Legana,D13,Tasmania,1,Good,Good,0
+602011040,Mowbray,D13,Tasmania,1,Good,Good,0
+602011041,Newnham - Mayfield,D13,Tasmania,1,Good,Good,0
+602011042,Newstead,D13,Tasmania,1,Good,Good,0
+602011043,Norwood (Tas.),D13,Tasmania,1,Good,Good,0
+602011044,Prospect Vale - Blackstone,D13,Tasmania,1,Good,Good,0
+602011045,Ravenswood,D13,Tasmania,1,Good,Good,0
+602011046,Riverside,D13,Tasmania,1,Good,Good,0
+602011047,South Launceston,D13,Tasmania,1,Good,Good,0
+602011048,Summerhill - Prospect,D13,Tasmania,1,Good,Good,0
+602011049,Trevallyn,D13,Tasmania,1,Good,Good,0
+602011050,Waverley - St Leonards,D13,Tasmania,1,Good,Good,0
+602011051,West Launceston,D13,Tasmania,1,Good,Good,0
+602011052,Youngtown - Relbia,D13,Tasmania,1,Good,Good,0
+602021053,Beauty Point - Beaconsfield,D13,Tasmania,1,Good,Good,0
+602021054,Deloraine,D13,Tasmania,1,Good,Good,0
+602021055,Grindelwald - Lanena,D13,Tasmania,1,Good,Good,0
+602021056,Hadspen - Carrick,D13,Tasmania,1,Good,Good,0
+602021057,Westbury,D13,Tasmania,1,Good,Good,0
+602031058,Dilston - Lilydale,D13,Tasmania,1,Good,Good,0
+602031059,George Town,D13,Tasmania,1,Good,Good,0
+602031060,Longford,D13,Tasmania,1,Good,Good,0
+602031061,Northern Midlands,D13,Tasmania,1,Good,Good,0
+602031062,Perth - Evandale,D13,Tasmania,1,Good,Good,0
+602031064,St Helens - Scamander,D13,Tasmania,1,Good,Good,0
+602031099,Flinders and Cape Barren Islands,D13,Tasmania,1,Good,Good,0
+602031100,Scottsdale - Bridport,D13,Tasmania,1,Good,Good,0
+603011065,Central Highlands,D13,Tasmania,1,Good,Good,0
+603011066,Derwent Valley,D13,Tasmania,1,Good,Good,0
+603011067,Southern Midlands,D13,Tasmania,1,Good,Good,0
+603011068,Wilderness - East,D13,Tasmania,1,Good,Good,0
+603021069,Bruny Island - Kettering,D13,Tasmania,1,Good,Good,0
+603021070,Cygnet,D13,Tasmania,1,Good,Good,0
+603021071,Geeveston - Dover,D13,Tasmania,1,Good,Good,0
+603021072,Huonville - Franklin,D13,Tasmania,1,Good,Good,0
+603031073,Forestier - Tasman,D13,Tasmania,1,Good,Good,0
+603031074,Triabunna - Bicheno,D13,Tasmania,1,Good,Good,0
+604011075,Acton - Upper Burnie,D13,Tasmania,1,Good,Good,0
+604011076,Burnie - Ulverstone Surrounds,D13,Tasmania,1,Good,Good,0
+604011077,Burnie - Wivenhoe,D13,Tasmania,1,Good,Good,0
+604011078,Parklands - Camdale,D13,Tasmania,1,Good,Good,0
+604011079,Penguin - Sulphur Creek,D13,Tasmania,1,Good,Good,0
+604011080,Romaine - Havenview,D13,Tasmania,1,Good,Good,0
+604011081,Somerset,D13,Tasmania,1,Good,Good,0
+604011082,Ulverstone,D13,Tasmania,1,Good,Good,0
+604011083,West Ulverstone,D13,Tasmania,1,Good,Good,0
+604011084,Wynyard,D13,Tasmania,1,Good,Good,0
+604021085,Devonport,D13,Tasmania,1,Good,Good,0
+604021086,East Devonport,D13,Tasmania,1,Good,Good,0
+604021087,Latrobe,D13,Tasmania,1,Good,Good,0
+604021088,Miandetta - Don,D13,Tasmania,1,Good,Good,0
+604021089,Port Sorell,D13,Tasmania,1,Good,Good,0
+604021090,Quoiba - Spreyton,D13,Tasmania,1,Good,Good,0
+604021091,Sheffield - Railton,D13,Tasmania,1,Good,Good,0
+604021092,Turners Beach - Forth,D13,Tasmania,1,Good,Good,0
+604031093,King Island,D13,Tasmania,1,Good,Good,0
+604031094,North West,D13,Tasmania,1,Good,Good,0
+604031095,Smithton,D13,Tasmania,1,Good,Good,0
+604031096,Waratah,D13,Tasmania,1,Good,Good,0
+604031097,West Coast (Tas.),D13,Tasmania,1,Good,Good,0
+604031098,Wilderness - West,D13,Tasmania,1,Good,Good,0
+697979799,Migratory - Offshore - Shipping (Tas.),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+699999499,No usual address (Tas.),D94,No usual address (Aust.),1,Good,Good,0
+701011001,Darwin Airport,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701011002,Darwin City,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701011003,East Point,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701011004,Fannie Bay - The Gardens,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701011005,Larrakeyah,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701011006,Ludmilla - The Narrows,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701011007,Parap,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701011008,Stuart Park,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701011009,Woolner - Bayview - Winnellie,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021010,Alawa,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021011,Anula,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021012,Berrimah,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021013,Brinkin - Nakara,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021014,Buffalo Creek,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021015,Charles Darwin,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021016,Coconut Grove,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021017,East Arm,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021018,Jingili,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021019,Karama,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021020,Leanyer,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021021,Lyons (NT),D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021022,Malak - Marrara,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021023,Millner,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021024,Moil,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021025,Nightcliff,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021026,Rapid Creek,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021027,Tiwi,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021028,Wagaman,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021029,Wanguri,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701021030,Wulagi,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701031031,Howard Springs,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701031032,Humpty Doo,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701031033,Koolpinyah,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701031034,Virginia,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701031035,Weddell,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701041036,Bakewell,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701041037,Driver,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701041038,Durack - Marlow Lagoon,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701041039,Gray,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701041040,Moulden,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701041041,Palmerston - North,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701041042,Palmerston - South,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701041043,Rosebery - Bellamack,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+701041044,Woodroffe,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+702011045,Charles,D02,Lake Eyre Basin,1,Acceptable,Good,0
+702011046,East Side,D02,Lake Eyre Basin,1,Acceptable,Good,0
+702011047,Flynn (NT),D02,Lake Eyre Basin,1,Acceptable,Good,0
+702011048,Larapinta,D02,Lake Eyre Basin,1,Acceptable,Good,0
+702011049,Mount Johns,D02,Lake Eyre Basin,1,Acceptable,Good,0
+702011050,Petermann - Simpson,D11,South Western Plateau,0.1513906,Good,Good,0
+702011050,Petermann - Simpson,D02,Lake Eyre Basin,0.291581,Acceptable,Good,0
+702011050,Petermann - Simpson,D12,Tanami-Timor Sea Coast,0.5570284,Good,Good,0
+702011051,Ross,D02,Lake Eyre Basin,1,Acceptable,Good,0
+702011052,Sandover - Plenty,D12,Tanami-Timor Sea Coast,0.0651527,Good,Good,0
+702011052,Sandover - Plenty,D02,Lake Eyre Basin,0.9348473,Acceptable,Good,0
+702011053,Tanami,D02,Lake Eyre Basin,0.3677945,Acceptable,Good,0
+702011053,Tanami,D12,Tanami-Timor Sea Coast,0.6322055,Good,Good,0
+702011054,Yuendumu - Anmatjere,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+702021055,Barkly,D01,Carpentaria Coast,0.0257119,Good,Good,0
+702021055,Barkly,D02,Lake Eyre Basin,0.2575431,Acceptable,Good,0
+702021055,Barkly,D12,Tanami-Timor Sea Coast,0.716745,Good,Good,0
+702021056,Tennant Creek,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+702031057,Alligator,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+702031058,Daly,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+702031059,Thamarrurr,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+702031060,Tiwi Islands,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+702031061,West Arnhem,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+702041062,Anindilyakwa,D01,Carpentaria Coast,1,Good,Good,0
+702041063,East Arnhem,D01,Carpentaria Coast,0.3257442,Good,Good,0
+702041063,East Arnhem,D12,Tanami-Timor Sea Coast,0.6742558,Good,Good,0
+702041064,Nhulunbuy,D01,Carpentaria Coast,1,Good,Good,0
+702051065,Elsey,D12,Tanami-Timor Sea Coast,0.1205617,Good,Good,0
+702051065,Elsey,D01,Carpentaria Coast,0.8794383,Good,Good,0
+702051066,Gulf,D01,Carpentaria Coast,1,Good,Good,0
+702051067,Katherine,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+702051068,Victoria River,D12,Tanami-Timor Sea Coast,1,Good,Good,0
+797979799,Migratory - Offshore - Shipping (NT),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+799999499,No usual address (NT),D94,No usual address (Aust.),1,Good,Good,0
+801011001,Aranda,D03,Murray-Darling Basin,1,Good,Good,0
+801011002,Belconnen,D03,Murray-Darling Basin,1,Good,Good,0
+801011003,Bruce,D03,Murray-Darling Basin,1,Good,Good,0
+801011004,Charnwood,D03,Murray-Darling Basin,1,Good,Good,0
+801011005,Cook,D03,Murray-Darling Basin,1,Good,Good,0
+801011006,Dunlop,D03,Murray-Darling Basin,1,Good,Good,0
+801011007,Evatt,D03,Murray-Darling Basin,1,Good,Good,0
+801011008,Florey,D03,Murray-Darling Basin,1,Good,Good,0
+801011009,Flynn (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801011010,Fraser,D03,Murray-Darling Basin,1,Good,Good,0
+801011011,Giralang,D03,Murray-Darling Basin,1,Good,Good,0
+801011012,Gooromon,D03,Murray-Darling Basin,1,Good,Good,0
+801011013,Hawker,D03,Murray-Darling Basin,1,Good,Good,0
+801011014,Higgins,D03,Murray-Darling Basin,1,Good,Good,0
+801011015,Holt,D03,Murray-Darling Basin,1,Good,Good,0
+801011016,Kaleen,D03,Murray-Darling Basin,1,Good,Good,0
+801011017,Latham,D03,Murray-Darling Basin,1,Good,Good,0
+801011018,Lawson,D03,Murray-Darling Basin,1,Good,Good,0
+801011019,Macgregor (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801011020,Macquarie,D03,Murray-Darling Basin,1,Good,Good,0
+801011021,McKellar,D03,Murray-Darling Basin,1,Good,Good,0
+801011022,Melba,D03,Murray-Darling Basin,1,Good,Good,0
+801011023,Page,D03,Murray-Darling Basin,1,Good,Good,0
+801011024,Scullin,D03,Murray-Darling Basin,1,Good,Good,0
+801011025,Spence,D03,Murray-Darling Basin,1,Good,Good,0
+801011026,Weetangera,D03,Murray-Darling Basin,1,Good,Good,0
+801011111,Molonglo Corridor,D03,Murray-Darling Basin,1,Good,Good,0
+801011142,Macnamara,D03,Murray-Darling Basin,1,Good,Good,0
+801011143,Strathnairn,D03,Murray-Darling Basin,1,Good,Good,0
+801011144,West Belconnen,D03,Murray-Darling Basin,1,Good,Good,0
+801031031,Hume,D03,Murray-Darling Basin,1,Good,Good,0
+801031032,Kowen,D03,Murray-Darling Basin,1,Good,Good,0
+801031113,Canberra East,D03,Murray-Darling Basin,1,Good,Good,0
+801031114,Canberra Airport,D03,Murray-Darling Basin,1,Good,Good,0
+801031115,Majura,D03,Murray-Darling Basin,1,Good,Good,0
+801041034,Amaroo,D03,Murray-Darling Basin,1,Good,Good,0
+801041035,Bonner,D03,Murray-Darling Basin,1,Good,Good,0
+801041036,Casey,D03,Murray-Darling Basin,1,Good,Good,0
+801041037,Crace,D03,Murray-Darling Basin,1,Good,Good,0
+801041038,Forde,D03,Murray-Darling Basin,1,Good,Good,0
+801041039,Franklin,D03,Murray-Darling Basin,1,Good,Good,0
+801041040,Gungahlin,D03,Murray-Darling Basin,1,Good,Good,0
+801041043,Hall,D03,Murray-Darling Basin,1,Good,Good,0
+801041044,Harrison,D03,Murray-Darling Basin,1,Good,Good,0
+801041045,Mitchell,D03,Murray-Darling Basin,1,Good,Good,0
+801041046,Ngunnawal,D03,Murray-Darling Basin,1,Good,Good,0
+801041047,Nicholls,D03,Murray-Darling Basin,1,Good,Good,0
+801041048,Palmerston,D03,Murray-Darling Basin,1,Good,Good,0
+801041116,Gungahlin - East,D03,Murray-Darling Basin,1,Good,Good,0
+801041117,Gungahlin - West,D03,Murray-Darling Basin,1,Good,Good,0
+801041118,Jacka,D03,Murray-Darling Basin,1,Good,Good,0
+801041119,Kenny,D03,Murray-Darling Basin,1,Good,Good,0
+801041120,Moncrieff,D03,Murray-Darling Basin,1,Good,Good,0
+801041121,Taylor,D03,Murray-Darling Basin,1,Good,Good,0
+801041122,Throsby,D03,Murray-Darling Basin,1,Good,Good,0
+801051049,Acton,D03,Murray-Darling Basin,1,Good,Good,0
+801051050,Ainslie,D03,Murray-Darling Basin,1,Good,Good,0
+801051051,Braddon,D03,Murray-Darling Basin,1,Good,Good,0
+801051053,Civic,D03,Murray-Darling Basin,1,Good,Good,0
+801051054,Dickson,D03,Murray-Darling Basin,1,Good,Good,0
+801051055,Downer,D03,Murray-Darling Basin,1,Good,Good,0
+801051056,Hackett,D03,Murray-Darling Basin,1,Good,Good,0
+801051057,Lyneham,D03,Murray-Darling Basin,1,Good,Good,0
+801051058,O'Connor (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801051060,Turner,D03,Murray-Darling Basin,1,Good,Good,0
+801051061,Watson,D03,Murray-Darling Basin,1,Good,Good,0
+801051123,Black Mountain,D03,Murray-Darling Basin,1,Good,Good,0
+801051124,Campbell,D03,Murray-Darling Basin,1,Good,Good,0
+801051125,Duntroon,D03,Murray-Darling Basin,1,Good,Good,0
+801051126,Parkes (ACT) - North,D03,Murray-Darling Basin,1,Good,Good,0
+801051127,Reid,D03,Murray-Darling Basin,1,Good,Good,0
+801051128,Russell,D03,Murray-Darling Basin,1,Good,Good,0
+801061062,Deakin,D03,Murray-Darling Basin,1,Good,Good,0
+801061063,Forrest,D03,Murray-Darling Basin,1,Good,Good,0
+801061064,Griffith (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801061066,Lake Burley Griffin,D03,Murray-Darling Basin,1,Good,Good,0
+801061067,Narrabundah,D03,Murray-Darling Basin,1,Good,Good,0
+801061068,Parkes (ACT) - South,D03,Murray-Darling Basin,1,Good,Good,0
+801061069,Red Hill (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801061070,Yarralumla,D03,Murray-Darling Basin,1,Good,Good,0
+801061129,Barton,D03,Murray-Darling Basin,1,Good,Good,0
+801061130,Fyshwick,D03,Murray-Darling Basin,1,Good,Good,0
+801061131,Kingston (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801071071,Banks,D03,Murray-Darling Basin,1,Good,Good,0
+801071072,Bonython,D03,Murray-Darling Basin,1,Good,Good,0
+801071073,Calwell,D03,Murray-Darling Basin,1,Good,Good,0
+801071074,Chisholm,D03,Murray-Darling Basin,1,Good,Good,0
+801071075,Conder,D03,Murray-Darling Basin,1,Good,Good,0
+801071076,Fadden,D03,Murray-Darling Basin,1,Good,Good,0
+801071077,Gilmore,D03,Murray-Darling Basin,1,Good,Good,0
+801071078,Gordon (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801071079,Gowrie (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801071080,Greenway,D03,Murray-Darling Basin,1,Good,Good,0
+801071081,Isabella Plains,D03,Murray-Darling Basin,1,Good,Good,0
+801071082,Kambah,D03,Murray-Darling Basin,1,Good,Good,0
+801071083,Macarthur,D03,Murray-Darling Basin,1,Good,Good,0
+801071084,Monash,D03,Murray-Darling Basin,1,Good,Good,0
+801071085,Mount Taylor,D03,Murray-Darling Basin,1,Good,Good,0
+801071086,Oxley (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801071087,Richardson,D03,Murray-Darling Basin,1,Good,Good,0
+801071088,Theodore,D03,Murray-Darling Basin,1,Good,Good,0
+801071089,Tuggeranong,D03,Murray-Darling Basin,1,Good,Good,0
+801071090,Wanniassa,D03,Murray-Darling Basin,1,Good,Good,0
+801071132,Tuggeranong - West,D03,Murray-Darling Basin,1,Good,Good,0
+801081091,Chapman,D03,Murray-Darling Basin,1,Good,Good,0
+801081092,Duffy,D03,Murray-Darling Basin,1,Good,Good,0
+801081093,Fisher,D03,Murray-Darling Basin,1,Good,Good,0
+801081094,Holder,D03,Murray-Darling Basin,1,Good,Good,0
+801081095,Rivett,D03,Murray-Darling Basin,1,Good,Good,0
+801081096,Stirling,D03,Murray-Darling Basin,1,Good,Good,0
+801081097,Waramanga,D03,Murray-Darling Basin,1,Good,Good,0
+801081098,Weston,D03,Murray-Darling Basin,1,Good,Good,0
+801081133,Scrivener,D03,Murray-Darling Basin,1,Good,Good,0
+801091099,Chifley,D03,Murray-Darling Basin,1,Good,Good,0
+801091100,Curtin,D03,Murray-Darling Basin,1,Good,Good,0
+801091101,Farrer,D03,Murray-Darling Basin,1,Good,Good,0
+801091102,Garran,D03,Murray-Darling Basin,1,Good,Good,0
+801091103,Hughes,D03,Murray-Darling Basin,1,Good,Good,0
+801091104,Isaacs,D03,Murray-Darling Basin,1,Good,Good,0
+801091105,Lyons (ACT),D03,Murray-Darling Basin,1,Good,Good,0
+801091106,Mawson,D03,Murray-Darling Basin,1,Good,Good,0
+801091107,O'Malley,D03,Murray-Darling Basin,1,Good,Good,0
+801091108,Pearce,D03,Murray-Darling Basin,1,Good,Good,0
+801091109,Phillip,D03,Murray-Darling Basin,1,Good,Good,0
+801091110,Torrens,D03,Murray-Darling Basin,1,Good,Good,0
+801101134,Arboretum,D03,Murray-Darling Basin,1,Good,Good,0
+801101135,Coombs,D03,Murray-Darling Basin,1,Good,Good,0
+801101136,Denman Prospect,D03,Murray-Darling Basin,1,Good,Good,0
+801101137,Molonglo,D03,Murray-Darling Basin,1,Good,Good,0
+801101139,Wright,D03,Murray-Darling Basin,1,Good,Good,0
+801101145,Molonglo - East,D03,Murray-Darling Basin,1,Good,Good,0
+801101146,Whitlam,D03,Murray-Darling Basin,1,Good,Good,0
+801111140,ACT - South West,D03,Murray-Darling Basin,1,Good,Good,0
+801111141,Namadgi,D03,Murray-Darling Basin,1,Good,Good,0
+897979799,Migratory - Offshore - Shipping (ACT),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+899999499,No usual address (ACT),D94,No usual address (Aust.),1,Good,Good,0
+901011001,Christmas Island,D91,Unclassified (Aust.),1,Good,Good,0
+901021002,Cocos (Keeling) Islands,D91,Unclassified (Aust.),1,Good,Good,0
+901031003,Jervis Bay,D08,South East Coast (NSW),1,Good,Good,0
+901041004,Norfolk Island,D91,Unclassified (Aust.),1,Good,Good,0
+997979799,Migratory - Offshore - Shipping (OT),D97,Migratory - Offshore - Shipping (Aust.),1,Good,Good,0
+999999499,No usual address (OT),D94,No usual address (Aust.),1,Good,Good,0
+ZZZZZZZZZ,Outside Australia,DZZ,Outside Australia,1,Good,Good,0

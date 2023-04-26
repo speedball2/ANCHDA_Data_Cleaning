@@ -1,0 +1,853 @@
+LGA_CODE_2022,LGA_NAME_2022,RA_CODE_2016,RA_NAME_2016,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+10050,Albury,11,Inner Regional Australia,1,Acceptable,Good,0
+10180,Armidale,11,Inner Regional Australia,0.8058292,Acceptable,Good,0
+10180,Armidale,12,Outer Regional Australia,0.1941708,Poor,Good,0
+10250,Ballina,11,Inner Regional Australia,1,Acceptable,Good,0
+10300,Balranald,12,Outer Regional Australia,0.8518425,Poor,Good,0
+10300,Balranald,13,Remote Australia,0.1481575,Poor,Good,0
+10470,Bathurst,11,Inner Regional Australia,0.9812102,Acceptable,Good,0
+10470,Bathurst,12,Outer Regional Australia,0.0187898,Poor,Good,0
+10500,Bayside (NSW),10,Major Cities of Australia,1,Good,Good,0
+10550,Bega Valley,12,Outer Regional Australia,1,Poor,Good,0
+10600,Bellingen,12,Outer Regional Australia,1,Poor,Good,0
+10650,Berrigan,11,Inner Regional Australia,0.7740287,Acceptable,Good,0
+10650,Berrigan,12,Outer Regional Australia,0.2259713,Poor,Good,0
+10750,Blacktown,10,Major Cities of Australia,1,Good,Good,0
+10800,Bland,12,Outer Regional Australia,0.9773133,Poor,Good,0
+10800,Bland,13,Remote Australia,0.0226867,Poor,Good,0
+10850,Blayney,11,Inner Regional Australia,0.8701108,Acceptable,Good,0
+10850,Blayney,12,Outer Regional Australia,0.1298892,Poor,Good,0
+10900,Blue Mountains,10,Major Cities of Australia,0.9161699,Good,Good,0
+10900,Blue Mountains,11,Inner Regional Australia,0.0838299,Acceptable,Good,0
+10900,Blue Mountains,12,Outer Regional Australia,1.00E-07,Poor,Good,1
+10950,Bogan,13,Remote Australia,0.9959286,Poor,Good,0
+10950,Bogan,14,Very Remote Australia,0.0040714,Poor,Good,1
+11150,Bourke,13,Remote Australia,0.6508288,Poor,Good,0
+11150,Bourke,14,Very Remote Australia,0.3491712,Poor,Good,0
+11200,Brewarrina,13,Remote Australia,0.0125291,Poor,Good,0
+11200,Brewarrina,14,Very Remote Australia,0.9874709,Poor,Good,0
+11250,Broken Hill,12,Outer Regional Australia,1,Poor,Good,0
+11300,Burwood,10,Major Cities of Australia,1,Good,Good,0
+11350,Byron,11,Inner Regional Australia,1,Acceptable,Good,0
+11400,Cabonne,11,Inner Regional Australia,0.6043131,Acceptable,Good,0
+11400,Cabonne,12,Outer Regional Australia,0.3956869,Poor,Good,0
+11450,Camden,10,Major Cities of Australia,1,Good,Good,0
+11500,Campbelltown (NSW),10,Major Cities of Australia,0.9999999,Good,Good,0
+11500,Campbelltown (NSW),11,Inner Regional Australia,1.00E-07,Acceptable,Good,1
+11520,Canada Bay,10,Major Cities of Australia,1,Good,Good,0
+11570,Canterbury-Bankstown,10,Major Cities of Australia,1,Good,Good,0
+11600,Carrathool,12,Outer Regional Australia,0.3485976,Poor,Good,0
+11600,Carrathool,13,Remote Australia,0.6514024,Poor,Good,0
+11650,Central Coast (NSW),10,Major Cities of Australia,0.9808336,Good,Good,0
+11650,Central Coast (NSW),11,Inner Regional Australia,0.0191664,Acceptable,Good,0
+11700,Central Darling,14,Very Remote Australia,1,Poor,Good,0
+11720,Cessnock,10,Major Cities of Australia,0.3228944,Good,Good,0
+11720,Cessnock,11,Inner Regional Australia,0.6771056,Acceptable,Good,0
+11730,Clarence Valley,11,Inner Regional Australia,0.8007906,Acceptable,Good,0
+11730,Clarence Valley,12,Outer Regional Australia,0.1992094,Poor,Good,0
+11750,Cobar,13,Remote Australia,0.8972525,Poor,Good,0
+11750,Cobar,14,Very Remote Australia,0.1027475,Poor,Good,0
+11800,Coffs Harbour,11,Inner Regional Australia,0.9746676,Acceptable,Good,0
+11800,Coffs Harbour,12,Outer Regional Australia,0.0253324,Poor,Good,0
+12000,Coolamon,11,Inner Regional Australia,0.5947349,Acceptable,Good,0
+12000,Coolamon,12,Outer Regional Australia,0.4052651,Poor,Good,0
+12150,Coonamble,12,Outer Regional Australia,0.0963892,Poor,Good,0
+12150,Coonamble,13,Remote Australia,0.9036108,Poor,Good,0
+12160,Cootamundra-Gundagai,11,Inner Regional Australia,0.9125535,Acceptable,Good,0
+12160,Cootamundra-Gundagai,12,Outer Regional Australia,0.0874465,Poor,Good,0
+12350,Cowra,11,Inner Regional Australia,0.7735374,Acceptable,Good,0
+12350,Cowra,12,Outer Regional Australia,0.2264626,Poor,Good,0
+12380,Cumberland,10,Major Cities of Australia,1,Good,Good,0
+12390,Dubbo,11,Inner Regional Australia,0.7474491,Acceptable,Good,0
+12390,Dubbo,12,Outer Regional Australia,0.2525509,Poor,Good,0
+12700,Dungog,11,Inner Regional Australia,0.9482589,Acceptable,Good,0
+12700,Dungog,12,Outer Regional Australia,0.0517411,Poor,Good,0
+12730,Edward River,11,Inner Regional Australia,0.831376,Acceptable,Good,0
+12730,Edward River,12,Outer Regional Australia,0.168624,Poor,Good,0
+12750,Eurobodalla,11,Inner Regional Australia,0.7238208,Acceptable,Good,0
+12750,Eurobodalla,12,Outer Regional Australia,0.2761792,Poor,Good,0
+12850,Fairfield,10,Major Cities of Australia,1,Good,Good,0
+12870,Federation,11,Inner Regional Australia,0.8982734,Acceptable,Good,0
+12870,Federation,12,Outer Regional Australia,0.1017266,Poor,Good,0
+12900,Forbes,12,Outer Regional Australia,1,Poor,Good,0
+12930,Georges River,10,Major Cities of Australia,1,Good,Good,0
+12950,Gilgandra,12,Outer Regional Australia,1,Poor,Good,0
+13010,Glen Innes Severn,12,Outer Regional Australia,1,Poor,Good,0
+13310,Goulburn Mulwaree,11,Inner Regional Australia,0.9870959,Acceptable,Good,0
+13310,Goulburn Mulwaree,12,Outer Regional Australia,0.0129041,Poor,Good,0
+13340,Greater Hume,11,Inner Regional Australia,0.9080968,Acceptable,Good,0
+13340,Greater Hume,12,Outer Regional Australia,0.0919032,Poor,Good,0
+13450,Griffith,12,Outer Regional Australia,1,Poor,Good,0
+13550,Gunnedah,12,Outer Regional Australia,1,Poor,Good,0
+13660,Gwydir,12,Outer Regional Australia,1,Poor,Good,0
+13800,Hawkesbury,10,Major Cities of Australia,0.66244,Good,Good,0
+13800,Hawkesbury,11,Inner Regional Australia,0.3325278,Acceptable,Good,0
+13800,Hawkesbury,12,Outer Regional Australia,0.0050322,Poor,Good,1
+13850,Hay,12,Outer Regional Australia,0.7632306,Poor,Good,0
+13850,Hay,13,Remote Australia,0.2367694,Poor,Good,0
+13910,Hilltops,11,Inner Regional Australia,0.8458692,Acceptable,Good,0
+13910,Hilltops,12,Outer Regional Australia,0.1541308,Poor,Good,0
+14000,Hornsby,10,Major Cities of Australia,0.9613847,Good,Good,0
+14000,Hornsby,11,Inner Regional Australia,0.0386153,Acceptable,Good,0
+14100,Hunters Hill,10,Major Cities of Australia,1,Good,Good,0
+14170,Inner West,10,Major Cities of Australia,1,Good,Good,0
+14220,Inverell,12,Outer Regional Australia,1,Poor,Good,0
+14300,Junee,11,Inner Regional Australia,0.8933523,Acceptable,Good,0
+14300,Junee,12,Outer Regional Australia,0.1066477,Poor,Good,0
+14350,Kempsey,11,Inner Regional Australia,0.5302559,Acceptable,Good,0
+14350,Kempsey,12,Outer Regional Australia,0.4697441,Poor,Good,0
+14400,Kiama,11,Inner Regional Australia,1,Acceptable,Good,0
+14500,Ku-ring-gai,10,Major Cities of Australia,1,Good,Good,0
+14550,Kyogle,11,Inner Regional Australia,0.7715242,Acceptable,Good,0
+14550,Kyogle,12,Outer Regional Australia,0.2284758,Poor,Good,0
+14600,Lachlan,12,Outer Regional Australia,0.4841187,Poor,Good,0
+14600,Lachlan,13,Remote Australia,0.5158813,Poor,Good,0
+14650,Lake Macquarie,10,Major Cities of Australia,0.9804103,Good,Good,0
+14650,Lake Macquarie,11,Inner Regional Australia,0.0195897,Acceptable,Good,0
+14700,Lane Cove,10,Major Cities of Australia,1,Good,Good,0
+14750,Leeton,12,Outer Regional Australia,1,Poor,Good,0
+14850,Lismore,11,Inner Regional Australia,1,Acceptable,Good,0
+14870,Lithgow,11,Inner Regional Australia,0.9846441,Acceptable,Good,0
+14870,Lithgow,12,Outer Regional Australia,0.0153559,Poor,Good,0
+14900,Liverpool,10,Major Cities of Australia,0.9930341,Good,Good,0
+14900,Liverpool,11,Inner Regional Australia,0.0069659,Acceptable,Good,1
+14920,Liverpool Plains,11,Inner Regional Australia,0.1776209,Acceptable,Good,0
+14920,Liverpool Plains,12,Outer Regional Australia,0.8223791,Poor,Good,0
+14950,Lockhart,11,Inner Regional Australia,0.3895295,Acceptable,Good,0
+14950,Lockhart,12,Outer Regional Australia,0.6104705,Poor,Good,0
+15050,Maitland,10,Major Cities of Australia,0.9642825,Good,Good,0
+15050,Maitland,11,Inner Regional Australia,0.0357175,Acceptable,Good,0
+15240,Mid-Coast,11,Inner Regional Australia,0.9794169,Acceptable,Good,0
+15240,Mid-Coast,12,Outer Regional Australia,0.0205831,Poor,Good,0
+15270,Mid-Western,11,Inner Regional Australia,0.5363149,Acceptable,Good,0
+15270,Mid-Western,12,Outer Regional Australia,0.4636851,Poor,Good,0
+15300,Moree Plains,12,Outer Regional Australia,0.894217,Poor,Good,0
+15300,Moree Plains,13,Remote Australia,0.105783,Poor,Good,0
+15350,Mosman,10,Major Cities of Australia,1,Good,Good,0
+15520,Murray River,11,Inner Regional Australia,0.5410115,Acceptable,Good,0
+15520,Murray River,12,Outer Regional Australia,0.4542276,Poor,Good,0
+15520,Murray River,13,Remote Australia,0.0047609,Poor,Good,1
+15560,Murrumbidgee,12,Outer Regional Australia,1,Poor,Good,0
+15650,Muswellbrook,11,Inner Regional Australia,0.9560533,Acceptable,Good,0
+15650,Muswellbrook,12,Outer Regional Australia,0.0439467,Poor,Good,0
+15700,Nambucca Valley,12,Outer Regional Australia,1,Poor,Good,0
+15750,Narrabri,12,Outer Regional Australia,0.9509146,Poor,Good,0
+15750,Narrabri,13,Remote Australia,0.0490854,Poor,Good,0
+15800,Narrandera,12,Outer Regional Australia,1,Poor,Good,0
+15850,Narromine,12,Outer Regional Australia,1,Poor,Good,0
+15900,Newcastle,10,Major Cities of Australia,1,Good,Good,0
+15950,North Sydney,10,Major Cities of Australia,1,Good,Good,0
+15990,Northern Beaches,10,Major Cities of Australia,0.9987699,Good,Good,0
+15990,Northern Beaches,11,Inner Regional Australia,0.0012301,Acceptable,Good,1
+16100,Oberon,11,Inner Regional Australia,0.9078134,Acceptable,Good,0
+16100,Oberon,12,Outer Regional Australia,0.0921866,Poor,Good,0
+16150,Orange,11,Inner Regional Australia,1,Acceptable,Good,0
+16200,Parkes,12,Outer Regional Australia,1,Poor,Good,0
+16260,Parramatta,10,Major Cities of Australia,1,Good,Good,0
+16350,Penrith,10,Major Cities of Australia,0.9997425,Good,Good,0
+16350,Penrith,11,Inner Regional Australia,0.0002575,Acceptable,Good,1
+16380,Port Macquarie-Hastings,11,Inner Regional Australia,0.9720576,Acceptable,Good,0
+16380,Port Macquarie-Hastings,12,Outer Regional Australia,0.0279424,Poor,Good,0
+16400,Port Stephens,10,Major Cities of Australia,0.2771699,Good,Good,0
+16400,Port Stephens,11,Inner Regional Australia,0.7228301,Acceptable,Good,0
+16490,Queanbeyan-Palerang,10,Major Cities of Australia,0.60791,Good,Good,0
+16490,Queanbeyan-Palerang,11,Inner Regional Australia,0.37376,Acceptable,Good,0
+16490,Queanbeyan-Palerang,12,Outer Regional Australia,0.0183301,Poor,Good,0
+16550,Randwick,10,Major Cities of Australia,1,Good,Good,0
+16610,Richmond Valley,11,Inner Regional Australia,0.9772439,Acceptable,Good,0
+16610,Richmond Valley,12,Outer Regional Australia,0.0227561,Poor,Good,0
+16700,Ryde,10,Major Cities of Australia,1,Good,Good,0
+16900,Shellharbour,10,Major Cities of Australia,0.9455582,Good,Good,0
+16900,Shellharbour,11,Inner Regional Australia,0.0544418,Acceptable,Good,0
+16950,Shoalhaven,11,Inner Regional Australia,0.9973057,Acceptable,Good,0
+16950,Shoalhaven,12,Outer Regional Australia,0.0026943,Poor,Good,1
+17000,Singleton,11,Inner Regional Australia,0.9845453,Acceptable,Good,0
+17000,Singleton,12,Outer Regional Australia,0.0154547,Poor,Good,0
+17040,Snowy Monaro,11,Inner Regional Australia,0.4481105,Acceptable,Good,0
+17040,Snowy Monaro,12,Outer Regional Australia,0.5518895,Poor,Good,0
+17080,Snowy Valleys,11,Inner Regional Australia,0.6204106,Acceptable,Good,0
+17080,Snowy Valleys,12,Outer Regional Australia,0.3795894,Poor,Good,0
+17100,Strathfield,10,Major Cities of Australia,1,Good,Good,0
+17150,Sutherland,10,Major Cities of Australia,0.9858756,Good,Good,0
+17150,Sutherland,11,Inner Regional Australia,0.0141244,Acceptable,Good,0
+17200,Sydney,,,8.60E-06,Acceptable,Good,4
+17200,Sydney,10,Major Cities of Australia,0.9999914,Good,Good,0
+17310,Tamworth,11,Inner Regional Australia,0.8399695,Acceptable,Good,0
+17310,Tamworth,12,Outer Regional Australia,0.1600305,Poor,Good,0
+17350,Temora,12,Outer Regional Australia,1,Poor,Good,0
+17400,Tenterfield,12,Outer Regional Australia,1,Poor,Good,0
+17420,The Hills,10,Major Cities of Australia,0.9621777,Good,Good,0
+17420,The Hills,11,Inner Regional Australia,0.0378223,Acceptable,Good,0
+17550,Tweed,10,Major Cities of Australia,0.8688433,Good,Good,0
+17550,Tweed,11,Inner Regional Australia,0.1311567,Acceptable,Good,0
+17620,Upper Hunter,11,Inner Regional Australia,0.5949048,Acceptable,Good,0
+17620,Upper Hunter,12,Outer Regional Australia,0.4050952,Poor,Good,0
+17640,Upper Lachlan,11,Inner Regional Australia,0.8653475,Acceptable,Good,0
+17640,Upper Lachlan,12,Outer Regional Australia,0.1346525,Poor,Good,0
+17650,Uralla,11,Inner Regional Australia,0.3996045,Acceptable,Good,0
+17650,Uralla,12,Outer Regional Australia,0.6003955,Poor,Good,0
+17750,Wagga Wagga,11,Inner Regional Australia,0.9853315,Acceptable,Good,0
+17750,Wagga Wagga,12,Outer Regional Australia,0.0146685,Poor,Good,0
+17850,Walcha,12,Outer Regional Australia,1,Poor,Good,0
+17900,Walgett,13,Remote Australia,0.962231,Poor,Good,0
+17900,Walgett,14,Very Remote Australia,0.037769,Poor,Good,0
+17950,Warren,12,Outer Regional Australia,0.6137423,Poor,Good,0
+17950,Warren,13,Remote Australia,0.3862577,Poor,Good,0
+18020,Warrumbungle,12,Outer Regional Australia,0.9133312,Poor,Good,0
+18020,Warrumbungle,13,Remote Australia,0.0866688,Poor,Good,0
+18050,Waverley,10,Major Cities of Australia,1,Good,Good,0
+18100,Weddin,12,Outer Regional Australia,1,Poor,Good,0
+18200,Wentworth,12,Outer Regional Australia,0.8733584,Poor,Good,0
+18200,Wentworth,13,Remote Australia,0.1266416,Poor,Good,0
+18250,Willoughby,10,Major Cities of Australia,1,Good,Good,0
+18350,Wingecarribee,11,Inner Regional Australia,0.999886,Acceptable,Good,0
+18350,Wingecarribee,12,Outer Regional Australia,0.000114,Poor,Good,1
+18400,Wollondilly,10,Major Cities of Australia,0.1081462,Good,Good,0
+18400,Wollondilly,11,Inner Regional Australia,0.8918538,Acceptable,Good,0
+18450,Wollongong,,,7.37E-05,Acceptable,Good,4
+18450,Wollongong,10,Major Cities of Australia,0.9929616,Good,Good,0
+18450,Wollongong,11,Inner Regional Australia,0.0069647,Acceptable,Good,1
+18500,Woollahra,10,Major Cities of Australia,1,Good,Good,0
+18710,Yass Valley,10,Major Cities of Australia,0.0326981,Good,Good,0
+18710,Yass Valley,11,Inner Regional Australia,0.9673014,Acceptable,Good,0
+18710,Yass Valley,12,Outer Regional Australia,6.00E-07,Poor,Good,1
+19399,Unincorporated NSW,10,Major Cities of Australia,0.0040576,Good,Good,1
+19399,Unincorporated NSW,13,Remote Australia,0.3410928,Poor,Good,0
+19399,Unincorporated NSW,14,Very Remote Australia,0.6548495,Poor,Good,0
+19499,No usual address (NSW),19,No usual address (NSW),1,Good,Good,0
+19799,Migratory - Offshore - Shipping (NSW),15,Migratory - Offshore - Shipping (NSW),1,Good,Good,0
+20110,Alpine,21,Inner Regional Australia,0.5551549,Acceptable,Good,0
+20110,Alpine,22,Outer Regional Australia,0.4448451,Acceptable,Good,0
+20260,Ararat,21,Inner Regional Australia,0.8395512,Acceptable,Good,0
+20260,Ararat,22,Outer Regional Australia,0.1604488,Acceptable,Good,0
+20570,Ballarat,21,Inner Regional Australia,1,Acceptable,Good,0
+20660,Banyule,20,Major Cities of Australia,1,Good,Good,0
+20740,Bass Coast,21,Inner Regional Australia,1,Acceptable,Good,0
+20830,Baw Baw,21,Inner Regional Australia,0.9998759,Acceptable,Good,0
+20830,Baw Baw,22,Outer Regional Australia,0.0001241,Acceptable,Good,1
+20910,Bayside (Vic.),20,Major Cities of Australia,1,Good,Good,0
+21010,Benalla,21,Inner Regional Australia,0.975971,Acceptable,Good,0
+21010,Benalla,22,Outer Regional Australia,0.024029,Acceptable,Good,0
+21110,Boroondara,20,Major Cities of Australia,1,Good,Good,0
+21180,Brimbank,20,Major Cities of Australia,1,Good,Good,0
+21270,Buloke,22,Outer Regional Australia,1,Acceptable,Good,0
+21370,Campaspe,21,Inner Regional Australia,0.9852908,Acceptable,Good,0
+21370,Campaspe,22,Outer Regional Australia,0.0147092,Acceptable,Good,0
+21450,Cardinia,20,Major Cities of Australia,0.8131279,Good,Good,0
+21450,Cardinia,21,Inner Regional Australia,0.1868721,Acceptable,Good,0
+21610,Casey,20,Major Cities of Australia,0.9915797,Good,Good,0
+21610,Casey,21,Inner Regional Australia,0.0084203,Acceptable,Good,1
+21670,Central Goldfields,21,Inner Regional Australia,1,Acceptable,Good,0
+21750,Colac Otway,21,Inner Regional Australia,0.9674433,Acceptable,Good,0
+21750,Colac Otway,22,Outer Regional Australia,0.0325567,Acceptable,Good,0
+21830,Corangamite,21,Inner Regional Australia,0.7203692,Acceptable,Good,0
+21830,Corangamite,22,Outer Regional Australia,0.2796308,Acceptable,Good,0
+21890,Darebin,20,Major Cities of Australia,1,Good,Good,0
+22110,East Gippsland,22,Outer Regional Australia,0.9640484,Acceptable,Good,0
+22110,East Gippsland,23,Remote Australia,0.0359516,Poor,Good,0
+22170,Frankston,20,Major Cities of Australia,1,Good,Good,0
+22250,Gannawarra,22,Outer Regional Australia,1,Acceptable,Good,0
+22310,Glen Eira,20,Major Cities of Australia,1,Good,Good,0
+22410,Glenelg,22,Outer Regional Australia,1,Acceptable,Good,0
+22490,Golden Plains,21,Inner Regional Australia,1,Acceptable,Good,0
+22620,Greater Bendigo,21,Inner Regional Australia,1,Acceptable,Good,0
+22670,Greater Dandenong,20,Major Cities of Australia,1,Good,Good,0
+22750,Greater Geelong,20,Major Cities of Australia,0.7874129,Good,Good,0
+22750,Greater Geelong,21,Inner Regional Australia,0.2125871,Acceptable,Good,0
+22830,Greater Shepparton,21,Inner Regional Australia,1,Acceptable,Good,0
+22910,Hepburn,21,Inner Regional Australia,1,Acceptable,Good,0
+22980,Hindmarsh,22,Outer Regional Australia,0.8858052,Acceptable,Good,0
+22980,Hindmarsh,23,Remote Australia,0.1141948,Poor,Good,0
+23110,Hobsons Bay,20,Major Cities of Australia,1,Good,Good,0
+23190,Horsham,22,Outer Regional Australia,1,Acceptable,Good,0
+23270,Hume,20,Major Cities of Australia,0.9971655,Good,Good,0
+23270,Hume,21,Inner Regional Australia,0.0028345,Acceptable,Good,1
+23350,Indigo,21,Inner Regional Australia,1,Acceptable,Good,0
+23430,Kingston (Vic.),20,Major Cities of Australia,1,Good,Good,0
+23670,Knox,20,Major Cities of Australia,1,Good,Good,0
+23810,Latrobe (Vic.),21,Inner Regional Australia,1,Acceptable,Good,0
+23940,Loddon,21,Inner Regional Australia,0.4151803,Acceptable,Good,0
+23940,Loddon,22,Outer Regional Australia,0.5848197,Acceptable,Good,0
+24130,Macedon Ranges,21,Inner Regional Australia,1,Acceptable,Good,0
+24210,Manningham,20,Major Cities of Australia,0.9984604,Good,Good,0
+24210,Manningham,21,Inner Regional Australia,0.0015396,Acceptable,Good,1
+24250,Mansfield,21,Inner Regional Australia,4.90E-06,Acceptable,Good,1
+24250,Mansfield,22,Outer Regional Australia,0.9999951,Acceptable,Good,0
+24330,Maribyrnong,20,Major Cities of Australia,1,Good,Good,0
+24410,Maroondah,20,Major Cities of Australia,1,Good,Good,0
+24600,Melbourne,20,Major Cities of Australia,1,Good,Good,0
+24650,Melton,20,Major Cities of Australia,0.980834,Good,Good,0
+24650,Melton,21,Inner Regional Australia,0.019166,Acceptable,Good,0
+24780,Mildura,22,Outer Regional Australia,0.9870883,Acceptable,Good,0
+24780,Mildura,23,Remote Australia,0.0129117,Poor,Good,0
+24850,Mitchell,20,Major Cities of Australia,0.2732214,Good,Good,0
+24850,Mitchell,21,Inner Regional Australia,0.7267786,Acceptable,Good,0
+24900,Moira,21,Inner Regional Australia,0.9699861,Acceptable,Good,0
+24900,Moira,22,Outer Regional Australia,0.0300139,Acceptable,Good,0
+24970,Monash,20,Major Cities of Australia,1,Good,Good,0
+25060,Moonee Valley,20,Major Cities of Australia,1,Good,Good,0
+25150,Moorabool,20,Major Cities of Australia,0.5523141,Good,Good,0
+25150,Moorabool,21,Inner Regional Australia,0.4476859,Acceptable,Good,0
+25250,Moreland,20,Major Cities of Australia,1,Good,Good,0
+25340,Mornington Peninsula,20,Major Cities of Australia,0.9675184,Good,Good,0
+25340,Mornington Peninsula,21,Inner Regional Australia,0.0324816,Acceptable,Good,0
+25430,Mount Alexander,21,Inner Regional Australia,1,Acceptable,Good,0
+25490,Moyne,21,Inner Regional Australia,0.8315356,Acceptable,Good,0
+25490,Moyne,22,Outer Regional Australia,0.1684644,Acceptable,Good,0
+25620,Murrindindi,21,Inner Regional Australia,0.9330299,Acceptable,Good,0
+25620,Murrindindi,22,Outer Regional Australia,0.0669701,Acceptable,Good,0
+25710,Nillumbik,20,Major Cities of Australia,0.9438717,Good,Good,0
+25710,Nillumbik,21,Inner Regional Australia,0.0561283,Acceptable,Good,0
+25810,Northern Grampians,21,Inner Regional Australia,0.6276631,Acceptable,Good,0
+25810,Northern Grampians,22,Outer Regional Australia,0.3723369,Acceptable,Good,0
+25900,Port Phillip,20,Major Cities of Australia,1,Good,Good,0
+25990,Pyrenees,21,Inner Regional Australia,0.9622801,Acceptable,Good,0
+25990,Pyrenees,22,Outer Regional Australia,0.0377199,Acceptable,Good,0
+26080,Queenscliffe,21,Inner Regional Australia,1,Acceptable,Good,0
+26170,South Gippsland,21,Inner Regional Australia,0.9457365,Acceptable,Good,0
+26170,South Gippsland,22,Outer Regional Australia,0.0542635,Acceptable,Good,0
+26260,Southern Grampians,21,Inner Regional Australia,0.6516506,Acceptable,Good,0
+26260,Southern Grampians,22,Outer Regional Australia,0.3483494,Acceptable,Good,0
+26350,Stonnington,20,Major Cities of Australia,1,Good,Good,0
+26430,Strathbogie,21,Inner Regional Australia,1,Acceptable,Good,0
+26490,Surf Coast,20,Major Cities of Australia,0.0111999,Good,Good,0
+26490,Surf Coast,21,Inner Regional Australia,0.9888001,Acceptable,Good,0
+26610,Swan Hill,22,Outer Regional Australia,1,Acceptable,Good,0
+26670,Towong,21,Inner Regional Australia,0.2142735,Acceptable,Good,0
+26670,Towong,22,Outer Regional Australia,0.7857265,Acceptable,Good,0
+26700,Wangaratta,21,Inner Regional Australia,0.9678419,Acceptable,Good,0
+26700,Wangaratta,22,Outer Regional Australia,0.0321581,Acceptable,Good,0
+26730,Warrnambool,21,Inner Regional Australia,1,Acceptable,Good,0
+26810,Wellington,21,Inner Regional Australia,0.8536846,Acceptable,Good,0
+26810,Wellington,22,Outer Regional Australia,0.1462958,Acceptable,Good,0
+26810,Wellington,23,Remote Australia,1.95E-05,Poor,Good,1
+26890,West Wimmera,22,Outer Regional Australia,0.9889473,Acceptable,Good,0
+26890,West Wimmera,23,Remote Australia,0.0110527,Poor,Good,0
+26980,Whitehorse,20,Major Cities of Australia,1,Good,Good,0
+27070,Whittlesea,20,Major Cities of Australia,0.9644498,Good,Good,0
+27070,Whittlesea,21,Inner Regional Australia,0.0355502,Acceptable,Good,0
+27170,Wodonga,21,Inner Regional Australia,1,Acceptable,Good,0
+27260,Wyndham,20,Major Cities of Australia,0.9195451,Good,Good,0
+27260,Wyndham,21,Inner Regional Australia,0.0804549,Acceptable,Good,0
+27350,Yarra,20,Major Cities of Australia,1,Good,Good,0
+27450,Yarra Ranges,20,Major Cities of Australia,0.7915793,Good,Good,0
+27450,Yarra Ranges,21,Inner Regional Australia,0.2084207,Acceptable,Good,0
+27630,Yarriambiack,22,Outer Regional Australia,0.9951085,Acceptable,Good,0
+27630,Yarriambiack,23,Remote Australia,0.0048915,Poor,Good,1
+29399,Unincorporated Vic,20,Major Cities of Australia,1.05E-05,Good,Good,1
+29399,Unincorporated Vic,21,Inner Regional Australia,3.15E-05,Acceptable,Good,1
+29399,Unincorporated Vic,22,Outer Regional Australia,0.9999475,Acceptable,Good,0
+29399,Unincorporated Vic,23,Remote Australia,1.05E-05,Poor,Good,1
+29499,No usual address (Vic.),29,No usual address (Vic.),1,Good,Good,0
+29799,Migratory - Offshore - Shipping (Vic.),25,Migratory - Offshore - Shipping (Vic.),1,Good,Good,0
+30250,Aurukun,34,Very Remote Australia,1,Acceptable,Good,0
+30300,Balonne,33,Remote Australia,0.8021519,Poor,Good,0
+30300,Balonne,34,Very Remote Australia,0.1978481,Acceptable,Good,0
+30370,Banana,32,Outer Regional Australia,0.877682,Acceptable,Good,0
+30370,Banana,33,Remote Australia,0.122318,Poor,Good,0
+30410,Barcaldine,34,Very Remote Australia,1,Acceptable,Good,0
+30450,Barcoo,34,Very Remote Australia,1,Acceptable,Good,0
+30760,Blackall Tambo,34,Very Remote Australia,1,Acceptable,Good,0
+30900,Boulia,34,Very Remote Australia,1,Acceptable,Good,0
+31000,Brisbane,30,Major Cities of Australia,0.9991816,Good,Good,0
+31000,Brisbane,31,Inner Regional Australia,0.0005641,Acceptable,Good,1
+31000,Brisbane,33,Remote Australia,0.0002543,Poor,Good,1
+31750,Bulloo,34,Very Remote Australia,1,Acceptable,Good,0
+31820,Bundaberg,31,Inner Regional Australia,0.9564462,Acceptable,Good,0
+31820,Bundaberg,32,Outer Regional Australia,0.0435538,Acceptable,Good,0
+31900,Burdekin,32,Outer Regional Australia,0.9909875,Acceptable,Good,0
+31900,Burdekin,33,Remote Australia,0.0090125,Poor,Good,1
+31950,Burke,34,Very Remote Australia,1,Acceptable,Good,0
+32080,Cairns,32,Outer Regional Australia,1,Acceptable,Good,0
+32250,Carpentaria,34,Very Remote Australia,1,Acceptable,Good,0
+32260,Cassowary Coast,32,Outer Regional Australia,0.9341485,Acceptable,Good,0
+32260,Cassowary Coast,33,Remote Australia,0.0656744,Poor,Good,0
+32260,Cassowary Coast,34,Very Remote Australia,0.0001771,Acceptable,Good,1
+32270,Central Highlands (Qld),32,Outer Regional Australia,0.746348,Acceptable,Good,0
+32270,Central Highlands (Qld),33,Remote Australia,0.2467413,Poor,Good,0
+32270,Central Highlands (Qld),34,Very Remote Australia,0.0069106,Acceptable,Good,1
+32310,Charters Towers,32,Outer Regional Australia,0.8334395,Acceptable,Good,0
+32310,Charters Towers,33,Remote Australia,0.1108779,Poor,Good,0
+32310,Charters Towers,34,Very Remote Australia,0.0556826,Acceptable,Good,0
+32330,Cherbourg,31,Inner Regional Australia,1,Acceptable,Good,0
+32450,Cloncurry,33,Remote Australia,0.6939958,Poor,Good,0
+32450,Cloncurry,34,Very Remote Australia,0.3060042,Acceptable,Good,0
+32500,Cook,33,Remote Australia,0.7936914,Poor,Good,0
+32500,Cook,34,Very Remote Australia,0.2063086,Acceptable,Good,0
+32600,Croydon,34,Very Remote Australia,1,Acceptable,Good,0
+32750,Diamantina,34,Very Remote Australia,1,Acceptable,Good,0
+32770,Doomadgee,34,Very Remote Australia,1,Acceptable,Good,0
+32810,Douglas,32,Outer Regional Australia,0.9346084,Acceptable,Good,0
+32810,Douglas,33,Remote Australia,0.0653916,Poor,Good,0
+33100,Etheridge,34,Very Remote Australia,1,Acceptable,Good,0
+33200,Flinders (Qld),34,Very Remote Australia,1,Acceptable,Good,0
+33220,Fraser Coast,31,Inner Regional Australia,0.9954813,Acceptable,Good,0
+33220,Fraser Coast,32,Outer Regional Australia,0.0030199,Acceptable,Good,1
+33220,Fraser Coast,33,Remote Australia,0.0014988,Poor,Good,1
+33360,Gladstone,31,Inner Regional Australia,0.8597563,Acceptable,Good,0
+33360,Gladstone,32,Outer Regional Australia,0.1385516,Acceptable,Good,0
+33360,Gladstone,33,Remote Australia,0.0016921,Poor,Good,1
+33430,Gold Coast,30,Major Cities of Australia,0.9921963,Good,Good,0
+33430,Gold Coast,31,Inner Regional Australia,0.0078037,Acceptable,Good,1
+33610,Goondiwindi,32,Outer Regional Australia,0.9522895,Acceptable,Good,0
+33610,Goondiwindi,33,Remote Australia,0.0477105,Poor,Good,0
+33620,Gympie,,,0.0003151,Acceptable,Good,4
+33620,Gympie,31,Inner Regional Australia,0.9601992,Acceptable,Good,0
+33620,Gympie,32,Outer Regional Australia,0.0394857,Acceptable,Good,0
+33800,Hinchinbrook,32,Outer Regional Australia,0.7277935,Acceptable,Good,0
+33800,Hinchinbrook,33,Remote Australia,0.2689038,Poor,Good,0
+33800,Hinchinbrook,34,Very Remote Australia,0.0033027,Acceptable,Good,1
+33830,Hope Vale,33,Remote Australia,1,Poor,Good,0
+33960,Ipswich,30,Major Cities of Australia,0.9561628,Good,Good,0
+33960,Ipswich,31,Inner Regional Australia,0.0438372,Acceptable,Good,0
+33980,Isaac,32,Outer Regional Australia,0.6361985,Acceptable,Good,0
+33980,Isaac,33,Remote Australia,0.3416971,Poor,Good,0
+33980,Isaac,34,Very Remote Australia,0.0221044,Acceptable,Good,0
+34420,Kowanyama,34,Very Remote Australia,1,Acceptable,Good,0
+34530,Livingstone,31,Inner Regional Australia,0.9513565,Acceptable,Good,0
+34530,Livingstone,32,Outer Regional Australia,0.0370408,Acceptable,Good,0
+34530,Livingstone,33,Remote Australia,0.0115835,Poor,Good,0
+34530,Livingstone,34,Very Remote Australia,1.93E-05,Acceptable,Good,1
+34570,Lockhart River,34,Very Remote Australia,1,Acceptable,Good,0
+34580,Lockyer Valley,31,Inner Regional Australia,1,Acceptable,Good,0
+34590,Logan,30,Major Cities of Australia,0.9359669,Good,Good,0
+34590,Logan,31,Inner Regional Australia,0.0640331,Acceptable,Good,0
+34710,Longreach,34,Very Remote Australia,1,Acceptable,Good,0
+34770,Mackay,31,Inner Regional Australia,0.6991886,Acceptable,Good,0
+34770,Mackay,32,Outer Regional Australia,0.3006492,Acceptable,Good,0
+34770,Mackay,33,Remote Australia,8.00E-07,Poor,Good,1
+34770,Mackay,34,Very Remote Australia,0.0001614,Acceptable,Good,1
+34800,McKinlay,34,Very Remote Australia,1,Acceptable,Good,0
+34830,Mapoon,,,0.0095471,Acceptable,Good,4
+34830,Mapoon,34,Very Remote Australia,0.9904529,Acceptable,Good,0
+34860,Maranoa,32,Outer Regional Australia,0.5798468,Acceptable,Good,0
+34860,Maranoa,33,Remote Australia,0.3103037,Poor,Good,0
+34860,Maranoa,34,Very Remote Australia,0.1098495,Acceptable,Good,0
+34880,Mareeba,32,Outer Regional Australia,0.9678786,Acceptable,Good,0
+34880,Mareeba,33,Remote Australia,0.0115036,Poor,Good,0
+34880,Mareeba,34,Very Remote Australia,0.0206178,Acceptable,Good,0
+35010,Moreton Bay,30,Major Cities of Australia,0.9082379,Good,Good,0
+35010,Moreton Bay,31,Inner Regional Australia,0.0917621,Acceptable,Good,0
+35250,Mornington,34,Very Remote Australia,1,Acceptable,Good,0
+35300,Mount Isa,33,Remote Australia,0.9732828,Poor,Good,0
+35300,Mount Isa,34,Very Remote Australia,0.0267172,Acceptable,Good,0
+35600,Murweh,34,Very Remote Australia,1,Acceptable,Good,0
+35670,Napranum,34,Very Remote Australia,1,Acceptable,Good,0
+35740,Noosa,30,Major Cities of Australia,0.6654111,Good,Good,0
+35740,Noosa,31,Inner Regional Australia,0.3345889,Acceptable,Good,0
+35760,North Burnett,32,Outer Regional Australia,0.9824103,Acceptable,Good,0
+35760,North Burnett,33,Remote Australia,0.0175897,Poor,Good,0
+35780,Northern Peninsula Area,34,Very Remote Australia,1,Acceptable,Good,0
+35790,Palm Island,33,Remote Australia,0.9999571,Poor,Good,0
+35790,Palm Island,34,Very Remote Australia,4.29E-05,Acceptable,Good,1
+35800,Paroo,34,Very Remote Australia,1,Acceptable,Good,0
+36070,Pormpuraaw,34,Very Remote Australia,1,Acceptable,Good,0
+36150,Quilpie,34,Very Remote Australia,1,Acceptable,Good,0
+36250,Redland,30,Major Cities of Australia,0.9310127,Good,Good,0
+36250,Redland,31,Inner Regional Australia,0.0274932,Acceptable,Good,0
+36250,Redland,32,Outer Regional Australia,0.0278714,Acceptable,Good,0
+36250,Redland,33,Remote Australia,0.0136227,Poor,Good,0
+36300,Richmond,34,Very Remote Australia,1,Acceptable,Good,0
+36370,Rockhampton,31,Inner Regional Australia,0.9754347,Acceptable,Good,0
+36370,Rockhampton,32,Outer Regional Australia,0.0245653,Acceptable,Good,0
+36510,Scenic Rim,30,Major Cities of Australia,0.1871024,Good,Good,0
+36510,Scenic Rim,31,Inner Regional Australia,0.8128976,Acceptable,Good,0
+36580,Somerset,31,Inner Regional Australia,0.9705478,Acceptable,Good,0
+36580,Somerset,32,Outer Regional Australia,0.0294522,Acceptable,Good,0
+36630,South Burnett,31,Inner Regional Australia,0.6811255,Acceptable,Good,0
+36630,South Burnett,32,Outer Regional Australia,0.3188745,Acceptable,Good,0
+36660,Southern Downs,31,Inner Regional Australia,0.6432341,Acceptable,Good,0
+36660,Southern Downs,32,Outer Regional Australia,0.3567659,Acceptable,Good,0
+36720,Sunshine Coast,30,Major Cities of Australia,0.8135274,Good,Good,0
+36720,Sunshine Coast,31,Inner Regional Australia,0.1864726,Acceptable,Good,0
+36820,Tablelands,32,Outer Regional Australia,0.9529881,Acceptable,Good,0
+36820,Tablelands,33,Remote Australia,0.0470119,Poor,Good,0
+36910,Toowoomba,31,Inner Regional Australia,0.9867223,Acceptable,Good,0
+36910,Toowoomba,32,Outer Regional Australia,0.0132777,Acceptable,Good,0
+36950,Torres,,,0.0003427,Acceptable,Good,4
+36950,Torres,34,Very Remote Australia,0.9996573,Acceptable,Good,0
+36960,Torres Strait Island,,,0.0039573,Acceptable,Good,4
+36960,Torres Strait Island,34,Very Remote Australia,0.9960427,Acceptable,Good,0
+37010,Townsville,32,Outer Regional Australia,1,Acceptable,Good,0
+37300,Weipa,34,Very Remote Australia,1,Acceptable,Good,0
+37310,Western Downs,31,Inner Regional Australia,0.4034983,Acceptable,Good,0
+37310,Western Downs,32,Outer Regional Australia,0.5336864,Acceptable,Good,0
+37310,Western Downs,33,Remote Australia,0.0628153,Poor,Good,0
+37340,Whitsunday,,,7.61E-05,Acceptable,Good,4
+37340,Whitsunday,32,Outer Regional Australia,0.8760116,Acceptable,Good,0
+37340,Whitsunday,33,Remote Australia,0.1097482,Poor,Good,0
+37340,Whitsunday,34,Very Remote Australia,0.0141642,Acceptable,Good,0
+37400,Winton,34,Very Remote Australia,1,Acceptable,Good,0
+37550,Woorabinda,32,Outer Regional Australia,2.94E-05,Acceptable,Good,1
+37550,Woorabinda,33,Remote Australia,0.9999706,Poor,Good,0
+37570,Wujal Wujal,33,Remote Australia,1,Poor,Good,0
+37600,Yarrabah,32,Outer Regional Australia,1,Acceptable,Good,0
+39499,No usual address (Qld),39,No usual address (Qld),1,Good,Good,0
+39799,Migratory - Offshore - Shipping (Qld),35,Migratory - Offshore - Shipping (Qld),1,Good,Good,0
+40070,Adelaide,40,Major Cities of Australia,1,Good,Good,0
+40120,Adelaide Hills,40,Major Cities of Australia,0.5625845,Good,Good,0
+40120,Adelaide Hills,41,Inner Regional Australia,0.4374155,Acceptable,Good,0
+40150,Adelaide Plains,41,Inner Regional Australia,1,Acceptable,Good,0
+40220,Alexandrina,41,Inner Regional Australia,1,Acceptable,Good,0
+40250,Anangu Pitjantjatjara Yunkunytjatjara,44,Very Remote Australia,1,Acceptable,Good,0
+40310,Barossa,40,Major Cities of Australia,0.0222644,Good,Good,0
+40310,Barossa,41,Inner Regional Australia,0.9777356,Acceptable,Good,0
+40430,Barunga West,42,Outer Regional Australia,1,Good,Good,0
+40520,Berri Barmera,42,Outer Regional Australia,1,Good,Good,0
+40700,Burnside,40,Major Cities of Australia,1,Good,Good,0
+40910,Campbelltown (SA),40,Major Cities of Australia,1,Good,Good,0
+41010,Ceduna,44,Very Remote Australia,1,Acceptable,Good,0
+41060,Charles Sturt,40,Major Cities of Australia,1,Good,Good,0
+41140,Clare and Gilbert Valleys,41,Inner Regional Australia,0.7794062,Acceptable,Good,0
+41140,Clare and Gilbert Valleys,42,Outer Regional Australia,0.2205938,Good,Good,0
+41190,Cleve,42,Outer Regional Australia,0.0318146,Good,Good,0
+41190,Cleve,43,Remote Australia,0.9681854,Acceptable,Good,0
+41330,Coober Pedy,44,Very Remote Australia,1,Acceptable,Good,0
+41560,Copper Coast,42,Outer Regional Australia,1,Good,Good,0
+41750,Elliston,43,Remote Australia,0.3643224,Acceptable,Good,0
+41750,Elliston,44,Very Remote Australia,0.6356776,Acceptable,Good,0
+41830,Flinders Ranges,42,Outer Regional Australia,1,Good,Good,0
+41960,Franklin Harbour,42,Outer Regional Australia,0.1222896,Good,Good,0
+41960,Franklin Harbour,43,Remote Australia,0.8777104,Acceptable,Good,0
+42030,Gawler,40,Major Cities of Australia,1,Good,Good,0
+42110,Goyder,41,Inner Regional Australia,0.2649337,Acceptable,Good,0
+42110,Goyder,42,Outer Regional Australia,0.7350663,Good,Good,0
+42250,Grant,42,Outer Regional Australia,1,Good,Good,0
+42600,Holdfast Bay,40,Major Cities of Australia,1,Good,Good,0
+42750,Kangaroo Island,,,6.94E-05,Acceptable,Good,4
+42750,Kangaroo Island,41,Inner Regional Australia,6.10E-06,Acceptable,Good,1
+42750,Kangaroo Island,43,Remote Australia,0.9999245,Acceptable,Good,0
+43080,Karoonda East Murray,42,Outer Regional Australia,1,Good,Good,0
+43220,Kimba,43,Remote Australia,1,Acceptable,Good,0
+43360,Kingston (SA),42,Outer Regional Australia,0.9025425,Good,Good,0
+43360,Kingston (SA),43,Remote Australia,0.0974575,Acceptable,Good,0
+43650,Light,40,Major Cities of Australia,0.2792927,Good,Good,0
+43650,Light,41,Inner Regional Australia,0.7207073,Acceptable,Good,0
+43710,Lower Eyre Peninsula,43,Remote Australia,1,Acceptable,Good,0
+43790,Loxton Waikerie,42,Outer Regional Australia,1,Good,Good,0
+44000,Maralinga Tjarutja,44,Very Remote Australia,1,Acceptable,Good,0
+44060,Marion,40,Major Cities of Australia,1,Good,Good,0
+44210,Mid Murray,41,Inner Regional Australia,0.7446658,Acceptable,Good,0
+44210,Mid Murray,42,Outer Regional Australia,0.2553342,Good,Good,0
+44340,Mitcham,40,Major Cities of Australia,1,Good,Good,0
+44550,Mount Barker,41,Inner Regional Australia,1,Acceptable,Good,0
+44620,Mount Gambier,41,Inner Regional Australia,0.9890789,Acceptable,Good,0
+44620,Mount Gambier,42,Outer Regional Australia,0.0109211,Good,Good,0
+44830,Mount Remarkable,42,Outer Regional Australia,1,Good,Good,0
+45040,Murray Bridge,41,Inner Regional Australia,1,Acceptable,Good,0
+45090,Naracoorte Lucindale,42,Outer Regional Australia,1,Good,Good,0
+45120,Northern Areas,42,Outer Regional Australia,1,Good,Good,0
+45290,Norwood Payneham and St Peters,40,Major Cities of Australia,1,Good,Good,0
+45340,Onkaparinga,40,Major Cities of Australia,0.9712902,Good,Good,0
+45340,Onkaparinga,41,Inner Regional Australia,0.0287098,Acceptable,Good,0
+45400,Orroroo Carrieton,42,Outer Regional Australia,1,Good,Good,0
+45540,Peterborough,42,Outer Regional Australia,1,Good,Good,0
+45680,Playford,40,Major Cities of Australia,0.9586486,Good,Good,0
+45680,Playford,41,Inner Regional Australia,0.0413514,Acceptable,Good,0
+45890,Port Adelaide Enfield,40,Major Cities of Australia,1,Good,Good,0
+46090,Port Augusta,42,Outer Regional Australia,1,Good,Good,0
+46300,Port Lincoln,43,Remote Australia,1,Acceptable,Good,0
+46450,Port Pirie,42,Outer Regional Australia,1,Good,Good,0
+46510,Prospect,40,Major Cities of Australia,1,Good,Good,0
+46670,Renmark Paringa,42,Outer Regional Australia,1,Good,Good,0
+46860,Robe,42,Outer Regional Australia,1,Good,Good,0
+46970,Roxby Downs,43,Remote Australia,1,Acceptable,Good,0
+47140,Salisbury,40,Major Cities of Australia,1,Good,Good,0
+47290,Southern Mallee,42,Outer Regional Australia,0.0835523,Good,Good,0
+47290,Southern Mallee,43,Remote Australia,0.9164477,Acceptable,Good,0
+47490,Streaky Bay,43,Remote Australia,0.4414093,Acceptable,Good,0
+47490,Streaky Bay,44,Very Remote Australia,0.5585907,Acceptable,Good,0
+47630,Tatiara,42,Outer Regional Australia,0.9158189,Good,Good,0
+47630,Tatiara,43,Remote Australia,0.0841811,Acceptable,Good,0
+47700,Tea Tree Gully,40,Major Cities of Australia,1,Good,Good,0
+47800,Coorong,41,Inner Regional Australia,0.3803378,Acceptable,Good,0
+47800,Coorong,42,Outer Regional Australia,0.6196586,Good,Good,0
+47800,Coorong,43,Remote Australia,3.70E-06,Acceptable,Good,1
+47910,Tumby Bay,43,Remote Australia,1,Acceptable,Good,0
+47980,Unley,40,Major Cities of Australia,1,Good,Good,0
+48050,Victor Harbor,41,Inner Regional Australia,1,Acceptable,Good,0
+48130,Wakefield,41,Inner Regional Australia,0.6496546,Acceptable,Good,0
+48130,Wakefield,42,Outer Regional Australia,0.3503454,Good,Good,0
+48260,Walkerville,40,Major Cities of Australia,1,Good,Good,0
+48340,Wattle Range,42,Outer Regional Australia,1,Good,Good,0
+48410,West Torrens,40,Major Cities of Australia,1,Good,Good,0
+48540,Whyalla,42,Outer Regional Australia,1,Good,Good,0
+48640,Wudinna,43,Remote Australia,0.0379434,Acceptable,Good,0
+48640,Wudinna,44,Very Remote Australia,0.9620566,Acceptable,Good,0
+48750,Yankalilla,41,Inner Regional Australia,1,Acceptable,Good,0
+48830,Yorke Peninsula,42,Outer Regional Australia,0.6463805,Good,Good,0
+48830,Yorke Peninsula,43,Remote Australia,0.3536195,Acceptable,Good,0
+49399,Unincorporated SA,40,Major Cities of Australia,0.0013583,Good,Good,1
+49399,Unincorporated SA,42,Outer Regional Australia,0.0222088,Good,Good,0
+49399,Unincorporated SA,43,Remote Australia,0.1907134,Acceptable,Good,0
+49399,Unincorporated SA,44,Very Remote Australia,0.7857196,Acceptable,Good,0
+49499,No usual address (SA),49,No usual address (SA),1,Good,Good,0
+49799,Migratory - Offshore - Shipping (SA),45,Migratory - Offshore - Shipping (SA),1,Good,Good,0
+50080,Albany,52,Outer Regional Australia,0.995865,Good,Good,0
+50080,Albany,53,Remote Australia,0.004135,Good,Good,1
+50210,Armadale,50,Major Cities of Australia,0.9948603,Good,Good,0
+50210,Armadale,51,Inner Regional Australia,0.0051397,Acceptable,Good,1
+50250,Ashburton,54,Very Remote Australia,1,Good,Good,0
+50280,Augusta Margaret River,51,Inner Regional Australia,0.9740564,Acceptable,Good,0
+50280,Augusta Margaret River,52,Outer Regional Australia,0.0259436,Good,Good,0
+50350,Bassendean,50,Major Cities of Australia,1,Good,Good,0
+50420,Bayswater,50,Major Cities of Australia,1,Good,Good,0
+50490,Belmont,50,Major Cities of Australia,1,Good,Good,0
+50560,Beverley,52,Outer Regional Australia,1,Good,Good,0
+50630,Boddington,51,Inner Regional Australia,0.7685734,Acceptable,Good,0
+50630,Boddington,52,Outer Regional Australia,0.2314266,Good,Good,0
+50770,Boyup Brook,52,Outer Regional Australia,1,Good,Good,0
+50840,Bridgetown-Greenbushes,51,Inner Regional Australia,0.467337,Acceptable,Good,0
+50840,Bridgetown-Greenbushes,52,Outer Regional Australia,0.532663,Good,Good,0
+50910,Brookton,52,Outer Regional Australia,1,Good,Good,0
+50980,Broome,53,Remote Australia,0.8854212,Good,Good,0
+50980,Broome,54,Very Remote Australia,0.1145788,Good,Good,0
+51080,Broomehill-Tambellup,52,Outer Regional Australia,1,Good,Good,0
+51120,Bruce Rock,53,Remote Australia,1,Good,Good,0
+51190,Bunbury,51,Inner Regional Australia,1,Acceptable,Good,0
+51260,Busselton,51,Inner Regional Australia,1,Acceptable,Good,0
+51310,Cambridge,50,Major Cities of Australia,1,Good,Good,0
+51330,Canning,50,Major Cities of Australia,1,Good,Good,0
+51400,Capel,51,Inner Regional Australia,1,Acceptable,Good,0
+51470,Carnamah,53,Remote Australia,1,Good,Good,0
+51540,Carnarvon,,,0.0003741,Acceptable,Good,4
+51540,Carnarvon,54,Very Remote Australia,0.9996259,Good,Good,0
+51610,Chapman Valley,52,Outer Regional Australia,0.8106937,Good,Good,0
+51610,Chapman Valley,53,Remote Australia,0.1893063,Good,Good,0
+51680,Chittering,51,Inner Regional Australia,0.8774625,Acceptable,Good,0
+51680,Chittering,52,Outer Regional Australia,0.1225375,Good,Good,0
+51710,Christmas Island,94,Very Remote Australia,1,Good,Good,0
+51750,Claremont,50,Major Cities of Australia,1,Good,Good,0
+51820,Cockburn,50,Major Cities of Australia,0.9985949,Good,Good,0
+51820,Cockburn,51,Inner Regional Australia,2.00E-07,Acceptable,Good,1
+51820,Cockburn,53,Remote Australia,0.001405,Good,Good,1
+51860,Cocos Islands,94,Very Remote Australia,1,Good,Good,0
+51890,Collie,51,Inner Regional Australia,1,Acceptable,Good,0
+51960,Coolgardie,52,Outer Regional Australia,0.704294,Good,Good,0
+51960,Coolgardie,54,Very Remote Australia,0.295706,Good,Good,0
+52030,Coorow,52,Outer Regional Australia,0.6097612,Good,Good,0
+52030,Coorow,53,Remote Australia,0.3902388,Good,Good,0
+52100,Corrigin,53,Remote Australia,1,Good,Good,0
+52170,Cottesloe,50,Major Cities of Australia,1,Good,Good,0
+52240,Cranbrook,52,Outer Regional Australia,1,Good,Good,0
+52310,Cuballing,52,Outer Regional Australia,1,Good,Good,0
+52380,Cue,54,Very Remote Australia,1,Good,Good,0
+52450,Cunderdin,52,Outer Regional Australia,1,Good,Good,0
+52520,Dalwallinu,53,Remote Australia,1,Good,Good,0
+52590,Dandaragan,52,Outer Regional Australia,1,Good,Good,0
+52660,Dardanup,51,Inner Regional Australia,1,Acceptable,Good,0
+52730,Denmark,52,Outer Regional Australia,1,Good,Good,0
+52800,Derby-West Kimberley,54,Very Remote Australia,1,Good,Good,0
+52870,Donnybrook-Balingup,51,Inner Regional Australia,1,Acceptable,Good,0
+52940,Dowerin,52,Outer Regional Australia,1,Good,Good,0
+53010,Dumbleyung,53,Remote Australia,1,Good,Good,0
+53080,Dundas,54,Very Remote Australia,1,Good,Good,0
+53150,East Fremantle,50,Major Cities of Australia,1,Good,Good,0
+53220,East Pilbara,54,Very Remote Australia,1,Good,Good,0
+53290,Esperance,53,Remote Australia,0.9705525,Good,Good,0
+53290,Esperance,54,Very Remote Australia,0.0294475,Good,Good,0
+53360,Exmouth,54,Very Remote Australia,1,Good,Good,0
+53430,Fremantle,50,Major Cities of Australia,1,Good,Good,0
+53570,Gingin,51,Inner Regional Australia,0.6165925,Acceptable,Good,0
+53570,Gingin,52,Outer Regional Australia,0.3834075,Good,Good,0
+53640,Gnowangerup,52,Outer Regional Australia,8.30E-06,Good,Good,1
+53640,Gnowangerup,53,Remote Australia,0.9999917,Good,Good,0
+53710,Goomalling,52,Outer Regional Australia,1,Good,Good,0
+53780,Gosnells,50,Major Cities of Australia,1,Good,Good,0
+53800,Greater Geraldton,52,Outer Regional Australia,0.9857379,Good,Good,0
+53800,Greater Geraldton,53,Remote Australia,0.0142393,Good,Good,0
+53800,Greater Geraldton,54,Very Remote Australia,2.28E-05,Good,Good,1
+53920,Halls Creek,54,Very Remote Australia,1,Good,Good,0
+53990,Harvey,51,Inner Regional Australia,1,Acceptable,Good,0
+54060,Irwin,52,Outer Regional Australia,1,Good,Good,0
+54130,Jerramungup,53,Remote Australia,1,Good,Good,0
+54170,Joondalup,50,Major Cities of Australia,1,Good,Good,0
+54200,Kalamunda,50,Major Cities of Australia,0.9897782,Good,Good,0
+54200,Kalamunda,51,Inner Regional Australia,0.0102218,Acceptable,Good,0
+54280,Kalgoorlie-Boulder,52,Outer Regional Australia,0.9923589,Good,Good,0
+54280,Kalgoorlie-Boulder,54,Very Remote Australia,0.0076411,Good,Good,1
+54310,Karratha,53,Remote Australia,0.970795,Good,Good,0
+54310,Karratha,54,Very Remote Australia,0.029205,Good,Good,0
+54340,Katanning,52,Outer Regional Australia,1,Good,Good,0
+54410,Kellerberrin,52,Outer Regional Australia,1,Good,Good,0
+54480,Kent,53,Remote Australia,1,Good,Good,0
+54550,Kojonup,52,Outer Regional Australia,1,Good,Good,0
+54620,Kondinin,53,Remote Australia,0.706315,Good,Good,0
+54620,Kondinin,54,Very Remote Australia,0.293685,Good,Good,0
+54690,Koorda,53,Remote Australia,1,Good,Good,0
+54760,Kulin,53,Remote Australia,1,Good,Good,0
+54830,Kwinana,50,Major Cities of Australia,1,Good,Good,0
+54900,Lake Grace,53,Remote Australia,0.7963065,Good,Good,0
+54900,Lake Grace,54,Very Remote Australia,0.2036935,Good,Good,0
+54970,Laverton,54,Very Remote Australia,1,Good,Good,0
+55040,Leonora,54,Very Remote Australia,1,Good,Good,0
+55110,Mandurah,50,Major Cities of Australia,0.9950828,Good,Good,0
+55110,Mandurah,51,Inner Regional Australia,0.0049172,Acceptable,Good,1
+55180,Manjimup,52,Outer Regional Australia,1,Good,Good,0
+55250,Meekatharra,54,Very Remote Australia,1,Good,Good,0
+55320,Melville,50,Major Cities of Australia,1,Good,Good,0
+55390,Menzies,54,Very Remote Australia,1,Good,Good,0
+55460,Merredin,52,Outer Regional Australia,0.8255264,Good,Good,0
+55460,Merredin,53,Remote Australia,0.1744736,Good,Good,0
+55530,Mingenew,52,Outer Regional Australia,1,Good,Good,0
+55600,Moora,52,Outer Regional Australia,1,Good,Good,0
+55670,Morawa,53,Remote Australia,1,Good,Good,0
+55740,Mosman Park,50,Major Cities of Australia,1,Good,Good,0
+55810,Mount Magnet,54,Very Remote Australia,1,Good,Good,0
+55880,Mount Marshall,53,Remote Australia,1,Good,Good,0
+55950,Mukinbudin,53,Remote Australia,1,Good,Good,0
+56090,Mundaring,50,Major Cities of Australia,0.8815945,Good,Good,0
+56090,Mundaring,51,Inner Regional Australia,0.1184055,Acceptable,Good,0
+56160,Murchison,54,Very Remote Australia,1,Good,Good,0
+56230,Murray,50,Major Cities of Australia,0.7651627,Good,Good,0
+56230,Murray,51,Inner Regional Australia,0.2348373,Acceptable,Good,0
+56300,Nannup,51,Inner Regional Australia,1.28E-05,Acceptable,Good,1
+56300,Nannup,52,Outer Regional Australia,0.9999872,Good,Good,0
+56370,Narembeen,53,Remote Australia,1,Good,Good,0
+56460,Narrogin,52,Outer Regional Australia,1,Good,Good,0
+56580,Nedlands,50,Major Cities of Australia,1,Good,Good,0
+56620,Ngaanyatjarraku,54,Very Remote Australia,1,Good,Good,0
+56730,Northam,51,Inner Regional Australia,1,Acceptable,Good,0
+56790,Northampton,52,Outer Regional Australia,0.4076628,Good,Good,0
+56790,Northampton,53,Remote Australia,0.5923372,Good,Good,0
+56860,Nungarin,53,Remote Australia,1,Good,Good,0
+56930,Peppermint Grove,50,Major Cities of Australia,1,Good,Good,0
+57000,Perenjori,53,Remote Australia,1,Good,Good,0
+57080,Perth,,,2.04E-05,Acceptable,Good,4
+57080,Perth,50,Major Cities of Australia,0.9999796,Good,Good,0
+57140,Pingelly,52,Outer Regional Australia,1,Good,Good,0
+57210,Plantagenet,52,Outer Regional Australia,1,Good,Good,0
+57280,Port Hedland,53,Remote Australia,0.9753862,Good,Good,0
+57280,Port Hedland,54,Very Remote Australia,0.0246138,Good,Good,0
+57350,Quairading,52,Outer Regional Australia,1,Good,Good,0
+57420,Ravensthorpe,53,Remote Australia,5.83E-05,Good,Good,1
+57420,Ravensthorpe,54,Very Remote Australia,0.9999417,Good,Good,0
+57490,Rockingham,50,Major Cities of Australia,0.9915109,Good,Good,0
+57490,Rockingham,51,Inner Regional Australia,0.0084891,Acceptable,Good,1
+57630,Sandstone,54,Very Remote Australia,1,Good,Good,0
+57700,Serpentine-Jarrahdale,50,Major Cities of Australia,0.8148956,Good,Good,0
+57700,Serpentine-Jarrahdale,51,Inner Regional Australia,0.1851044,Acceptable,Good,0
+57770,Shark Bay,54,Very Remote Australia,1,Good,Good,0
+57840,South Perth,50,Major Cities of Australia,1,Good,Good,0
+57910,Stirling,50,Major Cities of Australia,1,Good,Good,0
+57980,Subiaco,50,Major Cities of Australia,1,Good,Good,0
+58050,Swan,50,Major Cities of Australia,0.9445867,Good,Good,0
+58050,Swan,51,Inner Regional Australia,0.0554133,Acceptable,Good,0
+58190,Tammin,52,Outer Regional Australia,1,Good,Good,0
+58260,Three Springs,53,Remote Australia,1,Good,Good,0
+58330,Toodyay,51,Inner Regional Australia,0.9287807,Acceptable,Good,0
+58330,Toodyay,52,Outer Regional Australia,0.0712193,Good,Good,0
+58400,Trayning,53,Remote Australia,1,Good,Good,0
+58470,Upper Gascoyne,54,Very Remote Australia,1,Good,Good,0
+58510,Victoria Park,50,Major Cities of Australia,1,Good,Good,0
+58540,Victoria Plains,52,Outer Regional Australia,1,Good,Good,0
+58570,Vincent,50,Major Cities of Australia,1,Good,Good,0
+58610,Wagin,52,Outer Regional Australia,1,Good,Good,0
+58680,Wandering,52,Outer Regional Australia,1,Good,Good,0
+58760,Wanneroo,50,Major Cities of Australia,0.9811906,Good,Good,0
+58760,Wanneroo,51,Inner Regional Australia,0.0188094,Acceptable,Good,0
+58820,Waroona,51,Inner Regional Australia,1,Acceptable,Good,0
+58890,West Arthur,52,Outer Regional Australia,1,Good,Good,0
+59030,Westonia,53,Remote Australia,1,Good,Good,0
+59100,Wickepin,52,Outer Regional Australia,0.7375176,Good,Good,0
+59100,Wickepin,53,Remote Australia,0.2624824,Good,Good,0
+59170,Williams,52,Outer Regional Australia,1,Good,Good,0
+59250,Wiluna,54,Very Remote Australia,1,Good,Good,0
+59310,Wongan-Ballidu,52,Outer Regional Australia,0.8032095,Good,Good,0
+59310,Wongan-Ballidu,53,Remote Australia,0.1967905,Good,Good,0
+59320,Woodanilling,52,Outer Regional Australia,1,Good,Good,0
+59330,Wyalkatchem,52,Outer Regional Australia,1,Good,Good,0
+59340,Wyndham-East Kimberley,54,Very Remote Australia,1,Good,Good,0
+59350,Yalgoo,54,Very Remote Australia,1,Good,Good,0
+59360,Yilgarn,53,Remote Australia,1,Good,Good,0
+59370,York,51,Inner Regional Australia,1,Acceptable,Good,0
+59499,No usual address (WA),59,No usual address (WA),1,Good,Good,0
+59799,Migratory - Offshore - Shipping (WA),55,Migratory - Offshore - Shipping (WA),1,Good,Good,0
+60210,Break O'Day,62,Outer Regional Australia,0.974876,Acceptable,Good,0
+60210,Break O'Day,63,Remote Australia,0.025124,Poor,Good,0
+60410,Brighton,61,Inner Regional Australia,1,Good,Good,0
+60610,Burnie,62,Outer Regional Australia,1,Acceptable,Good,0
+60810,Central Coast (Tas.),62,Outer Regional Australia,1,Acceptable,Good,0
+61010,Central Highlands (Tas.),62,Outer Regional Australia,0.845432,Acceptable,Good,0
+61010,Central Highlands (Tas.),63,Remote Australia,0.154568,Poor,Good,0
+61210,Circular Head,62,Outer Regional Australia,0.9065797,Acceptable,Good,0
+61210,Circular Head,63,Remote Australia,0.0934203,Poor,Good,0
+61410,Clarence,61,Inner Regional Australia,0.9676777,Good,Good,0
+61410,Clarence,62,Outer Regional Australia,0.0323223,Acceptable,Good,0
+61510,Derwent Valley,61,Inner Regional Australia,0.8703694,Good,Good,0
+61510,Derwent Valley,62,Outer Regional Australia,0.128874,Acceptable,Good,0
+61510,Derwent Valley,63,Remote Australia,0.0007566,Poor,Good,1
+61610,Devonport,61,Inner Regional Australia,0.9525245,Good,Good,0
+61610,Devonport,62,Outer Regional Australia,0.0474755,Acceptable,Good,0
+61810,Dorset,62,Outer Regional Australia,0.9999912,Acceptable,Good,0
+61810,Dorset,63,Remote Australia,8.80E-06,Poor,Good,1
+62010,Flinders (Tas.),64,Very Remote Australia,1,Good,Good,0
+62210,George Town,62,Outer Regional Australia,1,Acceptable,Good,0
+62410,Glamorgan-Spring Bay,62,Outer Regional Australia,0.4288814,Acceptable,Good,0
+62410,Glamorgan-Spring Bay,63,Remote Australia,0.5711186,Poor,Good,0
+62610,Glenorchy,61,Inner Regional Australia,1,Good,Good,0
+62810,Hobart,61,Inner Regional Australia,1,Good,Good,0
+63010,Huon Valley,61,Inner Regional Australia,2.20E-06,Good,Good,1
+63010,Huon Valley,62,Outer Regional Australia,0.9999525,Acceptable,Good,0
+63010,Huon Valley,63,Remote Australia,4.54E-05,Poor,Good,1
+63210,Kentish,62,Outer Regional Australia,1,Acceptable,Good,0
+63410,King Island,64,Very Remote Australia,1,Good,Good,0
+63610,Kingborough,61,Inner Regional Australia,0.9270107,Good,Good,0
+63610,Kingborough,62,Outer Regional Australia,0.0729893,Acceptable,Good,0
+63810,Latrobe (Tas.),61,Inner Regional Australia,0.3153317,Good,Good,0
+63810,Latrobe (Tas.),62,Outer Regional Australia,0.6846683,Acceptable,Good,0
+64010,Launceston,61,Inner Regional Australia,0.9532218,Good,Good,0
+64010,Launceston,62,Outer Regional Australia,0.0467782,Acceptable,Good,0
+64210,Meander Valley,61,Inner Regional Australia,0.5020409,Good,Good,0
+64210,Meander Valley,62,Outer Regional Australia,0.4979591,Acceptable,Good,0
+64610,Northern Midlands,61,Inner Regional Australia,0.6870543,Good,Good,0
+64610,Northern Midlands,62,Outer Regional Australia,0.3129457,Acceptable,Good,0
+64810,Sorell,61,Inner Regional Australia,0.827572,Good,Good,0
+64810,Sorell,62,Outer Regional Australia,0.172428,Acceptable,Good,0
+65010,Southern Midlands,61,Inner Regional Australia,0.2338821,Good,Good,0
+65010,Southern Midlands,62,Outer Regional Australia,0.7661179,Acceptable,Good,0
+65210,Tasman,62,Outer Regional Australia,1,Acceptable,Good,0
+65410,Waratah-Wynyard,62,Outer Regional Australia,1,Acceptable,Good,0
+65610,West Coast,63,Remote Australia,1,Poor,Good,0
+65810,West Tamar,61,Inner Regional Australia,0.6673675,Good,Good,0
+65810,West Tamar,62,Outer Regional Australia,0.3326325,Acceptable,Good,0
+69499,No usual address (Tas.),69,No usual address (Tas.),1,Good,Good,0
+69799,Migratory - Offshore - Shipping (Tas.),65,Migratory - Offshore - Shipping (Tas.),1,Good,Good,0
+70200,Alice Springs,73,Remote Australia,1,Acceptable,Good,0
+70420,Barkly,74,Very Remote Australia,1,Acceptable,Good,0
+70540,Belyuen,73,Remote Australia,1,Acceptable,Good,0
+70620,Central Desert,74,Very Remote Australia,1,Acceptable,Good,0
+70700,Coomalie,73,Remote Australia,1,Acceptable,Good,0
+71000,Darwin,72,Outer Regional Australia,1,Good,Good,0
+71150,Darwin Waterfront Precinct,72,Outer Regional Australia,1,Good,Good,0
+71300,East Arnhem,74,Very Remote Australia,1,Acceptable,Good,0
+72200,Katherine,73,Remote Australia,1,Acceptable,Good,0
+72300,Litchfield,72,Outer Regional Australia,1,Good,Good,0
+72330,MacDonnell,73,Remote Australia,0.3880355,Acceptable,Good,0
+72330,MacDonnell,74,Very Remote Australia,0.6119645,Acceptable,Good,0
+72800,Palmerston,72,Outer Regional Australia,1,Good,Good,0
+73600,Roper Gulf,,,0.0019727,Acceptable,Good,4
+73600,Roper Gulf,73,Remote Australia,0.0029186,Acceptable,Good,1
+73600,Roper Gulf,74,Very Remote Australia,0.9951087,Acceptable,Good,0
+74050,Tiwi Islands,73,Remote Australia,0.6036268,Acceptable,Good,0
+74050,Tiwi Islands,74,Very Remote Australia,0.3963732,Acceptable,Good,0
+74550,Victoria Daly,73,Remote Australia,0.1214064,Acceptable,Good,0
+74550,Victoria Daly,74,Very Remote Australia,0.8785936,Acceptable,Good,0
+74560,Wagait,73,Remote Australia,1,Acceptable,Good,0
+74660,West Arnhem,73,Remote Australia,0.3563867,Acceptable,Good,0
+74660,West Arnhem,74,Very Remote Australia,0.6436133,Acceptable,Good,0
+74680,West Daly,74,Very Remote Australia,1,Acceptable,Good,0
+79399,Unincorporated NT,72,Outer Regional Australia,0.0549805,Good,Good,0
+79399,Unincorporated NT,73,Remote Australia,0.218942,Acceptable,Good,0
+79399,Unincorporated NT,74,Very Remote Australia,0.7260775,Acceptable,Good,0
+79499,No usual address (NT),79,No usual address (NT),1,Good,Good,0
+79799,Migratory - Offshore - Shipping (NT),75,Migratory - Offshore - Shipping (NT),1,Good,Good,0
+89399,Unincorporated ACT,80,Major Cities of Australia,0.9984703,Good,Good,0
+89399,Unincorporated ACT,81,Inner Regional Australia,0.0015297,Poor,Good,1
+89499,No usual address (ACT),89,No usual address (ACT),1,Good,Good,0
+89799,Migratory - Offshore - Shipping (ACT),85,Migratory - Offshore - Shipping (ACT),1,Good,Good,0
+99399,Unincorp. Other Territories,91,Inner Regional Australia,0.1235493,Poor,Good,0
+99399,Unincorp. Other Territories,94,Very Remote Australia,0.8764507,Good,Good,0
+99499,No usual address (OT),99,No usual address (OT),1,Good,Good,0
+99799,Migratory - Offshore - Shipping (OT),95,Migratory - Offshore - Shipping (OT),1,Good,Good,0
+ZZZZZ,Outside Australia,,,,NA,Good,2

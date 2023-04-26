@@ -1,0 +1,128 @@
+SUA_CODE_2016,SUA_NAME_2016,SUA_CODE_2021,SUA_NAME_2021,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+1000,Not in any Significant Urban Area (NSW),1010,Central Coast,0.0047172,Good,Good,1
+1000,Not in any Significant Urban Area (NSW),1008,Byron Bay,0.0095643,Poor,Good,1
+1000,Not in any Significant Urban Area (NSW),1020,Medowie,0.0137757,Poor,Good,0
+1000,Not in any Significant Urban Area (NSW),1003,Ballina,0.0169592,Poor,Good,0
+1000,Not in any Significant Urban Area (NSW),1000,Not in any Significant Urban Area (NSW),0.9549836,Good,Good,0
+1001,Albury - Wodonga,1001,Albury - Wodonga,1,Good,Good,0
+1002,Armidale,1002,Armidale,1,Good,Good,0
+1003,Ballina,1003,Ballina,1,Poor,Good,0
+1004,Batemans Bay,1004,Batemans Bay,1,Good,Good,0
+1005,Bathurst,1005,Bathurst,1,Good,Good,0
+1006,Bowral - Mittagong,1006,Bowral - Mittagong,1,Good,Good,0
+1007,Broken Hill,1007,Broken Hill,1,Good,Good,0
+1008,Camden Haven,1009,Camden Haven,1,Good,Good,0
+1009,Central Coast,1010,Central Coast,1,Good,Good,0
+1010,Coffs Harbour,1011,Coffs Harbour,1,Good,Good,0
+1011,Dubbo,1012,Dubbo,1,Good,Good,0
+1012,Forster - Tuncurry,1013,Forster - Tuncurry,1,Good,Good,0
+1013,Goulburn,1014,Goulburn,1,Good,Good,0
+1014,Grafton,1015,Grafton,1,Good,Good,0
+1015,Griffith,1016,Griffith,1,Good,Good,0
+1016,Kempsey,1017,Kempsey,1,Good,Good,0
+1017,Lismore,1018,Lismore,1,Good,Good,0
+1018,Lithgow,1019,Lithgow,1,Good,Good,0
+1019,Morisset - Cooranbong,1021,Morisset - Cooranbong,1,Good,Good,0
+1020,Mudgee,1022,Mudgee,1,Good,Good,0
+1021,Muswellbrook,1023,Muswellbrook,1,Good,Good,0
+1022,Nelson Bay,1024,Nelson Bay,1,Good,Good,0
+1023,Newcastle - Maitland,1025,Newcastle - Maitland,1,Good,Good,0
+1024,Nowra - Bomaderry,1026,Nowra - Bomaderry,1,Good,Good,0
+1025,Orange,1027,Orange,1,Good,Good,0
+1026,Parkes,1000,Not in any Significant Urban Area (NSW),1,Good,Good,0
+1027,Port Macquarie,1028,Port Macquarie,1,Good,Good,0
+1028,Singleton,1029,Singleton,1,Good,Good,0
+1029,St Georges Basin - Sanctuary Point,1030,St Georges Basin - Sanctuary Point,1,Good,Good,0
+1030,Sydney,1031,Sydney,1,Good,Good,0
+1031,Tamworth,1032,Tamworth,1,Good,Good,0
+1032,Taree,1033,Taree,1,Good,Good,0
+1033,Ulladulla,1034,Ulladulla,1,Good,Good,0
+1034,Wagga Wagga,1035,Wagga Wagga,1,Good,Good,0
+1035,Wollongong,1036,Wollongong,1,Good,Good,0
+2000,Not in any Significant Urban Area (Vic.),2013,Moe - Newborough,0.0067032,Acceptable,Good,1
+2000,Not in any Significant Urban Area (Vic.),2005,Castlemaine,0.0155488,Poor,Good,0
+2000,Not in any Significant Urban Area (Vic.),2011,Melbourne,0.022977,Good,Good,0
+2000,Not in any Significant Urban Area (Vic.),2000,Not in any Significant Urban Area (Vic.),0.954771,Good,Good,0
+2001,Bacchus Marsh,2001,Bacchus Marsh,1,Good,Good,0
+2002,Bairnsdale,2002,Bairnsdale,1,Good,Good,0
+2003,Ballarat,2003,Ballarat,1,Good,Good,0
+2004,Bendigo,2004,Bendigo,1,Good,Good,0
+2005,Colac,2006,Colac,1,Good,Good,0
+2006,Echuca - Moama,2007,Echuca - Moama,1,Good,Good,0
+2007,Geelong,2008,Geelong,1,Good,Good,0
+2008,Gisborne - Macedon,2009,Gisborne,1,Good,Good,0
+2009,Horsham,2010,Horsham,1,Good,Good,0
+2010,Melbourne,2011,Melbourne,1,Good,Good,0
+2011,Melton,2000,Not in any Significant Urban Area (Vic.),0.0451403,Good,Good,0
+2011,Melton,2011,Melbourne,0.9548597,Good,Good,0
+2012,Mildura - Wentworth,2012,Mildura - Buronga,1,Good,Good,0
+2013,Moe - Newborough,2013,Moe - Newborough,1,Acceptable,Good,0
+2014,Portland,2014,Portland,1,Good,Good,0
+2015,Sale,2015,Sale,1,Good,Good,0
+2016,Shepparton - Mooroopna,2016,Shepparton - Mooroopna,1,Good,Good,0
+2017,Swan Hill,2017,Swan Hill,1,Good,Good,0
+2018,Traralgon - Morwell,2018,Traralgon - Morwell,1,Good,Good,0
+2019,Wangaratta,2019,Wangaratta,1,Good,Good,0
+2020,Warragul - Drouin,2020,Warragul - Drouin,1,Good,Good,0
+2021,Warrnambool,2021,Warrnambool,1,Good,Good,0
+3000,Not in any Significant Urban Area (Qld),3013,Mount Isa,3.07E-05,Good,Good,1
+3000,Not in any Significant Urban Area (Qld),3001,Airlie Beach - Cannonvale,0.0173446,Poor,Good,0
+3000,Not in any Significant Urban Area (Qld),3002,Brisbane,0.0186602,Good,Good,0
+3000,Not in any Significant Urban Area (Qld),3015,Sunshine Coast,0.0324192,Good,Good,0
+3000,Not in any Significant Urban Area (Qld),3000,Not in any Significant Urban Area (Qld),0.9315454,Good,Good,0
+3001,Brisbane,3000,Not in any Significant Urban Area (Qld),0.0042837,Good,Good,1
+3001,Brisbane,3002,Brisbane,0.9957163,Good,Good,0
+3002,Bundaberg,3003,Bundaberg,1,Good,Good,0
+3003,Cairns,3004,Cairns,1,Good,Good,0
+3004,Emerald,3005,Emerald,1,Good,Good,0
+3005,Gladstone - Tannum Sands,3006,Gladstone,1,Good,Good,0
+3006,Gold Coast - Tweed Heads,3000,Not in any Significant Urban Area (Qld),0.0058626,Good,Good,1
+3006,Gold Coast - Tweed Heads,3007,Gold Coast - Tweed Heads,0.9941374,Good,Good,0
+3007,Gympie,3008,Gympie,1,Good,Good,0
+3008,Hervey Bay,3009,Hervey Bay,1,Good,Good,0
+3009,Kingaroy,3010,Kingaroy,1,Good,Good,0
+3010,Mackay,3011,Mackay,1,Good,Good,0
+3011,Maryborough,3012,Maryborough,1,Good,Good,0
+3012,Mount Isa,3013,Mount Isa,1,Good,Good,0
+3013,Rockhampton,3014,Rockhampton,1,Good,Good,0
+3014,Sunshine Coast,3015,Sunshine Coast,1,Good,Good,0
+3015,Toowoomba,3016,Toowoomba,1,Good,Good,0
+3016,Townsville,3017,Townsville,1,Good,Good,0
+3017,Warwick,3018,Warwick,1,Good,Good,0
+3018,Yeppoon,3019,Yeppoon,1,Good,Good,0
+4000,Not in any Significant Urban Area (SA),4000,Not in any Significant Urban Area (SA),1,Good,Good,0
+4001,Adelaide,4001,Adelaide,1,Good,Good,0
+4002,Mount Gambier,4002,Mount Gambier,1,Good,Good,0
+4003,Murray Bridge,4003,Murray Bridge,1,Good,Good,0
+4004,Port Augusta,4004,Port Augusta,1,Good,Good,0
+4005,Port Lincoln,4005,Port Lincoln,1,Good,Good,0
+4006,Port Pirie,4006,Port Pirie,1,Good,Good,0
+4007,Victor Harbor - Goolwa,4007,Victor Harbor - Goolwa,1,Good,Good,0
+4008,Whyalla,4008,Whyalla,1,Good,Good,0
+5000,Not in any Significant Urban Area (WA),5009,Perth,0.0223835,Good,Good,0
+5000,Not in any Significant Urban Area (WA),5000,Not in any Significant Urban Area (WA),0.9776165,Good,Good,0
+5001,Albany,5001,Albany,1,Good,Good,0
+5002,Broome,5002,Broome,1,Good,Good,0
+5003,Bunbury,5003,Bunbury,1,Good,Good,0
+5004,Busselton,5004,Busselton,1,Good,Good,0
+5005,Esperance,5005,Esperance,1,Good,Good,0
+5006,Geraldton,5006,Geraldton,1,Good,Good,0
+5007,Kalgoorlie - Boulder,5007,Kalgoorlie - Boulder,1,Good,Good,0
+5008,Karratha,5008,Karratha,1,Good,Good,0
+5009,Perth,5009,Perth,1,Good,Good,0
+5010,Port Hedland,5010,Port Hedland,1,Good,Good,0
+5011,Yanchep,5009,Perth,1,Good,Good,0
+6000,Not in any Significant Urban Area (Tas.),6000,Not in any Significant Urban Area (Tas.),1,Good,Good,0
+6001,Burnie - Wynyard,6001,Burnie - Somerset,1,Good,Good,0
+6002,Devonport,6002,Devonport,1,Good,Good,0
+6003,Hobart,6003,Hobart,1,Good,Good,0
+6004,Launceston,6004,Launceston,1,Good,Good,0
+6005,Ulverstone,6005,Ulverstone,1,Good,Good,0
+7000,Not in any Significant Urban Area (NT),7000,Not in any Significant Urban Area (NT),1,Good,Good,0
+7001,Alice Springs,7001,Alice Springs,1,Good,Good,0
+7002,Darwin,7002,Darwin,1,Good,Good,0
+8000,Not in any Significant Urban Area (ACT),8001,Canberra - Queanbeyan,0.0036851,Good,Good,1
+8000,Not in any Significant Urban Area (ACT),8000,Not in any Significant Urban Area (ACT),0.9963149,Good,Good,0
+8001,Canberra - Queanbeyan,8001,Canberra - Queanbeyan,1,Good,Good,0
+9000,Not in any Significant Urban Area (OT),9000,Not in any Significant Urban Area (OT),1,Good,Good,0
+,,ZZZZ,Outside Australia,,NA,Good,3

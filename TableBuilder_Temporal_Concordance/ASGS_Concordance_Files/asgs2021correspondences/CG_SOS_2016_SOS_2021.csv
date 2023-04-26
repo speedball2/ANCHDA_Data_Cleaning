@@ -1,0 +1,108 @@
+SOS_CODE_2016,SOS_NAME_2016,SOS_CODE_2021,SOS_NAME_2021,RATIO_FROM_TO,INDIV_TO_REGION_QLTY_INDICATOR,OVERALL_QUALITY_INDICATOR,BMOS_NULL_FLAG
+10,Major Urban,10,Major Urban,0.9993008,Good,Good,0
+10,Major Urban,13,Rural Balance,0.0006992,Good,Good,1
+11,Other Urban,11,Other Urban,0.9975012,Good,Good,0
+11,Other Urban,13,Rural Balance,0.0024988,Good,Good,1
+12,Bounded Locality,11,Other Urban,0.0543559,Good,Good,0
+12,Bounded Locality,12,Bounded Locality,0.9343524,Good,Good,0
+12,Bounded Locality,13,Rural Balance,0.0112917,Good,Good,0
+13,Rural Balance,10,Major Urban,0.0062651,Good,Good,1
+13,Rural Balance,11,Other Urban,0.020768,Good,Good,0
+13,Rural Balance,12,Bounded Locality,0.0024464,Good,Good,1
+13,Rural Balance,13,Rural Balance,0.9705205,Good,Good,0
+17,Migratory - Offshore - Shipping (NSW),17,Migratory - Offshore - Shipping (NSW),1,Good,Good,0
+19,No usual address (NSW),19,No usual address (NSW),1,Good,Good,0
+20,Major Urban,20,Major Urban,0.9999351,Good,Good,0
+20,Major Urban,23,Rural Balance,6.49E-05,Good,Good,1
+21,Other Urban,20,Major Urban,0.1764775,Good,Good,0
+21,Other Urban,21,Other Urban,0.8225888,Acceptable,Good,0
+21,Other Urban,22,Bounded Locality,9.31E-05,Acceptable,Good,1
+21,Other Urban,23,Rural Balance,0.0008406,Good,Good,1
+22,Bounded Locality,20,Major Urban,0.0114485,Good,Good,0
+22,Bounded Locality,21,Other Urban,0.0972274,Acceptable,Good,0
+22,Bounded Locality,22,Bounded Locality,0.8620067,Acceptable,Good,0
+22,Bounded Locality,23,Rural Balance,0.0293174,Good,Good,0
+23,Rural Balance,20,Major Urban,0.0141789,Good,Good,0
+23,Rural Balance,21,Other Urban,0.0282847,Acceptable,Good,0
+23,Rural Balance,22,Bounded Locality,0.0017285,Acceptable,Good,1
+23,Rural Balance,23,Rural Balance,0.9558079,Good,Good,0
+27,Migratory - Offshore - Shipping (Vic.),27,Migratory - Offshore - Shipping (Vic.),1,Good,Good,0
+29,No usual address (Vic.),29,No usual address (Vic.),1,Good,Good,0
+30,Major Urban,30,Major Urban,0.9998014,Good,Good,0
+30,Major Urban,33,Rural Balance,0.0001986,Good,Good,1
+31,Other Urban,31,Other Urban,0.9937342,Good,Good,0
+31,Other Urban,32,Bounded Locality,0.0013133,Good,Good,1
+31,Other Urban,33,Rural Balance,0.0049524,Good,Good,1
+32,Bounded Locality,30,Major Urban,0.0069109,Good,Good,1
+32,Bounded Locality,31,Other Urban,0.0355735,Good,Good,0
+32,Bounded Locality,32,Bounded Locality,0.9263657,Good,Good,0
+32,Bounded Locality,33,Rural Balance,0.0311499,Good,Good,0
+33,Rural Balance,30,Major Urban,0.0133078,Good,Good,0
+33,Rural Balance,31,Other Urban,0.0233552,Good,Good,0
+33,Rural Balance,32,Bounded Locality,0.002353,Good,Good,1
+33,Rural Balance,33,Rural Balance,0.960984,Good,Good,0
+37,Migratory - Offshore - Shipping (Qld),37,Migratory - Offshore - Shipping (Qld),1,Good,Good,0
+39,No usual address (Qld),39,No usual address (Qld),1,Good,Good,0
+40,Major Urban,40,Major Urban,0.9999974,Good,Good,0
+40,Major Urban,43,Rural Balance,2.60E-06,Good,Good,1
+41,Other Urban,41,Other Urban,0.9990539,Good,Good,0
+41,Other Urban,43,Rural Balance,0.0009461,Good,Good,1
+42,Bounded Locality,40,Major Urban,0.010426,Good,Good,0
+42,Bounded Locality,41,Other Urban,0.0655935,Good,Good,0
+42,Bounded Locality,42,Bounded Locality,0.9189258,Good,Good,0
+42,Bounded Locality,43,Rural Balance,0.0050547,Good,Good,1
+43,Rural Balance,40,Major Urban,0.0035891,Good,Good,1
+43,Rural Balance,41,Other Urban,0.0135345,Good,Good,0
+43,Rural Balance,42,Bounded Locality,0.0011517,Good,Good,1
+43,Rural Balance,43,Rural Balance,0.9817247,Good,Good,0
+47,Migratory - Offshore - Shipping (SA),47,Migratory - Offshore - Shipping (SA),1,Good,Good,0
+49,No usual address (SA),49,No usual address (SA),1,Good,Good,0
+50,Major Urban,50,Major Urban,0.998957,Good,Good,0
+50,Major Urban,53,Rural Balance,0.001043,Good,Good,1
+51,Other Urban,51,Other Urban,0.9987354,Good,Good,0
+51,Other Urban,53,Rural Balance,0.0012646,Good,Good,1
+52,Bounded Locality,50,Major Urban,0.0195966,Good,Good,0
+52,Bounded Locality,51,Other Urban,0.0410661,Good,Good,0
+52,Bounded Locality,52,Bounded Locality,0.9117168,Good,Good,0
+52,Bounded Locality,53,Rural Balance,0.0276205,Good,Good,0
+53,Rural Balance,50,Major Urban,0.0189177,Good,Good,0
+53,Rural Balance,51,Other Urban,0.0155195,Good,Good,0
+53,Rural Balance,52,Bounded Locality,0.0031866,Good,Good,1
+53,Rural Balance,53,Rural Balance,0.9623762,Good,Good,0
+57,Migratory - Offshore - Shipping (WA),57,Migratory - Offshore - Shipping (WA),1,Good,Good,0
+59,No usual address (WA),59,No usual address (WA),1,Good,Good,0
+60,Major Urban,60,Major Urban,0.9997299,Good,Good,0
+60,Major Urban,63,Rural Balance,0.0002701,Good,Good,1
+61,Other Urban,61,Other Urban,0.9986487,Good,Good,0
+61,Other Urban,63,Rural Balance,0.0013513,Good,Good,1
+62,Bounded Locality,61,Other Urban,0.0609068,Good,Good,0
+62,Bounded Locality,62,Bounded Locality,0.9265872,Good,Good,0
+62,Bounded Locality,63,Rural Balance,0.012506,Good,Good,0
+63,Rural Balance,60,Major Urban,0.0027779,Good,Good,1
+63,Rural Balance,61,Other Urban,0.0092161,Good,Good,1
+63,Rural Balance,62,Bounded Locality,7.59E-05,Good,Good,1
+63,Rural Balance,63,Rural Balance,0.98793,Good,Good,0
+67,Migratory - Offshore - Shipping (Tas.),67,Migratory - Offshore - Shipping (Tas.),1,Good,Good,0
+69,No usual address (Tas.),69,No usual address (Tas.),1,Good,Good,0
+70,Major Urban,70,Major Urban,1,Good,Good,0
+71,Other Urban,71,Other Urban,0.9966719,Good,Good,0
+71,Other Urban,73,Rural Balance,0.0033281,Good,Good,1
+72,Bounded Locality,72,Bounded Locality,0.9879609,Good,Good,0
+72,Bounded Locality,73,Rural Balance,0.0120391,Good,Good,0
+73,Rural Balance,73,Rural Balance,1,Good,Good,0
+77,Migratory - Offshore - Shipping (NT),77,Migratory - Offshore - Shipping (NT),1,Good,Good,0
+79,No usual address (NT),79,No usual address (NT),1,Good,Good,0
+80,Major Urban,80,Major Urban,1,Good,Good,0
+82,Bounded Locality,82,Bounded Locality,1,Poor,Good,0
+83,Rural Balance,80,Major Urban,0.0185526,Good,Good,0
+83,Rural Balance,82,Bounded Locality,0.4413937,Poor,Good,0
+83,Rural Balance,83,Rural Balance,0.5400537,Poor,Good,0
+87,Migratory - Offshore - Shipping (ACT),87,Migratory - Offshore - Shipping (ACT),1,Good,Good,0
+89,No usual address (ACT),89,No usual address (ACT),1,Good,Good,0
+91,Other Urban,91,Other Urban,1,Good,Good,0
+92,Bounded Locality,92,Bounded Locality,1,Acceptable,Good,0
+93,Rural Balance,92,Bounded Locality,0.4312792,Acceptable,Good,0
+93,Rural Balance,93,Rural Balance,0.5687208,Poor,Good,0
+97,Migratory - Offshore - Shipping (OT),97,Migratory - Offshore - Shipping (OT),1,Good,Good,0
+99,No usual address (OT),99,No usual address (OT),1,Good,Good,0
+,,ZZ,Outside Australia,,NA,Good,3
