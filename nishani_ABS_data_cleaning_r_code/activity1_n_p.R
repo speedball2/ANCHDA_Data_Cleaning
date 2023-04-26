@@ -32,7 +32,7 @@ table_16_1 <- main_function(bmi_categories_child, "bmi_categories", filenames, "
 write.csv(as.data.frame(table_16_1), "./output/ABS_NHS_131_n_children_0_to_17_by_bmi_STE.csv", row.names = FALSE )
 
 #writing 16.3 output tables
-table_16_3 <- main_function(bmi_categories_child, "bmi_categories",filenames, "Table 16.3", "A7:F37", 7, 1, "\"#\"#,##0.0" ,  NULL, 1, "%", "NO", sex)
+table_16_3 <- main_function(bmi_categories_child, "bmi_categories",filenames, "Table 16.3", "A7:F37", 7, 1, "\"#\"#,##0.0" ,  NULL, 1, "p", "NO", sex)
 write.csv(as.data.frame(table_16_3), "./output/ABS_NHS_131_p_children_0_to_17_by_bmi_STE.csv", row.names = FALSE )
 
 #writing 8.1 output table
@@ -41,7 +41,7 @@ write.csv(as.data.frame(table_8_1),"./output/ABS_NHS_131_n_young_people_18_to_24
 
 
 #writing 8.3 output tables
-table_8_3 <- main_function(bmi_categories_young,"bmi_categories", filenames, "Table 8.3", "A7:B55", 7, 1, "\"#\"#,##0.0" ,  NULL, 1, "%", "YES", sex)
+table_8_3 <- main_function(bmi_categories_young,"bmi_categories", filenames, "Table 8.3", "A7:B55", 7, 1, "\"#\"#,##0.0" ,  NULL, 1, "p", "YES", sex)
 write.csv(as.data.frame(table_8_3),"./output/ABS_NHS_131_p_young_people_18_to_24_by_bmi_STE.csv", row.names = FALSE )
 
 
