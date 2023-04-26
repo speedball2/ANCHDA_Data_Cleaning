@@ -43,11 +43,11 @@ cleaning <- function(path, sht, range, col, nems, corder){
   
   df[df[,] == "n.a."] <- NA
   df[df[,] == "n.p."] <- NA
-  df[df[,] == "Quintile 1 (lowest)"] <- 1
-  df[df[,] == "Quintile 2"] <- 2
-  df[df[,] == "Quintile 3"] <- 3
-  df[df[,] == "Quintile 4"] <- 4
-  df[df[,] == "Quintile 5 (highest)"] <- 5
+  # df[df[,] == "Quintile 1 (lowest)"] <- 1
+  # df[df[,] == "Quintile 2"] <- 2
+  # df[df[,] == "Quintile 3"] <- 3
+  # df[df[,] == "Quintile 4"] <- 4
+  # df[df[,] == "Quintile 5 (highest)"] <- 5
   
   
   # ROUNDING:
@@ -61,6 +61,8 @@ cleaning <- function(path, sht, range, col, nems, corder){
   
   df$age_group <- 0
   
+  df$sex <- "all"
+  
   
   return(df)
 }
@@ -72,8 +74,8 @@ df1 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 3, ran
   df1 <- df1[,-2] 
 
 #RENAMING COLUMNS
-  names(df1) <- c("SA3_CODE16", "calendar_year", "total_deaths", "total_births", 
-                  "crude_rate_per_1000", "age_group")
+  names(df1) <- c("SA3_CODE16", "year_range", "totals_deaths_NMD", "totals_births_NMD", 
+                  "crude_rate_per_1000_NMD", "age_group", "sex")
   
 #ADDING AGE
   
@@ -82,22 +84,25 @@ df1 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 3, ran
 # REMOVE "SA3" FROM W/IN DATA
   
   df1$SA3_CODE16 <-gsub("SA3","",as.character(df1$SA3_CODE16))
+
+
   
 # DF2 --------------------------------------------------------------------------
-df2 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 4, range = "A30:E89", col = F)
+# df2 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 4, range = "A30:E89", col = F)
+# 
+#   #ADDING NATIONAL COLUMN   
+#   df2$Australia <- 0 
+#   
+# #RENAMING COLUMNS
+#   
+#   names(df2) <- c("irsd_quintiles","year_range", "totals_deaths_NMD", 
+#                    "totals_births_NMD", "crude_rate_per_1000_NMD", "australia", "sex", "age_group")
+#   
+#   #ADDING AGE
+#   
+#   df2["age_group"][df2["age_group"] == 0] <- "0-1"
 
-  #ADDING NATIONAL COLUMN   
-  df2$Australia <- 0 
-  
-#RENAMING COLUMNS
-  
-  names(df2) <- c("irsd_quintiles","calendar_year", "total_deaths", 
-                   "total_births", "crude_rate_per_1000", "australia", "age_group")
-  
-  #ADDING AGE
-  
-  df2["age_group"][df2["age_group"] == 0] <- "0-1"
-  
+
 
   
 # DF 3 -------------------------------------------------------------------------
@@ -109,8 +114,8 @@ df3 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 5, ran
   
 #RENAMING COLUMNS
   
-  names(df3) <- c("SA2_CODE16", "calendar_year", "total_deaths", "total_births", 
-                  "crude_rate_per_1000", "age_group")
+  names(df3) <- c("SA2_CODE16", "year_range", "totals_deaths_NMD", "totals_births_NMD", 
+                  "crude_rate_per_1000_NMD", "age_group", "sex")
   
 #ADDING AGE
   
@@ -126,8 +131,8 @@ df4 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 6, ran
 
 #RENAMING COLUMNS
   
-  names(df4) <- c("SA3_CODE16", "calendar_year", "age_group","total_deaths", 
-  "total_population_NMD","age_specific_rate_per_100,000")
+  names(df4) <- c("SA3_CODE16", "year_range", "age_group","totals_deaths_NMD", 
+  "total_population_NMD","age_specific_rate_per_100,000_NMD", "sex")
   
 # REMOVE ADDED AGE GROUP COLUMN (ALREADY DISAGG IN THIS DF)
   df4 <- df4[,-7]
@@ -138,19 +143,19 @@ df4 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 6, ran
   
 # DF 5 -------------------------------------------------------------------------
 
-df5 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 7, range = "A30:E89", col = F)
-
-#ADDING NATIONAL COLUMN   
-  df5$Australia <- 0
-  
-#RENAMING COLUMNS
-  
-  names(df5) <- c("irsd_quintiles","calendar_year", "total_deaths", 
-  "total_population_NMD", "crude_rate_per_100,000", "australia", "age_group")
-  
-  #ADDING AGE
-  
-  df5["age_group"][df5["age_group"] == 0] <- "0-17"
+# df5 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 7, range = "A30:E89", col = F)
+# 
+# #ADDING NATIONAL COLUMN   
+#   df5$Australia <- 0
+#   
+# #RENAMING COLUMNS
+#   
+#   names(df5) <- c("irsd_quintiles","year_range", "totals_deaths_NMD", 
+#   "total_population_NMD", "crude_rate_per_100,000_NMD", "australia", "age_group", "sex")
+#   
+#   #ADDING AGE
+#   
+#   df5["age_group"][df5["age_group"] == 0] <- "0-17"
   
   
 # DF 6 -------------------------------------------------------------------------
@@ -161,8 +166,8 @@ df6 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 8, ran
   df6 <- df6[,-2] 
 
 #RENAMING COLUMNS
-  names(df6) <- c("SA2_CODE16", "calendar_year", "total_deaths", 
-  "total_population_NMD","crude_rate_per_100,000", "age_group")
+  names(df6) <- c("SA2_CODE16", "year_range", "totals_deaths_NMD", 
+  "total_population_NMD","crude_rate_per_100,000_NMD", "age_group", "sex")
   
   #ADDING AGE
   
@@ -172,21 +177,21 @@ df6 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 8, ran
   
 #DF 7 --------------------------------------------------------------------------
 
-df7 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 10, range = "A30:E89", col = F)
-
-  #ADDING NATIONAL COLUMN 
-  df7$Australia <- 0 
-
-#RENAMING COLUMNS
-  
- names(df7) <- c("irsd_quintiles","calendar_year", "total_deaths", 
-  "total_population_NMD", "crude_rate_per_100,000", "australia", "age_group")
- 
- 
-#ADDING AGE
- 
- df7["age_group"][df7["age_group"] == 0] <- "18-24"
- 
+# df7 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 10, range = "A30:E89", col = F)
+# 
+#   #ADDING NATIONAL COLUMN 
+#   df7$Australia <- 0 
+# 
+# #RENAMING COLUMNS
+#   
+#  names(df7) <- c("irsd_quintiles","year_range", "totals_deaths_NMD", 
+#   "total_population_NMD", "crude_rate_per_100,000_NMD", "australia", "age_group", "sex")
+#  
+#  
+# #ADDING AGE
+#  
+#  df7["age_group"][df7["age_group"] == 0] <- "18-24"
+#  
  
  
 # DF 8 -------------------------------------------------------------------------
@@ -197,8 +202,8 @@ df8 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 11, ra
 
 #RENAMING COLUMNS
   
-  names(df8) <- c("SA2_CODE16", "calendar_year", "total_deaths", 
-  "total_population_NMD","crude_rate_per_100,000", "age_group")
+  names(df8) <- c("SA2_CODE16", "year_range", "totals_deaths_NMD", 
+  "total_population_NMD","crude_rate_per_100,000_NMD", "age_group", "sex")
   
   #ADDING AGE
   
@@ -210,11 +215,14 @@ df8 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", sht = 11, ra
 df9 <- cleaning(path = "202211_ANCHDA_suppressed_cells_SA3_persons.xlsx", sht = 3, range = "A2:G3080", col = T )
 #REMOVING SA2_NAME
   df9 <- df9[,-2] 
+  
+#REMOVING PERSONS COL
+  df9 <- df9[,-3]
 
 #RENAMING COLUMNS
   
- names(df9) <- c("SA3_CODE16",  "calendar_year", "sex", "total_deaths", 
-    "total_population_NMD","crude_rate_per_100,000", "age_group")
+ names(df9) <- c("SA3_CODE16",  "year_range", "totals_deaths_NMD", 
+    "total_population_NMD","crude_rate_per_100,000_NMD", "age_group", "sex")
  
  #ADDING AGE
  
@@ -230,11 +238,14 @@ df9 <- cleaning(path = "202211_ANCHDA_suppressed_cells_SA3_persons.xlsx", sht = 
 df10 <- cleaning(path = "202211_ANCHDA_suppressed_cells_SA3_persons.xlsx", sht = 4, range = "A2:G3080", col = T)
 #REMOVING SA2_NAME
   df10 <- df10[,-2] 
+
+#REMOVE PERSONS COL
+  df10 <- df10[,-3]
   
 #RENAMING COLUMNS
   
- names(df10) <- c("SA3_CODE16", "calendar_year", "sex", "total_deaths", 
-    "total_population_NMD","age_specific_rate_per_100,000", "age_group")
+ names(df10) <- c("SA3_CODE16", "year_range", "totals_deaths_NMD", 
+    "total_population_NMD","age_specific_rate_per_100,000_NMD", "age_group", "sex")
  
  
  #ADDING AGE
@@ -254,53 +265,53 @@ df10 <- cleaning(path = "202211_ANCHDA_suppressed_cells_SA3_persons.xlsx", sht =
  
 # as per data dictionary, other NMD  
  
-SA3 <- c("SA3_CODE16", "calendar_year")
-SA2 <- c("SA2_CODE16", "calendar_year")
-Aus <- c("australia", "calendar_year" )
+SA3 <- c("SA3_CODE16", "year_range")
+SA2 <- c("SA2_CODE16", "year_range")
+Aus <- c("australia", "year_range" )
 
 age <- c("age_group")
 sex <- c("sex")
-irsd <- c("irsd_quintiles")
+#irsd <- c("irsd_quintiles")
  
 
 # 1.1.2 INFANT MORTALITY -------------------------------------------------------
  
- infantmort <- c("total_deaths", "crude_rate_per_1000")
+ infantmort <- c("totals_deaths_NMD", "crude_rate_per_1000_NMD")
 
 #infant mortality SA3
-a <- df1[,c(SA3, age, infantmort)]
+a <- df1[,c(SA3, age, sex, infantmort)]
 
 #infant mortality national, irsd
-b <- df2[,c(Aus, age, irsd, infantmort)]
+#b <- df2[,c(Aus, age, sex, irsd, infantmort)]
 
 # infant mortality SA2
-c <- df3[,c(SA2, age, infantmort)]
+c <- df3[,c(SA2, age, sex, infantmort)]
  
 # 1.1.1O BIRTHS ----------------------------------------------------------------
  
  
- birth <- c("total_births", "crude_rate_per_1000")
+ birth <- c("totals_births_NMD", "crude_rate_per_1000_NMD")
  
 #births SA3
- d <- df1[,c(SA3, age, birth)]
+ d <- df1[,c(SA3, age, sex, birth)]
  
  #infant births national, irsd
- e <- df2[,c(Aus, age, irsd, birth)]
+# e <- df2[,c(Aus, age, sex, irsd, birth)]
  
  #infant mortality SA2
- f <- df3[,c(SA2, age, birth)]
+ f <- df3[,c(SA2, age, sex, birth)]
 
  
 
 # 1.21.1 MORTALITY 0-17 --------------------------------------------------------
 # 1.21.2 YOUNG PEOPLE MORTALITY 18-24 ------------------------------------------ 
  
-mort1.1 <- c("total_deaths", "total_population_NMD","age_specific_rate_per_100,000")
+mort1.1 <- c("totals_deaths_NMD", "total_population_NMD","age_specific_rate_per_100,000_NMD")
 
-mort1.2 <- c("total_deaths", "total_population_NMD", "crude_rate_per_100,000")
+mort1.2 <- c("totals_deaths_NMD", "total_population_NMD", "crude_rate_per_100,000_NMD")
 
 #SA3 0-17 mortality, age 
-g <- df4[,c(SA3, age, mort1.1)]
+g <- df4[,c(SA3, age, sex, mort1.1)]
 
 #SA3 mortality 0-17, sex
 m <- df9[,c(SA3, age, sex, mort1.2)]
@@ -311,21 +322,27 @@ n <- df10[,c(SA3, age, sex, mort1.1)]
 # ------------------------------------------------------------------------------
 
 #national mortality, irsd, 0-17
-h <- df5[,c(Aus, age, irsd, mort1.2)]
+#h <- df5[,c(Aus, age, sex, irsd, mort1.2)]
+
+# RENAMING CALENDAR COLUMNS
+#colnames(h)[colnames(h) == "year_range"] ="calendar_year"
 
 #national, irsd 18-24 
 
-j <- df7[,c(Aus, age, irsd, mort1.2)]
+#j <- df7[,c(Aus, age, sex,irsd, mort1.2)]
+
+# RENAMING CALENDAR COLUMNS
+#colnames(j)[colnames(j) == "year_range"] ="calendar_year"
 
 # ------------------------------------------------------------------------------
 
 #SA2 mortality 0-17
 
-i <- df6[,c(SA2, age, mort1.2)]
+i <- df6[,c(SA2, age, sex, mort1.2)]
 
 #SA2 mortality 18-24
 
- k <- df8[,c(SA2, age, mort1.2)]
+ k <- df8[,c(SA2, age, sex, mort1.2)]
 
 
  # MERGING TOGETHER ------------------------------------------------------------
@@ -344,27 +361,27 @@ i <- df6[,c(SA2, age, mort1.2)]
  
 # 1.1.2 INFANT MORTALITY CSVS 
  
- write.csv(a, "../../../Data_Collections_INTERIM/NMD_112_infant_mortality_SA3.csv", row.names = F)
- write.csv(b, "../../../Data_Collections_INTERIM/NMD_112_infant_mortality_National.csv", row.names = F)
- write.csv(c, "../../../Data_Collections_INTERIM/NMD_112_infant_mortality_SA2.csv", row.names = F)
+ write.csv(a, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_112_infant_mortality_SA3.csv", row.names = F)
+ #write.csv(b, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_112_infant_mortality_National.csv", row.names = F)
+ write.csv(c, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_112_infant_mortality_SA2.csv", row.names = F)
  
  
 # 1.1.1O BIRTHS CSVS
  
- write.csv(d, "../../../Data_Collections_INTERIM/NMD_1110_infant_births_SA3.csv", row.names = F)
- write.csv(e, "../../../Data_Collections_INTERIM/NMD_1110_infant_births_National.csv", row.names = F)
- write.csv(f, "../../../Data_Collections_INTERIM/NMD_1110_infant_births_SA2.csv", row.names = F)
+ write.csv(d, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1110_infant_births_SA3.csv", row.names = F)
+ #write.csv(e, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1110_infant_births_National.csv", row.names = F)
+ write.csv(f, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1110_infant_births_SA2.csv", row.names = F)
  
  
 # 1.21.1 MORTALITY CSVS 
 
- write.csv(gm, "../../../Data_Collections_INTERIM/NMD_1211_mortality_SA3.csv", row.names = F)
- write.csv(h, "../../../Data_Collections_INTERIM/NMD_1211_mortality_national.csv", row.names = F)
- write.csv(i, "../../../Data_Collections_INTERIM/NMD_1211_mortality_SA2.csv", row.names = F)
+ write.csv(gm, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1211_mortality_SA3.csv", row.names = F)
+ #write.csv(h, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1211_mortality_national.csv", row.names = F)
+ write.csv(i, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1211_mortality_SA2.csv", row.names = F)
  
  # 1.21.2 YOUNG PEOPLE MORTALITY CSVS 
  
- write.csv(n, "../../../Data_Collections_INTERIM/NMD_1212_young_people_mortality_SA3.csv", row.names = F)
- write.csv(j, "../../../Data_Collections_INTERIM/NMD_1212_young_people_mortality_national.csv", row.names = F)
- write.csv(j, "../../../Data_Collections_INTERIM/NMD_1212_young_people_mortality_SA2.csv", row.names = F)
+ write.csv(n, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA3.csv", row.names = F)
+ #write.csv(j, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_national.csv", row.names = F)
+ write.csv(k, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA2.csv", row.names = F)
  
