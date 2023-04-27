@@ -71,7 +71,7 @@ TB_Census_cleaning_fn_individual <- function(data_file_base, data_item_name, cal
     # Fix column names
     # Geography
     if(i<5){names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
-    if(i==5){names(data_temp)[grepl("tate|TATE", names(data_temp)[])] <- "State"} #change col name for geography up to state
+    if(i==5){names(data_temp)[grep("\\b(State|STATE)\\b", names(data_temp)[], ignore.case = TRUE, perl = TRUE)] <- "State"} #change col name for geography up to state
     if(i==6){names(data_temp)[grepl("tralia", names(data_temp)[])] <- "Australia"} #change col name for geography up to state
     
     
@@ -212,7 +212,7 @@ TB_Census_cleaning_fn_dwelling <- function(data_file_base, data_item_name, calen
     }
     else{
       if(i<5){names(data_temp)[grepl(geog_list[i], names(data_temp)[])] <- paste0(geog_list[i],"_CODE_",calendar_year)} #change col name for geography up to state
-      if(i==5){names(data_temp)[grepl("tate|TATE", names(data_temp)[])] <- "State"} #change col name for geography up to state
+      if(i==5){names(data_temp)[grep("\\b(State|STATE)\\b", names(data_temp)[], ignore.case = TRUE, perl = TRUE)] <- "State"} #change col name for geography up to state
       if(i==6){names(data_temp)[grepl("tralia", names(data_temp)[])] <- "Australia"} #change col name for geography up to state
     }
     

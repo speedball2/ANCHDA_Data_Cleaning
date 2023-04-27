@@ -1,0 +1,146 @@
+---
+title: "Fixing Census Variables 26/04/23"
+author: "Owen Forbes"
+date: "26/04/2023"
+output: html_document
+---
+
+
+# Cleaning up Census datasets - fixed column names and variables.
+
+Each code chunk loops over the 6 geographies for one census dataset.
+
+
+```{r setup, include=FALSE}
+library(tidyverse)
+
+
+census_geog_types <- c("LGA", "SA2", "SA3", "SA4", "State", "Australia")
+```
+
+
+
+
+Fixing Unemployment - keeping only n_young_people_unemployed_seeking_full_time_work
+
+```{r}
+
+fixing_unemployment <- function(geog){
+  
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_unemployment_",geog,".csv"))
+  
+  names(temp_data)[5] <- "n_young_people_unemployed_seeking_full_time_work" #rename variable
+  
+  temp_data <- temp_data %>% filter(lfhrp_labour_force_status == "Unemployed, looking for full-time work") #keep only this level
+  
+  temp_data <- temp_data[,-4] #drop old/un-needed filter column
+  
+  if(geog == "Australia"){temp_data$Australia <- rep("Australia", length(temp_data[,1]))}
+  
+  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/census_unemployment_",geog,".csv"), row.names = F)
+}
+  
+  
+for (geog_i in census_geog_types) {
+  fixing_unemployment(geog_i)
+}
+  
+```
+
+
+
+Fixing Internet connection type - renaming cols  internet_connection_type +  n_private_dwellings 
+
+```{r}
+
+
+
+fixing_internet <- function(geog){
+  
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_internet_connection_",geog,".csv"))
+  
+  names(temp_data)[2] <- "internet_connection_type"
+  
+  names(temp_data)[3] <- "n_private_dwellings"
+  
+  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/census_internet_connection_",geog,".csv"), row.names = F)
+}
+  
+  
+
+for (geog_i in census_geog_types) {
+  fixing_internet(geog_i)
+}
+```
+
+
+Fixing Internet connection type - renaming cols  internet_connection_type +  n_private_dwellings 
+
+```{r}
+
+
+
+fixing_internet <- function(geog){
+  
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_internet_connection_",geog,".csv"))
+  
+  names(temp_data)[2] <- "internet_connection_type"
+  
+  names(temp_data)[3] <- "n_private_dwellings"
+  
+  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/census_internet_connection_",geog,".csv"), row.names = F)
+}
+  
+  
+
+for (geog_i in census_geog_types) {
+  fixing_internet(geog_i)
+}
+```
+
+
+Fixing Tenure type - renaming cols  tenure_type and n_private_dwellings
+
+```{r}
+
+fixing_tenure <- function(geog){
+  
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_tenure_type_",geog,".csv"))
+  
+  names(temp_data)[2] <- "tenure_type"
+  
+  names(temp_data)[3] <- "n_private_dwellings"
+  
+  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/census_tenure_type_",geog,".csv"), row.names = F)
+}
+  
+  
+
+for (geog_i in census_geog_types) {
+  fixing_tenure(geog_i)
+}
+```
+
+
+
+Fixing One Parent Families - keeping cols n_of_one_parent_families_with_non_dependent_children_only and n_of_one_parent_families_with_children_under_15_years_old
+
+```{r}
+
+fixing_oneparent <- function(geog){
+  
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_tenure_type_",geog,".csv"))
+  
+  names(temp_data)[2] <- "tenure_type"
+  
+  names(temp_data)[3] <- "n_private_dwellings"
+  
+  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/census_tenure_type_",geog,".csv"), row.names = F)
+}
+  
+  
+
+for (geog_i in census_geog_types) {
+  fixing_tenure(geog_i)
+}
+```

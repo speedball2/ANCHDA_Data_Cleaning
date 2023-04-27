@@ -665,13 +665,6 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   
   
-  out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) 
-  
-  if(GEO_TYPE == "STE"){out_df_all_years <- out_df_all_years %>% mutate(State = recode(State, "1"=1,"2"=2,"3"=3,"4"=4,"5"=5,"6"=6,"7"=7,"8"=8,"9"=9,
-                                                                                       "New South Wales" = 1, "Victoria" = 2, "Queensland" = 3, "South Australia" = 4, 
-                                                                                       "Western Australia" = 5, "Tasmania" = 6, "Northern Territory" = 7, 
-                                                                                       "Australian Capital Territory" = 8, "Other Territories" = 9))
-  }
   
   if(length(FILTER_VARS) <= 2){
     out_df_all_years <- rbind(out_df_2006,out_df_2011,out_df_2016,out_df_2021) %>% arrange(calendar_year,.data[[GEO_TO]])
@@ -682,6 +675,20 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # FORMATTING CONSISTENCY CHECKS ON FINAL ASSEMBLED DATASET
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+  
+  # fix state/national names
+  
+  
+  if(GEO_TYPE == "STE"){out_df_all_years <- out_df_all_years %>% mutate(State = recode(State, "1"=1,"2"=2,"3"=3,"4"=4,"5"=5,"6"=6,"7"=7,"8"=8,"9"=9,
+                                                                                       "New South Wales" = 1, "Victoria" = 2, "Queensland" = 3, "South Australia" = 4, 
+                                                                                       "Western Australia" = 5, "Tasmania" = 6, "Northern Territory" = 7, 
+                                                                                       "Australian Capital Territory" = 8, "Other Territories" = 9))
+  }
+  
+  
+  if(GEO_TYPE == "national"){out_df_all_years <- out_df_all_years %>% mutate(Australia = recode(Australia, "0"="Australia","Australia"="Australia"))
+  }
+  
   
   #1. put geography column first, then age_group, sex, then other filter vars, then values column
   
