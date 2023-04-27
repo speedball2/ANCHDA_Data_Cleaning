@@ -24,7 +24,7 @@ filenames <- list.files("./data", pattern="*.xlsx", full.names=TRUE)
 ##################################################################################
 #physical activity
 
-physical_categories_young <- c("met guidelines", "did not meet guidelines","total(c)")
+physical_categories_young <- c("met guidelines", "did not meet guidelines")
 
 ###################################
 indicator_name <- "2014_PA_guidelines_any"
@@ -59,7 +59,7 @@ write.csv(table_13_1_5_9, paste("./output/ABS_NHS_132_n_young_people_18_to_24_PA
 
 indicator_name <-"days_PA_last_week"
 
-physical_categories_young <- c("none", "1–4","5–6", "7", "5 or more", "total(e)")
+physical_categories_young <- c("none", "1–4","5–6", "7", "5 or more")
 
 
 #table_13_1 <- main_function(physical_categories_young, indicator_name, filenames, "Table 13.1", "A7:C49", 7, 35, "\"*\"#,##0.0",  "\"**\"#,##0.0", 1000, "n", "YES", "persons")
@@ -77,7 +77,7 @@ write.csv(table_13_1_5_9, paste("./output/ABS_NHS_132_n_young_people_18_to_24_PA
 
 indicator_name <-"days_exercise_last_week"
 
-physical_categories_young <- c("none", "1–4","5–6", "7", "5 or more", "total(e)")
+physical_categories_young <- c("none", "1–4","5–6", "7", "5 or more")
 
 
 #table_13_1 <- main_function(physical_categories_young, indicator_name, filenames, "Table 13.1", "A7:C57", 7, 43, "\"*\"#,##0.0",  "\"**\"#,##0.0", 1000, "n", "YES", "persons")
@@ -95,7 +95,7 @@ write.csv(table_13_1_5_9, paste("./output/ABS_NHS_132_n_young_people_18_to_24_PA
 
 
 indicator_name <- "min_PA_last_week"
-physical_categories_young <- c("0 minutes", "between 1 and 149 minutes","between 150 and 300 minutes", "between 150 and 300 minutes", "more than 300 minutes", "total 150 minutes or more", "total(e)")
+physical_categories_young <- c("0 minutes", "between 1 and 149 minutes","between 150 and 300 minutes", "between 150 and 300 minutes", "more than 300 minutes", "total 150 minutes or more")
 
 
 #table_13_1 <- main_function(physical_categories_young, indicator_name, filenames, "Table 13.1", "A7:C26", 7, 12, "\"*\"#,##0.0",  "\"**\"#,##0.0", 1000, "n", "YES", "persons")
@@ -113,7 +113,7 @@ write.csv(table_13_1_5_9, paste("./output/ABS_NHS_132_n_young_people_18_to_24_PA
 
 
 indicator_name <- "min_exercise_last_week"
-physical_categories_young <- c("0 minutes", "between 1 and 149 minutes","between 150 and 300 minutes", "between 150 and 300 minutes", "more than 300 minutes", "total 150 minutes or more", "total(e)")
+physical_categories_young <- c("0 minutes", "between 1 and 149 minutes","between 150 and 300 minutes", "between 150 and 300 minutes", "more than 300 minutes", "total 150 minutes or more")
 
 
 #table_13_1 <- main_function(physical_categories_young, "min_exercise_last_week", filenames, "Table 13.1", "A7:C34", 7, 20, "\"*\"#,##0.0",  "\"**\"#,##0.0", 1000, "n", "YES", "persons")

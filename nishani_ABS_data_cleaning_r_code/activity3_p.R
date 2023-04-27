@@ -1,29 +1,4 @@
-#nutrition 
 
-nutrition_categories_children <- c("met recommendation(c)", "did not meet recommendation","total")
-indicator_name = "daily_consumption_fruit"
-#table_13_1 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:C13", 7, 1, "\"#\"#,##0.0",  NULL, 1, "n", "YES", "persons")
-table_13_5 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:F98", 7, 86, "\"#\"#,##0.0",  NULL, 1, "p", "YES", "males")
-
-table_13_9 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:F165", 7, 153, "\"#\"#,##0.0",  NULL, 1, "p", "YES", "females")
-
-
-table_13_1_5_9 <- rbind(table_13_5, table_13_9)
-write.csv(table_13_1_5_9, paste("./output/ABS_NHS_133_nutrition_p_children_", indicator_name, "_STE.csv", sep = ""), row.names = FALSE)
-
-#--------------------------------
-
-indicator_name = "daily_consumption_vegetables"
-#table_13_1 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:C13", 7, 1, "\"#\"#,##0.0",  NULL, 1, "n", "YES", "persons")
-table_13_5 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:F103", 7, 91, "\"#\"#,##0.0",  NULL, 1, "p", "YES", "males")
-
-table_13_9 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:F170", 7, 158, "\"#\"#,##0.0",  NULL, 1, "p", "YES", "females")
-
-
-table_13_1_5_9 <- rbind(table_13_5, table_13_9)
-write.csv(table_13_1_5_9, paste("./output/ABS_NHS_133_nutrition_p_children_", indicator_name, "_STE.csv", sep = ""), row.names = FALSE)
-
-#---------------------
 
 
 #this allows user to get the output files for count - bmi indicators 
@@ -47,8 +22,35 @@ site_cat <- 1:8
 
 #getting name of the xls files in the data folder
 filenames <- list.files("./data", pattern="*.xlsx", full.names=TRUE)
+
+#nutrition 
+
+nutrition_categories_children <- c("met recommendation(c)", "did not meet recommendation")
+indicator_name = "daily_consumption_fruit"
+#table_13_1 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:C13", 7, 1, "\"#\"#,##0.0",  NULL, 1, "n", "YES", "persons")
+table_13_5 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:F98", 7, 86, "\"#\"#,##0.0",  NULL, 1, "p", "YES", "males")
+
+table_13_9 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:F165", 7, 153, "\"#\"#,##0.0",  NULL, 1, "p", "YES", "females")
+
+
+table_13_1_5_9 <- rbind(table_13_5, table_13_9)
+write.csv(table_13_1_5_9, paste("./output/ABS_NHS_133_nutrition_p_children_", indicator_name, "_STE.csv", sep = ""), row.names = FALSE)
+
+#--------------------------------
+
+indicator_name = "daily_consumption_vegetables"
+#table_13_1 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:C13", 7, 1, "\"#\"#,##0.0",  NULL, 1, "n", "YES", "persons")
+table_13_5 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:F103", 7, 91, "\"#\"#,##0.0",  NULL, 1, "p", "YES", "males")
+
+table_13_9 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:F170", 7, 158, "\"#\"#,##0.0",  NULL, 1, "p", "YES", "females")
+
+
+table_13_1_5_9 <- rbind(table_13_5, table_13_9)
+write.csv(table_13_1_5_9, paste("./output/ABS_NHS_133_nutrition_p_children_", indicator_name, "_STE.csv", sep = ""), row.names = FALSE)
+
+#---------------------
 ######################################3
-nutrition_categories_children <- c("did not consume", "1 metric cup or less","more than 1 to less than 2 cups", "2 metric cups or more", "total")
+nutrition_categories_children <- c("did not consume", "1 metric cup or less","more than 1 to less than 2 cups", "2 metric cups or more")
 
 indicator_name = "usual_consumption_selected_sugar_sweetened_diet_drinks"
 #table_13_1 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 17.3", "A7:C13", 7, 1, "\"#\"#,##0.0",  NULL, 1, "n", "YES", "persons")

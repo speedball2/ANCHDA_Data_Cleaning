@@ -23,7 +23,7 @@ filenames <- list.files("./data", pattern="*.xlsx", full.names=TRUE)
 #############################################
 #psychological  
 
-psychological_categories_young_people <- c("low distress level", "moderate distress level","high/very high distress level", "total(b)")
+psychological_categories_young_people <- c("low distress level", "moderate distress level","high/very high distress level")
 indicator_name = "psychological_distress"
 #table_13_1 <- main_function(nutrition_categories_children, indicator_name, filenames, "Table 13.1", "A7:C13", 7, 1, "\"*\"#,##0.0",  "\"**\"#,##0.0", 1000, "n", "YES", "persons")
 table_13_5 <- main_function(psychological_categories_young_people, indicator_name, filenames, "Table 7.1", "A7:B19", 7, 7, "\"*\"#,##0.0",  "\"**\"#,##0.0", 1000, "n", "YES", "males")
