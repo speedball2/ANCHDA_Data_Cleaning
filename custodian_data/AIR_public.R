@@ -1,6 +1,6 @@
 
---
 # Harriette's WD
+
 setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/public_data/Immunisation_SA3")
 
 #---------------#
@@ -15,17 +15,24 @@ library(tidyr)
 #---reading in excel function---#
 #-------------------------------#
 
-cleaning <- function(sht, range){
+cleaning <- function(path, sht, range, col){
   #path = file path, sht = Sheet number, range = column range, col = col names (T/F) 
   
-  df <- as.data.frame(read_xlsx("AIHWMEDICARE_Immunisationratesforchildren_SA4.xlsx",
+  df <- as.data.frame(read_xlsx(path,
                                 sht,
                                 range,
-                                T))
+                                col))
   
   #REMOVING NP AND # 
   df[df[,] == "NP"] <- NA
   df[df[,] == "#"] <- "1"
+  
+  
+  #Note for QA:
+  #  as per sheet one of per raw data "*" in this instance means Interpret with caution:
+  #This area’s eligible population is between 26 and 100 registered children. 
+  #I have just left as the end column, as in raw data but changed the symbol from # to 1 
+  
   
   #REMOVING "YEARS" IN AGE COLUMN
 
@@ -47,42 +54,40 @@ cleaning <- function(sht, range){
     }
   }
   
-  df$sex <- "ALL"
+  df$sex <- "all"
+  
+  df$age_group <- "0-5"
   
   return(df)
   
 }
 #National Data -----------------------------------------------------------------
-  df1 <- cleaning(
-          sht = 2, 
-          range = "A16:F34")
+  df1 <- cleaning("AIHWMEDICARE_Immunisationratesforchildren_SA4.xlsx", 2, "A16:F34", T)
   
 #RENAMING COLUMNS  
-  names(df1) <- c("year_range", "age_group", "N_of_children_registered_immunisation", 
-                  "N_fully_immunised",
-                  "N_not_fully_immunised", 
-                  "%_full_immunised")
+  names(df1) <- c("year_range", "age_fully_immunised_AIR_public", "n_of_children_registered_immunisation_AIR_public", 
+                  "n_fully_immunised_AIR_public",
+                  "n_not_fully_immunised_AIR_public", 
+                  "p_full_immunised_AIR_public","sex", "age_group")
   
   
  # ADDING NATIONAL COLUMN   
 df1$Australia <- 0
 
 
-#ADDING SEX COLUMN
-df1$sex <- "ALL"
+
 
 #BRINGING NATIONAL COLUMN TO FRONT 
-corder <- c("Australia", "year_range", "age_group", "sex", "N_of_children_registered_immunisation", 
-            "N_fully_immunised",
-            "N_not_fully_immunised", 
-            "%_full_immunised")
+corder <- c("Australia", "year_range", "age_group", "sex","age_fully_immunised_AIR_public",  "n_of_children_registered_immunisation_AIR_public", 
+            "n_fully_immunised_AIR_public",
+            "n_not_fully_immunised_AIR_public", 
+            "p_full_immunised_AIR_public")
 
 df1 <- df1[,corder]
   
   
 #SA4 Data ----------------------------------------------------------------------
-  df2 <- cleaning(sht = 7, 
-                  range = "B17:J281")
+  df2 <- cleaning("AIHWMEDICARE_Immunisationratesforchildren_SA4.xlsx", 7, "B17:J281", T)
 
 
 #REMOVE STATE NAMES COLUMN 
@@ -91,38 +96,31 @@ df2 <- df2[,-2]
   
 #RENAMING COLUMNS 
 
-names(df2) <- c("SA4_CODE16", "year_range", "age_group", "N_of_children_registered_immunisation", "N_fully_immunised","N_not_fully_immunised", 
-            "%_full_immunised", "uncertainty_AIR", "sex")
+names(df2) <- c("SA4_CODE16", "year_range", "age_fully_immunised_AIR_public", "n_of_children_registered_immunisation_AIR_public", "n_fully_immunised_AIR_public","n_not_fully_immunised_AIR_public", 
+            "p_full_immunised_AIR_public", "uncertainty_AIR_public", "sex", "age_group")
 
 
 #REORDERING COLS
-corder <- c("SA4_CODE16", "year_range", "age_group", "sex", "N_of_children_registered_immunisation", 
-            "N_fully_immunised", "N_not_fully_immunised", "%_full_immunised", "uncertainty_AIR")
+corder <- c("SA4_CODE16", "year_range", "age_group", "sex", "age_fully_immunised_AIR_public", "n_of_children_registered_immunisation_AIR_public", 
+            "n_fully_immunised_AIR_public", "n_not_fully_immunised_AIR_public", "p_full_immunised_AIR_public", "uncertainty_AIR_public")
 
 df2 <- df2[,corder]
 
 
-#Note for QA:
-#  as per sheet one of per raw data "*" in this instance means Interpret with caution:
-#This area’s eligible population is between 26 and 100 registered children. 
-#I have just left as the end column, as in raw data but changed the symbol from # to 1 
-
-
 #SA3 Data 
-df3 <- cleaning(sht = 4, 
-                  range = "B16:J1018")
+df3 <- cleaning("AIHWMEDICARE_Immunisationratesforchildren_SA4.xlsx", 4, "B16:J1018", T)
   
 #REMOVE STATE NAMES COLUMN 
 df3 <- df3[,-2]
   
 #RENAMING COLUMNS 
 
-names(df3) <- c("SA3_CODE16", "year_range", "age_group", "N_of_children_registered_immunisation", "N_fully_immunised","N_not_fully_immunised", 
-                  "%_full_immunised", "uncertainty_AIR", "sex")
+names(df3) <- c("SA3_CODE16", "year_range", "age_fully_immunised_AIR_public", "n_of_children_registered_immunisation_AIR_public", "n_fully_immunised_AIR_public","n_not_fully_immunised_AIR_public", 
+                  "p_full_immunised_AIR_public", "uncertainty_AIR_public", "sex", "age_group")
 
 #REORDERING COLS
-corder <- c("SA3_CODE16", "year_range", "age_group", "sex", "N_of_children_registered_immunisation", 
-            "N_fully_immunised", "N_not_fully_immunised", "%_full_immunised", "uncertainty_AIR")
+corder <- c("SA3_CODE16", "year_range", "age_group", "sex", "age_fully_immunised_AIR_public",  "n_of_children_registered_immunisation_AIR_public", 
+            "n_fully_immunised_AIR_public", "n_not_fully_immunised_AIR_public", "p_full_immunised_AIR_public", "uncertainty_AIR_public")
 
 df3 <- df3[,corder]
   

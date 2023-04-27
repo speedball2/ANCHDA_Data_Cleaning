@@ -1,5 +1,5 @@
 #set working directory ---------------------------------------------------------
-
+setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/from_custodians/SHSC_SA3")
 
 #---------------------------#
 #--------libraries----------#
@@ -26,7 +26,7 @@ df1 <-read_excel(col_names = F, path = "Request 4958 SHSC ANCHDA Atlas ad hoc (1
                  sheet = 2,
                  range = "A3:F20106")
 
-colnames(df1) <- c("SA3_CODE16","SA3_NAME16","age_group","sex", "calendar_year", "client_count_SHSC")
+colnames(df1) <- c("SA3_CODE16","SA3_NAME16","age_group","sex", "year_range", "client_count_SHSC")
 
 df1$SA3_NAME16 <- NULL
 
@@ -38,7 +38,7 @@ df2 <- read_excel(col_names = F, path = "Request 4958 SHSC ANCHDA Atlas ad hoc (
                   sheet = 3,
                   range = "A3:F60314")
 
-colnames(df2) <- c("SA3_CODE16","SA3_NAME16","age_group", "calendar_year", "presenting_unit_type_SHSC", "client_count_SHSC")
+colnames(df2) <- c("SA3_CODE16","SA3_NAME16","age_group", "year_range", "presenting_unit_type_SHSC", "client_count_SHSC")
 
 df2$SA3_NAME16 <- NULL
 
@@ -50,29 +50,43 @@ df3 <- read_excel(col_names = F, path = "Request 4958 SHSC ANCHDA Atlas ad hoc (
                   sheet = 4,
                   range = "A3:F60314")
 
-colnames(df3) <- c("SA3_CODE16","SA3_NAME16","age_group", "calendar_year", "main_reasons_seeking_assistance_SHSC", "client_count_SHSC")
+colnames(df3) <- c("SA3_CODE16","SA3_NAME16","age_group", "year_range", "main_reasons_seeking_assistance_SHSC", "client_count_SHSC")
 
 df3$SA3_NAME16 <- NULL
 
 
-#----------------------------------------#
-#-------- merging by indicator ----------#
-#----------------------------------------#
+#-------------------------------------------------------------------------------
 
-# merging by indicator ---------------------------------------------------------
+cleaning <- function(df){
+  
+  #REMOVING CAPITALS FOR M/F
+  
+  if("sex" %in% names(df)){
+    df$sex <- recode(df$sex,
+                       "Female" = "female",
+                       "Male" = "male",)
+    
+  }
 
-# 2.9.1 housing amenity: homelessness ------------------------------------------
+  
+  df <- df[!grepl("Total", df$age_group),]
+  
+  return(df)
+  
+}
 
-half <- merge(df1,df2,by = intersect(names(df1), names(df2)), all.x = T)
-full <- merge(half,df3,by = intersect(names(half), names(df3)), all.x = T)
+df1 <- cleaning(df1)
+df2 <- cleaning(df2)
+df3 <- cleaning(df3)
 
-col_order <- c("SA3_CODE16","calendar_year", "age_group", "client_count_SHSC", "main_reasons_seeking_assistance_SHSC" , "presenting_unit_type_SHSC")
-full <- full[,col_order]
+
 
 #---------------------------#
 #--------write csv----------#
 #---------------------------#
 
- write.csv(full, file = "SHSC_191_homelessness_SA3", row.names = F)
-
+ write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_191_homelessness_client_count_SA3", row.names = F)
+ write.csv(df2, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_191_homelessness_presenting_unit_type_count_SA3", row.names = F)
+ write.csv(df3, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_191_homelessness_main_reason_seeking_assistance_SA3", row.names = F)
+ 
 
