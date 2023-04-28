@@ -1,6 +1,9 @@
 setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/from_custodians/ASSAD_STE_national")
 
 
+#split age range out - national 
+
+
 # ----------------- #
 # --- libraries --- #
 # ----------------- #
@@ -102,6 +105,7 @@ df0 <- df0[,-2]
 # REMOVE TOTAL COLS
 
 df0 <- df0[!grepl("_total", df0$sex),]
+df0 <- df0[!grepl("total", df0$age_group),]
 
 #CHANGING COL NAMES FOR DATA DIC STANDARD
 
@@ -110,6 +114,16 @@ df0 <- df0 %>%
 
 df0 <- df0 %>% 
   rename_with(~ gsub("N_", "n_", .x, fixed = TRUE))
+
+
+
+# Subset based on single values
+df_single <- subset(df0, !grepl("-", age_group))
+
+# Subset based on ranges
+df_range <- subset(df0, grepl("-", age_group))
+
+
 
 
 # STE SPECIFIC FUNCTIONS -------------------------------------------------------
@@ -139,6 +153,7 @@ rem <- function(df){
   return(df)
   
 }
+
 #STE ---------------------------------------------------------------------------
 
 #NSW 
@@ -245,10 +260,21 @@ reorder <- function(df, corder){
   colnames(df)[colnames(df) == "n_accessed_last_alcoholic_drink_from_bought_themselves_"] ="n_accessed_last_alcoholic_drink_from_bought_themselves"
   
 
+  #REMOVE TOTAL
+  
+  df <- df[!grepl("total", df$sex),]
+
+  
+  # MAKE VALUES W/IN CELLS LOWER CASE 
+  
+  df[] <- lapply(df, tolower)
+  
   return(df)
 }
 
-df0 <- reorder(df0, corder = corder1)
+
+df_range <- reorder(df_range, corder = corder1)
+df_single <- reorder(df_single, corder = corder1)
 df1 <- reorder(df1, corder = corder2)
 df2 <- reorder(df2, corder = corder2)
 df3 <- reorder(df3, corder = corder2)
@@ -302,24 +328,47 @@ cig <- c("n_ever_e-cigarette_users_ASSAD", "p_ever_e-cigarette_users_ASSAD",
 
 # SEPERATING BY INDICATOR ------------------------------------------------------
 
-#NATIONAL 
+#NATIONAL SINGLE AGE
 
 #1.9.1 SMOKING
 
-nsmo <- df0[,c(n,smo)]
+s_nsmo <- df_single[,c(n,smo)]
 
 #1.9.2 ALCOHOL
 
-nalc <- df0[,c(n, alc)]
+s_nalc <- df_single[,c(n, alc)]
 
 #1.9.3 DRUGS
 
-ndru <- df0[,c(n, dru)]
+s_ndru <- df_single[,c(n, dru)]
 
 #1.9.4 E-CIGS
 
-ncig <- df0[,c(n, cig)]
+s_ncig <- df_single[,c(n, cig)]
 
+
+# -----------------------------------------------------------------------------
+
+#NATIONAL AGE RANGE
+
+#1.9.1 SMOKING
+
+r_nsmo <- df_range[,c(n,smo)]
+
+#1.9.2 ALCOHOL
+
+r_nalc <- df_range[,c(n, alc)]
+
+#1.9.3 DRUGS
+
+r_ndru <- df_range[,c(n, dru)]
+
+#1.9.4 E-CIGS
+
+r_ncig <- df_range[,c(n, cig)]
+
+
+# ------------------------------------------------------------------------------
 
 #STE 
 
@@ -339,17 +388,24 @@ scig <- STE[,c(s, cig)]
 
 # WRITE CSVS -------------------------------------------------------------------
 
-#NATIONAL
-write.csv(nsmo, "../../../Data_Collections_INTERIM/ASSAD_191_smoking_National.csv", row.names = F)
-write.csv(nalc, "../../../Data_Collections_INTERIM/ASSAD_192_alcohol_National.csv", row.names = F)
-write.csv(ndru, "../../../Data_Collections_INTERIM/ASSAD_193_drugs_National.csv", row.names = F)
-write.csv(ncig, "../../../Data_Collections_INTERIM/ASSAD_194_e_cigarettes_National.csv", row.names = F)
+#NATIONAL SINGLE AGE
+write.csv(s_nsmo, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_191_smoking_National_single_age.csv", row.names = F)
+write.csv(s_nalc, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_192_alcohol_National_single_age.csv", row.names = F)
+write.csv(s_ndru, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_193_drugs_National_single_age.csv", row.names = F)
+write.csv(s_ncig, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_194_e_cigarettes_National_single_age.csv", row.names = F)
+
+#NATIONAL AGE RANGE
+write.csv(r_nsmo, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_191_smoking_National_age_range.csv", row.names = F)
+write.csv(r_nalc, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_192_alcohol_National_age_range.csv", row.names = F)
+write.csv(r_ndru, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_193_drugs_National_age_range.csv", row.names = F)
+write.csv(r_ncig, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_194_e_cigarettes_National_age_range.csv", row.names = F)
+
 
 #STATE
-write.csv(ssmo, "../../../Data_Collections_INTERIM/ASSAD_191_smoking_STE.csv", row.names = F)
-write.csv(salc, "../../../Data_Collections_INTERIM/ASSAD_192_alcohol_STE.csv", row.names = F)
-write.csv(sdru, "../../../Data_Collections_INTERIM/ASSAD_193_drugs_STE.csv", row.names = F)
-write.csv(scig, "../../../Data_Collections_INTERIM/ASSAD_194_e_cigarettes_STE.csv", row.names = F)
+write.csv(ssmo, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_191_smoking_STE.csv", row.names = F)
+write.csv(salc, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_192_alcohol_STE.csv", row.names = F)
+write.csv(sdru, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_193_drugs_STE.csv", row.names = F)
+write.csv(scig, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_194_e_cigarettes_STE.csv", row.names = F)
 
 
 

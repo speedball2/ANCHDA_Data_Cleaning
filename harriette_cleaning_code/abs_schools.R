@@ -292,6 +292,7 @@ if("school_grade" %in% names(df5)){
 df2 <- df2[!grepl("Persons", df2$sex),]
 df3 <- df3[!grepl("Persons", df3$sex),]
 
+
 # ----------------- #
 # --- write csv --- #
 # ----------------- #

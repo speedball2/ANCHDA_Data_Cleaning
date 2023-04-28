@@ -2,72 +2,13 @@
 #Harriette's WD
 setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/from_custodians/ABS_ERP_SA2_LGA")
 
-
-# ----------------- #
-# --- libraries --- #
-# ----------------- #
+#LIBARIES
 
 library(readxl)
 library(tidyr)
+library(reshape2)
 
-
-# READING IN EXCEL 
-df1 <- read_xlsx("Client File-ERP-LS005201.xlsx", 2, "A9:BA36681", T)
-
-# REMOVING SA NAME 
-df1 <- df1[,-3]
-
-#RENAME COLUMNS 
-names(df1)[1] <- "calendar_year"
-names(df1)[2] <- "SA2_CODE16"
-
-#SPLITTING GENDERS
-i <- c("SA2_CODE16", "calendar_year")
-m <- c("m0", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8", "m9", "m10", "m11", "m12", "m13", "m14", "m15",
-        "m16", "m17", "m18", "m19", "m20", "m21", "m22", "m23", "m24"  )
-
-f <- c("f0", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8",
-        "f9", "f10", "f11", "f12", "f13", "f14", "f15", "f16", "f17",
-        "f18", "f19", "f20", "f21", "f22", "f23", "f24"  )
-
-fem <- df1[,c(i,f)]
-mal <- df1[,c(i,m)]
-
-
-# CREATING AGE COLUMN/COMBINING (WIDE TO LONG DATA)
-
-#REMOVING LEADING LETTER FOR GENDER 
-colnames(mal)<-gsub("m","",colnames(mal))
-colnames(fem)<-gsub("f","",colnames(fem))
-
-#COMBINING AGE COLUMNS INTO 1
-mal2 <- gather(mal, age_group, estimated_regional_population, gathercol <-  c("0", "1", "2", "3", "4", "5", "6", "7", "8",
-                                                                              "9", "10", "11", "12", "13", "14", "15", "16", "17",
-                                                                              "18", "19", "20", "21", "22", "23", "24"))
-#ADDING sSEX COLUMN MALE
-mal2$sex <- "male"
-
-#COMBINING AGE COLUMNS INTO 1
-fem2 <- gather(fem, age_group, estimated_regional_population, gathercol <-  c("0", "1", "2", "3", "4", "5", "6", "7", "8",
-                                                                              "9", "10", "11", "12", "13", "14", "15", "16", "17",
-                                                                              "18", "19", "20", "21", "22", "23", "24"))
-
-#ADDING sSEX COLUMN FEMALE
-fem2$sex <- "female"
-
-#MERGE M/F BACK TOGETHER 
-full <- rbind(fem2,mal2)
-
-#CHANGE COLORDER
-
-corder <- c("SA2_CODE16","calendar_year", "age_group", "sex", "estimated_regional_population")
-
-full <- full[, corder]
-
-# ------------------------------------------------------------------------------
-
-library(readxl)
-library(tidyr)
+#CLEANING CODE -----------------------------------------------------------------
 
 cleaning <- function(file_path, sheet, range, col) {
   # READING IN EXCEL 
@@ -77,65 +18,97 @@ cleaning <- function(file_path, sheet, range, col) {
   df <- df[,-3]
   
   #RENAME COLUMNS 
-  names(df)[1] <- "calendar_year"
-  names(df)[2] <- "SA2_CODE16"
- 
+  names(df)[1:2] <- c("calendar_year", "SA2_CODE16")
+  
   
   return(df)
   
 }
 
 
+# READING IN FILES -------------------------------------------------------------
+
+#SA2
 df1 <- cleaning("Client File-ERP-LS005201.xlsx", 2, "A9:BA36681", T)
-df2 <- cleaning()
+
+#2017-2021 NEEDS CORRESPONDANCE LGA
+df2 <- cleaning("LS005302 - Client File.xlsx", 2, "A6:BA2741", T)
+
+# RENAMING CODE COLUMNS
+colnames(df2)[colnames(df2) == "SA2_CODE16"] ="SA2_CODE21"
+
+#2006-2016 LGA
+df3<- cleaning("LS005302 - Client File.xlsx", 3, "A6:BA6199", T)
+
+# PIVOT WIDE TO LONG -----------------------------------------------------------
+
+# Define columns for splitting genders
+# id_cols <- c("SA2_CODE16", "calendar_year")
+# m_cols <- paste0("m", 0:24)
+# f_cols <- paste0("f", 0:24)
+
+
+wide_to_long <- function(df, id_cols, m_cols, f_cols) {
+  
+
+# Split genders into separate data frames
+  male <- df[, c(id_cols, m_cols)]
+  female <- df[, c(id_cols, f_cols)]
+  
+# Remove leading letter for gender column names
+  colnames(male) <- gsub("m", "", colnames(male))
+  colnames(female) <- gsub("f", "", colnames(female))
+  
+# Combine age columns into one
+  male_long <- reshape2::melt(male, id.vars = id_cols, variable.name = "age_group", value.name = "estimated_regional_population")
+  female_long <- reshape2::melt(female, id.vars = id_cols, variable.name = "age_group", value.name = "estimated_regional_population")
+  
+# Add sex column
+  male_long$sex <- "male"
+  female_long$sex <- "female"
+  
+# Merge male and female data frames
+  df_long <- rbind(female_long, male_long)
+  
+
+  
+  return(df_long)
+  
+}
+
+
 
 
 # ------------------------------------------------------------------------------
 
 
-#SPLITTING GENDERS
-i <- c("SA2_CODE16", "calendar_year")
-m <- c("m0", "m1", "m2", "m3", "m4", "m5", "m6", "m7", "m8", "m9", "m10", "m11", "m12", "m13", "m14", "m15",
-       "m16", "m17", "m18", "m19", "m20", "m21", "m22", "m23", "m24"  )
+df1_full <- wide_to_long(df1, id_cols = c("SA2_CODE16", "calendar_year"), 
+                         m_cols = paste0("m", 0:24), f_cols = paste0("f", 0:24))
 
-f <- c("f0", "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8",
-       "f9", "f10", "f11", "f12", "f13", "f14", "f15", "f16", "f17",
-       "f18", "f19", "f20", "f21", "f22", "f23", "f24"  )
+df2_full <- wide_to_long(df2, id_cols = c("SA2_CODE21", "calendar_year"), 
+                         m_cols = paste0("m", 0:24), f_cols = paste0("f", 0:24))
 
-fem <- df[,c(i,f)]
-mal <- df[,c(i,m)]
-
-# CREATING AGE COLUMN/COMBINING (WIDE TO LONG DATA)
-
-#REMOVING LEADING LETTER FOR GENDER 
-colnames(mal)<-gsub("m","",colnames(mal))
-colnames(fem)<-gsub("f","",colnames(fem))
-
-#COMBINING AGE COLUMNS INTO 1
-mal2 <- gather(mal, age_group, estimated_regional_population, gathercol <-  c("0", "1", "2", "3", "4", "5", "6", "7", "8",
-                                                                              "9", "10", "11", "12", "13", "14", "15", "16", "17",
-                                                                              "18", "19", "20", "21", "22", "23", "24"))
-#ADDING SEX COLUMN MALE
-mal2$sex <- "male"
-
-#COMBINING AGE COLUMNS INTO 1
-fem2 <- gather(fem, age_group, estimated_regional_population, gathercol <-  c("0", "1", "2", "3", "4", "5", "6", "7", "8",
-                                                                              "9", "10", "11", "12", "13", "14", "15", "16", "17",
-                                                                              "18", "19", "20", "21", "22", "23", "24"))
-
-#ADDING SEX COLUMN FEMALE
-fem2$sex <- "female"
-
-#MERGE M/F BACK TOGETHER 
-full <- rbind(fem2,mal2)
-
-#CHANGE COLORDER
-corder <- c("SA2_CODE16","calendar_year", "age_group", "sex", "estimated_regional_population")
-full <- full[,corder]
-
-# write csv --------------------------------------------------------------------
+df3_full <- wide_to_long(df3, id_cols = c("SA2_CODE16", "calendar_year"), 
+                         m_cols = paste0("m", 0:24), f_cols = paste0("f", 0:24))
 
 
-write.csv(full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_SA2.csv", row.names = F)
+# REORDERING COLUMNS -----------------------------------------------------------
+
+reorder <- function(df, code) {
+  
+  col_order <- c(code, "calendar_year", "age_group", "sex", "estimated_regional_population")
+  df[, col_order]
+}
+
+df1_full <- reorder(df1_full, "SA2_CODE16")
+df2_full <- reorder(df2_full, "SA2_CODE21")
+df3_full <- reorder(df3_full, "SA2_CODE16")
+
+# WRITE CSVS -------------------------------------------------------------------
+
+write.csv(df1_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_SA2.csv", row.names = F)
+write.csv(df2_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_LGA_2017_2017_ASGS2021.csv", row.names = F)
+write.csv(df3_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_LGA_2006_2016_ASGS2016.csv", row.names = F)
+
 
 

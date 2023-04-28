@@ -80,6 +80,12 @@ cleaning <- function(path, sht, range, col){
       endsWith(school_grade, "12") ~ "17-18",
     ))
   
+  
+  # MAKE VALUES W/IN CELLS LOWER CASE 
+  
+  df[] <- lapply(df, tolower)
+  
+  
   # assad ----------------------------------------------------------------------
   
   # RENAMING CODE COLUMNS
