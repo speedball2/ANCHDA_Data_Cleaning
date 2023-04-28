@@ -30,12 +30,12 @@ cleaning <- function(path, sht, range){
   
   
   # #ROUNDING
-  for(i in seq(3,ncol(df),2)){
+  for(i in seq(2,ncol(df))){
     df[,i] <- as.numeric(df[,i])
     df[,i] <- round(df[,i],2)
   }
 
-  colnames(df) <- c("country_of_birth",  "born_in_Australia", "born_in_same_country", "other_country")
+  colnames(df) <- c("country_of_birth_parents",  "p_born_in_australia_parents", "p_born_in_same_country_parents", "p_other_country_birthplace_parents")
   
   df$National <- 0
   
@@ -63,15 +63,22 @@ full <- rbind(df1,df2)
 
 full$calendar_year <- 2021
 
+full$age_group <- "15-49"
+
 
 #CHANGING COL ORDER 
 
-corder <- c("National","calendar_year", "sex",  "born_in_Australia", "born_in_same_country", "other_country", "country_of_birth")
+corder <- c("National","calendar_year", "age_group", "sex", "country_of_birth_parents", "p_born_in_australia_parents", "p_born_in_same_country_parents", "p_other_country_birthplace_parents" )
 full <- full[,corder]
 
 
+#REMOVING TOTALS
+
+full <- full[!grepl("Total\\s\\S+|Total", full$country_of_birth),]
+
 # WRITING CSVS -----------------------------------------------------------------
 
-write.csv(full, "../../../../Data_Collections_INTERIM/ABS_births_662_country_of_birth_parents_national.csv", row.names = F)
+#write.csv(full, "../../../../Data_Collections_INTERIM/ABS_births_662_country_of_birth_parents_national.csv", row.names = F)
 
 
+ 

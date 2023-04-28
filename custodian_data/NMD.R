@@ -381,7 +381,7 @@ i <- df6[,c(SA2, age, sex, mort1.2)]
  
  # 1.21.2 YOUNG PEOPLE MORTALITY CSVS 
  
- write.csv(n, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA3.csv", row.names = F)
+ write.csv(df10, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA3.csv", row.names = F)
  #write.csv(j, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_national.csv", row.names = F)
- write.csv(k, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA2.csv", row.names = F)
+ write.csv(df8, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA2.csv", row.names = F)
  

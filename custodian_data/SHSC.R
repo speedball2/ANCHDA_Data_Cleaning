@@ -42,6 +42,13 @@ colnames(df2) <- c("SA3_CODE16","SA3_NAME16","age_group", "year_range", "present
 
 df2$SA3_NAME16 <- NULL
 
+df2["presenting_unit_type_SHSC"][df2["presenting_unit_type_SHSC"] == "Alone/not part of family"] <- "alone or not apart of a family"
+df2["presenting_unit_type_SHSC"][df2["presenting_unit_type_SHSC"] == "Couple with child/ren"] <- "couple with one or more children"
+df2["presenting_unit_type_SHSC"][df2["presenting_unit_type_SHSC"] == "Single with child/ren"] <- "couple with one or more children"
+
+df2$presenting_unit_type_SHSC <- tolower(df2$presenting_unit_type_SHSC)
+
+
 #-------------------------------------------------------------#
 #--------S-HSC_main_reasons_seeking_assistance (df3)----------#
 #-------------------------------------------------------------#
@@ -53,6 +60,10 @@ df3 <- read_excel(col_names = F, path = "Request 4958 SHSC ANCHDA Atlas ad hoc (
 colnames(df3) <- c("SA3_CODE16","SA3_NAME16","age_group", "year_range", "main_reasons_seeking_assistance_SHSC", "client_count_SHSC")
 
 df3$SA3_NAME16 <- NULL
+
+
+df3$main_reasons_seeking_assistance_SHSC <- tolower(df3$main_reasons_seeking_assistance_SHSC)
+
 
 
 #-------------------------------------------------------------------------------
@@ -85,8 +96,8 @@ df3 <- cleaning(df3)
 #--------write csv----------#
 #---------------------------#
 
- write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_191_homelessness_client_count_SA3", row.names = F)
- write.csv(df2, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_191_homelessness_presenting_unit_type_count_SA3", row.names = F)
- write.csv(df3, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_191_homelessness_main_reason_seeking_assistance_SA3", row.names = F)
+ write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_291_homelessness_client_count_SA3", row.names = F)
+ write.csv(df2, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_291_homelessness_presenting_unit_type_count_SA3", row.names = F)
+ write.csv(df3, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_291_homelessness_main_reason_seeking_assistance_SA3", row.names = F)
  
 
