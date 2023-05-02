@@ -17,6 +17,7 @@
 # 10. save in a folder by data set in QA
 # 11. check with asgs is used, note for when Owen's correspondance code works 
 #12. concistent cols: code, year, age, sex, indicator, filters
+#13. percentage as a .00
 
 
 
