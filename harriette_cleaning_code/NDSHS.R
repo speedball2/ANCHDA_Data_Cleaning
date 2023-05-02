@@ -105,6 +105,8 @@ cleaning <- function(sheet, range, coln){
     
   }
   
+
+  
   # REMOVE AGE FROM COLUMS IN DATA 
  
    if ("age_group" %in% colnames(df)) {
@@ -125,17 +127,30 @@ cleaning <- function(sheet, range, coln){
 
 # READING IN EXCEL FILES -------------------------------------------------------
 
+# STATE ------------------------------------------------------------------------
 df1 <- cleaning(2, "A6:AJ50", coln1) #AOD status by state
 
 #CHANGE DATA BASED ON STATE CODE ORDER (CURRENTLY INCORRECT ORDER)
 
 df1 <- with(df1, df1[order(match(STE_CODE16, c(1,2,3,4,5,6,7,8,0))),])
 
+#REMOVE NATIONAL DATA FROM STATE DATA
+
+df1 <- df1[df1$STE_CODE16 != 0, ]
+
+
 df2 <- cleaning(3, "A6:T50", coln2) #AOD Qs by State 
 
 #CHANGE DATA BASED ON STATE CODE ORDER (CURRENTLY INCORRECT ORDER)
 
 df2 <- with(df2, df2[order(match(STE_CODE16, c(1,2,3,4,5,6,7,8,0))),])
+
+
+#REMOVE NATIONAL DATA FROM STATE DATA
+
+df2 <- df2[df2$STE_CODE16 != 0, ]
+
+#NATIONAL ----------------------------------------------------------------------
 
 df3 <- cleaning(4, "A7:AJ16", coln1.1) #AOD Status - disaggs (national, age)
 
@@ -178,6 +193,7 @@ reshape_data <- function(df){
     df[,i] <- as.numeric(df[,i])
     df[,i] <- round(df[,i],2)
   }
+  
   
  #GETTING PERCENTAGE
   
