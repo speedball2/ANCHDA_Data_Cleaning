@@ -161,8 +161,11 @@ wide_to_long <- function(df, rename, sex, status){
   #ADD FILTER COL (SEX)
   df$sex <- sex
   df$age_group <- "10-17"
+  df$sententing_status <- status
   
-  corder <- c("SA4_CODE_2016", "year_range", "age_group", "sex", "indicator")
+  
+  
+  corder <- c("SA4_CODE_2016", "year_range", "age_group", "sex", "sententing_status", "indicator")
   df <- df[,corder]
     
   #RENAMING COLUMNS NAMES TO SUITABLE COL NAMES
@@ -171,7 +174,6 @@ wide_to_long <- function(df, rename, sex, status){
     colnames(df)[colnames(df) == "SA4_CODE_2016"] = "SA4_CODE16"
     
 
-    df$sententing_status <- status
     
     
   
