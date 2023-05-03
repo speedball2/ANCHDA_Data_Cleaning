@@ -25,10 +25,19 @@ library(stringr)
 #df9 = NMD_SA3_child_mortality_4_year_rolling, sheet 3
 #df10 = NMD_SA3_child_mortality_4_year_rolling, sheet 4
 
+# COLUMN NAMES -----------------------------------------------------------------
+
+coln1 <- c("SA3_CODE16","year_range","totals_deaths_NMD","totals_births_NMD","crude_rate_per_1000_NMD","age_group","sex")
+coln2 <- c("SA2_CODE16", "year_range", "totals_deaths_NMD", "totals_births_NMD","crude_rate_per_1000_NMD", "age_group", "sex")
+coln3 <- c("SA3_CODE16", "year_range", "age_group", "totals_deaths_NMD", "total_population_NMD","age_specific_rate_per_100,000_NMD", "sex")
+coln4 <- c("SA2_CODE16", "year_range", "totals_deaths_NMD", "total_population_NMD","crude_rate_per_100,000_NMD", "age_group", "sex")
+coln5 <- c("SA2_CODE16", "year_range", "totals_deaths_NMD", "total_population_NMD","crude_rate_per_100,000_NMD", "age_group", "sex")
+coln6 <- c("SA3_CODE16", "year_range", "age_group", "total_population_NMD","age_specific_rate_per_100,000_NMD","totals_deaths_NMD", "sex")
+
 # READING IN DATA --------------------------------------------------------------
 
 
-cleaning <- function(path, sht, range, col, age = NULL, sex, round_col){
+cleaning <- function(path, sht, range, col, age = NULL, sex, round_col, coln){
 
   #PATH = FILE PATH
   #SHT = SHEET NUMBER
@@ -70,73 +79,119 @@ cleaning <- function(path, sht, range, col, age = NULL, sex, round_col){
   #REMOVING NAME COL
   df <- df[ , !names(df) %in% 
               c("SA3_name", "SA2_name")]
+  test<<-df
   
-  
-  
-  #UPDATING COLUMN NAMES
-  
-  if ("SA2_code" %in% names(df)) {
-    df <- df %>% rename("SA2_CODE16" = "SA2_code",
-                        "n_total_deaths" = "Total number of deaths",
-                        "n_total_births" = "Total births",
-                        "p_crude_rate_per_1000" = "Crude rate (per 1,000 live births)"
-    )
-  } else if ("SA3_code" %in% names(df)) {
-    df <- df %>% rename("SA3_CODE16" = "SA3_code",
-                        "n_total_deaths" = "Total deaths",
-                        "n_total_births" = "Total births", 
-                        "p_crude_rate_per_1000 " = "Crude rate (per 1,000 live births)",
-    )
-  } else if("Age group (years)" %in% names(df)){
-    df <- df %>% rename("SA3_CODE16" = "SA3_code",
-                        "age_group" = "Age group (years)",
-                        "n_total_deaths" = "Total number of deaths",
-                        "n_total_births" = "Total population", 
-                        "p_crude_rate_per_1000 " = "Crude rate (per 1,000 live births)")
-  }
-  
-  
-  df <- df %>% 
-    rename("year_range" = "Period",
-           "age_group" = "age_group",
-           "sex" = "sex")
-  
-  
-
-  # #UPDATING COLUMN NANMES  
-  # df <- df %>% 
-  #   rename("SA3_CODE16" = "SA3_code",
-  #          "SA2_CODE16" = "SA2_code",
-  #          "year_range" = "Period",
-  #          "n_total_deaths" = "Total deaths",
-  #          "n_total_births" = "Total births", 
-  #          "p_crude_rate_per_1000 " = "Crude rate (per 1,000 live births)",
-  #          "age_group" = "age_group", 
-  #          "sex" = "sex")
-  # 
-
+  #RENAMING COLUMNS
+  names(df) <- coln
   
   
   return(df)
 }
 
-df1 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 3, "A2:F3080", T, "0-1", "all", round_col = 4)
+df1 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 3, "A2:F3080", T, "0-1", "all", round_col = 4, coln1)
 
 #REMOVE SA3 FROM SA3 CODE COLUMNS
 df1$SA3_CODE16 <-gsub("SA3","",as.character(df1$SA3_CODE16))
 
-df2 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 5, "A2:F6965", T, "0-1", "all", round_col = 4)
-df3 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 6, "A2:G6159", T, sex = "all", round_col = 5)
+df2 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 5, "A2:F6965", T, "0-1", "all", round_col = 4, coln2)
+df3 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 6, "A2:G6159", T, sex = "all", round_col = 5, coln = coln3)
 #REMOVE SA3 FROM SA3 CODE COLUMNS
 df3$SA3_CODE16 <-gsub("SA3","",as.character(df3$SA3_CODE16))
 
-df4 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 8, "A2:F6980", T, "0-17", "all", round_col = 4)
-df5 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 11, "A2:F6980", T, "18-24", "all", round_col = 4)
+df4 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 8, "A2:F6980", T, "0-17", "all", round_col = 4, coln4)
+df5 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 11, "A2:F6980", T, "18-24", "all", round_col = 4, coln5)
 
-df6 <- cleaning(path = "202211_ANCHDA_suppressed_cells_SA3_persons.xlsx", 4, "A2:G3080", T, sex =  "all", round_col = 5)
+df6 <- cleaning(path = "202211_ANCHDA_suppressed_cells_SA3_persons.xlsx", 4, "A2:G3080", T, sex =  "all", round_col = 5, coln =coln6)
 #REMOVE SA3 FROM SA3 CODE COLUMNS
 df6$SA3_CODE16 <-gsub("SA3","",as.character(df6$SA3_CODE16))
 
 #FIXING ERROR IN DATA, UPDATING TO AGE RANGE
 
 df6[df6[,] == "Persons"] <- "18-24"
+
+
+# SAVING DATA BY INDICATOR -----------------------------------------------------
+
+
+# FILTER VARIABLES (SEE DATA DICTIONARY)  
+
+SA3 <- c("SA3_CODE16", "year_range")
+SA2 <- c("SA2_CODE16", "year_range")
+
+age <- c("age_group")
+sex <- c("sex")
+
+
+
+# 1.1.2 INFANT MORTALITY -------------------------------------------------------
+
+infantmort <- c("totals_deaths_NMD", "crude_rate_per_1000_NMD")
+
+#infant mortality SA3
+a <- df1[,c(SA3, age, sex, infantmort)]
+
+# infant mortality SA2
+b <- df2[,c(SA2, age, sex, infantmort)]
+
+# 1.1.1O BIRTHS ----------------------------------------------------------------
+
+
+birth <- c("totals_births_NMD", "crude_rate_per_1000_NMD")
+
+#births SA3
+c <- df1[,c(SA3, age, sex, birth)]
+
+#infant mortality SA2
+d <- df2[,c(SA2, age, sex, birth)]
+
+# 1.21.1 MORTALITY 0-17 --------------------------------------------------------
+mort1.1 <- c("totals_deaths_NMD", "total_population_NMD","age_specific_rate_per_100,000_NMD")
+
+mort1.2 <- c("totals_deaths_NMD", "total_population_NMD", "crude_rate_per_100,000_NMD")
+
+#SA3 0-17 mortality, age 
+e <- df3[,c(SA3, age, sex, mort1.1)]
+
+#SA2 mortality 0-17
+
+f <- df4[,c(SA2, age, sex, mort1.2)]
+
+# 1.21.2 YOUNG PEOPLE MORTALITY 18-24 ------------------------------------------ 
+
+#SA3 mortality 18-24, age group 
+g <- df6[,c(SA3, age, sex, mort1.1)]
+
+
+#SA2 mortality 18-24
+
+h <- df5[,c(SA2, age, sex, mort1.2)]
+
+# WRITE CSVS -------------------------------------------------------------------
+
+
+# 1.1.2 INFANT MORTALITY CSVS 
+
+write.csv(a, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_112_infant_mortality_SA3.csv", row.names = F)
+write.csv(b, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_112_infant_mortality_SA2.csv", row.names = F)
+
+
+# 1.1.1O BIRTHS CSVS
+
+write.csv(c, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1110_infant_births_SA3.csv", row.names = F)
+write.csv(d, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1110_infant_births_SA2.csv", row.names = F)
+
+
+# 1.21.1 MORTALITY CSVS 
+
+write.csv(e, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1211_mortality_SA3.csv", row.names = F)
+write.csv(f, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1211_mortality_SA2.csv", row.names = F)
+
+# 1.21.2 YOUNG PEOPLE MORTALITY CSVS 
+
+write.csv(g, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA3.csv", row.names = F)
+write.csv(h, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA2.csv", row.names = F)
+
+
+
+
+

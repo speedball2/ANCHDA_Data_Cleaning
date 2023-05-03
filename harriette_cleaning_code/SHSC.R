@@ -126,8 +126,8 @@ df3 <- cleaning(df3)
 #--------write csv----------#
 #---------------------------#
 
- write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_291_homelessness_client_count_SA3.csv", row.names = F)
- write.csv(df2, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_291_homelessness_presenting_unit_type_count_SA3.csv", row.names = F)
- write.csv(df3, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_291_homelessness_main_reason_seeking_assistance_SA3.csv", row.names = F)
+ write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_292_specialist_services_client_count_SA3.csv", row.names = F)
+ write.csv(df2, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_292_specialist_services_presenting_unit_type_count_SA3.csv", row.names = F)
+ write.csv(df3, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_292_specialist_services_main_reason_seeking_assistance_SA3.csv", row.names = F)
  
 
