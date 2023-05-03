@@ -54,9 +54,20 @@ cleaning <- function(path, sht, range, col){
     }
   }
   
+  #ADDING FILTER COLUMNS
   df$sex <- "all"
-  
   df$age_group <- "0-5"
+  
+  
+  #CHANGING YEAR RANGE TO FULL NUMBERS
+  
+  # RENAMING VALUES IN A SPECIFIC COL
+  names(df)[names(df) == "Reporting Year"] <- "year_range"
+  
+  # apply gsub to the year column
+  df <- mutate(df, year_range = gsub("–", "-", year_range))
+  df <- mutate(df, year_range = gsub("(\\d{4})-(\\d{2})", "\\1-20\\2", year_range))
+  
   
   return(df)
   

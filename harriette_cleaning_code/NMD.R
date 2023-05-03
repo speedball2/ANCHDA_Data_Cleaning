@@ -72,18 +72,48 @@ cleaning <- function(path, sht, range, col, age = NULL, sex, round_col){
               c("SA3_name", "SA2_name")]
   
   
-
-  #UPDATING COLUMN NANMES  
+  
+  #UPDATING COLUMN NAMES
+  
+  if ("SA2_code" %in% names(df)) {
+    df <- df %>% rename("SA2_CODE16" = "SA2_code",
+                        "n_total_deaths" = "Total number of deaths",
+                        "n_total_births" = "Total births",
+                        "p_crude_rate_per_1000" = "Crude rate (per 1,000 live births)"
+    )
+  } else if ("SA3_code" %in% names(df)) {
+    df <- df %>% rename("SA3_CODE16" = "SA3_code",
+                        "n_total_deaths" = "Total deaths",
+                        "n_total_births" = "Total births", 
+                        "p_crude_rate_per_1000 " = "Crude rate (per 1,000 live births)",
+    )
+  } else if("Age group (years)" %in% names(df)){
+    df <- df %>% rename("SA3_CODE16" = "SA3_code",
+                        "age_group" = "Age group (years)",
+                        "n_total_deaths" = "Total number of deaths",
+                        "n_total_births" = "Total population", 
+                        "p_crude_rate_per_1000 " = "Crude rate (per 1,000 live births)")
+  }
+  
+  
   df <- df %>% 
-    rename("SA3_CODE16" = "SA3_code",
-           "SA2_CODE16" = "SA2_code",
-           "year_range" = "Period",
-           "n_total_deaths" = "Total deaths",
-           "n_total_births" = "Total births", 
-           "p_crude_rate_per_1000 " = "Crude rate (per 1,000 live births)",
-           "age_group" = "age_group", 
+    rename("year_range" = "Period",
+           "age_group" = "age_group",
            "sex" = "sex")
   
+  
+
+  # #UPDATING COLUMN NANMES  
+  # df <- df %>% 
+  #   rename("SA3_CODE16" = "SA3_code",
+  #          "SA2_CODE16" = "SA2_code",
+  #          "year_range" = "Period",
+  #          "n_total_deaths" = "Total deaths",
+  #          "n_total_births" = "Total births", 
+  #          "p_crude_rate_per_1000 " = "Crude rate (per 1,000 live births)",
+  #          "age_group" = "age_group", 
+  #          "sex" = "sex")
+  # 
 
   
   
@@ -93,19 +123,19 @@ cleaning <- function(path, sht, range, col, age = NULL, sex, round_col){
 df1 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 3, "A2:F3080", T, "0-1", "all", round_col = 4)
 
 #REMOVE SA3 FROM SA3 CODE COLUMNS
-df1$SA3_code <-gsub("SA3","",as.character(df1$SA3_code))
+df1$SA3_CODE16 <-gsub("SA3","",as.character(df1$SA3_CODE16))
 
 df2 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 5, "A2:F6965", T, "0-1", "all", round_col = 4)
 df3 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 6, "A2:G6159", T, sex = "all", round_col = 5)
 #REMOVE SA3 FROM SA3 CODE COLUMNS
-df3$SA3_code <-gsub("SA3","",as.character(df3$SA3_code))
+df3$SA3_CODE16 <-gsub("SA3","",as.character(df3$SA3_CODE16))
 
 df4 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 8, "A2:F6980", T, "0-17", "all", round_col = 4)
 df5 <- cleaning(path = "202211_ANCHDA_suppressed_cells_final.xlsx", 11, "A2:F6980", T, "18-24", "all", round_col = 4)
 
 df6 <- cleaning(path = "202211_ANCHDA_suppressed_cells_SA3_persons.xlsx", 4, "A2:G3080", T, sex =  "all", round_col = 5)
 #REMOVE SA3 FROM SA3 CODE COLUMNS
-df6$SA3_code <-gsub("SA3","",as.character(df6$SA3_code))
+df6$SA3_CODE16 <-gsub("SA3","",as.character(df6$SA3_CODE16))
 
 #FIXING ERROR IN DATA, UPDATING TO AGE RANGE
 
