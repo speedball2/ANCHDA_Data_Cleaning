@@ -6,11 +6,6 @@ output:
   html_document: default
   pdf_document: default
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ```{r}
 # Load any necessary packages
 library(dplyr)
@@ -37,10 +32,7 @@ options(digits = 3)
 
 ```{r setup, include=FALSE}
 # Set the working directory
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS")
-
-
-
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS/")
 
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
@@ -53,16 +45,20 @@ year_range_regex <- "^\\d{4}-\\d{4}$"
 calendar_year_regex <- "^\\d{4}$"
 
 
-
-
 csv_files <- list.files(pattern=".*\\.csv$")
-cat("Number of files in folder:", length(csv_files), "\n") 
-cat(paste(csv_files, collapse = "\n"), "\n")
 
+cat("Number of files in folder:", length(csv_files), "\n") 
+
+for (file in csv_files) {
+  if (!grepl("\\d{3,}", file)) {
+    cat("File without indicator code:", file, "\n")
+  }
+}
+cat(paste(csv_files, collapse = "\n"), "\n")
+cat("Finished checking CSV files.", "\n")
 
 
 df_list <- list() 
-
 
 for (file in csv_files) {
   if (endsWith(file, ".csv")) {  # only read in CSV files
@@ -70,9 +66,7 @@ for (file in csv_files) {
     df_list[[file]] <- df
   }
 }
-
 ```
-
 # Iterate through each data frame in df_list and perform checks:
 
 1. check if age_group, sex, calendar year or year_range columns exist
@@ -162,8 +156,6 @@ Define the output directory path to save cleaned datasets WITH CELL SUPPRESSED
 ```{r}
 
 input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS/"
-
-
 output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS//cell_suppressed/"
 ```
 

@@ -6,7 +6,6 @@ output:
   html_document: default
   pdf_document: default
 ---
-
 ```{r}
 # Load any necessary packages
 library(dplyr)
@@ -33,7 +32,7 @@ options(digits = 3)
 
 ```{r setup, include=FALSE}
 # Set the working directory
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/nmd/")
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_preschool///")
 
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
@@ -69,7 +68,6 @@ for (file in csv_files) {
 }
 ```
 
-
 # Iterate through each data frame in df_list and perform checks:
 
 1. check if age_group, sex, calendar year or year_range columns exist
@@ -102,6 +100,7 @@ for (df_name in names(df_list)) {
   } else if ("year_range" %in% col_names && !all(grepl("\\d{4}-\\d{4}", df$year_range))) {
     cat("Error: year_range values in", df_name, "are not in the correct format (expected format: \\d{4}-\\d{4})\n")
   }
+  
 
 
   if ("age_group" %in% col_names) {
@@ -155,11 +154,13 @@ All good? great! now you can move on to the cell suppression
 
 
 Define the input directory path
-Define the output directory path to save cleaned datasets WITH CELL SUPPRESSED
+Define the output directory path to save cleaned dataset WITH CELL SUPPRESSED
 ```{r}
-input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/nmd/"
 
-output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/nmd/cell_suppressed/"
+input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_preschool//"
+
+
+output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_preschool//cell_suppressed/"
 ```
 
 Create the output directory if it doesn't already exist
@@ -168,6 +169,7 @@ Loop through each CSV file and apply cell suppression (here we are searching in 
 
 
 ```{r}
+
 dir.create(output_dir, showWarnings = FALSE)
 
 
@@ -179,8 +181,15 @@ for (file in csv_files) {
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  # Apply cell suppression
-  df[, 5:6] <- lapply(df[, 5:6], function(x) replace(x, is.na(x), 9999999))
+  # Check if the n_births column exists in the data frame
+  if ("n_children_attending_preschool" %in% colnames(df)) {
+    # Apply cell suppression
+    df[df[,"n_children_attending_preschool"] %in% 0:4 & !is.na(df[,"n_children_attending_preschool"]), -c(1:4)] <- 9999999
+  } else {
+    # Print a message to indicate that the column was not found
+    cat("Skipping file", file, "because it does not contain the n_children_attending_preschool column.\n")
+  }
+
   
   # Write the modified data frame to a new CSV file in the output directory
   write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
