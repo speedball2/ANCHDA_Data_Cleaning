@@ -6,25 +6,34 @@ output:
   html_document: default
   pdf_document: default
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 ```{r}
-library(tidyverse)
+# Load any necessary packages
+library(dplyr)
+library(tidyr)
+library(readr)
+
+# Set any global options
+options(digits = 3)
 ```
 # Open a connection to the output file
 # Set the working directory - folder with data cleaned ready for QA
-```{r}
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/erp/ERP/")
-```
 
 # Define a list of acceptable values for the first column
 # Define a function to check if column names are in snake case format
 # Define a regex pattern to check age_group format
 # Define regex patterns for age_group, year_range, and calendar_year
-```{r}
+
+# Get a list of CSV files in the working directory
+# Print the number of files in the folder and their names
+
+#initialize an empty list to store data frame
+#read each CSV file into a data frame and store it in the df_list
+#append the data frame to the list using the file name as the key
+
+```{r setup, include=FALSE}
+# Set the working directory
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp/")
+
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
 is_snake_case <- function(x) {
@@ -34,25 +43,22 @@ is_snake_case <- function(x) {
 age_group_regex <- "^\\d{1,2}-\\d{1,2}$|^\\d{1,2}-\\d{2}$|^\\d{2}-\\d{2}$"
 year_range_regex <- "^\\d{4}-\\d{4}$"
 calendar_year_regex <- "^\\d{4}$"
-```
 
-# Get a list of CSV files in the working directory
-# Print the number of files in the folder and their names
-```{r}
+
 csv_files <- list.files(pattern=".*\\.csv$")
+
 cat("Number of files in folder:", length(csv_files), "\n") 
+
+for (file in csv_files) {
+  if (!grepl("\\d{3,}", file)) {
+    cat("File without indicator code:", file, "\n")
+  }
+}
 cat(paste(csv_files, collapse = "\n"), "\n")
-
-```
-
-initialize an empty list to store data frame
-read each CSV file into a data frame and store it in the df_list
-append the data frame to the list using the file name as the key
-```{r}
+cat("Finished checking CSV files.", "\n")
 
 
 df_list <- list() 
-
 
 for (file in csv_files) {
   if (endsWith(file, ".csv")) {  # only read in CSV files
@@ -60,9 +66,17 @@ for (file in csv_files) {
     df_list[[file]] <- df
   }
 }
-
-
 ```
+
+# Loop through each data frame in the list and print the head
+```{r}
+
+for (df_name in names(df_list)) {
+  cat(paste("Head of", df_name, ":\n"))
+  print(head(df_list[[df_name]]))
+}
+```
+
 
 # Iterate through each data frame in df_list and perform checks:
 

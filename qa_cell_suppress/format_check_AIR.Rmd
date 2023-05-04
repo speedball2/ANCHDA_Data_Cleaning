@@ -175,25 +175,28 @@ dir.create(output_dir, showWarnings = FALSE)
 csv_files <- list.files(input_dir, pattern = ".csv$", full.names = TRUE)
 
 
+# Loop through each CSV file and apply cell suppression
 for (file in csv_files) {
   
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  # Check if the n_births column exists in the data frame
-  if ("n" %in% colnames(df)) {
-    # Apply cell suppression
-    df[df[,"n"] %in% 0:4 & !is.na(df[,"n"]), -c(1:4)] <- 9999999
-  } else {
-    # Print a message to indicate that the column was not found
-    cat("Skipping file", file, "because it does not contain the n column.\n")
+  # Apply cell suppression to 'n' column if it exists
+  if ('n' %in% colnames(df)){
+    df[!is.na(df[, "n"]) & df[, "n"] < 5, -(1:5)] <- 9999999
   }
-
+  
+  # Apply cell suppression to 'uncertainty' column
+  if ('uncertainty' %in% colnames(df)){
+    df[df[, "uncertainty"] == 2 & !is.na(df[, "uncertainty"]), colnames(df) %in% 'uncertainty' | colnames(df) %in% names(df)[1:5]] <- 9999999
+  }
+  
+  # Remove the 'uncertainty' column from the data frame
+  df <- df[, !(colnames(df) %in% 'uncertainty')]
   
   # Write the modified data frame to a new CSV file in the output directory
   write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
   
 }
 
-```
 

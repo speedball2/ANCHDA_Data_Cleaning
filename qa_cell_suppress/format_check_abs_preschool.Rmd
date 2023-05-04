@@ -68,6 +68,15 @@ for (file in csv_files) {
 }
 ```
 
+# Loop through each data frame in the list and print the head
+```{r}
+
+for (df_name in names(df_list)) {
+  cat(paste("Head of", df_name, ":\n"))
+  print(head(df_list[[df_name]]))
+}
+```
+
 # Iterate through each data frame in df_list and perform checks:
 
 1. check if age_group, sex, calendar year or year_range columns exist
