@@ -27,12 +27,12 @@ library(stringr)
 
 # COLUMN NAMES -----------------------------------------------------------------
 
-coln1 <- c("SA3_CODE16","year_range","total_deaths_NMD","totals_births_NMD","crude_rate_per_1000_NMD","age_group","sex")
-coln2 <- c("SA2_CODE16", "year_range", "total_deaths_NMD", "totals_births_NMD","crude_rate_per_1000_NMD", "age_group", "sex")
-coln3 <- c("SA3_CODE16", "year_range", "age_group", "total_deaths_NMD", "total_population_NMD","age_specific_rate_per_100,000_NMD", "sex")
-coln4 <- c("SA2_CODE16", "year_range", "total_deaths_NMD", "total_population_NMD","crude_rate_per_100,000_NMD", "age_group", "sex")
-coln5 <- c("SA2_CODE16", "year_range", "total_deaths_NMD", "total_population_NMD","crude_rate_per_100,000_NMD", "age_group", "sex")
-coln6 <- c("SA3_CODE16", "year_range", "age_group", "total_population_NMD","age_specific_rate_per_100,000_NMD","total_deaths_NMD", "sex")
+coln1 <- c("SA3_CODE16","year_range","total_deaths_nmd","total_births_nmd","crude_rate_per_1000_nmd","age_group","sex")
+coln2 <- c("SA2_CODE16", "year_range", "total_deaths_nmd", "total_births_nmd","crude_rate_per_1000_nmd", "age_group", "sex")
+coln3 <- c("SA3_CODE16", "year_range", "age_group", "total_deaths_nmd", "total_population_nmd","age_specific_rate_per_100,000_nmd", "sex")
+coln4 <- c("SA2_CODE16", "year_range", "total_deaths_nmd", "total_population_nmd","crude_rate_per_100,000_nmd", "age_group", "sex")
+coln5 <- c("SA2_CODE16", "year_range", "total_deaths_nmd", "total_population_nmd","crude_rate_per_100,000_nmd", "age_group", "sex")
+coln6 <- c("SA3_CODE16", "year_range", "age_group", "total_population_nmd","age_specific_rate_per_100,000_nmd","total_deaths_nmd", "sex")
 
 # READING IN DATA --------------------------------------------------------------
 
@@ -125,7 +125,7 @@ sex <- c("sex")
 
 # 1.1.2 INFANT MORTALITY -------------------------------------------------------
 
-infantmort <- c("total_deaths_NMD", "crude_rate_per_1000_NMD")
+infantmort <- c("total_deaths_nmd", "crude_rate_per_1000_nmd")
 
 #infant mortality SA3
 a <- df1[,c(SA3, age, sex, infantmort)]
@@ -136,7 +136,7 @@ b <- df2[,c(SA2, age, sex, infantmort)]
 # 1.1.1O BIRTHS ----------------------------------------------------------------
 
 
-birth <- c("totals_births_NMD", "crude_rate_per_1000_NMD")
+birth <- c("total_births_nmd", "crude_rate_per_1000_nmd")
 
 #births SA3
 c <- df1[,c(SA3, age, sex, birth)]
@@ -145,9 +145,9 @@ c <- df1[,c(SA3, age, sex, birth)]
 d <- df2[,c(SA2, age, sex, birth)]
 
 # 1.21.1 MORTALITY 0-17 --------------------------------------------------------
-mort1.1 <- c("total_deaths_NMD", "total_population_NMD","age_specific_rate_per_100,000_NMD")
+mort1.1 <- c("total_deaths_nmd", "total_population_nmd","age_specific_rate_per_100,000_nmd")
 
-mort1.2 <- c("total_deaths_NMD", "total_population_NMD", "crude_rate_per_100,000_NMD")
+mort1.2 <- c("total_deaths_nmd", "total_population_nmd", "crude_rate_per_100,000_nmd")
 
 #SA3 0-17 mortality, age 
 e <- df3[,c(SA3, age, sex, mort1.1)]
