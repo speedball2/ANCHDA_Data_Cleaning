@@ -1,0 +1,186 @@
+---
+title: "format_check_cell_suppression"
+author: "Claire Boulange"
+date: "`r Sys.Date()`"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+```
+# Open a connection to the output file
+# Set the working directory - folder with data cleaned ready for QA
+```{r}
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS")
+```
+
+# Define a list of acceptable values for the first column
+# Define a function to check if column names are in snake case format
+# Define a regex pattern to check age_group format
+# Define regex patterns for age_group, year_range, and calendar_year
+```{r}
+first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
+
+is_snake_case <- function(x) {
+  all(grepl("^[a-z]+(_[a-z]+)*$", x))
+}
+
+age_group_regex <- "^\\d{1,2}-\\d{1,2}$|^\\d{1,2}-\\d{2}$|^\\d{2}-\\d{2}$"
+year_range_regex <- "^\\d{4}-\\d{4}$"
+calendar_year_regex <- "^\\d{4}$"
+```
+
+# Get a list of CSV files in the working directory
+# Print the number of files in the folder and their names
+```{r}
+csv_files <- list.files(pattern=".*\\.csv$")
+cat("Number of files in folder:", length(csv_files), "\n") 
+cat(paste(csv_files, collapse = "\n"), "\n")
+
+```
+
+initialize an empty list to store data frame
+read each CSV file into a data frame and store it in the df_list
+append the data frame to the list using the file name as the key
+
+
+```{r}
+df_list <- list() 
+
+
+for (file in csv_files) {
+  if (endsWith(file, ".csv")) {  # only read in CSV files
+    df <- read.csv(file)
+    df_list[[file]] <- df
+  }
+}
+
+```
+
+# Iterate through each data frame in df_list and perform checks:
+
+1. check if age_group, sex, calendar year or year_range columns exist
+2. check if age_group values are in the correct format
+3. check if year_range values are in the correct format
+4. check if calendar_year values are in the correct format
+5. check if geography column is one of the acceptable values
+6. print unique values of age_group, calendar_year, year_range and sex
+
+```{r}
+
+for (df_name in names(df_list)) {
+  df <- df_list[[df_name]]
+  col_names <- names(df)
+  first_col <- colnames(df)[1]
+  
+
+  if (!("age_group" %in% col_names)) {
+    cat("Error: age_group column not found in", df_name, "\n")
+  }
+  if (!("sex" %in% col_names)) {
+    cat("Error: sex column not found in", df_name, "\n")
+  }
+  if (!("calendar_year" %in% col_names) && !("year_range" %in% col_names)) {
+    cat("Error: either calendar_year or year_range column must be present in", df_name, "\n")
+  } else if (("calendar_year" %in% col_names) && ("year_range" %in% col_names)) {
+    cat("Error: both calendar_year and year_range columns cannot be present in", df_name, "\n")
+  } else if ("calendar_year" %in% col_names && !all(grepl("\\d{4}", df$calendar_year))) {
+    cat("Error: calendar_year values in", df_name, "are not in the correct format (expected format: \\d{4})\n")
+  } else if ("year_range" %in% col_names && !all(grepl("\\d{4}-\\d{4}", df$year_range))) {
+    cat("Error: year_range values in", df_name, "are not in the correct format (expected format: \\d{4}-\\d{4})\n")
+  }
+
+
+  if ("age_group" %in% col_names) {
+    age_group_values <- df$age_group
+    if (!all(grepl(age_group_regex, age_group_values))) {
+      cat("Error: age_group values in", df_name, "are not in the correct format (expected format: \\d-\\d, \\d-\\d{2}, or \\d{2}-\\d{2})\n")
+    }
+  }
+  
+
+  if ("year_range" %in% col_names) {
+    year_range_values <- df$year_range
+    if (!all(grepl(year_range_regex, year_range_values))) {
+      cat("Error: year_range values in", df_name, "are not in the correct format (expected format: \\d{4}-\\d{4})\n")
+    }
+  }
+
+  if ("calendar_year" %in% col_names) {
+    calendar_year_values <- df$calendar_year
+    if (!all(grepl(calendar_year_regex, calendar_year_values))) {
+      cat("Error: calendar_year values in", df_name, "are not in the correct format (expected format: \\d{4})\n")
+    }
+  }
+  
+  if (!is_snake_case(col_names[-1])) {
+    cat("Error: column names in", df_name, "are not in snake case format (lowercase words separated by underscores)\n")
+  }
+
+  if (!(first_col %in% first_col_check)) {
+    cat("Error: geography column is not one of the acceptable values (", paste(first_col_check, collapse=", "), ") in", df_name, "\n")
+  }
+  
+
+  cat("Unique values in age_group for", df_name, ":\n")
+  cat(unique(df$age_group), "\n\n")
+  
+  cat("Unique values in calendar_year for", df_name, ":\n")
+  cat(unique(df$calendar_year), "\n\n")
+  
+  cat("Unique values in year_range for", df_name, ":\n")
+  cat(unique(df$year_range), "\n\n")
+  
+  cat("Unique values in sex for", df_name, ":\n")
+  cat(unique(df$sex), "\n\n")
+}
+
+```
+#CHECK OUTPUTS NOW - GO BACK TO YOUR CODE IF ANY FORMATTING ERRORS DETECTED
+
+All good? great! now you can move on to the cell suppression 
+
+
+Define the input directory path
+Define the output directory path to save cleaned datasets WITH CELL SUPPRESSED
+```{r}
+
+input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS/"
+
+
+output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS//cell_suppressed/"
+```
+
+Create the output directory if it doesn't already exist
+Get a list of all CSV files in the input directory
+Loop through each CSV file and apply cell suppression (here we are searching in the 5th column for values < 5)
+
+
+```{r}
+
+dir.create(output_dir, showWarnings = FALSE)
+
+
+csv_files <- list.files(input_dir, pattern = ".csv$", full.names = TRUE)
+
+
+for (file in csv_files) {
+  
+  # Read in the CSV file
+  df <- read.csv(file, stringsAsFactors = FALSE)
+  
+  # Apply cell suppression
+  df[df[, 6] < 5 & !is.na(df[, 6]), -c(1:5)] <- 9999999
+  
+  # Write the modified data frame to a new CSV file in the output directory
+  write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
+  
+}
+```
+
