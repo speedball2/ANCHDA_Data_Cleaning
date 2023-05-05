@@ -150,7 +150,14 @@ cleaning <- function(path, sht, range, col){
     #OTHER COLUMNNS FOLLOW
 
 
-
+# ------------------------------------------------------------------------------
+    
+    #ERP 
+    
+      #single year rangle to year range - create new column 
+    
+    df$age_range <- paste0(df$age_group, "-", df$age_group)
+    
 
 
 
