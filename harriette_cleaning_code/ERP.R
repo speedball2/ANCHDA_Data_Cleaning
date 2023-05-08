@@ -92,12 +92,34 @@ df3_full <- wide_to_long(df3, id_cols = c("SA2_CODE16", "calendar_year"),
                          m_cols = paste0("m", 0:24), f_cols = paste0("f", 0:24))
 
 
+#CHANGING ADD TO VISER SPECIFICATIONS ------------------------------------------
+
+change_age <- function(df){
+  
+  #ADDING ADD NEW COL TO VISER SPECIFICATIONS
+  df$age_range <- paste0(df$age_group, "-", df$age_group)
+  
+  # REMOVE COLUMNS BASED ON NAME
+  df = df[,!grepl("age_group", names(df))]
+  
+  #CHANING COL NAME
+  colnames(df)[colnames(df) == "age_range"] ="age_group"
+  
+  return(df)
+}
+
+df1_full <- change_age(df1_full)
+df2_full <- change_age(df2_full)
+df3_full <- change_age(df3_full)
+
 # REORDERING COLUMNS -----------------------------------------------------------
 
 reorder <- function(df, code) {
   
   col_order <- c(code, "calendar_year", "age_group", "sex", "estimated_regional_population")
-  df[, col_order]
+  df <- df[, col_order]
+  
+  return(df)
 }
 
 df1_full <- reorder(df1_full, "SA2_CODE16")
@@ -106,9 +128,9 @@ df3_full <- reorder(df3_full, "SA2_CODE16")
 
 # WRITE CSVS -------------------------------------------------------------------
 
-write.csv(df1_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_SA2.csv", row.names = F)
-write.csv(df2_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_LGA_2017_2017_ASGS2021.csv", row.names = F)
-write.csv(df3_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_LGA_2006_2016_ASGS2016.csv", row.names = F)
+ write.csv(df1_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_SA2.csv", row.names = F)
+ write.csv(df2_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_LGA_2017_2017_ASGS2021.csv", row.names = F)
+ write.csv(df3_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_LGA_2006_2016_ASGS2016.csv", row.names = F)
 
 
 
