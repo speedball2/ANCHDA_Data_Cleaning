@@ -81,8 +81,6 @@ final_data <- summarised_data %>%
   arrange(SA3_CODE16, age_group, sex, calendar_year, disease)
 
 
-
-
 # Split NNDSS dataframe into multiple dataframes based on the unique values in disease column
 df_list <- split(final_data, final_data$disease)
 
@@ -102,55 +100,3 @@ lapply(names(df_list), function(suffix) {
   file_path <- paste0(path_out, file_name)
   write.csv(df_list[[suffix]], file_path, row.names = FALSE)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-#read ABS census data to extract number of young people by Sa2 codes and by sex
-
-census_15_24 <- read.csv("C:/Users/00095998/OneDrive - The University of Western Australia/age_group_15_24_by_year_codes.csv",
-                         skip=9,row.names=NULL,na.strings=c("","NA"), check.names=FALSE)  
-
-colnames(census_15_24) <- colnames(census_15_24)[2:ncol(census_15_24)] #fix colnames issue
-
-
-census_15_24 <- census_15_24[,1:(ncol(census_15_24)-1)] #drop added NA column
-colnames(census_15_24)[ncol(census_15_24)] <- "Population"
-
-
-# delete trailing crap rows
-trailing_rows <- which(is.na(census_15_24[,ncol(census_15_24)])) #identify NA's in final column (variable of interest)
-census_15_24 <- census_15_24[-trailing_rows,] #deleting trailing rows (4)
-# fill down variables
-census_15_24 <- census_15_24 %>% fill(everything(),.direction="down")
-
-
-census_15_24_summary <- census_15_24 %>%
-  select(`SA2 (UR)`, `SEXP Sex`, `AGEP - Age in Single Years`, Population) %>%
-  rename(SA2_CODE16 = `SA2 (UR)`,
-         age_group = `AGEP - Age in Single Years`,
-         sex = `SEXP Sex`,
-         pop = Population) %>%
-  mutate(sex = tolower(sex),
-         age_group = sub(" years", "", age_group),
-         age_group = case_when(
-           age_group %in% c("15", "16", "17") ~ "15-17",
-           age_group %in% c("18", "19", "20", "21", "22", "23", "24") ~ "18-24"
-         )) %>%
-  group_by(SA2_CODE16, sex, age_group) %>%
-  summarize(pop = sum(pop))
-
-#-----------------------------------------------------------------------------------------------------------------------------#
-#-----------------------------------------------------------------------------------------------------------------------------#
-
-#save for future use
-write.csv(census_15_24_summary, file = file.path(path_out, "census_15_24.csv"), row.names = FALSE)
-

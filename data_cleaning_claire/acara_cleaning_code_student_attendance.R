@@ -102,7 +102,8 @@ sa2_combined <- do.call(rbind, sa2_tables)
 sa3_combined <- do.call(rbind, sa3_tables)
 
 
-
+##----------------------------------------------------------------------------------------------------------------------##
+## calculate the total attendance rate by geo-area
 
 sa3_total <- sa3_combined %>%
   select(-c(school_sector, school_type, age_group)) %>%  # drop school_sector and school_type columns
@@ -126,8 +127,6 @@ lga_total <- lga_combined %>%
   select(lga_code16, sex, age_group, calendar_year, attendance_rate)
 
 
-
-
 file_name <- "acara_472_attendance_rate_total_SA3.csv"
 file_path <- paste(path_out, file_name, sep = "/")
 write.csv(sa3_total, file_path, row.names = FALSE)
@@ -140,21 +139,13 @@ file_name <- "acara_472_attendance_rate_total_LGA.csv"
 file_path <- paste(path_out, file_name, sep = "/")
 write.csv(lga_total, file_path, row.names = FALSE)
 
-
-
-
-
-
-
+##----------------------------------------------------------------------------------------------------------------------##
 # Split the combined tibbles into separate tables based on school sector and school type
 lga_combined <- split(lga_combined, list(lga_combined$school_sector, lga_combined$school_type))
 
 sa2_combined <- split(sa2_combined, list(sa2_combined$school_sector, sa2_combined$school_type))
 
 sa3_combined <- split(sa3_combined, list(sa3_combined$school_sector, sa3_combined$school_type))
-
-
-
 
 
 # Export tibbles in lga_combined list to CSV files
