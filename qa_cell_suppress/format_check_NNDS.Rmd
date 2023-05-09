@@ -16,20 +16,20 @@ library(readr)
 # Set any global options
 options(digits = 3)
 ```
-# Open a connection to the output file
-# Set the working directory - folder with data cleaned ready for QA
+ Open a connection to the output file
+ Set the working directory - folder with data cleaned ready for QA
 
-# Define a list of acceptable values for the first column
-# Define a function to check if column names are in snake case format
-# Define a regex pattern to check age_group format
-# Define regex patterns for age_group, year_range, and calendar_year
+ Define a list of acceptable values for the first column
+ Define a function to check if column names are in snake case format
+ Define a regex pattern to check age_group format
+ Define regex patterns for age_group, year_range, and calendar_year
 
-# Get a list of CSV files in the working directory
-# Print the number of files in the folder and their names
+ Get a list of CSV files in the working directory
+ Print the number of files in the folder and their names
 
-#initialize an empty list to store data frame
-#read each CSV file into a data frame and store it in the df_list
-#append the data frame to the list using the file name as the key
+ initialize an empty list to store data frame
+ read each CSV file into a data frame and store it in the df_list
+ append the data frame to the list using the file name as the key
 
 ```{r setup, include=FALSE}
 # Set the working directory
@@ -69,7 +69,7 @@ for (file in csv_files) {
 }
 ```
 
-# Loop through each data frame in the list and print the head
+ Loop through each data frame in the list and print the head
 ```{r}
 
 for (df_name in names(df_list)) {
@@ -78,7 +78,7 @@ for (df_name in names(df_list)) {
 }
 ```
 
-# Iterate through each data frame in df_list and perform checks:
+Iterate through each data frame in df_list and perform checks:
 
 1. check if age_group, sex, calendar year or year_range columns exist
 2. check if age_group values are in the correct format
@@ -157,7 +157,7 @@ for (df_name in names(df_list)) {
 }
 
 ```
-#CHECK OUTPUTS NOW - GO BACK TO YOUR CODE IF ANY FORMATTING ERRORS DETECTED
+CHECK OUTPUTS NOW - GO BACK TO YOUR CODE IF ANY FORMATTING ERRORS DETECTED
 
 All good? great! now you can move on to the cell suppression 
 
@@ -176,26 +176,42 @@ output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/
 
 Create the output directory if it doesn't already exist
 Get a list of all CSV files in the input directory
-Loop through each CSV file and apply cell suppression (here we are searching in the 5th column for values < 5)
 
 
 ```{r}
 
 dir.create(output_dir, showWarnings = FALSE)
 csv_files <- list.files(input_dir, pattern = ".csv$", full.names = TRUE)
+```
+Loop through each CSV file 
+Check if there is an "uncertainty" column in the data frame
 
-
-
-# Loop through each CSV file and apply cell suppression
+```{r}
 for (file in csv_files) {
   
-  # Read in the CSV file
+ 
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  # Apply cell suppression
-  df[, 5] <- ifelse(df[, 5] < 5, 9999999, df[, 5])
   
-  # Write the modified data frame to a new CSV file in the output directory
+  if ("uncertainty" %in% colnames(df)) {
+    message(paste0("Note: The file ", basename(file), " contains an 'uncertainty' column. Make sure to modify the code to apply cell suppression where uncertainty is high."))}
+  else {
+  # Print message indicating that there is no need to apply cell suppression to "uncertainty" column
+  cat("You don't have to worry about cell suppression on 'uncertainty' in", basename(file), "\n")
+}
+}
+```
+
+Loop through each CSV file and apply cell suppression
+Write the modified data frame to a new CSV file in the output directory
+
+```{r}
+for (file in csv_files) {
+  
+  df <- read.csv(file, stringsAsFactors = FALSE)
+  
+  df[, 5] <- ifelse(df[, 5] < 5, 9999999, df[, 5]) #modify this line if your n values are not in the 5th column
+  
   write_csv(df, file.path(output_dir, basename(file)))
   
 }

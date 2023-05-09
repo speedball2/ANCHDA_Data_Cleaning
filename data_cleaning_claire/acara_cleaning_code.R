@@ -1,5 +1,6 @@
 # Title: ACARA data for ANCHDA
-# Description: This script reads the ACARA data from the excel documents and reorganise it in separate CSVs - one per indicator.
+# Description: This script reads the ACARA data from the excel documents
+# this script creates indicators for naplan results
 # Author: Claire Boulange
 # Date: completed on March 24, 2023
 
