@@ -71,9 +71,9 @@ clean_data <- function(df) {
   # Create age_group based on the values in school_type
   df <- df %>% 
     mutate(age_group = case_when(
-      school_type == "primary" ~ "6-12",
-      school_type == "secondary" ~ "12-16",
-      school_type == "combined" ~ "6-16"
+      school_type == "primary" ~ "6-11",
+      school_type == "secondary" ~ "12-15",
+      school_type == "combined" ~ "6-15"
     )) %>%
     
     # Add a column for sex
@@ -103,12 +103,56 @@ sa3_combined <- do.call(rbind, sa3_tables)
 
 
 
+
+sa3_total <- sa3_combined %>%
+  select(-c(school_sector, school_type, age_group)) %>%  # drop school_sector and school_type columns
+  group_by(sa3_code16, sex, calendar_year) %>%
+  summarize(attendance_rate = mean(attendance_rate))%>%
+  mutate(age_group = "6-15", attendance_rate = round(attendance_rate, 2)) %>%  
+  select(sa3_code16, sex, age_group, calendar_year, attendance_rate)
+
+sa2_total <- sa2_combined %>%
+  select(-c(school_sector, school_type, age_group)) %>%  # drop school_sector and school_type columns
+  group_by(sa2_code16, sex, calendar_year) %>%
+  summarize(attendance_rate = mean(attendance_rate))%>%
+  mutate(age_group = "6-15", attendance_rate = round(attendance_rate, 2)) %>%   
+  select(sa2_code16, sex, age_group, calendar_year, attendance_rate)
+
+lga_total <- lga_combined %>%
+  select(-c(school_sector, school_type, age_group)) %>%  # drop school_sector and school_type columns
+  group_by(lga_code16, sex, calendar_year) %>%
+  summarize(attendance_rate = mean(attendance_rate))%>%
+  mutate(age_group = "6-15", attendance_rate = round(attendance_rate, 2)) %>% 
+  select(lga_code16, sex, age_group, calendar_year, attendance_rate)
+
+
+
+
+file_name <- "acara_472_attendance_rate_total_SA3.csv"
+file_path <- paste(path_out, file_name, sep = "/")
+write.csv(sa3_total, file_path, row.names = FALSE)
+
+file_name <- "acara_472_attendance_rate_total_SA2.csv"
+file_path <- paste(path_out, file_name, sep = "/")
+write.csv(sa2_total, file_path, row.names = FALSE)
+
+file_name <- "acara_472_attendance_rate_total_LGA.csv"
+file_path <- paste(path_out, file_name, sep = "/")
+write.csv(lga_total, file_path, row.names = FALSE)
+
+
+
+
+
+
+
 # Split the combined tibbles into separate tables based on school sector and school type
 lga_combined <- split(lga_combined, list(lga_combined$school_sector, lga_combined$school_type))
 
 sa2_combined <- split(sa2_combined, list(sa2_combined$school_sector, sa2_combined$school_type))
 
 sa3_combined <- split(sa3_combined, list(sa3_combined$school_sector, sa3_combined$school_type))
+
 
 
 
@@ -148,3 +192,5 @@ for (i in seq_along(sa3_combined)) {
   # Export to CSV file
   write.csv(sa3_combined[[i]], file.path(path_out, file_name), row.names = FALSE)
 }
+
+
