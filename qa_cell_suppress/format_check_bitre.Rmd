@@ -384,7 +384,7 @@ output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/
 
 Create the output directory if it doesn't already exist
 Get a list of all CSV files in the input directory
-Loop through each CSV file and apply cell suppression (here we are searching in the 5th column for values < 5)
+
 
 
 ```{r}
@@ -395,6 +395,28 @@ dir.create(output_dir, showWarnings = FALSE)
 csv_files <- list.files(input_dir, pattern = ".csv$", full.names = TRUE)
 
 
+
+```
+Loop through each CSV file 
+Check if there is an "uncertainty" column in the data frame
+```{r}
+for (file in csv_files) {
+  
+ 
+  df <- read.csv(file, stringsAsFactors = FALSE)
+  
+  
+  if ("uncertainty" %in% colnames(df)) {
+    message(paste0("Note: The file ", basename(file), " contains an 'uncertainty' column. Make sure to modify the code to apply cell suppression where uncertainty is high."))}
+  else {
+  # Print message indicating that there is no need to apply cell suppression to "uncertainty" column
+  cat("You don't have to worry about cell suppression on 'uncertainty' in", basename(file), "\n")
+}
+}
+
+```
+Loop through each CSV file and apply cell suppression
+```{r}
 for (file in csv_files) {
   
   # Read in the CSV file
@@ -415,5 +437,6 @@ for (file in csv_files) {
   
 }
 ```
+
 
 >>>>>>> 5bcb08c3ec83cb6ab61b2e840a575e03d133a22a
