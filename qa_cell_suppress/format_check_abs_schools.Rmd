@@ -175,7 +175,7 @@ for (df_name in names(df_list)) {
     cat("Error: geography column is not one of the acceptable values (", paste(first_col_check, collapse=", "), ") in", df_name, "\n")
   }
   
-  if (first_col != "Australia" && any(df[[1]] == 0)) {
+  if (!is.na(first_col) && first_col != "Australia" && any(df[[1]] == 0, na.rm = TRUE)) {
   cat("Error: Values coded as 0 (Australia) found in a dataset that is not national:", df_name, "\n")
   }
 }
