@@ -6,19 +6,24 @@ library(janitor)
 library(tidyr)
 library(stringr)
 library(zoo)
+library(openxlsx)
 
 
 `%notin%` <- Negate(`%in%`)
 
 # Set the file path
-file_path <- "Z:/CDA/Claire WD/anchda/AIHW/AIHW-CWS-87-Data-tables.xlsx"
+file_path <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aihw_child_protection/AIHW-CWS-87-Data-tables.xlsx"
 path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aihw_child_protection/"
 
 
 # Read all sheets except the first three
-sheets <- excel_sheets(file_path)
-df_list <- lapply(sheets[-c(1,2,3)], function(sheet_name) {
-  read_excel(file_path, sheet = sheet_name, col_names = TRUE, skip = 0)
+
+sheets <- readxl::excel_sheets(file_path)[-c(1, 2, 3)]
+
+
+
+df_list <- lapply(sheets, function(sheet_name) {
+  xlsx::read.xlsx(file_path, sheet = sheet_name, col_names = TRUE, na = "", encoding="UTF-8")
 })
 
 
@@ -26,6 +31,8 @@ df_list <- lapply(sheets[-c(1,2,3)], function(sheet_name) {
 for (df in df_list) {
   print(names(df)[1])
 }
+
+
 
 ##---------------------------------------------------------------------- out of home care table 5.18 ----------------------------------------------------------------------
 out_of_home_care <- NULL
@@ -38,7 +45,7 @@ for (df in df_list) {
   }
 }
 
-#rename coinames
+#rename colnames
 colnames(out_of_home_care) <- as.character(out_of_home_care[1, ])
 #remove the last 6 rows
 out_of_home_care <- head(out_of_home_care, -6)

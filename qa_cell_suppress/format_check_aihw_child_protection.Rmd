@@ -33,7 +33,7 @@ append the data frame to the list using the file name as the key
 ```{r setup, include=FALSE}
 # Set the working directory
 setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aihw_child_protection/") #change this path if you copy this 
-
+csv_files <- list.files(pattern=".*\\.csv$")
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
 is_snake_case <- function(x) {
@@ -44,9 +44,17 @@ age_group_regex <- "^\\d{1,2}-\\d{1,2}$|^\\d{1,2}-\\d{2}$|^\\d{2}-\\d{2}$"
 year_range_regex <- "^\\d{4}-\\d{4}$"
 calendar_year_regex <- "^\\d{4}$"
 
+df_list <- list() 
 
-csv_files <- list.files(pattern=".*\\.csv$")
+for (file in csv_files) {
+  if (endsWith(file, ".csv")) {  # only read in CSV files
+    df <- read.csv(file)
+    df_list[[file]] <- df
+  }
+}
+```
 
+```{r}
 cat("Number of files in folder:", length(csv_files), "\n") 
 
 for (file in csv_files) {
@@ -56,16 +64,6 @@ for (file in csv_files) {
 }
 cat(paste(csv_files, collapse = "\n"), "\n")
 cat("Finished checking CSV files.", "\n")
-
-
-df_list <- list() 
-
-for (file in csv_files) {
-  if (endsWith(file, ".csv")) {  # only read in CSV files
-    df <- read.csv(file)
-    df_list[[file]] <- df
-  }
-}
 ```
 Loop through each data frame in the list and print the head
 ```{r}
@@ -78,30 +76,34 @@ print overview of all CSV files and their variables:
 ```{r}
 csv_info <- data.frame(csv_file = names(df_list), variables = sapply(df_list, function(x) paste(names(x), collapse = ", ")))
 print(csv_info)
-
 ```
-This code loops through each data frame in df_list and creates a data frame var_info with columns for variable name, class and range. The class column is populated using the class function and the range column is populated using the range function and then collapsed into a string using paste. Finally, the var_info data frame is printed for each data frame in df_list.
 
-you might want to use it to fill the dictionary:
+This code chunk iterates over each data frame in df_list, retrieves its variable names, class types, range for numeric variables, and unique values for character variables.
+
+It then creates a data frame var_info with these details and prints it, providing a data dictionary for each data frame in the list. You might want to use it to fill the dictionary:
 
 https://connectqutedu.sharepoint.com/:x:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Metadata/data_dictionary.xlsx?d=w8708a1fa697f42899fd11956f7bc1ce6&csf=1&web=1&e=W3Iqp4
 
 ```{r}
+# Iterate through each data frame and create a data dictionary
 for (df_name in names(df_list)) {
-  cat(paste("Table for", df_name, ":\n"))
+  cat(paste("Data Dictionary for", df_name, ":\n"))
   
   # Get the data frame
   df <- df_list[[df_name]]
   
-  # Create a data frame with variable name, class and range
-  var_info <- data.frame(variable = names(df),
-                         class = sapply(df, class),
-                         range = sapply(df, function(x) paste(range(x), collapse = " - ")))
+  # Create a data frame with variable name, class, range, unique values, and count of missing values
+  var_info <- data.frame(
+    variable = names(df),
+    class = sapply(df, class),
+    range = sapply(df, function(x) if (is.numeric(x)) paste(range(x, na.rm = TRUE), collapse = " - ") else ""),
+    unique_values = sapply(df, function(x) if (is.character(x)) paste(unique(x), collapse = ", ") else ""),
+    n_missing_values = sapply(df, function(x) sum(is.na(x)))
+  )
   
-  # Print the variable information
+  # Print the data dictionary
   print(var_info)
 }
-
 ```
 Iterate through each data frame in df_list and perform checks:
 
