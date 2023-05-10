@@ -44,7 +44,7 @@ coln2 <- c("STE_CODE16", "calendar_year",
            "p_type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", 
            "p_type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", 
            "p_type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
-           "p_type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", 
+           "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can", 
            "p_type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", 
            "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
            "p_type_of_alcohol_usually_consumed_cider", 
@@ -112,6 +112,15 @@ cleaning <- function(sheet, range, coln){
   df[df[,] == "n.p."] <- NA
   
   
+  #CHANGE DATA BASED ON STATE CODE ORDER (CURRENTLY INCORRECT ORDER)
+  
+  df <- with(df, df[order(match(STE_CODE16, c(1,2,3,4,5,6,7,8,0))),])
+  
+  #REMOVE NATIONAL DATA FROM STATE DATA
+  
+  df <- df[df$STE_CODE16 != 0, ]
+  
+  
   # OUTPUT:
   return(df)
 }
@@ -120,28 +129,47 @@ cleaning <- function(sheet, range, coln){
 
 # STATE ------------------------------------------------------------------------
 df1 <- cleaning(2, "A6:AJ50", coln1) #AOD status by state
-
-#CHANGE DATA BASED ON STATE CODE ORDER (CURRENTLY INCORRECT ORDER)
-
-df1 <- with(df1, df1[order(match(STE_CODE16, c(1,2,3,4,5,6,7,8,0))),])
-
-#REMOVE NATIONAL DATA FROM STATE DATA
-
-df1 <- df1[df1$STE_CODE16 != 0, ]
-
-
 df2 <- cleaning(3, "A6:T50", coln2) #AOD Qs by State 
 
-#CHANGE DATA BASED ON STATE CODE ORDER (CURRENTLY INCORRECT ORDER)
+# RESHAPING DATA ---------------------------------------------------------------
+  
+  
+  reshape_data <- function(df){
+    
+    # ROUNDING:
+    for(i in seq(3,ncol(df),2)){
+      df[,i] <- as.numeric(df[,i])
+      df[,i] <- round(df[,i],2)
+    }
+    
+    
+    
+    # ADD AND CALCULATE UNCERTAINTY
+    for(i in ncol(df):3){
+      # Insert column using cursed new notation: https://stackoverflow.com/questions/60311773/mutate-with-paste0
+      df <- add_column(df, !!paste0(names(df)[i],"_uncertainty") := NA, .after = i)
+      df[which(substr(df[, i],1,1) == "*"),i+1] <- "1"
+      df[which(substr(df[, i],1,2) == "**"),i+1] <- "2"
+      df[which(substr(df[, i],1,1) == "`"),i+1] <- "1"
+      df[which(substr(df[, i],1,2) == "``"),i+1] <- "2"
+      df[,i] <- str_replace_all(df[,i],"[*]","")
+      df[,i] <- str_replace_all(df[,i],"[`]","")
+    }
+    
+    
+    #GETTING PERCENTAGE
+    df <- df %>%
+      mutate_at(vars(starts_with("p_") & !ends_with("uncertainty")), as.numeric)
+    
+    df <- df %>%
+      mutate(across(starts_with("p_") & !ends_with("uncertainty"), ~ round(./100, 2)))
+    
+    
+    return(df)
+  }
 
-df2 <- with(df2, df2[order(match(STE_CODE16, c(1,2,3,4,5,6,7,8,0))),])
-
-
-#REMOVE NATIONAL DATA FROM STATE DATA
-
-df2 <- df2[df2$STE_CODE16 != 0, ]
-
-
+df1_newcols <- reshape_data(df1)
+df2_newcols <- reshape_data(df2)
 
 
 # REMOVING, COMBINING COLUMNS --------------------------------------------------
@@ -170,23 +198,16 @@ df2 <- df2[df2$STE_CODE16 != 0, ]
 # N and p_14-24_recently used illicit drugs_state
 # 
 
-df1 <- df1[, !grepl("_ex_|pharmaceuticals_for_non_medical_purposes|cannibas_no|recently_used_illicit_drugs_no"|"recently_used_cannabis", colnames(df1))]
-
-#colnames(df1) <- make sure they make above specifications, can add "uncertainty" to above function to make it easier to review
+df1_newcols <- df1[, !grepl("_ex_|pharmaceuticals_for_non_medical_purposes|recently_used_illicit_drugs_no|recently_used_cannabis_no", colnames(df1))]
 
 # REMOVING UNWANTED COLUMNS, TO MATCH ABOVE
-column_names <- c("n_ever_used_illicit_drugs_yes","p_ever_used_illicit_drugs_yes","n_ever_used_illicit_drugs_no","p_ever_used_illicit_drugs_no","n_recently_used_illicit_drugs_yes","p_recently_used_illicit_drugs_yes","n_recently_used_cannabis_yes","p_recently_used_cannabis_yes")
-new_names <- c("n_ever_used_illicit_drugs","p_ever_used_illicit_drugs","n_never_used_illicit_drugs","p_never_used_illicit_drugs", "n_recently_used_illicit_drugs","p_recently_used_illicit_drugs","n_recently_used_cannabis","p_recently_used_cannabis")
+df1_newcols <- df1_newcols %>% 
+  rename_with(~ gsub("_yes", "", .x, fixed = TRUE))
 
-for(i in 1:length(column_names)) {
-  names(df1)[names(df1) == column_names[i]] <- new_names[i]
-}
+df1_newcols <- df1_newcols %>% 
+  rename_with(~ gsub("ever_used_illicit_drugs_no", "never_used_illicit_drugs", .x, fixed = TRUE))
 
-
-
-
-
-
+#colnames(df1) <- check new col names match the above (N&P will be seperate)
 
 # 
 # Table AOD Qs by state
@@ -201,44 +222,31 @@ for(i in 1:length(column_names)) {
 # 
 # P_14-24_Type of alcohol usually consumed_bottled wine_state
 # 
-# P_14-24_Type of alcohol usually consumed_pre-mixed spirits_state (combine columns ‘I’ and ‘K’)
+# P_14-24_Type of alcohol usually consumed_pre-mixed spirits_state (combine columns ‘I’ and ‘K’) I = Pre-mixed spirits in a can, K = Pre-mixed spirits in a bottle
 # 
 # P_14-24_ Cannabis use frequency(g) - Once a week or more
 # 
 # P_14-24_ Cannabis use frequency(g) - About once a month
 # 
-# P_14-24_ Cannabis use frequency(g) – Every few months or less (combine columns ‘S’ and ‘T’)
+# P_14-24_ Cannabis use frequency(g) – Every few months or less (combine columns ‘S’ and ‘T’) s = Cannabis use frequency(g) - Every few months, t = Cannabis use frequency(g) - Once or twice a year
 
 
 # REMOVING UNWANTED COLUMNS, TO MATCH ABOVE
-df2_newcols <- df2[, !grepl("col1|col2|col3", colnames(df2))]
+df2_newcols <- df2[, !grepl("n_age_of_initiation_of_illicit_drug_use_lifetime|n_age_of_initiation_of_smoking|mid_strength_beer|low_alcohol_beer|p_cannabis_use_frequency_every_day", colnames(df2))]
+
+df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can)
+df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle)
+df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle_uncertainty <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle_uncertainty)
+
+
+df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can + df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle)
+df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_uncertainty <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can_uncertainty + df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle_uncertainty)
 
 
 
+df2_newcols$p_cannabis_use_frequency_every_few_months_or_more <- df2_newcols$p_cannabis_use_frequency_every_few_months + df2_newcols$p_cannabis_use_frequency_once_or_twice_a_year
+df2_newcols$p_cannabis_use_frequency_every_few_months_or_more_uncertainty <- df2_newcols$p_cannabis_use_frequency_every_few_months_uncertainty + df2_newcols$p_cannabis_use_frequency_once_or_twice_a_year_uncertainty
 
-coln1 <- c("STE_CODE16", "calendar_year", 
-           "n_current_smoker", "p_current_smoker",
-           "n_ex_smoker", "p_ex_smoker",
-           "n_never_smoked", "p_never_smoked",
-           "n_current_vaper", "p_current_vaper",
-           "n_ex_vaper", "p_ex_vaper",
-           "n_never_vaped", "p_never_vaped", 
-           "n_current_drinker", "p_current_drinker", 
-           "n_ex_drinker", "p_ex_drinker", "n_never_drinker", "p_never_drinker",
-           "n_ever_used_illicit_drugs_yes", "p_ever_used_illicit_drugs_yes", 
-           "n_ever_used_illicit_drugs_no", "p_ever_used_illicit_drugs_no",
-           "n_ever_used_pharmaceuticals_for_non_medical_purposes_yes",
-           "p_ever_used_pharmaceuticals_for_non_medical_purposes_yes",
-           "n_ever_used_pharmaceuticals_for_non_medical_purposes_no", 
-           "p_ever_used_pharmaceuticals_for_non_medical_purposes_no", 
-           "n_recently_used_illicit_drugs_yes",
-           "p_recently_used_illicit_drugs_yes", 
-           "n_recently_used_illicit_drugs_no", 
-           "p_recently_used_illicit_drugs_no", 
-           "n_recently_used_cannabis_yes", 
-           "p_recently_used_cannabis_yes", 
-           "n_recently_used_cannabis_no", 
-           "p_recently_used_cannabis_no")
 
 
 coln2 <- c("STE_CODE16", "calendar_year", 
@@ -261,50 +269,11 @@ coln2 <- c("STE_CODE16", "calendar_year",
            "p_cannabis_use_frequency_once_or_twice_a_year")
 
 
+class(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can)
+class(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle)
 
 
 
 
-# RESHAPING DATA ---------------------------------------------------------------
 
-# 
-# reshape_data <- function(df){
-#   
-#   # ROUNDING:
-#   for(i in seq(3,ncol(df),2)){
-#     df[,i] <- as.numeric(df[,i])
-#     df[,i] <- round(df[,i],2)
-#   }
-#   
-#   
-#   
-#   # ADD AND CALCULATE UNCERTAINTY
-#   for(i in ncol(df):3){
-#     # Insert column using cursed new notation: https://stackoverflow.com/questions/60311773/mutate-with-paste0
-#     df <- add_column(df, !!paste0(names(df)[i],"_uncertainty") := NA, .after = i)
-#     df[which(substr(df[, i],1,1) == "*"),i+1] <- "1"
-#     df[which(substr(df[, i],1,2) == "**"),i+1] <- "2"
-#     df[which(substr(df[, i],1,1) == "`"),i+1] <- "1"
-#     df[which(substr(df[, i],1,2) == "``"),i+1] <- "2"
-#     df[,i] <- str_replace_all(df[,i],"[*]","")
-#     df[,i] <- str_replace_all(df[,i],"[`]","")
-#   }
-#   
-#   
-#   #GETTING PERCENTAGE
-#   df <- df %>%
-#     mutate_at(vars(starts_with("p_") & !ends_with("uncertainty")), as.numeric)
-#   
-#   df <- df %>% 
-#     mutate(across(starts_with("p_") & !ends_with("uncertainty"), ~ round(./100, 2)))
-#   
-#   
-#   return(df)
-# }
-# 
-# 
-# df1_newcols <- reshape_data(df1)
-# df2_newcols <- reshape_data(df2)
-# 
-# 
 

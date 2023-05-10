@@ -135,8 +135,8 @@ sa4_codes <- function(df){
   #test1 <<- sa4
   #test2 <<- copy
   
-  dummy <- left_join(sa4, copy)
-  
+  #dummy <- left_join(sa4, copy)
+  dummy <- merge(sa4,copy)
   
   # MATCHING
   
@@ -178,33 +178,61 @@ lga_codes <- function(df){
   
   # MATCHING
   
-  dummy$code <- dummy$SA4_CODE_2016[match(dummy$SA4_NAME16, dummy$SA4_NAME_2016)]
+  dummy2$code <- dummy2$LGA_CODE_2021[match(dummy2$LGA_NAME21, dummy2$LGA_NAME_2021)]
   
   
+  #REMOVE COLS FROM ASGS FILES
+  
+  dummy2 <- dummy2[,-(1:2)]
+  
+  #CBIND BACK WITH OTHER DATASET
+  
+  new <- merge(df, dummy2, by = "LGA_NAME21")
+  new <- new[!duplicated(new),]
+  
+  return(new)
   
 }
-
-
-
-
-
-
-
+#SA4
 df1_new <- sa4_codes(df1)
-df3_new <- sa4_codes(df2)
-df5_new <- sa4_codes(df3)
-df7_new <- sa4_codes(df4)
+df3_new <- sa4_codes(df3)
+df5_new <- sa4_codes(df5)
+df7_new <- sa4_codes(df7)
 
 
 #LGA
-# df2_new <- lga_codes(df2)
-# df4_new <- lga_codes(df4)
-# df6_new <- lga_codes(df6)
-# df8_new <- lga_codes(df8)
+df2_new <- lga_codes(df2)
+df4_new <- lga_codes(df4)
+df6_new <- lga_codes(df6)
+df8_new <- lga_codes(df8)
+
+
+concistency <- function(df){
+  
+  #REMOVE VARIABLES IN DATA 
+  df <- df[!grepl("Unknown/missing", df$sex),]
+  
+  #REMOVING CAPITALS FOR M/F
+  
+  if("sex" %in% names(df)){
+    df$sex <- recode(df$sex,
+                     "Female" = "female",
+                     "Male" = "male",)
+    
+  }
+  
+  return(df)
+}
+
+
+df1_new <- concistency(df1_new)
 
 
 #REMOVE IN CUSTODY DATA 
 # df <- df[!grepl("In Custody", df$SA4_NAME16),]
-# df <- df[!grepl("In Custody", df$LGA_NAME21),]
-# df <- df[!grepl("Unknown/missing", df$sex),]
-# 
+#df <- df[!grepl("In Custody", df$LGA_NAME21),]
+ 
+#Rename code as proper data dictionary code name 
+
+#write csvs 
+
