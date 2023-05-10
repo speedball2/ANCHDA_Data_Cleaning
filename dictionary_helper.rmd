@@ -19,19 +19,15 @@ setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_tem
 # Retrieve a list of CSV files in the directory
 csv_files <- list.files(pattern = ".*\\.csv$")
 
-# Check the number of files in the folder
-cat("Number of files in folder:", length(csv_files), "\n")
 
-# Check if any files are missing an indicator code
+df_list <- list() 
+
 for (file in csv_files) {
-  if (!grepl("\\d{3,}", file)) {
-    cat("File without indicator code:", file, "\n")
+  if (endsWith(file, ".csv")) {  # only read in CSV files
+    df <- read.csv(file)
+    df_list[[file]] <- df
   }
 }
-# Print the list of CSV files
-cat(paste(csv_files, collapse = "\n"), "\n")
-cat("Finished checking CSV files.", "\n")
-
 
 ```
 
