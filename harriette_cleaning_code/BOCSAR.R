@@ -1,14 +1,5 @@
-
-
 # Harriette's WD
 
-setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/from_custodians/BOSCAR_SA4_LGA")
-
-#test
-
-# TO DO ------------------------------------------------------------------------
-
-# what to do w/ unknown/missing data for m/f
 
 # libraries --------------------------------------------------------------------
 
@@ -20,9 +11,10 @@ library(tidyverse)
 
 # cleaning function ------------------------------------------------------------
 
-cleaning <- function(path, sht, range){
+cleaning <- function(path, sht, range, new_name){
   #path = file path, sht = Sheet number, range = column range 
   #code = SA4/LGA region for pivoting wide to long
+  #new_name = col name to change
   
   #READING IN SPREADSHEETS FROM EXCEL
   df <- as.data.frame(read_xlsx(path,
@@ -41,14 +33,14 @@ cleaning <- function(path, sht, range){
  # CONCISTENT NAMING CONVENTIONS W/ DATA DICTIONARY
   
   df[df[,] == 0] <- NA
-  df[df[,] == "1 to 4"] <- "<5"
+  df[df[,] == "1 to 4"] <- "1-4"
   
   
   #RENAMING COLUMNS FOR ALL DFS
   names(df)[names(df) == "Age of victim (in years)"] <- "age_group"
   names(df)[names(df) == "Gender"] <- "sex"
   names(df)[names(df) == "SA4 of Incident"] <- "SA4_NAME16"
-  names(df)[names(df) == "LGA of Incident"] <- "LGA_NAME16"
+  names(df)[names(df) == "LGA of Incident"] <- "LGA_NAME21"
 
 
   # REMOVING RANDOM "Y" FROM DFs
@@ -64,86 +56,51 @@ cleaning <- function(path, sht, range){
   #INDICATOR = COUNTS FOR RATES IN NEW COL (a new col)
   #CALENDAR_YEAR = NEW COLUMN FOR "GATHERCOL" VARIABLES (a new col)
   #OTHER COLUMNNS FOLLOW
- 
+  
+  
+  #RENAME INDICATOR COLUMN TO BE SHEET SPECIFIC
+  names(df)[names(df) == "indicator"] <- new_name
+  
+  
+  # #CHANGING NAMES SO NEXT FUNC WORKS
+  
+  if ("SA4_NAME16" %in% names(df)) {
+    rep_str <- c("And" = "and", "Exc" = "exc")
+    df$SA4_NAME16 <- stringr::str_replace_all(df$SA4_NAME16, rep_str)
+  }
+  
+  
 return(df)
    
 }
 
-# SPECIFIC TO EACH DF ----------------------------------------------------------
-
-df1 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 1, "A5:T415")
-
-#RENAME INDICATOR COLUMN TO BE SHEET SPECIFIC
-names(df1)[names(df1) == "indicator"] <- "victims_domestic_violence_related_assault"
-
-# ------------------------------------------------------------------------------
-
-#RENAME INDICATOR COLUMN TO BE SHEET SPECIFIC
-df2 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 2, "A5:T1571")
-
-names(df2)[names(df2) == "indicator"] <- "victims_domestic_violence_related_assault"
-
-# ------------------------------------------------------------------------------
-
-
-df3 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 3, "A5:T90")
-
-#RENAME INDICATOR COLUMN TO BE SHEET SPECIFIC
-names(df3)[names(df3) == "indicator"] <- "victims_domestic_violence_related_murder"
-
-# ------------------------------------------------------------------------------
-
-df4 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 4, "A5:T114")
-
-#RENAME INDICATOR COLUMN TO BE SHEET SPECIFIC
-names(df4)[names(df4) == "indicator"] <- "victims_domestic_violence_related_murder"
-
-# ------------------------------------------------------------------------------
-
-df5 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 5, "A5:T393")
-
-#RENAME INDICATOR COLUMN TO BE SHEET SPECIFIC
-names(df5)[names(df5) == "indicator"] <- "victims_sexual_assault"
-
-# ------------------------------------------------------------------------------
-
-df6 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 6, "A5:T1325")
-
-#RENAME INDICATOR COLUMN TO BE SHEET SPECIFIC
-names(df6)[names(df6) == "indicator"] <- "victims_sexual_assault"
-
-# ------------------------------------------------------------------------------
-
-df7 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 7, "A5:T392")
-
-#RENAME INDICATOR COLUMN TO BE SHEET SPECIFIC
-names(df7)[names(df7) == "indicator"] <- "victims_sexual_touching"
-
-# ------------------------------------------------------------------------------
-
-df8 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 8, "A5:T1337")
-
-#RENAME INDICATOR COLUMN TO BE SHEET SPECIFIC
-names(df8)[names(df8) == "indicator"] <- "victims_sexual_touching"
+df1 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 1, "A5:T415","victims_domestic_violence_related_assault")
+df2 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 2, "A5:T1571", "victims_domestic_violence_related_assault")
+df3 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 3, "A5:T90", "victims_domestic_violence_related_murder")
+df4 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 4, "A5:T114", "victims_domestic_violence_related_murder")
+df5 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 5, "A5:T393", "victims_sexual_assault")
+df6 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 6, "A5:T1325", "victims_sexual_assault")
+df7 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 7, "A5:T392", "victims_sexual_touching")
+df8 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 8, "A5:T1337", "victims_sexual_touching")
 
 
 # reading in geographies for codes ---------------------------------------------
 
 
-# ../ from where R script is saved 
-
-sa4 <- read_xlsx("SA4_2021_AUST (1).xlsx", 1, "A1:B31", T)
+sa4 <- read.csv("SA2_2016_AUST_no_geom.csv")
 
 
-lga <- read_xlsx("LGA_2021_AUST (1).xlsx", 1, cell_limits(c(1, 1), c(NA, 3)), T)
+lga <- read_xlsx("LGA_2021_AUST (2).xlsx", 1, cell_limits(c(1, 1), c(NA, 3)), T)
 
 lga <- lga[,-1]
- 
+
 lga <- lga[!duplicated(lga),]
 
 #JUST LGA NAMES AND CODES
 
 write.csv(lga, "lga_names_codes.csv", F)
+
+
 
 # ------------------------------------------------------------------------------
 
@@ -152,9 +109,9 @@ write.csv(lga, "lga_names_codes.csv", F)
 #confirm which ASGS is being used
 
 
-sa4_codes <- function(frame, copy, dummy){
+sa4_codes <- function(df){
   
-  copy <- frame
+  copy <- df
   
   # REMOVING JUNK COLS
   
@@ -168,67 +125,86 @@ sa4_codes <- function(frame, copy, dummy){
   
   copy <- copy[!duplicated(copy),]
   
+  #ONLY SA4 FROM ASGS
+  
+  sa4 <- sa4[,-c(1:5,8:12)]
+  sa4 <- sa4[!duplicated(sa4),]
+  
   #MERGING TWO DATA FRAMES TOGETHER (CUSTODIAN + ABS ASGS)
   
-  dummy <- merge(sa4, copy)
+  #test1 <<- sa4
+  #test2 <<- copy
   
-  # REMOVING LEFTOVER JUNK COL (CAL YEAR)
-  dummy <- dummy[,-(4)]
-  
-  #CHANGING NAMES SO FUNC WORKS
-  
-  rep_str = c( "And" = "and", "Exc" = "exc")
-  
-  copy$SA4_NAME16 <- str_replace_all(copy$SA4_NAME16, rep_str)
+  dummy <- left_join(sa4, copy)
   
   
   # MATCHING
   
-  copy$code <- copy$SA4_CODE_2021[match(copy$SA4_NAME16, copy$SA4_NAME_2021)]
+  dummy$code <- dummy$SA4_CODE_2016[match(dummy$SA4_NAME16, dummy$SA4_NAME_2016)]
   
   
-  #REMOVE COLS FROM ASGS 
+  #REMOVE COLS FROM ASGS FILES
   
-  copy <- copy[,-(1:2)]
+  dummy <- dummy[,-(1:2)]
   
-  #CHANGE NAMES BACK 
-  rep_str.1 = c( "and" = "And", "exc" = "Exc")
+  #CBIND BACK WITH OTHER DATASET
   
-  copy$SA4_NAME16 <- str_replace_all(copy$SA4_NAME16, rep_str.1)
+  new <- merge(df, dummy, by = "SA4_NAME16")
+  new <- new[!duplicated(new),]
   
-  #MERGE DATA FRAMES BY NAME
+  return(new)
+}
+
+
+lga_codes <- function(df){
+  
+  
+  copy2 <- df2
+  # REMOVING JUNK COLS
+  
+  copy2 <- copy2[,-(1:2)]
+  
+  copy2$code <- NA
+  
+  copy2 <- copy2[,-(2:3)]
+  
+  # REMOVING DUPLICATE NAMES - SA names only for NSW
+  
+  copy2 <- copy2[!duplicated(copy2),]
+  
+  #MERGING TWO DATA FRAMES TOGETHER (CUSTODIAN + ABS ASGS)
+  
+  dummy2 <- merge(lga, copy2)
+  
+  # MATCHING
+  
+  dummy$code <- dummy$SA4_CODE_2016[match(dummy$SA4_NAME16, dummy$SA4_NAME_2016)]
   
   
   
-  #DELETE NAME COL 
-  
-  return(df)
 }
 
 
 
-# CREATING COPY OF SA4 DF
-
-B <- sa4_codes(df1,copy,dummy)
-
-
-df[nrow(df) + 1,] <- c(33, 50, "java")
-
-B[nrow(B) + 1] <- c("SA4_NAME16", "code")
-
-
-
-test <- cbind(df1, c("SA4_NAMES16"), B)
 
 
 
 
+df1_new <- sa4_codes(df1)
+df3_new <- sa4_codes(df2)
+df5_new <- sa4_codes(df3)
+df7_new <- sa4_codes(df4)
 
 
+#LGA
+# df2_new <- lga_codes(df2)
+# df4_new <- lga_codes(df4)
+# df6_new <- lga_codes(df6)
+# df8_new <- lga_codes(df8)
 
 
-
-
-
-
-
+#REMOVE IN CUSTODY DATA 
+# df <- df[!grepl("In Custody", df$SA4_NAME16),]
+# df <- df[!grepl("In Custody", df$LGA_NAME21),]
+# df <- df[!grepl("Unknown/missing", df$sex),]
+# 

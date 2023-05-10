@@ -76,7 +76,7 @@ cleaning <- function(path, sht, range, col, nems, corder){
                      "o 18 years" = "18",
                      "p 19 years" = "19",
                      "q 20 years" = "20",
-                     "r 21 years and over" = "21+", # change this to 21-x
+                     "r 21 years and over" = "21-24",
                      
                      #DF2
                      "a 14 Turning 15" = "14-15",
