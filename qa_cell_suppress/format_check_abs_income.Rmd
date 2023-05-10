@@ -6,25 +6,34 @@ output:
   html_document: default
   pdf_document: default
 ---
+```{r}
+# Load any necessary packages
+library(dplyr)
+library(tidyr)
+library(readr)
+
+# Set any global options
+options(digits = 3)
+```
+Open a connection to the output file
+Set the working directory - folder with data cleaned ready for QA
+
+Define a list of acceptable values for the first column
+Define a function to check if column names are in snake case format
+Define a regex pattern to check age_group format
+Define regex patterns for age_group, year_range, and calendar_year
+
+Get a list of CSV files in the working directory
+Print the number of files in the folder and their names
+
+initialize an empty list to store data frame
+read each CSV file into a data frame and store it in the df_list
+append the data frame to the list using the file name as the key
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+# Set the working directory
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_income/")
 
-```{r}
-library(tidyverse)
-```
-# Open a connection to the output file
-# Set the working directory - folder with data cleaned ready for QA
-```{r}
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_income")
-```
-
-# Define a list of acceptable values for the first column
-# Define a function to check if column names are in snake case format
-# Define a regex pattern to check age_group format
-# Define regex patterns for age_group, year_range, and calendar_year
-```{r}
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
 is_snake_case <- function(x) {
@@ -34,23 +43,22 @@ is_snake_case <- function(x) {
 age_group_regex <- "^\\d{1,2}-\\d{1,2}$|^\\d{1,2}-\\d{2}$|^\\d{2}-\\d{2}$"
 year_range_regex <- "^\\d{4}-\\d{4}$"
 calendar_year_regex <- "^\\d{4}$"
-```
 
-# Get a list of CSV files in the working directory
-# Print the number of files in the folder and their names
-```{r}
+
 csv_files <- list.files(pattern=".*\\.csv$")
+
 cat("Number of files in folder:", length(csv_files), "\n") 
+
+for (file in csv_files) {
+  if (!grepl("\\d{3,}", file)) {
+    cat("File without indicator code:", file, "\n")
+  }
+}
 cat(paste(csv_files, collapse = "\n"), "\n")
+cat("Finished checking CSV files.", "\n")
 
-```
 
-initialize an empty list to store data frame
-read each CSV file into a data frame and store it in the df_list
-append the data frame to the list using the file name as the key
-```{r}
 df_list <- list() 
-
 
 for (file in csv_files) {
   if (endsWith(file, ".csv")) {  # only read in CSV files
@@ -58,20 +66,54 @@ for (file in csv_files) {
     df_list[[file]] <- df
   }
 }
-
 ```
 
-# Iterate through each data frame in df_list and perform checks:
+Loop through each data frame in the list and print the head
+```{r}
+for (df_name in names(df_list)) {
+  cat(paste("Head of", df_name, ":\n"))
+  print(head(df_list[[df_name]]))
+}
+```
+print overview of all CSV files and their variables:
+```{r}
+csv_info <- data.frame(csv_file = names(df_list), variables = sapply(df_list, function(x) paste(names(x), collapse = ", ")))
+print(csv_info)
+
+```
+This code loops through each data frame in df_list and creates a data frame var_info with columns for variable name, class and range. The class column is populated using the class function and the range column is populated using the range function and then collapsed into a string using paste. Finally, the var_info data frame is printed for each data frame in df_list.
+
+you might want to use it to fill the dictionary:
+
+https://connectqutedu.sharepoint.com/:x:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Metadata/data_dictionary.xlsx?d=w8708a1fa697f42899fd11956f7bc1ce6&csf=1&web=1&e=W3Iqp4
+
+```{r}
+for (df_name in names(df_list)) {
+  cat(paste("Table for", df_name, ":\n"))
+  
+  # Get the data frame
+  df <- df_list[[df_name]]
+  
+  # Create a data frame with variable name, class and range
+  var_info <- data.frame(variable = names(df),
+                         class = sapply(df, class),
+                         range = sapply(df, function(x) paste(range(x), collapse = " - ")))
+  
+  # Print the variable information
+  print(var_info)
+}
+
+```
+Iterate through each data frame in df_list and perform checks:
 
 1. check if age_group, sex, calendar year or year_range columns exist
 2. check if age_group values are in the correct format
 3. check if year_range values are in the correct format
 4. check if calendar_year values are in the correct format
 5. check if geography column is one of the acceptable values
-6. print unique values of age_group, calendar_year, year_range and sex
+
 
 ```{r}
-
 for (df_name in names(df_list)) {
   df <- df_list[[df_name]]
   col_names <- names(df)
@@ -84,27 +126,34 @@ for (df_name in names(df_list)) {
   if (!("sex" %in% col_names)) {
     cat("Error: sex column not found in", df_name, "\n")
   }
-  if (!("calendar_year" %in% col_names)) {
-    cat("Error: calendar_year column not found in", df_name, "\n")
-  }
-  if (!("year_range" %in% col_names)) {
-    cat("Error: year_range column not found in", df_name, "\n")
+  if (!("calendar_year" %in% col_names) && !("year_range" %in% col_names)) {
+    cat("Error: either calendar_year or year_range column must be present in", df_name, "\n")
+  } else if (("calendar_year" %in% col_names) && ("year_range" %in% col_names)) {
+    cat("Error: both calendar_year and year_range columns cannot be present in", df_name, "\n")
+  } else if ("calendar_year" %in% col_names && !all(grepl("\\d{4}", df$calendar_year))) {
+    cat("Error: calendar_year values in", df_name, "are not in the correct format (expected format: \\d{4})\n")
+  } else if ("year_range" %in% col_names && !all(grepl("\\d{4}-\\d{4}", df$year_range))) {
+    cat("Error: year_range values in", df_name, "are not in the correct format (expected format: \\d{4}-\\d{4})\n")
   }
   
-
 
   if ("age_group" %in% col_names) {
     age_group_values <- df$age_group
     if (!all(grepl(age_group_regex, age_group_values))) {
       cat("Error: age_group values in", df_name, "are not in the correct format (expected format: \\d-\\d, \\d-\\d{2}, or \\d{2}-\\d{2})\n")
+      cat("Invalid values:\n")
+      invalid_age_group_values <- age_group_values[!grepl(age_group_regex, age_group_values)]
+      cat(paste(unique(invalid_age_group_values), collapse=", "), "\n")
     }
   }
-  
 
   if ("year_range" %in% col_names) {
     year_range_values <- df$year_range
     if (!all(grepl(year_range_regex, year_range_values))) {
       cat("Error: year_range values in", df_name, "are not in the correct format (expected format: \\d{4}-\\d{4})\n")
+      cat("Invalid values:\n")
+      invalid_year_range_values <- year_range_values[!grepl(year_range_regex, year_range_values)]
+      cat(paste(unique(invalid_year_range_values), collapse=", "), "\n")
     }
   }
 
@@ -112,6 +161,9 @@ for (df_name in names(df_list)) {
     calendar_year_values <- df$calendar_year
     if (!all(grepl(calendar_year_regex, calendar_year_values))) {
       cat("Error: calendar_year values in", df_name, "are not in the correct format (expected format: \\d{4})\n")
+      cat("Invalid values:\n")
+      invalid_calendar_year_values <- calendar_year_values[!grepl(calendar_year_regex, calendar_year_values)]
+      cat(paste(unique(invalid_calendar_year_values), collapse=", "), "\n")
     }
   }
   
@@ -123,48 +175,90 @@ for (df_name in names(df_list)) {
     cat("Error: geography column is not one of the acceptable values (", paste(first_col_check, collapse=", "), ") in", df_name, "\n")
   }
   
+}
+```
+CHECK OUTPUTS NOW!!!
 
-  cat("Unique values in age_group for", df_name, ":\n")
-  cat(unique(df$age_group), "\n\n")
+Did you detect any formatting errors? 
+
+YES >>> GO BACK TO YOUR CODE AND MAKE CORRECTIONS
+
+NO  >>> PROCEED WITH CELL SUPPRESSION
+
+
+Define the input directory path
+Define the output directory path to save cleaned dataset WITH CELL SUPPRESSED
+```{r}
+
+input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_income//"
+output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_income//cell_suppressed/"
+```
+Create the output directory if it doesn't already exist
+```{r}
+dir.create(output_dir, showWarnings = FALSE)
+csv_files <- list.files(input_dir, pattern = ".csv$", full.names = TRUE)
+```
+Check if there is an "uncertainty" column in the data frame
+```{r}
+for (file in csv_files) {
   
-  cat("Unique values in calendar_year for", df_name, ":\n")
-  cat(unique(df$calendar_year), "\n\n")
+ 
+  df <- read.csv(file, stringsAsFactors = FALSE)
   
-  cat("Unique values in year_range for", df_name, ":\n")
-  cat(unique(df$year_range), "\n\n")
   
-  cat("Unique values in sex for", df_name, ":\n")
-  cat(unique(df$sex), "\n\n")
+  if ("uncertainty" %in% colnames(df)) {
+    message(paste0("Note: The file ", basename(file), " contains an 'uncertainty' column. Make sure to modify the code to apply cell suppression where uncertainty is high."))}
+  else {
+  # Print message indicating that there is no need to apply cell suppression to "uncertainty" column
+  cat("You don't have to worry about cell suppression on 'uncertainty' in", basename(file), "\n")
+}
 }
 
 ```
-##CHECK OUTPUTS NOW - GO BACK TO YOUR CODE IF ANY FORMATTING ERRORS DETECTED
-
+detect columns that are numeric and where you might need to apply cell suppression
 ```{r}
-# Define the input directory path
-input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_income/"
+# Define the exclusion list
+exclude_list <- c("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia", "sex", "calendar_year", "age_group", "year_range", "irsd_quintile")
 
-# Define the output directory path
-output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_income//cell_suppressed/"
-```
-
-
-```{r}
-# Create the output directory if it doesn't already exist
-dir.create(output_dir, showWarnings = FALSE)
-
-# Get a list of all CSV files in the input directory
-csv_files <- list.files(input_dir, pattern = ".csv$", full.names = TRUE)
-
-# Loop through each CSV file and apply cell suppression
+# Loop through each CSV file and check for columns that are numeric and not in the exclusion list
 for (file in csv_files) {
   
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  # Apply cell suppression
-  df[df[, 5] < 5, -c(1:4)] <- 9999999
+  # Get the names of columns that are numeric and not in the exclusion list
+  num_cols <- names(df)[sapply(df, is.numeric) & !names(df) %in% exclude_list]
   
+  # If there are any such columns, print a message for each file and column
+  if (length(num_cols) > 0) {
+    for (col in num_cols) {
+      message(paste0("For file ", basename(file), ", check values in column '", col, "' for cell suppression"))
+    }
+  } else {
+    # Print message indicating that there are no columns to check
+    cat("You don't have to worry about cell suppression in any numeric columns in", basename(file), "\n")
+  }
+  
+}
+```
+Get a list of all CSV files in the input directory
+Loop through each CSV file and apply cell suppression 
+```{r}
+for (file in csv_files) {
+  
+  # Read in the CSV file
+  df <- read.csv(file, stringsAsFactors = FALSE)
+  
+  
+  # Check if the n_live_in_household_income_less_1000 column exists in the data frame
+  if ("n_live_in_household_income_less_1000" %in% colnames(df)) {
+    # Apply cell suppression
+    df[df[,"n_live_in_household_income_less_1000"] <5 & !is.na(df[,"n_live_in_household_income_less_1000"]), -c(1:4)] <- 9999999
+  } else {
+    # Print a message to indicate that the column was not found
+    cat("Skipping file", file, "because it does not contain the n_live_in_household_income_less_1000 column.\n")
+  }
+
   # Write the modified data frame to a new CSV file in the output directory
   write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
   
