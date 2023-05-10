@@ -11,9 +11,6 @@ output:
 library(dplyr)
 library(tidyr)
 library(readr)
-
-# Set any global options
-options(digits = 3)
 ```
 Open a connection to the output file
 Set the working directory - folder with data cleaned ready for QA
@@ -59,10 +56,10 @@ cat("Number of files in folder:", length(csv_files), "\n")
 
 for (file in csv_files) {
   if (!grepl("\\d{3,}", file)) {
-    cat("File without indicator code:", file, "\n")
+    cat("WARNING! File(s) without indicator code:", file, "\n")
   }
 }
-cat(paste(csv_files, collapse = "\n"), "\n")
+cat(paste("File with indicator code:",csv_files, collapse = "\n"), "\n")
 cat("Finished checking CSV files.", "\n")
 ```
 Loop through each data frame in the list and print the head
@@ -176,6 +173,9 @@ for (df_name in names(df_list)) {
     cat("Error: geography column is not one of the acceptable values (", paste(first_col_check, collapse=", "), ") in", df_name, "\n")
   }
   
+  if (first_col != "Australia" && any(df[[1]] == 0)) {
+  cat("Error: Values coded as 0 (Australia) found in a dataset that is not national:", df_name, "\n")
+  }
 }
 ```
 CHECK OUTPUTS NOW!!!
@@ -254,18 +254,15 @@ for (file in csv_files) {
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  # Apply cell suppression to 'n' column if it exists
-  if ('n' %in% colnames(df)){
-    df[!is.na(df[, "n"]) & df[, "n"] < 5, -(1:5)] <- 9999999
+  # Find the column index of the 5th column
+  column_index <- min(5, ncol(df))
+  
+  # Apply cell suppression to the 5th column and columns to the right
+  if (!is.na(column_index) && column_index <= ncol(df)) {
+    df[df[, column_index] < 5, column_index:ncol(df)] <- 9999999
   }
   
-  # Apply cell suppression to 'uncertainty' column
-  if ('uncertainty' %in% colnames(df)){
-    df[df[, "uncertainty"] == 2 & !is.na(df[, "uncertainty"]), colnames(df) %in% 'uncertainty' | colnames(df) %in% names(df)[1:5]] <- 9999999
-  }
-  
-  # Remove the 'uncertainty' column from the data frame
-  df <- df[, !(colnames(df) %in% 'uncertainty')]
+
   
   # Write the modified data frame to a new CSV file in the output directory
   write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)

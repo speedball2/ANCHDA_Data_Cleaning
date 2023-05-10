@@ -19,7 +19,7 @@ setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_tem
 # Retrieve a list of CSV files in the directory
 csv_files <- list.files(pattern = ".*\\.csv$")
 
-
+# Import the csv files into a list of data frames
 df_list <- list() 
 
 for (file in csv_files) {

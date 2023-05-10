@@ -57,17 +57,15 @@ for (file in csv_files) {
 check for errors in file names
 
 ```{r}
-
 cat("Number of files in folder:", length(csv_files), "\n") 
 
 for (file in csv_files) {
   if (!grepl("\\d{3,}", file)) {
-    cat("File without indicator code:", file, "\n")
+    cat("WARNING! File(s) without indicator code:", file, "\n")
   }
 }
-cat(paste(csv_files, collapse = "\n"), "\n")
+cat(paste("File with indicator code:",csv_files, collapse = "\n"), "\n")
 cat("Finished checking CSV files.", "\n")
-
 ```
 Loop through each data frame in the list and print the head
 ```{r}
