@@ -5,13 +5,10 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 ```{r}
-# Load any necessary packages
-library(dplyr)
-library(tidyr)
-library(readr)
-
-# Set any global options
-options(digits = 3)
+# Load necessary packages
+library(dplyr)  # For data manipulation
+library(tidyr)  # For data tidying
+library(readr)  # For reading CSV files
 ```
 
 
@@ -19,28 +16,41 @@ options(digits = 3)
 # Set the working directory
 setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS//")
 
-csv_files <- list.files(pattern=".*\\.csv$")
+# Retrieve a list of CSV files in the directory
+csv_files <- list.files(pattern = ".*\\.csv$")
 
-cat("Number of files in folder:", length(csv_files), "\n") 
+# Check the number of files in the folder
+cat("Number of files in folder:", length(csv_files), "\n")
 
+# Check if any files are missing an indicator code
 for (file in csv_files) {
   if (!grepl("\\d{3,}", file)) {
     cat("File without indicator code:", file, "\n")
   }
 }
+# Print the list of CSV files
 cat(paste(csv_files, collapse = "\n"), "\n")
 cat("Finished checking CSV files.", "\n")
 
 
-df_list <- list() 
+```
 
+```{r}
+# Check the number of files in the folder
+cat("Number of files in folder:", length(csv_files), "\n")
+
+# Check if any files are missing an indicator code
 for (file in csv_files) {
-  if (endsWith(file, ".csv")) {  # only read in CSV files
-    df <- read.csv(file)
-    df_list[[file]] <- df
+  if (!grepl("\\d{3,}", file)) {
+    cat("File without indicator code:", file, "\n")
   }
 }
+
+# Print the list of CSV files
+cat(paste(csv_files, collapse = "\n"), "\n")
+cat("Finished checking CSV files.", "\n")
 ```
+
 
 This code chunk iterates over each data frame in df_list, retrieves its variable names, class types, range for numeric variables, and unique values for character variables.
 
@@ -49,6 +59,7 @@ It then creates a data frame var_info with these details and prints it, providin
 https://connectqutedu.sharepoint.com/:x:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Metadata/data_dictionary.xlsx?d=w8708a1fa697f42899fd11956f7bc1ce6&csf=1&web=1&e=W3Iqp4
 
 ```{r}
+# Iterate through each data frame and create a data dictionary
 for (df_name in names(df_list)) {
   cat(paste("Data Dictionary for", df_name, ":\n"))
   
@@ -67,7 +78,6 @@ for (df_name in names(df_list)) {
   # Print the data dictionary
   print(var_info)
 }
-
 ```
 
 
