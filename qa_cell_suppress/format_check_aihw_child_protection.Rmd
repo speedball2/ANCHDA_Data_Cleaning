@@ -3,8 +3,8 @@ title: "format_check_cell_suppression"
 author: "Claire Boulange"
 date: "`r Sys.Date()`"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 ```{r}
 # Load any necessary packages
@@ -32,7 +32,7 @@ append the data frame to the list using the file name as the key
 
 ```{r setup, include=FALSE}
 # Set the working directory
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aihw_child_protection/")
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aihw_child_protection/") #change this path if you copy this 
 
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
