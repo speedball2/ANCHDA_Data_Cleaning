@@ -129,28 +129,19 @@ sa4_codes <- function(df){
   
   sa4 <- sa4[,-c(1:5,8:12)]
   sa4 <- sa4[!duplicated(sa4),]
+  sa4 <- sa4[sa4$SA4_CODE_2016<200,]
   
   #MERGING TWO DATA FRAMES TOGETHER (CUSTODIAN + ABS ASGS)
   
-  #test1 <<- sa4
-  #test2 <<- copy
-  
-  #dummy <- left_join(sa4, copy)
-  dummy <- merge(sa4,copy)
-  
-  # MATCHING
-  
-  dummy$code <- dummy$SA4_CODE_2016[match(dummy$SA4_NAME16, dummy$SA4_NAME_2016)]
-  
+  dummy <- merge(copy,sa4,by.y="SA4_NAME_2016",by.x="SA4_NAME16",all=T)
   
   #REMOVE COLS FROM ASGS FILES
   
-  dummy <- dummy[,-(1:2)]
+  dummy <- dummy[,-2]
   
   #CBIND BACK WITH OTHER DATASET
   
   new <- merge(df, dummy, by = "SA4_NAME16")
-  new <- new[!duplicated(new),]
   
   return(new)
 }
@@ -201,10 +192,10 @@ df7_new <- sa4_codes(df7)
 
 
 #LGA
-df2_new <- lga_codes(df2)
-df4_new <- lga_codes(df4)
-df6_new <- lga_codes(df6)
-df8_new <- lga_codes(df8)
+# df2_new <- lga_codes(df2)
+# df4_new <- lga_codes(df4)
+# df6_new <- lga_codes(df6)
+# df8_new <- lga_codes(df8)
 
 
 concistency <- function(df){
