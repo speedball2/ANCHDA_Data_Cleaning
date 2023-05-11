@@ -67,6 +67,16 @@ cleaning <- function(path, sht, range, new_name){
     df$SA4_NAME16 <- stringr::str_replace_all(df$SA4_NAME16, rep_str)
   }
   
+
+  if ("LGA_NAME21" %in% names(df)) {
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Bayside"] <- "Bayside (NSW)"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Central Coast"] <- "Central Coast (NSW)"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Campbelltown"] <- "Campbelltown (NSW)"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Ku-Ring-Gai"] <- "Ku-ring-gai"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Cootamundra-Gundagai"] <- "Cootamundra-Gundagai Regional"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Unincorporated Far West"] <- "Unincorporated NSW"
+  }
+  
   
   #REMOVE VARIABLES IN DATA 
   df <- df[!grepl("Unknown/missing", df$sex),]
@@ -113,9 +123,10 @@ write.csv(lga, "lga_names_codes.csv", F)
 
 
 
-# MATCH FUNCTION FOR SA CODES AND NAMES 
+# MATCH FUNCTION FOR SA CODES AND NAMES ----------------------------------------
 
-#confirm which ASGS is being used
+# SA4 ASGS2016
+
 
 
 sa4_codes <- function(df, corder, indicator){
@@ -152,7 +163,7 @@ sa4_codes <- function(df, corder, indicator){
   
   new <- merge(df, dummy, by = "SA4_NAME16")
   
-  # clean up afterwards --------------------------------------------------------
+  # clean up afterwards ---
   
   #REMOVING IN CUSTODY - CANNOT BE GEO CODED 
   new <- new[!grepl("In Custody", new$SA4_NAME16),]
@@ -161,20 +172,29 @@ sa4_codes <- function(df, corder, indicator){
   new <- new[ , !names(new) %in% 
                    c("SA4_NAME16")]
   
+  # RENAMING CODE COLUMNS
+  colnames(new)[colnames(new) == "SA4_CODE_2016"] = "SA4_CODE16"
+  
   #CHANGING COLUMN ORDER 
-  corder <- c("SA4_CODE_2016", "calendar_year", "age_group", "sex", indicator)
+  corder <- c("SA4_CODE16", "calendar_year", "age_group", "sex", indicator)
   new <- new[,corder]
   
   return(new)
 }
 
+# LGA --------------------------------------------------------------------------
+
+
+
+
 
 lga_codes <- function(df, indicator){
   
-  
-  copy2 <- df2
+ 
+   
+  copy2 <- df
   # REMOVING JUNK COLS
-  
+
   copy2 <- copy2[,-(1:2)]
   
   copy2$code <- NA
@@ -189,14 +209,17 @@ lga_codes <- function(df, indicator){
   
   dummy2 <- merge(copy2,lga, by.y="LGA_NAME_2021",by.x="LGA_NAME21",all=T)
   
+  
   #CBIND BACK WITH OTHER DATASET
   
   new <- merge(df, dummy2, by = "LGA_NAME21")
   
-  # clean up afterwards --------------------------------------------------------
+  # clean up afterwards ---
   
   #REMOVING IN CUSTODY - CANNOT BE GEO CODED 
   new <- new[!grepl("In Custody", new$LGA_NAME21),]
+  
+  test <<- new
   
   # REMOVING SA4 NAME (NOT NEEDED)
   new <- new[ , !names(new) %in% 
@@ -204,7 +227,10 @@ lga_codes <- function(df, indicator){
                 c("LGA_NAME21",
                   "code")]
   
-  corder <- c("LGA_CODE_2021", "calendar_year", "age_group", "sex", indicator)
+  # RENAMING CODE COLUMNS
+  colnames(new)[colnames(new) == "LGA_CODE_2021"] = "LGA_CODE21"
+  
+  corder <- c("LGA_CODE21", "calendar_year", "age_group", "sex", indicator)
   new <- new[,corder]
   
   return(new)
@@ -242,11 +268,4 @@ df7_new <- sa4_codes(df7,indicator = "n_victims_sexual_touching")
  
  write.csv(df7_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3134_victims_sexual_touching_SA4",row.names = F)
  write.csv(df8_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3134_victims_sexual_touching_LGA",row.names = F)
- 
- 
- 
- 
- 
- 
- 
  
