@@ -136,14 +136,6 @@ df2 <- cleaning(3, "A6:T50", coln2) #AOD Qs by State
   
   reshape_data <- function(df){
     
-    # ROUNDING:
-    for(i in seq(3,ncol(df),2)){
-      df[,i] <- as.numeric(df[,i])
-      df[,i] <- round(df[,i],2)
-    }
-    
-    
-    
     # ADD AND CALCULATE UNCERTAINTY
     for(i in ncol(df):3){
       # Insert column using cursed new notation: https://stackoverflow.com/questions/60311773/mutate-with-paste0
@@ -164,6 +156,11 @@ df2 <- cleaning(3, "A6:T50", coln2) #AOD Qs by State
     df <- df %>%
       mutate(across(starts_with("p_") & !ends_with("uncertainty"), ~ round(./100, 2)))
     
+    # ROUNDING:
+    for(i in seq(3,ncol(df),2)){
+      df[,i] <- as.numeric(df[,i])
+      df[,i] <- round(df[,i],2)
+    }
     
     return(df)
   }
@@ -174,38 +171,67 @@ df2_newcols <- reshape_data(df2)
 
 # REMOVING, COMBINING COLUMNS --------------------------------------------------
 
-# 
-# Table AOD status by state
-# 
-# N and p_14-24_current smoker_state 
-# 
-# N and p_14-24_never smoked_state
-# 
-# N and p_14-24_current vaper_state
-# 
-# N and p_14-24_never vaped_state
-# 
-# N and p_14-24_current drinker_state
-# 
-# N and p_14-24_never drinker_state
-# 
-# N and p_14-24_ever used illicit drug_state s
-# 
-# N and p_14-24_never used illicit drugs_state
-# 
-# N and p_14-24_recently used cannabis_state
-# 
-# N and p_14-24_recently used illicit drugs_state
-# 
 
-df1_newcols <- df1[, !grepl("_ex_|pharmaceuticals_for_non_medical_purposes|recently_used_illicit_drugs_no|recently_used_cannabis_no", colnames(df1))]
 
-# REMOVING UNWANTED COLUMNS, TO MATCH ABOVE
+df1_newcols <- df1_newcols[, !grepl("_ex_|pharmaceuticals_for_non_medical_purposes|recently_used_illicit_drugs_no|recently_used_cannabis_no", colnames(df1_newcols))]
+
+# REMOVING UNWANTED COLUMNS, TO MATCH BELOW
 df1_newcols <- df1_newcols %>% 
   rename_with(~ gsub("_yes", "", .x, fixed = TRUE))
 
 df1_newcols <- df1_newcols %>% 
   rename_with(~ gsub("ever_used_illicit_drugs_no", "never_used_illicit_drugs", .x, fixed = TRUE))
+
+# ------------------------------------------------------------------------------
+
+# REMOVING UNWANTED COLUMNS, TO MATCH BELOW
+df2_newcols <- df2_newcols[, !grepl("n_age_of_initiation_of_illicit_drug_use_lifetime|n_age_of_initiation_of_smoking|mid_strength_beer|low_alcohol_beer|p_cannabis_use_frequency_every_day", colnames(df2_newcols))]
+
+# STILL TO CHANGE 0 TO NA and 3 TO 2:
+df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits <- rowSums(
+  cbind(as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can),
+        as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle)), na.rm=T)
+
+df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_uncertainty <- rowSums(
+  cbind(as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can_uncertainty),
+        as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle_uncertainty)), na.rm=T)
+
+
+df2_newcols$p_cannabis_use_frequency_every_few_months_or_more <- rowSums(
+  cbind(as.numeric(df2_newcols$p_cannabis_use_frequency_every_few_months),
+        as.numeric(df2_newcols$p_cannabis_use_frequency_once_or_twice_a_year)), na.rm=T)
+
+df2_newcols$p_cannabis_use_frequency_every_few_months_or_more_uncertainty <- rowSums(
+  cbind(as.numeric(df2_newcols$p_cannabis_use_frequency_every_few_months_uncertainty),
+        as.numeric(df2_newcols$p_cannabis_use_frequency_once_or_twice_a_year_uncertainty)), na.rm=T)
+
+  
+  df2_newcols <- df2_newcols[ , !names(df2_newcols) %in% 
+             
+               c("p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can", 
+                "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
+                "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can_uncertainty",
+                "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle_uncertainty",
+                "p_cannabis_use_frequency_every_few_months",
+                "p_cannabis_use_frequency_once_or_twice_a_year",
+                "p_cannabis_use_frequency_every_few_months_uncertainty",
+                "p_cannabis_use_frequency_once_or_twice_a_year_uncertainty")]
+  
+  
+  # Identify columns ending with "_uncertainty"
+  uncertainty_cols <- grep("_uncertainty$", names(df2_newcols), value = TRUE)
+  
+  # Convert columns to numeric data type
+  df2_newcols[uncertainty_cols] <- lapply(df2_newcols[uncertainty_cols], as.numeric)
+  
+  # Update values in uncertainty columns using case_when()
+  df2_newcols <- df2_newcols %>%
+    mutate(across(all_of(uncertainty_cols), ~case_when(
+      . == 0 ~ NA,
+      . == 3 ~ 2,
+      . == 4 ~ 2,
+      TRUE ~ .  # Keep unchanged for other values
+    )))
 
 #colnames(df1) <- check new col names match the above (N&P will be seperate)
 
@@ -231,49 +257,29 @@ df1_newcols <- df1_newcols %>%
 # P_14-24_ Cannabis use frequency(g) – Every few months or less (combine columns ‘S’ and ‘T’) s = Cannabis use frequency(g) - Every few months, t = Cannabis use frequency(g) - Once or twice a year
 
 
-# REMOVING UNWANTED COLUMNS, TO MATCH ABOVE
-df2_newcols <- df2[, !grepl("n_age_of_initiation_of_illicit_drug_use_lifetime|n_age_of_initiation_of_smoking|mid_strength_beer|low_alcohol_beer|p_cannabis_use_frequency_every_day", colnames(df2))]
 
-df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can)
-df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle)
-df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle_uncertainty <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle_uncertainty)
-
-
-df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can + df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle)
-df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_uncertainty <- as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can_uncertainty + df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle_uncertainty)
-
-
-
-df2_newcols$p_cannabis_use_frequency_every_few_months_or_more <- df2_newcols$p_cannabis_use_frequency_every_few_months + df2_newcols$p_cannabis_use_frequency_once_or_twice_a_year
-df2_newcols$p_cannabis_use_frequency_every_few_months_or_more_uncertainty <- df2_newcols$p_cannabis_use_frequency_every_few_months_uncertainty + df2_newcols$p_cannabis_use_frequency_once_or_twice_a_year_uncertainty
-
-
-
-coln2 <- c("STE_CODE16", "calendar_year", 
-           "n_age_of_initiation_of_smoking", "n_age_of_initiation_of_drinking",
-           "p_type_of_alcohol_usually_consumed_bottled_wine", 
-           "p_type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", 
-           "p_type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", 
-           "p_type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
-           "p_type_of_alcohol_usually_consumed_pre-mixed_spirits_in_a_can", 
-           "p_type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs", 
-           "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
-           "p_type_of_alcohol_usually_consumed_cider", 
-           "p_type_of_alcohol_usually_consumed_other", 
-           "n_age_of_initiation_of_illicit_drug_use_lifetime", 
-           "n_age_of_initiation_of_illicit_drug_use_recent",
-           "p_cannabis_use_frequency_every_day", 
-           "p_cannabis_use_frequency_once_a_week_or_more", 
-           "p_cannabis_use_frequency_about_once_a_month", 
-           "p_cannabis_use_frequency_every_few_months", 
-           "p_cannabis_use_frequency_once_or_twice_a_year")
-
-
-class(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can)
-class(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle)
-
-
-
-
+# 
+# Table AOD status by state
+# 
+# N and p_14-24_current smoker_state 
+# 
+# N and p_14-24_never smoked_state
+# 
+# N and p_14-24_current vaper_state
+# 
+# N and p_14-24_never vaped_state
+# 
+# N and p_14-24_current drinker_state
+# 
+# N and p_14-24_never drinker_state
+# 
+# N and p_14-24_ever used illicit drug_state s
+# 
+# N and p_14-24_never used illicit drugs_state
+# 
+# N and p_14-24_recently used cannabis_state
+# 
+# N and p_14-24_recently used illicit drugs_state
+# 
 
 
