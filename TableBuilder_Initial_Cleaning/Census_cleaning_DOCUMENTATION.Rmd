@@ -6,6 +6,14 @@ output:
   pdf_document: default
   html_document: default
 ---
+
+
+```{r setup, echo = F}
+
+library(formatR)
+knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+```
+
 # Documentation Manual for TableBuilder Data Cleaning Code
 
 This code is a set of functions in R designed to clean census data from TableBuilder. The data cleaning process involves several steps, from data loading to formatting column names to saving the clean data. This guide explains each part of the code and how to use it.
@@ -29,7 +37,7 @@ The functions have the following input parameters:
 
 ### Code Snippets and Functionality
 
-Some key pieces are presented below with explanation. Comments throughout the cleaning file provide further information on other steps.
+**Some selected key pieces are presented below with explanation. Comments throughout the cleaning code provide further information on other steps.**
 
 #### Data Loading and Initial Cleaning
 ```{r eval = F}

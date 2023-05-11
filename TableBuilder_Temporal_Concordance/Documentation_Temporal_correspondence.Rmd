@@ -6,6 +6,13 @@ output:
   pdf_document: default
   html_document: default
 ---
+
+```{r setup, echo = F}
+
+library(formatR)
+knitr::opts_chunk$set(tidy.opts = list(width.cutoff = 60), tidy = TRUE)
+```
+
 # Temporal Correspondence for Datasets in ASGS 2016 Boundaries
 
 This R code is designed to apply temporal correspondence to different datasets and bring them into the Australian Statistical Geography Standard (ASGS) 2016 boundaries. The purpose of this script is to allow users to harmonize and analyze data from different time periods and geographies consistently.
@@ -23,7 +30,6 @@ The code uses a function named `temporal_concordance_census_fn` that takes sever
 A parallel process is included for Census data and National data in `{r} state_stack_fn()` which does not do any temporal correspondence, but applies parallel steps of data formatting and processing, and joining data from multiple years together.
 
 
-###-----------------------------------------
 
 ## 1. Load and process correspondence files
 
@@ -118,7 +124,6 @@ The final assembled dataset is checked for formatting consistency. Some of the k
 
 
 
-#---------
 
 ### Example user inputs for state_stack_fn() and temporal_concordance_census_fn():
 
