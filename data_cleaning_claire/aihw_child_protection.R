@@ -6,18 +6,21 @@ library(janitor)
 library(tidyr)
 library(stringr)
 library(zoo)
-
+library(openxlsx)
+library(stringi)
 
 `%notin%` <- Negate(`%in%`)
 
 # Set the file path
-file_path <- "Z:/CDA/Claire WD/anchda/AIHW/AIHW-CWS-87-Data-tables.xlsx"
+file_path <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aihw_child_protection/raw_data/AIHW_raw.xlsx"
 path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aihw_child_protection/"
+
 
 
 # Read all sheets except the first three
 sheets <- excel_sheets(file_path)
-df_list <- lapply(sheets[-c(1,2,3)], function(sheet_name) {
+
+df_list <- lapply(sheets[-c(1, 2, 3)], function(sheet_name) {
   read_excel(file_path, sheet = sheet_name, col_names = TRUE, skip = 0)
 })
 
@@ -27,8 +30,11 @@ for (df in df_list) {
   print(names(df)[1])
 }
 
+
+
 ##---------------------------------------------------------------------- out of home care table 5.18 ----------------------------------------------------------------------
 out_of_home_care <- NULL
+
 
 
 for (df in df_list) {
@@ -38,8 +44,12 @@ for (df in df_list) {
   }
 }
 
-#rename coinames
+# Apply encoding to character columns
+out_of_home_care <- mutate_if(out_of_home_care, is.character, enc2utf8)
+
+#rename colnames
 colnames(out_of_home_care) <- as.character(out_of_home_care[1, ])
+
 #remove the last 6 rows
 out_of_home_care <- head(out_of_home_care, -6)
 
@@ -153,14 +163,13 @@ for (df in df_list) {
   }
 }
 
+# Apply encoding to character columns
+dis_from_home_care <- mutate_if(dis_from_home_care, is.character, enc2utf8)
+
 #rename colnames
 colnames(dis_from_home_care) <- as.character(dis_from_home_care[1, ])
 #remove the last 6 rows
 dis_from_home_care <- head(dis_from_home_care, -8)
-
-
-
-
 
 
 #slice out the rows where value is N
@@ -274,6 +283,10 @@ for (df in df_list) {
   }
 }
 
+
+# Apply encoding to character columns
+care_and_protection_orders <- mutate_if(care_and_protection_orders, is.character, enc2utf8)
+
 #rename colnames
 colnames(care_and_protection_orders) <- as.character(care_and_protection_orders[1, ])
 #remove the last 6 rows
@@ -321,7 +334,8 @@ care_and_protection_orders_n <- care_and_protection_orders_number_long %>%
 
 # remove 0 from state and create a national dataset
 care_and_protection_orders_n_aus <- care_and_protection_orders_n %>%
-  filter(STE_CODE16 == "0")
+  filter(STE_CODE16 == "0") %>% 
+  rename(Australia = STE_CODE16)
 
 
 care_and_protection_orders_n <- care_and_protection_orders_n %>%
@@ -356,14 +370,14 @@ dis_from_home_care <- left_join(dis_from_home_care_n, dis_from_home_care_p,
 dis_from_home_care_aus <- left_join(dis_from_home_care_n_aus, dis_from_home_care_p_aus, 
                                 by = c("STE_CODE16", "year_range", "age_group"))
 
-
 out_of_home_care <- out_of_home_care %>% 
   mutate(sex = "all") %>% 
   select(STE_CODE16, sex, year_range, age_group, everything())
 
 out_of_home_care_aus <- out_of_home_care_aus %>% 
   mutate(sex = "all") %>% 
-  select(STE_CODE16, sex, year_range, age_group, everything())
+  select(STE_CODE16, sex, year_range, age_group, everything()) %>% 
+  rename(Australia = STE_CODE16)
 
 dis_from_home_care <- dis_from_home_care %>% 
   mutate(sex = "all") %>% 
@@ -371,7 +385,8 @@ dis_from_home_care <- dis_from_home_care %>%
 
 dis_from_home_care_aus <- dis_from_home_care_aus %>% 
   mutate(sex = "all") %>% 
-  select(STE_CODE16, sex, year_range, age_group, everything())
+  select(STE_CODE16, sex, year_range, age_group, everything()) %>% 
+  rename(Australia = STE_CODE16)
 
 head(out_of_home_care)
 head(out_of_home_care_aus)
@@ -391,11 +406,12 @@ head(care_and_protection_orders_n)
 #--------------------------------------------------------------------------------------------------------------------------write out csvs
 #--------------------------------------------------------------------------------------------------------------------------write out csvs
 
-write.csv(out_of_home_care, file = file.path(path_out, "aihw_361_children_admitted_out_of_home_care_STE.csv"), row.names = FALSE)
-write.csv(out_of_home_care_aus, file = file.path(path_out, "aihw_361_children_admitted_out_of_home_care_national.csv"), row.names = FALSE)
+write.csv(out_of_home_care, file = file.path(path_out, "aihw_361_children_admitted_out_of_home_care_STE.csv"), row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(out_of_home_care_aus, file = file.path(path_out, "aihw_361_children_admitted_out_of_home_care_national.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 
-write.csv(dis_from_home_care, file = file.path(path_out, "aihw_361_children_discharged_from_out_of_home_care_STE.csv"), row.names = FALSE)
-write.csv(dis_from_home_care_aus, file = file.path(path_out, "aihw_361_children_discharged_from_out_of_home_care__national.csv"), row.names = FALSE)
+write.csv(dis_from_home_care, file = file.path(path_out, "aihw_361_children_discharged_from_out_of_home_care_STE.csv"), row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(dis_from_home_care_aus, file = file.path(path_out, "aihw_361_children_discharged_from_out_of_home_care__national.csv"), row.names = FALSE, fileEncoding = "UTF-8")
 
-write.csv(care_and_protection_orders_n, file = file.path(path_out, "aihw_3121_child_protection_substantiations_STE.csv"), row.names = FALSE)
-write.csv(care_and_protection_orders_n_aus, file = file.path(path_out, "aihw_3121_child_protection_substantiations_national.csv"), row.names = FALSE)
+write.csv(care_and_protection_orders_n, file = file.path(path_out, "aihw_3121_child_protection_substantiations_STE.csv"), row.names = FALSE, fileEncoding = "UTF-8")
+write.csv(care_and_protection_orders_n_aus, file = file.path(path_out, "aihw_3121_child_protection_substantiations_national.csv"), row.names = FALSE, fileEncoding = "UTF-8")
+

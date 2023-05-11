@@ -1,0 +1,80 @@
+---
+title: "dictionary helper"
+author: "Claire and Harriette"
+date: "`r Sys.Date()`"
+output: html_document
+---
+```{r}
+# Load necessary packages
+library(dplyr)  # For data manipulation
+library(tidyr)  # For data tidying
+library(readr)  # For reading CSV files
+```
+
+
+```{r setup, include=FALSE}
+# Set the working directory
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS//")
+
+# Retrieve a list of CSV files in the directory
+csv_files <- list.files(pattern = ".*\\.csv$")
+
+# Import the csv files into a list of data frames
+df_list <- list() 
+
+for (file in csv_files) {
+  if (endsWith(file, ".csv")) {  # only read in CSV files
+    df <- read.csv(file)
+    df_list[[file]] <- df
+  }
+}
+
+```
+
+```{r}
+# Check the number of files in the folder
+cat("Number of files in folder:", length(csv_files), "\n")
+
+# Check if any files are missing an indicator code
+for (file in csv_files) {
+  if (!grepl("\\d{3,}", file)) {
+    cat("File without indicator code:", file, "\n")
+  }
+}
+
+# Print the list of CSV files
+cat(paste(csv_files, collapse = "\n"), "\n")
+cat("Finished checking CSV files.", "\n")
+```
+
+
+This code chunk iterates over each data frame in df_list, retrieves its variable names, class types, range for numeric variables, and unique values for character variables.
+
+It then creates a data frame var_info with these details and prints it, providing a data dictionary for each data frame in the list.
+
+https://connectqutedu.sharepoint.com/:x:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Metadata/data_dictionary.xlsx?d=w8708a1fa697f42899fd11956f7bc1ce6&csf=1&web=1&e=W3Iqp4
+
+```{r}
+# Iterate through each data frame and create a data dictionary
+for (df_name in names(df_list)) {
+  cat(paste("Data Dictionary for", df_name, ":\n"))
+  
+  # Get the data frame
+  df <- df_list[[df_name]]
+  
+  # Create a data frame with variable name, class, range, unique values, and count of missing values
+  var_info <- data.frame(
+    variable = names(df),
+    class = sapply(df, class),
+    range = sapply(df, function(x) if (is.numeric(x)) paste(range(x, na.rm = TRUE), collapse = " - ") else ""),
+    unique_values = sapply(df, function(x) if (is.character(x)) paste(unique(x), collapse = ", ") else ""),
+    n_missing_values = sapply(df, function(x) sum(is.na(x)))
+  )
+  
+  # Print the data dictionary
+  print(var_info)
+}
+```
+
+
+
