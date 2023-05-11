@@ -766,7 +766,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
 # FILTER_VARS <- c("age_group", "sex","RELP Religious Affiliation - 1-digit level")                            # Name of original data set filter variable(s).
 # GEO_TYPE <- "national"                                               # Type of target geometry (used for looping over list of correspondence files)
 # GEO_COL_FINAL <- "Australia"
-# 
+
 # state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006)
 
 
