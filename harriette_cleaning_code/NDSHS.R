@@ -228,7 +228,7 @@ df1_newcols <- df1_newcols %>%
 
 
 # REMOVING UNWANTED COLUMNS, TO MATCH ABOVE
-df2_newcols <- df2_newcols[, !grepl("n_age_of_initiation_of_illicit_drug_use_lifetime|n_age_of_initiation_of_smoking|mid_strength_beer|low_alcohol_beer|p_cannabis_use_frequency_every_day", colnames(df2_newcols))]
+df2_newcols <- df2_newcols[, !grepl("n_age_of_initiation_of_illicit_drug_use_lifetime|n_age_of_initiation_of_smoking|mid_strength_beer|low_alcohol_beer|p_cannabis_use_frequency_every_day|usually_consumed_cider|usually_consumed_other", colnames(df2_newcols))]
 
 # STILL TO CHANGE 0 TO NA and 3 TO 2:
 df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits <- rowSums(
@@ -315,10 +315,6 @@ drinking2 <- c("p_type_of_alcohol_usually_consumed_bottled_wine",
                "p_type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol_uncertainty",
                "p_type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs",
                "p_type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs_uncertainty",
-               "p_type_of_alcohol_usually_consumed_cider",
-               "p_type_of_alcohol_usually_consumed_cider_uncertainty",
-               "p_type_of_alcohol_usually_consumed_other",
-               "p_type_of_alcohol_usually_consumed_other_uncertainty",
                "p_type_of_alcohol_usually_consumed_pre_mixed_spirits",
                "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_uncertainty")
 
