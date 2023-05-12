@@ -30,7 +30,7 @@ append the data frame to the list using the file name as the key
 
 ```{r setup, include=FALSE}
 # Set the working directory
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS/") #change this path if you copy this 
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/nsshs/") #change this path if you copy this 
 csv_files <- list.files(pattern=".*\\.csv$")
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
@@ -103,6 +103,7 @@ for (df_name in names(df_list)) {
   print(var_info)
 }
 ```
+
 Iterate through each data frame in df_list and perform checks:
 
 1. check if age_group, sex, calendar year or year_range columns exist
@@ -194,8 +195,8 @@ Define the input directory path
 Define the output directory path to save cleaned dataset WITH CELL SUPPRESSED
 ```{r}
 
-input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS/"
-output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS//cell_suppressed/"
+input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/nsshs//"
+output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/nsshs//cell_suppressed/"
 ```
 Create the output directory if it doesn't already exist
 Get a list of all CSV files in the input directory
@@ -254,16 +255,21 @@ Write the modified data frame to a new CSV file in the output directory
 
 ```{r}
 for (file in csv_files) {
-  
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
   # Apply cell suppression
-  df[df[, 6] > 0 & df[, 6] < 5 & !is.na(df[, 6]), -c(1:5)] <- 9999999
+  suppressed_cols <- 5  # Column position for cell suppression (5th column)
+  suppressed_rows <- sum(df[, suppressed_cols] > 0 & df[, suppressed_cols] < 5 & !is.na(df[, 6]))
+  df[df[, suppressed_cols] > 0 & df[, suppressed_cols] < 5 & !is.na(df[, 6]), -c(1:4)] <- 9999999
+  
+  # Print the count of suppressed rows
+  cat("Number of rows suppressed in", file, ":", suppressed_rows, "\n")
   
   # Write the modified data frame to a new CSV file in the output directory
   write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
-  
 }
+
 ```
+
 

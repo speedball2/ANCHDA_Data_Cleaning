@@ -11,9 +11,9 @@
 
 <meta name="author" content="Claire Boulange" />
 
-<meta name="date" content="2023-05-11" />
+<meta name="date" content="2023-05-12" />
 
-<title>format_check_cell_suppression</title>
+<title>format check and cell suppression on ABS School data</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -356,9 +356,10 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">format_check_cell_suppression</h1>
+<h1 class="title toc-ignore">format check and cell suppression on ABS
+School data</h1>
 <h4 class="author">Claire Boulange</h4>
-<h4 class="date">2023-05-11</h4>
+<h4 class="date">2023-05-12</h4>
 
 </div>
 
@@ -375,111 +376,988 @@ library(dplyr)</code></pre>
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <pre class="r"><code>library(tidyr)
-library(readr)</code></pre>
-<p>Open a connection to the output file Set the working directory -
-folder with data cleaned ready for QA</p>
-<p>Define a list of acceptable values for the first column Define a
-function to check if column names are in snake case format Define a
-regex pattern to check age_group format Define regex patterns for
-age_group, year_range, and calendar_year</p>
-<p>Get a list of CSV files in the working directory Print the number of
-files in the folder and their names</p>
-<p>initialize an empty list to store data frame read each CSV file into
-a data frame and store it in the df_list append the data frame to the
-list using the file name as the key</p>
+library(readr)
+library(knitr)
+library(kableExtra)</code></pre>
+<pre><code>## Warning: package &#39;kableExtra&#39; was built under R version 4.2.3</code></pre>
+<pre><code>## Warning in !is.null(rmarkdown::metadata$output) &amp;&amp; rmarkdown::metadata$output
+## %in% : &#39;length(x) = 2 &gt; 1&#39; in coercion to &#39;logical(1)&#39;</code></pre>
+<pre><code>## 
+## Attaching package: &#39;kableExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     group_rows</code></pre>
+<p>Part 1: - open a connection to the output file - Set the working
+directory - folder with data cleaned ready for QA</p>
+<ul>
+<li><p>define a list of acceptable values for the first column</p></li>
+<li><p>define a function to check if column names are in snake case
+format</p></li>
+<li><p>define a regex pattern to check age_group format</p></li>
+<li><p>define regex patterns for age_group, year_range, and
+calendar_year</p></li>
+<li><p>get a list of CSV files in the working directory +
+subfolders</p></li>
+<li><p>print the number of files in the folder and their names</p></li>
+<li><p>initialize an empty list to store data frame</p></li>
+<li><p>read each CSV file into a data frame and store it in the
+df_list</p></li>
+<li><p>append the data frame to the list using the file name as the
+key</p></li>
+</ul>
 <pre class="r"><code>cat(&quot;Number of files in folder:&quot;, length(csv_files), &quot;\n&quot;) </code></pre>
-<pre><code>## Number of files in folder: 4</code></pre>
+<pre><code>## Number of files in folder: 5</code></pre>
 <pre class="r"><code>for (file in csv_files) {
   if (!grepl(&quot;\\d{3,}&quot;, file)) {
     cat(&quot;WARNING! File(s) without indicator code:&quot;, file, &quot;\n&quot;)
   }
-}
-cat(paste(&quot;File with indicator code:&quot;,csv_files, collapse = &quot;\n&quot;), &quot;\n&quot;)</code></pre>
-<pre><code>## File with indicator code: BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv
-## File with indicator code: BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv
-## File with indicator code: BITRE_172_young_people_17_25_motor_vehicle_accidents_STE.csv
-## File with indicator code: BITRE_172_young_people_17_25_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv</code></pre>
+}</code></pre>
+<pre><code>## WARNING! File(s) without indicator code: ABS_schools_Attendance_at_primary_school_year_5_STE.csv</code></pre>
+<pre class="r"><code>cat(paste(&quot;File with indicator code:&quot;,csv_files, collapse = &quot;\n&quot;), &quot;\n&quot;)</code></pre>
+<pre><code>## File with indicator code: ABS_schools_461_retention_rate_STE.csv
+## File with indicator code: ABS_schools_462_school_completion_year_12.csv.csv
+## File with indicator code: ABS_schools_463_continuation_rates_STE.csv
+## File with indicator code: ABS_schools_473_full_time_and_part_time_students_STE.csv
+## File with indicator code: ABS_schools_Attendance_at_primary_school_year_5_STE.csv</code></pre>
 <pre class="r"><code>cat(&quot;Finished checking CSV files.&quot;, &quot;\n&quot;)</code></pre>
 <pre><code>## Finished checking CSV files.</code></pre>
-<p>Loop through each data frame in the list and print the head</p>
+<pre class="r"><code>for (file in csv_files) {
+  if (!grepl(&quot;_STE|_SA3|_SA2|_SA4|_national|_Australia&quot;, file)) {
+    cat(&quot;WARNING! File(s) without geography suffix:&quot;, file, &quot;\n&quot;)
+  }
+}</code></pre>
+<pre><code>## WARNING! File(s) without geography suffix: ABS_schools_462_school_completion_year_12.csv.csv</code></pre>
+<pre class="r"><code>cat(paste(&quot;File with indicator code:&quot;, csv_files, collapse = &quot;\n&quot;), &quot;\n&quot;)</code></pre>
+<pre><code>## File with indicator code: ABS_schools_461_retention_rate_STE.csv
+## File with indicator code: ABS_schools_462_school_completion_year_12.csv.csv
+## File with indicator code: ABS_schools_463_continuation_rates_STE.csv
+## File with indicator code: ABS_schools_473_full_time_and_part_time_students_STE.csv
+## File with indicator code: ABS_schools_Attendance_at_primary_school_year_5_STE.csv</code></pre>
+<pre class="r"><code>cat(&quot;Finished checking CSV files.&quot;, &quot;\n&quot;)</code></pre>
+<pre><code>## Finished checking CSV files.</code></pre>
+<p>Part 2 - loop through each data frame in the list and print the
+head</p>
 <pre class="r"><code>for (df_name in names(df_list)) {
   cat(paste(&quot;Head of&quot;, df_name, &quot;:\n&quot;))
-  print(head(df_list[[df_name]]))
+  
+  # Get the data frame
+  df &lt;- df_list[[df_name]]
+  
+  # Generate the HTML table for the head of the data frame
+  html_table &lt;- kable(head(df), format = &quot;html&quot;) %&gt;%
+    kable_styling(bootstrap_options = &quot;striped&quot;, full_width = FALSE)
+  
+  # Print the HTML table
+  cat(as.character(html_table))
+  cat(&quot;\n&quot;)
 }</code></pre>
-<pre><code>## Head of BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv :
-##   STE_CODE16    sex age_group calendar_year n_fatally_injured_in_road_accident
-## 1          1 female      0-16          2008                                  3
-## 2          1 female      0-16          2009                                 14
-## 3          1 female      0-16          2010                                  6
-## 4          1 female      0-16          2011                                  8
-## 5          1 female      0-16          2012                                  6
-## 6          1 female      0-16          2013                                  6
-## Head of BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv :
-##   SA4_CODE16 sex age_group year_range
-## 1        101 all      0-16  2008-2017
-## 2        101 all      0-16  2009-2018
-## 3        101 all      0-16  2010-2019
-## 4        101 all      0-16  2011-2020
-## 5        101 all      0-16  2012-2021
-## 6        101 all      0-16  2013-2022
-##   rolling_average_fatally_injured_in_road_accident
-## 1                                                3
-## 2                                                4
-## 3                                                4
-## 4                                                4
-## 5                                                5
-## 6                                                5
-## Head of BITRE_172_young_people_17_25_motor_vehicle_accidents_STE.csv :
-##   STE_CODE16    sex age_group calendar_year type_of_road_user
-## 1          1 female     17-25          2008            driver
-## 2          1 female     17-25          2008             other
-## 3          1 female     17-25          2008         passenger
-## 4          1 female     17-25          2009            driver
-## 5          1 female     17-25          2009             other
-## 6          1 female     17-25          2009         passenger
-##   n_fatally_injured_in_road_accident
-## 1                                 13
-## 2                                  1
-## 3                                  6
-## 4                                  7
-## 5                                  3
-## 6                                 10
-## Head of BITRE_172_young_people_17_25_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv :
-##   SA4_CODE16 sex age_group year_range type_of_road_user
-## 1        101 all     17-25  2008-2017            driver
-## 2        101 all     17-25  2008-2017         passenger
-## 3        101 all     17-25  2008-2017             other
-## 4        101 all     17-25  2009-2018            driver
-## 5        101 all     17-25  2009-2018         passenger
-## 6        101 all     17-25  2009-2018             other
-##   rolling_average_fatally_injured_in_road_accident
-## 1                                                3
-## 2                                                0
-## 3                                                3
-## 4                                                4
-## 5                                                1
-## 6                                                3</code></pre>
-<p>print overview of all CSV files and their variables:</p>
-<pre class="r"><code>csv_info &lt;- data.frame(csv_file = names(df_list), variables = sapply(df_list, function(x) paste(names(x), collapse = &quot;, &quot;)))
-print(csv_info)</code></pre>
-<pre><code>##                                                                                                                                                                      csv_file
-## BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv                                                               BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv
-## BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv           BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv
-## BITRE_172_young_people_17_25_motor_vehicle_accidents_STE.csv                                                     BITRE_172_young_people_17_25_motor_vehicle_accidents_STE.csv
-## BITRE_172_young_people_17_25_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv BITRE_172_young_people_17_25_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv
-##                                                                                                                                                                                          variables
-## BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv                                                              STE_CODE16, sex, age_group, calendar_year, n_fatally_injured_in_road_accident
-## BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv                         SA4_CODE16, sex, age_group, year_range, rolling_average_fatally_injured_in_road_accident
-## BITRE_172_young_people_17_25_motor_vehicle_accidents_STE.csv                                      STE_CODE16, sex, age_group, calendar_year, type_of_road_user, n_fatally_injured_in_road_accident
-## BITRE_172_young_people_17_25_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv SA4_CODE16, sex, age_group, year_range, type_of_road_user, rolling_average_fatally_injured_in_road_accident</code></pre>
-<p>This code chunk iterates over each data frame in df_list, retrieves
-its variable names, class types, range for numeric variables, and unique
-values for character variables.</p>
-<p>It then creates a data frame var_info with these details and prints
-it, providing a data dictionary for each data frame in the list. You
-might want to use it to fill the dictionary:</p>
-<p><a href="https://connectqutedu.sharepoint.com/:x:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Metadata/data_dictionary.xlsx?d=w8708a1fa697f42899fd11956f7bc1ce6&amp;csf=1&amp;web=1&amp;e=W3Iqp4" class="uri">https://connectqutedu.sharepoint.com/:x:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Metadata/data_dictionary.xlsx?d=w8708a1fa697f42899fd11956f7bc1ce6&amp;csf=1&amp;web=1&amp;e=W3Iqp4</a></p>
-<pre class="r"><code># Iterate through each data frame and create a data dictionary
+Head of ABS_schools_461_retention_rate_STE.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+STE_CODE16
+</th>
+<th style="text-align:right;">
+calendar_year
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:left;">
+age_group
+</th>
+<th style="text-align:left;">
+school_grade
+</th>
+<th style="text-align:right;">
+apparent_retention_rate
+</th>
+<th style="text-align:right;">
+total_rentention_rate
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+13-14
+</td>
+<td style="text-align:left;">
+year 7 - year 8
+</td>
+<td style="text-align:right;">
+99.2
+</td>
+<td style="text-align:right;">
+99.4
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+14-15
+</td>
+<td style="text-align:left;">
+year 8 - year 9
+</td>
+<td style="text-align:right;">
+99.7
+</td>
+<td style="text-align:right;">
+99.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+15-16
+</td>
+<td style="text-align:left;">
+year 9 - year 10
+</td>
+<td style="text-align:right;">
+99.4
+</td>
+<td style="text-align:right;">
+99.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+16-17
+</td>
+<td style="text-align:left;">
+year 10 - year 11
+</td>
+<td style="text-align:right;">
+79.8
+</td>
+<td style="text-align:right;">
+77.8
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+17-18
+</td>
+<td style="text-align:left;">
+year 11 - year 12
+</td>
+<td style="text-align:right;">
+79.0
+</td>
+<td style="text-align:right;">
+77.7
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+13-14
+</td>
+<td style="text-align:left;">
+year 7 - year 8
+</td>
+<td style="text-align:right;">
+98.9
+</td>
+<td style="text-align:right;">
+99.1
+</td>
+</tr>
+</tbody>
+</table>
+Head of ABS_schools_462_school_completion_year_12.csv.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+STE_CODE16
+</th>
+<th style="text-align:right;">
+calendar_year
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:left;">
+age_group
+</th>
+<th style="text-align:left;">
+school_grade
+</th>
+<th style="text-align:left;">
+affiliation_abs_schools
+</th>
+<th style="text-align:right;">
+n_full_time_student
+</th>
+<th style="text-align:right;">
+n_part_time_student
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+year 12
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+year 12
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+646
+</td>
+<td style="text-align:right;">
+28
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+year 12
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+248
+</td>
+<td style="text-align:right;">
+19
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+16
+</td>
+<td style="text-align:left;">
+year 12
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+330
+</td>
+<td style="text-align:right;">
+9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+17
+</td>
+<td style="text-align:left;">
+year 12
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+11941
+</td>
+<td style="text-align:right;">
+313
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+18
+</td>
+<td style="text-align:left;">
+year 12
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+3966
+</td>
+<td style="text-align:right;">
+159
+</td>
+</tr>
+</tbody>
+</table>
+Head of ABS_schools_463_continuation_rates_STE.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+STE_CODE16
+</th>
+<th style="text-align:right;">
+calendar_year
+</th>
+<th style="text-align:left;">
+age_group
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:right;">
+p_apparent_continuation_rate
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+14-15
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+98.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+15-16
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+88.3
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+16-17
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+79.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+17-18
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+26.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+18-19
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+2.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+14-15
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:right;">
+98.9
+</td>
+</tr>
+</tbody>
+</table>
+Head of ABS_schools_473_full_time_and_part_time_students_STE.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+STE_CODE16
+</th>
+<th style="text-align:right;">
+calendar_year
+</th>
+<th style="text-align:left;">
+age_group
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:left;">
+affiliation_abs_schools
+</th>
+<th style="text-align:right;">
+n_full_time_student
+</th>
+<th style="text-align:right;">
+n_part_time_student
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+0-4
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+2076
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+1225
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+7
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+1949
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+Head of ABS_schools_Attendance_at_primary_school_year_5_STE.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:right;">
+STE_CODE16
+</th>
+<th style="text-align:right;">
+calendar_year
+</th>
+<th style="text-align:left;">
+sex
+</th>
+<th style="text-align:right;">
+age_group
+</th>
+<th style="text-align:left;">
+school_grade
+</th>
+<th style="text-align:left;">
+affiliation_abs_schools
+</th>
+<th style="text-align:right;">
+n_full_time_student
+</th>
+<th style="text-align:right;">
+n_part_time_student
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+year 5
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+year 5
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+2034
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+11
+</td>
+<td style="text-align:left;">
+year 5
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+1022
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+12
+</td>
+<td style="text-align:left;">
+year 5
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+year 5
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+466
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2022
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+year 5
+</td>
+<td style="text-align:left;">
+government
+</td>
+<td style="text-align:right;">
+22694
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>print overview of all CSV files and their variables</li>
+</ul>
+<pre class="r"><code># Create a new data frame with only the variables column
+csv_info &lt;- data.frame(variables = sapply(df_list, function(x) paste(names(x), collapse = &quot;, &quot;)))
+
+# Generate the HTML table using kable and kableExtra functions
+html_table &lt;- kable(csv_info, format = &quot;html&quot;, col.names = NULL) %&gt;%
+  kable_styling(bootstrap_options = &quot;striped&quot;, full_width = FALSE)
+
+# Print the HTML table
+cat(as.character(html_table))</code></pre>
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<tbody>
+<tr>
+<td style="text-align:left;">
+ABS_schools_461_retention_rate_STE.csv
+</td>
+<td style="text-align:left;">
+STE_CODE16, calendar_year, sex, age_group, school_grade,
+apparent_retention_rate, total_rentention_rate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABS_schools_462_school_completion_year_12.csv.csv
+</td>
+<td style="text-align:left;">
+STE_CODE16, calendar_year, sex, age_group, school_grade,
+affiliation_abs_schools, n_full_time_student, n_part_time_student
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABS_schools_463_continuation_rates_STE.csv
+</td>
+<td style="text-align:left;">
+STE_CODE16, calendar_year, age_group, sex, p_apparent_continuation_rate
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABS_schools_473_full_time_and_part_time_students_STE.csv
+</td>
+<td style="text-align:left;">
+STE_CODE16, calendar_year, age_group, sex, affiliation_abs_schools,
+n_full_time_student, n_part_time_student
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+ABS_schools_Attendance_at_primary_school_year_5_STE.csv
+</td>
+<td style="text-align:left;">
+STE_CODE16, calendar_year, sex, age_group, school_grade,
+affiliation_abs_schools, n_full_time_student, n_part_time_student
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>print a data dictionary for each data frame</li>
+</ul>
+<pre class="r"><code>library(knitr)
+library(kableExtra)
+
+# Loop for generating data dictionary
 for (df_name in names(df_list)) {
   cat(paste(&quot;Data Dictionary for&quot;, df_name, &quot;:\n&quot;))
   
@@ -495,105 +1373,814 @@ for (df_name in names(df_list)) {
     n_missing_values = sapply(df, function(x) sum(is.na(x)))
   )
   
-  # Print the data dictionary
-  print(var_info)
+  # Generate the HTML table using kable and kableExtra functions
+  html_table &lt;- kable(var_info, format = &quot;html&quot;) %&gt;%
+    kable_styling(bootstrap_options = &quot;striped&quot;, full_width = FALSE)
+
+  # Print the HTML table
+  cat(as.character(html_table))
+  cat(&quot;\n&quot;)
 }</code></pre>
-<pre><code>## Data Dictionary for BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv :
-##                                                              variable     class
-## STE_CODE16                                                 STE_CODE16   integer
-## sex                                                               sex character
-## age_group                                                   age_group character
-## calendar_year                                           calendar_year   integer
-## n_fatally_injured_in_road_accident n_fatally_injured_in_road_accident   integer
-##                                          range                 unique_values
-## STE_CODE16                               1 - 8                              
-## sex                                            female, male, NA, unspecified
-## age_group                                                               0-16
-## calendar_year                      2008 - 2022                              
-## n_fatally_injured_in_road_accident      1 - 18                              
-##                                    n_missing_values
-## STE_CODE16                                        0
-## sex                                               8
-## age_group                                         0
-## calendar_year                                     0
-## n_fatally_injured_in_road_accident                0
-## Data Dictionary for BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv :
-##                                                                                          variable
-## SA4_CODE16                                                                             SA4_CODE16
-## sex                                                                                           sex
-## age_group                                                                               age_group
-## year_range                                                                             year_range
-## rolling_average_fatally_injured_in_road_accident rolling_average_fatally_injured_in_road_accident
-##                                                      class     range
-## SA4_CODE16                                         integer 101 - 801
-## sex                                              character          
-## age_group                                        character          
-## year_range                                       character          
-## rolling_average_fatally_injured_in_road_accident   integer    0 - 15
-##                                                                                                     unique_values
-## SA4_CODE16                                                                                                       
-## sex                                                                                                           all
-## age_group                                                                                                    0-16
-## year_range                                       2008-2017, 2009-2018, 2010-2019, 2011-2020, 2012-2021, 2013-2022
-## rolling_average_fatally_injured_in_road_accident                                                                 
-##                                                  n_missing_values
-## SA4_CODE16                                                      0
-## sex                                                             0
-## age_group                                                       0
-## year_range                                                      0
-## rolling_average_fatally_injured_in_road_accident                0
-## Data Dictionary for BITRE_172_young_people_17_25_motor_vehicle_accidents_STE.csv :
-##                                                              variable     class
-## STE_CODE16                                                 STE_CODE16   integer
-## sex                                                               sex character
-## age_group                                                   age_group character
-## calendar_year                                           calendar_year   integer
-## type_of_road_user                                   type_of_road_user character
-## n_fatally_injured_in_road_accident n_fatally_injured_in_road_accident   integer
-##                                          range            unique_values
-## STE_CODE16                               1 - 8                         
-## sex                                                        female, male
-## age_group                                                         17-25
-## calendar_year                      2008 - 2022                         
-## type_of_road_user                              driver, other, passenger
-## n_fatally_injured_in_road_accident      1 - 40                         
-##                                    n_missing_values
-## STE_CODE16                                        0
-## sex                                               0
-## age_group                                         0
-## calendar_year                                     0
-## type_of_road_user                                 0
-## n_fatally_injured_in_road_accident                0
-## Data Dictionary for BITRE_172_young_people_17_25_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv :
-##                                                                                          variable
-## SA4_CODE16                                                                             SA4_CODE16
-## sex                                                                                           sex
-## age_group                                                                               age_group
-## year_range                                                                             year_range
-## type_of_road_user                                                               type_of_road_user
-## rolling_average_fatally_injured_in_road_accident rolling_average_fatally_injured_in_road_accident
-##                                                      class     range
-## SA4_CODE16                                         integer 101 - 801
-## sex                                              character          
-## age_group                                        character          
-## year_range                                       character          
-## type_of_road_user                                character          
-## rolling_average_fatally_injured_in_road_accident   integer    0 - 36
-##                                                                                                     unique_values
-## SA4_CODE16                                                                                                       
-## sex                                                                                                           all
-## age_group                                                                                                   17-25
-## year_range                                       2008-2017, 2009-2018, 2010-2019, 2011-2020, 2012-2021, 2013-2022
-## type_of_road_user                                                                        driver, passenger, other
-## rolling_average_fatally_injured_in_road_accident                                                                 
-##                                                  n_missing_values
-## SA4_CODE16                                                      0
-## sex                                                             0
-## age_group                                                       0
-## year_range                                                      0
-## type_of_road_user                                               0
-## rolling_average_fatally_injured_in_road_accident                0</code></pre>
-<p>Iterate through each data frame in df_list and perform checks:</p>
+Data Dictionary for ABS_schools_461_retention_rate_STE.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+class
+</th>
+<th style="text-align:left;">
+range
+</th>
+<th style="text-align:left;">
+unique_values
+</th>
+<th style="text-align:right;">
+n_missing_values
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+0 - 8
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+2011 - 2022
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+male, female, persons
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+13-14, 14-15, 15-16, 16-17, 17-18
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+school_grade
+</td>
+<td style="text-align:left;">
+school_grade
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+year 7 - year 8, year 8 - year 9, year 9 - year 10, year 10 - year 11,
+year 11 - year 12
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+apparent_retention_rate
+</td>
+<td style="text-align:left;">
+apparent_retention_rate
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+55.4 - 100
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+total_rentention_rate
+</td>
+<td style="text-align:left;">
+total_rentention_rate
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+54.1 - 100
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+Data Dictionary for ABS_schools_462_school_completion_year_12.csv.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+class
+</th>
+<th style="text-align:left;">
+range
+</th>
+<th style="text-align:left;">
+unique_values
+</th>
+<th style="text-align:right;">
+n_missing_values
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+1 - 8
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+2006 - 2022
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+male, female
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+16, 17, 18, 19, 20, 21+, 15, 14, 12
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+school_grade
+</td>
+<td style="text-align:left;">
+school_grade
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+year 12
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+affiliation_abs_schools
+</td>
+<td style="text-align:left;">
+affiliation_abs_schools
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+government, catholic, independent
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_full_time_student
+</td>
+<td style="text-align:left;">
+n_full_time_student
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+0 - 15194
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_part_time_student
+</td>
+<td style="text-align:left;">
+n_part_time_student
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+0 - 669
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+Data Dictionary for ABS_schools_463_continuation_rates_STE.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+class
+</th>
+<th style="text-align:left;">
+range
+</th>
+<th style="text-align:left;">
+unique_values
+</th>
+<th style="text-align:right;">
+n_missing_values
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+0 - 8
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+2011 - 2022
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+14-15, 15-16, 16-17, 17-18, 18-19
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+male, female, persons
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_apparent_continuation_rate
+</td>
+<td style="text-align:left;">
+p_apparent_continuation_rate
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+1.8 - 100
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+Data Dictionary for
+ABS_schools_473_full_time_and_part_time_students_STE.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+class
+</th>
+<th style="text-align:left;">
+range
+</th>
+<th style="text-align:left;">
+unique_values
+</th>
+<th style="text-align:right;">
+n_missing_values
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+1 - 8
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+2006 - 2022
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+0-4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21+
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+male, female
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+affiliation_abs_schools
+</td>
+<td style="text-align:left;">
+affiliation_abs_schools
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+government, catholic, independent
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_full_time_student
+</td>
+<td style="text-align:left;">
+n_full_time_student
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+0 - 25572
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_part_time_student
+</td>
+<td style="text-align:left;">
+n_part_time_student
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+0 - 1552
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+Data Dictionary for
+ABS_schools_Attendance_at_primary_school_year_5_STE.csv :
+<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+variable
+</th>
+<th style="text-align:left;">
+class
+</th>
+<th style="text-align:left;">
+range
+</th>
+<th style="text-align:left;">
+unique_values
+</th>
+<th style="text-align:right;">
+n_missing_values
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+STE_CODE16
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+1 - 8
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+calendar_year
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+2006 - 2022
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+sex
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+male, female
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+age_group
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+8 - 15
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+school_grade
+</td>
+<td style="text-align:left;">
+school_grade
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+year 5
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+affiliation_abs_schools
+</td>
+<td style="text-align:left;">
+affiliation_abs_schools
+</td>
+<td style="text-align:left;">
+character
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+government, catholic, independent
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_full_time_student
+</td>
+<td style="text-align:left;">
+n_full_time_student
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+0 - 24368
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_part_time_student
+</td>
+<td style="text-align:left;">
+n_part_time_student
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+0 - 350
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+</tbody>
+</table>
+<p>Part 3 - iterate through each data frame in df_list and perform
+checks:</p>
 <ol style="list-style-type: decimal">
 <li>check if age_group, sex, calendar year or year_range columns
 exist</li>
@@ -667,56 +2254,54 @@ exist</li>
   cat(&quot;Error: Values coded as 0 (Australia) found in a dataset that is not national:&quot;, df_name, &quot;\n&quot;)
   }
 }</code></pre>
-<p>CHECK OUTPUTS NOW!!!</p>
-<div id="did-you-detect-any-formatting-errors" class="section level2">
-<h2>Did you detect any formatting errors?</h2>
-</div>
-<div id="yes-go-back-to-your-code-and-make-corrections" class="section level2">
-<h2>YES
+<pre><code>## Error: Values coded as 0 (Australia) found in a dataset that is not national: ABS_schools_461_retention_rate_STE.csv 
+## Error: age_group values in ABS_schools_462_school_completion_year_12.csv.csv are not in the correct format (expected format: \d-\d, \d-\d{2}, or \d{2}-\d{2})
+## Invalid values:
+## 16, 17, 18, 19, 20, 21+, 15, 14, 12 
+## Error: Values coded as 0 (Australia) found in a dataset that is not national: ABS_schools_463_continuation_rates_STE.csv 
+## Error: age_group values in ABS_schools_473_full_time_and_part_time_students_STE.csv are not in the correct format (expected format: \d-\d, \d-\d{2}, or \d{2}-\d{2})
+## Invalid values:
+## 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21+ 
+## Error: age_group values in ABS_schools_Attendance_at_primary_school_year_5_STE.csv are not in the correct format (expected format: \d-\d, \d-\d{2}, or \d{2}-\d{2})
+## Invalid values:
+## 9, 10, 11, 12, 13, 8, 15</code></pre>
+<pre><code>                                                                                      STOP HERE AND CHECK!!!</code></pre>
+<p>Did you detect any formatting errors?</p>
+<p>YES
 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-GO BACK TO YOUR CODE AND MAKE CORRECTIONS</h2>
-<table>
-<tbody>
-<tr class="odd">
-<td align="left">NO
+GO BACK TO YOUR CODE AND MAKE CORRECTIONS</p>
+<p>NO
 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-PROCEED WITH CELL SUPPRESSION</td>
-</tr>
-</tbody>
-</table>
-<p>Define the input directory path Define the output directory path to
-save cleaned dataset WITH CELL SUPPRESSED</p>
-<pre class="r"><code>input_dir &lt;- &quot;C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/bitre//&quot;
-output_dir &lt;- &quot;C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/bitre//cell_suppressed/&quot;</code></pre>
-<p>Create the output directory if it doesn’t already exist</p>
+PROCEED WITH CELL SUPPRESSION</p>
+<p>\ Part 4 - cell suppression - define the input directory path -
+define the output directory path to save cleaned datasets WITH CELL
+SUPPRESSED (R will automatically create this folder if it does not
+exist)</p>
+<pre class="r"><code>input_dir &lt;- &quot;C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/&quot; #change this path
+output_dir &lt;- &quot;C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/cell_suppressed/&quot;#change this path</code></pre>
+<p>run this code to… - create the output directory if it doesn’t already
+exist - get a list of all CSV files in the input directory</p>
 <pre class="r"><code>dir.create(output_dir, showWarnings = FALSE)
 csv_files &lt;- list.files(input_dir, pattern = &quot;.csv$&quot;, full.names = TRUE)</code></pre>
-<p>Check if there is an “uncertainty” column in the data frame</p>
+<p>Run this code to… check if there is an “uncertainty” column in the
+data frame</p>
 <pre class="r"><code>for (file in csv_files) {
-  
- 
   df &lt;- read.csv(file, stringsAsFactors = FALSE)
   
-  
   if (&quot;uncertainty&quot; %in% colnames(df)) {
-    message(paste0(&quot;Note: The file &quot;, basename(file), &quot; contains an &#39;uncertainty&#39; column. Make sure to modify the code to apply cell suppression where uncertainty is high.&quot;))}
-  else {
-  # Print message indicating that there is no need to apply cell suppression to &quot;uncertainty&quot; column
-  cat(&quot;You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in&quot;, basename(file), &quot;\n&quot;)
-}
+    cat(&quot;&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; The file &quot;, basename(file), &quot; contains an &#39;uncertainty&#39; column. Make sure to modify the code to apply cell suppression where uncertainty is high.&lt;/p&gt;&quot;)
+  } else {
+    cat(&quot;&lt;p&gt;You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in&quot;, basename(file), &quot;&lt;/p&gt;&quot;)
+  }
 }</code></pre>
-<pre><code>## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BITRE_172_young_people_17_25_motor_vehicle_accidents_STE.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BITRE_172_young_people_17_25_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv</code></pre>
-<p>detect columns that are numeric and where you might need to apply
-cell suppression</p>
+<pre><code>## &lt;p&gt;You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ABS_schools_461_retention_rate_STE.csv &lt;/p&gt;&lt;p&gt;You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ABS_schools_462_school_completion_year_12.csv.csv &lt;/p&gt;&lt;p&gt;You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ABS_schools_463_continuation_rates_STE.csv &lt;/p&gt;&lt;p&gt;You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ABS_schools_473_full_time_and_part_time_students_STE.csv &lt;/p&gt;&lt;p&gt;You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ABS_schools_Attendance_at_primary_school_year_5_STE.csv &lt;/p&gt;</code></pre>
+<p>Run this code to… detect columns that are numeric and where you might
+need to apply cell suppression</p>
 <pre class="r"><code># Define the exclusion list
 exclude_list &lt;- c(&quot;STE_CODE16&quot;, &quot;SA2_CODE16&quot;, &quot;SA3_CODE16&quot;, &quot;SA4_CODE16&quot;, &quot;LGA_CODE16&quot;, &quot;Australia&quot;, &quot;sex&quot;, &quot;calendar_year&quot;, &quot;age_group&quot;, &quot;year_range&quot;, &quot;irsd_quintile&quot;)
 
 # Loop through each CSV file and check for columns that are numeric and not in the exclusion list
 for (file in csv_files) {
-  
   # Read in the CSV file
   df &lt;- read.csv(file, stringsAsFactors = FALSE)
   
@@ -725,155 +2310,57 @@ for (file in csv_files) {
   
   # If there are any such columns, print a message for each file and column
   if (length(num_cols) &gt; 0) {
+    cat(&quot;&lt;h4&gt;For file &quot;, basename(file), &quot;, check values in the following columns for cell suppression:&lt;/h4&gt;&quot;)
+    cat(&quot;&lt;ul&gt;&quot;)
     for (col in num_cols) {
-      message(paste0(&quot;For file &quot;, basename(file), &quot;, check values in column &#39;&quot;, col, &quot;&#39; for cell suppression&quot;))
+      cat(&quot;&lt;li&gt;&quot;, col, &quot;&lt;/li&gt;&quot;)
     }
+    cat(&quot;&lt;/ul&gt;&quot;)
   } else {
     # Print message indicating that there are no columns to check
-    cat(&quot;You don&#39;t have to worry about cell suppression in any numeric columns in&quot;, basename(file), &quot;\n&quot;)
+    cat(&quot;&lt;p&gt;You don&#39;t have to worry about cell suppression in any numeric columns in&quot;, basename(file), &quot;&lt;/p&gt;&quot;)
   }
-  
 }</code></pre>
-<pre><code>## For file BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv, check values in column &#39;n_fatally_injured_in_road_accident&#39; for cell suppression</code></pre>
-<pre><code>## For file BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv, check values in column &#39;rolling_average_fatally_injured_in_road_accident&#39; for cell suppression</code></pre>
-<pre><code>## For file BITRE_172_young_people_17_25_motor_vehicle_accidents_STE.csv, check values in column &#39;n_fatally_injured_in_road_accident&#39; for cell suppression</code></pre>
-<pre><code>## For file BITRE_172_young_people_17_25_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv, check values in column &#39;rolling_average_fatally_injured_in_road_accident&#39; for cell suppression</code></pre>
-<p>Get a list of all CSV files in the input directory Loop through each
-CSV file and apply cell suppression</p>
+<pre><code>## &lt;h4&gt;For file  ABS_schools_461_retention_rate_STE.csv , check values in the following columns for cell suppression:&lt;/h4&gt;&lt;ul&gt;&lt;li&gt; apparent_retention_rate &lt;/li&gt;&lt;li&gt; total_rentention_rate &lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;For file  ABS_schools_462_school_completion_year_12.csv.csv , check values in the following columns for cell suppression:&lt;/h4&gt;&lt;ul&gt;&lt;li&gt; n_full_time_student &lt;/li&gt;&lt;li&gt; n_part_time_student &lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;For file  ABS_schools_463_continuation_rates_STE.csv , check values in the following columns for cell suppression:&lt;/h4&gt;&lt;ul&gt;&lt;li&gt; p_apparent_continuation_rate &lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;For file  ABS_schools_473_full_time_and_part_time_students_STE.csv , check values in the following columns for cell suppression:&lt;/h4&gt;&lt;ul&gt;&lt;li&gt; n_full_time_student &lt;/li&gt;&lt;li&gt; n_part_time_student &lt;/li&gt;&lt;/ul&gt;&lt;h4&gt;For file  ABS_schools_Attendance_at_primary_school_year_5_STE.csv , check values in the following columns for cell suppression:&lt;/h4&gt;&lt;ul&gt;&lt;li&gt; n_full_time_student &lt;/li&gt;&lt;li&gt; n_part_time_student &lt;/li&gt;&lt;/ul&gt;</code></pre>
+<p>Once you understand what you need to do with cell suppression (which
+columns represent count values in your series of data set AND if you
+have uncertainty columns to deal with) customise the code below to apply
+cell suppression (keep the first 4 columns as they are)</p>
+<p>Loop through each CSV file and apply cell suppression - I used the
+outputs above to specify which column contain the count values</p>
+<p>Make sure you un-comment the write csv line</p>
 <pre class="r"><code>for (file in csv_files) {
+  
   # Read in the CSV file
   df &lt;- read.csv(file, stringsAsFactors = FALSE)
   
-  # Check if the columns exist in the data frame
-  if (&quot;n_fatally_injured_in_road_accident&quot; %in% colnames(df) || &quot;rolling_average_fatally_injured_in_road_accident&quot; %in% colnames(df)) {
-    suppressed_cols &lt;- c(&quot;n_fatally_injured_in_road_accident&quot;, &quot;rolling_average_fatally_injured_in_road_accident&quot;)
-    
-    # Apply cell suppression and count affected rows
-    affected_rows &lt;- 0
-    for (col in suppressed_cols) {
-      if (col %in% colnames(df)) {
-        suppressed_rows &lt;- df[, col] &lt; 5 &amp; df[, col] &gt; 0 &amp; !is.na(df[, col])
-        df[suppressed_rows, -c(1:4)] &lt;- 9999999
-        affected_rows &lt;- affected_rows + sum(suppressed_rows)
-      }
-    }
-    
-    # Print the number of affected rows
-    cat(&quot;Number of affected rows in&quot;, file, &quot;:&quot;, affected_rows, &quot;\n&quot;)
-    
-    # Print tables with variable information
-    for (col in suppressed_cols) {
-      if (col %in% colnames(df)) {
-        cat(&quot;Variable:&quot;, col, &quot;\n&quot;)
-        table_df &lt;- data.frame(
-          Name = colnames(df),
-          Range = sapply(df, function(x) paste(min(x, na.rm = TRUE), max(x, na.rm = TRUE), sep = &quot;-&quot;)),
-          Type = sapply(df, class),
-          Unique_Values = sapply(df, function(x) length(unique(x))),
-          Count_NA = sapply(df, function(x) sum(is.na(x)))
-        )
-        print(table_df)
-        cat(&quot;\n&quot;)
-      }
-    }
+
+  # Check if the n_full_time_student column exists in the data frame
+  if (&quot;n_full_time_student&quot; %in% colnames(df)) {
+    # Apply cell suppression to n_full_time_student column
+    df[df[,&quot;n_full_time_student&quot;] %in% 0:4 &amp; !is.na(df[,&quot;n_full_time_student&quot;]), -c(1:4)] &lt;- 9999999
   } else {
-    # Print a message to indicate that the columns were not found
-    cat(&quot;Skipping file&quot;, file, &quot;because it does not contain the n_fatally_injured_in_road_accident or rolling_average_fatally_injured_in_road_accident column.\n&quot;)
+    # Print a message to indicate that the n_full_time_student column was not found
+    cat(&quot;Skipping file&quot;, file, &quot;because it does not contain the n_full_time_student column.\n&quot;)
+  }
+  
+  # Check if the n_part_time_student column exists in the data frame
+  if (&quot;n_part_time_student&quot; %in% colnames(df)) {
+    # Apply cell suppression to n_part_time_student column
+    df[df[,&quot;n_part_time_student&quot;] %in% 0:4 &amp; !is.na(df[,&quot;n_part_time_student&quot;]), -c(1:4)] &lt;- 9999999
+  } else {
+    # Print a message to indicate that the n_part_time_student column was not found
+    cat(&quot;Skipping file&quot;, file, &quot;because it does not contain the n_part_time_student column.\n&quot;)
   }
   
   # Write the modified data frame to a new CSV file in the output directory
-  write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
+  #write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
+  
 }</code></pre>
-<pre><code>## Number of affected rows in C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/bitre//BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv : 119 
-## Variable: n_fatally_injured_in_road_accident 
-##                                                                  Name
-## STE_CODE16                                                 STE_CODE16
-## sex                                                               sex
-## age_group                                                   age_group
-## calendar_year                                           calendar_year
-## n_fatally_injured_in_road_accident n_fatally_injured_in_road_accident
-##                                                 Range      Type Unique_Values
-## STE_CODE16                                        1-8   integer             8
-## sex                                female-unspecified character             4
-## age_group                                   0-16-0-16 character             1
-## calendar_year                               2008-2022   integer            15
-## n_fatally_injured_in_road_accident          5-9999999   numeric            13
-##                                    Count_NA
-## STE_CODE16                                0
-## sex                                       8
-## age_group                                 0
-## calendar_year                             0
-## n_fatally_injured_in_road_accident        0
-## 
-## Number of affected rows in C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/bitre//BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv : 265 
-## Variable: rolling_average_fatally_injured_in_road_accident 
-##                                                                                              Name
-## SA4_CODE16                                                                             SA4_CODE16
-## sex                                                                                           sex
-## age_group                                                                               age_group
-## year_range                                                                             year_range
-## rolling_average_fatally_injured_in_road_accident rolling_average_fatally_injured_in_road_accident
-##                                                                Range      Type
-## SA4_CODE16                                                   101-801   integer
-## sex                                                          all-all character
-## age_group                                                  0-16-0-16 character
-## year_range                                       2008-2017-2013-2022 character
-## rolling_average_fatally_injured_in_road_accident           0-9999999   numeric
-##                                                  Unique_Values Count_NA
-## SA4_CODE16                                                  78        0
-## sex                                                          1        0
-## age_group                                                    1        0
-## year_range                                                   6        0
-## rolling_average_fatally_injured_in_road_accident            13        0
-## 
-## Number of affected rows in C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/bitre//BITRE_172_young_people_17_25_motor_vehicle_accidents_STE.csv : 299 
-## Variable: n_fatally_injured_in_road_accident 
-##                                                                  Name
-## STE_CODE16                                                 STE_CODE16
-## sex                                                               sex
-## age_group                                                   age_group
-## calendar_year                                           calendar_year
-## type_of_road_user                                   type_of_road_user
-## n_fatally_injured_in_road_accident n_fatally_injured_in_road_accident
-##                                                Range      Type Unique_Values
-## STE_CODE16                                       1-8   integer             8
-## sex                                      female-male character             2
-## age_group                                17-25-17-25 character             1
-## calendar_year                              2008-2022   integer            15
-## type_of_road_user                  9999999-passenger character             4
-## n_fatally_injured_in_road_accident         5-9999999   numeric            32
-##                                    Count_NA
-## STE_CODE16                                0
-## sex                                       0
-## age_group                                 0
-## calendar_year                             0
-## type_of_road_user                         0
-## n_fatally_injured_in_road_accident        0
-## 
-## Number of affected rows in C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/bitre//BITRE_172_young_people_17_25_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv : 815 
-## Variable: rolling_average_fatally_injured_in_road_accident 
-##                                                                                              Name
-## SA4_CODE16                                                                             SA4_CODE16
-## sex                                                                                           sex
-## age_group                                                                               age_group
-## year_range                                                                             year_range
-## type_of_road_user                                                               type_of_road_user
-## rolling_average_fatally_injured_in_road_accident rolling_average_fatally_injured_in_road_accident
-##                                                                Range      Type
-## SA4_CODE16                                                   101-801   integer
-## sex                                                          all-all character
-## age_group                                                17-25-17-25 character
-## year_range                                       2008-2017-2013-2022 character
-## type_of_road_user                                  9999999-passenger character
-## rolling_average_fatally_injured_in_road_accident           0-9999999   numeric
-##                                                  Unique_Values Count_NA
-## SA4_CODE16                                                  88        0
-## sex                                                          1        0
-## age_group                                                    1        0
-## year_range                                                   6        0
-## type_of_road_user                                            4        0
-## rolling_average_fatally_injured_in_road_accident            29        0</code></pre>
-</div>
+<pre><code>## Skipping file C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_461_retention_rate_STE.csv because it does not contain the n_full_time_student column.
+## Skipping file C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_461_retention_rate_STE.csv because it does not contain the n_part_time_student column.
+## Skipping file C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_463_continuation_rates_STE.csv because it does not contain the n_full_time_student column.
+## Skipping file C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_463_continuation_rates_STE.csv because it does not contain the n_part_time_student column.</code></pre>
 
 
 

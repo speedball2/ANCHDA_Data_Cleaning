@@ -187,11 +187,13 @@ for (df_name in names(df_list)) {
 CHECK OUTPUTS NOW!!!
 
 Did you detect any formatting errors? 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+YES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GO BACK TO YOUR CODE AND MAKE CORRECTIONS
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-YES >>> GO BACK TO YOUR CODE AND MAKE CORRECTIONS
-
-NO  >>> PROCEED WITH CELL SUPPRESSION
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NO  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PROCEED WITH CELL SUPPRESSION
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Define the input directory path
 Define the output directory path to save cleaned dataset WITH CELL SUPPRESSED
@@ -262,7 +264,7 @@ for (file in csv_files) {
   # Check if the n_births column exists in the data frame
   if ("n_births" %in% colnames(df)) {
 
-    df[df[,"n_births"] %in% 0:4 & !is.na(df[,"n_births"]), -c(1:4)] <- 9999999          # modify this if you copy this code or need to change the cell suppression rules
+    df[df[,"n_births"] %in% 1:4 & !is.na(df[,"n_births"]), -c(1:4)] <- 9999999          # modify this if you copy this code or need to change the cell suppression rules
   } else {
     # Print a message to indicate that the column was not found
     cat("Skipping file", file, "because it does not contain the n_births column.\n")
