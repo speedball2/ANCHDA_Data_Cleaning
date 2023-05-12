@@ -41,7 +41,7 @@ coln1 <- c("STE_CODE16", "calendar_year",
 coln2 <- c("STE_CODE16", "calendar_year", 
            "n_age_of_initiation_of_smoking", "n_age_of_initiation_of_drinking",
            "p_type_of_alcohol_usually_consumed_bottled_wine", 
-           "p_type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol", 
+           "p_type_of_alcohol_usually_consumed_regular_strength_beer", 
            "p_type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", 
            "p_type_of_alcohol_usually_consumed_low_alcohol_beer_1%_to_2.9%_alcohol",
            "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_can", 
@@ -281,8 +281,8 @@ df2_newcols$p_cannabis_use_frequency_every_few_months_or_more_uncertainty <- row
 
 # ADDING FILTER COLUMNS --------------------------------------------------------
 
-df1_newcols$age_group <- "12-24"
-df2_newcols$age_group <- "12-24"
+df1_newcols$age_group <- "14-24"
+df2_newcols$age_group <- "14-24"
 
 df1_newcols$sex <- "all"
 df2_newcols$sex <- "all" 
@@ -311,8 +311,8 @@ drinking1 <- c("n_current_drinker",
 
 drinking2 <- c("p_type_of_alcohol_usually_consumed_bottled_wine",
                "p_type_of_alcohol_usually_consumed_bottled_wine_uncertainty",
-               "p_type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol",
-               "p_type_of_alcohol_usually_consumed_regular_strength_beer_greater_than_4%_alcohol_uncertainty",
+               "p_type_of_alcohol_usually_consumed_regular_strength_beer",
+               "p_type_of_alcohol_usually_consumed_regular_strength_beer_uncertainty",
                "p_type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs",
                "p_type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs_uncertainty",
                "p_type_of_alcohol_usually_consumed_pre_mixed_spirits",
@@ -365,7 +365,7 @@ smoking <- df1_newcols[,c(ste, smoking1)]
   
 #DRINKING
 #creating new data frames (drinking cols only)
-alc1 <- df1_newcols[,c(ste, smoking1)]
+alc1 <- df1_newcols[,c(ste, drinking1)]
 alc2 <- df2_newcols[,c(ste, drinking2)]
 alc3 <- df2_newcols[,c(ste, drinking3)]
 
