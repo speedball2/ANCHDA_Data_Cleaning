@@ -24,7 +24,7 @@ source("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleani
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2006")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2006,code_or_name = "name", census_tag = "VOLWP", census_filter_col_name = "engp_proficiency_in_spoken_english", claire_redownload = F)
+TB_Census_cleaning_fn_individual(data_file_base = "census_english_notwell", data_item_name ="n_children_and_young_people_who_speak_english_not_well_or_not_at_all", calendar_year=2006,code_or_name = "name", census_tag = "ENGP", census_filter_col_name = "engp_proficiency_in_spoken_english", claire_redownload = F)
 
 
 #---------
@@ -33,14 +33,14 @@ TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2011,code_or_name = "name", census_tag = "VOLWP", census_filter_col_name = "volwp_voluntary_work_for_an_organisation_or_group", claire_redownload = F)
+TB_Census_cleaning_fn_individual(data_file_base = "census_english_notwell", data_item_name ="n_children_and_young_people_who_speak_english_not_well_or_not_at_all", calendar_year=2011,code_or_name = "name", census_tag = "ENGP", census_filter_col_name = "engp_proficiency_in_spoken_english", claire_redownload = F)
 
 #--------
 #2016 - NAME
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2016")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2016,code_or_name = "name", census_tag = "VOLWP", census_filter_col_name = "volwp_voluntary_work_for_an_organisation_or_group", claire_redownload = F)
+TB_Census_cleaning_fn_individual(data_file_base = "census_english_notwell", data_item_name ="n_children_and_young_people_who_speak_english_not_well_or_not_at_all", calendar_year=2016,code_or_name = "name", census_tag = "ENGP", census_filter_col_name = "engp_proficiency_in_spoken_english", claire_redownload = F)
 
 #-----------
 
@@ -48,4 +48,4 @@ TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2021")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_volunteer", data_item_name ="volunteering", calendar_year=2021,code_or_name = "name", census_tag = "VOLWP", census_filter_col_name = "volwp_voluntary_work_for_an_organisation_or_group", claire_redownload = F)
+TB_Census_cleaning_fn_individual(data_file_base = "census_english_notwell", data_item_name ="n_children_and_young_people_who_speak_english_not_well_or_not_at_all", calendar_year=2021,code_or_name = "name", census_tag = "ENGLP", census_filter_col_name = "engp_proficiency_in_spoken_english", claire_redownload = F)

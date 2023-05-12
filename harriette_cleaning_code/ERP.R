@@ -128,9 +128,11 @@ df3_full <- reorder(df3_full, "SA2_CODE16")
 
 # WRITE CSVS -------------------------------------------------------------------
 
- write.csv(df1_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_SA2.csv", row.names = F)
- write.csv(df2_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_LGA_2017_2017_ASGS2021.csv", row.names = F)
- write.csv(df3_full, "../../../Data_Collections_READY_FOR_QA/ERP/ABS_ERP_181_ERP_LGA_2006_2016_ASGS2016.csv", row.names = F)
+ write.csv(df1_full, "../../../Data_Collections_INTERIM/ERP/ABS_ERP_181_ERP_SA2.csv", row.names = F)
+
+
+ write.csv(df2_full, "../../../Data_Collections_INTERIM/ERP/ABS_ERP_181_ERP_LGA_2017_2017_ASGS2021_single_year.csv", row.names = F)
+ write.csv(df3_full, "../../../Data_Collections_INTERIM/ERP/ABS_ERP_181_ERP_LGA_2006_2016_ASGS2016_single_year.csv", row.names = F)
 
 
 

@@ -60,23 +60,23 @@ cleaning <- function(path, sht, range, col, nems, corder){
     df$Age <- recode(df$Age,
                      #DF1
                      "a 4 years and under" = "0-4",
-                     "b 5 years" = "5",
-                     "c 6 years" = "6",
-                     "d 7 years" = "7",
-                     "e 8 years" = "8",
-                     "f 9 years" = "9",
-                     "g 10 years" = "10",
-                     "h 11 years" = "11",
-                     "i 12 years" = "12",
-                     "j 13 years" = "13",
-                     "k 14 years" = "14",
-                     "l 15 years" = "15",
-                     "m 16 years" = "16",
-                     "n 17 years" = "17",
-                     "o 18 years" = "18",
-                     "p 19 years" = "19",
-                     "q 20 years" = "20",
-                     "r 21 years and over" = "21+", # change this to 21-x
+                     "b 5 years" = "5-5",
+                     "c 6 years" = "6-6",
+                     "d 7 years" = "7-7",
+                     "e 8 years" = "8-8",
+                     "f 9 years" = "9-9",
+                     "g 10 years" = "10-10",
+                     "h 11 years" = "11-11",
+                     "i 12 years" = "12-12",
+                     "j 13 years" = "13-13",
+                     "k 14 years" = "14-14",
+                     "l 15 years" = "15-15",
+                     "m 16 years" = "16-16",
+                     "n 17 years" = "17-17",
+                     "o 18 years" = "18-18",
+                     "p 19 years" = "19-19",
+                     "q 20 years" = "20-20",
+                     "r 21 years and over" = "21-24",
                      
                      #DF2
                      "a 14 Turning 15" = "14-15",
@@ -85,8 +85,10 @@ cleaning <- function(path, sht, range, col, nems, corder){
                      "d 17 Turning 18" = "17-18",
                      "e 18 Turning 19" = "18-19")
     
+    
     #unique(df1$col) <- check above worked, col = col want checked
   }
+  
   
   #CHANGE NAMES TO CODES
   
@@ -300,5 +302,5 @@ df3 <- df3[!grepl("Persons", df3$sex),]
 write.csv(df1, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
 write.csv(df2, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_463_continuation_rates_STE.csv", row.names = F)
 write.csv(df3, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_461_retention_rate_STE.csv", row.names = F)
-write.csv(df4, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_462_school_completion_year_12.csv.csv", row.names = F)
-write.csv(df5, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_Attendance_at_primary_school_year_5_STE.csv", row.names = F)
+write.csv(df4, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_462_school_completion_year_12_STE.csv.csv", row.names = F)
+write.csv(df5, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_411_attendance_at_primary_school_year_5_STE.csv", row.names = F)
