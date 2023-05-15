@@ -295,33 +295,18 @@ Once you understand what you need to do with cell suppression (which columns rep
 Loop through each CSV file and apply cell suppression - I used the outputs above to specify which column contain the count values 
 
 Make sure you un-comment the write csv line
-#```{r}
+```{r}
 for (file in csv_files) {
   
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
 
-  # Check if the n_full_time_student column exists in the data frame
-  if ("n_full_time_student" %in% colnames(df)) {
-    # Apply cell suppression to n_full_time_student column
-    df[df[,"n_full_time_student"] %in% 0:4 & !is.na(df[,"n_full_time_student"]), -c(1:4)] <- 9999999
-  } else {
-    # Print a message to indicate that the n_full_time_student column was not found
-    cat("Skipping file", file, "because it does not contain the n_full_time_student column.\n")
-  }
-  
-  # Check if the n_part_time_student column exists in the data frame
-  if ("n_part_time_student" %in% colnames(df)) {
-    # Apply cell suppression to n_part_time_student column
-    df[df[,"n_part_time_student"] %in% 0:4 & !is.na(df[,"n_part_time_student"]), -c(1:4)] <- 9999999
-  } else {
-    # Print a message to indicate that the n_part_time_student column was not found
-    cat("Skipping file", file, "because it does not contain the n_part_time_student column.\n")
-  }
+ # Apply cell suppression
+  df[df[, 5] > 0 & df[, 5] < 5 & !is.na(df[, 5]), -c(1:4)] <- 9999999
   
   # Write the modified data frame to a new CSV file in the output directory
-  #write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
+  write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
   
 }
 ```
