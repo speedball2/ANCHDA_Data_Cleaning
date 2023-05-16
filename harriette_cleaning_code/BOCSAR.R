@@ -263,9 +263,9 @@ df7_new <- sa4_codes(df7,indicator = "n_victims_sexual_touching")
  write.csv(df3_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3132_victims_domestic_violence_related_murder_SA4.csv", row.names = F)
  write.csv(df4_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3132_victims_domestic_violence_related_murder_LGA.csv", row.names = F)
  
- write.csv(df5_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3133_victims_sexual_assault_SA4",row.names = F)
- write.csv(df6_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3133_victims_sexual_assault_LGA",row.names = F)
+ write.csv(df5_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3133_victims_sexual_assault_SA4.csv",row.names = F)
+ write.csv(df6_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3133_victims_sexual_assault_LGA.csv",row.names = F)
  
- write.csv(df7_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3134_victims_sexual_touching_SA4",row.names = F)
- write.csv(df8_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3134_victims_sexual_touching_LGA",row.names = F)
+ write.csv(df7_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3134_victims_sexual_touching_SA4.csv",row.names = F)
+ write.csv(df8_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3134_victims_sexual_touching_LGA.csv",row.names = F)
  
