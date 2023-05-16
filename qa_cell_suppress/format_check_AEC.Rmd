@@ -1,5 +1,5 @@
 ---
-title: "format check and cell suppression on NDSH data"
+title: "format check and cell suppression on AEC data"
 author: "Claire Boulange"
 date: "`r Sys.Date()`"
 output:
@@ -34,7 +34,7 @@ knitr::opts_chunk$set(echo = TRUE)
 options(knitr.table.format = 'markdown')
 
 # Set the working directory
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/NDSHS/") #change this path if you copy this 
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/AEC/") #change this path if you copy this 
 csv_files <- list.files(pattern=".*\\.csv$")
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
@@ -234,8 +234,8 @@ Part 4 - cell suppression
 - define the input directory path
 - define the output directory path to save cleaned datasets WITH CELL SUPPRESSED (R will automatically create this folder if it does not exist)
 ```{r}
-input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/NDSHS/" #change this path
-output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/NDSHS/cell_suppressed/"#change this path
+input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/AEC/" #change this path
+output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/AEC/cell_suppressed/"#change this path
 ```
 run this code to...
 - create the output directory if it doesn't already exist
@@ -342,72 +342,6 @@ if (!values_found) {
 Once you understand what you need to do with cell suppression (which columns represent count values in your series of data set AND if you have uncertainty columns to deal with) customise the code below to apply cell suppression  
 
 ```{r}
-# List the CSV files in the directory
-csv_files <- list.files(input_dir, pattern = "*.csv", full.names = TRUE)
-
-for (file in csv_files) {
-  
-  # Read the CSV file
-  
-  df <- read.csv(file, stringsAsFactors = FALSE)
-  
-  
-  
-  # Get the column names
-  
-  column_names <- colnames(df)
-  
-  
-  
-  # Loop through each column
-  
-  for (i in 2:length(column_names)) {
-    
-    # Check if the column matches the pattern "uncertainty"
-    
-    if (grepl("_uncertainty", column_names[i])) {
-      
-      suppressed_column <- i - 1
-      
-      #looping through each cell
-      
-      for(j in 1:nrow(df)){
-        # Check if the value in the uncertainty column is 2
-        if (!is.na(df[[i]][j]) && df[[i]][j] == 2) {
-          
-          # Suppress the column on the left of the uncertainty column
-          
-          df[j, suppressed_column] <- 9999999
-          
-          print(paste("Suppressed column", column_names[suppressed_column]))
-          
-        }
-        
-      }
-      print(paste("Suppressed column", column_names[suppressed_column]))
-      
-      
-    }
-    
-  }
-  
-  
-  # Remove columns containing the word "uncertainty"
-  
-  df <- df[, !grepl("uncertainty", column_names)]
-  
-  
-  
-  # Write the modified data frame to a new CSV file in the output directory
-  
-  write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
-  
-  
-  
-  print(paste("Modified file", basename(file), "has been written"))
-  
-}
-
 
 ```
 
