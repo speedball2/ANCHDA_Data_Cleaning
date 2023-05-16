@@ -250,58 +250,105 @@ check if there is an "uncertainty" column in the data frame
 for (file in csv_files) {
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  if ("uncertainty" %in% colnames(df)) {
-    cat("<p><strong>Note:</strong> The file ", basename(file), " contains an 'uncertainty' column. Make sure to modify the code to apply cell suppression where uncertainty is high.</p>")
+  if (any(grepl("uncertainty", colnames(df)))) {
+    cat("Note: The file ", basename(file), " contains a column with the word 'uncertainty' in its name. Make sure to modify the code to apply cell suppression where necessary.\n")
   } else {
-    cat("<p>You don't have to worry about cell suppression on 'uncertainty' in", basename(file), "</p>")
+    cat("You don't have to worry about cell suppression on 'uncertainty' in", basename(file), "\n")
   }
 }
+
 ```
 Run this code to...
 detect columns that are numeric and where you might need to apply cell suppression
 ```{r}
+cat("Checking for columns requiring cell suppression:\n\n")
+
 # Define the exclusion list
 exclude_list <- c("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia", "sex", "calendar_year", "age_group", "year_range", "irsd_quintile")
 
-# Loop through each CSV file and check for columns that are numeric and not in the exclusion list
+# Define the pattern to match column names
+pattern <- "^n\\_|number|count"
+
+# Loop through each CSV file and check for columns that are numeric and not in the exclusion list and have names matching the pattern
 for (file in csv_files) {
+  
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  # Get the names of columns that are numeric and not in the exclusion list
-  num_cols <- names(df)[sapply(df, is.numeric) & !names(df) %in% exclude_list]
+  # Get the names of columns that are numeric and not in the exclusion list and have names matching the pattern
+  num_cols <- names(df)[sapply(df, is.numeric) & !names(df) %in% exclude_list & grepl(pattern, names(df), ignore.case = TRUE)]
   
   # If there are any such columns, print a message for each file and column
   if (length(num_cols) > 0) {
-    cat("<h4>For file ", basename(file), ", check values in the following columns for cell suppression:</h4>")
-    cat("<ul>")
     for (col in num_cols) {
-      cat("<li>", col, "</li>")
+      message(paste0("For file ", basename(file), ", check values in column '", col, "' for cell suppression"))
     }
-    cat("</ul>")
   } else {
     # Print message indicating that there are no columns to check
-    cat("<p>You don't have to worry about cell suppression in any numeric columns in", basename(file), "</p>")
+    cat("You don't have to worry about cell suppression in any relevant columns in", basename(file), "\n")
   }
+  
 }
 
 ```
-Once you understand what you need to do with cell suppression (which columns represent count values in your series of data set AND if you have uncertainty columns to deal with) customise the code below to apply cell suppression (keep the first 4 columns as they are)
 
-Loop through each CSV file and apply cell suppression - I used the outputs above to specify which column contain the count values 
 
-Make sure you un-comment the write csv line
+
+```{r}
+cat("Checking for columns with values 1, 2, 3, or 4:\n\n")
+
+# Define the pattern to match column names
+pattern <- "^n_"
+
+# Define the values to check for
+values_to_check <- c(1, 2, 3, 4)
+
+# Variable to keep track of whether values are found
+values_found <- FALSE
+
+# Variable to store column names with values in the specified range
+columns_with_values <- character()
+
+# Loop through each CSV file and check for columns with names matching the pattern
+for (file in csv_files) {
+
+  # Read in the CSV file
+  df <- read.csv(file, stringsAsFactors = FALSE)
+
+  # Get the names of columns with names matching the pattern
+  matching_cols <- names(df)[grepl(pattern, names(df))]
+
+  # Loop through each matching column and check for values 1, 2, 3, or 4
+  for (col in matching_cols) {
+    if (any(df[[col]] %in% values_to_check)) {
+      message(paste0("For file ", basename(file), ", values 1, 2, 3, or 4 found in column '", col, "'"))
+      values_found <- TRUE
+      columns_with_values <- c(columns_with_values, col)
+    }
+  }
+
+}
+
+# If no values in the specified range are found, print a message
+if (!values_found) {
+  cat("No values 1, 2, 3, or 4 found in columns with 'n_' prefix.\n")
+} else {
+  cat("Columns with values 1, 2, 3, or 4 in columns with 'n_' prefix:\n")
+  cat(columns_with_values, "\n")
+}
+
+```
+
+
 ```{r}
 for (file in csv_files) {
-  
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-
   # Check if the n_full_time_student column exists in the data frame
   if ("n_full_time_student" %in% colnames(df)) {
     # Apply cell suppression to n_full_time_student column
-    df[df[,"n_full_time_student"] %in% 0:4 & !is.na(df[,"n_full_time_student"]), -c(1:4)] <- 9999999
+    df[df$n_full_time_student > 0 & df$n_full_time_student < 5 & !is.na(df$n_full_time_student), !(colnames(df) %in% c("STE_CODE16", "calendar_year", "sex", "age_group", "school_grade", "affiliation_abs_schools"))] <- 9999999
   } else {
     # Print a message to indicate that the n_full_time_student column was not found
     cat("Skipping file", file, "because it does not contain the n_full_time_student column.\n")
@@ -310,15 +357,15 @@ for (file in csv_files) {
   # Check if the n_part_time_student column exists in the data frame
   if ("n_part_time_student" %in% colnames(df)) {
     # Apply cell suppression to n_part_time_student column
-    df[df[,"n_part_time_student"] %in% 0:4 & !is.na(df[,"n_part_time_student"]), -c(1:4)] <- 9999999
+    df[df$n_part_time_student > 0 & df$n_part_time_student < 5 & !is.na(df$n_part_time_student), !(colnames(df) %in% c("STE_CODE16", "calendar_year", "sex", "age_group", "school_grade", "affiliation_abs_schools"))] <- 9999999
   } else {
     # Print a message to indicate that the n_part_time_student column was not found
     cat("Skipping file", file, "because it does not contain the n_part_time_student column.\n")
   }
   
   # Write the modified data frame to a new CSV file in the output directory
-  #write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
-  
+  write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
 }
+
 ```
 

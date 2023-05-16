@@ -302,23 +302,40 @@ pattern <- "^n_"
 # Define the values to check for
 values_to_check <- c(1, 2, 3, 4)
 
+# Variable to keep track of whether values are found
+values_found <- FALSE
+
+# Variable to store column names with values in the specified range
+columns_with_values <- character()
+
 # Loop through each CSV file and check for columns with names matching the pattern
 for (file in csv_files) {
-  
+
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
-  
+
   # Get the names of columns with names matching the pattern
   matching_cols <- names(df)[grepl(pattern, names(df))]
-  
+
   # Loop through each matching column and check for values 1, 2, 3, or 4
   for (col in matching_cols) {
     if (any(df[[col]] %in% values_to_check)) {
       message(paste0("For file ", basename(file), ", values 1, 2, 3, or 4 found in column '", col, "'"))
+      values_found <- TRUE
+      columns_with_values <- c(columns_with_values, col)
     }
   }
-  
+
 }
+
+# If no values in the specified range are found, print a message
+if (!values_found) {
+  cat("No values 1, 2, 3, or 4 found in columns with 'n_' prefix.\n")
+} else {
+  cat("Columns with values 1, 2, 3, or 4 in columns with 'n_' prefix:\n")
+  cat(columns_with_values, "\n")
+}
+
 ```
 #no need to suppress rows here - already done by the custodian
 
