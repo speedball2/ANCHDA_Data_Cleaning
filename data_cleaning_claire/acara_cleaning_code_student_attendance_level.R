@@ -45,6 +45,9 @@ names(student_attendance_df) <- names_datasets
 
 # Define a function to clean the data for each tibble in the list
 clean_data <- function(df) {
+  
+  # Filter rows where Term is "Semester 1"
+  df <- df[df$`Term Semester` == "Semester 1", ]
   # Select the required columns
   df <- df[, c(2, 4, 5, 6, 11)] # take attendance level
   
