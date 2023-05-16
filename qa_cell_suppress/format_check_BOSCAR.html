@@ -11,7 +11,7 @@
 
 <meta name="author" content="Claire Boulange" />
 
-<meta name="date" content="2023-05-15" />
+<meta name="date" content="2023-05-16" />
 
 <title>format check and cell suppression on BOCSAR data</title>
 
@@ -359,7 +359,7 @@ display: none;
 <h1 class="title toc-ignore">format check and cell suppression on BOCSAR
 data</h1>
 <h4 class="author">Claire Boulange</h4>
-<h4 class="date">2023-05-15</h4>
+<h4 class="date">2023-05-16</h4>
 
 </div>
 
@@ -413,14 +413,14 @@ key</p></li>
   }
 }
 cat(paste(&quot;File with indicator code:&quot;,csv_files, collapse = &quot;\n&quot;), &quot;\n&quot;)</code></pre>
-<pre><code>## File with indicator code: BOCSAR_3131_victims_domestic_violence_related_assault_LGA.csv
-## File with indicator code: BOCSAR_3131_victims_domestic_violence_related_assault_SA4.csv
-## File with indicator code: BOCSAR_3132_victims_domestic_violence_related_murder_LGA.csv
-## File with indicator code: BOCSAR_3132_victims_domestic_violence_related_murder_SA4.csv
-## File with indicator code: BOCSAR_3133_victims_sexual_assault_LGA.csv
-## File with indicator code: BOCSAR_3133_victims_sexual_assault_SA4.csv
-## File with indicator code: BOCSAR_3134_victims_sexual_touching_LGA.csv
-## File with indicator code: BOCSAR_3134_victims_sexual_touching_SA4.csv</code></pre>
+<pre><code>## File with indicator code: BOCSAR_335_victims_domestic_violence_related_assault_LGA.csv
+## File with indicator code: BOCSAR_335_victims_domestic_violence_related_assault_SA4.csv
+## File with indicator code: BOCSAR_336_victims_domestic_violence_related_murder_LGA.csv
+## File with indicator code: BOCSAR_336_victims_domestic_violence_related_murder_SA4.csv
+## File with indicator code: BOCSAR_337_victims_sexual_assault_LGA.csv
+## File with indicator code: BOCSAR_337_victims_sexual_assault_SA4.csv
+## File with indicator code: BOCSAR_337_victims_sexual_touching_LGA.csv
+## File with indicator code: BOCSAR_337_victims_sexual_touching_SA4.csv</code></pre>
 <pre class="r"><code>for (file in csv_files) {
   if (!grepl(&quot;_STE|_SA3|_SA2|_SA4|_national|_Australia|_LGA&quot;, file)) {
     cat(&quot;WARNING! File(s) without geography suffix:&quot;, file, &quot;\n&quot;)
@@ -445,7 +445,7 @@ head</p>
   cat(as.character(html_table))
   cat(&quot;\n&quot;)
 }</code></pre>
-Head of BOCSAR_3131_victims_domestic_violence_related_assault_LGA.csv :
+Head of BOCSAR_335_victims_domestic_violence_related_assault_LGA.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -571,7 +571,7 @@ female
 </tr>
 </tbody>
 </table>
-Head of BOCSAR_3131_victims_domestic_violence_related_assault_SA4.csv :
+Head of BOCSAR_335_victims_domestic_violence_related_assault_SA4.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -697,7 +697,7 @@ female
 </tr>
 </tbody>
 </table>
-Head of BOCSAR_3132_victims_domestic_violence_related_murder_LGA.csv :
+Head of BOCSAR_336_victims_domestic_violence_related_murder_LGA.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -823,7 +823,7 @@ female
 </tr>
 </tbody>
 </table>
-Head of BOCSAR_3132_victims_domestic_violence_related_murder_SA4.csv :
+Head of BOCSAR_336_victims_domestic_violence_related_murder_SA4.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -949,7 +949,7 @@ female
 </tr>
 </tbody>
 </table>
-Head of BOCSAR_3133_victims_sexual_assault_LGA.csv :
+Head of BOCSAR_337_victims_sexual_assault_LGA.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1075,7 +1075,7 @@ female
 </tr>
 </tbody>
 </table>
-Head of BOCSAR_3133_victims_sexual_assault_SA4.csv :
+Head of BOCSAR_337_victims_sexual_assault_SA4.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1201,7 +1201,7 @@ female
 </tr>
 </tbody>
 </table>
-Head of BOCSAR_3134_victims_sexual_touching_LGA.csv :
+Head of BOCSAR_337_victims_sexual_touching_LGA.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1327,7 +1327,7 @@ female
 </tr>
 </tbody>
 </table>
-Head of BOCSAR_3134_victims_sexual_touching_SA4.csv :
+Head of BOCSAR_337_victims_sexual_touching_SA4.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1469,7 +1469,7 @@ cat(as.character(html_table))</code></pre>
 <tbody>
 <tr>
 <td style="text-align:left;">
-BOCSAR_3131_victims_domestic_violence_related_assault_LGA.csv
+BOCSAR_335_victims_domestic_violence_related_assault_LGA.csv
 </td>
 <td style="text-align:left;">
 LGA_CODE16, calendar_year, age_group, sex,
@@ -1478,7 +1478,7 @@ n_victims_domestic_violence_related_assault
 </tr>
 <tr>
 <td style="text-align:left;">
-BOCSAR_3131_victims_domestic_violence_related_assault_SA4.csv
+BOCSAR_335_victims_domestic_violence_related_assault_SA4.csv
 </td>
 <td style="text-align:left;">
 SA4_CODE16, calendar_year, age_group, sex,
@@ -1487,7 +1487,7 @@ n_victims_domestic_violence_related_assault
 </tr>
 <tr>
 <td style="text-align:left;">
-BOCSAR_3132_victims_domestic_violence_related_murder_LGA.csv
+BOCSAR_336_victims_domestic_violence_related_murder_LGA.csv
 </td>
 <td style="text-align:left;">
 LGA_CODE16, calendar_year, age_group, sex,
@@ -1496,7 +1496,7 @@ n_victims_domestic_violence_related_murder
 </tr>
 <tr>
 <td style="text-align:left;">
-BOCSAR_3132_victims_domestic_violence_related_murder_SA4.csv
+BOCSAR_336_victims_domestic_violence_related_murder_SA4.csv
 </td>
 <td style="text-align:left;">
 SA4_CODE16, calendar_year, age_group, sex,
@@ -1505,7 +1505,7 @@ n_victims_domestic_violence_related_murder
 </tr>
 <tr>
 <td style="text-align:left;">
-BOCSAR_3133_victims_sexual_assault_LGA.csv
+BOCSAR_337_victims_sexual_assault_LGA.csv
 </td>
 <td style="text-align:left;">
 LGA_CODE16, calendar_year, age_group, sex, n_victims_sexual_assault
@@ -1513,7 +1513,7 @@ LGA_CODE16, calendar_year, age_group, sex, n_victims_sexual_assault
 </tr>
 <tr>
 <td style="text-align:left;">
-BOCSAR_3133_victims_sexual_assault_SA4.csv
+BOCSAR_337_victims_sexual_assault_SA4.csv
 </td>
 <td style="text-align:left;">
 SA4_CODE16, calendar_year, age_group, sex, n_victims_sexual_assault
@@ -1521,7 +1521,7 @@ SA4_CODE16, calendar_year, age_group, sex, n_victims_sexual_assault
 </tr>
 <tr>
 <td style="text-align:left;">
-BOCSAR_3134_victims_sexual_touching_LGA.csv
+BOCSAR_337_victims_sexual_touching_LGA.csv
 </td>
 <td style="text-align:left;">
 LGA_CODE16, calendar_year, age_group, sex, n_victims_sexual_touching
@@ -1529,7 +1529,7 @@ LGA_CODE16, calendar_year, age_group, sex, n_victims_sexual_touching
 </tr>
 <tr>
 <td style="text-align:left;">
-BOCSAR_3134_victims_sexual_touching_SA4.csv
+BOCSAR_337_victims_sexual_touching_SA4.csv
 </td>
 <td style="text-align:left;">
 SA4_CODE16, calendar_year, age_group, sex, n_victims_sexual_touching
@@ -1568,7 +1568,7 @@ for (df_name in names(df_list)) {
   cat(&quot;\n&quot;)
 }</code></pre>
 Data Dictionary for
-BOCSAR_3131_victims_domestic_violence_related_assault_LGA.csv :
+BOCSAR_335_victims_domestic_violence_related_assault_LGA.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1690,7 +1690,7 @@ integer
 </tbody>
 </table>
 Data Dictionary for
-BOCSAR_3131_victims_domestic_violence_related_assault_SA4.csv :
+BOCSAR_335_victims_domestic_violence_related_assault_SA4.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1812,7 +1812,7 @@ integer
 </tbody>
 </table>
 Data Dictionary for
-BOCSAR_3132_victims_domestic_violence_related_murder_LGA.csv :
+BOCSAR_336_victims_domestic_violence_related_murder_LGA.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -1934,7 +1934,7 @@ integer
 </tbody>
 </table>
 Data Dictionary for
-BOCSAR_3132_victims_domestic_violence_related_murder_SA4.csv :
+BOCSAR_336_victims_domestic_violence_related_murder_SA4.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2055,7 +2055,7 @@ integer
 </tr>
 </tbody>
 </table>
-Data Dictionary for BOCSAR_3133_victims_sexual_assault_LGA.csv :
+Data Dictionary for BOCSAR_337_victims_sexual_assault_LGA.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2176,7 +2176,7 @@ integer
 </tr>
 </tbody>
 </table>
-Data Dictionary for BOCSAR_3133_victims_sexual_assault_SA4.csv :
+Data Dictionary for BOCSAR_337_victims_sexual_assault_SA4.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2297,7 +2297,7 @@ integer
 </tr>
 </tbody>
 </table>
-Data Dictionary for BOCSAR_3134_victims_sexual_touching_LGA.csv :
+Data Dictionary for BOCSAR_337_victims_sexual_touching_LGA.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2418,7 +2418,7 @@ integer
 </tr>
 </tbody>
 </table>
-Data Dictionary for BOCSAR_3134_victims_sexual_touching_SA4.csv :
+Data Dictionary for BOCSAR_337_victims_sexual_touching_SA4.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -2614,7 +2614,7 @@ exist</li>
   cat(&quot;Error: Values coded as 0 (Australia) found in a dataset that is not national:&quot;, df_name, &quot;\n&quot;)
   }
 }</code></pre>
-<pre><code>## Error: age_group values in BOCSAR_3134_victims_sexual_touching_LGA.csv are not in the correct format (expected format: \d-\d, \d-\d{2}, or \d{2}-\d{2})
+<pre><code>## Error: age_group values in BOCSAR_337_victims_sexual_touching_LGA.csv are not in the correct format (expected format: \d-\d, \d-\d{2}, or \d{2}-\d{2})
 ## Invalid values:
 ## 0 - 17 , 18 - 24</code></pre>
 <pre><code>                                                                                      STOP HERE AND CHECK!!!</code></pre>
@@ -2629,8 +2629,8 @@ PROCEED WITH CELL SUPPRESSION</p>
 define the output directory path to save cleaned datasets WITH CELL
 SUPPRESSED (R will automatically create this folder if it does not
 exist)</p>
-<pre class="r"><code>input_dir &lt;- &quot;C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOSCAR/&quot; #change this path
-output_dir &lt;- &quot;C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOSCAR/cell_suppressed/&quot;#change this path</code></pre>
+<pre class="r"><code>input_dir &lt;- &quot;C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/&quot; #change this path
+output_dir &lt;- &quot;C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/cell_suppressed/&quot;#change this path</code></pre>
 <p>run this code to… - create the output directory if it doesn’t already
 exist - get a list of all CSV files in the input directory</p>
 <pre class="r"><code>dir.create(output_dir, showWarnings = FALSE)
@@ -2646,6 +2646,14 @@ data frame</p>
     cat(&quot;You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in&quot;, basename(file), &quot;\n&quot;)
   }
 }</code></pre>
+<pre><code>## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BOCSAR_335_victims_domestic_violence_related_assault_LGA.csv 
+## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BOCSAR_335_victims_domestic_violence_related_assault_SA4.csv 
+## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BOCSAR_336_victims_domestic_violence_related_murder_LGA.csv 
+## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BOCSAR_336_victims_domestic_violence_related_murder_SA4.csv 
+## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BOCSAR_337_victims_sexual_assault_LGA.csv 
+## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BOCSAR_337_victims_sexual_assault_SA4.csv 
+## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BOCSAR_337_victims_sexual_touching_LGA.csv 
+## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in BOCSAR_337_victims_sexual_touching_SA4.csv</code></pre>
 <p>Run this code to… detect columns that are numeric and where you might
 need to apply cell suppression</p>
 <pre class="r"><code>cat(&quot;Checking for columns requiring cell suppression:\n\n&quot;)</code></pre>
@@ -2673,6 +2681,39 @@ for (file in csv_files) {
   } else {
     # Print message indicating that there are no columns to check
     cat(&quot;You don&#39;t have to worry about cell suppression in any relevant columns in&quot;, basename(file), &quot;\n&quot;)
+  }
+  
+}</code></pre>
+<pre><code>## For file BOCSAR_335_victims_domestic_violence_related_assault_LGA.csv, check values in column &#39;n_victims_domestic_violence_related_assault&#39; for cell suppression</code></pre>
+<pre><code>## For file BOCSAR_335_victims_domestic_violence_related_assault_SA4.csv, check values in column &#39;n_victims_domestic_violence_related_assault&#39; for cell suppression</code></pre>
+<pre><code>## For file BOCSAR_336_victims_domestic_violence_related_murder_LGA.csv, check values in column &#39;n_victims_domestic_violence_related_murder&#39; for cell suppression</code></pre>
+<pre><code>## For file BOCSAR_336_victims_domestic_violence_related_murder_SA4.csv, check values in column &#39;n_victims_domestic_violence_related_murder&#39; for cell suppression</code></pre>
+<pre><code>## For file BOCSAR_337_victims_sexual_assault_LGA.csv, check values in column &#39;n_victims_sexual_assault&#39; for cell suppression</code></pre>
+<pre><code>## For file BOCSAR_337_victims_sexual_assault_SA4.csv, check values in column &#39;n_victims_sexual_assault&#39; for cell suppression</code></pre>
+<pre><code>## For file BOCSAR_337_victims_sexual_touching_LGA.csv, check values in column &#39;n_victims_sexual_touching&#39; for cell suppression</code></pre>
+<pre><code>## For file BOCSAR_337_victims_sexual_touching_SA4.csv, check values in column &#39;n_victims_sexual_touching&#39; for cell suppression</code></pre>
+<pre class="r"><code>cat(&quot;Checking for columns with values 1, 2, 3, or 4:\n\n&quot;)</code></pre>
+<pre><code>## Checking for columns with values 1, 2, 3, or 4:</code></pre>
+<pre class="r"><code># Define the pattern to match column names
+pattern &lt;- &quot;^n_&quot;
+
+# Define the values to check for
+values_to_check &lt;- c(1, 2, 3, 4)
+
+# Loop through each CSV file and check for columns with names matching the pattern
+for (file in csv_files) {
+  
+  # Read in the CSV file
+  df &lt;- read.csv(file, stringsAsFactors = FALSE)
+  
+  # Get the names of columns with names matching the pattern
+  matching_cols &lt;- names(df)[grepl(pattern, names(df))]
+  
+  # Loop through each matching column and check for values 1, 2, 3, or 4
+  for (col in matching_cols) {
+    if (any(df[[col]] %in% values_to_check)) {
+      message(paste0(&quot;For file &quot;, basename(file), &quot;, values 1, 2, 3, or 4 found in column &#39;&quot;, col, &quot;&#39;&quot;))
+    }
   }
   
 }</code></pre>

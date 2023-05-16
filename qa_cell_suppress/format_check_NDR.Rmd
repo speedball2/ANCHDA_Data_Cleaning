@@ -290,6 +290,50 @@ for (file in csv_files) {
 }
 
 ```
+
+
+```{r}
+cat("Checking for columns with values 1, 2, 3, or 4:\n\n")
+
+# Define the pattern to match column names
+pattern <- "^n_"
+
+# Define the values to check for
+values_to_check <- c(1, 2, 3, 4)
+
+# Variable to keep track of whether values are found
+values_found <- FALSE
+
+# Variable to store column names with values in the specified range
+columns_with_values <- character()
+
+# Loop through each CSV file and check for columns with names matching the pattern
+for (file in csv_files) {
+
+  # Read in the CSV file
+  df <- read.csv(file, stringsAsFactors = FALSE)
+
+  # Get the names of columns with names matching the pattern
+  matching_cols <- names(df)[grepl(pattern, names(df))]
+
+  # Loop through each matching column and check for values 1, 2, 3, or 4
+  for (col in matching_cols) {
+    if (any(df[[col]] %in% values_to_check)) {
+      message(paste0("For file ", basename(file), ", values 1, 2, 3, or 4 found in column '", col, "'"))
+      values_found <- TRUE
+      columns_with_values <- c(columns_with_values, col)
+    }
+  }
+
+}
+
+# If no values in the specified range are found, print a message
+if (!values_found) {
+  cat("No values 1, 2, 3, or 4 found in columns with 'n_' prefix.\n")
+} 
+```
+
+
 Once you understand what you need to do with cell suppression (which columns represent count values in your series of data set AND if you have uncertainty columns to deal with) customise the code below to apply cell suppression (keep the first 4 columns as they are)
 
 Loop through each CSV file and apply cell suppression - I used the outputs above to specify which column contain the count values 

@@ -253,13 +253,47 @@ Loop through each CSV file and apply cell suppression
 Write the modified data frame to a new CSV file in the output directory
 
 ```{r}
+cat("Checking for columns with values 1, 2, 3, or 4:\n\n")
+
+# Define the pattern to match column names
+pattern <- "^n_"
+
+# Define the values to check for
+values_to_check <- c(1, 2, 3, 4)
+
+# Loop through each CSV file and check for columns with names matching the pattern
+for (file in csv_files) {
+  
+  # Read in the CSV file
+  df <- read.csv(file, stringsAsFactors = FALSE)
+  
+  # Get the names of columns with names matching the pattern
+  matching_cols <- names(df)[grepl(pattern, names(df))]
+  
+  # Loop through each matching column and check for values 1, 2, 3, or 4
+  for (col in matching_cols) {
+    if (any(df[[col]] %in% values_to_check)) {
+      message(paste0("For file ", basename(file), ", values 1, 2, 3, or 4 found in column '", col, "'"))
+    }
+  }
+  
+}
+
+
+```
+
+
+
+
+
+```{r}
 for (file in csv_files) {
   
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
   # Apply cell suppression
-  df[df[, 6] > 0 & df[, 6] < 5 & !is.na(df[, 6]), -c(1:5)] <- 9999999
+  df[df[, 6] >=1  & df[, 6] <=4 & !is.na(df[, 6]), -c(1:5)] <- 9999999
   
   # Write the modified data frame to a new CSV file in the output directory
   write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)

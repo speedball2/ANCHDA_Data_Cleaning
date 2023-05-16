@@ -11,7 +11,7 @@
 
 <meta name="author" content="Claire Boulange" />
 
-<meta name="date" content="2023-05-15" />
+<meta name="date" content="2023-05-16" />
 
 <title>format check and cell suppression on ASSAD data</title>
 
@@ -359,7 +359,7 @@ display: none;
 <h1 class="title toc-ignore">format check and cell suppression on ASSAD
 data</h1>
 <h4 class="author">Claire Boulange</h4>
-<h4 class="date">2023-05-15</h4>
+<h4 class="date">2023-05-16</h4>
 
 </div>
 
@@ -406,7 +406,7 @@ df_list</p></li>
 key</p></li>
 </ul>
 <pre class="r"><code>cat(&quot;Number of files in folder:&quot;, length(csv_files), &quot;\n&quot;) </code></pre>
-<pre><code>## Number of files in folder: 16</code></pre>
+<pre><code>## Number of files in folder: 8</code></pre>
 <pre class="r"><code>for (file in csv_files) {
   if (!grepl(&quot;\\d{3,}&quot;, file)) {
     cat(&quot;WARNING! File(s) without indicator code:&quot;, file, &quot;\n&quot;)
@@ -414,39 +414,20 @@ key</p></li>
 }
 cat(paste(&quot;File with indicator code:&quot;,csv_files, collapse = &quot;\n&quot;), &quot;\n&quot;)</code></pre>
 <pre><code>## File with indicator code: ASSAD_191_smoking_National.csv
-## File with indicator code: ASSAD_191_smoking_National_age_range.csv
-## File with indicator code: ASSAD_191_smoking_National_single_age.csv
 ## File with indicator code: ASSAD_191_smoking_STE.csv
 ## File with indicator code: ASSAD_192_alcohol_National.csv
-## File with indicator code: ASSAD_192_alcohol_National_age_range.csv
-## File with indicator code: ASSAD_192_alcohol_National_single_age.csv
 ## File with indicator code: ASSAD_192_alcohol_STE.csv
 ## File with indicator code: ASSAD_193_drugs_National.csv
-## File with indicator code: ASSAD_193_drugs_National_age_range.csv
-## File with indicator code: ASSAD_193_drugs_National_single_age.csv
 ## File with indicator code: ASSAD_193_drugs_STE.csv
 ## File with indicator code: ASSAD_194_e_cigarettes_National.csv
-## File with indicator code: ASSAD_194_e_cigarettes_National_age_range.csv
-## File with indicator code: ASSAD_194_e_cigarettes_National_single_age.csv
 ## File with indicator code: ASSAD_194_e_cigarettes_STE.csv</code></pre>
 <pre class="r"><code>for (file in csv_files) {
-  if (!grepl(&quot;_STE|_SA3|_SA2|_SA4|_national|_Australia|_LGA&quot;, file)) {
+  if (!grepl(&quot;_STE|_SA3|_SA2|_SA4|_National|_Australia|_LGA&quot;, file)) {
     cat(&quot;WARNING! File(s) without geography suffix:&quot;, file, &quot;\n&quot;)
   }
-}</code></pre>
-<pre><code>## WARNING! File(s) without geography suffix: ASSAD_191_smoking_National.csv 
-## WARNING! File(s) without geography suffix: ASSAD_191_smoking_National_age_range.csv 
-## WARNING! File(s) without geography suffix: ASSAD_191_smoking_National_single_age.csv 
-## WARNING! File(s) without geography suffix: ASSAD_192_alcohol_National.csv 
-## WARNING! File(s) without geography suffix: ASSAD_192_alcohol_National_age_range.csv 
-## WARNING! File(s) without geography suffix: ASSAD_192_alcohol_National_single_age.csv 
-## WARNING! File(s) without geography suffix: ASSAD_193_drugs_National.csv 
-## WARNING! File(s) without geography suffix: ASSAD_193_drugs_National_age_range.csv 
-## WARNING! File(s) without geography suffix: ASSAD_193_drugs_National_single_age.csv 
-## WARNING! File(s) without geography suffix: ASSAD_194_e_cigarettes_National.csv 
-## WARNING! File(s) without geography suffix: ASSAD_194_e_cigarettes_National_age_range.csv 
-## WARNING! File(s) without geography suffix: ASSAD_194_e_cigarettes_National_single_age.csv</code></pre>
-<pre class="r"><code>cat(&quot;Finished checking CSV files.&quot;, &quot;\n&quot;)</code></pre>
+}
+
+cat(&quot;Finished checking CSV files.&quot;, &quot;\n&quot;)</code></pre>
 <pre><code>## Finished checking CSV files.</code></pre>
 <p>Part 2 - loop through each data frame in the list and print the
 head</p>
@@ -481,237 +462,6 @@ sex
 age_group
 </th>
 <th style="text-align:right;">
-n_ever_smokers_assad
-</th>
-<th style="text-align:right;">
-p_ever_smokers_assad
-</th>
-<th style="text-align:right;">
-n_past_month_smokers_assad
-</th>
-<th style="text-align:right;">
-p_past_month_smokers_assad
-</th>
-<th style="text-align:right;">
-n_past_week_smokers_assad
-</th>
-<th style="text-align:right;">
-p_past_week_smokers_assad
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-12
-</td>
-<td style="text-align:right;">
-1698
-</td>
-<td style="text-align:right;">
-5.9
-</td>
-<td style="text-align:right;">
-1713
-</td>
-<td style="text-align:right;">
-2.4
-</td>
-<td style="text-align:right;">
-1717
-</td>
-<td style="text-align:right;">
-2.0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-13-13
-</td>
-<td style="text-align:right;">
-1703
-</td>
-<td style="text-align:right;">
-8.3
-</td>
-<td style="text-align:right;">
-1712
-</td>
-<td style="text-align:right;">
-2.4
-</td>
-<td style="text-align:right;">
-1713
-</td>
-<td style="text-align:right;">
-1.7
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-14-14
-</td>
-<td style="text-align:right;">
-1686
-</td>
-<td style="text-align:right;">
-12.8
-</td>
-<td style="text-align:right;">
-1695
-</td>
-<td style="text-align:right;">
-4.7
-</td>
-<td style="text-align:right;">
-1697
-</td>
-<td style="text-align:right;">
-4.0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-15-15
-</td>
-<td style="text-align:right;">
-1668
-</td>
-<td style="text-align:right;">
-21.5
-</td>
-<td style="text-align:right;">
-1674
-</td>
-<td style="text-align:right;">
-9.5
-</td>
-<td style="text-align:right;">
-1667
-</td>
-<td style="text-align:right;">
-6.0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-16
-</td>
-<td style="text-align:right;">
-1590
-</td>
-<td style="text-align:right;">
-27.3
-</td>
-<td style="text-align:right;">
-1597
-</td>
-<td style="text-align:right;">
-13.3
-</td>
-<td style="text-align:right;">
-1595
-</td>
-<td style="text-align:right;">
-8.9
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-17-17
-</td>
-<td style="text-align:right;">
-1213
-</td>
-<td style="text-align:right;">
-36.3
-</td>
-<td style="text-align:right;">
-1218
-</td>
-<td style="text-align:right;">
-16.8
-</td>
-<td style="text-align:right;">
-1213
-</td>
-<td style="text-align:right;">
-12.3
-</td>
-</tr>
-</tbody>
-</table>
-Head of ASSAD_191_smoking_National_age_range.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Australia
-</th>
-<th style="text-align:right;">
-calendar_year
-</th>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:left;">
-age_group
-</th>
-<th style="text-align:right;">
 n_ever_smokers_ASSAD
 </th>
 <th style="text-align:right;">
@@ -728,173 +478,6 @@ n_past_week_smokers_ASSAD
 </th>
 <th style="text-align:right;">
 p_past_week_smokers_ASSAD
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-6755
-</td>
-<td style="text-align:right;">
-12.1
-</td>
-<td style="text-align:right;">
-6794
-</td>
-<td style="text-align:right;">
-4.7
-</td>
-<td style="text-align:right;">
-6793
-</td>
-<td style="text-align:right;">
-3.4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-2803
-</td>
-<td style="text-align:right;">
-31.2
-</td>
-<td style="text-align:right;">
-2815
-</td>
-<td style="text-align:right;">
-14.8
-</td>
-<td style="text-align:right;">
-2808
-</td>
-<td style="text-align:right;">
-10.4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-6418
-</td>
-<td style="text-align:right;">
-11.0
-</td>
-<td style="text-align:right;">
-6439
-</td>
-<td style="text-align:right;">
-4.3
-</td>
-<td style="text-align:right;">
-6435
-</td>
-<td style="text-align:right;">
-2.6
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-2889
-</td>
-<td style="text-align:right;">
-31.5
-</td>
-<td style="text-align:right;">
-2898
-</td>
-<td style="text-align:right;">
-13.8
-</td>
-<td style="text-align:right;">
-2893
-</td>
-<td style="text-align:right;">
-8.6
-</td>
-</tr>
-</tbody>
-</table>
-Head of ASSAD_191_smoking_National_single_age.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Australia
-</th>
-<th style="text-align:right;">
-calendar_year
-</th>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:left;">
-age_group
-</th>
-<th style="text-align:right;">
-n_ever_smokers_assad
-</th>
-<th style="text-align:right;">
-p_ever_smokers_assad
-</th>
-<th style="text-align:right;">
-n_past_month_smokers_assad
-</th>
-<th style="text-align:right;">
-p_past_month_smokers_assad
-</th>
-<th style="text-align:right;">
-n_past_week_smokers_assad
-</th>
-<th style="text-align:right;">
-p_past_week_smokers_assad
 </th>
 </tr>
 </thead>
@@ -1110,26 +693,90 @@ sex
 age_group
 </th>
 <th style="text-align:right;">
-n_ever_smokers_assad
+n_ever_smokers_ASSAD
 </th>
 <th style="text-align:right;">
-p_ever_smokers_assad
+p_ever_smokers_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_month_smokers_assad
+n_past_month_smokers_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_month_smokers_assad
+p_past_month_smokers_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_week_smokers_assad
+n_past_week_smokers_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_week_smokers_assad
+p_past_week_smokers_ASSAD
 </th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+12-17
+</td>
+<td style="text-align:right;">
+1758
+</td>
+<td style="text-align:right;">
+17.5
+</td>
+<td style="text-align:right;">
+1774
+</td>
+<td style="text-align:right;">
+8.6
+</td>
+<td style="text-align:right;">
+1769
+</td>
+<td style="text-align:right;">
+6.2
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+12-17
+</td>
+<td style="text-align:right;">
+1714
+</td>
+<td style="text-align:right;">
+14.4
+</td>
+<td style="text-align:right;">
+1717
+</td>
+<td style="text-align:right;">
+5.6
+</td>
+<td style="text-align:right;">
+1715
+</td>
+<td style="text-align:right;">
+3.2
+</td>
+</tr>
 <tr>
 <td style="text-align:right;">
 1
@@ -1258,70 +905,6 @@ female
 7.6
 </td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-1490
-</td>
-<td style="text-align:right;">
-10.5
-</td>
-<td style="text-align:right;">
-1495
-</td>
-<td style="text-align:right;">
-3.5
-</td>
-<td style="text-align:right;">
-1497
-</td>
-<td style="text-align:right;">
-2.7
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-611
-</td>
-<td style="text-align:right;">
-29.7
-</td>
-<td style="text-align:right;">
-614
-</td>
-<td style="text-align:right;">
-13.4
-</td>
-<td style="text-align:right;">
-611
-</td>
-<td style="text-align:right;">
-8.4
-</td>
-</tr>
 </tbody>
 </table>
 Head of ASSAD_192_alcohol_National.csv :
@@ -1341,429 +924,6 @@ sex
 age_group
 </th>
 <th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_parents
-</th>
-<th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_parents
-</th>
-<th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_sibling
-</th>
-<th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_sibling
-</th>
-<th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</th>
-<th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</th>
-<th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</th>
-<th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</th>
-<th style="text-align:right;">
-n_ever_drinkers_assad
-</th>
-<th style="text-align:right;">
-p_ever_drinkers_assad
-</th>
-<th style="text-align:right;">
-n_past_month_drinkers_assad
-</th>
-<th style="text-align:right;">
-p_past_month_drinkers_assad
-</th>
-<th style="text-align:right;">
-n_past_week_drinkers_assad
-</th>
-<th style="text-align:right;">
-p_past_week_drinkers_assad
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-12
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1747
-</td>
-<td style="text-align:right;">
-50.1
-</td>
-<td style="text-align:right;">
-1749
-</td>
-<td style="text-align:right;">
-9.6
-</td>
-<td style="text-align:right;">
-1756
-</td>
-<td style="text-align:right;">
-5.6
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-13-13
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1704
-</td>
-<td style="text-align:right;">
-57.3
-</td>
-<td style="text-align:right;">
-1730
-</td>
-<td style="text-align:right;">
-13.7
-</td>
-<td style="text-align:right;">
-1726
-</td>
-<td style="text-align:right;">
-7.4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-14-14
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1688
-</td>
-<td style="text-align:right;">
-64.8
-</td>
-<td style="text-align:right;">
-1702
-</td>
-<td style="text-align:right;">
-18.8
-</td>
-<td style="text-align:right;">
-1691
-</td>
-<td style="text-align:right;">
-10.2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-15-15
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1673
-</td>
-<td style="text-align:right;">
-71.3
-</td>
-<td style="text-align:right;">
-1688
-</td>
-<td style="text-align:right;">
-31.4
-</td>
-<td style="text-align:right;">
-1668
-</td>
-<td style="text-align:right;">
-17.8
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-16
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1596
-</td>
-<td style="text-align:right;">
-78.7
-</td>
-<td style="text-align:right;">
-1608
-</td>
-<td style="text-align:right;">
-42.9
-</td>
-<td style="text-align:right;">
-1597
-</td>
-<td style="text-align:right;">
-25.8
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-17-17
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-1201
-</td>
-<td style="text-align:right;">
-84.1
-</td>
-<td style="text-align:right;">
-1210
-</td>
-<td style="text-align:right;">
-54.9
-</td>
-<td style="text-align:right;">
-1211
-</td>
-<td style="text-align:right;">
-37.1
-</td>
-</tr>
-</tbody>
-</table>
-Head of ASSAD_192_alcohol_National_age_range.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Australia
-</th>
-<th style="text-align:right;">
-calendar_year
-</th>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:left;">
-age_group
-</th>
-<th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_parents
-</th>
-<th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_parents
-</th>
-<th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_sibling
-</th>
-<th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_sibling
-</th>
-<th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</th>
-<th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</th>
-<th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</th>
-<th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</th>
-<th style="text-align:right;">
 n_ever_drinkers_ASSAD
 </th>
 <th style="text-align:right;">
@@ -1781,292 +941,29 @@ n_past_week_drinkers_ASSAD
 <th style="text-align:right;">
 p_past_week_drinkers_ASSAD
 </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-648
-</td>
-<td style="text-align:right;">
-44.5
-</td>
-<td style="text-align:right;">
-648
-</td>
-<td style="text-align:right;">
-8.1
-</td>
-<td style="text-align:right;">
-648
-</td>
-<td style="text-align:right;">
-12.4
-</td>
-<td style="text-align:right;">
-648
-</td>
-<td style="text-align:right;">
-2.8
-</td>
-<td style="text-align:right;">
-6812
-</td>
-<td style="text-align:right;">
-60.8
-</td>
-<td style="text-align:right;">
-6869
-</td>
-<td style="text-align:right;">
-18.2
-</td>
-<td style="text-align:right;">
-6841
-</td>
-<td style="text-align:right;">
-10.2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-839
-</td>
-<td style="text-align:right;">
-42.0
-</td>
-<td style="text-align:right;">
-839
-</td>
-<td style="text-align:right;">
-8.0
-</td>
-<td style="text-align:right;">
-839
-</td>
-<td style="text-align:right;">
-3.6
-</td>
-<td style="text-align:right;">
-839
-</td>
-<td style="text-align:right;">
-6.8
-</td>
-<td style="text-align:right;">
-2797
-</td>
-<td style="text-align:right;">
-81.0
-</td>
-<td style="text-align:right;">
-2817
-</td>
-<td style="text-align:right;">
-48.1
-</td>
-<td style="text-align:right;">
-2808
-</td>
-<td style="text-align:right;">
-30.7
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-531
-</td>
-<td style="text-align:right;">
-43.2
-</td>
-<td style="text-align:right;">
-531
-</td>
-<td style="text-align:right;">
-9.0
-</td>
-<td style="text-align:right;">
-531
-</td>
-<td style="text-align:right;">
-8.6
-</td>
-<td style="text-align:right;">
-531
-</td>
-<td style="text-align:right;">
-1.5
-</td>
-<td style="text-align:right;">
-6417
-</td>
-<td style="text-align:right;">
-55.3
-</td>
-<td style="text-align:right;">
-6447
-</td>
-<td style="text-align:right;">
-15.8
-</td>
-<td style="text-align:right;">
-6440
-</td>
-<td style="text-align:right;">
-8.5
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-756
-</td>
-<td style="text-align:right;">
-46.0
-</td>
-<td style="text-align:right;">
-756
-</td>
-<td style="text-align:right;">
-5.9
-</td>
-<td style="text-align:right;">
-756
-</td>
-<td style="text-align:right;">
-2.9
-</td>
-<td style="text-align:right;">
-756
-</td>
-<td style="text-align:right;">
-2.4
-</td>
-<td style="text-align:right;">
-2897
-</td>
-<td style="text-align:right;">
-84.8
-</td>
-<td style="text-align:right;">
-2904
-</td>
-<td style="text-align:right;">
-49.1
-</td>
-<td style="text-align:right;">
-2888
-</td>
-<td style="text-align:right;">
-26.5
-</td>
-</tr>
-</tbody>
-</table>
-Head of ASSAD_192_alcohol_National_single_age.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
 <th style="text-align:right;">
-Australia
+n_accessed_last_alcoholic_drink_from_parents_ASSAD
 </th>
 <th style="text-align:right;">
-calendar_year
-</th>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:left;">
-age_group
+p_accessed_last_alcoholic_drink_from_parents_ASSAD
 </th>
 <th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_parents
+n_accessed_last_alcoholic_drink_from_sibling_ASSAD
 </th>
 <th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_parents
+p_accessed_last_alcoholic_drink_from_sibling_ASSAD
 </th>
 <th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_sibling
+n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
 </th>
 <th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_sibling
+p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
 </th>
 <th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_took_from_home
+n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
 </th>
 <th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</th>
-<th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</th>
-<th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</th>
-<th style="text-align:right;">
-n_ever_drinkers_assad
-</th>
-<th style="text-align:right;">
-p_ever_drinkers_assad
-</th>
-<th style="text-align:right;">
-n_past_month_drinkers_assad
-</th>
-<th style="text-align:right;">
-p_past_month_drinkers_assad
-</th>
-<th style="text-align:right;">
-n_past_week_drinkers_assad
-</th>
-<th style="text-align:right;">
-p_past_week_drinkers_assad
+p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
 </th>
 </tr>
 </thead>
@@ -2083,30 +980,6 @@ male
 </td>
 <td style="text-align:left;">
 12-12
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
 </td>
 <td style="text-align:right;">
 1747
@@ -2126,6 +999,30 @@ NA
 <td style="text-align:right;">
 5.6
 </td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -2139,30 +1036,6 @@ male
 </td>
 <td style="text-align:left;">
 13-13
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
 </td>
 <td style="text-align:right;">
 1704
@@ -2182,6 +1055,30 @@ NA
 <td style="text-align:right;">
 7.4
 </td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -2195,30 +1092,6 @@ male
 </td>
 <td style="text-align:left;">
 14-14
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
 </td>
 <td style="text-align:right;">
 1688
@@ -2238,6 +1111,30 @@ NA
 <td style="text-align:right;">
 10.2
 </td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -2251,30 +1148,6 @@ male
 </td>
 <td style="text-align:left;">
 15-15
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
 </td>
 <td style="text-align:right;">
 1673
@@ -2294,6 +1167,30 @@ NA
 <td style="text-align:right;">
 17.8
 </td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -2307,30 +1204,6 @@ male
 </td>
 <td style="text-align:left;">
 16-16
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
 </td>
 <td style="text-align:right;">
 1596
@@ -2350,6 +1223,30 @@ NA
 <td style="text-align:right;">
 25.8
 </td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -2363,30 +1260,6 @@ male
 </td>
 <td style="text-align:left;">
 17-17
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
-</td>
-<td style="text-align:right;">
-NA
 </td>
 <td style="text-align:right;">
 1201
@@ -2405,6 +1278,30 @@ NA
 </td>
 <td style="text-align:right;">
 37.1
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
+</td>
+<td style="text-align:right;">
+NA
 </td>
 </tr>
 </tbody>
@@ -2426,46 +1323,46 @@ sex
 age_group
 </th>
 <th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_parents
+n_ever_drinkers_ASSAD
 </th>
 <th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_parents
+p_ever_drinkers_ASSAD
 </th>
 <th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_sibling
+n_past_month_drinkers_ASSAD
 </th>
 <th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_sibling
+p_past_month_drinkers_ASSAD
 </th>
 <th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_took_from_home
+n_past_week_drinkers_ASSAD
 </th>
 <th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_took_from_home
+p_past_week_drinkers_ASSAD
 </th>
 <th style="text-align:right;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
+n_accessed_last_alcoholic_drink_from_parents_ASSAD
 </th>
 <th style="text-align:right;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
+p_accessed_last_alcoholic_drink_from_parents_ASSAD
 </th>
 <th style="text-align:right;">
-n_ever_drinkers_assad
+n_accessed_last_alcoholic_drink_from_sibling_ASSAD
 </th>
 <th style="text-align:right;">
-p_ever_drinkers_assad
+p_accessed_last_alcoholic_drink_from_sibling_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_month_drinkers_assad
+n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_month_drinkers_assad
+p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_week_drinkers_assad
+n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_week_drinkers_assad
+p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
 </th>
 </tr>
 </thead>
@@ -2481,7 +1378,137 @@ p_past_week_drinkers_assad
 male
 </td>
 <td style="text-align:left;">
+12-17
+</td>
+<td style="text-align:right;">
+1778
+</td>
+<td style="text-align:right;">
+62.7
+</td>
+<td style="text-align:right;">
+1789
+</td>
+<td style="text-align:right;">
+26.7
+</td>
+<td style="text-align:right;">
+1783
+</td>
+<td style="text-align:right;">
+15.1
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+39.5
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+3.6
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+11.9
+</td>
+<td style="text-align:right;">
+258
+</td>
+<td style="text-align:right;">
+7.5
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+12-17
+</td>
+<td style="text-align:right;">
+1711
+</td>
+<td style="text-align:right;">
+60.0
+</td>
+<td style="text-align:right;">
+1716
+</td>
+<td style="text-align:right;">
+23.2
+</td>
+<td style="text-align:right;">
+1710
+</td>
+<td style="text-align:right;">
+12.3
+</td>
+<td style="text-align:right;">
+205
+</td>
+<td style="text-align:right;">
+46.4
+</td>
+<td style="text-align:right;">
+205
+</td>
+<td style="text-align:right;">
+7.4
+</td>
+<td style="text-align:right;">
+205
+</td>
+<td style="text-align:right;">
+4.1
+</td>
+<td style="text-align:right;">
+205
+</td>
+<td style="text-align:right;">
+2.6
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
 12-15
+</td>
+<td style="text-align:right;">
+1252
+</td>
+<td style="text-align:right;">
+56.0
+</td>
+<td style="text-align:right;">
+1261
+</td>
+<td style="text-align:right;">
+18.9
+</td>
+<td style="text-align:right;">
+1258
+</td>
+<td style="text-align:right;">
+9.9
 </td>
 <td style="text-align:right;">
 120
@@ -2507,24 +1534,6 @@ male
 <td style="text-align:right;">
 1.5
 </td>
-<td style="text-align:right;">
-1252
-</td>
-<td style="text-align:right;">
-56.0
-</td>
-<td style="text-align:right;">
-1261
-</td>
-<td style="text-align:right;">
-18.9
-</td>
-<td style="text-align:right;">
-1258
-</td>
-<td style="text-align:right;">
-9.9
-</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -2538,6 +1547,24 @@ male
 </td>
 <td style="text-align:left;">
 16-17
+</td>
+<td style="text-align:right;">
+526
+</td>
+<td style="text-align:right;">
+78.6
+</td>
+<td style="text-align:right;">
+528
+</td>
+<td style="text-align:right;">
+45.1
+</td>
+<td style="text-align:right;">
+525
+</td>
+<td style="text-align:right;">
+27.5
 </td>
 <td style="text-align:right;">
 139
@@ -2563,24 +1590,6 @@ male
 <td style="text-align:right;">
 12.7
 </td>
-<td style="text-align:right;">
-526
-</td>
-<td style="text-align:right;">
-78.6
-</td>
-<td style="text-align:right;">
-528
-</td>
-<td style="text-align:right;">
-45.1
-</td>
-<td style="text-align:right;">
-525
-</td>
-<td style="text-align:right;">
-27.5
-</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -2594,6 +1603,24 @@ female
 </td>
 <td style="text-align:left;">
 12-15
+</td>
+<td style="text-align:right;">
+1180
+</td>
+<td style="text-align:right;">
+49.8
+</td>
+<td style="text-align:right;">
+1185
+</td>
+<td style="text-align:right;">
+13.5
+</td>
+<td style="text-align:right;">
+1186
+</td>
+<td style="text-align:right;">
+7.5
 </td>
 <td style="text-align:right;">
 86
@@ -2619,24 +1646,6 @@ female
 <td style="text-align:right;">
 2.6
 </td>
-<td style="text-align:right;">
-1180
-</td>
-<td style="text-align:right;">
-49.8
-</td>
-<td style="text-align:right;">
-1185
-</td>
-<td style="text-align:right;">
-13.5
-</td>
-<td style="text-align:right;">
-1186
-</td>
-<td style="text-align:right;">
-7.5
-</td>
 </tr>
 <tr>
 <td style="text-align:right;">
@@ -2650,6 +1659,24 @@ female
 </td>
 <td style="text-align:left;">
 16-17
+</td>
+<td style="text-align:right;">
+531
+</td>
+<td style="text-align:right;">
+82.6
+</td>
+<td style="text-align:right;">
+531
+</td>
+<td style="text-align:right;">
+44.7
+</td>
+<td style="text-align:right;">
+525
+</td>
+<td style="text-align:right;">
+23.2
 </td>
 <td style="text-align:right;">
 119
@@ -2675,623 +1702,10 @@ female
 <td style="text-align:right;">
 2.5
 </td>
-<td style="text-align:right;">
-531
-</td>
-<td style="text-align:right;">
-82.6
-</td>
-<td style="text-align:right;">
-531
-</td>
-<td style="text-align:right;">
-44.7
-</td>
-<td style="text-align:right;">
-525
-</td>
-<td style="text-align:right;">
-23.2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-109
-</td>
-<td style="text-align:right;">
-42.0
-</td>
-<td style="text-align:right;">
-109
-</td>
-<td style="text-align:right;">
-13.1
-</td>
-<td style="text-align:right;">
-109
-</td>
-<td style="text-align:right;">
-6.8
-</td>
-<td style="text-align:right;">
-109
-</td>
-<td style="text-align:right;">
-8.1
-</td>
-<td style="text-align:right;">
-1496
-</td>
-<td style="text-align:right;">
-60.6
-</td>
-<td style="text-align:right;">
-1507
-</td>
-<td style="text-align:right;">
-15.1
-</td>
-<td style="text-align:right;">
-1506
-</td>
-<td style="text-align:right;">
-7.7
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-191
-</td>
-<td style="text-align:right;">
-53.3
-</td>
-<td style="text-align:right;">
-191
-</td>
-<td style="text-align:right;">
-4.3
-</td>
-<td style="text-align:right;">
-191
-</td>
-<td style="text-align:right;">
-1.2
-</td>
-<td style="text-align:right;">
-191
-</td>
-<td style="text-align:right;">
-4.9
-</td>
-<td style="text-align:right;">
-609
-</td>
-<td style="text-align:right;">
-83.5
-</td>
-<td style="text-align:right;">
-612
-</td>
-<td style="text-align:right;">
-49.1
-</td>
-<td style="text-align:right;">
-613
-</td>
-<td style="text-align:right;">
-31.4
-</td>
 </tr>
 </tbody>
 </table>
 Head of ASSAD_193_drugs_National.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Australia
-</th>
-<th style="text-align:right;">
-calendar_year
-</th>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:left;">
-age_group
-</th>
-<th style="text-align:right;">
-n_ever_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-p_ever_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-n_past_month_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-p_past_month_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-n_past_week_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-p_past_week_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-n_ever_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_ever_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_past_month_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_past_month_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_past_week_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_past_week_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_ever_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_ever_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_past_month_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_past_month_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_past_week_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_past_week_methamphetamine_users_assad
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-12
-</td>
-<td style="text-align:right;">
-1492
-</td>
-<td style="text-align:right;">
-3.5
-</td>
-<td style="text-align:right;">
-1494
-</td>
-<td style="text-align:right;">
-1.6
-</td>
-<td style="text-align:right;">
-1505
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-1625
-</td>
-<td style="text-align:right;">
-2.3
-</td>
-<td style="text-align:right;">
-1626
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:right;">
-1635
-</td>
-<td style="text-align:right;">
-0.1
-</td>
-<td style="text-align:right;">
-1608
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-1610
-</td>
-<td style="text-align:right;">
-1.0
-</td>
-<td style="text-align:right;">
-1610
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-13-13
-</td>
-<td style="text-align:right;">
-1464
-</td>
-<td style="text-align:right;">
-5.9
-</td>
-<td style="text-align:right;">
-1473
-</td>
-<td style="text-align:right;">
-2.9
-</td>
-<td style="text-align:right;">
-1481
-</td>
-<td style="text-align:right;">
-1.8
-</td>
-<td style="text-align:right;">
-1636
-</td>
-<td style="text-align:right;">
-0.9
-</td>
-<td style="text-align:right;">
-1638
-</td>
-<td style="text-align:right;">
-0.6
-</td>
-<td style="text-align:right;">
-1635
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:right;">
-1607
-</td>
-<td style="text-align:right;">
-1.2
-</td>
-<td style="text-align:right;">
-1617
-</td>
-<td style="text-align:right;">
-0.9
-</td>
-<td style="text-align:right;">
-1618
-</td>
-<td style="text-align:right;">
-0.6
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-14-14
-</td>
-<td style="text-align:right;">
-1470
-</td>
-<td style="text-align:right;">
-10.8
-</td>
-<td style="text-align:right;">
-1469
-</td>
-<td style="text-align:right;">
-5.7
-</td>
-<td style="text-align:right;">
-1482
-</td>
-<td style="text-align:right;">
-2.9
-</td>
-<td style="text-align:right;">
-1607
-</td>
-<td style="text-align:right;">
-2.4
-</td>
-<td style="text-align:right;">
-1604
-</td>
-<td style="text-align:right;">
-1.1
-</td>
-<td style="text-align:right;">
-1607
-</td>
-<td style="text-align:right;">
-0.7
-</td>
-<td style="text-align:right;">
-1581
-</td>
-<td style="text-align:right;">
-2.8
-</td>
-<td style="text-align:right;">
-1586
-</td>
-<td style="text-align:right;">
-1.8
-</td>
-<td style="text-align:right;">
-1586
-</td>
-<td style="text-align:right;">
-1.3
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-15-15
-</td>
-<td style="text-align:right;">
-1469
-</td>
-<td style="text-align:right;">
-20.9
-</td>
-<td style="text-align:right;">
-1459
-</td>
-<td style="text-align:right;">
-11.0
-</td>
-<td style="text-align:right;">
-1460
-</td>
-<td style="text-align:right;">
-6.5
-</td>
-<td style="text-align:right;">
-1597
-</td>
-<td style="text-align:right;">
-1.3
-</td>
-<td style="text-align:right;">
-1594
-</td>
-<td style="text-align:right;">
-0.7
-</td>
-<td style="text-align:right;">
-1596
-</td>
-<td style="text-align:right;">
-0.5
-</td>
-<td style="text-align:right;">
-1573
-</td>
-<td style="text-align:right;">
-1.6
-</td>
-<td style="text-align:right;">
-1571
-</td>
-<td style="text-align:right;">
-1.0
-</td>
-<td style="text-align:right;">
-1571
-</td>
-<td style="text-align:right;">
-0.8
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-16
-</td>
-<td style="text-align:right;">
-1421
-</td>
-<td style="text-align:right;">
-29.5
-</td>
-<td style="text-align:right;">
-1420
-</td>
-<td style="text-align:right;">
-16.7
-</td>
-<td style="text-align:right;">
-1410
-</td>
-<td style="text-align:right;">
-9.3
-</td>
-<td style="text-align:right;">
-1559
-</td>
-<td style="text-align:right;">
-3.0
-</td>
-<td style="text-align:right;">
-1560
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-1559
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:right;">
-1540
-</td>
-<td style="text-align:right;">
-3.4
-</td>
-<td style="text-align:right;">
-1542
-</td>
-<td style="text-align:right;">
-1.3
-</td>
-<td style="text-align:right;">
-1546
-</td>
-<td style="text-align:right;">
-0.9
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-17-17
-</td>
-<td style="text-align:right;">
-1118
-</td>
-<td style="text-align:right;">
-36.9
-</td>
-<td style="text-align:right;">
-1115
-</td>
-<td style="text-align:right;">
-19.3
-</td>
-<td style="text-align:right;">
-1108
-</td>
-<td style="text-align:right;">
-11.7
-</td>
-<td style="text-align:right;">
-1184
-</td>
-<td style="text-align:right;">
-2.7
-</td>
-<td style="text-align:right;">
-1186
-</td>
-<td style="text-align:right;">
-1.3
-</td>
-<td style="text-align:right;">
-1188
-</td>
-<td style="text-align:right;">
-0.6
-</td>
-<td style="text-align:right;">
-1179
-</td>
-<td style="text-align:right;">
-3.7
-</td>
-<td style="text-align:right;">
-1184
-</td>
-<td style="text-align:right;">
-2.0
-</td>
-<td style="text-align:right;">
-1185
-</td>
-<td style="text-align:right;">
-1.1
-</td>
-</tr>
-</tbody>
-</table>
-Head of ASSAD_193_drugs_National_age_range.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -3360,353 +1774,6 @@ n_past_week_methamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
 p_past_week_methamphetamine_users_ASSAD
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-5895
-</td>
-<td style="text-align:right;">
-10.2
-</td>
-<td style="text-align:right;">
-5896
-</td>
-<td style="text-align:right;">
-5.3
-</td>
-<td style="text-align:right;">
-5929
-</td>
-<td style="text-align:right;">
-3.1
-</td>
-<td style="text-align:right;">
-6465
-</td>
-<td style="text-align:right;">
-1.8
-</td>
-<td style="text-align:right;">
-6461
-</td>
-<td style="text-align:right;">
-0.6
-</td>
-<td style="text-align:right;">
-6473
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:right;">
-6369
-</td>
-<td style="text-align:right;">
-1.7
-</td>
-<td style="text-align:right;">
-6383
-</td>
-<td style="text-align:right;">
-1.2
-</td>
-<td style="text-align:right;">
-6385
-</td>
-<td style="text-align:right;">
-0.8
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-2539
-</td>
-<td style="text-align:right;">
-32.7
-</td>
-<td style="text-align:right;">
-2535
-</td>
-<td style="text-align:right;">
-17.9
-</td>
-<td style="text-align:right;">
-2518
-</td>
-<td style="text-align:right;">
-10.4
-</td>
-<td style="text-align:right;">
-2744
-</td>
-<td style="text-align:right;">
-2.9
-</td>
-<td style="text-align:right;">
-2747
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-2748
-</td>
-<td style="text-align:right;">
-0.5
-</td>
-<td style="text-align:right;">
-2720
-</td>
-<td style="text-align:right;">
-3.5
-</td>
-<td style="text-align:right;">
-2726
-</td>
-<td style="text-align:right;">
-1.6
-</td>
-<td style="text-align:right;">
-2731
-</td>
-<td style="text-align:right;">
-1.0
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-5641
-</td>
-<td style="text-align:right;">
-9.2
-</td>
-<td style="text-align:right;">
-5636
-</td>
-<td style="text-align:right;">
-4.4
-</td>
-<td style="text-align:right;">
-5648
-</td>
-<td style="text-align:right;">
-2.3
-</td>
-<td style="text-align:right;">
-6256
-</td>
-<td style="text-align:right;">
-1.1
-</td>
-<td style="text-align:right;">
-6265
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:right;">
-6267
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-<td style="text-align:right;">
-6154
-</td>
-<td style="text-align:right;">
-1.0
-</td>
-<td style="text-align:right;">
-6179
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:right;">
-6190
-</td>
-<td style="text-align:right;">
-0.3
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-2614
-</td>
-<td style="text-align:right;">
-28.4
-</td>
-<td style="text-align:right;">
-2603
-</td>
-<td style="text-align:right;">
-13.9
-</td>
-<td style="text-align:right;">
-2608
-</td>
-<td style="text-align:right;">
-6.1
-</td>
-<td style="text-align:right;">
-2858
-</td>
-<td style="text-align:right;">
-1.3
-</td>
-<td style="text-align:right;">
-2859
-</td>
-<td style="text-align:right;">
-0.5
-</td>
-<td style="text-align:right;">
-2864
-</td>
-<td style="text-align:right;">
-0.3
-</td>
-<td style="text-align:right;">
-2835
-</td>
-<td style="text-align:right;">
-1.7
-</td>
-<td style="text-align:right;">
-2839
-</td>
-<td style="text-align:right;">
-0.6
-</td>
-<td style="text-align:right;">
-2844
-</td>
-<td style="text-align:right;">
-0.2
-</td>
-</tr>
-</tbody>
-</table>
-Head of ASSAD_193_drugs_National_single_age.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Australia
-</th>
-<th style="text-align:right;">
-calendar_year
-</th>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:left;">
-age_group
-</th>
-<th style="text-align:right;">
-n_ever_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-p_ever_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-n_past_month_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-p_past_month_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-n_past_week_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-p_past_week_cannabis_users_assad
-</th>
-<th style="text-align:right;">
-n_ever_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_ever_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_past_month_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_past_month_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_past_week_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_past_week_dexamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_ever_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_ever_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_past_month_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_past_month_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-n_past_week_methamphetamine_users_assad
-</th>
-<th style="text-align:right;">
-p_past_week_methamphetamine_users_assad
 </th>
 </tr>
 </thead>
@@ -4138,62 +2205,198 @@ sex
 age_group
 </th>
 <th style="text-align:right;">
-n_ever_cannabis_users_assad
+n_ever_cannabis_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_ever_cannabis_users_assad
+p_ever_cannabis_users_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_month_cannabis_users_assad
+n_past_month_cannabis_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_month_cannabis_users_assad
+p_past_month_cannabis_users_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_week_cannabis_users_assad
+n_past_week_cannabis_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_week_cannabis_users_assad
+p_past_week_cannabis_users_ASSAD
 </th>
 <th style="text-align:right;">
-n_ever_dexamphetamine_users_assad
+n_ever_dexamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_ever_dexamphetamine_users_assad
+p_ever_dexamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_month_dexamphetamine_users_assad
+n_past_month_dexamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_month_dexamphetamine_users_assad
+p_past_month_dexamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_week_dexamphetamine_users_assad
+n_past_week_dexamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_week_dexamphetamine_users_assad
+p_past_week_dexamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-n_ever_methamphetamine_users_assad
+n_ever_methamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_ever_methamphetamine_users_assad
+p_ever_methamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_month_methamphetamine_users_assad
+n_past_month_methamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_month_methamphetamine_users_assad
+p_past_month_methamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_week_methamphetamine_users_assad
+n_past_week_methamphetamine_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_week_methamphetamine_users_assad
+p_past_week_methamphetamine_users_ASSAD
 </th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+12-17
+</td>
+<td style="text-align:right;">
+1607
+</td>
+<td style="text-align:right;">
+15.0
+</td>
+<td style="text-align:right;">
+1608
+</td>
+<td style="text-align:right;">
+8.7
+</td>
+<td style="text-align:right;">
+1611
+</td>
+<td style="text-align:right;">
+4.9
+</td>
+<td style="text-align:right;">
+1695
+</td>
+<td style="text-align:right;">
+1.9
+</td>
+<td style="text-align:right;">
+1694
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+<td style="text-align:right;">
+1694
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+1689
+</td>
+<td style="text-align:right;">
+2.9
+</td>
+<td style="text-align:right;">
+1690
+</td>
+<td style="text-align:right;">
+1.8
+</td>
+<td style="text-align:right;">
+1685
+</td>
+<td style="text-align:right;">
+0.9
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+12-17
+</td>
+<td style="text-align:right;">
+1568
+</td>
+<td style="text-align:right;">
+12.1
+</td>
+<td style="text-align:right;">
+1567
+</td>
+<td style="text-align:right;">
+5.8
+</td>
+<td style="text-align:right;">
+1572
+</td>
+<td style="text-align:right;">
+2.7
+</td>
+<td style="text-align:right;">
+1670
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+1673
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+1672
+</td>
+<td style="text-align:right;">
+0.3
+</td>
+<td style="text-align:right;">
+1658
+</td>
+<td style="text-align:right;">
+1.3
+</td>
+<td style="text-align:right;">
+1660
+</td>
+<td style="text-align:right;">
+0.5
+</td>
+<td style="text-align:right;">
+1662
+</td>
+<td style="text-align:right;">
+0.4
+</td>
+</tr>
 <tr>
 <td style="text-align:right;">
 1
@@ -4466,334 +2669,9 @@ female
 0.1
 </td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-1288
-</td>
-<td style="text-align:right;">
-8.8
-</td>
-<td style="text-align:right;">
-1287
-</td>
-<td style="text-align:right;">
-4.0
-</td>
-<td style="text-align:right;">
-1287
-</td>
-<td style="text-align:right;">
-2.5
-</td>
-<td style="text-align:right;">
-1414
-</td>
-<td style="text-align:right;">
-1.9
-</td>
-<td style="text-align:right;">
-1417
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-<td style="text-align:right;">
-1420
-</td>
-<td style="text-align:right;">
-0.3
-</td>
-<td style="text-align:right;">
-1382
-</td>
-<td style="text-align:right;">
-1.0
-</td>
-<td style="text-align:right;">
-1390
-</td>
-<td style="text-align:right;">
-0.6
-</td>
-<td style="text-align:right;">
-1391
-</td>
-<td style="text-align:right;">
-0.4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-527
-</td>
-<td style="text-align:right;">
-30.9
-</td>
-<td style="text-align:right;">
-526
-</td>
-<td style="text-align:right;">
-15.7
-</td>
-<td style="text-align:right;">
-524
-</td>
-<td style="text-align:right;">
-10.4
-</td>
-<td style="text-align:right;">
-597
-</td>
-<td style="text-align:right;">
-1.4
-</td>
-<td style="text-align:right;">
-597
-</td>
-<td style="text-align:right;">
-0.7
-</td>
-<td style="text-align:right;">
-599
-</td>
-<td style="text-align:right;">
-0.0
-</td>
-<td style="text-align:right;">
-592
-</td>
-<td style="text-align:right;">
-4.1
-</td>
-<td style="text-align:right;">
-596
-</td>
-<td style="text-align:right;">
-1.2
-</td>
-<td style="text-align:right;">
-599
-</td>
-<td style="text-align:right;">
-0.9
-</td>
-</tr>
 </tbody>
 </table>
 Head of ASSAD_194_e_cigarettes_National.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Australia
-</th>
-<th style="text-align:right;">
-calendar_year
-</th>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:left;">
-age_group
-</th>
-<th style="text-align:right;">
-n_ever_e.cigarette_users_assad
-</th>
-<th style="text-align:right;">
-p_ever_e.cigarette_users_assad
-</th>
-<th style="text-align:right;">
-n_past_month_e.cigarette_users_assad
-</th>
-<th style="text-align:right;">
-p_past_month_e.cigarette_users_assad
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-12
-</td>
-<td style="text-align:right;">
-1662
-</td>
-<td style="text-align:right;">
-5.4
-</td>
-<td style="text-align:right;">
-1650
-</td>
-<td style="text-align:right;">
-1.8
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-13-13
-</td>
-<td style="text-align:right;">
-1622
-</td>
-<td style="text-align:right;">
-9.4
-</td>
-<td style="text-align:right;">
-1619
-</td>
-<td style="text-align:right;">
-3.3
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-14-14
-</td>
-<td style="text-align:right;">
-1632
-</td>
-<td style="text-align:right;">
-15.0
-</td>
-<td style="text-align:right;">
-1622
-</td>
-<td style="text-align:right;">
-6.2
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-15-15
-</td>
-<td style="text-align:right;">
-1589
-</td>
-<td style="text-align:right;">
-22.3
-</td>
-<td style="text-align:right;">
-1582
-</td>
-<td style="text-align:right;">
-7.4
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-16
-</td>
-<td style="text-align:right;">
-1551
-</td>
-<td style="text-align:right;">
-27.4
-</td>
-<td style="text-align:right;">
-1550
-</td>
-<td style="text-align:right;">
-6.9
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-17-17
-</td>
-<td style="text-align:right;">
-1167
-</td>
-<td style="text-align:right;">
-27.5
-</td>
-<td style="text-align:right;">
-1166
-</td>
-<td style="text-align:right;">
-8.4
-</td>
-</tr>
-</tbody>
-</table>
-Head of ASSAD_194_e_cigarettes_National_age_range.csv :
 <table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
@@ -4820,143 +2698,6 @@ n_past_month_e.cigarette_users_ASSAD
 </th>
 <th style="text-align:right;">
 p_past_month_e.cigarette_users_ASSAD
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-6505
-</td>
-<td style="text-align:right;">
-12.9
-</td>
-<td style="text-align:right;">
-6472
-</td>
-<td style="text-align:right;">
-4.7
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-2718
-</td>
-<td style="text-align:right;">
-27.4
-</td>
-<td style="text-align:right;">
-2716
-</td>
-<td style="text-align:right;">
-7.5
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-6164
-</td>
-<td style="text-align:right;">
-7.2
-</td>
-<td style="text-align:right;">
-6159
-</td>
-<td style="text-align:right;">
-2.6
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-female
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-2807
-</td>
-<td style="text-align:right;">
-15.1
-</td>
-<td style="text-align:right;">
-2805
-</td>
-<td style="text-align:right;">
-3.8
-</td>
-</tr>
-</tbody>
-</table>
-Head of ASSAD_194_e_cigarettes_National_single_age.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:right;">
-Australia
-</th>
-<th style="text-align:right;">
-calendar_year
-</th>
-<th style="text-align:left;">
-sex
-</th>
-<th style="text-align:left;">
-age_group
-</th>
-<th style="text-align:right;">
-n_ever_e.cigarette_users_assad
-</th>
-<th style="text-align:right;">
-p_ever_e.cigarette_users_assad
-</th>
-<th style="text-align:right;">
-n_past_month_e.cigarette_users_assad
-</th>
-<th style="text-align:right;">
-p_past_month_e.cigarette_users_assad
 </th>
 </tr>
 </thead>
@@ -5136,20 +2877,72 @@ sex
 age_group
 </th>
 <th style="text-align:right;">
-n_ever_e.cigarette_users_assad
+n_ever_e.cigarette_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_ever_e.cigarette_users_assad
+p_ever_e.cigarette_users_ASSAD
 </th>
 <th style="text-align:right;">
-n_past_month_e.cigarette_users_assad
+n_past_month_e.cigarette_users_ASSAD
 </th>
 <th style="text-align:right;">
-p_past_month_e.cigarette_users_assad
+p_past_month_e.cigarette_users_ASSAD
 </th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+male
+</td>
+<td style="text-align:left;">
+12-17
+</td>
+<td style="text-align:right;">
+1689
+</td>
+<td style="text-align:right;">
+16.4
+</td>
+<td style="text-align:right;">
+1681
+</td>
+<td style="text-align:right;">
+5.1
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+2017
+</td>
+<td style="text-align:left;">
+female
+</td>
+<td style="text-align:left;">
+12-17
+</td>
+<td style="text-align:right;">
+1647
+</td>
+<td style="text-align:right;">
+9.4
+</td>
+<td style="text-align:right;">
+1644
+</td>
+<td style="text-align:right;">
+3.1
+</td>
+</tr>
 <tr>
 <td style="text-align:right;">
 1
@@ -5254,58 +3047,6 @@ female
 4.0
 </td>
 </tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-12-15
-</td>
-<td style="text-align:right;">
-1440
-</td>
-<td style="text-align:right;">
-14.9
-</td>
-<td style="text-align:right;">
-1433
-</td>
-<td style="text-align:right;">
-4.5
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:right;">
-2017
-</td>
-<td style="text-align:left;">
-male
-</td>
-<td style="text-align:left;">
-16-17
-</td>
-<td style="text-align:right;">
-589
-</td>
-<td style="text-align:right;">
-29.3
-</td>
-<td style="text-align:right;">
-589
-</td>
-<td style="text-align:right;">
-6.5
-</td>
-</tr>
 </tbody>
 </table>
 <ul>
@@ -5327,17 +3068,6 @@ cat(as.character(html_table))</code></pre>
 ASSAD_191_smoking_National.csv
 </td>
 <td style="text-align:left;">
-Australia, calendar_year, sex, age_group, n_ever_smokers_assad,
-p_ever_smokers_assad, n_past_month_smokers_assad,
-p_past_month_smokers_assad, n_past_week_smokers_assad,
-p_past_week_smokers_assad
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ASSAD_191_smoking_National_age_range.csv
-</td>
-<td style="text-align:left;">
 Australia, calendar_year, sex, age_group, n_ever_smokers_ASSAD,
 p_ever_smokers_ASSAD, n_past_month_smokers_ASSAD,
 p_past_month_smokers_ASSAD, n_past_week_smokers_ASSAD,
@@ -5346,24 +3076,13 @@ p_past_week_smokers_ASSAD
 </tr>
 <tr>
 <td style="text-align:left;">
-ASSAD_191_smoking_National_single_age.csv
-</td>
-<td style="text-align:left;">
-Australia, calendar_year, sex, age_group, n_ever_smokers_assad,
-p_ever_smokers_assad, n_past_month_smokers_assad,
-p_past_month_smokers_assad, n_past_week_smokers_assad,
-p_past_week_smokers_assad
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 ASSAD_191_smoking_STE.csv
 </td>
 <td style="text-align:left;">
-STE_CODE16, calendar_year, sex, age_group, n_ever_smokers_assad,
-p_ever_smokers_assad, n_past_month_smokers_assad,
-p_past_month_smokers_assad, n_past_week_smokers_assad,
-p_past_week_smokers_assad
+STE_CODE16, calendar_year, sex, age_group, n_ever_smokers_ASSAD,
+p_ever_smokers_ASSAD, n_past_month_smokers_ASSAD,
+p_past_month_smokers_ASSAD, n_past_week_smokers_ASSAD,
+p_past_week_smokers_ASSAD
 </td>
 </tr>
 <tr>
@@ -5371,56 +3090,18 @@ p_past_week_smokers_assad
 ASSAD_192_alcohol_National.csv
 </td>
 <td style="text-align:left;">
-Australia, calendar_year, sex, age_group,
-n_accessed_last_alcoholic_drink_from_parents,
-p_accessed_last_alcoholic_drink_from_parents,
-n_accessed_last_alcoholic_drink_from_sibling,
-p_accessed_last_alcoholic_drink_from_sibling,
-n_accessed_last_alcoholic_drink_from_took_from_home,
-p_accessed_last_alcoholic_drink_from_took_from_home,
-n_accessed_last_alcoholic_drink_from_bought_themselves,
-p_accessed_last_alcoholic_drink_from_bought_themselves,
-n_ever_drinkers_assad, p_ever_drinkers_assad,
-n_past_month_drinkers_assad, p_past_month_drinkers_assad,
-n_past_week_drinkers_assad, p_past_week_drinkers_assad
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ASSAD_192_alcohol_National_age_range.csv
-</td>
-<td style="text-align:left;">
-Australia, calendar_year, sex, age_group,
-n_accessed_last_alcoholic_drink_from_parents,
-p_accessed_last_alcoholic_drink_from_parents,
-n_accessed_last_alcoholic_drink_from_sibling,
-p_accessed_last_alcoholic_drink_from_sibling,
-n_accessed_last_alcoholic_drink_from_took_from_home,
-p_accessed_last_alcoholic_drink_from_took_from_home,
-n_accessed_last_alcoholic_drink_from_bought_themselves,
-p_accessed_last_alcoholic_drink_from_bought_themselves,
-n_ever_drinkers_ASSAD, p_ever_drinkers_ASSAD,
-n_past_month_drinkers_ASSAD, p_past_month_drinkers_ASSAD,
-n_past_week_drinkers_ASSAD, p_past_week_drinkers_ASSAD
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ASSAD_192_alcohol_National_single_age.csv
-</td>
-<td style="text-align:left;">
-Australia, calendar_year, sex, age_group,
-n_accessed_last_alcoholic_drink_from_parents,
-p_accessed_last_alcoholic_drink_from_parents,
-n_accessed_last_alcoholic_drink_from_sibling,
-p_accessed_last_alcoholic_drink_from_sibling,
-n_accessed_last_alcoholic_drink_from_took_from_home,
-p_accessed_last_alcoholic_drink_from_took_from_home,
-n_accessed_last_alcoholic_drink_from_bought_themselves,
-p_accessed_last_alcoholic_drink_from_bought_themselves,
-n_ever_drinkers_assad, p_ever_drinkers_assad,
-n_past_month_drinkers_assad, p_past_month_drinkers_assad,
-n_past_week_drinkers_assad, p_past_week_drinkers_assad
+Australia, calendar_year, sex, age_group, n_ever_drinkers_ASSAD,
+p_ever_drinkers_ASSAD, n_past_month_drinkers_ASSAD,
+p_past_month_drinkers_ASSAD, n_past_week_drinkers_ASSAD,
+p_past_week_drinkers_ASSAD,
+n_accessed_last_alcoholic_drink_from_parents_ASSAD,
+p_accessed_last_alcoholic_drink_from_parents_ASSAD,
+n_accessed_last_alcoholic_drink_from_sibling_ASSAD,
+p_accessed_last_alcoholic_drink_from_sibling_ASSAD,
+n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD,
+p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD,
+n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD,
+p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
 </td>
 </tr>
 <tr>
@@ -5428,44 +3109,23 @@ n_past_week_drinkers_assad, p_past_week_drinkers_assad
 ASSAD_192_alcohol_STE.csv
 </td>
 <td style="text-align:left;">
-STE_CODE16, calendar_year, sex, age_group,
-n_accessed_last_alcoholic_drink_from_parents,
-p_accessed_last_alcoholic_drink_from_parents,
-n_accessed_last_alcoholic_drink_from_sibling,
-p_accessed_last_alcoholic_drink_from_sibling,
-n_accessed_last_alcoholic_drink_from_took_from_home,
-p_accessed_last_alcoholic_drink_from_took_from_home,
-n_accessed_last_alcoholic_drink_from_bought_themselves,
-p_accessed_last_alcoholic_drink_from_bought_themselves,
-n_ever_drinkers_assad, p_ever_drinkers_assad,
-n_past_month_drinkers_assad, p_past_month_drinkers_assad,
-n_past_week_drinkers_assad, p_past_week_drinkers_assad
+STE_CODE16, calendar_year, sex, age_group, n_ever_drinkers_ASSAD,
+p_ever_drinkers_ASSAD, n_past_month_drinkers_ASSAD,
+p_past_month_drinkers_ASSAD, n_past_week_drinkers_ASSAD,
+p_past_week_drinkers_ASSAD,
+n_accessed_last_alcoholic_drink_from_parents_ASSAD,
+p_accessed_last_alcoholic_drink_from_parents_ASSAD,
+n_accessed_last_alcoholic_drink_from_sibling_ASSAD,
+p_accessed_last_alcoholic_drink_from_sibling_ASSAD,
+n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD,
+p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD,
+n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD,
+p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 ASSAD_193_drugs_National.csv
-</td>
-<td style="text-align:left;">
-Australia, calendar_year, sex, age_group, n_ever_cannabis_users_assad,
-p_ever_cannabis_users_assad, n_past_month_cannabis_users_assad,
-p_past_month_cannabis_users_assad, n_past_week_cannabis_users_assad,
-p_past_week_cannabis_users_assad, n_ever_dexamphetamine_users_assad,
-p_ever_dexamphetamine_users_assad,
-n_past_month_dexamphetamine_users_assad,
-p_past_month_dexamphetamine_users_assad,
-n_past_week_dexamphetamine_users_assad,
-p_past_week_dexamphetamine_users_assad,
-n_ever_methamphetamine_users_assad, p_ever_methamphetamine_users_assad,
-n_past_month_methamphetamine_users_assad,
-p_past_month_methamphetamine_users_assad,
-n_past_week_methamphetamine_users_assad,
-p_past_week_methamphetamine_users_assad
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ASSAD_193_drugs_National_age_range.csv
 </td>
 <td style="text-align:left;">
 Australia, calendar_year, sex, age_group, n_ever_cannabis_users_ASSAD,
@@ -5486,60 +3146,28 @@ p_past_week_methamphetamine_users_ASSAD
 </tr>
 <tr>
 <td style="text-align:left;">
-ASSAD_193_drugs_National_single_age.csv
-</td>
-<td style="text-align:left;">
-Australia, calendar_year, sex, age_group, n_ever_cannabis_users_assad,
-p_ever_cannabis_users_assad, n_past_month_cannabis_users_assad,
-p_past_month_cannabis_users_assad, n_past_week_cannabis_users_assad,
-p_past_week_cannabis_users_assad, n_ever_dexamphetamine_users_assad,
-p_ever_dexamphetamine_users_assad,
-n_past_month_dexamphetamine_users_assad,
-p_past_month_dexamphetamine_users_assad,
-n_past_week_dexamphetamine_users_assad,
-p_past_week_dexamphetamine_users_assad,
-n_ever_methamphetamine_users_assad, p_ever_methamphetamine_users_assad,
-n_past_month_methamphetamine_users_assad,
-p_past_month_methamphetamine_users_assad,
-n_past_week_methamphetamine_users_assad,
-p_past_week_methamphetamine_users_assad
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 ASSAD_193_drugs_STE.csv
 </td>
 <td style="text-align:left;">
-STE_CODE16, calendar_year, sex, age_group, n_ever_cannabis_users_assad,
-p_ever_cannabis_users_assad, n_past_month_cannabis_users_assad,
-p_past_month_cannabis_users_assad, n_past_week_cannabis_users_assad,
-p_past_week_cannabis_users_assad, n_ever_dexamphetamine_users_assad,
-p_ever_dexamphetamine_users_assad,
-n_past_month_dexamphetamine_users_assad,
-p_past_month_dexamphetamine_users_assad,
-n_past_week_dexamphetamine_users_assad,
-p_past_week_dexamphetamine_users_assad,
-n_ever_methamphetamine_users_assad, p_ever_methamphetamine_users_assad,
-n_past_month_methamphetamine_users_assad,
-p_past_month_methamphetamine_users_assad,
-n_past_week_methamphetamine_users_assad,
-p_past_week_methamphetamine_users_assad
+STE_CODE16, calendar_year, sex, age_group, n_ever_cannabis_users_ASSAD,
+p_ever_cannabis_users_ASSAD, n_past_month_cannabis_users_ASSAD,
+p_past_month_cannabis_users_ASSAD, n_past_week_cannabis_users_ASSAD,
+p_past_week_cannabis_users_ASSAD, n_ever_dexamphetamine_users_ASSAD,
+p_ever_dexamphetamine_users_ASSAD,
+n_past_month_dexamphetamine_users_ASSAD,
+p_past_month_dexamphetamine_users_ASSAD,
+n_past_week_dexamphetamine_users_ASSAD,
+p_past_week_dexamphetamine_users_ASSAD,
+n_ever_methamphetamine_users_ASSAD, p_ever_methamphetamine_users_ASSAD,
+n_past_month_methamphetamine_users_ASSAD,
+p_past_month_methamphetamine_users_ASSAD,
+n_past_week_methamphetamine_users_ASSAD,
+p_past_week_methamphetamine_users_ASSAD
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
 ASSAD_194_e_cigarettes_National.csv
-</td>
-<td style="text-align:left;">
-Australia, calendar_year, sex, age_group,
-n_ever_e.cigarette_users_assad, p_ever_e.cigarette_users_assad,
-n_past_month_e.cigarette_users_assad,
-p_past_month_e.cigarette_users_assad
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-ASSAD_194_e_cigarettes_National_age_range.csv
 </td>
 <td style="text-align:left;">
 Australia, calendar_year, sex, age_group,
@@ -5550,24 +3178,13 @@ p_past_month_e.cigarette_users_ASSAD
 </tr>
 <tr>
 <td style="text-align:left;">
-ASSAD_194_e_cigarettes_National_single_age.csv
-</td>
-<td style="text-align:left;">
-Australia, calendar_year, sex, age_group,
-n_ever_e.cigarette_users_assad, p_ever_e.cigarette_users_assad,
-n_past_month_e.cigarette_users_assad,
-p_past_month_e.cigarette_users_assad
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 ASSAD_194_e_cigarettes_STE.csv
 </td>
 <td style="text-align:left;">
 STE_CODE16, calendar_year, sex, age_group,
-n_ever_e.cigarette_users_assad, p_ever_e.cigarette_users_assad,
-n_past_month_e.cigarette_users_assad,
-p_past_month_e.cigarette_users_assad
+n_ever_e.cigarette_users_ASSAD, p_ever_e.cigarette_users_ASSAD,
+n_past_month_e.cigarette_users_ASSAD,
+p_past_month_e.cigarette_users_ASSAD
 </td>
 </tr>
 </tbody>
@@ -5696,223 +3313,7 @@ character
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-12-12, 13-13, 14-14, 15-15, 16-16, 17-17, 12-15, 16-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_smokers_assad
-</td>
-<td style="text-align:left;">
-n_ever_smokers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1213 - 6755
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_smokers_assad
-</td>
-<td style="text-align:left;">
-p_ever_smokers_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-3.8 - 36.3
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_smokers_assad
-</td>
-<td style="text-align:left;">
-n_past_month_smokers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1218 - 6794
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_smokers_assad
-</td>
-<td style="text-align:left;">
-p_past_month_smokers_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1.7 - 16.8
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_smokers_assad
-</td>
-<td style="text-align:left;">
-n_past_week_smokers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1213 - 6793
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_smokers_assad
-</td>
-<td style="text-align:left;">
-p_past_week_smokers_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1 - 12.3
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-Data Dictionary for ASSAD_191_smoking_National_age_range.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-class
-</th>
-<th style="text-align:left;">
-range
-</th>
-<th style="text-align:left;">
-unique_values
-</th>
-<th style="text-align:right;">
-n_missing_values
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-0 - 0
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2017 - 2017
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-male, female
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-12-15, 16-17
+12-12, 13-13, 14-14, 15-15, 16-16, 17-17
 </td>
 <td style="text-align:right;">
 0
@@ -5929,7 +3330,7 @@ n_ever_smokers_ASSAD
 integer
 </td>
 <td style="text-align:left;">
-2803 - 6755
+1213 - 9557
 </td>
 <td style="text-align:left;">
 </td>
@@ -5948,222 +3349,6 @@ p_ever_smokers_ASSAD
 numeric
 </td>
 <td style="text-align:left;">
-11 - 31.5
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_smokers_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_month_smokers_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2815 - 6794
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_smokers_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_month_smokers_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-4.3 - 14.8
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_smokers_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_week_smokers_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2808 - 6793
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_smokers_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_week_smokers_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-2.6 - 10.4
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-Data Dictionary for ASSAD_191_smoking_National_single_age.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-class
-</th>
-<th style="text-align:left;">
-range
-</th>
-<th style="text-align:left;">
-unique_values
-</th>
-<th style="text-align:right;">
-n_missing_values
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-0 - 0
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2017 - 2017
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-male, female
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-12-12, 13-13, 14-14, 15-15, 16-16, 17-17, 12-15, 16-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_smokers_assad
-</td>
-<td style="text-align:left;">
-n_ever_smokers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1213 - 6755
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_smokers_assad
-</td>
-<td style="text-align:left;">
-p_ever_smokers_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
 3.8 - 36.3
 </td>
 <td style="text-align:left;">
@@ -6174,16 +3359,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_smokers_assad
+n_past_month_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_smokers_assad
+n_past_month_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1218 - 6794
+1218 - 9608
 </td>
 <td style="text-align:left;">
 </td>
@@ -6193,10 +3378,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_smokers_assad
+p_past_month_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_smokers_assad
+p_past_month_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -6212,16 +3397,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_week_smokers_assad
+n_past_week_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_week_smokers_assad
+n_past_week_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1213 - 6793
+1213 - 9601
 </td>
 <td style="text-align:left;">
 </td>
@@ -6231,10 +3416,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_smokers_assad
+p_past_week_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_smokers_assad
+p_past_week_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -6285,7 +3470,7 @@ STE_CODE16
 integer
 </td>
 <td style="text-align:left;">
-1 - 8
+1 - 6
 </td>
 <td style="text-align:left;">
 </td>
@@ -6344,7 +3529,7 @@ character
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-12-15, 16-17
+12-17, 12-15, 16-17
 </td>
 <td style="text-align:right;">
 0
@@ -6352,16 +3537,16 @@ character
 </tr>
 <tr>
 <td style="text-align:left;">
-n_ever_smokers_assad
+n_ever_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-n_ever_smokers_assad
+n_ever_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-228 - 1490
+228 - 2105
 </td>
 <td style="text-align:left;">
 </td>
@@ -6371,16 +3556,16 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_ever_smokers_assad
+p_ever_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-p_ever_smokers_assad
+p_ever_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-6.2 - 42.3
+7.2 - 42.3
 </td>
 <td style="text-align:left;">
 </td>
@@ -6390,16 +3575,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_smokers_assad
+n_past_month_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_smokers_assad
+n_past_month_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-229 - 1495
+229 - 2110
 </td>
 <td style="text-align:left;">
 </td>
@@ -6409,16 +3594,16 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_smokers_assad
+p_past_month_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_smokers_assad
+p_past_month_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-0.8 - 17.1
+1.8 - 17.1
 </td>
 <td style="text-align:left;">
 </td>
@@ -6428,16 +3613,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_week_smokers_assad
+n_past_week_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_week_smokers_assad
+n_past_week_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-229 - 1497
+229 - 2108
 </td>
 <td style="text-align:left;">
 </td>
@@ -6447,16 +3632,16 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_smokers_assad
+p_past_week_smokers_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_smokers_assad
+p_past_week_smokers_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-0.7 - 13.3
+1.1 - 13.3
 </td>
 <td style="text-align:left;">
 </td>
@@ -6560,527 +3745,7 @@ character
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-12-12, 13-13, 14-14, 15-15, 16-16, 17-17, 12-15, 16-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-42 - 46
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-5.9 - 9
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-2.9 - 12.4
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1.5 - 6.8
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-n_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1201 - 6812
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-p_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-35.4 - 86.1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_drinkers_assad
-</td>
-<td style="text-align:left;">
-n_past_month_drinkers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1210 - 6869
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_drinkers_assad
-</td>
-<td style="text-align:left;">
-p_past_month_drinkers_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-5.8 - 54.9
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_drinkers_assad
-</td>
-<td style="text-align:left;">
-n_past_week_drinkers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1211 - 6841
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_drinkers_assad
-</td>
-<td style="text-align:left;">
-p_past_week_drinkers_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-2.7 - 37.1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-Data Dictionary for ASSAD_192_alcohol_National_age_range.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-class
-</th>
-<th style="text-align:left;">
-range
-</th>
-<th style="text-align:left;">
-unique_values
-</th>
-<th style="text-align:right;">
-n_missing_values
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-0 - 0
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2017 - 2017
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-male, female
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-12-15, 16-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-42 - 46
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-5.9 - 9
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-2.9 - 12.4
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1.5 - 6.8
-</td>
-<td style="text-align:left;">
+12-12, 13-13, 14-14, 15-15, 16-16, 17-17
 </td>
 <td style="text-align:right;">
 0
@@ -7097,7 +3762,7 @@ n_ever_drinkers_ASSAD
 integer
 </td>
 <td style="text-align:left;">
-2797 - 6812
+1201 - 9609
 </td>
 <td style="text-align:left;">
 </td>
@@ -7116,374 +3781,6 @@ p_ever_drinkers_ASSAD
 numeric
 </td>
 <td style="text-align:left;">
-55.3 - 84.8
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_drinkers_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_month_drinkers_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2817 - 6869
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_drinkers_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_month_drinkers_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-15.8 - 49.1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_drinkers_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_week_drinkers_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2808 - 6841
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_drinkers_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_week_drinkers_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-8.5 - 30.7
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-Data Dictionary for ASSAD_192_alcohol_National_single_age.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-class
-</th>
-<th style="text-align:left;">
-range
-</th>
-<th style="text-align:left;">
-unique_values
-</th>
-<th style="text-align:right;">
-n_missing_values
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-0 - 0
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2017 - 2017
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-male, female
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-12-12, 13-13, 14-14, 15-15, 16-16, 17-17, 12-15, 16-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-42 - 46
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-5.9 - 9
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-2.9 - 12.4
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-531 - 839
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1.5 - 6.8
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-12
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-n_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1201 - 6812
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-p_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
 35.4 - 86.1
 </td>
 <td style="text-align:left;">
@@ -7494,16 +3791,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_drinkers_assad
+n_past_month_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_drinkers_assad
+n_past_month_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1210 - 6869
+1210 - 9687
 </td>
 <td style="text-align:left;">
 </td>
@@ -7513,10 +3810,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_drinkers_assad
+p_past_month_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_drinkers_assad
+p_past_month_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -7532,16 +3829,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_week_drinkers_assad
+n_past_week_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_week_drinkers_assad
+n_past_week_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1211 - 6841
+1211 - 9649
 </td>
 <td style="text-align:left;">
 </td>
@@ -7551,10 +3848,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_drinkers_assad
+p_past_week_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_drinkers_assad
+p_past_week_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -7566,6 +3863,158 @@ numeric
 </td>
 <td style="text-align:right;">
 0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_parents_ASSAD
+</td>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_parents_ASSAD
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+531 - 1487
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_parents_ASSAD
+</td>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_parents_ASSAD
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+42 - 46
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_sibling_ASSAD
+</td>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_sibling_ASSAD
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+531 - 1487
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_sibling_ASSAD
+</td>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_sibling_ASSAD
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+5.9 - 9
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+</td>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+531 - 1487
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+</td>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+2.9 - 12.4
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+</td>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+531 - 1487
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+</td>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+1.5 - 6.8
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+12
 </td>
 </tr>
 </tbody>
@@ -7605,7 +4054,7 @@ STE_CODE16
 integer
 </td>
 <td style="text-align:left;">
-1 - 8
+1 - 6
 </td>
 <td style="text-align:left;">
 </td>
@@ -7664,7 +4113,7 @@ character
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-12-15, 16-17
+12-17, 12-15, 16-17
 </td>
 <td style="text-align:right;">
 0
@@ -7672,16 +4121,16 @@ character
 </tr>
 <tr>
 <td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_parents
+n_ever_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_parents
+n_ever_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-13 - 191
+227 - 2117
 </td>
 <td style="text-align:left;">
 </td>
@@ -7691,162 +4140,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_parents
+p_ever_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_parents
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-22.3 - 64.1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-13 - 191
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_sibling
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1.7 - 22.1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-13 - 191
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_took_from_home
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0 - 28.7
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-n_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-13 - 191
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-p_accessed_last_alcoholic_drink_from_bought_themselves
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0 - 12.7
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-n_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-227 - 1496
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_drinkers_assad
-</td>
-<td style="text-align:left;">
-p_ever_drinkers_assad
+p_ever_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -7862,54 +4159,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_drinkers_assad
+n_past_month_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_drinkers_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-228 - 1507
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_drinkers_assad
-</td>
-<td style="text-align:left;">
-p_past_month_drinkers_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-8.5 - 62.1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_drinkers_assad
-</td>
-<td style="text-align:left;">
-n_past_week_drinkers_assad
+n_past_month_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-229 - 1506
+228 - 2127
 </td>
 <td style="text-align:left;">
 </td>
@@ -7919,16 +4178,206 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_drinkers_assad
+p_past_month_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_drinkers_assad
+p_past_month_drinkers_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-2.8 - 39.9
+13 - 62.1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_past_week_drinkers_ASSAD
+</td>
+<td style="text-align:left;">
+n_past_week_drinkers_ASSAD
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+229 - 2120
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_past_week_drinkers_ASSAD
+</td>
+<td style="text-align:left;">
+p_past_week_drinkers_ASSAD
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+6.6 - 39.9
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_parents_ASSAD
+</td>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_parents_ASSAD
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+26 - 311
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_parents_ASSAD
+</td>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_parents_ASSAD
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+22.3 - 64.1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_sibling_ASSAD
+</td>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_sibling_ASSAD
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+26 - 311
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_sibling_ASSAD
+</td>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_sibling_ASSAD
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+2.9 - 19.6
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+</td>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+26 - 311
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+</td>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+0 - 18.6
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+</td>
+<td style="text-align:left;">
+n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+</td>
+<td style="text-align:left;">
+integer
+</td>
+<td style="text-align:left;">
+26 - 311
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+</td>
+<td style="text-align:left;">
+p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+</td>
+<td style="text-align:left;">
+numeric
+</td>
+<td style="text-align:left;">
+0 - 12.7
 </td>
 <td style="text-align:left;">
 </td>
@@ -8032,451 +4481,7 @@ character
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-12-12, 13-13, 14-14, 15-15, 16-16, 17-17, 12-15, 16-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-n_ever_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1118 - 5895
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-p_ever_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-2.3 - 36.9
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-n_past_month_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1115 - 5896
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-p_past_month_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1.3 - 19.3
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-n_past_week_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1108 - 5929
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-p_past_week_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.5 - 11.7
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-n_ever_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1184 - 6465
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-p_ever_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.6 - 3
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-n_past_month_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1186 - 6461
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-p_past_month_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.2 - 1.4
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-n_past_week_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1188 - 6473
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-p_past_week_dexamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.1 - 0.7
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-n_ever_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1179 - 6369
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-p_ever_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.6 - 3.7
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-n_past_month_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1184 - 6383
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-p_past_month_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.3 - 2
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-n_past_week_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1185 - 6385
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-p_past_week_methamphetamine_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.2 - 1.3
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-Data Dictionary for ASSAD_193_drugs_National_age_range.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-class
-</th>
-<th style="text-align:left;">
-range
-</th>
-<th style="text-align:left;">
-unique_values
-</th>
-<th style="text-align:right;">
-n_missing_values
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-0 - 0
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2017 - 2017
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-male, female
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-12-15, 16-17
+12-12, 13-13, 14-14, 15-15, 16-16, 17-17
 </td>
 <td style="text-align:right;">
 0
@@ -8493,7 +4498,7 @@ n_ever_cannabis_users_ASSAD
 integer
 </td>
 <td style="text-align:left;">
-2539 - 5895
+1118 - 8434
 </td>
 <td style="text-align:left;">
 </td>
@@ -8512,450 +4517,6 @@ p_ever_cannabis_users_ASSAD
 numeric
 </td>
 <td style="text-align:left;">
-9.2 - 32.7
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_cannabis_users_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_month_cannabis_users_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2535 - 5896
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_cannabis_users_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_month_cannabis_users_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-4.4 - 17.9
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_cannabis_users_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_week_cannabis_users_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2518 - 5929
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_cannabis_users_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_week_cannabis_users_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-2.3 - 10.4
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-n_ever_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2744 - 6465
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-p_ever_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1.1 - 2.9
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_month_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2747 - 6461
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_month_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.4 - 1.4
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_week_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2748 - 6473
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_week_dexamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.2 - 0.5
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-n_ever_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2720 - 6369
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-p_ever_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1 - 3.5
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_month_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2726 - 6383
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_month_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.4 - 1.6
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_week_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_week_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2731 - 6385
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_week_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_week_methamphetamine_users_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-0.2 - 1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-Data Dictionary for ASSAD_193_drugs_National_single_age.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-class
-</th>
-<th style="text-align:left;">
-range
-</th>
-<th style="text-align:left;">
-unique_values
-</th>
-<th style="text-align:right;">
-n_missing_values
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-0 - 0
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2017 - 2017
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-male, female
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-12-12, 13-13, 14-14, 15-15, 16-16, 17-17, 12-15, 16-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-n_ever_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1118 - 5895
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-p_ever_cannabis_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
 2.3 - 36.9
 </td>
 <td style="text-align:left;">
@@ -8966,16 +4527,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_cannabis_users_assad
+n_past_month_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_cannabis_users_assad
+n_past_month_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1115 - 5896
+1115 - 8431
 </td>
 <td style="text-align:left;">
 </td>
@@ -8985,10 +4546,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_cannabis_users_assad
+p_past_month_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_cannabis_users_assad
+p_past_month_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9004,16 +4565,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_week_cannabis_users_assad
+n_past_week_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_week_cannabis_users_assad
+n_past_week_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1108 - 5929
+1108 - 8447
 </td>
 <td style="text-align:left;">
 </td>
@@ -9023,10 +4584,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_cannabis_users_assad
+p_past_week_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_cannabis_users_assad
+p_past_week_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9042,16 +4603,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_ever_dexamphetamine_users_assad
+n_ever_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_ever_dexamphetamine_users_assad
+n_ever_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1184 - 6465
+1184 - 9209
 </td>
 <td style="text-align:left;">
 </td>
@@ -9061,10 +4622,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_ever_dexamphetamine_users_assad
+p_ever_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_ever_dexamphetamine_users_assad
+p_ever_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9080,16 +4641,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_dexamphetamine_users_assad
+n_past_month_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_dexamphetamine_users_assad
+n_past_month_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1186 - 6461
+1186 - 9208
 </td>
 <td style="text-align:left;">
 </td>
@@ -9099,10 +4660,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_dexamphetamine_users_assad
+p_past_month_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_dexamphetamine_users_assad
+p_past_month_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9118,16 +4679,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_week_dexamphetamine_users_assad
+n_past_week_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_week_dexamphetamine_users_assad
+n_past_week_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1188 - 6473
+1188 - 9221
 </td>
 <td style="text-align:left;">
 </td>
@@ -9137,10 +4698,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_dexamphetamine_users_assad
+p_past_week_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_dexamphetamine_users_assad
+p_past_week_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9156,16 +4717,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_ever_methamphetamine_users_assad
+n_ever_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_ever_methamphetamine_users_assad
+n_ever_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1179 - 6369
+1179 - 9089
 </td>
 <td style="text-align:left;">
 </td>
@@ -9175,10 +4736,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_ever_methamphetamine_users_assad
+p_ever_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_ever_methamphetamine_users_assad
+p_ever_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9194,16 +4755,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_methamphetamine_users_assad
+n_past_month_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_methamphetamine_users_assad
+n_past_month_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1184 - 6383
+1184 - 9108
 </td>
 <td style="text-align:left;">
 </td>
@@ -9213,10 +4774,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_methamphetamine_users_assad
+p_past_month_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_methamphetamine_users_assad
+p_past_month_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9232,16 +4793,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_week_methamphetamine_users_assad
+n_past_week_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_week_methamphetamine_users_assad
+n_past_week_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1185 - 6385
+1185 - 9116
 </td>
 <td style="text-align:left;">
 </td>
@@ -9251,10 +4812,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_methamphetamine_users_assad
+p_past_week_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_methamphetamine_users_assad
+p_past_week_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9305,7 +4866,7 @@ STE_CODE16
 integer
 </td>
 <td style="text-align:left;">
-1 - 8
+1 - 6
 </td>
 <td style="text-align:left;">
 </td>
@@ -9364,7 +4925,7 @@ character
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-12-15, 16-17
+12-17, 12-15, 16-17
 </td>
 <td style="text-align:right;">
 0
@@ -9372,16 +4933,16 @@ character
 </tr>
 <tr>
 <td style="text-align:left;">
-n_ever_cannabis_users_assad
+n_ever_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_ever_cannabis_users_assad
+n_ever_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-198 - 1288
+205 - 1836
 </td>
 <td style="text-align:left;">
 </td>
@@ -9391,16 +4952,16 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_ever_cannabis_users_assad
+p_ever_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_ever_cannabis_users_assad
+p_ever_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-5.6 - 43.4
+6 - 43.4
 </td>
 <td style="text-align:left;">
 </td>
@@ -9410,16 +4971,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_cannabis_users_assad
+n_past_month_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_cannabis_users_assad
+n_past_month_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-199 - 1287
+204 - 1841
 </td>
 <td style="text-align:left;">
 </td>
@@ -9429,16 +4990,16 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_cannabis_users_assad
+p_past_month_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_cannabis_users_assad
+p_past_month_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-1.7 - 22.6
+2.1 - 22.6
 </td>
 <td style="text-align:left;">
 </td>
@@ -9448,16 +5009,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_week_cannabis_users_assad
+n_past_week_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_week_cannabis_users_assad
+n_past_week_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-200 - 1287
+204 - 1843
 </td>
 <td style="text-align:left;">
 </td>
@@ -9467,10 +5028,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_cannabis_users_assad
+p_past_week_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_cannabis_users_assad
+p_past_week_cannabis_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9486,16 +5047,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_ever_dexamphetamine_users_assad
+n_ever_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_ever_dexamphetamine_users_assad
+n_ever_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-220 - 1414
+220 - 2076
 </td>
 <td style="text-align:left;">
 </td>
@@ -9505,10 +5066,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_ever_dexamphetamine_users_assad
+p_ever_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_ever_dexamphetamine_users_assad
+p_ever_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9524,16 +5085,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_dexamphetamine_users_assad
+n_past_month_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_dexamphetamine_users_assad
+n_past_month_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-220 - 1417
+220 - 2076
 </td>
 <td style="text-align:left;">
 </td>
@@ -9543,10 +5104,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_dexamphetamine_users_assad
+p_past_month_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_dexamphetamine_users_assad
+p_past_month_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9562,16 +5123,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_week_dexamphetamine_users_assad
+n_past_week_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_week_dexamphetamine_users_assad
+n_past_week_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-220 - 1420
+220 - 2078
 </td>
 <td style="text-align:left;">
 </td>
@@ -9581,10 +5142,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_dexamphetamine_users_assad
+p_past_week_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_dexamphetamine_users_assad
+p_past_week_dexamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9600,16 +5161,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_ever_methamphetamine_users_assad
+n_ever_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_ever_methamphetamine_users_assad
+n_ever_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-219 - 1382
+219 - 2035
 </td>
 <td style="text-align:left;">
 </td>
@@ -9619,10 +5180,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_ever_methamphetamine_users_assad
+p_ever_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_ever_methamphetamine_users_assad
+p_ever_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9638,16 +5199,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_methamphetamine_users_assad
+n_past_month_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_methamphetamine_users_assad
+n_past_month_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-219 - 1390
+219 - 2048
 </td>
 <td style="text-align:left;">
 </td>
@@ -9657,10 +5218,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_methamphetamine_users_assad
+p_past_month_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_methamphetamine_users_assad
+p_past_month_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -9676,16 +5237,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_week_methamphetamine_users_assad
+n_past_week_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_week_methamphetamine_users_assad
+n_past_week_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-219 - 1391
+219 - 2052
 </td>
 <td style="text-align:left;">
 </td>
@@ -9695,16 +5256,16 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_week_methamphetamine_users_assad
+p_past_week_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_week_methamphetamine_users_assad
+p_past_week_methamphetamine_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-0 - 1.6
+0 - 1.4
 </td>
 <td style="text-align:left;">
 </td>
@@ -9808,185 +5369,7 @@ character
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-12-12, 13-13, 14-14, 15-15, 16-16, 17-17, 12-15, 16-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-n_ever_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1167 - 6505
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-p_ever_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1.9 - 27.5
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-n_past_month_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1166 - 6472
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-p_past_month_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-1.1 - 8.4
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-Data Dictionary for ASSAD_194_e_cigarettes_National_age_range.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-class
-</th>
-<th style="text-align:left;">
-range
-</th>
-<th style="text-align:left;">
-unique_values
-</th>
-<th style="text-align:right;">
-n_missing_values
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-0 - 0
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2017 - 2017
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-male, female
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-12-15, 16-17
+12-12, 13-13, 14-14, 15-15, 16-16, 17-17
 </td>
 <td style="text-align:right;">
 0
@@ -10003,7 +5386,7 @@ n_ever_e.cigarette_users_ASSAD
 integer
 </td>
 <td style="text-align:left;">
-2718 - 6505
+1167 - 9223
 </td>
 <td style="text-align:left;">
 </td>
@@ -10022,184 +5405,6 @@ p_ever_e.cigarette_users_ASSAD
 numeric
 </td>
 <td style="text-align:left;">
-7.2 - 27.4
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_past_month_e.cigarette_users_ASSAD
-</td>
-<td style="text-align:left;">
-n_past_month_e.cigarette_users_ASSAD
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2716 - 6472
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_past_month_e.cigarette_users_ASSAD
-</td>
-<td style="text-align:left;">
-p_past_month_e.cigarette_users_ASSAD
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
-2.6 - 7.5
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-</tbody>
-</table>
-Data Dictionary for ASSAD_194_e_cigarettes_National_single_age.csv :
-<table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="text-align:left;">
-</th>
-<th style="text-align:left;">
-variable
-</th>
-<th style="text-align:left;">
-class
-</th>
-<th style="text-align:left;">
-range
-</th>
-<th style="text-align:left;">
-unique_values
-</th>
-<th style="text-align:right;">
-n_missing_values
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-Australia
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-0 - 0
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-calendar_year
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-2017 - 2017
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-sex
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-male, female
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-age_group
-</td>
-<td style="text-align:left;">
-character
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-12-12, 13-13, 14-14, 15-15, 16-16, 17-17, 12-15, 16-17
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-n_ever_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-n_ever_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-integer
-</td>
-<td style="text-align:left;">
-1167 - 6505
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-p_ever_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-p_ever_e.cigarette_users_assad
-</td>
-<td style="text-align:left;">
-numeric
-</td>
-<td style="text-align:left;">
 1.9 - 27.5
 </td>
 <td style="text-align:left;">
@@ -10210,16 +5415,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_e.cigarette_users_assad
+n_past_month_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_e.cigarette_users_assad
+n_past_month_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-1166 - 6472
+1166 - 9189
 </td>
 <td style="text-align:left;">
 </td>
@@ -10229,10 +5434,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_e.cigarette_users_assad
+p_past_month_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_e.cigarette_users_assad
+p_past_month_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -10283,7 +5488,7 @@ STE_CODE16
 integer
 </td>
 <td style="text-align:left;">
-1 - 8
+1 - 6
 </td>
 <td style="text-align:left;">
 </td>
@@ -10342,7 +5547,7 @@ character
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-12-15, 16-17
+12-17, 12-15, 16-17
 </td>
 <td style="text-align:right;">
 0
@@ -10350,16 +5555,16 @@ character
 </tr>
 <tr>
 <td style="text-align:left;">
-n_ever_e.cigarette_users_assad
+n_ever_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_ever_e.cigarette_users_assad
+n_ever_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-216 - 1440
+216 - 2039
 </td>
 <td style="text-align:left;">
 </td>
@@ -10369,16 +5574,16 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_ever_e.cigarette_users_assad
+p_ever_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_ever_e.cigarette_users_assad
+p_ever_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
 </td>
 <td style="text-align:left;">
-4.3 - 33.4
+4.8 - 33.4
 </td>
 <td style="text-align:left;">
 </td>
@@ -10388,16 +5593,16 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_past_month_e.cigarette_users_assad
+n_past_month_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
-n_past_month_e.cigarette_users_assad
+n_past_month_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
 integer
 </td>
 <td style="text-align:left;">
-216 - 1433
+216 - 2038
 </td>
 <td style="text-align:left;">
 </td>
@@ -10407,10 +5612,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_past_month_e.cigarette_users_assad
+p_past_month_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
-p_past_month_e.cigarette_users_assad
+p_past_month_e.cigarette_users_ASSAD
 </td>
 <td style="text-align:left;">
 numeric
@@ -10501,12 +5706,13 @@ exist</li>
   cat(&quot;Error: Values coded as 0 (Australia) found in a dataset that is not national:&quot;, df_name, &quot;\n&quot;)
   }
 }</code></pre>
-<pre><code>## Error: column names in ASSAD_191_smoking_National_age_range.csv are not in snake case format (lowercase words separated by underscores)
-## Error: column names in ASSAD_192_alcohol_National_age_range.csv are not in snake case format (lowercase words separated by underscores)
-## Error: column names in ASSAD_193_drugs_National_age_range.csv are not in snake case format (lowercase words separated by underscores)
+<pre><code>## Error: column names in ASSAD_191_smoking_National.csv are not in snake case format (lowercase words separated by underscores)
+## Error: column names in ASSAD_191_smoking_STE.csv are not in snake case format (lowercase words separated by underscores)
+## Error: column names in ASSAD_192_alcohol_National.csv are not in snake case format (lowercase words separated by underscores)
+## Error: column names in ASSAD_192_alcohol_STE.csv are not in snake case format (lowercase words separated by underscores)
+## Error: column names in ASSAD_193_drugs_National.csv are not in snake case format (lowercase words separated by underscores)
+## Error: column names in ASSAD_193_drugs_STE.csv are not in snake case format (lowercase words separated by underscores)
 ## Error: column names in ASSAD_194_e_cigarettes_National.csv are not in snake case format (lowercase words separated by underscores)
-## Error: column names in ASSAD_194_e_cigarettes_National_age_range.csv are not in snake case format (lowercase words separated by underscores)
-## Error: column names in ASSAD_194_e_cigarettes_National_single_age.csv are not in snake case format (lowercase words separated by underscores)
 ## Error: column names in ASSAD_194_e_cigarettes_STE.csv are not in snake case format (lowercase words separated by underscores)</code></pre>
 <pre><code>                                                                                      STOP HERE AND CHECK!!!</code></pre>
 <p>Did you detect any formatting errors?</p>
@@ -10538,20 +5744,12 @@ data frame</p>
   }
 }</code></pre>
 <pre><code>## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_191_smoking_National.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_191_smoking_National_age_range.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_191_smoking_National_single_age.csv 
 ## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_191_smoking_STE.csv 
 ## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_192_alcohol_National.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_192_alcohol_National_age_range.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_192_alcohol_National_single_age.csv 
 ## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_192_alcohol_STE.csv 
 ## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_193_drugs_National.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_193_drugs_National_age_range.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_193_drugs_National_single_age.csv 
 ## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_193_drugs_STE.csv 
 ## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_194_e_cigarettes_National.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_194_e_cigarettes_National_age_range.csv 
-## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_194_e_cigarettes_National_single_age.csv 
 ## You don&#39;t have to worry about cell suppression on &#39;uncertainty&#39; in ASSAD_194_e_cigarettes_STE.csv</code></pre>
 <p>Run this code to… detect columns that are numeric and where you might
 need to apply cell suppression</p>
@@ -10583,90 +5781,48 @@ for (file in csv_files) {
   }
   
 }</code></pre>
-<pre><code>## For file ASSAD_191_smoking_National.csv, check values in column &#39;n_ever_smokers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_National.csv, check values in column &#39;n_past_month_smokers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_National.csv, check values in column &#39;n_past_week_smokers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_National_age_range.csv, check values in column &#39;n_ever_smokers_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_National_age_range.csv, check values in column &#39;n_past_month_smokers_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_National_age_range.csv, check values in column &#39;n_past_week_smokers_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_National_single_age.csv, check values in column &#39;n_ever_smokers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_National_single_age.csv, check values in column &#39;n_past_month_smokers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_National_single_age.csv, check values in column &#39;n_past_week_smokers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_STE.csv, check values in column &#39;n_ever_smokers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_STE.csv, check values in column &#39;n_past_month_smokers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_191_smoking_STE.csv, check values in column &#39;n_past_week_smokers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_parents&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_sibling&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_took_from_home&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_bought_themselves&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_ever_drinkers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_past_month_drinkers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_past_week_drinkers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_age_range.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_parents&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_age_range.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_sibling&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_age_range.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_took_from_home&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_age_range.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_bought_themselves&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_age_range.csv, check values in column &#39;n_ever_drinkers_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_age_range.csv, check values in column &#39;n_past_month_drinkers_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_age_range.csv, check values in column &#39;n_past_week_drinkers_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_single_age.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_parents&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_single_age.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_sibling&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_single_age.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_took_from_home&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_single_age.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_bought_themselves&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_single_age.csv, check values in column &#39;n_ever_drinkers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_single_age.csv, check values in column &#39;n_past_month_drinkers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_National_single_age.csv, check values in column &#39;n_past_week_drinkers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_parents&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_sibling&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_took_from_home&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_bought_themselves&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_ever_drinkers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_past_month_drinkers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_past_week_drinkers_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_ever_cannabis_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_month_cannabis_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_week_cannabis_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_ever_dexamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_month_dexamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_week_dexamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_ever_methamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_month_methamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_week_methamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_age_range.csv, check values in column &#39;n_ever_cannabis_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_age_range.csv, check values in column &#39;n_past_month_cannabis_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_age_range.csv, check values in column &#39;n_past_week_cannabis_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_age_range.csv, check values in column &#39;n_ever_dexamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_age_range.csv, check values in column &#39;n_past_month_dexamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_age_range.csv, check values in column &#39;n_past_week_dexamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_age_range.csv, check values in column &#39;n_ever_methamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_age_range.csv, check values in column &#39;n_past_month_methamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_age_range.csv, check values in column &#39;n_past_week_methamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_single_age.csv, check values in column &#39;n_ever_cannabis_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_single_age.csv, check values in column &#39;n_past_month_cannabis_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_single_age.csv, check values in column &#39;n_past_week_cannabis_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_single_age.csv, check values in column &#39;n_ever_dexamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_single_age.csv, check values in column &#39;n_past_month_dexamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_single_age.csv, check values in column &#39;n_past_week_dexamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_single_age.csv, check values in column &#39;n_ever_methamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_single_age.csv, check values in column &#39;n_past_month_methamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_National_single_age.csv, check values in column &#39;n_past_week_methamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_ever_cannabis_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_month_cannabis_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_week_cannabis_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_ever_dexamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_month_dexamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_week_dexamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_ever_methamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_month_methamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_week_methamphetamine_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_194_e_cigarettes_National.csv, check values in column &#39;n_ever_e.cigarette_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_194_e_cigarettes_National.csv, check values in column &#39;n_past_month_e.cigarette_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_194_e_cigarettes_National_age_range.csv, check values in column &#39;n_ever_e.cigarette_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_194_e_cigarettes_National_age_range.csv, check values in column &#39;n_past_month_e.cigarette_users_ASSAD&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_194_e_cigarettes_National_single_age.csv, check values in column &#39;n_ever_e.cigarette_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_194_e_cigarettes_National_single_age.csv, check values in column &#39;n_past_month_e.cigarette_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_194_e_cigarettes_STE.csv, check values in column &#39;n_ever_e.cigarette_users_assad&#39; for cell suppression</code></pre>
-<pre><code>## For file ASSAD_194_e_cigarettes_STE.csv, check values in column &#39;n_past_month_e.cigarette_users_assad&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_191_smoking_National.csv, check values in column &#39;n_ever_smokers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_191_smoking_National.csv, check values in column &#39;n_past_month_smokers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_191_smoking_National.csv, check values in column &#39;n_past_week_smokers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_191_smoking_STE.csv, check values in column &#39;n_ever_smokers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_191_smoking_STE.csv, check values in column &#39;n_past_month_smokers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_191_smoking_STE.csv, check values in column &#39;n_past_week_smokers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_ever_drinkers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_past_month_drinkers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_past_week_drinkers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_parents_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_sibling_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_National.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_ever_drinkers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_past_month_drinkers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_past_week_drinkers_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_parents_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_sibling_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_192_alcohol_STE.csv, check values in column &#39;n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_ever_cannabis_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_month_cannabis_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_week_cannabis_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_ever_dexamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_month_dexamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_week_dexamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_ever_methamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_month_methamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_National.csv, check values in column &#39;n_past_week_methamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_ever_cannabis_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_month_cannabis_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_week_cannabis_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_ever_dexamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_month_dexamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_week_dexamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_ever_methamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_month_methamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_193_drugs_STE.csv, check values in column &#39;n_past_week_methamphetamine_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_194_e_cigarettes_National.csv, check values in column &#39;n_ever_e.cigarette_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_194_e_cigarettes_National.csv, check values in column &#39;n_past_month_e.cigarette_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_194_e_cigarettes_STE.csv, check values in column &#39;n_ever_e.cigarette_users_ASSAD&#39; for cell suppression</code></pre>
+<pre><code>## For file ASSAD_194_e_cigarettes_STE.csv, check values in column &#39;n_past_month_e.cigarette_users_ASSAD&#39; for cell suppression</code></pre>
 <p>Once you understand what you need to do with cell suppression (which
 columns represent count values in your series of data set AND if you
 have uncertainty columns to deal with) customise the code below to apply
