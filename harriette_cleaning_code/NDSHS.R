@@ -39,7 +39,7 @@ coln1 <- c("STE_CODE16", "calendar_year",
 
 
 coln2 <- c("STE_CODE16", "calendar_year", 
-           "n_age_of_initiation_of_smoking", "n_age_of_initiation_of_drinking",
+           "m_age_of_initiation_of_smoking", "m_age_of_initiation_of_drinking",
            "p_type_of_alcohol_usually_consumed_bottled_wine", 
            "p_type_of_alcohol_usually_consumed_regular_strength_beer", 
            "p_type_of_alcohol_usually_consumed_mid_strength_beer_3%_to3.9%_alcohol", 
@@ -49,8 +49,8 @@ coln2 <- c("STE_CODE16", "calendar_year",
            "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle",
            "p_type_of_alcohol_usually_consumed_cider", 
            "p_type_of_alcohol_usually_consumed_other", 
-           "n_age_of_initiation_of_illicit_drug_use_lifetime", 
-           "n_age_of_initiation_of_illicit_drug_use_recent",
+           "m_age_of_initiation_of_illicit_drug_use_lifetime", 
+           "m_age_of_initiation_of_illicit_drug_use_recent",
            "p_cannabis_use_frequency_every_day", 
            "p_cannabis_use_frequency_once_a_week_or_more", 
            "p_cannabis_use_frequency_about_once_a_month", 
@@ -228,7 +228,7 @@ df1_newcols <- df1_newcols %>%
 
 
 # REMOVING UNWANTED COLUMNS, TO MATCH ABOVE
-df2_newcols <- df2_newcols[, !grepl("n_age_of_initiation_of_illicit_drug_use_lifetime|n_age_of_initiation_of_smoking|mid_strength_beer|low_alcohol_beer|p_cannabis_use_frequency_every_day|usually_consumed_cider|usually_consumed_other", colnames(df2_newcols))]
+df2_newcols <- df2_newcols[, !grepl("m_age_of_initiation_of_illicit_drug_use_lifetime|m_age_of_initiation_of_smoking|mid_strength_beer|low_alcohol_beer|p_cannabis_use_frequency_every_day|usually_consumed_cider|usually_consumed_other", colnames(df2_newcols))]
 
 # STILL TO CHANGE 0 TO NA and 3 TO 2:
 df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits <- rowSums(
@@ -240,11 +240,11 @@ df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_uncertainty <- 
         as.numeric(df2_newcols$p_type_of_alcohol_usually_consumed_pre_mixed_spirits_in_a_bottle_uncertainty)), na.rm=T)
 
 
-df2_newcols$p_cannabis_use_frequency_every_few_months_or_more <- rowSums(
+df2_newcols$p_cannabis_use_frequency_every_few_months_or_less <- rowSums(
   cbind(as.numeric(df2_newcols$p_cannabis_use_frequency_every_few_months),
         as.numeric(df2_newcols$p_cannabis_use_frequency_once_or_twice_a_year)), na.rm=T)
 
-df2_newcols$p_cannabis_use_frequency_every_few_months_or_more_uncertainty <- rowSums(
+df2_newcols$p_cannabis_use_frequency_every_few_months_or_less_uncertainty <- rowSums(
   cbind(as.numeric(df2_newcols$p_cannabis_use_frequency_every_few_months_uncertainty),
         as.numeric(df2_newcols$p_cannabis_use_frequency_once_or_twice_a_year_uncertainty)), na.rm=T)
 
@@ -318,8 +318,8 @@ drinking2 <- c("p_type_of_alcohol_usually_consumed_bottled_wine",
                "p_type_of_alcohol_usually_consumed_pre_mixed_spirits",
                "p_type_of_alcohol_usually_consumed_pre_mixed_spirits_uncertainty")
 
-drinking3 <- c("n_age_of_initiation_of_drinking",
-               "n_age_of_initiation_of_drinking_uncertainty")
+drinking3 <- c("m_age_of_initiation_of_drinking",
+               "m_age_of_initiation_of_drinking_uncertainty")
 
 drugs1 <- c("n_ever_used_illicit_drugs",
             "n_ever_used_illicit_drugs_uncertainty",
@@ -338,14 +338,14 @@ drugs1 <- c("n_ever_used_illicit_drugs",
             "p_recently_used_cannabis",
             "p_recently_used_cannabis_uncertainty")
 
-drugs2 <- c("n_age_of_initiation_of_illicit_drug_use_recent",
-            "n_age_of_initiation_of_illicit_drug_use_recent_uncertainty",
+drugs2 <- c("m_age_of_initiation_of_illicit_drug_use_recent",
+            "m_age_of_initiation_of_illicit_drug_use_recent_uncertainty",
             "p_cannabis_use_frequency_once_a_week_or_more",
             "p_cannabis_use_frequency_once_a_week_or_more_uncertainty",
             "p_cannabis_use_frequency_about_once_a_month",
             "p_cannabis_use_frequency_about_once_a_month_uncertainty",
-            "p_cannabis_use_frequency_every_few_months_or_more",
-            "p_cannabis_use_frequency_every_few_months_or_more_uncertainty")
+            "p_cannabis_use_frequency_every_few_months_or_less",
+            "p_cannabis_use_frequency_every_few_months_or_less_uncertainty")
 
 vapes1 <- c("n_current_vaper",
            "n_current_vaper_uncertainty",
