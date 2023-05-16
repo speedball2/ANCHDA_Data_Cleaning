@@ -12,25 +12,25 @@ library(dplyr)
 library(tidyr)
 library(readr)
 ```
-Open a connection to the output file
-Set the working directory - folder with data cleaned ready for QA
+# Open a connection to the output file
+# Set the working directory - folder with data cleaned ready for QA
 
-Define a list of acceptable values for the first column
-Define a function to check if column names are in snake case format
-Define a regex pattern to check age_group format
-Define regex patterns for age_group, year_range, and calendar_year
+# Define a list of acceptable values for the first column
+# Define a function to check if column names are in snake case format
+# Define a regex pattern to check age_group format
+# Define regex patterns for age_group, year_range, and calendar_year
 
-Get a list of CSV files in the working directory
-Print the number of files in the folder and their names
+# Get a list of CSV files in the working directory
+# Print the number of files in the folder and their names
 
-initialize an empty list to store data frame
-read each CSV file into a data frame and store it in the df_list
-append the data frame to the list using the file name as the key
+#initialize an empty list to store data frame
+#read each CSV file into a data frame and store it in the df_list
+#append the data frame to the list using the file name as the key
 
 
 ```{r setup, include=FALSE}
 # Set the working directory
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/YJNMDS/") #change this path if you copy this 
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/") #change this path if you copy this 
 csv_files <- list.files(pattern=".*\\.csv$")
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
@@ -259,7 +259,7 @@ for (file in csv_files) {
   df <- read.csv(file, stringsAsFactors = FALSE)
   
   # Apply cell suppression
-  df[df[, 6] > 0 & df[, 6] < 5 & !is.na(df[, 6]), -c(1:5)] <- 9999999
+  df[df[, 6] < 5 & !is.na(df[, 6]), -c(1:5)] <- 9999999 #here i used column position 6th column to batch cell suppress
   
   # Write the modified data frame to a new CSV file in the output directory
   write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
