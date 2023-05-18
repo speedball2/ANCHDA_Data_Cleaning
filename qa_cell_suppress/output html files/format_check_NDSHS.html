@@ -11,7 +11,7 @@
 
 <meta name="author" content="Claire Boulange" />
 
-<meta name="date" content="2023-05-12" />
+<meta name="date" content="2023-05-16" />
 
 <title>format check and cell suppression on NDSH data</title>
 
@@ -359,7 +359,7 @@ display: none;
 <h1 class="title toc-ignore">format check and cell suppression on NDSH
 data</h1>
 <h4 class="author">Claire Boulange</h4>
-<h4 class="date">2023-05-12</h4>
+<h4 class="date">2023-05-16</h4>
 
 </div>
 
@@ -786,10 +786,10 @@ p_type_of_alcohol_usually_consumed_pre_mixed_spirits
 p_type_of_alcohol_usually_consumed_pre_mixed_spirits_uncertainty
 </th>
 <th style="text-align:right;">
-n_age_of_initiation_of_drinking
+m_age_of_initiation_of_drinking
 </th>
 <th style="text-align:left;">
-n_age_of_initiation_of_drinking_uncertainty
+m_age_of_initiation_of_drinking_uncertainty
 </th>
 </tr>
 </thead>
@@ -1269,10 +1269,10 @@ p_recently_used_cannabis
 p_recently_used_cannabis_uncertainty
 </th>
 <th style="text-align:right;">
-n_age_of_initiation_of_illicit_drug_use_recent
+m_age_of_initiation_of_illicit_drug_use_recent
 </th>
 <th style="text-align:right;">
-n_age_of_initiation_of_illicit_drug_use_recent_uncertainty
+m_age_of_initiation_of_illicit_drug_use_recent_uncertainty
 </th>
 <th style="text-align:right;">
 p_cannabis_use_frequency_once_a_week_or_more
@@ -1287,10 +1287,10 @@ p_cannabis_use_frequency_about_once_a_month
 p_cannabis_use_frequency_about_once_a_month_uncertainty
 </th>
 <th style="text-align:right;">
-p_cannabis_use_frequency_every_few_months_or_more
+p_cannabis_use_frequency_every_few_months_or_less
 </th>
 <th style="text-align:right;">
-p_cannabis_use_frequency_every_few_months_or_more_uncertainty
+p_cannabis_use_frequency_every_few_months_or_less_uncertainty
 </th>
 </tr>
 </thead>
@@ -2129,8 +2129,8 @@ p_type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs,
 p_type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs_uncertainty,
 p_type_of_alcohol_usually_consumed_pre_mixed_spirits,
 p_type_of_alcohol_usually_consumed_pre_mixed_spirits_uncertainty,
-n_age_of_initiation_of_drinking,
-n_age_of_initiation_of_drinking_uncertainty
+m_age_of_initiation_of_drinking,
+m_age_of_initiation_of_drinking_uncertainty
 </td>
 </tr>
 <tr>
@@ -2148,14 +2148,14 @@ p_recently_used_illicit_drugs,
 p_recently_used_illicit_drugs_uncertainty, n_recently_used_cannabis,
 n_recently_used_cannabis_uncertainty, p_recently_used_cannabis,
 p_recently_used_cannabis_uncertainty,
-n_age_of_initiation_of_illicit_drug_use_recent,
-n_age_of_initiation_of_illicit_drug_use_recent_uncertainty,
+m_age_of_initiation_of_illicit_drug_use_recent,
+m_age_of_initiation_of_illicit_drug_use_recent_uncertainty,
 p_cannabis_use_frequency_once_a_week_or_more,
 p_cannabis_use_frequency_once_a_week_or_more_uncertainty,
 p_cannabis_use_frequency_about_once_a_month,
 p_cannabis_use_frequency_about_once_a_month_uncertainty,
-p_cannabis_use_frequency_every_few_months_or_more,
-p_cannabis_use_frequency_every_few_months_or_more_uncertainty
+p_cannabis_use_frequency_every_few_months_or_less,
+p_cannabis_use_frequency_every_few_months_or_less_uncertainty
 </td>
 </tr>
 <tr>
@@ -2855,10 +2855,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-n_age_of_initiation_of_drinking
+m_age_of_initiation_of_drinking
 </td>
 <td style="text-align:left;">
-n_age_of_initiation_of_drinking
+m_age_of_initiation_of_drinking
 </td>
 <td style="text-align:left;">
 numeric
@@ -2874,10 +2874,10 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_age_of_initiation_of_drinking_uncertainty
+m_age_of_initiation_of_drinking_uncertainty
 </td>
 <td style="text-align:left;">
-n_age_of_initiation_of_drinking_uncertainty
+m_age_of_initiation_of_drinking_uncertainty
 </td>
 <td style="text-align:left;">
 logical
@@ -3291,10 +3291,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-n_age_of_initiation_of_illicit_drug_use_recent
+m_age_of_initiation_of_illicit_drug_use_recent
 </td>
 <td style="text-align:left;">
-n_age_of_initiation_of_illicit_drug_use_recent
+m_age_of_initiation_of_illicit_drug_use_recent
 </td>
 <td style="text-align:left;">
 numeric
@@ -3310,10 +3310,10 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-n_age_of_initiation_of_illicit_drug_use_recent_uncertainty
+m_age_of_initiation_of_illicit_drug_use_recent_uncertainty
 </td>
 <td style="text-align:left;">
-n_age_of_initiation_of_illicit_drug_use_recent_uncertainty
+m_age_of_initiation_of_illicit_drug_use_recent_uncertainty
 </td>
 <td style="text-align:left;">
 integer
@@ -3405,10 +3405,10 @@ integer
 </tr>
 <tr>
 <td style="text-align:left;">
-p_cannabis_use_frequency_every_few_months_or_more
+p_cannabis_use_frequency_every_few_months_or_less
 </td>
 <td style="text-align:left;">
-p_cannabis_use_frequency_every_few_months_or_more
+p_cannabis_use_frequency_every_few_months_or_less
 </td>
 <td style="text-align:left;">
 numeric
@@ -3424,10 +3424,10 @@ numeric
 </tr>
 <tr>
 <td style="text-align:left;">
-p_cannabis_use_frequency_every_few_months_or_more_uncertainty
+p_cannabis_use_frequency_every_few_months_or_less_uncertainty
 </td>
 <td style="text-align:left;">
-p_cannabis_use_frequency_every_few_months_or_more_uncertainty
+p_cannabis_use_frequency_every_few_months_or_less_uncertainty
 </td>
 <td style="text-align:left;">
 integer
@@ -3836,43 +3836,183 @@ for (file in csv_files) {
 <pre><code>## For file NDSHS_191_smoking_STE.csv, check values in column &#39;n_never_smoked&#39; for cell suppression</code></pre>
 <pre><code>## For file NDSHS_192_alcohol_STE.csv, check values in column &#39;n_current_drinker&#39; for cell suppression</code></pre>
 <pre><code>## For file NDSHS_192_alcohol_STE.csv, check values in column &#39;n_never_drinker&#39; for cell suppression</code></pre>
-<pre><code>## For file NDSHS_192_alcohol_STE.csv, check values in column &#39;n_age_of_initiation_of_drinking&#39; for cell suppression</code></pre>
 <pre><code>## For file NDSHS_193_drugs_STE.csv, check values in column &#39;n_ever_used_illicit_drugs&#39; for cell suppression</code></pre>
 <pre><code>## For file NDSHS_193_drugs_STE.csv, check values in column &#39;n_never_used_illicit_drugs&#39; for cell suppression</code></pre>
 <pre><code>## For file NDSHS_193_drugs_STE.csv, check values in column &#39;n_recently_used_illicit_drugs&#39; for cell suppression</code></pre>
 <pre><code>## For file NDSHS_193_drugs_STE.csv, check values in column &#39;n_recently_used_cannabis&#39; for cell suppression</code></pre>
-<pre><code>## For file NDSHS_193_drugs_STE.csv, check values in column &#39;n_age_of_initiation_of_illicit_drug_use_recent&#39; for cell suppression</code></pre>
-<pre><code>## For file NDSHS_193_drugs_STE.csv, check values in column &#39;n_age_of_initiation_of_illicit_drug_use_recent_uncertainty&#39; for cell suppression</code></pre>
 <pre><code>## For file NDSHS_194_e_cigarettes_STE.csv, check values in column &#39;n_current_vaper&#39; for cell suppression</code></pre>
 <pre><code>## For file NDSHS_194_e_cigarettes_STE.csv, check values in column &#39;n_never_vaped&#39; for cell suppression</code></pre>
+<pre class="r"><code>cat(&quot;Checking for columns with values 1, 2, 3, or 4:\n\n&quot;)</code></pre>
+<pre><code>## Checking for columns with values 1, 2, 3, or 4:</code></pre>
+<pre class="r"><code># Define the pattern to match column names
+pattern &lt;- &quot;^n_&quot;
+
+# Define the values to check for
+values_to_check &lt;- c(1, 2, 3, 4)
+
+# Variable to keep track of whether values are found
+values_found &lt;- FALSE
+
+# Variable to store column names with values in the specified range
+columns_with_values &lt;- character()
+
+# Loop through each CSV file and check for columns with names matching the pattern
+for (file in csv_files) {
+
+  # Read in the CSV file
+  df &lt;- read.csv(file, stringsAsFactors = FALSE)
+
+  # Get the names of columns with names matching the pattern
+  matching_cols &lt;- names(df)[grepl(pattern, names(df))]
+
+  # Loop through each matching column and check for values 1, 2, 3, or 4
+  for (col in matching_cols) {
+    if (any(df[[col]] %in% values_to_check)) {
+      message(paste0(&quot;For file &quot;, basename(file), &quot;, values 1, 2, 3, or 4 found in column &#39;&quot;, col, &quot;&#39;&quot;))
+      values_found &lt;- TRUE
+      columns_with_values &lt;- c(columns_with_values, col)
+    }
+  }
+
+}
+
+# If no values in the specified range are found, print a message
+if (!values_found) {
+  cat(&quot;No values 1, 2, 3, or 4 found in columns with &#39;n_&#39; prefix.\n&quot;)
+} else {
+  cat(&quot;Columns with values 1, 2, 3, or 4 in columns with &#39;n_&#39; prefix:\n&quot;)
+  cat(columns_with_values, &quot;\n&quot;)
+}</code></pre>
+<pre><code>## No values 1, 2, 3, or 4 found in columns with &#39;n_&#39; prefix.</code></pre>
 <p>Once you understand what you need to do with cell suppression (which
 columns represent count values in your series of data set AND if you
 have uncertainty columns to deal with) customise the code below to apply
-cell suppression (keep the first 4 columns as they are)</p>
-<p>Loop through each CSV file and apply cell suppression - I used the
-outputs above to specify which column contain the count values</p>
-<p>Make sure you un-comment the write csv line #```{r} for (file in
-csv_files) {</p>
-<p># Read in the CSV file df &lt;- read.csv(file, stringsAsFactors =
-FALSE)</p>
-<p># Check if the n_full_time_student column exists in the data frame if
-(“n_full_time_student” %in% colnames(df)) { # Apply cell suppression to
-n_full_time_student column df[df[,“n_full_time_student”] %in% 0:4 &amp;
-!is.na(df[,“n_full_time_student”]), -c(1:4)] &lt;- 9999999 } else { #
-Print a message to indicate that the n_full_time_student column was not
-found cat(“Skipping file”, file, “because it does not contain the
-n_full_time_student column.”) }</p>
-<p># Check if the n_part_time_student column exists in the data frame if
-(“n_part_time_student” %in% colnames(df)) { # Apply cell suppression to
-n_part_time_student column df[df[,“n_part_time_student”] %in% 0:4 &amp;
-!is.na(df[,“n_part_time_student”]), -c(1:4)] &lt;- 9999999 } else { #
-Print a message to indicate that the n_part_time_student column was not
-found cat(“Skipping file”, file, “because it does not contain the
-n_part_time_student column.”) }</p>
-<p># Write the modified data frame to a new CSV file in the output
-directory #write.csv(df, file.path(output_dir, basename(file)),
-row.names = FALSE)</p>
-<p>} ```</p>
+cell suppression</p>
+<pre class="r"><code># List the CSV files in the directory
+csv_files &lt;- list.files(input_dir, pattern = &quot;*.csv&quot;, full.names = TRUE)
+
+for (file in csv_files) {
+  
+  # Read the CSV file
+  
+  df &lt;- read.csv(file, stringsAsFactors = FALSE)
+  
+  
+  
+  # Get the column names
+  
+  column_names &lt;- colnames(df)
+  
+  
+  
+  # Loop through each column
+  
+  for (i in 2:length(column_names)) {
+    
+    # Check if the column matches the pattern &quot;uncertainty&quot;
+    
+    if (grepl(&quot;_uncertainty&quot;, column_names[i])) {
+      
+      suppressed_column &lt;- i - 1
+      
+      #looping through each cell
+      
+      for(j in 1:nrow(df)){
+        # Check if the value in the uncertainty column is 2
+        if (!is.na(df[[i]][j]) &amp;&amp; df[[i]][j] == 2) {
+          
+          # Suppress the column on the left of the uncertainty column
+          
+          df[j, suppressed_column] &lt;- 9999999
+          
+          print(paste(&quot;Suppressed column&quot;, column_names[suppressed_column]))
+          
+        }
+        
+      }
+      print(paste(&quot;Suppressed column&quot;, column_names[suppressed_column]))
+      
+      
+    }
+    
+  }
+  
+  
+  # Remove columns containing the word &quot;uncertainty&quot;
+  
+  df &lt;- df[, !grepl(&quot;uncertainty&quot;, column_names)]
+  
+  
+  
+  # Write the modified data frame to a new CSV file in the output directory
+  
+  write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
+  
+  
+  
+  print(paste(&quot;Modified file&quot;, basename(file), &quot;has been written&quot;))
+  
+}</code></pre>
+<pre><code>## [1] &quot;Suppressed column n_current_smoker&quot;
+## [1] &quot;Suppressed column p_current_smoker&quot;
+## [1] &quot;Suppressed column n_never_smoked&quot;
+## [1] &quot;Suppressed column p_never_smoked&quot;
+## [1] &quot;Modified file NDSHS_191_smoking_STE.csv has been written&quot;
+## [1] &quot;Suppressed column n_current_drinker&quot;
+## [1] &quot;Suppressed column p_current_drinker&quot;
+## [1] &quot;Suppressed column n_never_drinker&quot;
+## [1] &quot;Suppressed column p_never_drinker&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_bottled_wine&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_bottled_wine&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_bottled_wine&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_bottled_wine&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_regular_strength_beer&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_regular_strength_beer&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_bottled_spirits_and_liqueurs&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column p_type_of_alcohol_usually_consumed_pre_mixed_spirits&quot;
+## [1] &quot;Suppressed column m_age_of_initiation_of_drinking&quot;
+## [1] &quot;Modified file NDSHS_192_alcohol_STE.csv has been written&quot;
+## [1] &quot;Suppressed column n_ever_used_illicit_drugs&quot;
+## [1] &quot;Suppressed column p_ever_used_illicit_drugs&quot;
+## [1] &quot;Suppressed column n_never_used_illicit_drugs&quot;
+## [1] &quot;Suppressed column p_never_used_illicit_drugs&quot;
+## [1] &quot;Suppressed column n_recently_used_illicit_drugs&quot;
+## [1] &quot;Suppressed column p_recently_used_illicit_drugs&quot;
+## [1] &quot;Suppressed column n_recently_used_cannabis&quot;
+## [1] &quot;Suppressed column p_recently_used_cannabis&quot;
+## [1] &quot;Suppressed column m_age_of_initiation_of_illicit_drug_use_recent&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_once_a_week_or_more&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_about_once_a_month&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_about_once_a_month&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_about_once_a_month&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_about_once_a_month&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_about_once_a_month&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_every_few_months_or_less&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_every_few_months_or_less&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_every_few_months_or_less&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_every_few_months_or_less&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_every_few_months_or_less&quot;
+## [1] &quot;Suppressed column p_cannabis_use_frequency_every_few_months_or_less&quot;
+## [1] &quot;Modified file NDSHS_193_drugs_STE.csv has been written&quot;
+## [1] &quot;Suppressed column n_current_vaper&quot;
+## [1] &quot;Suppressed column p_current_vaper&quot;
+## [1] &quot;Suppressed column p_current_vaper&quot;
+## [1] &quot;Suppressed column p_current_vaper&quot;
+## [1] &quot;Suppressed column p_current_vaper&quot;
+## [1] &quot;Suppressed column p_current_vaper&quot;
+## [1] &quot;Suppressed column p_current_vaper&quot;
+## [1] &quot;Suppressed column n_never_vaped&quot;
+## [1] &quot;Suppressed column p_never_vaped&quot;
+## [1] &quot;Modified file NDSHS_194_e_cigarettes_STE.csv has been written&quot;</code></pre>
 
 
 
