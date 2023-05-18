@@ -141,6 +141,7 @@ df1 <- cleaning (path = "Table 42bN_FT_andPT_Students, 2006-2022.xlsx",
 df1 <- df1[, -c(3,7:9)]
 
 
+
 # Convert columns to numeric
 df1$`Full-time Student count` <- as.numeric(df1$`Full-time Student count`)
 df1$`Part-time Student count` <- as.numeric(df1$`Part-time Student count`)
@@ -173,7 +174,7 @@ df1 <- df1[, corder]
 
 
 
-# School continuation Rates --------------------------------------------------
+# School Continuation Rates --------------------------------------------------
 
 df2 <- cleaning (path = "Table 62a Capped Apparent Continuation Rates, 2011-2022.xlsx",
                  sht = 2,
@@ -184,7 +185,7 @@ names(df2) <- c("calendar_year", "STE_CODE16", "sex", "age_group", "p_apparent_c
 
 corder <- c("STE_CODE16","calendar_year", "age_group","sex", "p_apparent_continuation_rate")
 
-df2 <- df2[,corder]
+df2 <- df2[df2$STE_CODE16 != 0, corder]
 # Convert columns to numeric
 df2$p_apparent_continuation_rate <- as.numeric(df2$p_apparent_continuation_rate)
 # Divide p_apparent_continuation_rate by 100
@@ -192,18 +193,14 @@ df2 <- df2 %>%
   mutate(p_apparent_continuation_rate = round(p_apparent_continuation_rate / 100, 2))
 
 
-# School retention Rates -----------------------------------------------------
+# School Apparent retention Rates -----------------------------------------------------
 
-df3 <- cleaning(path = "Table 63a_ARetention Rates_Single year_grade.xlsx",
-                sht = 2,
-                range = "A5:H8105",
-                col = T)
+df3 <- cleaning (path = "Table 64a Capped Apparent Retention Rates, 2011-2022.xlsx",
+                 sht = 2,
+                 range = "A5:H8105",
+                 col = T)
 
-#REMOVING COLUMNS
-
-df3 <- df3[, -c(3, 6:7)]
-
-#COLUMNS REMOVED: "Affiliation" , "Aboriginal and Torres Strait Islander ARR"
+df3 <- df3[, -c(3, 6, 7)]
 
 names(df3) <- c("calendar_year", "STE_CODE16", "sex", "school_grade", "apparent_retention_rate")
 
@@ -211,15 +208,17 @@ df3$age_group <- NA
 
 corder <- c("STE_CODE16", "calendar_year","sex", "age_group", "school_grade", "apparent_retention_rate")
 
-df3 <- df3[,corder]
+df3 <- df3[df3$STE_CODE16 != 0, corder]
+#unique values in Year range
+#a year 7/8 - year 9"  "b year 7/8 - year 10" "c year 7/8 - year 11" "d year 7/8 - year 12" "e year 10 - year 12" 
 
 if("school_grade" %in% names(df3)){
   df3$school_grade <- recode(df3$school_grade,
-                             "a year 7 - year 8" = "year 7 - year 8",
-                             "b year 8 - year 9" = "year 8 - year 9",
-                             "c year 9 - year 10" = "year 9 - year 10",
-                             "d year 10 - year 11" = "year 10 - year 11",
-                             "e year 11 - year 12" = "year 11 - year 12")
+                             "a year 7/8 - year 9" = "year 7/8 - year 9",
+                             "b year 7/8 - year 10" = "year 7/8 - year 10",
+                             "c year 7/8 - year 11" = "year 7/8 - year 11",
+                             "d year 10 - year 11" = "year 7/8 - year 12",
+                             "e year 10 - year 12" = "year 10 - year 12")
   
   
   #unique(df1$col) <- check above worked, col = col want checked
@@ -227,16 +226,16 @@ if("school_grade" %in% names(df3)){
 
 
 # Adding column based on other column:
-
+# Adding column based on other column:
 df3 <- df3 %>%
   mutate(age_group = case_when(
-    endsWith(school_grade, "8") ~ "13-14",
-    endsWith(school_grade, "9") ~ "14-15",
-    endsWith(school_grade, "10") ~ "15-16",
-    endsWith(school_grade, "11") ~ "16-17",
-    endsWith(school_grade, "12") ~ "17-18",
+    grepl("year 7/8 - year 9", school_grade) ~ "12-14",
+    grepl("year 7/8 - year 10", school_grade) ~ "12-15",
+    grepl("year 7/8 - year 11", school_grade) ~ "12-16",
+    grepl("year 7/8 - year 12", school_grade) ~ "12-17",
+    grepl("year 10 - year 12", school_grade) ~ "15-17",
+    TRUE ~ ""
   ))
-
 
 # -------------------------------------- #
 # --- year 12 and year 5 attendance  --- #
@@ -308,8 +307,8 @@ df3 <- df3[!grepl("Persons", df3$sex),]
 # --- write csv --- #
 # ----------------- #
 
-write.csv(df1, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
-write.csv(df2, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_463_continuation_rates_STE.csv", row.names = F)
-write.csv(df3, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_461_retention_rate_STE.csv", row.names = F)
-write.csv(df4_y12, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_462_school_completion_year_12_STE.csv.csv", row.names = F)
-write.csv(df4_y5, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_411_attendance_at_primary_school_year_5_STE.csv", row.names = F)
+write.csv(df1, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_school_473_full_time_and_part_time_students_STE.csv", row.names = F)
+write.csv(df2, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_school_463_continuation_rates_STE.csv", row.names = F)
+write.csv(df3, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_school_461_retention_rate_STE.csv", row.names = F)
+write.csv(df4_y12, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_school_462_school_completion_year_12_STE.csv.csv", row.names = F)
+write.csv(df4_y5, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_school_411_attendance_at_primary_school_year_5_STE.csv", row.names = F)

@@ -58,10 +58,10 @@ list_of_tables <- lapply(naplan_results, function(x) {
            domain = Domain # Rename column 7 to "domain"
     ) %>% 
     mutate(age_group = case_when(
-      student_grade_level == "Year 3" ~ "8-9",
-      student_grade_level == "Year 5" ~ "10-11",
-      student_grade_level == "Year 7" ~ "12-13",
-      student_grade_level == "Year 9" ~ "14-15",
+      student_grade_level == "Year 3" ~ "8-8",
+      student_grade_level == "Year 5" ~ "10-10",
+      student_grade_level == "Year 7" ~ "12-12",
+      student_grade_level == "Year 9" ~ "14-14",
       TRUE ~ NA_character_
     ),
     sex = "all" # Add a new column called sex and set the value to "all" for all rows

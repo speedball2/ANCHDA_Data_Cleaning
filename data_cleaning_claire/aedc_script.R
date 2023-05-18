@@ -1,20 +1,4 @@
 # Title: AEDC data preparation for ANCHDA
-
-#Description: This code is written in R programming language and it is used to analyze data from the Australian Early Development Census (AEDC).
-#The AEDC is a nationwide survey conducted every three years that assesses the developmental status of children in their first year of full-time school.
-#The aim of this code is to calculate the prevalence of developmental vulnerabilities in different domains (physical health and wellbeing, social competence, emotional maturity,
-#language and cognitive skills, and communication skills and general knowledge) across different Local Government Areas (LGAs) in Australia.
-##The code first loads the necessary libraries including readxl, stringr, dplyr, purrr, and readr.
-#Then, it sets the working directory to the folder where the input data is stored, and imports the data from a csv file using the read.csv function.
-#The mutate function is then used to create new variables for each developmental domain, based on the values in the original variable for that domain.
-#For example, a new variable DOT_PHW is created based on the PHYSCategory variable, and takes a value of 1 if the PHYSCategory is 3 or 4, and 0 otherwise.
-##The code then calculates the prevalence of developmental vulnerabilities in each LGA for each developmental domain, based on the new variables created earlier.
-#For example, for the physical health and wellbeing domain, the code uses the summarize function to calculate the number and proportion of children with
-#a vulnerability in each LGA, as well as the number and proportion of children with a developmental delay or disorder (DAR),
-#and the number and proportion of children with a developmental vulnerability only (DOT). This is repeated for each developmental domain.
-##The results are stored in separate data frames LGA_df_PHW, LGA_df_SC, LGA_df_EM, LGA_df_LCS, and LGA_df_CSGK, which contain the prevalence estimates for
-#each LGA, year, and gender. These data frames are saved in separate csv files in the output folder specified by path_out.
-
 # Author: Claire Boulange
 # Date: completed on 12/04/2023
 
@@ -27,8 +11,8 @@ library(readr)
 
 #set working directory and options
 #set working directory and options
-aedc_folder <- "Z:/CDA/Claire WD/aedc/inputs/"
-path_out = "Z:/CDA/Claire WD/aedc/outputs/long/"
+aedc_folder <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/raw_data/"
+path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/"
 
 options(timeout = 600) 
 setwd(aedc_folder)
@@ -37,10 +21,12 @@ setwd(aedc_folder)
 #import unit record data from AEDC
 
 df <- read.csv("220811B-Reeves (3).csv")
-#create a copy for later mistakes
-df_aedc <-df
 
 
+
+
+#remove rows with year = 2010
+df <- df %>% filter(Year != 2010)
 
 # Create new variables for PHYSCategory
 df <- df %>% 
@@ -276,7 +262,6 @@ SA2_df_CSGK <- df %>%
             .groups = "drop")
 
 
-
 SA2_df_DV <- df %>%
   group_by(SA2Code, Year, Gender) %>%
   summarize(N_V1 = sum(DV1, na.rm = TRUE),
@@ -295,8 +280,6 @@ SA2_df_DV <- df %>%
 
 #--------------------------------------------------------------------------------------------tables tidy up ----------------------------------------------
 # Create a list of data frames
-#df_list <- list(LGA_df, SA4_df, SA3_df, SA2_df)
-
 df_list <- list(LGA_df_CSGK, LGA_df_EM, LGA_df_LCS, LGA_df_PHW, LGA_df_SC,
                 SA2_df_CSGK, SA2_df_EM, SA2_df_LCS, SA2_df_PHW, SA2_df_SC,
                 SA3_df_CSGK, SA3_df_EM, SA3_df_LCS, SA3_df_PHW, SA3_df_SC,
@@ -307,23 +290,51 @@ names(df_list) <- c("LGA_df_CSGK", "LGA_df_EM", "LGA_df_LCS", "LGA_df_PHW", "LGA
                     "SA3_df_CSGK", "SA3_df_EM", "SA3_df_LCS", "SA3_df_PHW", "SA3_df_SC",
                     "LGA_df_DV", "SA3_df_DV", "SA2_df_DV")
 
-#df_list <- list(LGA_df_DV, SA3_df_DV, SA2_df_DV)
+
+# Define function to filter out rows with 0 in LGA_Code, SA2_Code, or SA3_Code
+filter_zeros <- function(df) {
+  
+  # Check for existence of each code column
+  lga_col <- "LGACode" %in% names(df)
+  sa2_col <- "SA2Code" %in% names(df)
+  sa3_col <- "SA3Code" %in% names(df)
+  
+  # Filter out rows with 0 in code columns
+  if(lga_col) {
+    df <- df %>% filter(LGACode != 0)
+  }
+  if(sa2_col) {
+    df <- df %>% filter(SA2Code != 0)
+  }
+  if(sa3_col) {
+    df <- df %>% filter(SA3Code != 0)
+  }
+  
+  return(df)
+}
+
+# Apply the function to each data frame in the list
+df_list <- map(df_list, filter_zeros)
+
+
 
 # Define a function to round numeric values and recode Gender column
 round_and_recode <- function(df) {
   df %>%
-    mutate(across(where(is.numeric), round, 2)) %>%
+    mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 2)))) %>%
     mutate(Gender = if_else(Gender == 1, "male", "female"))
 }
+
 # Apply the function to all data frames in the list
 df_list <- map(df_list, round_and_recode)
 
-# Define a function to rename the columns in a data frame
+# Define a function to rename the columns and add a new column in a data frame
 rename_cols <- function(df) {
   prefix <- str_replace(names(df)[1], "Code.*", "")
-  names(df)[1:3] <- c(paste0(prefix, "_code16"), "calendar_year", "sex")
-  names(df)[4:length(df)] <- paste0(names(df)[4:length(df)], "_aedc")
-  names(df) <- tolower(names(df)) # convert column names to lowercase
+  names(df)[1] <- paste0(prefix, "_CODE16")
+  names(df)[-1] <- tolower(names(df)[-1]) # convert column names to lowercase except for the first column
+  names(df)[2:3] <- c("calendar_year", "sex")
+  df <- cbind(df[,1:3], age_group = "5-5", df[,4:ncol(df)]) # add a new column called age_group with value "0-24" in the fourth position
   df
 }
 
@@ -333,17 +344,6 @@ df_list <- map(df_list, rename_cols)
 
 
 
-# Define the function to replace invalid values
-replace_invalid_vals <- function(df) {
-  valid_cols <- names(df)[endsWith(names(df), "_valid_aedc")]
-  for (col in valid_cols) {
-    df[which(df[[col]] < 5), -(1:3)] <- 9999999
-  }
-  return(df)
-}
-
-# Apply the function to each tibble in df_list
-df_list <- lapply(df_list, replace_invalid_vals)
 
 #--------------------------------------------------------------------------------------------save all csv files ----------------------------------------------
 for (df_name in names(df_list)) {
@@ -384,3 +384,35 @@ for (df_name in names(df_list)) {
   # Print confirmation message
   cat("Saved file:", output_file, "\n")
 }
+
+
+
+
+
+
+
+#--------------------------------------------------------------------------------------------cell suppression----------------------------------------------
+# Define the function to replace invalid values
+replace_invalid_vals <- function(df) {
+  valid_cols <- names(df)[endsWith(names(df), "_valid")]
+  for (col in valid_cols) {
+    df[which(df[[col]] < 15), -(1:3)] <- 9999999
+  }
+  return(df)
+}
+
+# Apply the function to each tibble in df_list
+df_list <- lapply(df_list, replace_invalid_vals)
+#-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
