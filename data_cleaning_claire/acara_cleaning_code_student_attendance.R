@@ -45,6 +45,10 @@ names(student_attendance_df) <- names_datasets
 
 # Define a function to clean the data for each tibble in the list
 clean_data <- function(df) {
+  
+  # Filter rows where Term is "Semester 1"
+  df <- df[df$`Term Semester` == "Semester 1", ]
+  
   # Select the required columns
   df <- df[, c(2, 4, 5, 6, 8)]
   
@@ -52,6 +56,7 @@ clean_data <- function(df) {
   colnames(df)[1] <- paste0(colnames(df)[1], "_code16")
   colnames(df) <- gsub(" ", "_", tolower(colnames(df)))
   colnames(df)[2] <- "calendar_year"
+  colnames(df)[1] <- toupper(colnames(df)[1])  # Change the column name at index 1 to uppercase
   
   # Recode the values in school_sector
   df <- df %>%
@@ -107,24 +112,24 @@ sa3_combined <- do.call(rbind, sa3_tables)
 
 sa3_total <- sa3_combined %>%
   select(-c(school_sector, school_type, age_group)) %>%  # drop school_sector and school_type columns
-  group_by(sa3_code16, sex, calendar_year) %>%
+  group_by(SA3_CODE16, sex, calendar_year) %>%
   summarize(attendance_rate = mean(attendance_rate))%>%
   mutate(age_group = "6-15", attendance_rate = round(attendance_rate, 2)) %>%  
-  select(sa3_code16, sex, age_group, calendar_year, attendance_rate)
+  select(SA3_CODE16, sex, age_group, calendar_year, attendance_rate)
 
 sa2_total <- sa2_combined %>%
   select(-c(school_sector, school_type, age_group)) %>%  # drop school_sector and school_type columns
-  group_by(sa2_code16, sex, calendar_year) %>%
+  group_by(SA2_CODE16, sex, calendar_year) %>%
   summarize(attendance_rate = mean(attendance_rate))%>%
   mutate(age_group = "6-15", attendance_rate = round(attendance_rate, 2)) %>%   
-  select(sa2_code16, sex, age_group, calendar_year, attendance_rate)
+  select(SA2_CODE16, sex, age_group, calendar_year, attendance_rate)
 
 lga_total <- lga_combined %>%
   select(-c(school_sector, school_type, age_group)) %>%  # drop school_sector and school_type columns
-  group_by(lga_code16, sex, calendar_year) %>%
+  group_by(LGA_CODE16, sex, calendar_year) %>%
   summarize(attendance_rate = mean(attendance_rate))%>%
   mutate(age_group = "6-15", attendance_rate = round(attendance_rate, 2)) %>% 
-  select(lga_code16, sex, age_group, calendar_year, attendance_rate)
+  select(LGA_CODE16, sex, age_group, calendar_year, attendance_rate)
 
 
 file_name <- "acara_472_attendance_rate_total_SA3.csv"

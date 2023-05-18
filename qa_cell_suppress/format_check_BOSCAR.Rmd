@@ -1,37 +1,40 @@
 ---
-title: "format_check_cell_suppression"
+title: "format check and cell suppression on BOCSAR data"
 author: "Claire Boulange"
 date: "`r Sys.Date()`"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 ```{r}
 # Load any necessary packages
 library(dplyr)
 library(tidyr)
 library(readr)
+library(knitr)
+library(kableExtra)
 ```
-Open a connection to the output file
-Set the working directory - folder with data cleaned ready for QA
+Part 1:
+- open a connection to the output file
+- Set the working directory - folder with data cleaned ready for QA
 
-Define a list of acceptable values for the first column
-Define a function to check if column names are in snake case format
-Define a regex pattern to check age_group format
-Define regex patterns for age_group, year_range, and calendar_year
+- define a list of acceptable values for the first column
+- define a function to check if column names are in snake case format
+- define a regex pattern to check age_group format
+- define regex patterns for age_group, year_range, and calendar_year
+- get a list of CSV files in the working directory + subfolders
+- print the number of files in the folder and their names
 
-Get a list of CSV files in the working directory
-Print the number of files in the folder and their names
-
-initialize an empty list to store data frame
-read each CSV file into a data frame and store it in the df_list
-append the data frame to the list using the file name as the key
-
-
+- initialize an empty list to store data frame
+- read each CSV file into a data frame and store it in the df_list
+- append the data frame to the list using the file name as the key
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(knitr.table.format = 'markdown')
+
 # Set the working directory
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/bitre//") #change this path if you copy this 
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/") #change this path if you copy this 
 csv_files <- list.files(pattern=".*\\.csv$")
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
@@ -62,29 +65,59 @@ for (file in csv_files) {
   }
 }
 cat(paste("File with indicator code:",csv_files, collapse = "\n"), "\n")
+
+
+for (file in csv_files) {
+  if (!grepl("_STE|_SA3|_SA2|_SA4|_national|_Australia|_LGA", file)) {
+    cat("WARNING! File(s) without geography suffix:", file, "\n")
+  }
+}
+
 cat("Finished checking CSV files.", "\n")
+
 ```
-Loop through each data frame in the list and print the head
-```{r}
+Part 2
+- loop through each data frame in the list and print the head
+```{r, results='asis'}
 for (df_name in names(df_list)) {
   cat(paste("Head of", df_name, ":\n"))
-  print(head(df_list[[df_name]]))
+  
+  # Get the data frame
+  df <- df_list[[df_name]]
+  
+  # Generate the HTML table for the head of the data frame
+  html_table <- kable(head(df), format = "html") %>%
+    kable_styling(bootstrap_options = "striped", full_width = FALSE)
+  
+  # Print the HTML table
+  cat(as.character(html_table))
+  cat("\n")
 }
+
+
 ```
-print overview of all CSV files and their variables:
-```{r}
-csv_info <- data.frame(csv_file = names(df_list), variables = sapply(df_list, function(x) paste(names(x), collapse = ", ")))
-print(csv_info)
+- print overview of all CSV files and their variables
+```{r, results='asis'}
+
+
+# Create a new data frame with only the variables column
+csv_info <- data.frame(variables = sapply(df_list, function(x) paste(names(x), collapse = ", ")))
+
+# Generate the HTML table using kable and kableExtra functions
+html_table <- kable(csv_info, format = "html", col.names = NULL) %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE)
+
+# Print the HTML table
+cat(as.character(html_table))
+
+
 ```
+- print a data dictionary for each data frame
+```{r, results='asis'}
+library(knitr)
+library(kableExtra)
 
-This code chunk iterates over each data frame in df_list, retrieves its variable names, class types, range for numeric variables, and unique values for character variables.
-
-It then creates a data frame var_info with these details and prints it, providing a data dictionary for each data frame in the list. You might want to use it to fill the dictionary:
-
-https://connectqutedu.sharepoint.com/:x:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Metadata/data_dictionary.xlsx?d=w8708a1fa697f42899fd11956f7bc1ce6&csf=1&web=1&e=W3Iqp4
-
-```{r}
-# Iterate through each data frame and create a data dictionary
+# Loop for generating data dictionary
 for (df_name in names(df_list)) {
   cat(paste("Data Dictionary for", df_name, ":\n"))
   
@@ -100,17 +133,24 @@ for (df_name in names(df_list)) {
     n_missing_values = sapply(df, function(x) sum(is.na(x)))
   )
   
-  # Print the data dictionary
-  print(var_info)
+  # Generate the HTML table using kable and kableExtra functions
+  html_table <- kable(var_info, format = "html") %>%
+    kable_styling(bootstrap_options = "striped", full_width = FALSE)
+
+  # Print the HTML table
+  cat(as.character(html_table))
+  cat("\n")
 }
+
 ```
-Iterate through each data frame in df_list and perform checks:
+Part 3 - iterate through each data frame in df_list and perform checks:
 
 1. check if age_group, sex, calendar year or year_range columns exist
 2. check if age_group values are in the correct format
 3. check if year_range values are in the correct format
 4. check if calendar_year values are in the correct format
 5. check if geography column is one of the acceptable values
+
 
 ```{r}
 for (df_name in names(df_list)) {
@@ -179,62 +219,63 @@ for (df_name in names(df_list)) {
   }
 }
 ```
+                                                                                          STOP HERE AND CHECK!!!
 
+Did you detect any formatting errors?
 
-CHECK OUTPUTS NOW!!!
-
-Did you detect any formatting errors? 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 YES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GO BACK TO YOUR CODE AND MAKE CORRECTIONS
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 NO  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PROCEED WITH CELL SUPPRESSION
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Define the input directory path
-Define the output directory path to save cleaned dataset WITH CELL SUPPRESSED
+\\
+Part 4 - cell suppression
+- define the input directory path
+- define the output directory path to save cleaned datasets WITH CELL SUPPRESSED (R will automatically create this folder if it does not exist)
 ```{r}
-
-input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/bitre//"
-output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/bitre//cell_suppressed/"
+input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/" #change this path
+output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/cell_suppressed/"#change this path
 ```
-Create the output directory if it doesn't already exist
+run this code to...
+- create the output directory if it doesn't already exist
+- get a list of all CSV files in the input directory
 ```{r}
 dir.create(output_dir, showWarnings = FALSE)
 csv_files <- list.files(input_dir, pattern = ".csv$", full.names = TRUE)
 ```
-Check if there is an "uncertainty" column in the data frame
+Run this code to... 
+check if there is an "uncertainty" column in the data frame
 ```{r}
 for (file in csv_files) {
-  
- 
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  
-  if ("uncertainty" %in% colnames(df)) {
-    message(paste0("Note: The file ", basename(file), " contains an 'uncertainty' column. Make sure to modify the code to apply cell suppression where uncertainty is high."))}
-  else {
-  # Print message indicating that there is no need to apply cell suppression to "uncertainty" column
-  cat("You don't have to worry about cell suppression on 'uncertainty' in", basename(file), "\n")
-}
+  if (any(grepl("uncertainty", colnames(df)))) {
+    cat("Note: The file ", basename(file), " contains a column with the word 'uncertainty' in its name. Make sure to modify the code to apply cell suppression where necessary.\n")
+  } else {
+    cat("You don't have to worry about cell suppression on 'uncertainty' in", basename(file), "\n")
+  }
 }
 
 ```
+Run this code to...
 detect columns that are numeric and where you might need to apply cell suppression
 ```{r}
+cat("Checking for columns requiring cell suppression:\n\n")
+
 # Define the exclusion list
 exclude_list <- c("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia", "sex", "calendar_year", "age_group", "year_range", "irsd_quintile")
 
-# Loop through each CSV file and check for columns that are numeric and not in the exclusion list
+# Define the pattern to match column names
+pattern <- "^n\\_|number|count"
+
+# Loop through each CSV file and check for columns that are numeric and not in the exclusion list and have names matching the pattern
 for (file in csv_files) {
   
   # Read in the CSV file
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  # Get the names of columns that are numeric and not in the exclusion list
-  num_cols <- names(df)[sapply(df, is.numeric) & !names(df) %in% exclude_list]
+  # Get the names of columns that are numeric and not in the exclusion list and have names matching the pattern
+  num_cols <- names(df)[sapply(df, is.numeric) & !names(df) %in% exclude_list & grepl(pattern, names(df), ignore.case = TRUE)]
   
   # If there are any such columns, print a message for each file and column
   if (length(num_cols) > 0) {
@@ -243,58 +284,58 @@ for (file in csv_files) {
     }
   } else {
     # Print message indicating that there are no columns to check
-    cat("You don't have to worry about cell suppression in any numeric columns in", basename(file), "\n")
+    cat("You don't have to worry about cell suppression in any relevant columns in", basename(file), "\n")
   }
   
-}
-```
-Get a list of all CSV files in the input directory
-Loop through each CSV file and apply cell suppression 
-```{r}
-for (file in csv_files) {
-  # Read in the CSV file
-  df <- read.csv(file, stringsAsFactors = FALSE)
-  
-  # Check if the columns exist in the data frame
-  if ("n_fatally_injured_in_road_accident" %in% colnames(df) || "rolling_average_fatally_injured_in_road_accident" %in% colnames(df)) {
-    suppressed_cols <- c("n_fatally_injured_in_road_accident", "rolling_average_fatally_injured_in_road_accident")
-    
-    # Apply cell suppression and count affected rows
-    affected_rows <- 0
-    for (col in suppressed_cols) {
-      if (col %in% colnames(df)) {
-        suppressed_rows <- df[, col] < 5 & df[, col] > 0 & !is.na(df[, col])
-        df[suppressed_rows, -c(1:4)] <- 9999999
-        affected_rows <- affected_rows + sum(suppressed_rows)
-      }
-    }
-    
-    # Print the number of affected rows
-    cat("Number of affected rows in", file, ":", affected_rows, "\n")
-    
-    # Print tables with variable information
-    for (col in suppressed_cols) {
-      if (col %in% colnames(df)) {
-        cat("Variable:", col, "\n")
-        table_df <- data.frame(
-          Name = colnames(df),
-          Range = sapply(df, function(x) paste(min(x, na.rm = TRUE), max(x, na.rm = TRUE), sep = "-")),
-          Type = sapply(df, class),
-          Unique_Values = sapply(df, function(x) length(unique(x))),
-          Count_NA = sapply(df, function(x) sum(is.na(x)))
-        )
-        print(table_df)
-        cat("\n")
-      }
-    }
-  } else {
-    # Print a message to indicate that the columns were not found
-    cat("Skipping file", file, "because it does not contain the n_fatally_injured_in_road_accident or rolling_average_fatally_injured_in_road_accident column.\n")
-  }
-  
-  # Write the modified data frame to a new CSV file in the output directory
-  write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
 }
 
 ```
+
+
+
+```{r}
+cat("Checking for columns with values 1, 2, 3, or 4:\n\n")
+
+# Define the pattern to match column names
+pattern <- "^n_"
+
+# Define the values to check for
+values_to_check <- c(1, 2, 3, 4)
+
+# Variable to keep track of whether values are found
+values_found <- FALSE
+
+# Variable to store column names with values in the specified range
+columns_with_values <- character()
+
+# Loop through each CSV file and check for columns with names matching the pattern
+for (file in csv_files) {
+
+  # Read in the CSV file
+  df <- read.csv(file, stringsAsFactors = FALSE)
+
+  # Get the names of columns with names matching the pattern
+  matching_cols <- names(df)[grepl(pattern, names(df))]
+
+  # Loop through each matching column and check for values 1, 2, 3, or 4
+  for (col in matching_cols) {
+    if (any(df[[col]] %in% values_to_check)) {
+      message(paste0("For file ", basename(file), ", values 1, 2, 3, or 4 found in column '", col, "'"))
+      values_found <- TRUE
+      columns_with_values <- c(columns_with_values, col)
+    }
+  }
+
+}
+
+# If no values in the specified range are found, print a message
+if (!values_found) {
+  cat("No values 1, 2, 3, or 4 found in columns with 'n_' prefix.\n")
+} else {
+  cat("Columns with values 1, 2, 3, or 4 in columns with 'n_' prefix:\n")
+  cat(columns_with_values, "\n")
+}
+
+```
+#no need to suppress rows here - already done by the custodian
 

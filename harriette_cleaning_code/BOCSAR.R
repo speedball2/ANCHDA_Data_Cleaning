@@ -1,5 +1,3 @@
-# Harriette's WD
-
 
 # libraries --------------------------------------------------------------------
 
@@ -33,7 +31,7 @@ cleaning <- function(path, sht, range, new_name){
  # CONCISTENT NAMING CONVENTIONS W/ DATA DICTIONARY
   
   df[df[,] == 0] <- NA
-  df[df[,] == "1 to 4"] <- "1-4"
+  df[df[,] == "1 to 4"] <- 9999999
   
   
   #RENAMING COLUMNS FOR ALL DFS
@@ -69,19 +67,42 @@ cleaning <- function(path, sht, range, new_name){
     df$SA4_NAME16 <- stringr::str_replace_all(df$SA4_NAME16, rep_str)
   }
   
+
+  if ("LGA_NAME21" %in% names(df)) {
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Bayside"] <- "Bayside (NSW)"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Central Coast"] <- "Central Coast (NSW)"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Campbelltown"] <- "Campbelltown (NSW)"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Ku-Ring-Gai"] <- "Ku-ring-gai"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Cootamundra-Gundagai"] <- "Cootamundra-Gundagai Regional"
+    df["LGA_NAME21"][df["LGA_NAME21"] == "Unincorporated Far West"] <- "Unincorporated NSW"
+  }
+  
+  
+  #REMOVE VARIABLES IN DATA 
+  df <- df[!grepl("Unknown/missing", df$sex),]
+  
+  #REMOVING CAPITALS FOR M/F
+  
+  if("sex" %in% names(df)){
+    df$sex <- recode(df$sex,
+                     "Female" = "female",
+                     "Male" = "male",)
+    
+  }
+  
   
 return(df)
    
 }
 
-df1 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 1, "A5:T415","victims_domestic_violence_related_assault")
-df2 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 2, "A5:T1571", "victims_domestic_violence_related_assault")
-df3 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 3, "A5:T90", "victims_domestic_violence_related_murder")
-df4 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 4, "A5:T114", "victims_domestic_violence_related_murder")
-df5 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 5, "A5:T393", "victims_sexual_assault")
-df6 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 6, "A5:T1325", "victims_sexual_assault")
-df7 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 7, "A5:T392", "victims_sexual_touching")
-df8 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 8, "A5:T1337", "victims_sexual_touching")
+df1 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 1, "A5:T415","n_victims_domestic_violence_related_assault")
+df2 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 2, "A5:T1571", "n_victims_domestic_violence_related_assault")
+df3 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 3, "A5:T90", "n_victims_domestic_violence_related_murder")
+df4 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 4, "A5:T114", "n_victims_domestic_violence_related_murder")
+df5 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 5, "A5:T393", "n_victims_sexual_assault")
+df6 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 6, "A5:T1325", "n_victims_sexual_assault")
+df7 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 7, "A5:T392", "n_victims_sexual_touching")
+df8 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 8, "A5:T1337", "n_victims_sexual_touching")
 
 
 # reading in geographies for codes ---------------------------------------------
@@ -102,14 +123,13 @@ write.csv(lga, "lga_names_codes.csv", F)
 
 
 
-# ------------------------------------------------------------------------------
+# MATCH FUNCTION FOR SA CODES AND NAMES ----------------------------------------
 
-# MATCH FUNCTION FOR SA CODES AND NAMES 
-
-#confirm which ASGS is being used
+# SA4 ASGS2016
 
 
-sa4_codes <- function(df){
+
+sa4_codes <- function(df, corder, indicator){
   
   copy <- df
   
@@ -143,16 +163,38 @@ sa4_codes <- function(df){
   
   new <- merge(df, dummy, by = "SA4_NAME16")
   
+  # clean up afterwards ---
+  
+  #REMOVING IN CUSTODY - CANNOT BE GEO CODED 
+  new <- new[!grepl("In Custody", new$SA4_NAME16),]
+  
+  # REMOVING SA4 NAME (NOT NEEDED)
+  new <- new[ , !names(new) %in% 
+                   c("SA4_NAME16")]
+  
+  # RENAMING CODE COLUMNS
+  colnames(new)[colnames(new) == "SA4_CODE_2016"] = "SA4_CODE16"
+  
+  #CHANGING COLUMN ORDER 
+  corder <- c("SA4_CODE16", "calendar_year", "age_group", "sex", indicator)
+  new <- new[,corder]
+  
   return(new)
 }
 
+# LGA --------------------------------------------------------------------------
 
-lga_codes <- function(df){
+
+
+
+
+lga_codes <- function(df, indicator){
   
-  
-  copy2 <- df2
+ 
+   
+  copy2 <- df
   # REMOVING JUNK COLS
-  
+
   copy2 <- copy2[,-(1:2)]
   
   copy2$code <- NA
@@ -165,65 +207,65 @@ lga_codes <- function(df){
   
   #MERGING TWO DATA FRAMES TOGETHER (CUSTODIAN + ABS ASGS)
   
-  dummy2 <- merge(lga, copy2)
+  dummy2 <- merge(copy2,lga, by.y="LGA_NAME_2021",by.x="LGA_NAME21",all=T)
   
-  # MATCHING
-  
-  dummy2$code <- dummy2$LGA_CODE_2021[match(dummy2$LGA_NAME21, dummy2$LGA_NAME_2021)]
-  
-  
-  #REMOVE COLS FROM ASGS FILES
-  
-  dummy2 <- dummy2[,-(1:2)]
   
   #CBIND BACK WITH OTHER DATASET
   
   new <- merge(df, dummy2, by = "LGA_NAME21")
-  new <- new[!duplicated(new),]
+  
+  # clean up afterwards ---
+  
+  #REMOVING IN CUSTODY - CANNOT BE GEO CODED 
+  new <- new[!grepl("In Custody", new$LGA_NAME21),]
+  
+  test <<- new
+  
+  # REMOVING SA4 NAME (NOT NEEDED)
+  new <- new[ , !names(new) %in% 
+                
+                c("LGA_NAME21",
+                  "code")]
+  
+  # RENAMING CODE COLUMNS
+  colnames(new)[colnames(new) == "LGA_CODE_2021"] = "LGA_CODE21"
+  
+  corder <- c("LGA_CODE21", "calendar_year", "age_group", "sex", indicator)
+  new <- new[,corder]
   
   return(new)
-  
+
 }
+
+
+
+
 #SA4
-df1_new <- sa4_codes(df1)
-df3_new <- sa4_codes(df3)
-df5_new <- sa4_codes(df5)
-df7_new <- sa4_codes(df7)
+df1_new <- sa4_codes(df1, indicator = "n_victims_domestic_violence_related_assault")
+df3_new <- sa4_codes(df3, indicator = "n_victims_domestic_violence_related_murder")
+df5_new <- sa4_codes(df5, indicator = "n_victims_sexual_assault")
+df7_new <- sa4_codes(df7,indicator = "n_victims_sexual_touching")
+
 
 
 #LGA
-# df2_new <- lga_codes(df2)
-# df4_new <- lga_codes(df4)
-# df6_new <- lga_codes(df6)
-# df8_new <- lga_codes(df8)
+ df2_new <- lga_codes(df2, indicator = "n_victims_domestic_violence_related_assault")
+ df4_new <- lga_codes(df4, indicator = "n_victims_domestic_violence_related_murder")
+ df6_new <- lga_codes(df6, indicator = "n_victims_sexual_assault")
+ df8_new <- lga_codes(df8, indicator = "n_victims_sexual_touching")
 
 
-concistency <- function(df){
-  
-  #REMOVE VARIABLES IN DATA 
-  df <- df[!grepl("Unknown/missing", df$sex),]
-  
-  #REMOVING CAPITALS FOR M/F
-  
-  if("sex" %in% names(df)){
-    df$sex <- recode(df$sex,
-                     "Female" = "female",
-                     "Male" = "male",)
-    
-  }
-  
-  return(df)
-}
-
-
-df1_new <- concistency(df1_new)
-
-
-#REMOVE IN CUSTODY DATA 
-# df <- df[!grepl("In Custody", df$SA4_NAME16),]
-#df <- df[!grepl("In Custody", df$LGA_NAME21),]
+#WRITE CSVS --------------------------------------------------------------------
  
-#Rename code as proper data dictionary code name 
-
-#write csvs 
-
+ write.csv(df1_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3131_victims_domestic_violence_related_assault_SA4.csv", row.names = FALSE)
+ write.csv(df2_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3131_victims_domestic_violence_related_assault_LGA.csv", row.names = F)
+ 
+ write.csv(df3_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3132_victims_domestic_violence_related_murder_SA4.csv", row.names = F)
+ write.csv(df4_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3132_victims_domestic_violence_related_murder_LGA.csv", row.names = F)
+ 
+ write.csv(df5_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3133_victims_sexual_assault_SA4.csv",row.names = F)
+ write.csv(df6_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3133_victims_sexual_assault_LGA.csv",row.names = F)
+ 
+ write.csv(df7_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3134_victims_sexual_touching_SA4.csv",row.names = F)
+ write.csv(df8_new, file = "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/BOCSAR/BOCSAR_3134_victims_sexual_touching_LGA.csv",row.names = F)
+ 

@@ -1,5 +1,5 @@
 #HARRIETTES WD:
-setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/public_data/TableBuilder_Data/Schools/for ANCHDA")
+#setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/public_data/TableBuilder_Data/Schools/for ANCHDA")
 
 # ----------------- #
 # --- libraries --- #
@@ -138,19 +138,39 @@ df1 <- cleaning (path = "Table 42bN_FT_andPT_Students, 2006-2022.xlsx",
 
 #REMOVING COLUMNS
 
-df1 <- df1[, -c(3,6:9,13)]
+df1 <- df1[, -c(3,7:9)]
 
 
-#COLUMNS REMOVED: affiliation_gov_non_gov, Aboriginal and Torres Strait Islander Status,  
-#School Level, National Report on Schooling (ANR) School Level, year (Grade), total 
+# Convert columns to numeric
+df1$`Full-time Student count` <- as.numeric(df1$`Full-time Student count`)
+df1$`Part-time Student count` <- as.numeric(df1$`Part-time Student count`)
+df1$`All Full-time and Part-time Student count` <- as.numeric(df1$`All Full-time and Part-time Student count`)
+
+# Grouping by Year, STE, gov, Sex, and Age and calculating the sums
+df1 <- df1 %>%
+  group_by(Year, STE, gov, Sex, Age) %>%
+  summarise(
+    n_full_time_student = sum(`Full-time Student count`),
+    n_part_time_student = sum(`Part-time Student count`),
+    n_total_all_student = sum(`All Full-time and Part-time Student count`)
+  ) %>%
+  ungroup()%>%
+  mutate(
+    p_full_time_student = round(n_full_time_student / n_total_all_student, 2),
+    p_part_time_student = round(n_part_time_student / n_total_all_student, 2)
+  )
 
 
-names(df1) <- c("calendar_year", "STE_CODE16","affiliation_abs_schools","sex",
-                "age_group", "n_full_time_student", "n_part_time_student")
+# Rename the columns
+names(df1) <- c("calendar_year", "STE_CODE16", "affiliation_abs_schools", "sex", "age_group", "n_full_time_student", "n_part_time_student", "n_total_all_student", "p_full_time_student", "p_part_time_student")
 
-corder <- c("STE_CODE16", "calendar_year", "age_group", "sex", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student")
+# Define the column order
+corder <- c("STE_CODE16", "calendar_year", "age_group", "sex", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student", "p_full_time_student", "p_part_time_student","n_total_all_student")
 
-df1 <- df1[,corder]
+# Reorder the columns
+df1 <- df1[, corder]
+
+
 
 
 # School continuation Rates --------------------------------------------------
@@ -165,6 +185,12 @@ names(df2) <- c("calendar_year", "STE_CODE16", "sex", "age_group", "p_apparent_c
 corder <- c("STE_CODE16","calendar_year", "age_group","sex", "p_apparent_continuation_rate")
 
 df2 <- df2[,corder]
+# Convert columns to numeric
+df2$p_apparent_continuation_rate <- as.numeric(df2$p_apparent_continuation_rate)
+# Divide p_apparent_continuation_rate by 100
+df2 <- df2 %>%
+  mutate(p_apparent_continuation_rate = round(p_apparent_continuation_rate / 100, 2))
+
 
 # School retention Rates -----------------------------------------------------
 
@@ -175,15 +201,15 @@ df3 <- cleaning(path = "Table 63a_ARetention Rates_Single year_grade.xlsx",
 
 #REMOVING COLUMNS
 
-df3 <- df3[, -c(3,6)]
+df3 <- df3[, -c(3, 6:7)]
 
 #COLUMNS REMOVED: "Affiliation" , "Aboriginal and Torres Strait Islander ARR"
 
-names(df3) <- c("calendar_year", "STE_CODE16", "sex", "school_grade", "apparent_retention_rate", "total_rentention_rate")
+names(df3) <- c("calendar_year", "STE_CODE16", "sex", "school_grade", "apparent_retention_rate")
 
 df3$age_group <- NA
 
-corder <- c("STE_CODE16", "calendar_year","sex", "age_group", "school_grade", "apparent_retention_rate", "total_rentention_rate")
+corder <- c("STE_CODE16", "calendar_year","sex", "age_group", "school_grade", "apparent_retention_rate")
 
 df3 <- df3[,corder]
 
@@ -224,68 +250,51 @@ df4 <- cleaning (path = "Table 42bN_FT_andPT_Students, 2006-2022.xlsx",
                  range = "A5:M77085",
                  col = T)
 
+
+
 #REMOVING COLUMNS
 
-df4 <- df4[, -c(3,6:8,13)]
+df4 <- df4[, -c(3,7:8)]
 
 
-#COLUMNS REMOVED: affiliation_gov_non_gov, Aboriginal and Torres Strait Islander Status,  
-#School Level, National Report on Schooling (ANR) School Level, Total
 
-names(df4) <- c("calendar_year", "STE_CODE16","affiliation_abs_schools","sex", "school_grade", 
-                "age_group", "n_full_time_student", "n_part_time_student")
+# Convert columns to numeric
+df4$`Full-time Student count` <- as.numeric(df4$`Full-time Student count`)
+df4$`Part-time Student count` <- as.numeric(df4$`Part-time Student count`)
+df4$`All Full-time and Part-time Student count` <- as.numeric(df4$`All Full-time and Part-time Student count`)
 
-corder <- c("STE_CODE16", "calendar_year","sex", "age_group" , "school_grade", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student")
+# Grouping by Year, STE, gov, Sex, and Age and calculating the sums
+df4 <- df4 %>%
+  group_by(Year, STE, gov, Sex, Age, `Year (Grade)`) %>%
+  summarise(
+    n_full_time_student = sum(`Full-time Student count`),
+    n_part_time_student = sum(`Part-time Student count`),
+    n_total_all_student = sum(`All Full-time and Part-time Student count`)
+  ) %>%
+  ungroup()%>%
+  mutate(
+    p_full_time_student = round(n_full_time_student / n_total_all_student, 2),
+    p_part_time_student = round(n_part_time_student / n_total_all_student, 2)
+  )
+
+
+
+names(df4) <- c("calendar_year", "STE_CODE16","affiliation_abs_schools","sex", "age_group", 
+                "school_grade", "n_full_time_student", "n_part_time_student","p_full_time_student", "p_part_time_student")
+
+corder <- c("STE_CODE16", "calendar_year","sex", "age_group" , "school_grade", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student", "p_full_time_student", "p_part_time_student")
 
 df4 <- df4[,corder]
 
-# ONLY year 12 DATA 
 
-df4 <- df4[which(df4$school_grade == "o year 12"),names(df4) %in% c("STE_CODE16", "calendar_year","sex", "age_group" , "school_grade", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student", "total_abs_schools")]
-
-# unique(df4$school_grade) - confirm only grade level 
-
-if("school_grade" %in% names(df4)){
-  df4$school_grade <- recode(df4$school_grade,
-                             "o year 12" = "year 12"
-  )
-}
+#creat one df for year12 one for year 5
+df4_y12 <- df4[df4$school_grade == "o year 12", ]
+df4_y5 <- df4[df4$school_grade == "f year 5", ]
 
 
-# year 5 ---------------------------------------------------------------------
-
-df5 <- cleaning (path = "Table 42bN_FT_andPT_Students, 2006-2022.xlsx",
-                 sht = 3,
-                 range = "A5:M77085",
-                 col = T)
-
-#REMOVING COLUMNS
-
-df5 <- df5[, -c(3,6:8,13)]
 
 
-#COLUMNS REMOVED: affiliation_gov_non_gov, Aboriginal and Torres Strait Islander Status,  
-#School Level, National Report on Schooling (ANR) School Level
 
-names(df5) <- c("calendar_year", "STE_CODE16","affiliation_abs_schools","sex", "school_grade", 
-                "age_group", "n_full_time_student", "n_part_time_student")
-
-corder <- c("STE_CODE16", "calendar_year","sex", "age_group" , "school_grade", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student")
-
-df5 <- df5[,corder]
-
-# ONLY year 5 DATA 
-
-df5 <- df5[which(df5$school_grade == "f year 5"),names(df5) %in% c("STE_CODE16", "calendar_year","sex", "age_group" , "school_grade", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student", "total_abs_schools")]
-
-# unique(df5$school_grade) - confirm only grade level 
-
-
-if("school_grade" %in% names(df5)){
-  df5$school_grade <- recode(df5$school_grade,
-                             "f year 5" = "year 5"
-  )
-}
 
 # -----------------------------------------------------------------------------
 
@@ -299,8 +308,8 @@ df3 <- df3[!grepl("Persons", df3$sex),]
 # --- write csv --- #
 # ----------------- #
 
-write.csv(df1, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
-write.csv(df2, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_463_continuation_rates_STE.csv", row.names = F)
-write.csv(df3, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_461_retention_rate_STE.csv", row.names = F)
-write.csv(df4, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_462_school_completion_year_12_STE.csv.csv", row.names = F)
-write.csv(df5, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_411_attendance_at_primary_school_year_5_STE.csv", row.names = F)
+write.csv(df1, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
+write.csv(df2, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_463_continuation_rates_STE.csv", row.names = F)
+write.csv(df3, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_461_retention_rate_STE.csv", row.names = F)
+write.csv(df4_y12, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_462_school_completion_year_12_STE.csv.csv", row.names = F)
+write.csv(df4_y5, "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_schools/ABS_schools_411_attendance_at_primary_school_year_5_STE.csv", row.names = F)

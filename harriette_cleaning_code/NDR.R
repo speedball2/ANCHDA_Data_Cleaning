@@ -75,6 +75,6 @@ df2 <- concistency(df2)
 #--------write csv----------#
 #---------------------------#
 
-write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_192_chronic_conditions_diabetes_incidence.csv", row.names = F)
-write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_192_chronic_conditions_diabetes_prevalence.csv", row.names = F)
+write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_1121_chronic_conditions_diabetes_incidence_SA4.csv", row.names = F)
+write.csv(df2, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_1121_chronic_conditions_diabetes_prevalence_SA4.csv", row.names = F)
 

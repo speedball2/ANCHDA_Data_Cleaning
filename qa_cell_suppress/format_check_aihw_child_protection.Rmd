@@ -259,7 +259,7 @@ for (file in csv_files) {
   
   # Apply cell suppression to the 5th column and columns to the right
   if (!is.na(column_index) && column_index <= ncol(df)) {
-    df[df[, column_index] < 5, column_index:ncol(df)] <- 9999999
+    df[df[, column_index] %in% 1:4, column_index:ncol(df)] <- 9999999
   }
   
 

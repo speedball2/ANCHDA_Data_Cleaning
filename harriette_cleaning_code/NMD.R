@@ -79,7 +79,7 @@ cleaning <- function(path, sht, range, col, age = NULL, sex, round_col, coln){
   #REMOVING NAME COL
   df <- df[ , !names(df) %in% 
               c("SA3_name", "SA2_name")]
-  test<<-df
+  
   
   #RENAMING COLUMNS
   names(df) <- coln
