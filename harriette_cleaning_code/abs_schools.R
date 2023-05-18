@@ -179,11 +179,12 @@ df3 <- df3[, -c(3,6)]
 
 #COLUMNS REMOVED: "Affiliation" , "Aboriginal and Torres Strait Islander ARR"
 
-names(df3) <- c("calendar_year", "STE_CODE16", "sex", "school_grade", "apparent_retention_rate", "total_rentention_rate")
+names(df3) <- c("calendar_year", "STE_CODE16", "sex", "school_grade", "apparent_retention_rate", "total_retention_rate") #fixed typo here
 
 df3$age_group <- NA
 
-corder <- c("STE_CODE16", "calendar_year","sex", "age_group", "school_grade", "apparent_retention_rate", "total_rentention_rate")
+corder <- c("STE_CODE16", "calendar_year","sex", "age_group", "school_grade", "apparent_retention_rate", "total_retention_rate") #fixed typo here
+
 
 df3 <- df3[,corder]
 

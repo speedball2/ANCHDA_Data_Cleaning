@@ -115,9 +115,6 @@ cat(as.character(html_table))
 ```
 - print a data dictionary for each data frame
 ```{r, results='asis'}
-library(knitr)
-library(kableExtra)
-
 # Loop for generating data dictionary
 for (df_name in names(df_list)) {
   cat(paste("Data Dictionary for", df_name, ":\n"))

@@ -1,5 +1,5 @@
 ---
-title: "format_check_cell_suppression"
+title: "format check and cell suppression on NSSHS School data"
 author: "Claire Boulange"
 date: "`r Sys.Date()`"
 output:
@@ -28,9 +28,13 @@ Part 1:
 - initialize an empty list to store data frame
 - read each CSV file into a data frame and store it in the df_list
 - append the data frame to the list using the file name as the key
+
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(knitr.table.format = 'markdown')
+
 # Set the working directory
-setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/nsshs/") #change this path if you copy this 
+setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/nsshs//") #change this path if you copy this 
 csv_files <- list.files(pattern=".*\\.csv$")
 first_col_check <- list("STE_CODE16", "SA2_CODE16", "SA3_CODE16", "SA4_CODE16", "LGA_CODE16", "Australia")
 
@@ -51,6 +55,7 @@ for (file in csv_files) {
   }
 }
 ```
+
 ```{r}
 cat("Number of files in folder:", length(csv_files), "\n") 
 
@@ -73,7 +78,7 @@ cat("Finished checking CSV files.", "\n")
 
 ```
 Part 2
-loop through each data frame in the list and print the head
+- loop through each data frame in the list and print the head
 ```{r, results='asis'}
 for (df_name in names(df_list)) {
   cat(paste("Head of", df_name, ":\n"))
@@ -117,20 +122,19 @@ for (df_name in names(df_list)) {
   # Get the data frame
   df <- df_list[[df_name]]
   
-  # Create a data frame with variable name, class, range, unique values, count of missing values, and count of rows
+  # Create a data frame with variable name, class, range, unique values, and count of missing values
   var_info <- data.frame(
     variable = names(df),
     class = sapply(df, class),
     range = sapply(df, function(x) if (is.numeric(x)) paste(range(x, na.rm = TRUE), collapse = " - ") else ""),
     unique_values = sapply(df, function(x) if (is.character(x)) paste(unique(x), collapse = ", ") else ""),
-    n_missing_values = sapply(df, function(x) sum(is.na(x))),
-    n_rows = nrow(df)
+    n_missing_values = sapply(df, function(x) sum(is.na(x)))
   )
   
   # Generate the HTML table using kable and kableExtra functions
   html_table <- kable(var_info, format = "html") %>%
     kable_styling(bootstrap_options = "striped", full_width = FALSE)
-  
+
   # Print the HTML table
   cat(as.character(html_table))
   cat("\n")
@@ -138,11 +142,14 @@ for (df_name in names(df_list)) {
 
 ```
 Part 3 - iterate through each data frame in df_list and perform checks:
+
 1. check if age_group, sex, calendar year or year_range columns exist
 2. check if age_group values are in the correct format
 3. check if year_range values are in the correct format
 4. check if calendar_year values are in the correct format
 5. check if geography column is one of the acceptable values
+
+
 ```{r}
 for (df_name in names(df_list)) {
   df <- df_list[[df_name]]
@@ -216,7 +223,9 @@ Did you detect any formatting errors?
 
 YES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GO BACK TO YOUR CODE AND MAKE CORRECTIONS
 
-NO  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PROCEED WITH CELL SUPPRESSION
+NO  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PROCEED WITH CELL SUPPRESSION\\
+
+
 
 Part 4 - cell suppression
 - define the input directory path
