@@ -1,5 +1,5 @@
 ---
-title: "format_check_cell_suppression"
+title: "format_check_cell_suppression on abs_erp data"
 author: "Claire Boulange"
 date: "`r Sys.Date()`"
 output:
@@ -11,24 +11,28 @@ output:
 library(dplyr)
 library(tidyr)
 library(readr)
+library(knitr)
+library(kableExtra)
 ```
-# Open a connection to the output file
-# Set the working directory - folder with data cleaned ready for QA
+Part 1:
+- open a connection to the output file
+- Set the working directory - folder with data cleaned ready for QA
 
-# Define a list of acceptable values for the first column
-# Define a function to check if column names are in snake case format
-# Define a regex pattern to check age_group format
-# Define regex patterns for age_group, year_range, and calendar_year
+- define a list of acceptable values for the first column
+- define a function to check if column names are in snake case format
+- define a regex pattern to check age_group format
+- define regex patterns for age_group, year_range, and calendar_year
+- get a list of CSV files in the working directory + subfolders
+- print the number of files in the folder and their names
 
-# Get a list of CSV files in the working directory
-# Print the number of files in the folder and their names
-
-#initialize an empty list to store data frame
-#read each CSV file into a data frame and store it in the df_list
-#append the data frame to the list using the file name as the key
-
+- initialize an empty list to store data frame
+- read each CSV file into a data frame and store it in the df_list
+- append the data frame to the list using the file name as the key
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+options(knitr.table.format = 'markdown')
+
 # Set the working directory
 setwd("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp/") #change this path if you copy this 
 csv_files <- list.files(pattern=".*\\.csv$")
@@ -62,28 +66,56 @@ for (file in csv_files) {
 }
 cat(paste("File with indicator code:",csv_files, collapse = "\n"), "\n")
 cat("Finished checking CSV files.", "\n")
+
+for (file in csv_files) {
+  if (!grepl("_STE|_SA3|_SA2|_SA4|_national|_Australia", file)) {
+    cat("WARNING! File(s) without geography suffix:", file, "\n")
+  }
+}
+
+cat(paste("File with indicator code:", csv_files, collapse = "\n"), "\n")
+cat("Finished checking CSV files.", "\n")
+
 ```
-Loop through each data frame in the list and print the head
-```{r}
+Part 2
+- loop through each data frame in the list and print the head
+```{r, results='asis'}
 for (df_name in names(df_list)) {
   cat(paste("Head of", df_name, ":\n"))
-  print(head(df_list[[df_name]]))
+  
+  # Get the data frame
+  df <- df_list[[df_name]]
+  
+  # Generate the HTML table for the head of the data frame
+  html_table <- kable(head(df), format = "html") %>%
+    kable_styling(bootstrap_options = "striped", full_width = FALSE)
+  
+  # Print the HTML table
+  cat(as.character(html_table))
+  cat("\n")
 }
+
+
 ```
-print overview of all CSV files and their variables:
-```{r}
-csv_info <- data.frame(csv_file = names(df_list), variables = sapply(df_list, function(x) paste(names(x), collapse = ", ")))
-print(csv_info)
+- print overview of all CSV files and their variables
+```{r, results='asis'}
+
+
+# Create a new data frame with only the variables column
+csv_info <- data.frame(variables = sapply(df_list, function(x) paste(names(x), collapse = ", ")))
+
+# Generate the HTML table using kable and kableExtra functions
+html_table <- kable(csv_info, format = "html", col.names = NULL) %>%
+  kable_styling(bootstrap_options = "striped", full_width = FALSE)
+
+# Print the HTML table
+cat(as.character(html_table))
+
+
 ```
-
-This code chunk iterates over each data frame in df_list, retrieves its variable names, class types, range for numeric variables, and unique values for character variables.
-
-It then creates a data frame var_info with these details and prints it, providing a data dictionary for each data frame in the list. You might want to use it to fill the dictionary:
-
-https://connectqutedu.sharepoint.com/:x:/r/teams/FOS_PRO_ANCHDA/Shared%20Documents/General/Metadata/data_dictionary.xlsx?d=w8708a1fa697f42899fd11956f7bc1ce6&csf=1&web=1&e=W3Iqp4
-
-```{r}
-# Iterate through each data frame and create a data dictionary
+- print a data dictionary for each data frame
+```{r, results='asis'}
+# Loop for generating data dictionary
 for (df_name in names(df_list)) {
   cat(paste("Data Dictionary for", df_name, ":\n"))
   
@@ -99,11 +131,17 @@ for (df_name in names(df_list)) {
     n_missing_values = sapply(df, function(x) sum(is.na(x)))
   )
   
-  # Print the data dictionary
-  print(var_info)
+  # Generate the HTML table using kable and kableExtra functions
+  html_table <- kable(var_info, format = "html") %>%
+    kable_styling(bootstrap_options = "striped", full_width = FALSE)
+
+  # Print the HTML table
+  cat(as.character(html_table))
+  cat("\n")
 }
+
 ```
-Iterate through each data frame in df_list and perform checks:
+Part 3 - iterate through each data frame in df_list and perform checks:
 
 1. check if age_group, sex, calendar year or year_range columns exist
 2. check if age_group values are in the correct format
@@ -179,27 +217,26 @@ for (df_name in names(df_list)) {
   }
 }
 ```
-CHECK OUTPUTS NOW!!!
+                                                                                          STOP HERE AND CHECK!!!
 
-Did you detect any formatting errors? 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Did you detect any formatting errors?
+
 YES >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> GO BACK TO YOUR CODE AND MAKE CORRECTIONS
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-NO  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PROCEED WITH CELL SUPPRESSION
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+NO  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> PROCEED WITH CELL SUPPRESSION\\
 
-Define the input directory path
-Define the output directory path to save cleaned dataset WITH CELL SUPPRESSED
+
+
+Part 4 - cell suppression
+- define the input directory path
+- define the output directory path to save cleaned datasets WITH CELL SUPPRESSED (R will automatically create this folder if it does not exist)
 ```{r}
-input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp/"
+
+input_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp"
 output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp/cell_suppressed/"
 ```
-
 Create the output directory if it doesn't already exist
 Get a list of all CSV files in the input directory
-
 
 ```{r}
 
@@ -252,6 +289,12 @@ for (file in csv_files) {
 ```
 Loop through each CSV file and apply cell suppression
 Write the modified data frame to a new CSV file in the output directory
+
+```{r}
+
+```
+
+
 
 ```{r}
 for (file in csv_files) {
