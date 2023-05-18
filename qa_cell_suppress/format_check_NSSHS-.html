@@ -13,7 +13,7 @@
 
 <meta name="date" content="2023-05-18" />
 
-<title>format_check_cell_suppression</title>
+<title>format check and cell suppression on NSSHS School data</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -356,7 +356,8 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">format_check_cell_suppression</h1>
+<h1 class="title toc-ignore">format check and cell suppression on NSSHS
+School data</h1>
 <h4 class="author">Claire Boulange</h4>
 <h4 class="date">2023-05-18</h4>
 
@@ -470,7 +471,7 @@ cat(paste(&quot;File with indicator code:&quot;,csv_files, collapse = &quot;\n&q
 ## File with indicator code: NSSHS_1151_STI_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv</code></pre>
 <pre class="r"><code>cat(&quot;Finished checking CSV files.&quot;, &quot;\n&quot;)</code></pre>
 <pre><code>## Finished checking CSV files.</code></pre>
-<p>Part 2 loop through each data frame in the list and print the
+<p>Part 2 - loop through each data frame in the list and print the
 head</p>
 <pre class="r"><code>for (df_name in names(df_list)) {
   cat(paste(&quot;Head of&quot;, df_name, &quot;:\n&quot;))
@@ -3042,20 +3043,19 @@ for (df_name in names(df_list)) {
   # Get the data frame
   df &lt;- df_list[[df_name]]
   
-  # Create a data frame with variable name, class, range, unique values, count of missing values, and count of rows
+  # Create a data frame with variable name, class, range, unique values, and count of missing values
   var_info &lt;- data.frame(
     variable = names(df),
     class = sapply(df, class),
     range = sapply(df, function(x) if (is.numeric(x)) paste(range(x, na.rm = TRUE), collapse = &quot; - &quot;) else &quot;&quot;),
     unique_values = sapply(df, function(x) if (is.character(x)) paste(unique(x), collapse = &quot;, &quot;) else &quot;&quot;),
-    n_missing_values = sapply(df, function(x) sum(is.na(x))),
-    n_rows = nrow(df)
+    n_missing_values = sapply(df, function(x) sum(is.na(x)))
   )
   
   # Generate the HTML table using kable and kableExtra functions
   html_table &lt;- kable(var_info, format = &quot;html&quot;) %&gt;%
     kable_styling(bootstrap_options = &quot;striped&quot;, full_width = FALSE)
-  
+
   # Print the HTML table
   cat(as.character(html_table))
   cat(&quot;\n&quot;)
@@ -3083,9 +3083,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -3107,9 +3104,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3128,9 +3122,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3151,9 +3142,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3172,9 +3160,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3195,9 +3180,6 @@ integer
 <td style="text-align:right;">
 2
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3216,9 +3198,6 @@ numeric
 </td>
 <td style="text-align:right;">
 2
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -3246,9 +3225,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -3270,9 +3246,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3291,9 +3264,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3314,9 +3284,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3335,9 +3302,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3358,9 +3322,6 @@ integer
 <td style="text-align:right;">
 16
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3379,9 +3340,6 @@ numeric
 </td>
 <td style="text-align:right;">
 16
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -3409,9 +3367,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -3433,9 +3388,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3454,9 +3406,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3477,9 +3426,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3498,9 +3444,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3521,9 +3464,6 @@ integer
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3542,9 +3482,6 @@ numeric
 </td>
 <td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -3572,9 +3509,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -3596,9 +3530,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3617,9 +3548,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3640,9 +3568,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3662,9 +3587,6 @@ character
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3683,9 +3605,6 @@ logical
 <td style="text-align:right;">
 78
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3700,9 +3619,6 @@ logical
 <td style="text-align:left;">
 </td>
 <td style="text-align:left;">
-</td>
-<td style="text-align:right;">
-78
 </td>
 <td style="text-align:right;">
 78
@@ -3733,9 +3649,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -3757,9 +3670,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3778,9 +3688,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3801,9 +3708,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3822,9 +3726,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3845,9 +3746,6 @@ integer
 <td style="text-align:right;">
 23
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3866,9 +3764,6 @@ numeric
 </td>
 <td style="text-align:right;">
 23
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -3896,9 +3791,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -3920,9 +3812,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3941,9 +3830,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -3964,9 +3850,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -3985,9 +3868,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4008,9 +3888,6 @@ integer
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4029,9 +3906,6 @@ numeric
 </td>
 <td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -4059,9 +3933,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -4083,9 +3954,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4104,9 +3972,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4127,9 +3992,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4148,9 +4010,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4171,9 +4030,6 @@ integer
 <td style="text-align:right;">
 1
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4192,9 +4048,6 @@ numeric
 </td>
 <td style="text-align:right;">
 1
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -4222,9 +4075,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -4246,9 +4096,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4267,9 +4114,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4290,9 +4134,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4311,9 +4152,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4334,9 +4172,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4355,9 +4190,6 @@ numeric
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -4385,9 +4217,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -4409,9 +4238,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4430,9 +4256,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4453,9 +4276,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4474,9 +4294,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4497,9 +4314,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4518,9 +4332,6 @@ numeric
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -4548,9 +4359,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -4572,9 +4380,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4593,9 +4398,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4616,9 +4418,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4637,9 +4436,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4660,9 +4456,6 @@ integer
 <td style="text-align:right;">
 21
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4681,9 +4474,6 @@ numeric
 </td>
 <td style="text-align:right;">
 21
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -4711,9 +4501,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -4735,9 +4522,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4756,9 +4540,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4779,9 +4560,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4800,9 +4578,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4823,9 +4598,6 @@ integer
 <td style="text-align:right;">
 18
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4844,9 +4616,6 @@ numeric
 </td>
 <td style="text-align:right;">
 18
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -4874,9 +4643,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -4898,9 +4664,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4919,9 +4682,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4942,9 +4702,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -4963,9 +4720,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -4986,9 +4740,6 @@ integer
 <td style="text-align:right;">
 18
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5007,9 +4758,6 @@ numeric
 </td>
 <td style="text-align:right;">
 18
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -5037,9 +4785,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -5061,9 +4806,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5082,9 +4824,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -5105,9 +4844,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5126,9 +4862,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -5149,9 +4882,6 @@ numeric
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5170,9 +4900,6 @@ numeric
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -5200,9 +4927,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -5224,9 +4948,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5245,9 +4966,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -5268,9 +4986,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5289,9 +5004,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -5312,9 +5024,6 @@ integer
 <td style="text-align:right;">
 16
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5333,9 +5042,6 @@ numeric
 </td>
 <td style="text-align:right;">
 16
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -5363,9 +5069,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -5387,9 +5090,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5408,9 +5108,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -5431,9 +5128,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5452,9 +5146,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -5475,9 +5166,6 @@ integer
 <td style="text-align:right;">
 16
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5496,9 +5184,6 @@ numeric
 </td>
 <td style="text-align:right;">
 16
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 </tbody>
@@ -5526,9 +5211,6 @@ unique_values
 <th style="text-align:right;">
 n_missing_values
 </th>
-<th style="text-align:right;">
-n_rows
-</th>
 </tr>
 </thead>
 <tbody>
@@ -5550,9 +5232,6 @@ integer
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5571,9 +5250,6 @@ integer
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -5594,9 +5270,6 @@ female, male, tgd
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5615,9 +5288,6 @@ character
 </td>
 <td style="text-align:right;">
 0
-</td>
-<td style="text-align:right;">
-78
 </td>
 </tr>
 <tr>
@@ -5638,9 +5308,6 @@ numeric
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 <tr>
 <td style="text-align:left;">
@@ -5660,18 +5327,19 @@ numeric
 <td style="text-align:right;">
 0
 </td>
-<td style="text-align:right;">
-78
-</td>
 </tr>
 </tbody>
 </table>
 <p>Part 3 - iterate through each data frame in df_list and perform
-checks: 1. check if age_group, sex, calendar year or year_range columns
-exist 2. check if age_group values are in the correct format 3. check if
-year_range values are in the correct format 4. check if calendar_year
-values are in the correct format 5. check if geography column is one of
-the acceptable values</p>
+checks:</p>
+<ol style="list-style-type: decimal">
+<li>check if age_group, sex, calendar year or year_range columns
+exist</li>
+<li>check if age_group values are in the correct format</li>
+<li>check if year_range values are in the correct format</li>
+<li>check if calendar_year values are in the correct format</li>
+<li>check if geography column is one of the acceptable values</li>
+</ol>
 <pre class="r"><code>for (df_name in names(df_list)) {
   df &lt;- df_list[[df_name]]
   col_names &lt;- names(df)
@@ -5749,7 +5417,7 @@ the acceptable values</p>
 GO BACK TO YOUR CODE AND MAKE CORRECTIONS</p>
 <p>NO
 &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;
-PROCEED WITH CELL SUPPRESSION</p>
+PROCEED WITH CELL SUPPRESSION\</p>
 <p>Part 4 - cell suppression - define the input directory path - define
 the output directory path to save cleaned datasets WITH CELL SUPPRESSED
 (R will automatically create this folder if it does not exist)</p>
