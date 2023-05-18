@@ -224,7 +224,7 @@ correspondence_sheet_list = list(SLA_2006_SA2_2016,SSD_2006_SA3_2016,SD_2006_SA4
 
 origin_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
 
-destination_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/"
+destination_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/"
 
 #-------------
 
@@ -436,12 +436,18 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   # Outer join
   merging_df_2021 <- merge(df_2021, df_corr_2021, by = {{paste0(GEO_TYPE,"_CODE_2021")}},all=T)
   
-  # NB!!!!! USING INVERSE OF RATIO HERE (FROM/TO RATIO NEEDS TO BE TO/FROM RATIO FOR using 2016-->2021 correspondence files to get 2016 values FROM 2021 values)
-  merging_df_2021$new_vals_raw <- merging_df_2021[,VAR_NAME] * 1/merging_df_2021$RATIO
+  
+  # Fix to 2021 merge
+  # Remove BELOW MINIMUM OUTPUT SIZE rows and other BMOS flags (see documentation on correspondence from ABS)
+  merging_df_2021 <- merging_df_2021[-which(merging_df_2021$BMOS_NULL_FLAG != 0),]
+  
+  
+  # NOTE at 12/05/23
+  # For duplicate 2021 geographies - this step will cause inflated estimates for a few areas with duplicate recipient geographies (2021 areas) - e.g. for SA2, Brisbane Airport, or Willow Vale-Pimpama, or Taylor 801041117 
   
   # group by filter variables and new_geography, find new correspondence calculated vals as sum over multiple entries for target geom (grouped by filter vars and target geom)
   merging_df_2021 <- merging_df_2021 %>% 
-    group_by(filters_combo,.data[[GEO_TO]]) %>% mutate(new_vals = round(sum(new_vals_raw)))
+    group_by(filters_combo,.data[[GEO_TO]]) %>% mutate(new_vals = round(sum(.data[[VAR_NAME]])))
   
   
   
