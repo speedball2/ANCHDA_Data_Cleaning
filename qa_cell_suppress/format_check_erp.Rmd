@@ -291,21 +291,56 @@ Loop through each CSV file and apply cell suppression
 Write the modified data frame to a new CSV file in the output directory
 
 ```{r}
+# Remove column "X" from each data frame in df_list
+# Loop through each CSV file
+for (csv_file in csv_files) {
+  # Read the CSV file into a data frame
+  df <- read.csv(csv_file)
+  
+  # Check if there is a column called "X" in the data frame
+  if ("X" %in% names(df)) {
+    # Remove the "X" column from the data frame
+    df <- df[, !names(df) %in% "X"]
+    
+    
+    
+    # Save the updated data frame to the output directory
+    output_file <- file.path(output_dir, basename(csv_file))
+    write.csv(df, file = output_file, row.names = FALSE)
+  }
+}
 
 ```
 
 
 
 ```{r}
-for (file in csv_files) {
+# Loop through each CSV file
+for (csv_file in csv_files) {
+  # Read the CSV file into a data frame
+  df <- read.csv(csv_file)
   
-  df <- read.csv(file, stringsAsFactors = FALSE)
+  # Check if the data frame has a column called "LGA_CODE16"
+  if ("LGA_CODE16" %in% names(df)) {
+    # Skip the file if it has the "LGA_CODE16" column
+    next
+  }
   
-  #df[, 5] <- ifelse(df[, 5] < 5, 9999999, df[, 5]) #modify this line for cell suppression!!!! look at other rmd for examples
+  # Perform cell suppression
+  if ("estimated_regional_population" %in% names(df)) {
+    df$estimated_regional_population[df$estimated_regional_population > 0 & df$estimated_regional_population < 5] <- 9999999
+  }
   
-  write_csv(df, file.path(output_dir, basename(file)))
+  # Remove the column "X" if it exists
+  if ("X" %in% names(df)) {
+    df <- df[, !names(df) %in% "X"]
+  }
   
+  # Save the updated data frame to the output directory
+  output_file <- file.path(output_dir, basename(csv_file))
+  write.csv(df, file = output_file, row.names = FALSE)
 }
+
 ```
 
 
