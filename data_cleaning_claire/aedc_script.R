@@ -22,9 +22,7 @@ setwd(aedc_folder)
 
 df <- read.csv("220811B-Reeves (3).csv")
 
-
-
-
+##---------------------------------------------------------------------start cleaning here ------------------------------------------------------------------------
 #remove rows with year = 2010
 df <- df %>% filter(Year != 2010)
 
@@ -58,9 +56,7 @@ df <- df %>%
          DV_CSGK = +(COMGENCategory == 1),
          DAR_CSGK = +(COMGENCategory == 2))
 
-
-
-#--------------------------------------------------------------------------------------------LGA----------------------------------------------
+#--------------------------------------------------------------------------------------------LGA-------------------------------------------------------------------
 LGA_df_PHW <- df %>%
   group_by(LGACode, Year, Gender) %>%
   summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
@@ -132,7 +128,7 @@ LGA_df_DV <- df %>%
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
 
-#--------------------------------------------------------------------------------------------SA3----------------------------------------------
+#--------------------------------------------------------------------------------------------SA3-------------------------------------------------------------------
 SA3_df_PHW <- df %>%
   group_by(SA3Code, Year, Gender) %>%
   summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
@@ -143,8 +139,6 @@ SA3_df_PHW <- df %>%
             P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
             PHW_Valid = sum(PHYSValid == 1),
             .groups = "drop")
-
-
 
 SA3_df_SC <- df %>%
   group_by(SA3Code, Year, Gender) %>%
@@ -203,7 +197,7 @@ SA3_df_DV <- df %>%
             P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
-#--------------------------------------------------------------------------------------------SA2----------------------------------------------
+#--------------------------------------------------------------------------------------------SA2-------------------------------------------------------------------
 SA2_df_PHW <- df %>%
   group_by(SA2Code, Year, Gender) %>%
   summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
@@ -214,9 +208,7 @@ SA2_df_PHW <- df %>%
             P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
             PHW_Valid = sum(PHYSValid == 1),
             .groups = "drop")
-
-
-
+e
 SA2_df_SC <- df %>%
   group_by(SA2Code, Year, Gender) %>%
   summarize(N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
@@ -275,10 +267,7 @@ SA2_df_DV <- df %>%
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
 
-
-
-
-#--------------------------------------------------------------------------------------------tables tidy up ----------------------------------------------
+#--------------------------------------------------------------------------------------------tables tidy up -------------------------------------------------------
 # Create a list of data frames
 df_list <- list(LGA_df_CSGK, LGA_df_EM, LGA_df_LCS, LGA_df_PHW, LGA_df_SC,
                 SA2_df_CSGK, SA2_df_EM, SA2_df_LCS, SA2_df_PHW, SA2_df_SC,
@@ -291,7 +280,7 @@ names(df_list) <- c("LGA_df_CSGK", "LGA_df_EM", "LGA_df_LCS", "LGA_df_PHW", "LGA
                     "LGA_df_DV", "SA3_df_DV", "SA2_df_DV")
 
 
-# Define function to filter out rows with 0 in LGA_Code, SA2_Code, or SA3_Code
+# Define function to filter out rows with 0 in LGA_Code, SA2_Code, or SA3_Code--------------------------------------------------------------------------------------
 filter_zeros <- function(df) {
   
   # Check for existence of each code column
@@ -318,14 +307,14 @@ df_list <- map(df_list, filter_zeros)
 
 
 
-# Define a function to round numeric values and recode Gender column
+# Define a function to round numeric values and re-code Gender column-----------------------------------------------------------------------------------------------
 round_and_recode <- function(df) {
   df %>%
     mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 2)))) %>%
     mutate(Gender = if_else(Gender == 1, "male", "female"))
 }
 
-# Apply the function to all data frames in the list
+# Apply the function to all data frames in the list-----------------------------------------------------------------------------------------------------------------
 df_list <- map(df_list, round_and_recode)
 
 # Define a function to rename the columns and add a new column in a data frame
@@ -342,10 +331,7 @@ rename_cols <- function(df) {
 df_list <- map(df_list, rename_cols)
 
 
-
-
-
-# Create the output directory if it doesn't already exist --- save files pre-cell suppression
+# Create the output directory if it doesn't already exist --- save files pre-cell suppression----------------------------------------------------------------------
 dir.create(path_out, showWarnings = FALSE)
 
 # Loop through each CSV file and save them to the output directory
@@ -388,10 +374,7 @@ for (df_name in names(df_list)) {
   cat("Saved file:", output_file, "\n")
 }
 
-
-
-
-# Define the function to replace invalid values with suppression ------------------------------------
+# Define the function to replace invalid values with suppression --------------------------------------------------------------------------------------------------
 
 replace_invalid_vals <- function(df, threshold = 15, suppression = "9999999") {
   valid_cols <- names(df)[endsWith(names(df), "_valid")]
@@ -408,8 +391,6 @@ replace_invalid_vals <- function(df, threshold = 15, suppression = "9999999") {
   
   return(df)
 }
-
-
 
 # Create a subfolder for the cell suppressed CSV files (save here the csv files post cell suppression) ------------------------------------------------------------
 subfolder <- "cell_suppressed"
