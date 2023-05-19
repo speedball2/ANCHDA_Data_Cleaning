@@ -208,7 +208,7 @@ SA2_df_PHW <- df %>%
             P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
             PHW_Valid = sum(PHYSValid == 1),
             .groups = "drop")
-e
+
 SA2_df_SC <- df %>%
   group_by(SA2Code, Year, Gender) %>%
   summarize(N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
@@ -320,7 +320,7 @@ df_list <- map(df_list, round_and_recode)
 # Define a function to rename the columns and add a new column in a data frame
 rename_cols <- function(df) {
   prefix <- str_replace(names(df)[1], "Code.*", "")
-  names(df)[1] <- paste0(prefix, "_CODE16")
+  names(df)[1] <- paste0(prefix, "_CODE16")                                    ##-------------NISHANI - this is where you might have to replace with _CODE21------#
   names(df)[-1] <- tolower(names(df)[-1]) # convert column names to lowercase except for the first column
   names(df)[2:3] <- c("calendar_year", "sex")
   df <- cbind(df[,1:3], age_group = "5-5", df[,4:ncol(df)]) # add a new column called age_group with value "0-24" in the fourth position
