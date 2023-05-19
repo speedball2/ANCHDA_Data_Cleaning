@@ -345,7 +345,7 @@ df_list <- map(df_list, rename_cols)
 
 
 
-# Create the output directory if it doesn't already exist
+# Create the output directory if it doesn't already exist --- save files pre-cell suppression
 dir.create(path_out, showWarnings = FALSE)
 
 # Loop through each CSV file and save them to the output directory
@@ -388,43 +388,48 @@ for (df_name in names(df_list)) {
   cat("Saved file:", output_file, "\n")
 }
 
-# Create a subfolder for the cell suppressed CSV files
-subfolder <- "cell_suppressed"
-output_subdir <- file.path(path_out, subfolder)
-dir.create(output_subdir, showWarnings = FALSE)
 
-# Loop through each CSV file in the output directory
-csv_files <- list.files(path_out, pattern = ".csv$", full.names = TRUE)
-for (csv_file in csv_files) {
-  # Read the CSV file into a data frame
-  df <- read.csv(csv_file)
-  
-  # Perform cell suppression
-  if ("estimated_regional_population" %in% names(df)) {
-    df$estimated_regional_population[df$estimated_regional_population > 0 & df$estimated_regional_population < 5] <- 9999999
+
+
+# Define the function to replace invalid values with suppression ------------------------------------
+
+replace_invalid_vals <- function(df, threshold = 15, suppression = "9999999") {
+  valid_cols <- names(df)[endsWith(names(df), "_valid")]
+  for (col in valid_cols) {
+    invalid_cells <- which(df[[col]] < threshold)
+    df[invalid_cells, -(1:4)] <- suppression
   }
   
-  # Remove the column "X" if it exists
-  if ("X" %in% names(df)) {
-    df <- df[, !names(df) %in% "X"]
+  n_cols <- names(df)[startsWith(names(df), "n_")]
+  for (col in n_cols) {
+    invalid_cells <- which(df[[col]] %in% 1:4)
+    df[invalid_cells, -(1:4)] <- suppression
   }
   
-  # Save the updated data frame to the cell suppressed subfolder
-  output_file <- file.path(output_subdir, basename(csv_file))
-  write.csv(df, file = output_file, row.names = FALSE)
-  
-  # Print confirmation message
-  cat("Saved cell suppressed file:", output_file, "\n")
+  return(df)
 }
 
 
 
+# Create a subfolder for the cell suppressed CSV files (save here the csv files post cell suppression) ------------------------------------------------------------
+subfolder <- "cell_suppressed"
+output_subdir <- file.path(path_out, subfolder)
+dir.create(output_subdir, showWarnings = FALSE)
 
 
-
-
-
-
-
-
-
+# Loop through the files in the input directory
+files <- list.files(path_out, pattern = "*.csv", full.names = TRUE)
+for (file in files) {
+  # Read the CSV file
+  df <- read.csv(file)
+  
+  # Replace invalid values with suppression
+  df_modified <- replace_invalid_vals(df)
+  
+  # Write the modified data frame to a new CSV file in the output directory
+  out_file <- file.path(output_subdir, basename(file))
+  write.csv(df_modified, out_file, row.names = FALSE)
+  
+  # Print the name and path of the file created
+  cat(sprintf("File created: %s\n", out_file))
+}
