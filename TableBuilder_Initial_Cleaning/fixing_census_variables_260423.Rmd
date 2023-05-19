@@ -1,10 +1,13 @@
 ---
-title: "Fixing Census Variables 26/04/23"
+title: "Fixing Census Variables"
 author: "Owen Forbes"
 date: "26/04/2023"
 output: html_document
 ---
 
+# Added at 19/05/23
+- update file path to new directory for data that has had temporal correspondence applied, before name fixes
+- "Australia" --> "0" for Unemployment
 
 # Cleaning up Census datasets - fixed column names and variables.
 
@@ -27,15 +30,15 @@ Fixing Unemployment - keeping only n_young_people_unemployed_seeking_full_time_w
 
 fixing_unemployment <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_unemployment_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_unemployment_",geog,".csv"))
   
-  names(temp_data)[5] <- "n_young_people_unemployed_seeking_full_time_work" #rename variable
+  names(temp_data)[6] <- "n_young_people_unemployed_seeking_full_time_work" #rename variable
   
   temp_data <- temp_data %>% filter(lfhrp_labour_force_status == "Unemployed, looking for full-time work") #keep only this level
   
   temp_data <- temp_data[,-4] #drop old/un-needed filter column
   
-  if(geog == "Australia"){temp_data$Australia <- rep("Australia", length(temp_data[,1]))}
+  if(geog == "Australia"){temp_data$Australia <- rep("0", length(temp_data[,1]))}
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_251_unemployed_and_seeking_full_time_work_",geog,".csv"), row.names = F)
 }
@@ -57,11 +60,13 @@ Fixing Internet connection type - renaming cols  internet_connection_type +  n_p
 
 fixing_internet <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_internet_connection_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_internet_connection_",geog,".csv"))
   
   names(temp_data)[2] <- "internet_connection_type"
   
   names(temp_data)[3] <- "n_private_dwellings"
+  
+  temp_data <- temp_data[,c(1,2,4,3)] #put calendar year before variable
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_282_internet_connection_at_home_",geog,".csv"), row.names = F)
 }
@@ -81,11 +86,11 @@ Fixing Tenure type - renaming cols  tenure_type and n_private_dwellings
 
 fixing_tenure <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_tenure_type_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_tenure_type_",geog,".csv"))
   
   names(temp_data)[2] <- "household_tenure_type"
   
-  names(temp_data)[3] <- "n_private_dwellings"
+  names(temp_data)[4] <- "n_private_dwellings"
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_283_household_tenure_",geog,".csv"), row.names = F)
 }
@@ -105,10 +110,10 @@ Fixing One Parent Families - keeping cols n_of_one_parent_families_with_non_depe
 
 fixing_oneparent <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_one_parent_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_one_parent_",geog,".csv"))
   
   
-  names(temp_data)[3] <- "n_of_one_parent_families_with_children_under_15_years_old"
+  names(temp_data)[4] <- "n_of_one_parent_families_with_children_under_15_years_old"
   
   temp_data <- temp_data %>% filter(fmcf_family_composition == "One parent family with children under 15")
   
@@ -134,9 +139,9 @@ Fixing Year 12 - n_young_people_with_year_12_or_equivalent_highest_year_of_schoo
 
 fixing_yr12 <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_year12_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_year12_",geog,".csv"))
   
-  names(temp_data)[5] <- "n_young_people_with_year_12_or_equivalent_highest_year_of_school_completed"
+  names(temp_data)[6] <- "n_young_people_with_year_12_or_equivalent_highest_year_of_school_completed"
   
   temp_data <- temp_data[,-4] #remove old filter col
   
@@ -161,9 +166,9 @@ Fixing Volunteering - n_young_people_doing_unpaid_voluntary_work
 
 fixing_volunteer <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_volunteer_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_volunteer_",geog,".csv"))
   
-  names(temp_data)[5] <- "n_young_people_doing_unpaid_voluntary_work"
+  names(temp_data)[6] <- "n_young_people_doing_unpaid_voluntary_work"
   
   temp_data <- temp_data[,-4] #remove old filter col
   
@@ -188,11 +193,11 @@ Fixing LOTE spoken at home
 
 fixing_LANP <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_LANP_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_LANP_",geog,".csv"))
   
   names(temp_data)[4] <- "language_group_spoken_at_home"
   
- names(temp_data)[5] <- "n"  
+ names(temp_data)[6] <- "n"  
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_632_children_and_young_people_who_speak_a_language_other_than_english_at_home_",geog,".csv"), row.names = F)
 }
@@ -215,16 +220,16 @@ Fixing - English spoken not well or not at all
 
 fixing_english <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_english_notwell_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_english_notwell_",geog,".csv"))
   
 
-  temp_data <- temp_data %>% group_by_at(c(1,2,3,6)) %>% mutate(new_vals = sum(n_children_and_young_people_who_speak_english_not_well_or_not_at_all))
+  temp_data <- temp_data %>% group_by_at(c(1,2,3,5)) %>% mutate(new_vals = sum(n_children_and_young_people_who_speak_english_not_well_or_not_at_all))
   
   #temp_data <- temp_data %>% group_by(.data[[geog]], age_group, sex, calendar_year) %>% mutate(new_vals = sum(n_children_and_young_people_who_speak_english_not_well_or_not_at_all))
   
-  temp_data[,5] <- temp_data[,7]
+  temp_data[,6] <- temp_data[,7]
   
-  names(temp_data)[5] <- "n_children_and_young_people_who_speak_english_not_well_or_not_at_all"
+  names(temp_data)[6] <- "n_children_and_young_people_who_speak_english_not_well_or_not_at_all"
   
   
   # remove unnecessary columns
@@ -235,7 +240,7 @@ fixing_english <- function(geog){
   temp_data <- distinct(temp_data, .keep_all = T)
   
   
-  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_632_children_and_young_people_who_speak_a_language_other_than_english_at_home_",geog,".csv"), row.names = F)
+  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_633_children_and_young_people_who_speak_english_not_well_or_not_at_all_",geog,".csv"), row.names = F)
 }
   
   
@@ -257,11 +262,11 @@ Fixing country/region of birth - region_children_and_young_people_born + n
 
 fixing_country <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_countryofbirth_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_countryofbirth_",geog,".csv"))
   
   names(temp_data)[4] <- "region_children_and_young_people_born"
   
-  names(temp_data)[5] <- "n"
+  names(temp_data)[6] <- "n"
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_661_country_of_birth_",geog,".csv"), row.names = F)
 }
@@ -282,11 +287,11 @@ Fixing Religion - religious_affiliation + n
 
 fixing_religion <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_religion_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_religion_",geog,".csv"))
   
   names(temp_data)[4] <- "religious_affiliation"
   
-  names(temp_data)[5] <- "n"
+  names(temp_data)[6] <- "n"
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_671_religious_affiliation_of_15_24_year_olds_",geog,".csv"), row.names = F)
 }
@@ -307,14 +312,18 @@ Fixing core activity need for assistance - n_children_and_young_people_with_core
 
 fixing_core <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_core_activity_need_assistance_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_core_activity_need_assistance_",geog,".csv"))
   
   
   temp_data <- temp_data %>% filter(assnp_core_activity_need_for_assistance=="Has need for assistance with core activities")
   
-  names(temp_data)[5] <- "n_children_and_young_people_with_core_activity_need_for_assistance"
+  names(temp_data)[6] <- "n_children_and_young_people_with_core_activity_need_for_assistance"
   
   temp_data <- temp_data[,-4]
+  
+  # Remove "Total" entries for state
+  if(geog == "State"){temp_data <- filter(temp_data, State != "Total")}
+
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_1121_children_with_core_activity_need_for_assistance_",geog,".csv"), row.names = F)
 }
@@ -335,7 +344,7 @@ n_same_sex_couples_with_no_children
 
 fixing_ssh <- function(geog){
   
-  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/census_same_sex_couple_",geog,".csv"))
+  temp_data <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/census_same_sex_couple_",geog,".csv"))
   
   temp_data <- temp_data %>% filter(cdcf_count_of_dependent_children_in_family!="No children" & cdcf_count_of_dependent_children_in_family!="Not applicable" & cdcf_count_of_dependent_children_in_family!="Couple family with: No dependent children")
   
@@ -344,11 +353,11 @@ fixing_ssh <- function(geog){
   
   
 
-  temp_data <- temp_data %>% group_by_at(c(1,5)) %>% mutate(new_vals = sum(same_sex_couple_children))
+  temp_data <- temp_data %>% group_by_at(c(1,4)) %>% mutate(new_vals = sum(same_sex_couple_children))
   
-  temp_data[,4] <- temp_data[,6]
+  temp_data[,5] <- temp_data[,6]
   
-  names(temp_data)[4] <- "n_same_sex_couples_with_one_or_more_dependent_children"
+  names(temp_data)[5] <- "n_same_sex_couples_with_one_or_more_dependent_children"
   
   
   # remove unnecessary columns
@@ -358,7 +367,7 @@ fixing_ssh <- function(geog){
   
   temp_data <- distinct(temp_data, .keep_all = T)
   
-  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_XYZ_same_sex_parents_with_dependent_children_",geog,".csv"), row.names = F)
+  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_323_same_sex_parents_with_dependent_children_",geog,".csv"), row.names = F)
 }
   
   

@@ -1,5 +1,7 @@
 # Temporal concordance function for census data - INTERNET
 
+# 190523 -- make 'sex' lowercase
+
 
 # Custom code because internet access doesn't include data for 2021 - pipeline is inflexible to variation in n. of years
 
@@ -228,7 +230,7 @@ correspondence_sheet_list = list(SLA_2006_SA2_2016,SSD_2006_SA3_2016,SD_2006_SA4
 
 origin_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
 
-destination_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/"
+destination_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/"
 
 #-------------
 
@@ -533,6 +535,10 @@ INTERNET_temporal_concordance_census_fn <- function(origin_folder_path_base,dest
   # remove "total" rows
   out_df_all_years <- out_df_all_years[rowSums(sapply(out_df_all_years, grepl, pattern = 'Total')) == 0, ]
   
+  # make sex lowercase
+  if("sex" %in% names(out_df_all_years)){
+    out_df_all_years$sex <- tolower(out_df_all_years$sex)
+  }
   
   if("age_group" %in% names(out_df_all_years)){
     # remove " years" from age_group
@@ -681,14 +687,20 @@ INTERNET_state_stack_fn <- function(origin_folder_path_base,destination_folder_p
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
   # FORMATTING CONSISTENCY CHECKS ON FINAL ASSEMBLED DATASET
   #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-  # Fix state levels
   
-  if(GEO_TYPE == "STE"){
-    out_df_all_years <- out_df_all_years %>% mutate(State = case_match(State, "1"~1,"2"~2,"3"~3,"4"~4,"5"~5,"6"~6,"7"~7,"8"~8,"9"~9,
-                                                                       "New South Wales" ~ 1, "Victoria" ~ 2, "Queensland" ~ 3, "South Australia" ~ 4, 
-                                                                       "Western Australia" ~ 5, "Tasmania" ~ 6, "Northern Territory" ~ 7, 
-                                                                       "Australian Capital Territory" ~ 8, "Other Territories" ~ 9))
+  # fix state/national names
+  
+  
+  if(GEO_TYPE == "STE"){out_df_all_years <- out_df_all_years %>% mutate(State = recode(State, "1"=1,"2"=2,"3"=3,"4"=4,"5"=5,"6"=6,"7"=7,"8"=8,"9"=9,
+                                                                                       "New South Wales" = 1, "Victoria" = 2, "Queensland" = 3, "South Australia" = 4, 
+                                                                                       "Western Australia" = 5, "Tasmania" = 6, "Northern Territory" = 7, 
+                                                                                       "Australian Capital Territory" = 8, "Other Territories" = 9))
   }
+  
+  
+  if(GEO_TYPE == "national"){out_df_all_years <- out_df_all_years %>% mutate(Australia = recode(Australia, "0"="0","Australia"="0"))
+  }
+  
   
   #1. put geography column first, then age_group, sex, then other filter vars, then values column
   
@@ -727,6 +739,10 @@ INTERNET_state_stack_fn <- function(origin_folder_path_base,destination_folder_p
   # remove "total" rows
   out_df_all_years <- out_df_all_years[rowSums(sapply(out_df_all_years, grepl, pattern = 'Total')) == 0, ]
   
+  # make sex lowercase
+  if("sex" %in% names(out_df_all_years)){
+    out_df_all_years$sex <- tolower(out_df_all_years$sex)
+  }
   
   if("age_group" %in% names(out_df_all_years)){
     # remove " years" from age_group

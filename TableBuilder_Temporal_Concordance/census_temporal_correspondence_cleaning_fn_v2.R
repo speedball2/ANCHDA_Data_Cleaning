@@ -1,5 +1,8 @@
 # Temporal concordance function for census data - drafting/testing
 
+# Changes at 19/05/23:
+# - move order of "calendar_year" column before variable column in output df's for each function
+# 
 
 library(tidyverse) #for tidyr::fill()
 library(readxl)
@@ -224,7 +227,7 @@ correspondence_sheet_list = list(SLA_2006_SA2_2016,SSD_2006_SA3_2016,SD_2006_SA4
 
 origin_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/"
 
-destination_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/old_column_names/"
+destination_folder_path_base <- "/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_INTERIM/Census_Interim_Pre-Temporal-Concordance/after_correspondence_before_name_fixes/"
 
 #-------------
 
@@ -501,13 +504,13 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   #out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], age_group, sex, .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   
   if(length(FILTER_VARS) == 1){
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], calendar_year, .data[[VAR_NAME]], .data[[uncertainty_colname]])
   } else if(length(FILTER_VARS) == 2){
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], calendar_year, .data[[VAR_NAME]], .data[[uncertainty_colname]])
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], calendar_year, .data[[VAR_NAME]], .data[[uncertainty_colname]])
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], calendar_year, .data[[VAR_NAME]], .data[[uncertainty_colname]])
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_all_years")}
   
   
@@ -534,6 +537,10 @@ temporal_concordance_census_fn <- function(origin_folder_path_base,destination_f
   # remove "total" rows
   out_df_all_years <- out_df_all_years[rowSums(sapply(out_df_all_years, grepl, pattern = 'Total')) == 0, ]
   
+  # make sex lowercase
+  if("sex" %in% names(out_df_all_years)){
+    out_df_all_years$sex <- tolower(out_df_all_years$sex)
+  }
   
   # remove " years" from age_group so it's just number-number e.g. "0-4"
   if("age_group" %in% names(out_df_all_years)){
@@ -692,20 +699,20 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   }
   
   
-  if(GEO_TYPE == "national"){out_df_all_years <- out_df_all_years %>% mutate(Australia = recode(Australia, "0"="Australia","Australia"="Australia"))
+  if(GEO_TYPE == "national"){out_df_all_years <- out_df_all_years %>% mutate(Australia = recode(Australia, "0"="0","Australia"="0"))
   }
   
   
   #1. put geography column first, then age_group, sex, then other filter vars, then values column
   
   if(length(FILTER_VARS) == 1){
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], calendar_year, .data[[VAR_NAME]])
   } else if(length(FILTER_VARS) == 2){
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], calendar_year, .data[[VAR_NAME]])
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], calendar_year, .data[[VAR_NAME]])
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], calendar_year, .data[[VAR_NAME]])
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_all_years")}
   
   
@@ -733,6 +740,10 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   # remove "total" rows
   out_df_all_years <- out_df_all_years[rowSums(sapply(out_df_all_years, grepl, pattern = 'Total')) == 0, ]
   
+  # make sex lowercase
+  if("sex" %in% names(out_df_all_years)){
+    out_df_all_years$sex <- tolower(out_df_all_years$sex)
+  }
   
   if("age_group" %in% names(out_df_all_years)){
   # remove " years" from age_group
