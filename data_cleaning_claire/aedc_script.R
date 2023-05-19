@@ -345,14 +345,17 @@ df_list <- map(df_list, rename_cols)
 
 
 
-#--------------------------------------------------------------------------------------------save all csv files ----------------------------------------------
+# Create the output directory if it doesn't already exist
+dir.create(path_out, showWarnings = FALSE)
+
+# Loop through each CSV file and save them to the output directory
 for (df_name in names(df_list)) {
-  # Extract the string before _df_ : this is [geography_code]
+  # Extract the string before _df_: this is [geography_code]
   geography_code <- str_extract(df_name, "^[^_]+(?=_df_)")
-  # Extract the string after _df_ : this is [domain_code]
+  # Extract the string after _df_: this is [domain_code]
   domain_code <- str_extract(df_name, "(?<=_df_)[^_]+")
   
-  # Construct the output file path and name based on domain code
+  # Construct the output file path and name based on the domain code
   if (domain_code == "LCS") {
     domain_name <- "language_and_cognition"
     domain_code <- "421"
@@ -376,34 +379,43 @@ for (df_name in names(df_list)) {
   }
   
   # Construct the output file path and name
-  output_file <- paste0(path_out, "aedc_", domain_code,"_", domain_name,"_", geography_code, ".csv")
+  output_file <- paste0(path_out, "aedc_", domain_code, "_", domain_name, "_", geography_code, ".csv")
   
   # Save the dataframe as a CSV file
-  write_csv(df_list[[df_name]], output_file)
+  write.csv(df_list[[df_name]], file = output_file, row.names = FALSE)
   
   # Print confirmation message
   cat("Saved file:", output_file, "\n")
 }
 
+# Create a subfolder for the cell suppressed CSV files
+subfolder <- "cell_suppressed"
+output_subdir <- file.path(path_out, subfolder)
+dir.create(output_subdir, showWarnings = FALSE)
 
-
-
-
-
-
-#--------------------------------------------------------------------------------------------cell suppression----------------------------------------------
-# Define the function to replace invalid values
-replace_invalid_vals <- function(df) {
-  valid_cols <- names(df)[endsWith(names(df), "_valid")]
-  for (col in valid_cols) {
-    df[which(df[[col]] < 15), -(1:3)] <- 9999999
+# Loop through each CSV file in the output directory
+csv_files <- list.files(path_out, pattern = ".csv$", full.names = TRUE)
+for (csv_file in csv_files) {
+  # Read the CSV file into a data frame
+  df <- read.csv(csv_file)
+  
+  # Perform cell suppression
+  if ("estimated_regional_population" %in% names(df)) {
+    df$estimated_regional_population[df$estimated_regional_population > 0 & df$estimated_regional_population < 5] <- 9999999
   }
-  return(df)
+  
+  # Remove the column "X" if it exists
+  if ("X" %in% names(df)) {
+    df <- df[, !names(df) %in% "X"]
+  }
+  
+  # Save the updated data frame to the cell suppressed subfolder
+  output_file <- file.path(output_subdir, basename(csv_file))
+  write.csv(df, file = output_file, row.names = FALSE)
+  
+  # Print confirmation message
+  cat("Saved cell suppressed file:", output_file, "\n")
 }
-
-# Apply the function to each tibble in df_list
-df_list <- lapply(df_list, replace_invalid_vals)
-#-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 
