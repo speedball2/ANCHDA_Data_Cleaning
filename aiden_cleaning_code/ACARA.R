@@ -59,7 +59,7 @@ rm(df.scan);rm(file.cols)
 
 
 # ------------------------------------------------------------------------------
-# Convert Lat-Lon to LGA:
+# Convert Lat-Lon to LGA (no longer needed):
 LGA.poly <- LGA_2016
 LGA.sf <- st_as_sf(LGA.poly)
 
@@ -79,7 +79,7 @@ rm(LGA.poly);rm(LGA.sf);rm(df.sf);rm(LGA.cols);rm(df.LGA)
 
 
 # ------------------------------------------------------------------------------
-# Convert Lat-Lon to SA2/SA3/SA4:
+# Convert Lat-Lon to SA2/SA3/SA4 (no longer needed):
 SA2.poly <- SA2_2016
 SA2.sf <- st_as_sf(SA2.poly)
 
@@ -99,7 +99,7 @@ rm(SA2.poly);rm(SA2.sf);rm(df.sf);rm(SA2.cols);rm(df.SA2)
 
 
 # ------------------------------------------------------------------------------
-# Merge Codes:
+# Merge Codes and save (no longer needed):
 df.base.LGA <- merge(df,df.LGA.premerge,
                      by = c("ACARA SML ID","School Name"))
 
@@ -111,14 +111,19 @@ df.output <- df.base.LGA.SA2
 # Clean:
 rm(df.base.LGA);rm(df.base.LGA.SA2);rm(df.LGA.premerge);rm(df.SA2.premerge)
 
-
+# Save:
+write.csv(df.output,
+          paste0(root.dir,save.dir,"School_Locations.csv"),
+          row.names=F)
 
 
 
 # ------------------------------------------------------------------------------
 # Save:
-write.csv(df.output,
-          paste0(root.dir,save.dir,"School_Locations.csv"),
+names(df) <- c("ID", "Service_Name", "Latitude", "Longitude")
+# ID: ACARA SML ID.
+write.csv(df,
+          paste0(root.dir,save.dir,"ACARA_731_school_locations.csv"),
           row.names=F)
 
 
