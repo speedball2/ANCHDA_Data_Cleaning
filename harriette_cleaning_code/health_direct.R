@@ -37,7 +37,7 @@ df1 <- read("ANCHDA_2923-04-26 data extract.xlsx", 2, "A1:Z22282", T)
 
 #OTHER LOCATIONS (lat, long inc)
 
-df2 <- read.csv("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_INTERIM/services_physical.csv")
+df2 <- read.csv("../../../Data_Collections_INTERIM/Service Location Data/NHSD/services_physical.csv")
 
 
 #CLEANING UP DATA --------------------------------------------------------------
@@ -134,9 +134,9 @@ df3_new$healthcare_service_identifier_nhsd = str_to_lower(df3_new$healthcare_ser
 # WRITE CSVS -------------------------------------------------------------------
 
 
-write.csv(df1_new, "../../../Data_Collections_INTERIM/NHSD_711_hospitals_service_locations.csv", row.names = F)
-write.csv(df2_new, "NHSD_712_general_practices_service_locations.csv", row.names = F)
-write.csv(df3_new, "NHSD_713_healthcare_services_locations.csv", row.names = F)
+write.csv(df1_new, "../../../Data_Collections_INTERIM/Service Location Data/NHSD/NHSD_711_hospital_service_locations.csv", row.names = F)
+write.csv(df2_new, "../../../Data_Collections_INTERIM/Service Location Data/NHSD/NHSD_712_general_practice_locations.csv", row.names = F)
+write.csv(df3_new, "../../../Data_Collections_INTERIM/Service Location Data/NHSD/NHSD_713_healthcare_service_locations.csv", row.names = F)
 
 
 

@@ -181,10 +181,19 @@ df0 <- df0 %>%
 df0 <- df0 %>% 
   rename_with(~ gsub("N_", "n_", .x, fixed = TRUE))
 
+# Subset based on single values
+df_single <- subset(df0, !grepl("-", age_group))
+
+# Subset based on ranges
+df_range <- subset(df0, grepl("-", age_group))
+
 # CHANGING AGE VALUES TO VISER SPECIFCATIONS 
 
-df0 <- df0 %>%
+df_single <- df_single %>%
   mutate(across(.cols = age_group, ~ ifelse(grepl("^\\d+-\\d+$", .), ., paste(., ., sep = "-"))))
+
+
+
 
 # RE ORDERING COLUMNS (ALL) ----------------------------------------------------
 
@@ -264,7 +273,8 @@ reorder <- function(df, corder){
 }
 
 
-df0 <- reorder(df0, corder = corder1)
+df_range <- reorder(df_range, corder = corder1)
+df_single <- reorder(df_single, corder = corder1)
 df1 <- reorder(df1, corder = corder2)
 df2 <- reorder(df2, corder = corder2)
 df3 <- reorder(df3, corder = corder2)
@@ -272,6 +282,7 @@ df4 <- reorder(df4, corder = corder2)
 df5 <- reorder(df5, corder = corder2)
 df6 <- reorder(df6, corder = corder2)
 df8 <- reorder(df8, corder = corder2)
+
 
 # COMBINE STE TOGETHER ---------------------------------------------------------
 
@@ -315,25 +326,46 @@ cig <- c("n_ever_e-cigarette_users_assad", "p_ever_e-cigarette_users_assad",
          "n_past_month_e-cigarette_users_assad", "p_past_month_e-cigarette_users_assad")
 
 
+
 # SEPERATING BY INDICATOR ------------------------------------------------------
+
 
 #NATIONAL SINGLE AGE
 
 #1.9.1 SMOKING
 
-nsmo <- df0[,c(n,smo)]
+s_nsmo <- df_single[,c(n,smo)]
 
 #1.9.2 ALCOHOL
 
-nalc <- df0[,c(n, alc)]
+s_nalc <- df_single[,c(n, alc)]
 
 #1.9.3 DRUGS
 
-ndru <- df0[,c(n, dru)]
+s_ndru <- df_single[,c(n, dru)]
 
 #1.9.4 E-CIGS
 
-ncig <- df0[,c(n, cig)]
+s_ncig <- df_single[,c(n, cig)]
+
+
+#NATIONAL AGE RANGE
+
+#1.9.1 SMOKING
+
+r_nsmo <- df_range[,c(n,smo)]
+
+#1.9.2 ALCOHOL
+
+r_nalc <- df_range[,c(n, alc)]
+
+#1.9.3 DRUGS
+
+r_ndru <- df_range[,c(n, dru)]
+
+#1.9.4 E-CIGS
+
+r_ncig <- df_range[,c(n, cig)]
 
 
 # ------------------------------------------------------------------------------
@@ -356,11 +388,17 @@ scig <- STE[,c(s, cig)]
 
 # WRITE CSVS -------------------------------------------------------------------
 
-#NATIONAL SINGLE AGE + AGE RANGE COMBINED 
-write.csv(nsmo, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_191_smoking_National.csv", row.names = F)
-write.csv(nalc, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_192_alcohol_National.csv", row.names = F)
-write.csv(ndru, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_193_drugs_National.csv", row.names = F)
-write.csv(ncig, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_194_e_cigarettes_National.csv", row.names = F)
+#NATIONAL SINGLE AGE
+write.csv(s_nsmo, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_191_smoking_National_single_age.csv", row.names = F)
+write.csv(s_nalc, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_192_alcohol_National_single_age.csv", row.names = F)
+write.csv(s_ndru, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_193_drugs_National_single_age.csv", row.names = F)
+write.csv(s_ncig, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_194_e_cigarettes_National_single_age.csv", row.names = F)
+
+#NATIONAL AGE RANGE
+write.csv(r_nsmo, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_191_smoking_National_age_range.csv", row.names = F)
+write.csv(r_nalc, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_192_alcohol_National_age_range.csv", row.names = F)
+write.csv(r_ndru, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_193_drugs_National_age_range.csv", row.names = F)
+write.csv(r_ncig, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_194_e_cigarettes_National_age_range.csv", row.names = F)
 
 
 #STATE
@@ -368,6 +406,3 @@ write.csv(ssmo, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_191_smoking_
 write.csv(salc, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_192_alcohol_STE.csv", row.names = F)
 write.csv(sdru, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_193_drugs_STE.csv", row.names = F)
 write.csv(scig, "../../../Data_Collections_READY_FOR_QA/ASSAD/ASSAD_194_e_cigarettes_STE.csv", row.names = F)
-
-
-

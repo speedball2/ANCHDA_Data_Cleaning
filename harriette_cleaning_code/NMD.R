@@ -1,7 +1,4 @@
 
-#HARRIETTES WD:
-setwd("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/from_custodians/NMD_SA2_SA3")
-
 # LIBARIES ---------------------------------------------------------------------
 
 library(readxl)
@@ -80,9 +77,10 @@ cleaning <- function(path, sht, range, col, age = NULL, sex, round_col, coln){
   df <- df[ , !names(df) %in% 
               c("SA3_name", "SA2_name")]
   
-  
   #RENAMING COLUMNS
   names(df) <- coln
+  
+  
   
   
   return(df)
@@ -109,6 +107,29 @@ df6$SA3_CODE16 <-gsub("SA3","",as.character(df6$SA3_CODE16))
 
 df6[df6[,] == "Persons"] <- "18-24"
 
+
+#GEO SHAPEFILES FROM ABS (SA2 only) --------------------------------------------
+
+asgs_merge <- function(df){
+  
+  asgs <- read.csv("C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_RAW/public_data/ASGS2016_SA2_SA3_SA4_code_name_matching_ref_csv/SA2_2016_AUST_no_geom.csv")
+  
+  asgs <- select(asgs, "SA2_MAINCODE_2016","SA2_5DIGITCODE_2016","SA2_NAME_2016")
+  
+  colnames(asgs)[colnames(asgs) == "SA2_MAINCODE_2016"] = "SA2_CODE16"
+  
+  df <- merge(x= asgs, y= df, by = "SA2_CODE16", all.x = T)
+  
+  #REMOVING NAME COL
+  df <- df[ , !names(df) %in% 
+              c("SA2_5DIGITCODE_2016","SA2_NAME_2016")]
+  
+  return(df)
+}
+
+df2 <- asgs_merge(df2)
+df4 <- asgs_merge(df4)
+df5 <- asgs_merge(df5)
 
 # SAVING DATA BY INDICATOR -----------------------------------------------------
 
@@ -169,7 +190,7 @@ h <- df5[,c(SA2, age, sex, mort1.2)]
 # WRITE CSVS -------------------------------------------------------------------
 
 
-# 1.1.2 INFANT MORTALITY CSVS 
+# # 1.1.2 INFANT MORTALITY CSVS 
 
 write.csv(a, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_112_infant_mortality_SA3.csv", row.names = F)
 write.csv(b, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_112_infant_mortality_SA2.csv", row.names = F)
@@ -177,16 +198,16 @@ write.csv(b, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_112_infant_mortali
 
 # 1.1.1O BIRTHS CSVS
 
-write.csv(c, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1110_infant_births_SA3.csv", row.names = F)
-write.csv(d, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1110_infant_births_SA2.csv", row.names = F)
+write.csv(c, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1110_births_SA3.csv", row.names = F)
+write.csv(d, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1110_births_SA2.csv", row.names = F)
 
 
-# 1.21.1 MORTALITY CSVS 
+# 1.21.1 MORTALITY CSVS
 
 write.csv(e, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1211_mortality_SA3.csv", row.names = F)
 write.csv(f, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1211_mortality_SA2.csv", row.names = F)
 
-# 1.21.2 YOUNG PEOPLE MORTALITY CSVS 
+# 1.21.2 YOUNG PEOPLE MORTALITY CSVS
 
 write.csv(g, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA3.csv", row.names = F)
 write.csv(h, "../../../Data_Collections_READY_FOR_QA/NMD//NMD_1212_young_people_mortality_SA2.csv", row.names = F)
