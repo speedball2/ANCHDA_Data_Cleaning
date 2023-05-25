@@ -2,19 +2,26 @@
 #      ACWA Data Clean 22-MAY-23 | ACECQA Childcare Centre Location Data       #
 ################################################################################
 
-
-
+#Harriette edits 25.05.23
+#add root.dir
+#lat, long to front 
+#change col names
 
 
 # ------------------------------------------------------------------------------
 # Save and Load Directories:
 # Change root directory to appropriate file path.
 root.dir <- "C:/Users/Mudki/OneDrive - Queensland University of Technology/ACWA_QUT/"
+
+
+#Harriette changing names - new root.dir
+root.dir <- "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/"
 file.dir <- "Data_Collections_RAW/public_data/Service Location Data/ACECQA/Education-services-au-export.csv"
 file.dir.interim <- "Data_Collections_INTERIM/Service Location Data/ACECQA/"
 save.dir <- "Data_Collections_READY_FOR_QA/Service Location Data/"
 
 library(ggmap)
+library(stringr)
 # register_google(key = "INSERT KEY HERE") # https://console.cloud.google.com/google/maps-apis/credentials?project=opportune-cairn-137723
 
 df <- read.csv(paste0(root.dir,file.dir))[,c(1,3,6,7,8,9)]
@@ -67,9 +74,13 @@ df.lonlat <- read.csv(paste0(root.dir,file.dir.interim,"edu_lonlat.csv"))[,2:3] 
 
 #-------------------------------------------------------------------------------
 # Merge:
-df.full <- na.omit(cbind(df,df.lonlat))[,c(1,2,8,7)]
-names(df.full) <- c("ID", "Service_Name", "Latitude", "Longitude")
-# ID: ACECQA Service Approval Number
+df.full <- na.omit(cbind(df,df.lonlat))[,c(8,7,2,1)]
+names(df.full) <- c("latitude", "longitude", "service_name_acecqa", "service_approval_number_acecqa")
+
+#H add - names lower
+df.full$service_name_acecqa = str_to_lower(df.full$service_name_acecqa)
+
+
 write.csv(df.full, paste0(root.dir, save.dir, "ACECQA_721_childcare_centre_locations.csv"),row.names = FALSE)
 #-------------------------------------------------------------------------------
 

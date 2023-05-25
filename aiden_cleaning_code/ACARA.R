@@ -30,6 +30,7 @@ library(ggmap)
 library(readxl)
 library(sf)
 library(spatialEco)
+library(stringr)
 
 if (system.file(package='ASGS') == ""){
   install.packages("ASGS.foyer")
@@ -133,6 +134,7 @@ names(df) <- c("acara_sml_id", "school_name_acara", "latitude", "longitude")
 corder <- c( "latitude", "longitude", "school_name_acara","acara_sml_id")
 df <- df[,corder]
 
+df$school_name_acara = str_to_lower(df$school_name_acara)
 
 # ID: ACARA SML ID.
 write.csv(df,
