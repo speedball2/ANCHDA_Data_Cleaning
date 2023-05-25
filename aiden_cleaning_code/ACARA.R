@@ -2,14 +2,19 @@
 #            ACWA Data Clean 18-APR-23 | ACARA School Location Data            #
 ################################################################################
 
-
-
+# Harriette edits 25.05.23
+#adding root.dir
+#changed column names
+#changing column order to be consistent with others - 
 
 
 # ------------------------------------------------------------------------------
 # Save and Load Directories:
 # Change root directory to appropriate file path.
-root.dir <- "C:/Users/Mudki/OneDrive - Queensland University of Technology/ACWA_QUT/"
+#root.dir <- "C:/Users/Mudki/OneDrive - Queensland University of Technology/ACWA_QUT/"
+
+#Harriette changing names - new root.dir
+root.dir <- "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/"
 file.dir <- "Data_Collections_RAW/public_data/Service Location Data/ACARA/school-location-2021e23a2f404c94637ead88ff00003e0139.xlsx"
 save.dir <- "Data_Collections_READY_FOR_QA/Service Location Data/"
 
@@ -59,7 +64,7 @@ rm(df.scan);rm(file.cols)
 
 
 # ------------------------------------------------------------------------------
-# Convert Lat-Lon to LGA (no longer needed):
+#Convert Lat-Lon to LGA (no longer needed):
 LGA.poly <- LGA_2016
 LGA.sf <- st_as_sf(LGA.poly)
 
@@ -79,7 +84,7 @@ rm(LGA.poly);rm(LGA.sf);rm(df.sf);rm(LGA.cols);rm(df.LGA)
 
 
 # ------------------------------------------------------------------------------
-# Convert Lat-Lon to SA2/SA3/SA4 (no longer needed):
+#Convert Lat-Lon to SA2/SA3/SA4 (no longer needed):
 SA2.poly <- SA2_2016
 SA2.sf <- st_as_sf(SA2.poly)
 
@@ -99,7 +104,7 @@ rm(SA2.poly);rm(SA2.sf);rm(df.sf);rm(SA2.cols);rm(df.SA2)
 
 
 # ------------------------------------------------------------------------------
-# Merge Codes and save (no longer needed):
+#Merge Codes and save (no longer needed):
 df.base.LGA <- merge(df,df.LGA.premerge,
                      by = c("ACARA SML ID","School Name"))
 
@@ -120,7 +125,15 @@ write.csv(df.output,
 
 # ------------------------------------------------------------------------------
 # Save:
-names(df) <- c("ID", "Service_Name", "Latitude", "Longitude")
+
+names(df) <- c("acara_sml_id", "school_name_acara", "latitude", "longitude")
+
+#Harriette edit 25.05.23
+
+corder <- c( "latitude", "longitude", "school_name_acara","acara_sml_id")
+df <- df[,corder]
+
+
 # ID: ACARA SML ID.
 write.csv(df,
           paste0(root.dir,save.dir,"ACARA_731_school_locations.csv"),
