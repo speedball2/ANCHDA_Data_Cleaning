@@ -11,7 +11,7 @@
 
 <meta name="author" content="Claire and Harriette" />
 
-<meta name="date" content="2023-05-24" />
+<meta name="date" content="2023-05-25" />
 
 <title>dictionary helper</title>
 
@@ -352,7 +352,7 @@ display: none;
 
 <h1 class="title toc-ignore">dictionary helper</h1>
 <h4 class="author">Claire and Harriette</h4>
-<h4 class="date">2023-05-24</h4>
+<h4 class="date">2023-05-25</h4>
 
 </div>
 
@@ -382,14 +382,14 @@ for (file in csv_files) {
 
 # Print the list of CSV files
 cat(paste(csv_files, collapse = &quot;\n&quot;), &quot;\n&quot;)</code></pre>
-<pre><code>## NMD_1110_infant_births_SA2.csv
-## NMD_1110_infant_births_SA3.csv
-## NMD_112_infant_mortality_SA2.csv
-## NMD_112_infant_mortality_SA3.csv
-## NMD_1211_mortality_SA2.csv
-## NMD_1211_mortality_SA3.csv
-## NMD_1212_young_people_mortality_SA2.csv
-## NMD_1212_young_people_mortality_SA3.csv</code></pre>
+<pre><code>## ASSAD_191_smoking_National.csv
+## ASSAD_191_smoking_STE.csv
+## ASSAD_192_alcohol_National.csv
+## ASSAD_192_alcohol_STE.csv
+## ASSAD_193_drugs_National.csv
+## ASSAD_193_drugs_STE.csv
+## ASSAD_194_e_cigarettes_National.csv
+## ASSAD_194_e_cigarettes_STE.csv</code></pre>
 <pre class="r"><code>cat(&quot;Finished checking CSV files.&quot;, &quot;\n&quot;)</code></pre>
 <pre><code>## Finished checking CSV files.</code></pre>
 <p>This code chunk iterates over each data frame in df_list, retrieves
@@ -417,196 +417,483 @@ for (df_name in names(df_list)) {
   # Print the data dictionary
   print(var_info)
 }</code></pre>
-<pre><code>## Data Dictionary for NMD_1110_infant_births_SA2.csv :
-##                                        variable     class                 range
-## SA2_CODE16                           SA2_CODE16   integer 101021007 - 999999499
-## year_range                           year_range character                      
-## age_group                             age_group character                      
-## sex                                         sex character                      
-## total_births_nmd               total_births_nmd   integer           0 - 9999999
-## crude_rate_per_1000_nmd crude_rate_per_1000_nmd   numeric           0 - 9999999
-##                                           unique_values n_missing_values
-## SA2_CODE16                                                             0
-## year_range              2009-2018, 2010-2019, 2011-2020                0
-## age_group                                           0-1                0
-## sex                                                 all                0
-## total_births_nmd                                                       0
-## crude_rate_per_1000_nmd                                                0
-## Data Dictionary for NMD_1110_infant_births_SA3.csv :
-##                                        variable     class         range
-## SA3_CODE16                           SA3_CODE16   integer 10102 - 90104
-## year_range                           year_range character              
-## age_group                             age_group character              
-## sex                                         sex character              
-## total_births_nmd               total_births_nmd   integer   0 - 9999999
-## crude_rate_per_1000_nmd crude_rate_per_1000_nmd   numeric   0 - 9999999
-##                                                                                                             unique_values
-## SA3_CODE16                                                                                                               
-## year_range              2009-2012, 2010-2013, 2011-2014, 2012-2015, 2013-2016, 2014-2017, 2015-2018, 2016-2019, 2017-2020
-## age_group                                                                                                             0-1
-## sex                                                                                                                   all
-## total_births_nmd                                                                                                         
-## crude_rate_per_1000_nmd                                                                                                  
-##                         n_missing_values
-## SA3_CODE16                             0
-## year_range                             0
-## age_group                              0
-## sex                                    0
-## total_births_nmd                       0
-## crude_rate_per_1000_nmd                0
-## Data Dictionary for NMD_112_infant_mortality_SA2.csv :
-##                                        variable     class                 range
-## SA2_CODE16                           SA2_CODE16   integer 101021007 - 999999499
-## year_range                           year_range character                      
-## age_group                             age_group character                      
-## sex                                         sex character                      
-## total_deaths_nmd               total_deaths_nmd   numeric           0 - 9999999
-## crude_rate_per_1000_nmd crude_rate_per_1000_nmd   numeric           0 - 9999999
-##                                           unique_values n_missing_values
-## SA2_CODE16                                                             0
-## year_range              2009-2018, 2010-2019, 2011-2020                0
-## age_group                                           0-1                0
-## sex                                                 all                0
-## total_deaths_nmd                                                       0
-## crude_rate_per_1000_nmd                                                0
-## Data Dictionary for NMD_112_infant_mortality_SA3.csv :
-##                                        variable     class         range
-## SA3_CODE16                           SA3_CODE16   integer 10102 - 90104
-## year_range                           year_range character              
-## age_group                             age_group character              
-## sex                                         sex character              
-## total_deaths_nmd               total_deaths_nmd   numeric   0 - 9999999
-## crude_rate_per_1000_nmd crude_rate_per_1000_nmd   numeric   0 - 9999999
-##                                                                                                             unique_values
-## SA3_CODE16                                                                                                               
-## year_range              2009-2012, 2010-2013, 2011-2014, 2012-2015, 2013-2016, 2014-2017, 2015-2018, 2016-2019, 2017-2020
-## age_group                                                                                                             0-1
-## sex                                                                                                                   all
-## total_deaths_nmd                                                                                                         
-## crude_rate_per_1000_nmd                                                                                                  
-##                         n_missing_values
-## SA3_CODE16                             0
-## year_range                             0
-## age_group                              0
-## sex                                    0
-## total_deaths_nmd                       0
-## crude_rate_per_1000_nmd                0
-## Data Dictionary for NMD_1211_mortality_SA2.csv :
-##                                              variable     class
-## SA2_CODE16                                 SA2_CODE16   integer
-## year_range                                 year_range character
-## age_group                                   age_group character
-## sex                                               sex character
-## total_deaths_nmd                     total_deaths_nmd   numeric
-## total_population_nmd             total_population_nmd   integer
-## crude_rate_per_100.000_nmd crude_rate_per_100.000_nmd   numeric
-##                                            range
-## SA2_CODE16                 101021007 - 999999499
-## year_range                                      
-## age_group                                       
-## sex                                             
-## total_deaths_nmd                     0 - 9999999
-## total_population_nmd                 0 - 9999999
-## crude_rate_per_100.000_nmd           0 - 9999999
-##                                              unique_values n_missing_values
-## SA2_CODE16                                                                0
-## year_range                 2009-2018, 2010-2019, 2011-2020                0
-## age_group                                             0-17                0
-## sex                                                    all                0
-## total_deaths_nmd                                                          0
-## total_population_nmd                                                      0
-## crude_rate_per_100.000_nmd                                                0
-## Data Dictionary for NMD_1211_mortality_SA3.csv :
-##                                                            variable     class
-## SA3_CODE16                                               SA3_CODE16   integer
-## year_range                                               year_range character
-## age_group                                                 age_group character
-## sex                                                             sex character
-## total_deaths_nmd                                   total_deaths_nmd   numeric
-## total_population_nmd                           total_population_nmd   integer
-## age_specific_rate_per_100.000_nmd age_specific_rate_per_100.000_nmd   numeric
-##                                           range
-## SA3_CODE16                        10102 - 90104
-## year_range                                     
-## age_group                                      
-## sex                                            
-## total_deaths_nmd                    0 - 9999999
-## total_population_nmd                 0 - 196673
-## age_specific_rate_per_100.000_nmd   0 - 9999999
-##                                                                                                                       unique_values
-## SA3_CODE16                                                                                                                         
-## year_range                        2009-2012, 2010-2013, 2011-2014, 2012-2015, 2013-2016, 2014-2017, 2015-2018, 2016-2019, 2017-2020
-## age_group                                                                                                                0–9, 10–17
-## sex                                                                                                                             all
-## total_deaths_nmd                                                                                                                   
-## total_population_nmd                                                                                                               
-## age_specific_rate_per_100.000_nmd                                                                                                  
-##                                   n_missing_values
-## SA3_CODE16                                       0
-## year_range                                       0
-## age_group                                        0
-## sex                                              0
-## total_deaths_nmd                                 0
-## total_population_nmd                             0
-## age_specific_rate_per_100.000_nmd                0
-## Data Dictionary for NMD_1212_young_people_mortality_SA2.csv :
-##                                              variable     class
-## SA2_CODE16                                 SA2_CODE16   integer
-## year_range                                 year_range character
-## age_group                                   age_group character
-## sex                                               sex character
-## total_deaths_nmd                     total_deaths_nmd   numeric
-## total_population_nmd             total_population_nmd   integer
-## crude_rate_per_100.000_nmd crude_rate_per_100.000_nmd   numeric
-##                                            range
-## SA2_CODE16                 101021007 - 999999499
-## year_range                                      
-## age_group                                       
-## sex                                             
-## total_deaths_nmd                     0 - 9999999
-## total_population_nmd                 0 - 9999999
-## crude_rate_per_100.000_nmd           0 - 9999999
-##                                              unique_values n_missing_values
-## SA2_CODE16                                                                0
-## year_range                 2009-2018, 2010-2019, 2011-2020                0
-## age_group                                            18-24                0
-## sex                                                    all                0
-## total_deaths_nmd                                                          0
-## total_population_nmd                                                      0
-## crude_rate_per_100.000_nmd                                                0
-## Data Dictionary for NMD_1212_young_people_mortality_SA3.csv :
-##                                                            variable     class
-## SA3_CODE16                                               SA3_CODE16   integer
-## year_range                                               year_range character
-## age_group                                                 age_group character
-## sex                                                             sex character
-## total_deaths_nmd                                   total_deaths_nmd   numeric
-## total_population_nmd                           total_population_nmd   numeric
-## age_specific_rate_per_100.000_nmd age_specific_rate_per_100.000_nmd   integer
-##                                           range
-## SA3_CODE16                        10102 - 90104
-## year_range                                     
-## age_group                                      
-## sex                                            
-## total_deaths_nmd                    0 - 9999999
-## total_population_nmd                0 - 9999999
-## age_specific_rate_per_100.000_nmd    0 - 165499
-##                                                                                                                       unique_values
-## SA3_CODE16                                                                                                                         
-## year_range                        2009-2012, 2010-2013, 2011-2014, 2012-2015, 2013-2016, 2014-2017, 2015-2018, 2016-2019, 2017-2020
-## age_group                                                                                                                     18-24
-## sex                                                                                                                             all
-## total_deaths_nmd                                                                                                                   
-## total_population_nmd                                                                                                               
-## age_specific_rate_per_100.000_nmd                                                                                                  
-##                                   n_missing_values
-## SA3_CODE16                                       0
-## year_range                                       0
-## age_group                                        0
-## sex                                              0
-## total_deaths_nmd                                 0
-## total_population_nmd                             0
-## age_specific_rate_per_100.000_nmd                0</code></pre>
+<pre><code>## Data Dictionary for ASSAD_191_smoking_National.csv :
+##                                              variable     class       range
+## Australia                                   Australia   integer       0 - 0
+## calendar_year                           calendar_year   integer 2017 - 2017
+## sex                                               sex character            
+## age_group                                   age_group character            
+## n_ever_smokers_ASSAD             n_ever_smokers_ASSAD   integer 1213 - 9557
+## p_ever_smokers_ASSAD             p_ever_smokers_ASSAD   numeric  3.8 - 36.3
+## n_past_month_smokers_ASSAD n_past_month_smokers_ASSAD   integer 1218 - 9608
+## p_past_month_smokers_ASSAD p_past_month_smokers_ASSAD   numeric  1.7 - 16.8
+## n_past_week_smokers_ASSAD   n_past_week_smokers_ASSAD   integer 1213 - 9601
+## p_past_week_smokers_ASSAD   p_past_week_smokers_ASSAD   numeric    1 - 12.3
+##                                                       unique_values
+## Australia                                                          
+## calendar_year                                                      
+## sex                                                    male, female
+## age_group                  12-12, 13-13, 14-14, 15-15, 16-16, 17-17
+## n_ever_smokers_ASSAD                                               
+## p_ever_smokers_ASSAD                                               
+## n_past_month_smokers_ASSAD                                         
+## p_past_month_smokers_ASSAD                                         
+## n_past_week_smokers_ASSAD                                          
+## p_past_week_smokers_ASSAD                                          
+##                            n_missing_values
+## Australia                                 0
+## calendar_year                             0
+## sex                                       0
+## age_group                                 0
+## n_ever_smokers_ASSAD                      0
+## p_ever_smokers_ASSAD                      0
+## n_past_month_smokers_ASSAD                0
+## p_past_month_smokers_ASSAD                0
+## n_past_week_smokers_ASSAD                 0
+## p_past_week_smokers_ASSAD                 0
+## Data Dictionary for ASSAD_191_smoking_STE.csv :
+##                                              variable     class       range
+## STE_CODE16                                 STE_CODE16   integer       1 - 6
+## calendar_year                           calendar_year   integer 2017 - 2017
+## sex                                               sex character            
+## age_group                                   age_group character            
+## n_ever_smokers_ASSAD             n_ever_smokers_ASSAD   integer  228 - 2105
+## p_ever_smokers_ASSAD             p_ever_smokers_ASSAD   numeric  7.2 - 42.3
+## n_past_month_smokers_ASSAD n_past_month_smokers_ASSAD   integer  229 - 2110
+## p_past_month_smokers_ASSAD p_past_month_smokers_ASSAD   numeric  1.8 - 17.1
+## n_past_week_smokers_ASSAD   n_past_week_smokers_ASSAD   integer  229 - 2108
+## p_past_week_smokers_ASSAD   p_past_week_smokers_ASSAD   numeric  1.1 - 13.3
+##                                  unique_values n_missing_values
+## STE_CODE16                                                    0
+## calendar_year                                                 0
+## sex                               male, female                0
+## age_group                  12-17, 12-15, 16-17                0
+## n_ever_smokers_ASSAD                                          0
+## p_ever_smokers_ASSAD                                          0
+## n_past_month_smokers_ASSAD                                    0
+## p_past_month_smokers_ASSAD                                    0
+## n_past_week_smokers_ASSAD                                     0
+## p_past_week_smokers_ASSAD                                     0
+## Data Dictionary for ASSAD_192_alcohol_National.csv :
+##                                                                                                                  variable
+## Australia                                                                                                       Australia
+## calendar_year                                                                                               calendar_year
+## sex                                                                                                                   sex
+## age_group                                                                                                       age_group
+## n_ever_drinkers_ASSAD                                                                               n_ever_drinkers_ASSAD
+## p_ever_drinkers_ASSAD                                                                               p_ever_drinkers_ASSAD
+## n_past_month_drinkers_ASSAD                                                                   n_past_month_drinkers_ASSAD
+## p_past_month_drinkers_ASSAD                                                                   p_past_month_drinkers_ASSAD
+## n_past_week_drinkers_ASSAD                                                                     n_past_week_drinkers_ASSAD
+## p_past_week_drinkers_ASSAD                                                                     p_past_week_drinkers_ASSAD
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD                     n_accessed_last_alcoholic_drink_from_parents_ASSAD
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD                     p_accessed_last_alcoholic_drink_from_parents_ASSAD
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD                     n_accessed_last_alcoholic_drink_from_sibling_ASSAD
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD                     p_accessed_last_alcoholic_drink_from_sibling_ASSAD
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD       n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD       p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+##                                                                  class
+## Australia                                                      integer
+## calendar_year                                                  integer
+## sex                                                          character
+## age_group                                                    character
+## n_ever_drinkers_ASSAD                                          integer
+## p_ever_drinkers_ASSAD                                          numeric
+## n_past_month_drinkers_ASSAD                                    integer
+## p_past_month_drinkers_ASSAD                                    numeric
+## n_past_week_drinkers_ASSAD                                     integer
+## p_past_week_drinkers_ASSAD                                     numeric
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD             integer
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD             numeric
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD             integer
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD             numeric
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD      integer
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD      numeric
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD   integer
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD   numeric
+##                                                                    range
+## Australia                                                          0 - 0
+## calendar_year                                                2017 - 2017
+## sex                                                                     
+## age_group                                                               
+## n_ever_drinkers_ASSAD                                        1201 - 9609
+## p_ever_drinkers_ASSAD                                        35.4 - 86.1
+## n_past_month_drinkers_ASSAD                                  1210 - 9687
+## p_past_month_drinkers_ASSAD                                   5.8 - 54.9
+## n_past_week_drinkers_ASSAD                                   1211 - 9649
+## p_past_week_drinkers_ASSAD                                    2.7 - 37.1
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD            531 - 1487
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD               42 - 46
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD            531 - 1487
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD               5.9 - 9
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD     531 - 1487
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD     2.9 - 12.4
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD  531 - 1487
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD   1.5 - 6.8
+##                                                                                         unique_values
+## Australia                                                                                            
+## calendar_year                                                                                        
+## sex                                                                                      male, female
+## age_group                                                    12-12, 13-13, 14-14, 15-15, 16-16, 17-17
+## n_ever_drinkers_ASSAD                                                                                
+## p_ever_drinkers_ASSAD                                                                                
+## n_past_month_drinkers_ASSAD                                                                          
+## p_past_month_drinkers_ASSAD                                                                          
+## n_past_week_drinkers_ASSAD                                                                           
+## p_past_week_drinkers_ASSAD                                                                           
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD                                                   
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD                                                   
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD                                                   
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD                                                   
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD                                            
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD                                            
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD                                         
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD                                         
+##                                                              n_missing_values
+## Australia                                                                   0
+## calendar_year                                                               0
+## sex                                                                         0
+## age_group                                                                   0
+## n_ever_drinkers_ASSAD                                                       0
+## p_ever_drinkers_ASSAD                                                       0
+## n_past_month_drinkers_ASSAD                                                 0
+## p_past_month_drinkers_ASSAD                                                 0
+## n_past_week_drinkers_ASSAD                                                  0
+## p_past_week_drinkers_ASSAD                                                  0
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD                         12
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD                         12
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD                         12
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD                         12
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD                  12
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD                  12
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD               12
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD               12
+## Data Dictionary for ASSAD_192_alcohol_STE.csv :
+##                                                                                                                  variable
+## STE_CODE16                                                                                                     STE_CODE16
+## calendar_year                                                                                               calendar_year
+## sex                                                                                                                   sex
+## age_group                                                                                                       age_group
+## n_ever_drinkers_ASSAD                                                                               n_ever_drinkers_ASSAD
+## p_ever_drinkers_ASSAD                                                                               p_ever_drinkers_ASSAD
+## n_past_month_drinkers_ASSAD                                                                   n_past_month_drinkers_ASSAD
+## p_past_month_drinkers_ASSAD                                                                   p_past_month_drinkers_ASSAD
+## n_past_week_drinkers_ASSAD                                                                     n_past_week_drinkers_ASSAD
+## p_past_week_drinkers_ASSAD                                                                     p_past_week_drinkers_ASSAD
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD                     n_accessed_last_alcoholic_drink_from_parents_ASSAD
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD                     p_accessed_last_alcoholic_drink_from_parents_ASSAD
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD                     n_accessed_last_alcoholic_drink_from_sibling_ASSAD
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD                     p_accessed_last_alcoholic_drink_from_sibling_ASSAD
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD       n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD       p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD
+##                                                                  class
+## STE_CODE16                                                     integer
+## calendar_year                                                  integer
+## sex                                                          character
+## age_group                                                    character
+## n_ever_drinkers_ASSAD                                          integer
+## p_ever_drinkers_ASSAD                                          numeric
+## n_past_month_drinkers_ASSAD                                    integer
+## p_past_month_drinkers_ASSAD                                    numeric
+## n_past_week_drinkers_ASSAD                                     integer
+## p_past_week_drinkers_ASSAD                                     numeric
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD             integer
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD             numeric
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD             integer
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD             numeric
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD      integer
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD      numeric
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD   integer
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD   numeric
+##                                                                    range
+## STE_CODE16                                                         1 - 6
+## calendar_year                                                2017 - 2017
+## sex                                                                     
+## age_group                                                               
+## n_ever_drinkers_ASSAD                                         227 - 2117
+## p_ever_drinkers_ASSAD                                        49.8 - 90.3
+## n_past_month_drinkers_ASSAD                                   228 - 2127
+## p_past_month_drinkers_ASSAD                                    13 - 62.1
+## n_past_week_drinkers_ASSAD                                    229 - 2120
+## p_past_week_drinkers_ASSAD                                    6.6 - 39.9
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD              26 - 311
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD           22.3 - 64.1
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD              26 - 311
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD            2.9 - 19.6
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD       26 - 311
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD       0 - 18.6
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD    26 - 311
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD    0 - 12.7
+##                                                                    unique_values
+## STE_CODE16                                                                      
+## calendar_year                                                                   
+## sex                                                                 male, female
+## age_group                                                    12-17, 12-15, 16-17
+## n_ever_drinkers_ASSAD                                                           
+## p_ever_drinkers_ASSAD                                                           
+## n_past_month_drinkers_ASSAD                                                     
+## p_past_month_drinkers_ASSAD                                                     
+## n_past_week_drinkers_ASSAD                                                      
+## p_past_week_drinkers_ASSAD                                                      
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD                              
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD                              
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD                              
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD                              
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD                       
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD                       
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD                    
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD                    
+##                                                              n_missing_values
+## STE_CODE16                                                                  0
+## calendar_year                                                               0
+## sex                                                                         0
+## age_group                                                                   0
+## n_ever_drinkers_ASSAD                                                       0
+## p_ever_drinkers_ASSAD                                                       0
+## n_past_month_drinkers_ASSAD                                                 0
+## p_past_month_drinkers_ASSAD                                                 0
+## n_past_week_drinkers_ASSAD                                                  0
+## p_past_week_drinkers_ASSAD                                                  0
+## n_accessed_last_alcoholic_drink_from_parents_ASSAD                          0
+## p_accessed_last_alcoholic_drink_from_parents_ASSAD                          0
+## n_accessed_last_alcoholic_drink_from_sibling_ASSAD                          0
+## p_accessed_last_alcoholic_drink_from_sibling_ASSAD                          0
+## n_accessed_last_alcoholic_drink_from_took_from_home_ASSAD                   0
+## p_accessed_last_alcoholic_drink_from_took_from_home_ASSAD                   0
+## n_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD                0
+## p_accessed_last_alcoholic_drink_from_bought_themselves_ASSAD                0
+## Data Dictionary for ASSAD_193_drugs_National.csv :
+##                                                                          variable
+## Australia                                                               Australia
+## calendar_year                                                       calendar_year
+## sex                                                                           sex
+## age_group                                                               age_group
+## n_ever_cannabis_users_ASSAD                           n_ever_cannabis_users_ASSAD
+## p_ever_cannabis_users_ASSAD                           p_ever_cannabis_users_ASSAD
+## n_past_month_cannabis_users_ASSAD               n_past_month_cannabis_users_ASSAD
+## p_past_month_cannabis_users_ASSAD               p_past_month_cannabis_users_ASSAD
+## n_past_week_cannabis_users_ASSAD                 n_past_week_cannabis_users_ASSAD
+## p_past_week_cannabis_users_ASSAD                 p_past_week_cannabis_users_ASSAD
+## n_ever_dexamphetamine_users_ASSAD               n_ever_dexamphetamine_users_ASSAD
+## p_ever_dexamphetamine_users_ASSAD               p_ever_dexamphetamine_users_ASSAD
+## n_past_month_dexamphetamine_users_ASSAD   n_past_month_dexamphetamine_users_ASSAD
+## p_past_month_dexamphetamine_users_ASSAD   p_past_month_dexamphetamine_users_ASSAD
+## n_past_week_dexamphetamine_users_ASSAD     n_past_week_dexamphetamine_users_ASSAD
+## p_past_week_dexamphetamine_users_ASSAD     p_past_week_dexamphetamine_users_ASSAD
+## n_ever_methamphetamine_users_ASSAD             n_ever_methamphetamine_users_ASSAD
+## p_ever_methamphetamine_users_ASSAD             p_ever_methamphetamine_users_ASSAD
+## n_past_month_methamphetamine_users_ASSAD n_past_month_methamphetamine_users_ASSAD
+## p_past_month_methamphetamine_users_ASSAD p_past_month_methamphetamine_users_ASSAD
+## n_past_week_methamphetamine_users_ASSAD   n_past_week_methamphetamine_users_ASSAD
+## p_past_week_methamphetamine_users_ASSAD   p_past_week_methamphetamine_users_ASSAD
+##                                              class       range
+## Australia                                  integer       0 - 0
+## calendar_year                              integer 2017 - 2017
+## sex                                      character            
+## age_group                                character            
+## n_ever_cannabis_users_ASSAD                integer 1118 - 8434
+## p_ever_cannabis_users_ASSAD                numeric  2.3 - 36.9
+## n_past_month_cannabis_users_ASSAD          integer 1115 - 8431
+## p_past_month_cannabis_users_ASSAD          numeric  1.3 - 19.3
+## n_past_week_cannabis_users_ASSAD           integer 1108 - 8447
+## p_past_week_cannabis_users_ASSAD           numeric  0.5 - 11.7
+## n_ever_dexamphetamine_users_ASSAD          integer 1184 - 9209
+## p_ever_dexamphetamine_users_ASSAD          numeric     0.6 - 3
+## n_past_month_dexamphetamine_users_ASSAD    integer 1186 - 9208
+## p_past_month_dexamphetamine_users_ASSAD    numeric   0.2 - 1.4
+## n_past_week_dexamphetamine_users_ASSAD     integer 1188 - 9221
+## p_past_week_dexamphetamine_users_ASSAD     numeric   0.1 - 0.7
+## n_ever_methamphetamine_users_ASSAD         integer 1179 - 9089
+## p_ever_methamphetamine_users_ASSAD         numeric   0.6 - 3.7
+## n_past_month_methamphetamine_users_ASSAD   integer 1184 - 9108
+## p_past_month_methamphetamine_users_ASSAD   numeric     0.3 - 2
+## n_past_week_methamphetamine_users_ASSAD    integer 1185 - 9116
+## p_past_week_methamphetamine_users_ASSAD    numeric   0.2 - 1.3
+##                                                                     unique_values
+## Australia                                                                        
+## calendar_year                                                                    
+## sex                                                                  male, female
+## age_group                                12-12, 13-13, 14-14, 15-15, 16-16, 17-17
+## n_ever_cannabis_users_ASSAD                                                      
+## p_ever_cannabis_users_ASSAD                                                      
+## n_past_month_cannabis_users_ASSAD                                                
+## p_past_month_cannabis_users_ASSAD                                                
+## n_past_week_cannabis_users_ASSAD                                                 
+## p_past_week_cannabis_users_ASSAD                                                 
+## n_ever_dexamphetamine_users_ASSAD                                                
+## p_ever_dexamphetamine_users_ASSAD                                                
+## n_past_month_dexamphetamine_users_ASSAD                                          
+## p_past_month_dexamphetamine_users_ASSAD                                          
+## n_past_week_dexamphetamine_users_ASSAD                                           
+## p_past_week_dexamphetamine_users_ASSAD                                           
+## n_ever_methamphetamine_users_ASSAD                                               
+## p_ever_methamphetamine_users_ASSAD                                               
+## n_past_month_methamphetamine_users_ASSAD                                         
+## p_past_month_methamphetamine_users_ASSAD                                         
+## n_past_week_methamphetamine_users_ASSAD                                          
+## p_past_week_methamphetamine_users_ASSAD                                          
+##                                          n_missing_values
+## Australia                                               0
+## calendar_year                                           0
+## sex                                                     0
+## age_group                                               0
+## n_ever_cannabis_users_ASSAD                             0
+## p_ever_cannabis_users_ASSAD                             0
+## n_past_month_cannabis_users_ASSAD                       0
+## p_past_month_cannabis_users_ASSAD                       0
+## n_past_week_cannabis_users_ASSAD                        0
+## p_past_week_cannabis_users_ASSAD                        0
+## n_ever_dexamphetamine_users_ASSAD                       0
+## p_ever_dexamphetamine_users_ASSAD                       0
+## n_past_month_dexamphetamine_users_ASSAD                 0
+## p_past_month_dexamphetamine_users_ASSAD                 0
+## n_past_week_dexamphetamine_users_ASSAD                  0
+## p_past_week_dexamphetamine_users_ASSAD                  0
+## n_ever_methamphetamine_users_ASSAD                      0
+## p_ever_methamphetamine_users_ASSAD                      0
+## n_past_month_methamphetamine_users_ASSAD                0
+## p_past_month_methamphetamine_users_ASSAD                0
+## n_past_week_methamphetamine_users_ASSAD                 0
+## p_past_week_methamphetamine_users_ASSAD                 0
+## Data Dictionary for ASSAD_193_drugs_STE.csv :
+##                                                                          variable
+## STE_CODE16                                                             STE_CODE16
+## calendar_year                                                       calendar_year
+## sex                                                                           sex
+## age_group                                                               age_group
+## n_ever_cannabis_users_ASSAD                           n_ever_cannabis_users_ASSAD
+## p_ever_cannabis_users_ASSAD                           p_ever_cannabis_users_ASSAD
+## n_past_month_cannabis_users_ASSAD               n_past_month_cannabis_users_ASSAD
+## p_past_month_cannabis_users_ASSAD               p_past_month_cannabis_users_ASSAD
+## n_past_week_cannabis_users_ASSAD                 n_past_week_cannabis_users_ASSAD
+## p_past_week_cannabis_users_ASSAD                 p_past_week_cannabis_users_ASSAD
+## n_ever_dexamphetamine_users_ASSAD               n_ever_dexamphetamine_users_ASSAD
+## p_ever_dexamphetamine_users_ASSAD               p_ever_dexamphetamine_users_ASSAD
+## n_past_month_dexamphetamine_users_ASSAD   n_past_month_dexamphetamine_users_ASSAD
+## p_past_month_dexamphetamine_users_ASSAD   p_past_month_dexamphetamine_users_ASSAD
+## n_past_week_dexamphetamine_users_ASSAD     n_past_week_dexamphetamine_users_ASSAD
+## p_past_week_dexamphetamine_users_ASSAD     p_past_week_dexamphetamine_users_ASSAD
+## n_ever_methamphetamine_users_ASSAD             n_ever_methamphetamine_users_ASSAD
+## p_ever_methamphetamine_users_ASSAD             p_ever_methamphetamine_users_ASSAD
+## n_past_month_methamphetamine_users_ASSAD n_past_month_methamphetamine_users_ASSAD
+## p_past_month_methamphetamine_users_ASSAD p_past_month_methamphetamine_users_ASSAD
+## n_past_week_methamphetamine_users_ASSAD   n_past_week_methamphetamine_users_ASSAD
+## p_past_week_methamphetamine_users_ASSAD   p_past_week_methamphetamine_users_ASSAD
+##                                              class       range
+## STE_CODE16                                 integer       1 - 6
+## calendar_year                              integer 2017 - 2017
+## sex                                      character            
+## age_group                                character            
+## n_ever_cannabis_users_ASSAD                integer  205 - 1836
+## p_ever_cannabis_users_ASSAD                numeric    6 - 43.4
+## n_past_month_cannabis_users_ASSAD          integer  204 - 1841
+## p_past_month_cannabis_users_ASSAD          numeric  2.1 - 22.6
+## n_past_week_cannabis_users_ASSAD           integer  204 - 1843
+## p_past_week_cannabis_users_ASSAD           numeric  0.8 - 14.4
+## n_ever_dexamphetamine_users_ASSAD          integer  220 - 2076
+## p_ever_dexamphetamine_users_ASSAD          numeric  0.2 - 10.9
+## n_past_month_dexamphetamine_users_ASSAD    integer  220 - 2076
+## p_past_month_dexamphetamine_users_ASSAD    numeric     0 - 4.1
+## n_past_week_dexamphetamine_users_ASSAD     integer  220 - 2078
+## p_past_week_dexamphetamine_users_ASSAD     numeric     0 - 0.9
+## n_ever_methamphetamine_users_ASSAD         integer  219 - 2035
+## p_ever_methamphetamine_users_ASSAD         numeric     0 - 4.7
+## n_past_month_methamphetamine_users_ASSAD   integer  219 - 2048
+## p_past_month_methamphetamine_users_ASSAD   numeric     0 - 2.6
+## n_past_week_methamphetamine_users_ASSAD    integer  219 - 2052
+## p_past_week_methamphetamine_users_ASSAD    numeric     0 - 1.4
+##                                                unique_values n_missing_values
+## STE_CODE16                                                                  0
+## calendar_year                                                               0
+## sex                                             male, female                0
+## age_group                                12-17, 12-15, 16-17                0
+## n_ever_cannabis_users_ASSAD                                                 0
+## p_ever_cannabis_users_ASSAD                                                 0
+## n_past_month_cannabis_users_ASSAD                                           0
+## p_past_month_cannabis_users_ASSAD                                           0
+## n_past_week_cannabis_users_ASSAD                                            0
+## p_past_week_cannabis_users_ASSAD                                            0
+## n_ever_dexamphetamine_users_ASSAD                                           0
+## p_ever_dexamphetamine_users_ASSAD                                           0
+## n_past_month_dexamphetamine_users_ASSAD                                     0
+## p_past_month_dexamphetamine_users_ASSAD                                     0
+## n_past_week_dexamphetamine_users_ASSAD                                      0
+## p_past_week_dexamphetamine_users_ASSAD                                      0
+## n_ever_methamphetamine_users_ASSAD                                          0
+## p_ever_methamphetamine_users_ASSAD                                          0
+## n_past_month_methamphetamine_users_ASSAD                                    0
+## p_past_month_methamphetamine_users_ASSAD                                    0
+## n_past_week_methamphetamine_users_ASSAD                                     0
+## p_past_week_methamphetamine_users_ASSAD                                     0
+## Data Dictionary for ASSAD_194_e_cigarettes_National.csv :
+##                                                                  variable
+## Australia                                                       Australia
+## calendar_year                                               calendar_year
+## sex                                                                   sex
+## age_group                                                       age_group
+## n_ever_e.cigarette_users_ASSAD             n_ever_e.cigarette_users_ASSAD
+## p_ever_e.cigarette_users_ASSAD             p_ever_e.cigarette_users_ASSAD
+## n_past_month_e.cigarette_users_ASSAD n_past_month_e.cigarette_users_ASSAD
+## p_past_month_e.cigarette_users_ASSAD p_past_month_e.cigarette_users_ASSAD
+##                                          class       range
+## Australia                              integer       0 - 0
+## calendar_year                          integer 2017 - 2017
+## sex                                  character            
+## age_group                            character            
+## n_ever_e.cigarette_users_ASSAD         integer 1167 - 9223
+## p_ever_e.cigarette_users_ASSAD         numeric  1.9 - 27.5
+## n_past_month_e.cigarette_users_ASSAD   integer 1166 - 9189
+## p_past_month_e.cigarette_users_ASSAD   numeric   1.1 - 8.4
+##                                                                 unique_values
+## Australia                                                                    
+## calendar_year                                                                
+## sex                                                              male, female
+## age_group                            12-12, 13-13, 14-14, 15-15, 16-16, 17-17
+## n_ever_e.cigarette_users_ASSAD                                               
+## p_ever_e.cigarette_users_ASSAD                                               
+## n_past_month_e.cigarette_users_ASSAD                                         
+## p_past_month_e.cigarette_users_ASSAD                                         
+##                                      n_missing_values
+## Australia                                           0
+## calendar_year                                       0
+## sex                                                 0
+## age_group                                           0
+## n_ever_e.cigarette_users_ASSAD                      0
+## p_ever_e.cigarette_users_ASSAD                      0
+## n_past_month_e.cigarette_users_ASSAD                0
+## p_past_month_e.cigarette_users_ASSAD                0
+## Data Dictionary for ASSAD_194_e_cigarettes_STE.csv :
+##                                                                  variable
+## STE_CODE16                                                     STE_CODE16
+## calendar_year                                               calendar_year
+## sex                                                                   sex
+## age_group                                                       age_group
+## n_ever_e.cigarette_users_ASSAD             n_ever_e.cigarette_users_ASSAD
+## p_ever_e.cigarette_users_ASSAD             p_ever_e.cigarette_users_ASSAD
+## n_past_month_e.cigarette_users_ASSAD n_past_month_e.cigarette_users_ASSAD
+## p_past_month_e.cigarette_users_ASSAD p_past_month_e.cigarette_users_ASSAD
+##                                          class       range       unique_values
+## STE_CODE16                             integer       1 - 6                    
+## calendar_year                          integer 2017 - 2017                    
+## sex                                  character                    male, female
+## age_group                            character             12-17, 12-15, 16-17
+## n_ever_e.cigarette_users_ASSAD         integer  216 - 2039                    
+## p_ever_e.cigarette_users_ASSAD         numeric  4.8 - 33.4                    
+## n_past_month_e.cigarette_users_ASSAD   integer  216 - 2038                    
+## p_past_month_e.cigarette_users_ASSAD   numeric  1.1 - 13.4                    
+##                                      n_missing_values
+## STE_CODE16                                          0
+## calendar_year                                       0
+## sex                                                 0
+## age_group                                           0
+## n_ever_e.cigarette_users_ASSAD                      0
+## p_ever_e.cigarette_users_ASSAD                      0
+## n_past_month_e.cigarette_users_ASSAD                0
+## p_past_month_e.cigarette_users_ASSAD                0</code></pre>
 
 
 
