@@ -751,7 +751,7 @@ state_stack_fn <- function(origin_folder_path_base,destination_folder_path_base,
   }
   
   
-  write.csv(out_df_all_years,file=paste0(destination_folder_path_base,data_file_base,"_",GEO_TO,".csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
+  write.csv(out_df_all_years,file=paste0(destination_folder_path_base,data_file_base,"_",ifelse(GEO_TYPE == "STE", "STE", "Australia"),".csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
 }
 
 # TEST EXAMPLE

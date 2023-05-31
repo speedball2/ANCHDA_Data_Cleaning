@@ -83,7 +83,7 @@ VAR_NAME <- "volunteering"                                  # Name of the input 
 GEO_TO <- "State"                                       # Target geography column
 FILTER_VARS <- c("age_group", "sex", "volwp_voluntary_work_for_an_organisation_or_group")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "STE"                                               # Type of target geometry (used for looping over list of correspondence files)
-GEO_COL_FINAL <- "State"
+GEO_COL_FINAL <- "STE_CODE16"
 
 state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006, GEO_COL_FINAL = GEO_COL_FINAL)
 

@@ -33,7 +33,7 @@ TB_Census_cleaning_fn_individual(data_file_base = "census_core_activity_need_ass
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_core_activity_need_assistance", data_item_name ="core_activity_need_for_assistance", calendar_year=2011,code_or_name = "code", census_tag = "ASSNP", census_filter_col_name = "assnp_core_activity_need_for_assistance", claire_redownload = F)
+TB_Census_cleaning_fn_individual(data_file_base = "census_core_activity_need_assistance", data_item_name ="core_activity_need_for_assistance", calendar_year=2011,code_or_name = "name", census_tag = "ASSNP", census_filter_col_name = "assnp_core_activity_need_for_assistance", claire_redownload = F)
 
 #--------
 #2016 - NAME

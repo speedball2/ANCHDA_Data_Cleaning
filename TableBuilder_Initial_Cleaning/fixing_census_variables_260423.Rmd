@@ -18,7 +18,7 @@ Each code chunk loops over the 6 geographies for one census dataset.
 library(tidyverse)
 
 
-census_geog_types <- c("LGA", "SA2", "SA3", "SA4", "State", "Australia")
+census_geog_types <- c("LGA", "SA2", "SA3", "SA4", "STE", "Australia")
 ```
 
 
@@ -39,6 +39,8 @@ fixing_unemployment <- function(geog){
   temp_data <- temp_data[,-4] #drop old/un-needed filter column
   
   if(geog == "Australia"){temp_data$Australia <- rep("0", length(temp_data[,1]))}
+  
+  temp_data <- temp_data[!is.na(temp_data[,5]),]  
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_251_unemployed_and_seeking_full_time_work_",geog,".csv"), row.names = F)
 }
@@ -64,9 +66,11 @@ fixing_internet <- function(geog){
   
   names(temp_data)[2] <- "internet_connection_type"
   
-  names(temp_data)[3] <- "n_private_dwellings"
+  names(temp_data)[4] <- "n_private_dwellings"
   
-  temp_data <- temp_data[,c(1,2,4,3)] #put calendar year before variable
+  #temp_data <- temp_data[,c(1,2,4,3)] #put calendar year before variable
+  
+  temp_data <- temp_data[!is.na(temp_data[,4]),]  
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_282_internet_connection_at_home_",geog,".csv"), row.names = F)
 }
@@ -91,6 +95,8 @@ fixing_tenure <- function(geog){
   names(temp_data)[2] <- "household_tenure_type"
   
   names(temp_data)[4] <- "n_private_dwellings"
+  
+  temp_data <- temp_data[!is.na(temp_data[,4]),]  
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_283_household_tenure_",geog,".csv"), row.names = F)
 }
@@ -121,6 +127,8 @@ fixing_oneparent <- function(geog){
   
   temp_data <- temp_data[,-2]
   
+  temp_data <- temp_data[!is.na(temp_data[,3]),]  
+  
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_321_one_parent_families_with_children_under_15_years_old_",geog,".csv"), row.names = F)
 }
   
@@ -144,6 +152,8 @@ fixing_yr12 <- function(geog){
   names(temp_data)[6] <- "n_young_people_with_year_12_or_equivalent_highest_year_of_school_completed"
   
   temp_data <- temp_data[,-4] #remove old filter col
+  
+  temp_data <- temp_data[!is.na(temp_data[,5]),]  
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_462_highest_year_of_school_completed_",geog,".csv"), row.names = F)
 }
@@ -174,6 +184,8 @@ fixing_volunteer <- function(geog){
   
   temp_data <- temp_data %>% filter(age_group == "15-19" | age_group == "20-24") #remove age groups 0-14 - no volunteering recorded in TB data
   
+  temp_data <- temp_data[!is.na(temp_data[,5]),]      
+  
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_551_volunteering_",geog,".csv"), row.names = F)
 }
   
@@ -198,6 +210,8 @@ fixing_LANP <- function(geog){
   names(temp_data)[4] <- "language_group_spoken_at_home"
   
  names(temp_data)[6] <- "n"  
+  
+  temp_data <- temp_data[!is.na(temp_data[,6]),]     
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_632_children_and_young_people_who_speak_a_language_other_than_english_at_home_",geog,".csv"), row.names = F)
 }
@@ -227,6 +241,7 @@ fixing_english <- function(geog){
   
   #temp_data <- temp_data %>% group_by(.data[[geog]], age_group, sex, calendar_year) %>% mutate(new_vals = sum(n_children_and_young_people_who_speak_english_not_well_or_not_at_all))
   
+  if(geog == "Australia" | geog == "STE"){
   temp_data[,6] <- temp_data[,7]
   
   names(temp_data)[6] <- "n_children_and_young_people_who_speak_english_not_well_or_not_at_all"
@@ -234,11 +249,22 @@ fixing_english <- function(geog){
   
   # remove unnecessary columns
   temp_data <- temp_data[,-c(4,7)]
+  } else { #for everything below State with uncertainty col - needs to be done slightly differently as new_vals is col 8 #250523
+  temp_data[,6] <- temp_data[,8]
+  
+  names(temp_data)[6] <- "n_children_and_young_people_who_speak_english_not_well_or_not_at_all"
+  
+  
+  # remove unnecessary columns
+  temp_data <- temp_data[,-c(4,8)] 
+  }
   
   # keep unique rows
   
   temp_data <- distinct(temp_data, .keep_all = T)
   
+  
+  temp_data <- temp_data[!is.na(temp_data[,5]),]   
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_633_children_and_young_people_who_speak_english_not_well_or_not_at_all_",geog,".csv"), row.names = F)
 }
@@ -268,6 +294,8 @@ fixing_country <- function(geog){
   
   names(temp_data)[6] <- "n"
   
+  temp_data <- temp_data[!is.na(temp_data[,6]),]  
+  
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_661_country_of_birth_",geog,".csv"), row.names = F)
 }
   
@@ -292,6 +320,8 @@ fixing_religion <- function(geog){
   names(temp_data)[4] <- "religious_affiliation"
   
   names(temp_data)[6] <- "n"
+  
+  temp_data <- temp_data[!is.na(temp_data[,6]),]
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_671_religious_affiliation_of_15_24_year_olds_",geog,".csv"), row.names = F)
 }
@@ -322,10 +352,16 @@ fixing_core <- function(geog){
   temp_data <- temp_data[,-4]
   
   # Remove "Total" entries for state
-  if(geog == "State"){temp_data <- filter(temp_data, State != "Total")}
+  if(geog == "STE"){temp_data <- filter(temp_data, (!is.na(STE_CODE16)))} #removed NA entries for State
 
   
-  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_1121_children_with_core_activity_need_for_assistance_",geog,".csv"), row.names = F)
+  temp_data <- temp_data[!is.na(temp_data[,5]),]
+  
+  # remove NA for geography column
+  
+
+  
+  write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/Census_fixed_core_activity/ABS_census_1121_children_with_core_activity_need_for_assistance_",geog,".csv"), row.names = F)
 }
   
   
@@ -355,6 +391,8 @@ fixing_ssh <- function(geog){
 
   temp_data <- temp_data %>% group_by_at(c(1,4)) %>% mutate(new_vals = sum(same_sex_couple_children))
   
+  
+  if(geog == "Australia" | geog == "STE"){
   temp_data[,5] <- temp_data[,6]
   
   names(temp_data)[5] <- "n_same_sex_couples_with_one_or_more_dependent_children"
@@ -363,9 +401,20 @@ fixing_ssh <- function(geog){
   # remove unnecessary columns
   temp_data <- temp_data[,-c(2,3,6)]
   
+  }else{ #Different column indexes for SA4 and below
+  temp_data[,5] <- temp_data[,7]
+  
+  names(temp_data)[5] <- "n_same_sex_couples_with_one_or_more_dependent_children"
+  
+  
+  # remove unnecessary columns
+  temp_data <- temp_data[,-c(2,3,7)]  
+  }
   # keep unique rows
   
   temp_data <- distinct(temp_data, .keep_all = T)
+  
+  temp_data <- temp_data[!is.na(temp_data[,3]),]   
   
   write.csv(temp_data, file = paste0("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_READY_FOR_QA/census/ABS_census_323_same_sex_parents_with_dependent_children_",geog,".csv"), row.names = F)
 }

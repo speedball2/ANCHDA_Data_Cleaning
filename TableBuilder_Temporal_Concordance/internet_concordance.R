@@ -501,13 +501,13 @@ INTERNET_temporal_concordance_census_fn <- function(origin_folder_path_base,dest
   #out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], age_group, sex, .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
   
   if(length(FILTER_VARS) == 1){
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], calendar_year, .data[[VAR_NAME]], .data[[uncertainty_colname]])
   } else if(length(FILTER_VARS) == 2){
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], calendar_year, .data[[VAR_NAME]], .data[[uncertainty_colname]])
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], calendar_year, .data[[VAR_NAME]], .data[[uncertainty_colname]])
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], .data[[uncertainty_colname]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], calendar_year, .data[[VAR_NAME]], .data[[uncertainty_colname]])
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_all_years")}
   
   
@@ -705,13 +705,13 @@ INTERNET_state_stack_fn <- function(origin_folder_path_base,destination_folder_p
   #1. put geography column first, then age_group, sex, then other filter vars, then values column
   
   if(length(FILTER_VARS) == 1){
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], calendar_year, .data[[VAR_NAME]])
   } else if(length(FILTER_VARS) == 2){
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], calendar_year, .data[[VAR_NAME]])
   } else if(length(FILTER_VARS) == 3){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]], calendar_year, .data[[VAR_NAME]])
   }else if(length(FILTER_VARS) == 4){ # If there is an additional filter column in the data, use the following line instead
-    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], .data[[VAR_NAME]], calendar_year)
+    out_df_all_years <- out_df_all_years %>% dplyr::select(.data[[GEO_TO]], .data[[FILTER_VARS[1]]], .data[[FILTER_VARS[2]]], .data[[FILTER_VARS[3]]],.data[[FILTER_VARS[4]]], calendar_year, .data[[VAR_NAME]])
   } else {print("check number of filter variables in FILTER_VARS argument - selecting cols for out_df_all_years")}
   
   
@@ -751,7 +751,7 @@ INTERNET_state_stack_fn <- function(origin_folder_path_base,destination_folder_p
   
   
   
-  write.csv(out_df_all_years,file=paste0(destination_folder_path_base,data_file_base,"_",GEO_TO,".csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
+  write.csv(out_df_all_years,file=paste0(destination_folder_path_base,data_file_base,"_",FILE_NAME_BIT,".csv"),row.names=FALSE) #row.names=FALSE -- don't save indices in first column
 }
 
 # TEST EXAMPLE
@@ -862,7 +862,9 @@ VAR_NAME <- "internet_connection_dwelling"                                  # Na
 GEO_TO <- "State"                                       # Target geography column
 FILTER_VARS <- c("nedd_type_of_internet_connection")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "STE"                                               # Type of target geometry (used for looping over list of correspondence files)
-GEO_COL_FINAL <- "State"
+GEO_COL_FINAL <- "STE_CODE16"
+FILE_NAME_BIT <- "STE"
+
 
 INTERNET_state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006, GEO_COL_FINAL = GEO_COL_FINAL)
 
@@ -881,7 +883,7 @@ GEO_TO <- "Australia"                                       # Target geography c
 FILTER_VARS <- c("nedd_type_of_internet_connection")                            # Name of original data set filter variable(s).
 GEO_TYPE <- "national"                                               # Type of target geometry (used for looping over list of correspondence files)
 GEO_COL_FINAL <- "Australia"
-
+FILE_NAME_BIT <- "Australia"
 
 INTERNET_state_stack_fn(origin_folder_path_base = origin_folder_path_base,destination_folder_path_base = destination_folder_path_base,data_file_base = data_file_base,VAR_NAME = VAR_NAME, GEO_TO = GEO_TO, FILTER_VARS = FILTER_VARS, GEO_TYPE = GEO_TYPE, GEO_TYPE_2006 = GEO_TYPE_2006, GEO_COL_FINAL = GEO_COL_FINAL)
 
