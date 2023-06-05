@@ -56,7 +56,7 @@ for (df_name in names(df_list)) {
   
   #df_name <- names(df)
   cat("Unique values in year_range for", df_name, ":\n")
-  cat(unique(df_list[[df_name]]$calendar_year), "\n\n")
+  cat(unique(df_list[[df_name]]$year_range), "\n\n")
 }
 
 # print the unique values in sex for each data frame in df_list
@@ -66,21 +66,16 @@ for (df_name in names(df_list)) {
 
 }
 
-for (df_name in names(df_list)) {
-  cat("Unique values in rate_of_enrolment ", df_name, ":\n")
-  cat(unique(df_list[[df_name]]$rate_of_enrolment ), "\n\n")
-  
-}
 
 for (df_name in names(df_list)) {
   cat("Unique values in STE_CODE16 for", df_name, ":\n")
-  cat(unique(df_list[[df_name]]$STE_CODE16), "\n\n")
+  cat(unique(df_list[[df_name]]$SA2_CODE16), "\n\n")
   
 }
 
 for (df_name in names(df_list)) {
-  cat("Unique values in SA4_CODE16 for", df_name, ":\n")
-  cat(unique(df_list[[df_name]]$SA4_CODE16), "\n\n")
+  cat("Unique values in SA3_CODE16 for", df_name, ":\n")
+  cat(unique(df_list[[df_name]]$SA3_CODE16), "\n\n")
   
 }
 for (file in names(df_list)) {

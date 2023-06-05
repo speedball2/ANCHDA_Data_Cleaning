@@ -28,7 +28,12 @@ sexual_health_dat_extraction <- function(sex_health_data, n_name, p_name, n_cols
   
   sex_health_data$sex <- tolower(sex_health_data$sex)
   
-  sex_health_data$sex[which(sex_health_data$sex == "non-binary")] <- "tgd"
+  #sex_health_data$sex[which(sex_health_data$sex == "non-binary")] <- "tgd"
+  
+  if(length(which(sex_health_data$sex == "non-binary")) > 0){
+    
+    sex_health_data <- sex_health_data[-which(sex_health_data$sex == "non-binary"), ]
+  }
   
   sex_health_data[, n_name] <- as.numeric(sex_health_data[, n_name])
   

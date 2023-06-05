@@ -117,8 +117,36 @@ for(i in 1:length(ucode)){
 }
 
 rollin_avg_data <- as.data.frame(rollin_avg_data)
-names(rollin_avg_data) <-  c("SA4_CODE16", "sex", "age_group", "year_range", "rolling_average_fatally_injured_in_road_accident")
+names(rollin_avg_data) <-  c("SA4_CODE16", "sex", "age_group", "year_range", "rolling_sum_fatally_injured_in_road_accident")
 write.csv(rollin_avg_data, "./output/BITRE_172_children_0_16_rolling_sum_over_10_years_motor_vehicle_accidents_SA4.csv", row.names = FALSE)
+
+
+length(which(duplicated(rollin_avg_data[, c("SA4_CODE16", "sex", "age_group", "year_range")]) == TRUE))
+#--------------------
+
+u_range <- unique(rollin_avg_data$year_range)
+u_sa4 <- unique(rollin_avg_data$SA4_CODE16)
+u_type <- unique(rollin_avg_data$type_of_road_user)
+
+for(i in 1:length(u_sa4)){
+  
+  for(j in 1:length(u_range)){
+    
+    for(k in 1:length(u_type)){
+      
+      sub_data <- rollin_avg_data[which(rollin_avg_data$SA4_CODE16 == u_sa4[i] & rollin_avg_data$year_range == u_range[j] & rollin_avg_data$type_of_road_user == u_type[k] ),]
+      
+      if(nrow(sub_data) > 1){
+        
+        print(u_sa4[i])
+        
+      }
+      
+    }
+    
+    
+  }
+}
 
 #--------------------------------------------
 
@@ -154,6 +182,8 @@ table_1 <- table_1[, c("Crash ID","Year","State", "Gender", "Age Group")]
 
 names(table_1) <- c("Crash ID","calendar_year", "STE_CODE16_NAME", "sex", "age_group")
 
+table_1$sex <- "all"
+
 new_data <- left_join(table_1,site_code_data, by = "STE_CODE16_NAME" )
 
 #remove any duplicated crash ids
@@ -162,7 +192,7 @@ new_data <- new_data[!duplicated(new_data), ]
 new_data <- new_data[, -1]
 
 
-new_data$sex[which(new_data$sex == "-9")] <- NA
+#new_data$sex[which(new_data$sex == "-9")] <- NA
 
 
 #get the count
@@ -176,6 +206,10 @@ summary_data$sex <- tolower(summary_data$sex )
 summary_data$age_group <- "0-16" 
 
 write.csv(summary_data, "./output/BITRE_172_children_0_16_motor_vehicle_accidents_STE.csv", row.names = FALSE)
+
+
+length(which(duplicated(rollin_avg_data[, c("SA4_CODE16", "sex", "age_group", "year_range")]) == TRUE))
+#--------------------
 #---------------------------
 
 
