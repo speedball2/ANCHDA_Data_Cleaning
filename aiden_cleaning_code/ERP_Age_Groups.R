@@ -22,13 +22,13 @@ library(sf)
 library(readr)
 library(dplyr)
 
-df.base <- st_drop_geometry(st_as_sf(SA2_2016))
+df.base <- st_drop_geometry(st_as_sf(SA2_2016))#[,c(1,2)]
 names(df.base)[2] <- "SA2_CODE16"
 df.base$SA2_CODE16 <- as.numeric(as.character(df.base$SA2_CODE16))
 
 df.erp <- read_csv(paste0(root.dir,file.path,"ABS_ERP_181_ERP_SA2.csv"))
 
-df.new <- inner_join(df.erp,df.base)
+df.new <- inner_join(df.erp,df.base)#[,c(6,2,3,4,5)]
 names(df.new)[5] <- "x"
 
 df.SA3 <- aggregate(df.new$x,
@@ -102,8 +102,10 @@ df.ag.AUS <- cbind(Australia = as.factor(0), df.ag.AUS)
 #df.ag.STE <- df.ag.STE[order(df.ag.STE$sex,df.ag.STE$calendar_year,df.ag.STE$age_group,df.ag.STE$STE_CODE16),]
 
 # Cleaning:
-df.SA2 <- df.new[,1:5]
-df.ag.SA2 <- df.ag[,1:5]
+df.SA2 <- df.new[,c(6,2:5)]
+names(df.SA2)[1] <- "SA2_CODE16"
+df.ag.SA2 <- df.ag[,c(6,2:5)]
+names(df.ag.SA2)[1] <- "SA2_CODE16"
 
 #SA2 ---------------------------------------------------------------------------
 
@@ -163,7 +165,7 @@ erp.STE <- rbind(erp.STE, erp.totalage.STE)
 erp.STE <- erp.STE[with(erp.STE, order(sex, age_group, calendar_year, STE_CODE16)),]
 names(erp.STE)[5] <- "estimated_regional_population"
 
-write.csv(erp.STE,paSTE0(root.dir,save.path,"ABS_ERP_181_ERP_STE.csv" ), row.names = F)
+write.csv(erp.STE,paste0(root.dir,save.path,"ABS_ERP_181_ERP_STE.csv" ), row.names = F)
 
 # AUS --------------------------------------------------------------------------
 erp.AUS <- rbind(df.AUS,df.ag.AUS)
