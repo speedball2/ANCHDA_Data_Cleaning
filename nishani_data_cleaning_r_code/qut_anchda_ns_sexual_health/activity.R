@@ -18,15 +18,16 @@ sex_health_data <- read.csv("./data/ATLAS project data.csv", header = FALSE, che
 
 
 #HIV KNOWLADGE
-sexual_health_dat_extraction(sex_health_data, "n_HIV_knowledge", "p_HIV_knowledge", 18,21 ,1, site, sie_code, "./output/NSSHS_1151_HIV_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
+sexual_health_dat_extraction(sex_health_data, "average_score_HIV_knowledge_range_0_6", "p_HIV_knowledge", 18,21 ,1, site, sie_code, "./output/NSSHS_1151_HIV_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
   
 #STI KNOWLADGE
-sexual_health_dat_extraction(sex_health_data, "n_STIs_knowledge", "p_STIs_knowledge", 13, 16 ,1, site, sie_code, "./output/NSSHS_1151_STI_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
+sexual_health_dat_extraction(sex_health_data, "average_score_STIs_knowledge_range_0_4", "p_STIs_knowledge", 13, 16 ,1, site, sie_code, "./output/NSSHS_1151_STI_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
 
 #EVER HAD SEX
 sexual_health_dat_extraction(sex_health_data, "n_ever_had_sex", "p_ever_had_sex", 46, 47 ,1, site, sie_code, "./output/NSSHS_1151_EVER_HAD_SEX_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
 
 #SEXSTING
+#"n_engaged_in_sexting"
 sexual_health_dat_extraction(sex_health_data, "n_engaged_in_sexting", "p_engaged_in_sexting", 79, 80 ,1, site, sie_code, "./output/NSSHS_1151_SEXTING_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
 
 #RSE AT SCHOOL
@@ -43,7 +44,7 @@ sexual_health_dat_extraction(sex_health_data, "n_think_most_people_use_condoms",
 
 #sexually active students reporting they always use a condom (AW + AX)
 
-sexual_health_dat_extraction(sex_health_data, "n_sex_act_always_condom ", "p_sex_act_always_condom ", 49, 50 ,1, site, sie_code, "./output/NSSHS_1151_ALWAYS_USE_CONDOM_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
+sexual_health_dat_extraction(sex_health_data, "n_sex_act_always_condom", "p_sex_act_always_condom", 49, 50 ,1, site, sie_code, "./output/NSSHS_1151_ALWAYS_USE_CONDOM_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
 
 
 #----------------------
@@ -76,6 +77,15 @@ sexual_health_dat_extraction(sex_health_data, "n_pressure_peers", "p_pressure_pe
 
 sexual_health_dat_extraction(sex_health_data, "n_info_source_parents", "p_info_source_parents", 214, 215 ,1, site, sie_code, "./output/NSSHS_1151_COMMON_SOURCE_PARENTS_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
 
+#students reporting their most common sources of sexual health information is father (HC, HD)
+
+sexual_health_dat_extraction(sex_health_data, "n_info_source_father", "p_info_source_father", 211, 212 ,1, site, sie_code, "./output/NSSHS_1151_COMMON_SOURCE_FATHER_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
+
+#students reporting their most common sources of sexual health information is mother (HC, HD)
+
+sexual_health_dat_extraction(sex_health_data, "n_info_source_mother", "p_info_source_mother", 208, 209 ,1, site, sie_code, "./output/NSSHS_1151_COMMON_SOURCE_MOTHER _knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
+
+
 
 #students reporting their most common sources of sexual health information is doctor/gp (HI, HJ)
 
@@ -83,5 +93,6 @@ sexual_health_dat_extraction(sex_health_data, "n_info_source_doctor_gp", "p_info
 
 #Students reporting they think sexuality/relationship classes are relevant (HQ + HS, HR + HT)
 
-sexual_health_dat_extraction(sex_health_data, "n_rel_classes_relevant", "p_rel_classes_relevant", c(225,227), c(226,228) ,2, site, sie_code, "./output/NSSHS_1151_CLASS_RELAVANCE_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
+sexual_health_dat_extraction(sex_health_data, "n_rel_classes_relevant", "p_rel_classes_relevant", c(225,227), c(226,228) ,2, site, sie_code, "./output/NSSHS_1151_CLASS_RELAVENCE_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv")
 
+test <- read.csv("./output/NSSHS_1151_SEXTING_knowledge_and_skills_on_safe_sexual_and_reproductive_health_behaviours_state_level.csv", header = TRUE)
