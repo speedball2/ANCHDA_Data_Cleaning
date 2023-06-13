@@ -180,5 +180,50 @@ names(erp.AUS)[5] <- "estimated_regional_population"
 
 write.csv(erp.AUS,paste0(root.dir,save.path,"ABS_ERP_181_ERP_Australia.csv" ), row.names = F)
 
+# LGA --------------------------------------------------------------------------
 
+#Harriette/Aiden Edit: 07.06.23
+
+df.lga.base <- st_drop_geometry(st_as_sf(LGA_2016))[,c(1,2)]
+df.lga.base$LGA_CODE16 <- as.numeric(as.character(df.lga.base$LGA_CODE16))
+
+
+df.lga.erp1 <- read_csv(paste0(root.dir,file.path,"ABS_ERP_181_ERP_LGA_TC_done.csv"))
+df.lga.erp2 <- read_csv(paste0(root.dir,file.path,"ABS_ERP_181_ERP_LGA_2006_2016_ASGS2016_single_year.csv")) %>% mutate("estimated_regional_population_uncertainty_correspondence" = "Good")
+
+df.lga.erp <- rbind(df.lga.erp1,df.lga.erp2)
+df.lga.erp$LGA_CODE16 <- as.numeric(as.character(df.lga.erp$LGA_CODE16))
+
+df.lga.new <- inner_join(df.lga.erp,df.lga.base)
+
+# Age groups:
+df.lga.new.ag <- df.lga.new %>%
+  mutate(ag = recode(age_group,
+                     "0-0" = "0-4","1-1" = "0-4","2-2" = "0-4","3-3" = "0-4","4-4" = "0-4",
+                     "5-5" = "5-9","6-6" = "5-9","7-7" = "5-9","8-8" = "5-9","9-9" = "5-9",
+                     "10-10" = "10-14","11-11" = "10-14","12-12" = "10-14","13-13" = "10-14","14-14" = "10-14",
+                     "15-15" = "15-19","16-16" = "15-19","17-17" = "15-19","18-18" = "15-19","19-19" = "15-19",
+                     "20-20" = "20-24","21-21" = "20-24","22-22" = "20-24","23-23" = "20-24","24-24" = "20-24"))
+
+df.lga.ag <- aggregate(df.lga.new.ag$estimated_regional_population,
+                              by=list(LGA_CODE16=df.lga.new.ag$LGA_CODE16,
+                                      calendar_year=df.lga.new.ag$calendar_year,
+                                      age_group=df.lga.new.ag$ag,
+                                      sex=df.lga.new.ag$sex,
+                                      estimated_regional_population_uncertainty_correspondence = df.lga.new.ag$estimated_regional_population_uncertainty_correspondence), FUN=sum)
+
+df.lga.ag <- df.lga.ag[,c(1:4,6,5)]
+names(df.lga.ag)[5] <- "estimated_regional_population"
+
+erp.LGA <- rbind(df.lga.new[,1:6],df.lga.ag)
+
+
+erp.totalage.LGA <- erp.LGA %>% group_by(LGA_CODE16, calendar_year, age_group) %>%
+  summarise(estimated_regional_population =sum (`estimated_regional_population`)) %>% mutate(sex = "all")
+
+erp.totalage.LGA$estimated_regional_population_uncertainty_correspondence <- "Good"
+
+erp.LGA <- rbind(erp.LGA, erp.totalage.LGA)
+
+write.csv(erp.LGA, paste0(root.dir,save.path,"ABS_ERP_181_ERP_LGA.csv" ), row.names = F)
 

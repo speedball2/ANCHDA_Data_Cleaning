@@ -101,6 +101,7 @@ cleaning <- function(path, sht, range, col, df){
   names(df)[names(df) == 'Affiliation (Gov/Cath/Ind)'] <- "gov"
   names(df)[names(df) == 'Affiliation'] <- "gov"
   
+  
   if("gov" %in% names(df)){
     df$gov <- recode(df$gov,
                      "a Government" = "Government" ,
@@ -109,9 +110,10 @@ cleaning <- function(path, sht, range, col, df){
                      
                      #df3
                      
-                     "b non-government" = "non-government",
-                     "c catholic" = "catholic",
-                     "d independent" = "independent")
+                     "b Non-Government" = "non-government",
+                     "c Catholic" = "catholic",
+                     "d Independent" = "independent",
+                     "e All affiliations" = "All affiliations")
     
     #unique(df1$col) <- check above worked, col = col want checked
   }
@@ -123,7 +125,7 @@ cleaning <- function(path, sht, range, col, df){
     df$Sex <- recode(df$Sex,
                      "a Male" = "Male",
                      "b Female" = "Female",
-                     "c Persons" = "Persons")
+                     "c Persons" = "all")
     
     #unique(df1$col) <- check above worked, col = col want checked
   }
@@ -200,6 +202,15 @@ if("school_grade" %in% names(df1)){
                           
   )
 }
+
+
+df1.1 <- df1 %>% group_by(STE_CODE16, calendar_year, age_group, affiliation_abs_schools, school_grade) %>%
+  summarise(n_full_time_student = sum (`n_full_time_student`),
+            n_part_time_student = sum (`n_part_time_student`)) %>% mutate(sex = "all")
+
+df1 <- rbind(df1.1, df1)
+
+
 # School continuation Rates --------------------------------------------------
 
 df2 <- cleaning (path = "Table 62a Capped Apparent Continuation Rates, 2011-2022.xlsx",
@@ -294,9 +305,18 @@ df5 <- subset(df1, (school_grade %in% c("year 5")))
 
 #REMOVING TOTALS FROM DATA 
 
-df2 <- df2[!grepl("Persons", df2$sex),]
-df3 <- df3[!grepl("Persons", df3$sex),]
-df3 <- df3[!grepl("e all affiliations", df3$affiliation_abs_schools),]
+# df2 <- df2[!grepl("Persons", df2$sex),]
+# df3 <- df3[!grepl("Persons", df3$sex),]
+# df3 <- df3[!grepl("e all affiliations", df3$affiliation_abs_schools),]
+
+
+#COL ORDER ---------------------------------------------------------------------
+
+df1 <- df1[,c(1:3,8,4:7)]
+df3 <- df3[,c(1:2,4,3,5:8)]
+df4 <- df4[,c(1:3,8,4:7)]
+df5 <- df5[,c(1:3,8,4:7)]
+
 # ----------------- #
 # --- write csv --- #
 # ----------------- #
