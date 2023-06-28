@@ -113,7 +113,6 @@ for (statement in statements) {
 
 
 
-
 # 4. Load Data into DB ---------------------------------------------------------
 ## 4.1 Create table data -----
 dataString <- paste(
@@ -143,23 +142,6 @@ for (statement in statements) {
     dbExecute(con, statement)
   }
 }
-
-
-
-# 5. Connect to existing database ----------------------------------------------
-# library(DBI)
-# library(RMySQL)
-# 
-# con <- dbConnect(MySQL(),
-#                  user = "bnnztttl0f1ya7fxuioi",
-#                  password = "pscale_pw_mumB4ntwmMJaGE5e7GpEelWnXvumdiqFynHNneSb2hT",
-#                  dbname = "anchda-dev",
-#                  host = "aws.connect.psdb.cloud/?sslaccept=strict",
-#                  port = 3306)
-
-
-
-
 
 # 6. Generate Full Data set -------------------------------------------------------
 ## 6.1 Create query string -----

@@ -69,7 +69,18 @@ LGA_df_PHW <- df %>%
             PHW_Valid = sum(PHYSValid == 1),
             .groups = "drop")
 
+LGA_df_PHW_TOTAL <- df %>%
+  group_by(LGACode, Year) %>%
+  summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
+            P_DOT_PHW = sum(DOT_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            N_DV_PHW = sum(DV_PHW[PHYSValid == 1]),
+            P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
+            P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            PHW_Valid = sum(PHYSValid == 1),
+            .groups = "drop")
 
+LGA_df_PHW <- rbind(LGA_df_PHW, LGA_df_PHW_TOTAL )
 
 LGA_df_SC <- df %>%
   group_by(LGACode, Year, Gender) %>%
