@@ -11,16 +11,17 @@ library(readr)
 
 #set working directory and options
 #set working directory and options
-aedc_folder <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/raw_data/"
-path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/"
+# aedc_folder <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/raw_data/"
+# path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/"
 
+path_out <- "./output/data_4_digits/"
 options(timeout = 600) 
 setwd(aedc_folder)
 
 
 #import unit record data from AEDC
 
-df <- read.csv("220811B-Reeves (3).csv")
+df <- read.csv("./data/220811B-Reeves (3).csv")
 
 ##---------------------------------------------------------------------start cleaning here ------------------------------------------------------------------------
 #remove rows with year = 2010
@@ -310,7 +311,7 @@ df_list <- map(df_list, filter_zeros)
 # Define a function to round numeric values and re-code Gender column-----------------------------------------------------------------------------------------------
 round_and_recode <- function(df) {
   df %>%
-    mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 2)))) %>%
+    mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 4)))) %>%
     mutate(Gender = if_else(Gender == 1, "male", "female"))
 }
 
@@ -320,7 +321,7 @@ df_list <- map(df_list, round_and_recode)
 # Define a function to rename the columns and add a new column in a data frame
 rename_cols <- function(df) {
   prefix <- str_replace(names(df)[1], "Code.*", "")
-  names(df)[1] <- paste0(prefix, "_CODE16")                                    ##-------------NISHANI - this is where you might have to replace with _CODE21------#
+  names(df)[1] <- paste0(prefix, "_CODE21")                                    ##-------------NISHANI - this is where you might have to replace with _CODE21------#
   names(df)[-1] <- tolower(names(df)[-1]) # convert column names to lowercase except for the first column
   names(df)[2:3] <- c("calendar_year", "sex")
   df <- cbind(df[,1:3], age_group = "5-5", df[,4:ncol(df)]) # add a new column called age_group with value "0-24" in the fourth position
