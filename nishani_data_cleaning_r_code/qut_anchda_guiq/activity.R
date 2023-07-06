@@ -174,7 +174,7 @@ col_num <- 20
 names(guiq_data)[col_num]
 unique(guiq_data[col_num])
 
-data_extraction_for_indicator(guiq_data, col_num, "p_experienced_physical_bullying", c("Often", "Always"), qld_geom_data,  "./output/GuiQ_3132_experienced_physical_bullying")
+data_extraction_for_indicator(guiq_data, col_num, "p_experienced_physical_bullying", c("Often", "Always"), qld_geom_data,  "./output/GuiQ_3135_experienced_physical_bullying")
 
 
 #Participating

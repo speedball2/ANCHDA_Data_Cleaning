@@ -77,7 +77,7 @@ data_extraction_soswa(data, essentail_col_number, "m", "p_reporting_deal_with_th
 data_extraction_soswa(data, essentail_col_number, "n", "p_reporting_happy_with_themselves_agree", "12-17", "./output/SOSWA_1143_p_reporting_happy_with_themselves_agree_STE.csv")
 
 # % Young people reporting they are happy with themselves_disagree_STE_male, female (age group 12 -17)
-data_extraction_soswa(data, essentail_col_number, "o", "p_reporting_happy_with_themselves_disagree", "12-17", "./output/SOSWA_1143_p_reporting_deal_with_things_life_disagree_STE.csv")
+data_extraction_soswa(data, essentail_col_number, "o", "p_reporting_happy_with_themselves_disagree", "12-17","./output/SOSWA_1143_p_reporting_happy_with_themselves_disagree_STE.csv")
 
 # % Young people reporting they feel sad or depressed_2_weeks or more_Yes_STE_male, female (age group 14 -17)
 
@@ -134,7 +134,7 @@ data_extraction_soswa(data, essentail_col_number, c("ai", "aj"), "p_reporting_wo
 
 #3.14 Experiences of violence
 #% Young people reporting they have been physically harmed by someone on purpose_STE_male, female (age group 14-17)
-data_extraction_soswa(data, essentail_col_number, "as", "p_reporting_ have_been_physically_harmed_by_someone_on_purpose", "14-17", "./output/SOSWA_3135_p_reporting_ have_been_physically_harmed_by_someone_on_purpose_STE.csv")
+data_extraction_soswa(data, essentail_col_number, "as", "p_reporting_have_been_physically_harmed_by_someone_on_purpose", "14-17", "./output/SOSWA_3135_p_reporting_ have_been_physically_harmed_by_someone_on_purpose_STE.csv")
 
 
 #-------------
@@ -153,7 +153,7 @@ data_extraction_soswa(data, essentail_col_number, "aa", "p_feeling_sense_of_belo
 
 
 
-data_extraction_soswa(data, essentail_col_number, "ad", "p_reporting_community_has_fun_places", "12-17", "./output/SOSWA_560_p_reporting_community_has_fun_places_STE.csv")
+data_extraction_soswa(data, essentail_col_number, "ad", "p_reporting_community_has_fun_places", "12-17", "./output/SOSWA_562_p_reporting_community_has_fun_places_STE.csv")
 
 
 

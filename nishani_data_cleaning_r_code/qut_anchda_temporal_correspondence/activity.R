@@ -30,7 +30,7 @@ destination_folder_path_base <- "./data/acara_attendance_rate_472_TC/"
 
 base_name <- c("acara_472_attendance_rate_combined_government","acara_472_attendance_rate_combined_non_government", "acara_472_attendance_rate_primary_government", "acara_472_attendance_rate_primary_non_government", "acara_472_attendance_rate_secondary_government", "acara_472_attendance_rate_secondary_non_government", "acara_472_attendance_rate_total")
 
-GEO_TYPE <- c("SA2", "SA3", "LGA")
+GEO_TYPE <- c("SA2", "SA3")
 
 var_name <- "attendance_rate"
 

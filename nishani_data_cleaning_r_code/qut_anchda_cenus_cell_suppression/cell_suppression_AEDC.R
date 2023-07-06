@@ -109,14 +109,14 @@ cell_suppression_aedc <- function(count_file, num_filetrs){
   }
 
   
-  write.csv(full_data, paste0("./output/AEDC_ALL/",basename(count_file)) , row.names = FALSE)
+  write.csv(full_data, paste0("./output/data_4_digits/cell_suppressed/",basename(count_file)) , row.names = FALSE)
   
  
 }
 
 
 #########################################
-fn_names <- list.files(path = "./data/AEDC_ALL/", pattern = "*.csv", full.names = TRUE)
+fn_names <- list.files(path = "./output/data_4_digits/", pattern = "*.csv", full.names = TRUE)
 
 
 for(t in 1:length(fn_names)){

@@ -24,16 +24,16 @@ data_extraction_sex(table_sex, c(1,3,4,7,8), "n_pre_term_birth_less_37_weeks", "
 data_extraction_sex(table_sex, c(1,3,4,10,11), "n_smoking_during_pregnancy", "p_smoking_during_pregnancy","NPDC_114_")
 
 #1st_antenatal_visit
-data_extraction_sex(table_sex, c(1,3,4,19,20), "n_1st_antenatal_visit_less_14_weeks", "p_1st_antenatal_visit_less_14weeks","NPDC_115_")
+data_extraction_sex(table_sex, c(1,3,4,19,20), "n_1st_antenatal_visit_less_14_weeks", "p_1st_antenatal_visit_less_14_weeks","NPDC_115_")
 
-data_extraction_sex(table_sex, c(1,3,4,21,22), "n_1st_antenatal_visit_14_to_19_weeks", "n_1st_antenatal_visit_14_to_19_weeks","NPDC_115_")
+data_extraction_sex(table_sex, c(1,3,4,21,22), "n_1st_antenatal_visit_14_to_19_weeks", "p_1st_antenatal_visit_14_to_19_weeks","NPDC_115_")
 
-data_extraction_sex(table_sex, c(1,3,4,23,24), "n_1st_antenatal_visit_over_20_weeks", "n_1st_antenatal_visit_over_20_weeks","NPDC_115_")
+data_extraction_sex(table_sex, c(1,3,4,23,24), "n_1st_antenatal_visit_over_20_weeks", "p_1st_antenatal_visit_over_20_weeks","NPDC_115_")
 
 
 ###############################################################
 
-#20–24 - 1112, Under 20 - 1111
+#20–24 - 1112, Under 20 (15-19) - 1111
 group_select <- "Under 20"
 re_code_group <- "15-19"
 file_group <- "15_19"
@@ -57,10 +57,10 @@ wider_table_under19 <- table_under19 %>% pivot_wider(names_from = age_group, val
 
 names(wider_table_under19) <- c("SA3_CODE16","year_range", "n_births_mothersage", "total")
 
-wider_table_under19$n_births_mothersage <- gsub("n.p.", "NULL", wider_table_under19$n_births_mothersage )
+wider_table_under19$n_births_mothersage <- gsub("n.p.", "NA", wider_table_under19$n_births_mothersage )
 wider_table_under19$n_births_mothersage <- as.numeric(wider_table_under19$n_births_mothersage)
 
-wider_table_under19$total <- gsub("n.p.", "NULL", wider_table_under19$total )
+wider_table_under19$total <- gsub("n.p.", "NA", wider_table_under19$total )
 wider_table_under19$total <- as.numeric(wider_table_under19$total)
 
 wider_table_under19$SA4_CODE16 <- substr(wider_table_under19$SA3_CODE16,1,3 )
@@ -79,7 +79,7 @@ SA3_table <- wider_table_under19[,   c("SA3_CODE16", "year_range","age_group" ,"
 
 SA3_table$p_births_mothersage <- ifelse(SA3_table$n_births_mothersage == 0, 0, SA3_table$n_births_mothersage/SA3_table$total)
 
-SA3_table$p_births_mothersage <-  unlist(rounding_fun(SA3_table$p_births_mothersage))
+SA3_table$p_births_mothersage <-  round((SA3_table$p_births_mothersage), 4)
 
 SA3_table <- SA3_table[,  c("SA3_CODE16", "year_range","age_group" ,"sex", "n_births_mothersage","p_births_mothersage" )]
 
@@ -93,7 +93,7 @@ SA4_table <- SA4_table %>% group_by(SA4_CODE16,year_range, age_group, sex) %>% s
 
 SA4_table$p_births_mothersage <- ifelse(SA4_table$n_births_mothersage == 0, 0, SA4_table$n_births_mothersage/SA4_table$total)
 
-SA4_table$p_births_mothersage <-  unlist(rounding_fun(SA4_table$p_births_mothersage))
+SA4_table$p_births_mothersage <-  round((SA4_table$p_births_mothersage), 4)
   
 
 SA4_table <- SA4_table[,  c("SA4_CODE16", "year_range","age_group" ,"sex", "n_births_mothersage","p_births_mothersage" )]
@@ -108,7 +108,7 @@ STE_table <- STE_table %>% group_by(STE_CODE16,year_range, age_group, sex) %>% s
 
 STE_table$p_births_mothersage <- ifelse(STE_table$n_births_mothersage == 0, 0, STE_table$n_births_mothersage/STE_table$total)
 
-STE_table$p_births_mothersage <-  unlist(rounding_fun(STE_table$p_births_mothersage))
+STE_table$p_births_mothersage <-  round((STE_table$p_births_mothersage),4)
 
 
 STE_table <- STE_table[,  c("STE_CODE16", "year_range","age_group" ,"sex", "n_births_mothersage","p_births_mothersage" )]

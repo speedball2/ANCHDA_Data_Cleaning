@@ -78,9 +78,12 @@ LGA_df_PHW_TOTAL <- df %>%
             N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
             P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
             PHW_Valid = sum(PHYSValid == 1),
-            .groups = "drop")
+            .groups = "drop") %>%
+  mutate(Gender = "0")
 
 LGA_df_PHW <- rbind(LGA_df_PHW, LGA_df_PHW_TOTAL )
+
+###
 
 LGA_df_SC <- df %>%
   group_by(LGACode, Year, Gender) %>%
@@ -93,6 +96,22 @@ LGA_df_SC <- df %>%
             SC_Valid = sum(SOCValid == 1),
             .groups = "drop")
 
+LGA_df_SC_TOTAL <- df %>%
+  group_by(LGACode, Year) %>%
+  summarize(N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
+            P_DOT_SC = sum(DOT_SC[SOCValid == 1])/sum(SOCValid == 1),
+            N_DV_SC = sum(DV_SC[SOCValid == 1]),
+            P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
+            N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
+            P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
+            SC_Valid = sum(SOCValid == 1),
+            .groups = "drop") %>%
+   mutate(Gender = "0")
+
+LGA_df_SC <- rbind(LGA_df_SC, LGA_df_SC_TOTAL)
+
+###
+
 LGA_df_EM <- df %>%
   group_by(LGACode, Year, Gender) %>%
   summarize(N_DOT_EM = sum(DOT_EM[EMOTValid == 1]),
@@ -103,6 +122,22 @@ LGA_df_EM <- df %>%
             P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
             EM_Valid = sum(EMOTValid == 1),
             .groups = "drop")
+
+LGA_df_EM_TOTAL <- df %>%
+  group_by(LGACode, Year) %>%
+  summarize(N_DOT_EM = sum(DOT_EM[EMOTValid == 1]),
+            P_DOT_EM = sum(DOT_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            N_DV_EM = sum(DV_EM[EMOTValid == 1]),
+            P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
+            P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            EM_Valid = sum(EMOTValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+LGA_df_EM <- rbind(LGA_df_EM,LGA_df_EM_TOTAL )
+
+#######
 
 LGA_df_LCS <- df %>%
   group_by(LGACode, Year, Gender) %>%
@@ -115,6 +150,22 @@ LGA_df_LCS <- df %>%
             LCS_Valid = sum(LANGCOGValid == 1),
             .groups = "drop")
 
+LGA_df_LCS_TOTAL <- df %>%
+  group_by(LGACode, Year) %>%
+  summarize(N_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1]),
+            P_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            N_DV_LCS = sum(DV_LCS[LANGCOGValid == 1]),
+            P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
+            P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            LCS_Valid = sum(LANGCOGValid == 1),
+            .groups = "drop") %>%
+  mutate(Gender = "0")
+
+LGA_df_LCS <- rbind(LGA_df_LCS, LGA_df_LCS_TOTAL)
+
+#####
+
 LGA_df_CSGK <- df %>%
   group_by(LGACode, Year, Gender) %>%
   summarize(N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
@@ -126,6 +177,22 @@ LGA_df_CSGK <- df %>%
             CSGK_Valid = sum(COMGENValid == 1),
             .groups = "drop")
 
+
+LGA_df_CSGK_TOTAL <- df %>%
+  group_by(LGACode, Year) %>%
+  summarize(N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
+            P_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            N_DV_CSGK = sum(DV_CSGK[COMGENValid == 1]),
+            P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
+            P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            CSGK_Valid = sum(COMGENValid == 1),
+            .groups = "drop") %>%
+  mutate(Gender = "0")
+
+LGA_df_CSGK <- rbind(LGA_df_CSGK, LGA_df_CSGK_TOTAL)
+
+#####
 
 LGA_df_DV <- df %>%
   group_by(LGACode, Year, Gender) %>%
@@ -140,6 +207,22 @@ LGA_df_DV <- df %>%
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
 
+
+LGA_df_DV_TOTAL <- df %>%
+  group_by(LGACode, Year) %>%
+  summarize(N_V1 = sum(DV1, na.rm = TRUE),
+            P_V1 = sum(DV1, na.rm = TRUE)/sum(!is.na(DV1)),
+            V1_Valid = sum(!is.na(DV1)),
+            N_V2 = sum(DV2 == 1, na.rm = TRUE),
+            P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
+            V2_Valid = sum(!is.na(DV2)),
+            N_OT5 = sum(OT5, na.rm = TRUE),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            OT5_Valid = sum(!is.na(OT5)),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+LGA_df_DV <- rbind(LGA_df_DV, LGA_df_DV_TOTAL)
 #--------------------------------------------------------------------------------------------SA3-------------------------------------------------------------------
 SA3_df_PHW <- df %>%
   group_by(SA3Code, Year, Gender) %>%
@@ -152,6 +235,21 @@ SA3_df_PHW <- df %>%
             PHW_Valid = sum(PHYSValid == 1),
             .groups = "drop")
 
+SA3_df_PHW_TOTAL <- df %>%
+  group_by(SA3Code, Year) %>%
+  summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
+            P_DOT_PHW = sum(DOT_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            N_DV_PHW = sum(DV_PHW[PHYSValid == 1]),
+            P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
+            P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            PHW_Valid = sum(PHYSValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+SA3_df_PHW <- rbind(SA3_df_PHW, SA3_df_PHW_TOTAL )
+
+####
 SA3_df_SC <- df %>%
   group_by(SA3Code, Year, Gender) %>%
   summarize(N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
@@ -162,6 +260,22 @@ SA3_df_SC <- df %>%
             P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
             SC_Valid = sum(SOCValid == 1),
             .groups = "drop")
+
+SA3_df_SC_TOTAL <- df %>%
+  group_by(SA3Code, Year) %>%
+  summarize(N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
+            P_DOT_SC = sum(DOT_SC[SOCValid == 1])/sum(SOCValid == 1),
+            N_DV_SC = sum(DV_SC[SOCValid == 1]),
+            P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
+            N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
+            P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
+            SC_Valid = sum(SOCValid == 1),
+            .groups = "drop") %>%
+  mutate(Gender = "0")
+
+SA3_df_SC <- rbind(SA3_df_SC, SA3_df_SC_TOTAL)
+
+######
 
 SA3_df_EM <- df %>%
   group_by(SA3Code, Year, Gender) %>%
@@ -174,6 +288,22 @@ SA3_df_EM <- df %>%
             EM_Valid = sum(EMOTValid == 1),
             .groups = "drop")
 
+SA3_df_EM_TOTAL <- df %>%
+  group_by(SA3Code, Year) %>%
+  summarize(N_DOT_EM = sum(DOT_EM[EMOTValid == 1]),
+            P_DOT_EM = sum(DOT_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            N_DV_EM = sum(DV_EM[EMOTValid == 1]),
+            P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
+            P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            EM_Valid = sum(EMOTValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+SA3_df_EM <- rbind(SA3_df_EM, SA3_df_EM_TOTAL)
+
+#######
+
 SA3_df_LCS <- df %>%
   group_by(SA3Code, Year, Gender) %>%
   summarize(N_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1]),
@@ -185,6 +315,24 @@ SA3_df_LCS <- df %>%
             LCS_Valid = sum(LANGCOGValid == 1),
             .groups = "drop")
 
+SA3_df_LCS_TOTAL <- df %>%
+  group_by(SA3Code, Year) %>%
+  summarize(N_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1]),
+            P_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            N_DV_LCS = sum(DV_LCS[LANGCOGValid == 1]),
+            P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
+            P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            LCS_Valid = sum(LANGCOGValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+SA3_df_LCS <- rbind(SA3_df_LCS, SA3_df_LCS_TOTAL)
+
+
+
+#####
+
 SA3_df_CSGK <- df %>%
   group_by(SA3Code, Year, Gender) %>%
   summarize(N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
@@ -195,6 +343,23 @@ SA3_df_CSGK <- df %>%
             P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
             CSGK_Valid = sum(COMGENValid == 1),
             .groups = "drop")
+
+
+SA3_df_CSGK_TOTAL <- df %>%
+  group_by(SA3Code, Year) %>%
+  summarize(N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
+            P_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            N_DV_CSGK = sum(DV_CSGK[COMGENValid == 1]),
+            P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
+            P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            CSGK_Valid = sum(COMGENValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+SA3_df_CSGK <- rbind(SA3_df_CSGK, SA3_df_CSGK_TOTAL)
+
+######
 
 
 SA3_df_DV <- df %>%
@@ -209,7 +374,24 @@ SA3_df_DV <- df %>%
             P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
-#--------------------------------------------------------------------------------------------SA2-------------------------------------------------------------------
+
+SA3_df_DV_TOTAL <- df %>%
+  group_by(SA3Code, Year) %>%
+  summarize(N_V1 = sum(DV1, na.rm = TRUE),
+            P_V1 = sum(DV1, na.rm = TRUE)/sum(!is.na(DV1)),
+            V1_Valid = sum(!is.na(DV1)),
+            N_V2 = sum(DV2 == 1, na.rm = TRUE),
+            P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
+            V2_Valid = sum(!is.na(DV2)),
+            N_OT5 = sum(OT5, na.rm = TRUE),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            OT5_Valid = sum(!is.na(OT5)),
+            .groups = "drop") %>%
+  mutate(Gender = "0")
+
+SA3_df_DV <- rbind(SA3_df_DV, SA3_df_DV_TOTAL)
+
+#-------------------------------------------------------------SA2-------------------------------------------------------------------
 SA2_df_PHW <- df %>%
   group_by(SA2Code, Year, Gender) %>%
   summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
@@ -220,6 +402,23 @@ SA2_df_PHW <- df %>%
             P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
             PHW_Valid = sum(PHYSValid == 1),
             .groups = "drop")
+
+SA2_df_PHW_TOTAL <- df %>%
+  group_by(SA2Code, Year) %>%
+  summarize(N_DOT_PHW = sum(DOT_PHW[PHYSValid == 1]),
+            P_DOT_PHW = sum(DOT_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            N_DV_PHW = sum(DV_PHW[PHYSValid == 1]),
+            P_DV_PHW = sum(DV_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            N_DAR_PHW = sum(DAR_PHW[PHYSValid == 1]),
+            P_DAR_PHW = sum(DAR_PHW[PHYSValid == 1])/sum(PHYSValid == 1),
+            PHW_Valid = sum(PHYSValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+
+SA2_df_PHW <- rbind(SA2_df_PHW, SA2_df_PHW_TOTAL )
+
+######
 
 SA2_df_SC <- df %>%
   group_by(SA2Code, Year, Gender) %>%
@@ -232,6 +431,22 @@ SA2_df_SC <- df %>%
             SC_Valid = sum(SOCValid == 1),
             .groups = "drop")
 
+SA2_df_SC_TOTAL <- df %>%
+  group_by(SA2Code, Year) %>%
+  summarize(N_DOT_SC = sum(DOT_SC[SOCValid == 1]),
+            P_DOT_SC = sum(DOT_SC[SOCValid == 1])/sum(SOCValid == 1),
+            N_DV_SC = sum(DV_SC[SOCValid == 1]),
+            P_DV_SC = sum(DV_SC[SOCValid == 1])/sum(SOCValid == 1),
+            N_DAR_SC = sum(DAR_SC[SOCValid == 1]),
+            P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
+            SC_Valid = sum(SOCValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+SA2_df_SC <- rbind(SA2_df_SC, SA2_df_SC_TOTAL )
+
+######
+
 SA2_df_EM <- df %>%
   group_by(SA2Code, Year, Gender) %>%
   summarize(N_DOT_EM = sum(DOT_EM[EMOTValid == 1]),
@@ -242,6 +457,22 @@ SA2_df_EM <- df %>%
             P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
             EM_Valid = sum(EMOTValid == 1),
             .groups = "drop")
+
+SA2_df_EM_TOTAL <- df %>%
+  group_by(SA2Code, Year) %>%
+  summarize(N_DOT_EM = sum(DOT_EM[EMOTValid == 1]),
+            P_DOT_EM = sum(DOT_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            N_DV_EM = sum(DV_EM[EMOTValid == 1]),
+            P_DV_EM = sum(DV_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            N_DAR_EM = sum(DAR_EM[EMOTValid == 1]),
+            P_DAR_EM = sum(DAR_EM[EMOTValid == 1])/sum(EMOTValid == 1),
+            EM_Valid = sum(EMOTValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+SA2_df_EM <- rbind(SA2_df_EM, SA2_df_EM_TOTAL)
+
+######
 
 SA2_df_LCS <- df %>%
   group_by(SA2Code, Year, Gender) %>%
@@ -254,6 +485,22 @@ SA2_df_LCS <- df %>%
             LCS_Valid = sum(LANGCOGValid == 1),
             .groups = "drop")
 
+SA2_df_LCS_TOTAL <- df %>%
+  group_by(SA2Code, Year) %>%
+  summarize(N_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1]),
+            P_DOT_LCS = sum(DOT_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            N_DV_LCS = sum(DV_LCS[LANGCOGValid == 1]),
+            P_DV_LCS = sum(DV_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            N_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1]),
+            P_DAR_LCS = sum(DAR_LCS[LANGCOGValid == 1])/sum(LANGCOGValid == 1),
+            LCS_Valid = sum(LANGCOGValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+SA2_df_LCS <- rbind(SA2_df_LCS, SA2_df_LCS_TOTAL)
+
+####
+
 SA2_df_CSGK <- df %>%
   group_by(SA2Code, Year, Gender) %>%
   summarize(N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
@@ -265,6 +512,22 @@ SA2_df_CSGK <- df %>%
             CSGK_Valid = sum(COMGENValid == 1),
             .groups = "drop")
 
+SA2_df_CSGK_TOTAL <- df %>%
+  group_by(SA2Code, Year) %>%
+  summarize(N_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1]),
+            P_DOT_CSGK = sum(DOT_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            N_DV_CSGK = sum(DV_CSGK[COMGENValid == 1]),
+            P_DV_CSGK = sum(DV_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            N_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1]),
+            P_DAR_CSGK = sum(DAR_CSGK[COMGENValid == 1])/sum(COMGENValid == 1),
+            CSGK_Valid = sum(COMGENValid == 1),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+
+SA2_df_CSGK <- rbind(SA2_df_CSGK, SA2_df_CSGK_TOTAL)
+
+####
 
 SA2_df_DV <- df %>%
   group_by(SA2Code, Year, Gender) %>%
@@ -278,6 +541,22 @@ SA2_df_DV <- df %>%
             P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
+
+SA2_df_DV_TOTAL <- df %>%
+  group_by(SA2Code, Year) %>%
+  summarize(N_V1 = sum(DV1, na.rm = TRUE),
+            P_V1 = sum(DV1, na.rm = TRUE)/sum(!is.na(DV1)),
+            V1_Valid = sum(!is.na(DV1)),
+            N_V2 = sum(DV2 == 1, na.rm = TRUE),
+            P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
+            V2_Valid = sum(!is.na(DV2)),
+            N_OT5 = sum(OT5, na.rm = TRUE),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            OT5_Valid = sum(!is.na(OT5)),
+            .groups = "drop")%>%
+  mutate(Gender = "0")
+
+SA2_df_DV <- rbind(SA2_df_DV, SA2_df_DV_TOTAL)
 
 #--------------------------------------------------------------------------------------------tables tidy up -------------------------------------------------------
 # Create a list of data frames
@@ -321,9 +600,15 @@ df_list <- map(df_list, filter_zeros)
 
 # Define a function to round numeric values and re-code Gender column-----------------------------------------------------------------------------------------------
 round_and_recode <- function(df) {
-  df %>%
-    mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 4)))) %>%
-    mutate(Gender = if_else(Gender == 1, "male", "female"))
+  df <- df %>%
+    mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 4)))) 
+    
+  df$Gender[df$Gender == "0"] <- "all"
+  df$Gender[df$Gender == "1"] <- "male"
+  df$Gender[df$Gender == "2"] <- "female"
+  
+  df
+  #mutate(Gender = if_else(Gender == 1, "male", "female"))
 }
 
 # Apply the function to all data frames in the list-----------------------------------------------------------------------------------------------------------------
