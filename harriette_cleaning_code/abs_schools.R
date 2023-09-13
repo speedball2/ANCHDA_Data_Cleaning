@@ -239,8 +239,9 @@ df3$`All ARR` <- as.numeric(df3$`All ARR`)
 names(df3)[names(df3) == 'Year Range'] <- "school_grade"
 
 # Grouping by Year, STE, gov, Sex, and Age and calculating the sums
+
 df3 <- df3 %>%
-  group_by(Year, STE, gov, Sex, school_grade) %>%
+  group_by( STE, Year , gov, Sex, school_grade) %>%
   summarise(
     apparent_retention_rate = sum(`Non-Indigenous ARR`),
     total_retention_rate = sum(`All ARR`)
@@ -248,7 +249,8 @@ df3 <- df3 %>%
 
 
 
-names(df3) <- c("calendar_year", "STE_CODE16", "affiliation_abs_schools", "sex", "school_grade", "apparent_retention_rate", "total_retention_rate") #fixed typo here
+
+names(df3) <- c("STE_CODE16","calendar_year","affiliation_abs_schools", "sex", "school_grade", "apparent_retention_rate", "total_retention_rate") #fixed typo here
 
 df3$age_group <- NA
 
@@ -317,12 +319,26 @@ df3 <- df3[,c(1:2,4,3,5:8)]
 df4 <- df4[,c(1:3,8,4:7)]
 df5 <- df5[,c(1:3,8,4:7)]
 
+
+# testing SA bugs --------------------------------------------------------------
+
+
+sa.only <- df3
+
+sa.only <- select(filter(sa.only, STE_CODE16 == 4), c("STE_CODE16","calendar_year","age_group","sex","affiliation_abs_schools","school_grade","apparent_retention_rate","total_retention_rate"))
+
+sa.only.all <- select(filter(sa.only, affiliation_abs_schools == "all affiliations"), c("STE_CODE16","calendar_year","age_group","sex","affiliation_abs_schools","school_grade","apparent_retention_rate","total_retention_rate"))
+sa.only.cath <- select(filter(sa.only, affiliation_abs_schools == "catholic"), c("STE_CODE16","calendar_year","age_group","sex","affiliation_abs_schools","school_grade","apparent_retention_rate","total_retention_rate"))
+sa.only.gov <- select(filter(sa.only, affiliation_abs_schools == "government"), c("STE_CODE16","calendar_year","age_group","sex","affiliation_abs_schools","school_grade","apparent_retention_rate","total_retention_rate"))
+sa.only.indep <- select(filter(sa.only, affiliation_abs_schools == "independent"), c("STE_CODE16","calendar_year","age_group","sex","affiliation_abs_schools","school_grade","apparent_retention_rate","total_retention_rate"))
+sa.only.non.gov <- select(filter(sa.only, affiliation_abs_schools == "non-government"), c("STE_CODE16","calendar_year","age_group","sex","affiliation_abs_schools","school_grade","apparent_retention_rate","total_retention_rate"))
+
 # ----------------- #
 # --- write csv --- #
 # ----------------- #
 
-write.csv(df1, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
-write.csv(df2, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_463_continuation_rates_STE.csv", row.names = F)
-write.csv(df3, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_461_retention_rate_STE.csv", row.names = F)
-write.csv(df4, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_462_school_completion_year_12_STE.csv.csv", row.names = F)
-write.csv(df5, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_411_attendance_at_primary_school_year_5_STE.csv", row.names = F)
+# write.csv(df1, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_473_full_time_and_part_time_students_STE.csv", row.names = F)
+# write.csv(df2, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_463_continuation_rates_STE.csv", row.names = F)
+# write.csv(df3, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_461_retention_rate_STE.csv", row.names = F)
+# write.csv(df4, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_462_school_completion_year_12_STE.csv.csv", row.names = F)
+# write.csv(df5, "C:/Users/n9955348/OneDrive - Queensland University of Technology/Shared Documents - ACWA_QUT/General/Data_Collections_READY_FOR_QA/SCHOOLS/ABS_schools_411_attendance_at_primary_school_year_5_STE.csv", row.names = F)

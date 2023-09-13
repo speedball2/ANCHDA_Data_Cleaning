@@ -119,7 +119,7 @@ erp.totalage.SA2 <-  erp.totalage.SA2[,c(1,2,3,5,4)]
 
 erp.SA2 <- rbind(erp.SA2, erp.totalage.SA2)
 erp.SA2 <- erp.SA2[with(erp.SA2, order(sex, age_group, calendar_year, SA2_CODE16)),]
-names(erp.SA2)[5] <- "estimated_regional_population"
+names(erp.SA2)[5] <- "estimated_resident_population"
 
 write.csv(erp.SA2,paste0(root.dir,save.path,"ABS_ERP_181_ERP_SA2.csv"), row.names=F)
 
@@ -135,9 +135,9 @@ erp.totalage.SA3 <-  erp.totalage.SA3[,c(1,2,3,5,4)]
 
 erp.SA3 <- rbind(erp.SA3, erp.totalage.SA3)
 erp.SA3 <- erp.SA3[with(erp.SA3, order(sex, age_group, calendar_year, SA3_CODE16)),]
-names(erp.SA3)[5] <- "estimated_regional_population"
+names(erp.SA3)[5] <- "estimated_resident_population"
 
-names(erp.SA3)[5] <- "estimated_regional_population"
+names(erp.SA3)[5] <- "estimated_resident_population"
 write.csv(erp.SA3,paste0(root.dir,save.path,"ABS_ERP_181_ERP_SA3.csv" ), row.names = F)
 
 #SA4 ---------------------------------------------------------------------------
@@ -150,7 +150,7 @@ erp.totalage.SA4 <-  erp.totalage.SA4[,c(1,2,3,5,4)]
 
 erp.SA4 <- rbind(erp.SA4, erp.totalage.SA4)
 erp.SA4 <- erp.SA4[with(erp.SA4, order(sex, age_group, calendar_year, SA4_CODE16)),]
-names(erp.SA4)[5] <- "estimated_regional_population"
+names(erp.SA4)[5] <- "estimated_resident_population"
 
 write.csv(erp.SA4,paste0(root.dir,save.path,"ABS_ERP_181_ERP_SA4.csv" ), row.names = F)
 
@@ -163,7 +163,7 @@ erp.totalage.STE <-  erp.totalage.STE[,c(1,2,3,5,4)]
 
 erp.STE <- rbind(erp.STE, erp.totalage.STE)
 erp.STE <- erp.STE[with(erp.STE, order(sex, age_group, calendar_year, STE_CODE16)),]
-names(erp.STE)[5] <- "estimated_regional_population"
+names(erp.STE)[5] <- "estimated_resident_population"
 
 write.csv(erp.STE,paste0(root.dir,save.path,"ABS_ERP_181_ERP_STE.csv" ), row.names = F)
 
@@ -176,7 +176,7 @@ erp.totalage.AUS <-  erp.totalage.AUS[,c(1,2,3,5,4)]
 
 erp.AUS <- rbind(erp.AUS, erp.totalage.AUS)
 erp.AUS <- erp.AUS[with(erp.AUS, order(sex, age_group, calendar_year, Australia)),]
-names(erp.AUS)[5] <- "estimated_regional_population"
+names(erp.AUS)[5] <- "estimated_resident_population"
 
 write.csv(erp.AUS,paste0(root.dir,save.path,"ABS_ERP_181_ERP_Australia.csv" ), row.names = F)
 
@@ -224,6 +224,9 @@ erp.totalage.LGA <- erp.LGA %>% group_by(LGA_CODE16, calendar_year, age_group) %
 erp.totalage.LGA$estimated_regional_population_uncertainty_correspondence <- "Good"
 
 erp.LGA <- rbind(erp.LGA, erp.totalage.LGA)
+
+names(erp.LGA)[5] <- "estimated_resident_population"
+names(erp.LGA)[6] <- "estimated_resident_population_uncertainty_correspondence"
 
 write.csv(erp.LGA, paste0(root.dir,save.path,"ABS_ERP_181_ERP_LGA.csv" ), row.names = F)
 
