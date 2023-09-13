@@ -29,16 +29,19 @@ cleaning <- function(file_path, sheet, range, col) {
 # READING IN FILES -------------------------------------------------------------
 
 #SA2
-df1 <- cleaning("Client File-ERP-LS005201.xlsx", 2, "A9:BA36681", T)
+df1 <- cleaning("Client File-ERP-LS005201 - Copy.xlsx", 2, "A9:BA36681", T)
 
 #2017-2021 NEEDS CORRESPONDANCE LGA
 df2 <- cleaning("LS005302 - Client File.xlsx", 2, "A6:BA2741", T)
 
 # RENAMING CODE COLUMNS
-colnames(df2)[colnames(df2) == "SA2_CODE16"] ="SA2_CODE21"
+colnames(df2)[colnames(df2) == "SA2_CODE16"] ="LGA_CODE21"
 
 #2006-2016 LGA
 df3<- cleaning("LS005302 - Client File.xlsx", 3, "A6:BA6199", T)
+
+# RENAMING CODE COLUMNS
+colnames(df3)[colnames(df3) == "SA2_CODE16"] ="LGA_CODE16"
 
 # PIVOT WIDE TO LONG -----------------------------------------------------------
 
@@ -85,10 +88,10 @@ wide_to_long <- function(df, id_cols, m_cols, f_cols) {
 df1_full <- wide_to_long(df1, id_cols = c("SA2_CODE16", "calendar_year"), 
                          m_cols = paste0("m", 0:24), f_cols = paste0("f", 0:24))
 
-df2_full <- wide_to_long(df2, id_cols = c("SA2_CODE21", "calendar_year"), 
+df2_full <- wide_to_long(df2, id_cols = c("LGA_CODE21", "calendar_year"), 
                          m_cols = paste0("m", 0:24), f_cols = paste0("f", 0:24))
 
-df3_full <- wide_to_long(df3, id_cols = c("SA2_CODE16", "calendar_year"), 
+df3_full <- wide_to_long(df3, id_cols = c("LGA_CODE16", "calendar_year"), 
                          m_cols = paste0("m", 0:24), f_cols = paste0("f", 0:24))
 
 
@@ -123,15 +126,15 @@ reorder <- function(df, code) {
 }
 
 df1_full <- reorder(df1_full, "SA2_CODE16")
-df2_full <- reorder(df2_full, "SA2_CODE21")
-df3_full <- reorder(df3_full, "SA2_CODE16")
+df2_full <- reorder(df2_full, "LGA_CODE21")
+df3_full <- reorder(df3_full, "LGA_CODE16")
 
 # WRITE CSVS -------------------------------------------------------------------
 
  write.csv(df1_full, "../../../Data_Collections_INTERIM/ERP/ABS_ERP_181_ERP_SA2.csv", row.names = F)
 
 
- write.csv(df2_full, "../../../Data_Collections_INTERIM/ERP/ABS_ERP_181_ERP_LGA_2017_2017_ASGS2021_single_year.csv", row.names = F)
+ write.csv(df2_full, "../../../Data_Collections_INTERIM/ERP/ABS_ERP_181_ERP_LGA_2017_2021_ASGS2021_single_year.csv", row.names = F)
  write.csv(df3_full, "../../../Data_Collections_INTERIM/ERP/ABS_ERP_181_ERP_LGA_2006_2016_ASGS2016_single_year.csv", row.names = F)
 
 

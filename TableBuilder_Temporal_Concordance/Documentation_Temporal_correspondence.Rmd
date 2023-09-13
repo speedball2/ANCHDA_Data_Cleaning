@@ -29,6 +29,8 @@ The code uses a function named `temporal_concordance_census_fn` that takes sever
 
 A parallel process is included for Census data and National data in `{r} state_stack_fn()` which does not do any temporal correspondence, but applies parallel steps of data formatting and processing, and joining data from multiple years together.
 
+**NB there is a custom correspondence code file for "Internet connection type" - since it only has years 2006-2016 (no 2021) - it is otherwise identical to the code for all other datasets**
+
 
 
 ## 1. Load and process correspondence files

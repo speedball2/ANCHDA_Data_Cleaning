@@ -14,6 +14,8 @@ library(readr)
 acara_folder <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/acara/"
 path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/acara/outputs"
 
+acara_folder <- "./data/ACARA"
+path_out = "./output/ACARA/attendance_level"
 
 # Create output directory if it doesn't exist
 if (!dir.exists(path_out)) {
@@ -52,11 +54,12 @@ clean_data <- function(df) {
   df <- df[, c(2, 4, 5, 6, 11)] # take attendance level
   
   # Rename columns
+  
   colnames(df)[1] <- paste0(colnames(df)[1], "_code16")
   colnames(df) <- gsub(" ", "_", tolower(colnames(df)))
   colnames(df)[2] <- "calendar_year"
   colnames(df)[1] <- toupper(colnames(df)[1])  # Change the column name at index 1 to uppercase
-  
+  code_name <-  colnames(df)[1]
   # Recode the values in school_sector
   df <- df %>%
     mutate(school_sector = case_when(
@@ -86,6 +89,14 @@ clean_data <- function(df) {
     # Select columns in the required order
     select(1, 7, 6, 2, 3, 4, 5)
   
+  inicator_name <- colnames(df)[7]
+  
+  #as the non_government consist with two other sectors c("Catholic", "Independent") we have to take the average across that variable
+  df <- df %>% group_by(eval(parse(text =  colnames(df)[1])) ,sex, age_group, school_sector, calendar_year, school_sector, school_type) %>% summarise(new_val = mean(eval(parse(text = names(df)[7]))))
+  
+  names(df)[1] <- code_name
+  
+  names(df)[which(names(df) == "new_val")] <- inicator_name
   # Return the cleaned dataframe
   return(df)
 }
@@ -108,6 +119,7 @@ sa3_combined <- do.call(rbind, sa3_tables)
 
 ##----------------------------------------------------------------------------------------------------------------------##
 ## calculate the total attendance rate by geo-area
+
 
 sa3_total <- sa3_combined %>%
   select(-c(school_sector, school_type, age_group)) %>%  # drop school_sector and school_type columns
@@ -155,10 +167,12 @@ sa3_combined <- split(sa3_combined, list(sa3_combined$school_sector, sa3_combine
 # Export tibbles in lga_combined list to CSV files
 for (i in seq_along(lga_combined)) {
   # Get unique values for school_sector and school_type
-  sector_type <- unique(lga_combined[[i]] %>% select(school_sector, school_type))
+  #sector_type <- unique(lga_combined[[i]] %>% select(school_sector, school_type))
   
+  school_type <- unique(lga_combined[[i]]$school_type)
+  school_sector <- unique(lga_combined[[i]]$school_sector)
   # Construct file name
-  file_name <- paste0("acara_473_attendance_level_", sector_type$school_type, "_", sector_type$school_sector, "_LGA.csv")
+  file_name <- paste0("acara_473_attendance_level_", school_type, "_", school_sector, "_LGA.csv")
   
   # Export to CSV file
   write.csv(lga_combined[[i]], file.path(path_out, file_name), row.names = FALSE)
@@ -167,10 +181,11 @@ for (i in seq_along(lga_combined)) {
 # Export tibbles in sa2_combined list to CSV files
 for (i in seq_along(sa2_combined)) {
   # Get unique values for school_sector and school_type
-  sector_type <- unique(sa2_combined[[i]] %>% select(school_sector, school_type))
-  
+  #sector_type <- unique(sa2_combined[[i]] %>% select(school_sector, school_type))
+  school_type <- unique(lga_combined[[i]]$school_type)
+  school_sector <- unique(lga_combined[[i]]$school_sector)
   # Construct file name
-  file_name <- paste0("acara_473_attendance_level_", sector_type$school_type, "_", sector_type$school_sector, "_SA2.csv")
+  file_name <- paste0("acara_473_attendance_level_", school_type, "_", school_sector, "_SA2.csv")
   
   # Export to CSV file
   write.csv(sa2_combined[[i]], file.path(path_out, file_name), row.names = FALSE)
@@ -179,10 +194,12 @@ for (i in seq_along(sa2_combined)) {
 # Export tibbles in sa3_combined list to CSV files
 for (i in seq_along(sa3_combined)) {
   # Get unique values for school_sector and school_type
-  sector_type <- unique(sa3_combined[[i]] %>% select(school_sector, school_type))
+  #sector_type <- unique(sa3_combined[[i]] %>% select(school_sector, school_type))
   
+  school_type <- unique(lga_combined[[i]]$school_type)
+  school_sector <- unique(lga_combined[[i]]$school_sector)
   # Construct file name
-  file_name <- paste0("acara_473_attendance_level_", sector_type$school_type, "_", sector_type$school_sector, "_SA3.csv")
+  file_name <- paste0("acara_473_attendance_level_", school_type, "_", school_sector, "_SA3.csv")
   
   # Export to CSV file
   write.csv(sa3_combined[[i]], file.path(path_out, file_name), row.names = FALSE)

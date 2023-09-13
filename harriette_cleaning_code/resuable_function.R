@@ -159,7 +159,8 @@ cleaning <- function(path, sht, range, col){
     df$age_group <- paste0(df$age_group, "-", df$age_group)
     
 
-
+    # COL REORDERING
+    df.lga.ag <- df.lga.ag[,c(1:4,6,5)]
 
 
 

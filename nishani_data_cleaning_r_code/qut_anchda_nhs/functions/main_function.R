@@ -1,4 +1,4 @@
-#this is the main function which combines all the output files from seperate states
+#this is the main function which combines all the output files from separate states
 main_function <- function(bmi_categories,indicator_name, filenames, sheet_name, data_range, starting_row, row_removed, format_1, format_2, multiply, value_name, further_modi_bmi, sex_cat){
   
   output_list <- lapply(1:length(filenames), function(x){
@@ -18,7 +18,7 @@ main_function <- function(bmi_categories,indicator_name, filenames, sheet_name, 
       table_output[, value_name] <-  table_output[, value_name] /100
       
     }
-    table_output <- table_output %>% mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 2))))
+    #table_output <- table_output %>% mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 2))))
     
     #if the user want to remove the any special character from the catergories
     if(further_modi_bmi == "YES"){

@@ -13,8 +13,8 @@ library(dplyr)
 # --- reading in excel files --- #
 # ------------------------------ #
 
-cleaning <- function(path, sht, range, col, nems, corder){
-  #path = file path, sht = Sheet number, range = column range, col = col names 
+cleaning <- function(path, sht, range, col, df){
+  #path = file path, sht = Sheet number, range = column range, col = col names T/F, df = dataframen number
   
   df <- as.data.frame(read_xlsx(path,
                                 sht,
@@ -89,16 +89,31 @@ cleaning <- function(path, sht, range, col, nems, corder){
     #unique(df1$col) <- check above worked, col = col want checked
   }
   
+  #CHANGING SCHOOL GRADE NAME
+  
+  names(df)[names(df) == 'Year (Grade)'] <- "school_grade"
+  
+  
+    # unique(df4$school_grade) - confirm only grade level 
   
   #CHANGE NAMES TO CODES
   
   names(df)[names(df) == 'Affiliation (Gov/Cath/Ind)'] <- "gov"
+  names(df)[names(df) == 'Affiliation'] <- "gov"
+  
   
   if("gov" %in% names(df)){
     df$gov <- recode(df$gov,
                      "a Government" = "Government" ,
                      "b Catholic" = "Catholic" ,
-                     "c Independent" = "Independent")
+                     "c Independent" = "Independent",
+                     
+                     #df3
+                     
+                     "b Non-Government" = "non-government",
+                     "c Catholic" = "catholic",
+                     "d Independent" = "independent",
+                     "e All affiliations" = "All affiliations")
     
     #unique(df1$col) <- check above worked, col = col want checked
   }
@@ -110,16 +125,18 @@ cleaning <- function(path, sht, range, col, nems, corder){
     df$Sex <- recode(df$Sex,
                      "a Male" = "Male",
                      "b Female" = "Female",
-                     "c Persons" = "Persons")
+                     "c Persons" = "all")
     
     #unique(df1$col) <- check above worked, col = col want checked
   }
   
-  
+ 
   # MAKE VALUES W/IN CELLS LOWER CASE 
   
   df[] <- lapply(df, tolower)
   
+
+
   
   return(df)
   
@@ -136,21 +153,62 @@ df1 <- cleaning (path = "Table 42bN_FT_andPT_Students, 2006-2022.xlsx",
                  range = "A5:M77085",
                  col = T)
 
-#REMOVING COLUMNS
 
-df1 <- df1[, -c(3,6:9,13)]
+# Convert columns to numeric
+df1$`Full-time Student count` <- as.numeric(df1$`Full-time Student count`)
+df1$`Part-time Student count` <- as.numeric(df1$`Part-time Student count`)
 
 
-#COLUMNS REMOVED: affiliation_gov_non_gov, Aboriginal and Torres Strait Islander Status,  
-#School Level, National Report on Schooling (ANR) School Level, year (Grade), total 
+# Grouping by Year, STE, gov, Sex, and Age and calculating the sums
+df1 <- df1 %>%
+  group_by(Year, STE, gov, Sex, Age, school_grade) %>%
+  summarise(
+    n_full_time_student = sum(`Full-time Student count`),
+    n_part_time_student = sum(`Part-time Student count`)
+  ) 
+
 
 
 names(df1) <- c("calendar_year", "STE_CODE16","affiliation_abs_schools","sex",
-                "age_group", "n_full_time_student", "n_part_time_student")
+                "age_group", "school_grade", "n_full_time_student", "n_part_time_student")
 
-corder <- c("STE_CODE16", "calendar_year", "age_group", "sex", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student")
+corder <- c("STE_CODE16", "calendar_year", "age_group", "sex", "affiliation_abs_schools", "school_grade", "n_full_time_student", "n_part_time_student")
 
 df1 <- df1[,corder]
+
+
+df1 <-subset(df1, school_grade!="i ungraded primary" & school_grade!="p ungraded secondary")
+
+
+if("school_grade" %in% names(df1)){
+  df1$school_grade <- recode(df1$school_grade,
+                            
+                            
+                            "a pre-year 1 (foundation year)" = "pre year 1",
+                            "b year 1" = "year 1",
+                            "c year 2" = "year 2",
+                            "d year 3" = "year 3",
+                            "e year 4" = "year 4",
+                            "f year 5" = "year 5",
+                            "g year 6" = "year 6",
+                            "h year 7 primary" = "year 7 primary",
+                            "j year 7 secondary" = "year 7 secondary",
+                            "k year 8" = "year 8",
+                            "l year 9" = "year 9",
+                            "m year 10" = "year 10",
+                            "n year 11" = "year 11",
+                            "o year 12" = "year 12"
+                            
+                          
+  )
+}
+
+
+df1.1 <- df1 %>% group_by(STE_CODE16, calendar_year, age_group, affiliation_abs_schools, school_grade) %>%
+  summarise(n_full_time_student = sum (`n_full_time_student`),
+            n_part_time_student = sum (`n_part_time_student`)) %>% mutate(sex = "all")
+
+df1 <- rbind(df1.1, df1)
 
 
 # School continuation Rates --------------------------------------------------
@@ -173,34 +231,53 @@ df3 <- cleaning(path = "Table 63a_ARetention Rates_Single year_grade.xlsx",
                 range = "A5:H8105",
                 col = T)
 
-#REMOVING COLUMNS
+# Convert columns to numeric
+df3$`Non-Indigenous ARR` <- as.numeric(df3$`Non-Indigenous ARR`)
+df3$`All ARR` <- as.numeric(df3$`All ARR`)
 
-df3 <- df3[, -c(3,6)]
 
-#COLUMNS REMOVED: "Affiliation" , "Aboriginal and Torres Strait Islander ARR"
+names(df3)[names(df3) == 'Year Range'] <- "school_grade"
 
-names(df3) <- c("calendar_year", "STE_CODE16", "sex", "school_grade", "apparent_retention_rate", "total_retention_rate") #fixed typo here
+# Grouping by Year, STE, gov, Sex, and Age and calculating the sums
+df3 <- df3 %>%
+  group_by(Year, STE, gov, Sex, school_grade) %>%
+  summarise(
+    apparent_retention_rate = sum(`Non-Indigenous ARR`),
+    total_retention_rate = sum(`All ARR`)
+  ) 
+
+
+
+names(df3) <- c("calendar_year", "STE_CODE16", "affiliation_abs_schools", "sex", "school_grade", "apparent_retention_rate", "total_retention_rate") #fixed typo here
 
 df3$age_group <- NA
 
-corder <- c("STE_CODE16", "calendar_year","sex", "age_group", "school_grade", "apparent_retention_rate", "total_retention_rate") #fixed typo here
+corder <- c("STE_CODE16", "calendar_year","sex", "age_group", "affiliation_abs_schools", "school_grade", "apparent_retention_rate", "total_retention_rate") #fixed typo here
 
 
 df3 <- df3[,corder]
 
-if("school_grade" %in% names(df3)){
-  df3$school_grade <- recode(df3$school_grade,
-                             "a year 7 - year 8" = "year 7 - year 8",
-                             "b year 8 - year 9" = "year 8 - year 9",
-                             "c year 9 - year 10" = "year 9 - year 10",
-                             "d year 10 - year 11" = "year 10 - year 11",
-                             "e year 11 - year 12" = "year 11 - year 12")
-  
+
   
   #unique(df1$col) <- check above worked, col = col want checked
+
+
+
+if("school_grade" %in% names(df3)){
+  df3$school_grade <- recode(df3$school_grade,
+                            
+                            
+                            
+                            #DF3
+                            "a year 7 - year 8" = "year 7 - year 8",
+                            "b year 8 - year 9" = "year 8 - year 9",
+                            "c year 9 - year 10" = "year 9 - year 10",
+                            "d year 10 - year 11" = "year 10 - year 11",
+                            "e year 11 - year 12" = "year 11 - year 12",
+                            
+                            
+  )
 }
-
-
 # Adding column based on other column:
 
 df3 <- df3 %>%
@@ -217,84 +294,28 @@ df3 <- df3 %>%
 # --- year 12 and year 5 attendance  --- #
 # -------------------------------------- #
 
-
-# year 12 ---------------------------------------------------------------------
-
-df4 <- cleaning (path = "Table 42bN_FT_andPT_Students, 2006-2022.xlsx",
-                 sht = 3,
-                 range = "A5:M77085",
-                 col = T)
-
-#REMOVING COLUMNS
-
-df4 <- df4[, -c(3,6:8,13)]
+# SUBSET DATASET OF YEAR 12
+df4 <- subset(df1, (school_grade %in% c("year 12")))
 
 
-#COLUMNS REMOVED: affiliation_gov_non_gov, Aboriginal and Torres Strait Islander Status,  
-#School Level, National Report on Schooling (ANR) School Level, Total
-
-names(df4) <- c("calendar_year", "STE_CODE16","affiliation_abs_schools","sex", "school_grade", 
-                "age_group", "n_full_time_student", "n_part_time_student")
-
-corder <- c("STE_CODE16", "calendar_year","sex", "age_group" , "school_grade", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student")
-
-df4 <- df4[,corder]
-
-# ONLY year 12 DATA 
-
-df4 <- df4[which(df4$school_grade == "o year 12"),names(df4) %in% c("STE_CODE16", "calendar_year","sex", "age_group" , "school_grade", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student", "total_abs_schools")]
-
-# unique(df4$school_grade) - confirm only grade level 
-
-if("school_grade" %in% names(df4)){
-  df4$school_grade <- recode(df4$school_grade,
-                             "o year 12" = "year 12"
-  )
-}
-
-
-# year 5 ---------------------------------------------------------------------
-
-df5 <- cleaning (path = "Table 42bN_FT_andPT_Students, 2006-2022.xlsx",
-                 sht = 3,
-                 range = "A5:M77085",
-                 col = T)
-
-#REMOVING COLUMNS
-
-df5 <- df5[, -c(3,6:8,13)]
-
-
-#COLUMNS REMOVED: affiliation_gov_non_gov, Aboriginal and Torres Strait Islander Status,  
-#School Level, National Report on Schooling (ANR) School Level
-
-names(df5) <- c("calendar_year", "STE_CODE16","affiliation_abs_schools","sex", "school_grade", 
-                "age_group", "n_full_time_student", "n_part_time_student")
-
-corder <- c("STE_CODE16", "calendar_year","sex", "age_group" , "school_grade", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student")
-
-df5 <- df5[,corder]
-
-# ONLY year 5 DATA 
-
-df5 <- df5[which(df5$school_grade == "f year 5"),names(df5) %in% c("STE_CODE16", "calendar_year","sex", "age_group" , "school_grade", "affiliation_abs_schools", "n_full_time_student", "n_part_time_student", "total_abs_schools")]
-
-# unique(df5$school_grade) - confirm only grade level 
-
-
-if("school_grade" %in% names(df5)){
-  df5$school_grade <- recode(df5$school_grade,
-                             "f year 5" = "year 5"
-  )
-}
+# SUBSET DATASET OF YEAR 5
+df5 <- subset(df1, (school_grade %in% c("year 5")))
 
 # -----------------------------------------------------------------------------
 
 #REMOVING TOTALS FROM DATA 
 
-df2 <- df2[!grepl("Persons", df2$sex),]
-df3 <- df3[!grepl("Persons", df3$sex),]
+# df2 <- df2[!grepl("Persons", df2$sex),]
+# df3 <- df3[!grepl("Persons", df3$sex),]
+# df3 <- df3[!grepl("e all affiliations", df3$affiliation_abs_schools),]
 
+
+#COL ORDER ---------------------------------------------------------------------
+
+df1 <- df1[,c(1:3,8,4:7)]
+df3 <- df3[,c(1:2,4,3,5:8)]
+df4 <- df4[,c(1:3,8,4:7)]
+df5 <- df5[,c(1:3,8,4:7)]
 
 # ----------------- #
 # --- write csv --- #

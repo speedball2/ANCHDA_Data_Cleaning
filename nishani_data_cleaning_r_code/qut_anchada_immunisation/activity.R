@@ -22,6 +22,7 @@ table_5 <- read_files("./data/AIR SDQU - ANCHDA - RMS2671 Data Request Childhood
 
 table_new <- rbind(rbind(table_1, table_2), table_5)
 
+
 table_new <- table_new[,c("Year", "SA3_Code", "SA3_Name", "State", "Age Group","% Fully")]
 
 table_new$State <- unlist(lapply(table_new$State, function (x){

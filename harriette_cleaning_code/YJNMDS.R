@@ -45,11 +45,11 @@ cleaning <- function(path, sht, range, col){
 
 #                 --- COMMUNITY BASED SUPERVISION ---
 
-df1 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 1, "A4:Q111", T)
+#df1 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 1, "A4:Q111", T)
 
 #                         --- DETENTION ---
 
-df2 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 2, "A4:Q111", T)
+#df2 <- cleaning("ATLAS_data_SA4_AYJA_March_2023.xlsx", 2, "A4:Q111", T)
 
 #                 --- COMMUNITY BASED SUPERVISION ---
 #--- MALES ---
@@ -178,8 +178,8 @@ wide_to_long <- function(df, rename, sex, status){
   return(df)
 }
                   
- a <- wide_to_long(df1, "n_community_based_supervision_on_an_average_day", "all", NA)  
- b <- wide_to_long(df2, "n_detention_an_average_day", "all", NA)
+ #a <- wide_to_long(df1, "n_community_based_supervision_on_an_average_day", "all", NA)  
+  #b <- wide_to_long(df2, "n_detention_an_average_day", "all", NA)
  c <- wide_to_long(df3, "n_community_based_supervision_on_an_average_day", "male", NA)
  d <- wide_to_long(df4, "n_community_based_supervision_on_an_average_day", "female", NA)
  e <- wide_to_long(df5, "n_detention_an_average_day", "male", NA)
@@ -192,9 +192,17 @@ wide_to_long <- function(df, rename, sex, status){
  
  # COMBINE DATA FRAMES TOGETHER ------------------------------------------------
  
- community <- rbind(a,c,d,g,h)
- detention <- rbind(b,e,f,i,j)
-                
+# community <- rbind(a,c,d,g,h)
+# detention <- rbind(b,e,f,i,j)
+ 
+ 
+# TOTALS FOR DATA NOT INC - new structure for data belOW -----------------------
+ 
+community <- rbind(c,d)
+detention <- rbind(e,f)
+
+community <- community[-6]
+detention <- detention[-6]
                   
  # WRITE CSVS ------------------------------------------------------------------                 
                   

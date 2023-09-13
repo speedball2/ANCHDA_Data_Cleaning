@@ -29,11 +29,11 @@ TB_Census_cleaning_fn_individual(data_file_base = "census_religion", data_item_n
 
 #---------
 
-#2011 - NAME
+#2011 - CODE
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
-TB_Census_cleaning_fn_individual(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2011,code_or_name = "name", census_tag = "RELP", census_filter_col_name = "relp_religious_affiliation")
+TB_Census_cleaning_fn_individual(data_file_base = "census_religion", data_item_name ="religion", calendar_year=2011,code_or_name = "code", census_tag = "RELP", census_filter_col_name = "relp_religious_affiliation")
 
 #--------
 #2016 - NAME

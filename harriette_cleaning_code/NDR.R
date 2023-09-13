@@ -19,10 +19,10 @@ df1 <- read_excel(col_names = T, path = "NDR Type 1 incidence and prevalence by 
 df1$age_group <- "0-24"
 
 #naming columns ----------------------------------------------------------------
-colnames(df1) <- c("calendar_year","SA4_NAME16","SA4_CODE16","sex","n_number_cases", "age_group")
+colnames(df1) <- c("calendar_year","SA4_NAME16","SA4_CODE16","sex","n_new_cases_ndr", "age_group")
 
 #reordering columns ------------------------------------------------------------
-col_order <- c("SA4_CODE16","calendar_year", "age_group","sex","n_number_cases")
+col_order <- c("SA4_CODE16","calendar_year", "age_group","sex","n_new_cases_ndr")
 
 df1 <- df1[,col_order]
 
@@ -36,17 +36,18 @@ df2 <- read_excel(col_names = T, path = "NDR Type 1 incidence and prevalence by 
                   range = "A1:F24031")
 
 #naming columns ----------------------------------------------------------------
-colnames(df2) <- c("calendar_year","SA4_NAME16","SA4_CODE16","age_group","sex","n_number_of_new_cases")
+colnames(df2) <- c("calendar_year","SA4_NAME16","SA4_CODE16","age_group","sex","n_cases_ndr")
 
 
 #reordering columns ------------------------------------------------------------
 
-col_order2 <- c("SA4_CODE16","calendar_year","age_group","sex","n_number_of_new_cases")
+col_order2 <- c("SA4_CODE16","calendar_year","age_group","sex","n_cases_ndr")
 
 df2 <- df2[,col_order2] 
 
 
 # CONCISTENCY ACROSS DATASETS ----------------------------------------------------------------
+
 
 
 
@@ -75,6 +76,6 @@ df2 <- concistency(df2)
 #--------write csv----------#
 #---------------------------#
 
-write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_1121_chronic_conditions_diabetes_incidence_SA4.csv", row.names = F)
-write.csv(df2, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_1121_chronic_conditions_diabetes_prevalence_SA4.csv", row.names = F)
+write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_1122_chronic_conditions_diabetes_incidence_SA4.csv", row.names = F)
+write.csv(df2, file = "../../../Data_Collections_READY_FOR_QA/NDR/NDR_1122_chronic_conditions_diabetes_prevalence_SA4.csv", row.names = F)
 

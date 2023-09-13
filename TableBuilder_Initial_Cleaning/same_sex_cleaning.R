@@ -109,10 +109,10 @@ same_sex_cleaning_fn <- function(data_file_base, data_item_name, calendar_year,c
       
       current_geog <- ifelse(geog_list[i]=="STE","STATE",geog_list[i]) #STE name only for 2006 - naming "STATE" for 2011 onwards
       
-      relevant_name_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_name.csv"),skip=9,check.names=FALSE)
+      relevant_name_file <- read.csv(paste0("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_name.csv"),skip=9,check.names=FALSE)
       relevant_names <- c(row.names(relevant_name_file)) #get list of relevant geography names
       
-      relevant_code_file <- read.csv(paste0("/Users/Current/OneDrive - Queensland University of Technology/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_code.csv"),skip=9,check.names=FALSE)
+      relevant_code_file <- read.csv(paste0("/Users/Current/Desktop/ANCHDA_RA/Data_Cleaning_Github/ANCHDA_Data_Cleaning/ASGS_Codes_Names/",calendar_year,"_",geog_list[i],"_code.csv"),skip=9,check.names=FALSE)
       relevant_codes <- c(row.names(relevant_code_file)) #get list of relevant geography codes
       
       
@@ -161,7 +161,7 @@ same_sex_cleaning_fn(data_file_base = "census_same_sex_couple", data_item_name =
 
 setwd("/Users/Current/OneDrive - Queensland University of Technology/General - ACWA_QUT/Data_Collections_RAW/public_data/TableBuilder_Data/Census/Census_2011")
 
-same_sex_cleaning_fn(data_file_base = "census_same_sex_couple", data_item_name ="same_sex_couple_children", calendar_year=2011,code_or_name = "code", census_tag_1 = "SSCF", census_filter_col_name_1 = "sscf_same_sex_couple_indicator", census_tag_2 = "CDCF", census_filter_col_name_2 = "cdcf_count_of_dependent_children_in_family")
+same_sex_cleaning_fn(data_file_base = "census_same_sex_couple", data_item_name ="same_sex_couple_children", calendar_year=2011,code_or_name = "name", census_tag_1 = "SSCF", census_filter_col_name_1 = "sscf_same_sex_couple_indicator", census_tag_2 = "CDCF", census_filter_col_name_2 = "cdcf_count_of_dependent_children_in_family")
 
 
 #-----
