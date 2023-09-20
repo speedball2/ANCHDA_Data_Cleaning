@@ -121,8 +121,48 @@ df3 <- cleaning(df3)
 #--------write csv----------#
 #---------------------------#
 # 
-#  write.csv(df1, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_292_specialist_services_client_count_SA3.csv", row.names = F)
-#  write.csv(df2, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_292_specialist_services_presenting_unit_type_count_SA3.csv", row.names = F)
-#  write.csv(df3, file = "../../../Data_Collections_READY_FOR_QA/SHSC/SHSC_292_specialist_services_main_reason_seeking_assistance_SA3.csv", row.names = F)
+write.csv(df1, file = "../SHSC_292_specialist_services_client_count_SA3.csv", row.names = F)
+write.csv(df2, file = "../SHSC_292_specialist_services_presenting_unit_type_count_SA3.csv", row.names = F)
+write.csv(df3, file = "../SHSC_292_specialist_services_main_reason_seeking_assistance_SA3.csv", row.names = F)
 #  
+
+
+#cell suppression
+
+
+# Define a function to process each dataframe
+process_dataframe <- function(df) {
+  # Replace values 1, 2, 3, or 4 in client_count_SHSC with 9999999
+  df$client_count_SHSC[df$client_count_SHSC %in% c(1, 2, 3, 4)] <- 9999999
+  
+  # Delete rows where SA3_CODE16 is 99999999
+  df <- df[df$SA3_CODE16 != 99999999, ]
+  
+  return(df)
+}
+
+# Process df1
+df1 <- process_dataframe(df1)
+
+# Process df2
+df2 <- process_dataframe(df2)
+
+# Process df3
+df3 <- process_dataframe(df3)
+
+#replace 9999999
+df2$client_count_SHSC[df2$age_group == "0-9" & df2$presenting_unit_type_SHSC == "alone or not apart of a family"] <- 9999999
+
+
+# Assuming df1, df2, and df3 are your processed dataframes
+output_dir <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/SHSC/cell_suppressed/"
+
+# Save df1 with the specified filename
+write.csv(df1, file.path(output_dir, "SHSC_292_specialist_services_client_count_SA3.csv"), row.names = FALSE)
+
+# Save df2 with the specified filename
+write.csv(df2, file.path(output_dir, "SHSC_292_specialist_services_presenting_unit_type_count_SA3.csv"), row.names = FALSE)
+
+# Save df3 with the specified filename
+write.csv(df3, file.path(output_dir, "SHSC_292_specialist_services_main_reason_seeking_assistance_SA3.csv"), row.names = FALSE)
 
