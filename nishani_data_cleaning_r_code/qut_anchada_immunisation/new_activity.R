@@ -3,6 +3,7 @@ library(reshape2)
 library(tidyxl)
 library(dplyr)
 library(openxlsx)
+library(readr)
 #-----------
 
 source("./functions/read_files.R")
@@ -11,14 +12,16 @@ source("./functions/read_files.R")
 site <-c("NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT")
 site_cat <- 1:8
 
+setwd("C:\\Users\\Mudki\\OneDrive - Queensland University of Technology\\ANCHDA_QUT_new\\General\\Data_Collections_RAW\\from_custodians\\AIR_SA3\\")
 
-code_data <- read.csv("./data/SA2_2016_AUST_no_geom.csv", header = TRUE, check.names = FALSE )
 
-table_1 <- read_files("./data/AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 1yo" , "A2:N3045")
+code_data <- read.csv("../../public_data/ASGS2016_SA2_SA3_SA4_code_name_matching_ref_csv/SA2_2016_AUST_no_geom.csv", header = TRUE, check.names = FALSE )
 
-table_2 <- read_files("./data/AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 2yo" , "A2:N3041")
+table_1 <- read_excel("AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.XLSX", "ALL 1yo" , "A2:N3045")
 
-table_5 <- read_files("./data/AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 5yo" , "A2:N3042")
+table_2 <- read_excel("AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 2yo" , "A2:N3041")
+
+table_5 <- read_excel("AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 5yo" , "A2:N3042")
 
 table_new <- rbind(rbind(table_1, table_2), table_5)
 
@@ -27,12 +30,12 @@ var_name <- "% DTP"
 table_new <- table_new[,c("Year", "SA3_Code", "SA3_Name", "State", "Age Group",var_name)]
 
 table_new$State <- unlist(lapply(table_new$State, function (x){
-  
   site_cat[which(site == x)]
 }))
 
+table_new <- as.data.frame(table_new)
 
-table_new[,var_name] <- gsub("NP", NA, table_new[,var_name])
+table_new[,var_name] <- gsub(pattern = "NP", replacement = NA, x = table_new[,var_name])
 table_new[,var_name] <- gsub("≥95.00", 95.00, table_new[,var_name])
 table_new[,var_name] <- gsub("≥99.00", 99.00, table_new[,var_name])
 
@@ -93,7 +96,7 @@ final_table$p <- as.numeric(final_table$p)/100
 
 final_table <- final_table %>% mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 2))))
 
-write.csv(final_table, "./output/AIR_121_dtp_immunised_single_year_SA3.csv", row.names = FALSE)
+#write.csv(final_table, "./output/AIR_121_dtp_immunised_single_year_SA3.csv", row.names = FALSE)
 
 
 

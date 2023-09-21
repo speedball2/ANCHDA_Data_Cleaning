@@ -11,14 +11,16 @@ source("./functions/read_files.R")
 site <-c("NSW", "VIC", "QLD", "SA", "WA", "TAS", "NT", "ACT")
 site_cat <- 1:8
 
+setwd("C:\\Users\\Mudki\\OneDrive - Queensland University of Technology\\ANCHDA_QUT_new\\General\\Data_Collections_RAW\\from_custodians\\AIR_SA3\\")
 
-code_data <- read.csv("./data/SA2_2016_AUST_no_geom.csv", header = TRUE, check.names = FALSE )
 
-table_1 <- read_files("./data/AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 1yo" , "A2:N3045")
+code_data <- read.csv("../../public_data/ASGS2016_SA2_SA3_SA4_code_name_matching_ref_csv/SA2_2016_AUST_no_geom.csv", header = TRUE, check.names = FALSE )
 
-table_2 <- read_files("./data/AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 2yo" , "A2:N3041")
+table_1 <- read_excel("AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.XLSX", "ALL 1yo" , "A2:N3045")
 
-table_5 <- read_files("./data/AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 5yo" , "A2:N3042")
+table_2 <- read_excel("AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 2yo" , "A2:N3041")
+
+table_5 <- read_excel("AIR SDQU - ANCHDA - RMS2671 Data Request Childhood Immunisation.xlsx", "ALL 5yo" , "A2:N3042")
 
 table_new <- rbind(rbind(table_1, table_2), table_5)
 
@@ -29,6 +31,8 @@ table_new$State <- unlist(lapply(table_new$State, function (x){
   
   site_cat[which(site == x)]
 }))
+
+table_new <- as.data.frame(table_new)
 
 table_new$`% Fully` <- gsub("NP", NA, table_new$`% Fully`)
 table_new$`% Fully` <- gsub("≥95.00", 95.00, table_new$`% Fully`)
