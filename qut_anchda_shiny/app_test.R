@@ -7,7 +7,7 @@
 #-----------------------------------
 library(shiny)
 library(shinythemes)
-library(shinyWidgets )
+library(shinyWidgets)
 library(DT)
 library(dplyr)
 library(reshape2)
@@ -29,15 +29,10 @@ percentage_column_style <- function(x){
 }
 
 ui = dashboardPage(
-    
-     # options = list(sidebarExpandOnHover = TRUE),
      dashboardHeader(controlbarIcon = shiny::icon("bars")),
-     
      sidebar = dashboardSidebar(disable = TRUE),
-     
-      body = dashboardBody(
-        
-        tags$head(tags$style(HTML('
+     body = dashboardBody(
+     tags$head(tags$style(HTML('
                                 /* logo */
                                 .skin-blue .main-header .logo {
                                 background-color: #C8C882;
@@ -103,97 +98,64 @@ ui = dashboardPage(
                                   /*progress bar */
                                  .progress-bar {background-color: #C8C882}
 
-                                
                                 '))),
-     
-        
-        reactableOutput("summaryTable"),
-        br(),br(), br(),
-        
-        radioButtons(
-          "download_selection",
-          label = "Download Options",
-          choices = c("Full Table", "Filtered Table"),
-          selected = "Full Table"
-          
-        ),
-        
-        br(),
-        
-        uiOutput("download_bttn_selection")
-
-        
-      ),
-      controlbar = dashboardControlbar(width = 350, overlay = FALSE,  collapsed = FALSE, skin = "light",
-        controlbarMenu(selected = NULL,
-          
-        controlbarItem(title = "ANCHADA - Area Profile Data",
-          pickerInput(
-            inputId  = "geo_resolution",
-            label    = "Geographical Resolution" ,
-            choices  = c("SA4", "SA3", "SA2", "LGA")
-            # choicesOpt = list(
-            #   style = rep(("color: black; background: lightgrey;"),4))
-            
-          ),
-          
-          pickerInput(
-            inputId  = "state",
-            label    = "State" ,
-            choices  = c("New South Wales","Victoria" , "Queensland", "South Australia", 'Western Australia', "Tasmania", "Northern Territory", "Australian Capital Territory")
-            
-          ),
-          
-          pickerInput(
-            inputId  = "region",
-            label    = "Region" ,
-            choices  = NULL,
-            selected = NULL,
-            multiple = TRUE,
-            
-            options  = pickerOptions(liveSearch = TRUE, virtual_scroll = TRUE, maxOptions  = 5)
-           # options = list(`actions-box` = TRUE)
-          ),
-          
-          # pickerInput(
-          #   inputId  = "year_selection",
-          #   label    = "Year" ,
-          #   choices  = 2006:2022,
-          #   selected = NULL,
-          #   options  = pickerOptions(liveSearch = TRUE, virtual_scroll = TRUE, actionsBox = TRUE)
-          # ),
-          
-          pickerInput(
-            inputId  = "sex_selection",
-            label    = "Sex" ,
-            choices  = c("all", "male", "female"),
-            selected = NULL,
-            multiple = TRUE
-            
-          ),
-          
-          sliderInput("year_selection", "Year",
-                      min = 2006, max = 2022,
-                      value = c(2006, 2022),
-                      sep =""
-                      ),
-          
-          sliderInput("age_selection", "Age",
-                      min = 0, max = 24,
-                      value = c(0,24)),
-          
-          div(style="display: inline-block;vertical-align:top; width: 100px;",
-              actionButton("view_table", "View Data"))
-          
-        ))),
-     
-    
-      title = "ANCHADA - Area Profile Data"
-    )
+     reactableOutput("summaryTable"),
+     br(),br(), br(),
+     radioButtons(
+       "download_selection",
+       label = "Download Options",
+       choices = c("Full Table", "Filtered Table"),
+       selected = "Full Table"
+       ),
+     br(),
+     uiOutput("download_bttn_selection")
+     ),
+     controlbar = dashboardControlbar(width = 350, overlay = FALSE,  collapsed = FALSE, skin = "light",
+                                      controlbarMenu(selected = NULL,
+                                                     controlbarItem(title = "ANCHADA - Area Profile Data",
+                                                                    pickerInput(
+                                                                      inputId  = "geo_resolution",
+                                                                      label    = "Geographical Resolution" ,
+                                                                      choices  = c("SA4", "SA3", "SA2", "LGA")
+                                                                      # choicesOpt = list(
+                                                                      #   style = rep(("color: black; background: lightgrey;"),4))
+                                                                      ),
+                                                                    pickerInput(
+                                                                      inputId  = "state",
+                                                                      label    = "State" ,
+                                                                      choices  = c("New South Wales","Victoria" , "Queensland", "South Australia", 'Western Australia', "Tasmania", "Northern Territory", "Australian Capital Territory")
+                                                                      ),
+                                                                    pickerInput(
+                                                                      inputId  = "region",
+                                                                      label    = "Region" ,
+                                                                      choices  = NULL,
+                                                                      selected = NULL,
+                                                                      multiple = TRUE,
+                                                                      options  = pickerOptions(liveSearch = TRUE, virtual_scroll = TRUE, maxOptions  = 5)
+                                                                      # options = list(`actions-box` = TRUE)
+                                                                      ),
+                                                                    pickerInput(
+                                                                      inputId  = "sex_selection",
+                                                                      label    = "Sex" ,
+                                                                      choices  = c("all", "male", "female"),
+                                                                      selected = NULL,
+                                                                      multiple = TRUE
+                                                                      ),
+                                                                    sliderInput("year_selection", "Year",
+                                                                                min = 2006, max = 2022,
+                                                                                value = c(2006, 2022),
+                                                                                sep =""
+                                                                                ),
+                                                                    sliderInput("age_selection", "Age",
+                                                                                min = 0, max = 24,
+                                                                                value = c(0,24)),
+                                                                    div(style="display: inline-block;vertical-align:top; width: 100px;",
+                                                                        actionButton("view_table", "View Data"))
+                                                                    ))),
+     title = "ANCHADA - Area Profile Data"
+     )
 
 server = function(input, output, session) {
-
-  
       #creating empty summary table
       summary_data <- reactiveValues(data = data.frame(resolution = character(),
                                                        region_name = character(),
@@ -208,131 +170,76 @@ server = function(input, output, session) {
                                                        percentage_difference_from_state = numeric(),
                                                        national_average = numeric(),
                                                        percentage_difference_from_australia = character())
-      )
-      
+                                     )
       #
-      
       area_code <- reactiveValues(value = NA)
-      
       n_region <- reactiveValues(value = 0)
-      
-
-      
-      
       
       #read 2016 ASGS area code and name dataset
       SA_data <- reactive(
-        
         read.csv("./data/SA2_2016_AUST_no_geom.csv", header = TRUE, check.names = FALSE)
-        
-      )
+        )
       
       #read LGA geo data
       LGA_data <- reactive({
         site <- c("New South Wales","Victoria" , "Queensland", "South Australia", 'Western Australia', "Tasmania", "Northern Territory", "Australian Capital Territory")
-        
         new_lga_data  <- read.csv("./data/LGA_geom.csv", header = TRUE, check.names = FALSE)
-        
         new_lga_data$ste_code <- as.numeric(substr(new_lga_data$LGA_CODE_2016,1,1))
-        
         new_lga_data$ste <- NA
-        
         new_lga_data$ste <- unlist(lapply( new_lga_data$ste_code, function(x){
-          
           site[x]
-          
-        }))
+          }))
         new_lga_data
-      })
-      
-      
+        })
       select_geo_para <- reactive({
-        
         list(input$geo_resolution ,input$state)
-        
-      })
-      
+        })
       
       #based on selected geo resolution and the state, region will be updated
       observeEvent(select_geo_para(),{
-        
         if(input$geo_resolution != 'LGA'){
-          
-          
           new_sa_sata <- SA_data()
-          
           new_sa_List <- unique(new_sa_sata[which(new_sa_sata$STATE_NAME_2016 == input$state ),paste0(input$geo_resolution, "_NAME_2016")])
-          
           updatePickerInput(session, "region", choices = sort(unique(new_sa_List)))
-          
-        }else{
-          
-          
-          new_lga_data <- LGA_data()
-          
-          new_lga_data <- new_lga_data[!duplicated(new_lga_data),]
-          
-          new_lga_List <-  unique(new_lga_data[which(new_lga_data$ste == input$state ),paste0(input$geo_resolution, "_NAME_2016")])
-          
-          updatePickerInput(session, "region", choices = sort(unique(new_lga_List)))
-          
-        }
-        
-        
-      })
-      
-      
-      #once user press the View Data button, summary table data will be updated based on the selected filters 
-      observeEvent(input$view_table,{
-        
-       #tic("data loading time")
-      #   #reading data file for selected geo resolution
-        
-        path <- "C:/Users/Nishani/Queensland University of Technology/ACWA_QUT - General/Data_Shiny_Area_Profile/new_shiny_area_profiles/"
-        
-        if(is.null(input$region) == TRUE){
-          
-          shinyalert("No data!", "Please select at least one region!", type = "error", size = "s")
-          
-          
-        }else{
-          
-          n_region$value <- length(input$region)
-          
-          
-          
-          #-----------------------------------
-          #extract the relevant area code for the selected region
-          if(input$geo_resolution != 'LGA'){
-            
-            new_region_data <- SA_data()
-            
-            area_code$value  <- unique(new_region_data[which(new_region_data$STATE_NAME_2016 == input$state & new_region_data[, paste0(input$geo_resolution, "_NAME_2016")] %in% input$region  ),c(paste0(input$geo_resolution, "_CODE_2016"))])
-            
-            
           }else{
+            new_lga_data <- LGA_data()
+            new_lga_data <- new_lga_data[!duplicated(new_lga_data),]
+            new_lga_List <-  unique(new_lga_data[which(new_lga_data$ste == input$state ),paste0(input$geo_resolution, "_NAME_2016")])
+            updatePickerInput(session, "region", choices = sort(unique(new_lga_List)))
+            }
+        })
+      #once user press the View Data button, summary table data will be updated based on the selected filters
+      observeEvent(input$view_table,{
+        #tic("data loading time")
+        #   #reading data file for selected geo resolution
+        
+        # path <- "C:/Users/Nishani/Queensland University of Technology/ACWA_QUT - General/Data_Shiny_Area_Profile/new_shiny_area_profiles/"
+        path <- "C:/Users/Mudki/OneDrive - Queensland University of Technology/ACWA_QUT/Data_Shiny_Area_Profile/new_shiny_area_profiles/"
+        #path <- "C:/Users/pricea4/OneDrive - Queensland University of Technology/ACWA_QUT/Data_Shiny_Area_Profile/new_shiny_area_profiles/"
+        if(is.null(input$region) == TRUE){
+          shinyalert("No data!", "Please select at least one region!", type = "error", size = "s")
+          }else{
+            n_region$value <- length(input$region)
             
+            #-----------------------------------
+            #extract the relevant area code for the selected region
+            if(input$geo_resolution != 'LGA'){
+              new_region_data <- SA_data()
+              area_code$value  <- unique(new_region_data[which(new_region_data$STATE_NAME_2016 == input$state & new_region_data[, paste0(input$geo_resolution, "_NAME_2016")] %in% input$region  ),c(paste0(input$geo_resolution, "_CODE_2016"))])
+          }else{
             new_region_data <- LGA_data()
-            
             new_region_data <- new_region_data[!duplicated(new_region_data),]
-            
             area_code$value  <- unique(new_region_data[which(new_region_data$ste == input$state & new_region_data[, paste0(input$geo_resolution, "_NAME_2016")] %in% input$region  ),c(paste0(input$geo_resolution, "_CODE_2016"))])
+            }
             
-          }
-          
-          
-          #---------------------------------------------
-          
-          file_names <- NULL
-          for(i in 1:length(area_code$value)){
+            #---------------------------------------------
+            file_names <- NULL
+            for(i in 1:length(area_code$value)){
+              file_names <- c(file_names, paste0(path,"area_profile_",area_code$value[i], "_" , input$geo_resolution, ".csv" ))
+              }
             
-            file_names <- c(file_names, paste0(path,"area_profile_",area_code$value[i], "_" , input$geo_resolution, ".csv" ))
-          }
-          
-          
-          new_data <- lapply(file_names, function(x)read.csv(x, header = TRUE, check.names = FALSE))
-          
-          new_data <- do.call("rbind", new_data)
+            new_data <- lapply(file_names, function(x)read.csv(x, header = TRUE, check.names = FALSE))
+            new_data <- do.call("rbind", new_data)
           
           #filter by year, sex
           
@@ -390,7 +297,7 @@ server = function(input, output, session) {
               
               if(n_region$value > 1){
                 
-                sub_data <- sub_data %>% select(-percentage_difference_from_state, -percentage_graphical_difference_from_national)
+                sub_data <- sub_data %>% select(-percentage_graphical_difference_from_state, -percentage_graphical_difference_from_national)
               }
               
               sub_data$sex <- tolower(sub_data$sex)
