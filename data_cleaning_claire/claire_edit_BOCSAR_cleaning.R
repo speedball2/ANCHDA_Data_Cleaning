@@ -30,8 +30,8 @@ cleaning <- function(path, sht, range, new_name, geography_field){
   # RENAMING COLUMNS FOR ALL DFS
   names(df)[names(df) == "Age of victim (in years)"] <- "age_group"
   names(df)[names(df) == "Gender"] <- "sex"
-  names(df)[names(df) == "SA4 of Incident"] <- "SA4_NAME16"
-  names(df)[names(df) == "LGA of Incident"] <- "LGA_NAME16"
+  names(df)[names(df) == "Victim's SA4 of residence"] <- "SA4_NAME16"
+  names(df)[names(df) == "Victim's LGA of residence"] <- "LGA_NAME16"
   
   # REMOVING RANDOM "Y" FROM DFs
   df$age_group <- gsub("y", "", as.character(df$age_group))
@@ -69,14 +69,12 @@ cleaning <- function(path, sht, range, new_name, geography_field){
   return(result)
 }
 
-df1 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 1, "A5:T415","n_victims_domestic_violence_related_assault", "SA4_NAME16")
-df2 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 2, "A5:T1571", "n_victims_domestic_violence_related_assault", "LGA_NAME16")
-df3 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 3, "A5:T90", "n_victims_domestic_violence_related_murder", "SA4_NAME16")
-df4 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 4, "A5:T114", "n_victims_domestic_violence_related_murder", "LGA_NAME16")
-df5 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 5, "A5:T393", "n_victims_sexual_assault", "SA4_NAME16")
-df6 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 6, "A5:T1325", "n_victims_sexual_assault", "LGA_NAME16")
-df7 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 7, "A5:T392", "n_victims_sexual_touching", "SA4_NAME16")
-df8 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 8, "A5:T1337", "n_victims_sexual_touching", "LGA_NAME16")
+df1 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 1, "A15:T186","n_victims_domestic_violence_related_assault", "SA4_NAME16") #DV Assault SA4
+df2 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 2, "A16:T617", "n_victims_domestic_violence_related_assault", "LGA_NAME16") #DV ASSAULT LGA
+df3 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 3, "A14:T193", "n_victims_sexual_assault", "SA4_NAME16")
+df4 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 4, "A14:T619", "n_victims_sexual_assault", "LGA_NAME16")
+#df7 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 7, "A5:T392", "n_victims_sexual_touching", "SA4_NAME16")
+#df8 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 8, "A5:T1337", "n_victims_sexual_touching", "LGA_NAME16")
 
 
 
@@ -194,23 +192,153 @@ lga_codes <- function(df, indicator){
 }
 #SA4
 df1_new <- sa4_codes(df1, indicator = "n_victims_domestic_violence_related_assault")
-df3_new <- sa4_codes(df3, indicator = "n_victims_domestic_violence_related_murder")
-df5_new <- sa4_codes(df5, indicator = "n_victims_sexual_assault")
-df7_new <- sa4_codes(df7,indicator = "n_victims_sexual_touching")
-
-
+df3_new <- sa4_codes(df3, indicator = "n_victims_sexual_assault")
 
 #LGA
 df2_new <- lga_codes(df2, indicator = "n_victims_domestic_violence_related_assault")
-df4_new <- lga_codes(df4, indicator = "n_victims_domestic_violence_related_murder")
-df6_new <- lga_codes(df6, indicator = "n_victims_sexual_assault")
-df8_new <- lga_codes(df8, indicator = "n_victims_sexual_touching")
+df4_new <- lga_codes(df4, indicator = "n_victims_sexual_assault")
 
-#recode indicators to
-#3.13.1 -> 3.3.5
-#3.13.2 -> 3.3.6
-#3.13.3 -> 3.3.7
-#3.13.4 -> 3.3.7
+
+
+# Define a function for data manipulation
+process_data <- function(df, indicator_col, group_col) {
+  # Get unique combinations of columns 1, 2, and 3
+  unique_combinations <- unique(df[, 1:3])
+  
+  # Create a new data frame with "sex" set to "all" and calculate the sum
+  new_rows <- df %>%
+    group_by({{group_col}}, calendar_year, age_group) %>%
+    summarize(
+      sex = "all",
+      {{indicator_col}} := sum(as.numeric({{indicator_col}}))
+    ) %>%
+    ungroup()
+  
+  # Add the new rows to the original data frame
+  df <- rbind(df, new_rows)
+  
+  # Filter out rows where sex is not "Unknown"
+  df <- df %>%
+    filter(sex != "Unknown")
+  
+  return(df)
+}
+
+# Process df1_new
+df1_new <- process_data(df1_new, indicator_col = n_victims_domestic_violence_related_assault, group_col = SA4_CODE16)
+
+# Process df3_new
+df3_new <- process_data(df3_new, indicator_col = n_victims_sexual_assault, group_col = SA4_CODE16)
+
+# Process df2_new and replace SA4_CODE16 with LGA_CODE16
+df2_new <- process_data(df2_new, indicator_col = n_victims_domestic_violence_related_assault, group_col = LGA_CODE16)
+
+# Process df4_new and replace SA4_CODE16 with LGA_CODE16
+df4_new <- process_data(df4_new, indicator_col = n_victims_sexual_assault, group_col = LGA_CODE16)
+
+
+#bring in ERP data
+
+ERP_LGA <- read_csv("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp/erp_sa4_lga/ABS_ERP_181_ERP_LGA.csv")
+
+
+ERP_SA4 <- read_csv("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp/erp_sa4_lga/ABS_ERP_181_ERP_SA4.csv")
+# For ERP_SA4
+ERP_SA4 <- ERP_SA4 %>%
+  mutate(age = sub("-.*", "", age_group))
+
+# For ERP_LGA
+ERP_LGA <- ERP_LGA %>%
+  mutate(age = sub("-.*", "", age_group))
+
+# Remove the "age_group" column from ERP_SA4
+ERP_SA4 <- ERP_SA4 %>%
+  select(-age_group)
+
+# Remove the "age_group" column from ERP_LGA
+ERP_LGA <- ERP_LGA %>%
+  select(-age_group, -estimated_regional_population_uncertainty_correspondence)
+
+# For ERP_LGA
+ERP_LGA <- ERP_LGA %>%
+  mutate(age = as.numeric(age),  # Convert "age" column to numeric
+         age_group = ifelse(age >= 0 & age <= 17, "0-17", "18-24")) %>%
+  group_by(LGA_CODE16, sex, calendar_year, age_group) %>%
+  summarise(estimated_regional_population = sum(estimated_regional_population))
+# For ERP_LGA
+ERP_SA4 <- ERP_SA4 %>%
+  mutate(age = as.numeric(age),  # Convert "age" column to numeric
+         age_group = ifelse(age >= 0 & age <= 17, "0-17", "18-24")) %>%
+  group_by(SA4_CODE16, sex, calendar_year, age_group) %>%
+  summarise(estimated_regional_population = sum(estimated_regional_population))
+
+
+# Convert "calendar_year" to character in ERP_SA4 data frame
+ERP_SA4$calendar_year <- as.character(ERP_SA4$calendar_year)
+ERP_LGA$calendar_year <- as.character(ERP_LGA$calendar_year)
+# Join df1_new with ERP_SA4 to add the "estimated_regional_population" column
+df1_new <- left_join(df1_new, ERP_SA4[, c("SA4_CODE16", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
+                     by = c("SA4_CODE16", "sex", "calendar_year", "age_group"))
+
+
+# Join df3_new with ERP_SA4 to add the "estimated_regional_population" column
+df3_new <- left_join(df3_new, ERP_SA4[, c("SA4_CODE16", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
+                     by = c("SA4_CODE16", "sex", "calendar_year", "age_group"))
+
+
+# Join df2_new with ERP_LGA to add the "estimated_regional_population" column
+df2_new <- left_join(df2_new, ERP_LGA[, c("LGA_CODE16", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
+                     by = c("LGA_CODE16", "sex", "calendar_year", "age_group"))
+
+# Join df4_new with ERP_LGA to add the "estimated_regional_population" column
+df4_new <- left_join(df4_new, ERP_LGA[, c("LGA_CODE16", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
+                     by = c("LGA_CODE16", "sex", "calendar_year", "age_group"))
+
+
+# Calculate p_victims_domestic_violence_related_assault per 100,000 in df1_new
+df1_new <- df1_new %>%
+  mutate(per_100000_victims_domestic_violence_related_assault_rate = round((n_victims_domestic_violence_related_assault / estimated_regional_population) * 100000, 2))
+
+# Calculate p_victims_domestic_violence_related_assault per 100,000 in df2_new
+df2_new <- df2_new %>%
+  mutate(per_100000_victims_domestic_violence_related_assault_rate = round((n_victims_domestic_violence_related_assault / estimated_regional_population) * 100000, 2))
+
+# Calculate p_victims_sexual_assault per 100,000 in df3_new
+df3_new <- df3_new %>%
+  mutate(p_100000_victims_sexual_assault_rate = round((n_victims_sexual_assault / estimated_regional_population) * 100000, 2))
+
+# Calculate p_victims_sexual_assault per 100,000 in df4_new
+df4_new <- df4_new %>%
+  mutate(p_100000_victims_sexual_assault_rate = round((n_victims_sexual_assault / estimated_regional_population) * 100000, 2))
+
+
+
+# Remove rows with NA values in the first column for df1_new
+df1_new <- df1_new %>%
+  filter(!is.na(SA4_CODE16))
+
+# Remove rows with NA values in the first column for df2_new
+df2_new <- df2_new %>%
+  filter(!is.na(LGA_CODE16))
+
+# Remove rows with NA values in the first column for df3_new
+df3_new <- df3_new %>%
+  filter(!is.na(SA4_CODE16))
+
+# Remove rows with NA values in the first column for df4_new
+df4_new <- df4_new %>%
+  filter(!is.na(LGA_CODE16))
+
+
+df1_new <- df1_new %>%
+  select(-estimated_regional_population)
+df2_new <- df2_new %>%
+  select(-estimated_regional_population)
+df3_new <- df3_new %>%
+  select(-estimated_regional_population)
+df4_new <- df4_new %>%
+  select(-estimated_regional_population)
+
 
 
 
@@ -218,11 +346,5 @@ df8_new <- lga_codes(df8, indicator = "n_victims_sexual_touching")
 write.csv(df1_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_335_victims_domestic_violence_related_assault_SA4.csv", row.names = FALSE)
 write.csv(df2_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_335_victims_domestic_violence_related_assault_LGA.csv", row.names = F)
 
-write.csv(df3_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_336_victims_domestic_violence_related_murder_SA4.csv", row.names = F)
-write.csv(df4_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_336_victims_domestic_violence_related_murder_LGA.csv", row.names = F)
-
-write.csv(df5_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_337_victims_sexual_assault_SA4.csv",row.names = F)
-write.csv(df6_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_337_victims_sexual_assault_LGA.csv",row.names = F)
-
-write.csv(df7_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_337_victims_sexual_touching_SA4.csv",row.names = F)
-write.csv(df8_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_337_victims_sexual_touching_LGA.csv",row.names = F)
+write.csv(df3_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_337_victims_sexual_assault_SA4.csv",row.names = F)
+write.csv(df4_new, file = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/BOCSAR/BOCSAR_337_victims_sexual_assault_LGA.csv",row.names = F)

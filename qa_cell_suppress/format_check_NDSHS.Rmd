@@ -348,66 +348,41 @@ csv_files <- list.files(input_dir, pattern = "*.csv", full.names = TRUE)
 for (file in csv_files) {
   
   # Read the CSV file
-  
   df <- read.csv(file, stringsAsFactors = FALSE)
   
-  
-  
   # Get the column names
-  
   column_names <- colnames(df)
   
-  
-  
   # Loop through each column
-  
   for (i in 2:length(column_names)) {
     
     # Check if the column matches the pattern "uncertainty"
-    
     if (grepl("_uncertainty", column_names[i])) {
       
       suppressed_column <- i - 1
       
-      #looping through each cell
-      
-      for(j in 1:nrow(df)){
-        # Check if the value in the uncertainty column is 2
-        if (!is.na(df[[i]][j]) && df[[i]][j] == 2) {
+      # Loop through each row
+      for (j in 1:nrow(df)) {
+        # Check if the value in the uncertainty column is 2 (or 1, as per your comment)
+        if (!is.na(df[[i]][j]) && (df[[i]][j] == 2 || df[[i]][j] == 1)) {
           
           # Suppress the column on the left of the uncertainty column
-          
           df[j, suppressed_column] <- 9999999
-          
           print(paste("Suppressed column", column_names[suppressed_column]))
-          
         }
-        
       }
       print(paste("Suppressed column", column_names[suppressed_column]))
-      
-      
     }
-    
   }
   
-  
   # Remove columns containing the word "uncertainty"
-  
   df <- df[, !grepl("uncertainty", column_names)]
   
-  
-  
   # Write the modified data frame to a new CSV file in the output directory
-  
   write.csv(df, file.path(output_dir, basename(file)), row.names = FALSE)
   
-  
-  
   print(paste("Modified file", basename(file), "has been written"))
-  
 }
-
 
 ```
 
