@@ -12,7 +12,7 @@ library(tidyverse)
 cleaning <- function(path, sht, range, new_name, geography_field){
   # path = file path, sht = Sheet number, range = column range 
   # new_name = col name to change
-  # geography_field = field indicating the geography (SA4_NAME16 or LGA_NAME16)
+  # geography_field = field indicating the geography (SA4_NAME21 or LGA_NAME21)
   
   # READING IN SPREADSHEETS FROM EXCEL
   df <- as.data.frame(read_xlsx(path,
@@ -30,8 +30,8 @@ cleaning <- function(path, sht, range, new_name, geography_field){
   # RENAMING COLUMNS FOR ALL DFS
   names(df)[names(df) == "Age of victim (in years)"] <- "age_group"
   names(df)[names(df) == "Gender"] <- "sex"
-  names(df)[names(df) == "Victim's SA4 of residence"] <- "SA4_NAME16"
-  names(df)[names(df) == "Victim's LGA of residence"] <- "LGA_NAME16"
+  names(df)[names(df) == "Victim's SA4 of residence"] <- "SA4_NAME21"
+  names(df)[names(df) == "Victim's LGA of residence"] <- "LGA_NAME21"
   
   # REMOVING RANDOM "Y" FROM DFs
   df$age_group <- gsub("y", "", as.character(df$age_group))
@@ -69,24 +69,27 @@ cleaning <- function(path, sht, range, new_name, geography_field){
   return(result)
 }
 
-df1 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 1, "A15:T186","n_victims_domestic_violence_related_assault", "SA4_NAME16") #DV Assault SA4
-df2 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 2, "A16:T617", "n_victims_domestic_violence_related_assault", "LGA_NAME16") #DV ASSAULT LGA
-df3 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 3, "A14:T193", "n_victims_sexual_assault", "SA4_NAME16")
-df4 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 4, "A14:T619", "n_victims_sexual_assault", "LGA_NAME16")
-#df7 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 7, "A5:T392", "n_victims_sexual_touching", "SA4_NAME16")
-#df8 <- cleaning("ab23-22205 Victims by Aboriginality Gender SA4 LGA.xlsx", 8, "A5:T1337", "n_victims_sexual_touching", "LGA_NAME16")
+df1 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 1, "A15:T186","n_victims_domestic_violence_related_assault", "SA4_NAME21") #DV Assault SA4
+df2 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 2, "A16:T617", "n_victims_domestic_violence_related_assault", "LGA_NAME21") #DV ASSAULT LGA
+df3 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 3, "A14:T193", "n_victims_sexual_assault", "SA4_NAME21")
+df4 <- cleaning("st23-22883 Victims of DV assault and sexual offences by gender, SA4 and LGA.xlsx", 4, "A14:T619", "n_victims_sexual_assault", "LGA_NAME21")
 
 
 
 # reading in geographies for codes ---------------------------------------------
-sa4 <- read.csv("SA2_2016_AUST_no_geom.csv")
-lga <- read.csv("LGA_2016_AUST.csv")
-lga <- lga[, c(3, 4)]
+sa4 <- read.csv("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/public_data/ASGS_2021/SA2_2021_AUST_GDA2020.csv")[, c(8, 9)]
+
+
+lga <- read_xlsx("LGA_2021_AUST (2).xlsx", 1, cell_limits(c(1, 1), c(NA, 3)), T)
+
+lga <- lga[,-1]
+
 lga <- lga[!duplicated(lga),]
-lga$LGA_NAME_2016 <- gsub("\\s+\\((C|A|S|RC|R|DC|AC|T|M|B)\\)", "", lga$LGA_NAME_2016)
+
+lga$LGA_NAME_2021 <- gsub("\\s+\\(NSW\\)", "", lga$LGA_NAME_2021)
 head(lga)
 
-
+head(sa4)
 
 
 # MATCH FUNCTION FOR SA CODES AND NAMES ----------------------------------------
@@ -108,13 +111,12 @@ sa4_codes <- function(df, corder, indicator){
   
   #ONLY SA4 FROM ASGS
   
-  sa4 <- sa4[,-c(1:5,8:12)]
   sa4 <- sa4[!duplicated(sa4),]
-  sa4 <- sa4[sa4$SA4_CODE_2016<200,]
+  sa4 <- sa4[sa4$SA4_CODE_2021<200,]
   
   #MERGING TWO DATA FRAMES TOGETHER (CUSTODIAN + ABS ASGS)
   
-  dummy <- merge(copy,sa4,by.y="SA4_NAME_2016",by.x="SA4_NAME16",all=T)
+  dummy <- merge(copy,sa4,by.y="SA4_NAME_2021",by.x="SA4_NAME21",all=T)
   
   #REMOVE COLS FROM ASGS FILES
   
@@ -122,26 +124,27 @@ sa4_codes <- function(df, corder, indicator){
   
   #CBIND BACK WITH OTHER DATASET
   
-  new <- merge(df, dummy, by = "SA4_NAME16")
+  new <- merge(df, dummy, by = "SA4_NAME21")
   
   # clean up afterwards ---
   
   #REMOVING IN CUSTODY - CANNOT BE GEO CODED 
-  new <- new[!grepl("In Custody", new$SA4_NAME16),]
+  new <- new[!grepl("In Custody", new$SA4_NAME21),]
   
   # REMOVING SA4 NAME (NOT NEEDED)
   new <- new[ , !names(new) %in% 
-                c("SA4_NAME16")]
+                c("SA4_NAME21")]
   
   # RENAMING CODE COLUMNS
-  colnames(new)[colnames(new) == "SA4_CODE_2016"] = "SA4_CODE16"
+  colnames(new)[colnames(new) == "SA4_CODE_2021"] = "SA4_CODE21"
   
   #CHANGING COLUMN ORDER 
-  corder <- c("SA4_CODE16", "calendar_year", "age_group", "sex", indicator)
+  corder <- c("SA4_CODE21", "calendar_year", "age_group", "sex", indicator)
   new <- new[,corder]
   
   return(new)
 }
+
 lga_codes <- function(df, indicator){
   
   
@@ -161,35 +164,37 @@ lga_codes <- function(df, indicator){
   
   #MERGING TWO DATA FRAMES TOGETHER (CUSTODIAN + ABS ASGS)
   
-  dummy2 <- merge(copy2,lga, by.y="LGA_NAME_2016",by.x="LGA_NAME16",all=T)
+  dummy2 <- merge(copy2,lga, by.y="LGA_NAME_2021",by.x="LGA_NAME21",all=T)
   
   
   #CBIND BACK WITH OTHER DATASET
   
-  new <- merge(df, dummy2, by = "LGA_NAME16")
+  new <- merge(df, dummy2, by = "LGA_NAME21")
   
   # clean up afterwards ---
   
   #REMOVING IN CUSTODY - CANNOT BE GEO CODED 
-  new <- new[!grepl("In Custody", new$LGA_NAME16),]
+  new <- new[!grepl("In Custody", new$LGA_NAME21),]
   
   test <<- new
   
   # REMOVING SA4 NAME (NOT NEEDED)
   new <- new[ , !names(new) %in% 
                 
-                c("LGA_NAME16",
+                c("LGA_NAME21",
                   "code")]
   
   # RENAMING CODE COLUMNS
-  colnames(new)[colnames(new) == "LGA_CODE_2016"] = "LGA_CODE16"
+  colnames(new)[colnames(new) == "LGA_CODE_2021"] = "LGA_CODE21"
   
-  corder <- c("LGA_CODE16", "calendar_year", "age_group", "sex", indicator)
+  corder <- c("LGA_CODE21", "calendar_year", "age_group", "sex", indicator)
   new <- new[,corder]
   
   return(new)
   
 }
+
+
 #SA4
 df1_new <- sa4_codes(df1, indicator = "n_victims_domestic_violence_related_assault")
 df3_new <- sa4_codes(df3, indicator = "n_victims_sexual_assault")
@@ -225,21 +230,34 @@ process_data <- function(df, indicator_col, group_col) {
 }
 
 # Process df1_new
-df1_new <- process_data(df1_new, indicator_col = n_victims_domestic_violence_related_assault, group_col = SA4_CODE16)
+df1_new <- process_data(df1_new, indicator_col = n_victims_domestic_violence_related_assault, group_col = SA4_CODE21)
 
 # Process df3_new
-df3_new <- process_data(df3_new, indicator_col = n_victims_sexual_assault, group_col = SA4_CODE16)
+df3_new <- process_data(df3_new, indicator_col = n_victims_sexual_assault, group_col = SA4_CODE21)
 
-# Process df2_new and replace SA4_CODE16 with LGA_CODE16
-df2_new <- process_data(df2_new, indicator_col = n_victims_domestic_violence_related_assault, group_col = LGA_CODE16)
+# Process df2_new and replace SA4_CODE21 with LGA_CODE21
+df2_new <- process_data(df2_new, indicator_col = n_victims_domestic_violence_related_assault, group_col = LGA_CODE21)
 
-# Process df4_new and replace SA4_CODE16 with LGA_CODE16
-df4_new <- process_data(df4_new, indicator_col = n_victims_sexual_assault, group_col = LGA_CODE16)
+# Process df4_new and replace SA4_CODE21 with LGA_CODE21
+df4_new <- process_data(df4_new, indicator_col = n_victims_sexual_assault, group_col = LGA_CODE21)
 
 
-#bring in ERP data
+#bring in ERP data -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-ERP_LGA <- read_csv("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp/erp_sa4_lga/ABS_ERP_181_ERP_LGA.csv")
+
+##------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+##------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+##----------------------------------------------------------------------------LGA ERP MUST BE UPDATED TO 2021 !!!!!  -----------------------------------------------------------------------------------------------
+
+##------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+##------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+##------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+#ERP_LGA <- read_csv("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp/erp_sa4_lga/ABS_ERP_181_ERP_LGA.csv")
 
 
 ERP_SA4 <- read_csv("C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/abs_erp/erp_sa4_lga/ABS_ERP_181_ERP_SA4.csv")
@@ -263,13 +281,13 @@ ERP_LGA <- ERP_LGA %>%
 ERP_LGA <- ERP_LGA %>%
   mutate(age = as.numeric(age),  # Convert "age" column to numeric
          age_group = ifelse(age >= 0 & age <= 17, "0-17", "18-24")) %>%
-  group_by(LGA_CODE16, sex, calendar_year, age_group) %>%
+  group_by(LGA_CODE21, sex, calendar_year, age_group) %>%
   summarise(estimated_regional_population = sum(estimated_regional_population))
 # For ERP_LGA
 ERP_SA4 <- ERP_SA4 %>%
   mutate(age = as.numeric(age),  # Convert "age" column to numeric
          age_group = ifelse(age >= 0 & age <= 17, "0-17", "18-24")) %>%
-  group_by(SA4_CODE16, sex, calendar_year, age_group) %>%
+  group_by(SA4_CODE21, sex, calendar_year, age_group) %>%
   summarise(estimated_regional_population = sum(estimated_regional_population))
 
 
@@ -277,22 +295,22 @@ ERP_SA4 <- ERP_SA4 %>%
 ERP_SA4$calendar_year <- as.character(ERP_SA4$calendar_year)
 ERP_LGA$calendar_year <- as.character(ERP_LGA$calendar_year)
 # Join df1_new with ERP_SA4 to add the "estimated_regional_population" column
-df1_new <- left_join(df1_new, ERP_SA4[, c("SA4_CODE16", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
-                     by = c("SA4_CODE16", "sex", "calendar_year", "age_group"))
+df1_new <- left_join(df1_new, ERP_SA4[, c("SA4_CODE21", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
+                     by = c("SA4_CODE21", "sex", "calendar_year", "age_group"))
 
 
 # Join df3_new with ERP_SA4 to add the "estimated_regional_population" column
-df3_new <- left_join(df3_new, ERP_SA4[, c("SA4_CODE16", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
-                     by = c("SA4_CODE16", "sex", "calendar_year", "age_group"))
+df3_new <- left_join(df3_new, ERP_SA4[, c("SA4_CODE21", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
+                     by = c("SA4_CODE21", "sex", "calendar_year", "age_group"))
 
 
 # Join df2_new with ERP_LGA to add the "estimated_regional_population" column
-df2_new <- left_join(df2_new, ERP_LGA[, c("LGA_CODE16", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
-                     by = c("LGA_CODE16", "sex", "calendar_year", "age_group"))
+df2_new <- left_join(df2_new, ERP_LGA[, c("LGA_CODE21", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
+                     by = c("LGA_CODE21", "sex", "calendar_year", "age_group"))
 
 # Join df4_new with ERP_LGA to add the "estimated_regional_population" column
-df4_new <- left_join(df4_new, ERP_LGA[, c("LGA_CODE16", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
-                     by = c("LGA_CODE16", "sex", "calendar_year", "age_group"))
+df4_new <- left_join(df4_new, ERP_LGA[, c("LGA_CODE21", "sex", "calendar_year", "age_group", "estimated_regional_population")], 
+                     by = c("LGA_CODE21", "sex", "calendar_year", "age_group"))
 
 
 # Calculate p_victims_domestic_violence_related_assault per 100,000 in df1_new
@@ -315,19 +333,19 @@ df4_new <- df4_new %>%
 
 # Remove rows with NA values in the first column for df1_new
 df1_new <- df1_new %>%
-  filter(!is.na(SA4_CODE16))
+  filter(!is.na(SA4_CODE21))
 
 # Remove rows with NA values in the first column for df2_new
 df2_new <- df2_new %>%
-  filter(!is.na(LGA_CODE16))
+  filter(!is.na(LGA_CODE21))
 
 # Remove rows with NA values in the first column for df3_new
 df3_new <- df3_new %>%
-  filter(!is.na(SA4_CODE16))
+  filter(!is.na(SA4_CODE21))
 
 # Remove rows with NA values in the first column for df4_new
 df4_new <- df4_new %>%
-  filter(!is.na(LGA_CODE16))
+  filter(!is.na(LGA_CODE21))
 
 
 df1_new <- df1_new %>%

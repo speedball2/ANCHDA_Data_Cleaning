@@ -10,30 +10,16 @@ library(purrr)
 library(readr)
 
 #set working directory and options
-#set working directory and options
-<<<<<<< HEAD
-aedc_folder <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/raw_data/"
-path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/data_4_digits/"
+aedc_folder <- "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/from_custodians/AEDC_unit/"
+path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/AEDC_cleaned/"
 
-#path_out <- "./output/data_4_digits/"
-=======
-# aedc_folder <- "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/raw_data/"
-# path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/acwa_temp/aedc/"
-
-path_out <- "./output/data_4_digits/"
->>>>>>> 6a105bdfd04945ddf7b429f8adabc25a780371ab
 options(timeout = 600) 
 setwd(aedc_folder)
 
 
 #import unit record data from AEDC
 
-<<<<<<< HEAD
 df <- read.csv("./220811B-Reeves (3).csv")
-=======
-df <- read.csv("./data/220811B-Reeves (3).csv")
->>>>>>> 6a105bdfd04945ddf7b429f8adabc25a780371ab
-
 ##---------------------------------------------------------------------start cleaning here ------------------------------------------------------------------------
 #remove rows with year = 2010
 df <- df %>% filter(Year != 2010)
@@ -118,11 +104,8 @@ LGA_df_SC_TOTAL <- df %>%
             P_DAR_SC = sum(DAR_SC[SOCValid == 1])/sum(SOCValid == 1),
             SC_Valid = sum(SOCValid == 1),
             .groups = "drop") %>%
-<<<<<<< HEAD
   mutate(Gender = "0")
-=======
-   mutate(Gender = "0")
->>>>>>> 6a105bdfd04945ddf7b429f8adabc25a780371ab
+
 
 LGA_df_SC <- rbind(LGA_df_SC, LGA_df_SC_TOTAL)
 
@@ -574,7 +557,7 @@ SA2_df_DV_TOTAL <- df %>%
 
 SA2_df_DV <- rbind(SA2_df_DV, SA2_df_DV_TOTAL)
 
-<<<<<<< HEAD
+
 
 
 #-------------------------------------------------------------SA4-------------------------------------------------------------------
@@ -917,15 +900,6 @@ STE_df_DV <- rbind(STE_df_DV, STE_df_DV_TOTAL)
 
 
 
-
-
-
-
-
-
-
-=======
->>>>>>> 6a105bdfd04945ddf7b429f8adabc25a780371ab
 #--------------------------------------------------------------------------------------------tables tidy up -------------------------------------------------------
 # Create a list of data frames
 df_list <- list(LGA_df_CSGK, LGA_df_EM, LGA_df_LCS, LGA_df_PHW, LGA_df_SC,
@@ -979,34 +953,25 @@ df_list <- map(df_list, filter_zeros)
 
 
 # Define a function to round numeric values and re-code Gender column-----------------------------------------------------------------------------------------------
+
 round_and_recode <- function(df) {
   df <- df %>%
-<<<<<<< HEAD
-    mutate(across(starts_with("P_"), ~ifelse(round(.x, 4) %% 1 == 0, sprintf("%.4f", .x), sprintf("%.4f", ceiling(.x * 10^4) / 10^4))))
-  
-=======
-    mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 4)))) 
-    
->>>>>>> 6a105bdfd04945ddf7b429f8adabc25a780371ab
-  df$Gender[df$Gender == "0"] <- "all"
-  df$Gender[df$Gender == "1"] <- "male"
-  df$Gender[df$Gender == "2"] <- "female"
-  
-<<<<<<< HEAD
-  if ("State" %in% colnames(df)) {
-    df$State <- recode(df$State, "NSW" = 1, "VIC" = 2, "QLD" = 3, "SA" = 4, "WA" = 5, "TAS" = 6, "NT" = 7, "ACT" = 8)
-  }
-  
-  df
-=======
-  df
-  #mutate(Gender = if_else(Gender == 1, "male", "female"))
->>>>>>> 6a105bdfd04945ddf7b429f8adabc25a780371ab
+    mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 4)))
+           
+           df$Gender[df$Gender == "0"] <- "all"
+           df$Gender[df$Gender == "1"] <- "male"
+           df$Gender[df$Gender == "2"] <- "female"
+           
+           if ("State" %in% colnames(df)) {
+             df$State <- recode(df$State, "NSW" = 1, "VIC" = 2, "QLD" = 3, "SA" = 4, "WA" = 5, "TAS" = 6, "NT" = 7, "ACT" = 8)
+           }
+           
+           return(df)
 }
+
 
 # Apply the function to all data frames in the list-----------------------------------------------------------------------------------------------------------------
 df_list <- map(df_list, round_and_recode)
-
 
 
 # Define a function to rename the columns and add a new column in a data frame
@@ -1015,16 +980,14 @@ rename_cols <- function(df) {
     names(df)[names(df) == "State"] <- "STE"  # Rename "State" column to "STE_CODE21"
   }
   prefix <- str_replace(names(df)[1], "Code.*", "")
-<<<<<<< HEAD
-  names(df)[1] <- paste0(prefix, "_CODE21")  # Rename first column using the prefix
+  
+  names(df)[1] <- paste0(prefix, "_CODE21")  # Rename the first column using the prefix
   names(df)[-1] <- tolower(names(df)[-1])  # Convert column names to lowercase except for the first column
-=======
-  names(df)[1] <- paste0(prefix, "_CODE21")                                    ##-------------NISHANI - this is where you might have to replace with _CODE21------#
-  names(df)[-1] <- tolower(names(df)[-1]) # convert column names to lowercase except for the first column
->>>>>>> 6a105bdfd04945ddf7b429f8adabc25a780371ab
+  
   names(df)[2:3] <- c("calendar_year", "sex")
-  df <- cbind(df[,1:3], age_group = "5-5", df[,4:ncol(df)])  # Add a new column called age_group
-  df
+  df <- cbind(df[, 1:3], age_group = "5-5", df[, 4:ncol(df)])  # Add a new column called age_group
+  
+  return(df)
 }
 
 
