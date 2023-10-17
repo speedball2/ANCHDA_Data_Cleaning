@@ -202,7 +202,7 @@ LGA_df_DV <- df %>%
             P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
             V2_Valid = sum(!is.na(DV2)),
             N_OT5 = sum(OT5, na.rm = TRUE),
-            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(OT5)),
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
 
@@ -216,7 +216,7 @@ LGA_df_DV_TOTAL <- df %>%
             P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
             V2_Valid = sum(!is.na(DV2)),
             N_OT5 = sum(OT5, na.rm = TRUE),
-            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(OT5)),
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")%>%
   mutate(Gender = "0")
@@ -370,7 +370,7 @@ SA3_df_DV <- df %>%
             P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
             V2_Valid = sum(!is.na(DV2)),
             N_OT5 = sum(OT5, na.rm = TRUE),
-            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(OT5)),
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
 
@@ -383,7 +383,7 @@ SA3_df_DV_TOTAL <- df %>%
             P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
             V2_Valid = sum(!is.na(DV2)),
             N_OT5 = sum(OT5, na.rm = TRUE),
-            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(OT5)),
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop") %>%
   mutate(Gender = "0")
@@ -878,7 +878,7 @@ STE_df_DV <- df %>%
             P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
             V2_Valid = sum(!is.na(DV2)),
             N_OT5 = sum(OT5, na.rm = TRUE),
-            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(OT5)),
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")
 
@@ -891,7 +891,7 @@ STE_df_DV_TOTAL <- df %>%
             P_V2 = sum(DV2 == 1, na.rm = TRUE) / sum(!is.na(DV2)),
             V2_Valid = sum(!is.na(DV2)),
             N_OT5 = sum(OT5, na.rm = TRUE),
-            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(DV2)),
+            P_OT5 = sum(OT5, na.rm = TRUE)/sum(!is.na(OT5)),
             OT5_Valid = sum(!is.na(OT5)),
             .groups = "drop")%>%
   mutate(Gender = "0")
@@ -954,20 +954,36 @@ df_list <- map(df_list, filter_zeros)
 
 # Define a function to round numeric values and re-code Gender column-----------------------------------------------------------------------------------------------
 
+
 round_and_recode <- function(df) {
   df <- df %>%
-    mutate(across(where(is.numeric), function(x) ifelse(round(x, 1) %% 1 == 0.5, ceiling(x * 10) / 10, round(x, 4)))
-           
-           df$Gender[df$Gender == "0"] <- "all"
-           df$Gender[df$Gender == "1"] <- "male"
-           df$Gender[df$Gender == "2"] <- "female"
-           
-           if ("State" %in% colnames(df)) {
-             df$State <- recode(df$State, "NSW" = 1, "VIC" = 2, "QLD" = 3, "SA" = 4, "WA" = 5, "TAS" = 6, "NT" = 7, "ACT" = 8)
-           }
-           
-           return(df)
+    mutate(
+      across(where(is.numeric), ~ ifelse(round(.x, 1) %% 1 == 0.5, ceiling(.x * 10) / 10, round(.x, 4))),
+      Gender = case_when(
+        Gender == "0" ~ "all",
+        Gender == "1" ~ "male",
+        Gender == "2" ~ "female",
+        TRUE ~ as.character(Gender)  # Keep other values as is
+      )
+    )
+  
+  if ("State" %in% colnames(df)) {
+    df$State <- recode(
+      df$State,
+      "NSW" = 1,
+      "VIC" = 2,
+      "QLD" = 3,
+      "SA" = 4,
+      "WA" = 5,
+      "TAS" = 6,
+      "NT" = 7,
+      "ACT" = 8
+    )
+  }
+  
+  return(df)
 }
+
 
 
 # Apply the function to all data frames in the list-----------------------------------------------------------------------------------------------------------------
@@ -1068,7 +1084,8 @@ output_subdir <- file.path(path_out, subfolder)
 dir.create(output_subdir, showWarnings = FALSE)
 
 # Loop through the files in the input directory
-files <- list.files(path_out, pattern = "*.csv", full.names = TRUE)
+files <- list.files(path_out, pattern = "*.csv", full.names = TRUE, recursive = TRUE)
+
 for (file in files) {
   # Read the CSV file
   df <- read.csv(file)
