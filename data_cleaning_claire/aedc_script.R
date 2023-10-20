@@ -10,7 +10,7 @@ library(purrr)
 library(readr)
 
 #set working directory and options
-aedc_folder <- "/Users/claireboulange/Desktop"
+aedc_folder <- "/Users/claireboulange/Desktop"   #for my mac #change to pc dir on monday
 path_out = "/Users/claireboulange/Desktop/AEDC"
 
 options(timeout = 600) 
