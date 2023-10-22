@@ -1248,6 +1248,25 @@ suppress_invalid_values <- function(df, threshold = 4, valid_threshold = 15) {
 }
 
 
+### alt suppression function--------------------------------------------------------------------------------------------------------------
+
+suppress_invalid_values <- function(df, valid_threshold = 15) {
+  col_names <- names(df)
+  
+  # Identify columns starting with 'valid_'
+  valid_cols <- col_names[grep("^valid_", col_names)]
+  
+  for (col in valid_cols) {
+    # Identify rows where valid_xxxx is less than the valid_threshold
+    invalid_rows <- df[[col]] < valid_threshold
+    
+    # Suppress invalid values in the corresponding valid column, except the first 4 columns
+    df[invalid_rows, -(1:4)] <- "9999999"
+  }
+  
+  return(df)
+}
+
 # Create a subfolder for the cell suppressed CSV files (save here the csv files post cell suppression)
 subfolder <- "cell_suppressed"
 output_subdir <- file.path(path_out, subfolder)
