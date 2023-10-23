@@ -1,3 +1,6 @@
+##set working directory and options
+
+
 # Title: AEDC data preparation for ANCHDA
 # Author: Claire Boulange
 # Date: completed on 12/04/2023
@@ -10,8 +13,8 @@ library(purrr)
 library(readr)
 
 #set working directory and options
-aedc_folder <- "/Users/claireboulange/Desktop"   #for my mac #change to pc dir on monday
-path_out = "/Users/claireboulange/Desktop/AEDC"
+aedc_folder <- "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/from_custodians/AEDC_unit/"
+path_out = "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/AEDC_cleaned/"
 
 options(timeout = 600) 
 setwd(aedc_folder)
@@ -1250,23 +1253,6 @@ suppress_invalid_values <- function(df, threshold = 4, valid_threshold = 15) {
 
 ### alt suppression function--------------------------------------------------------------------------------------------------------------
 
-suppress_invalid_values <- function(df, valid_threshold = 15) {
-  col_names <- names(df)
-  
-  # Identify columns starting with 'valid_'
-  valid_cols <- col_names[grep("^valid_", col_names)]
-  
-  for (col in valid_cols) {
-    # Identify rows where valid_xxxx is less than the valid_threshold
-    invalid_rows <- df[[col]] < valid_threshold
-    
-    # Suppress invalid values in the corresponding valid column, except the first 4 columns
-    df[invalid_rows, -(1:4)] <- "9999999"
-  }
-  
-  return(df)
-}
-
 # Create a subfolder for the cell suppressed CSV files (save here the csv files post cell suppression)
 subfolder <- "cell_suppressed"
 output_subdir <- file.path(path_out, subfolder)
@@ -1298,4 +1284,23 @@ for (file in files) {
   
   # Print the name and path of the file created
   cat(sprintf("File created: %s\n", out_file))
+}
+
+### alt suppression function--------------------------------------------------------------------------------------------------------------
+
+suppress_invalid_values <- function(df, valid_threshold = 15) {
+  col_names <- names(df)
+  
+  # Identify columns starting with 'valid_'
+  valid_cols <- col_names[grep("^valid_", col_names)]
+  
+  for (col in valid_cols) {
+    # Identify rows where valid_xxxx is less than the valid_threshold
+    invalid_rows <- df[[col]] < valid_threshold
+    
+    # Suppress invalid values in the corresponding valid column, except the first 4 columns
+    df[invalid_rows, -(1:4)] <- "9999999"
+  }
+  
+  return(df)
 }
