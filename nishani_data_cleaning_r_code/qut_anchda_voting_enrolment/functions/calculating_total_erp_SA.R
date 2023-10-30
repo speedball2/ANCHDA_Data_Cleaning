@@ -2,7 +2,7 @@
 calculating_total_erp_SA <- function(erp_file, required_age_groups, sup_val, key_col){
   
   erp_data <- read.csv(erp_file, header = TRUE, check.names = FALSE)
-  
+  erp_data <- erp_data[which(erp_data$sex == "all"),]
   if(length(which(names(erp_data) == "")) > 0){
     erp_data <- erp_data[, -which(names(erp_data) == "")]
   }
@@ -13,8 +13,10 @@ calculating_total_erp_SA <- function(erp_file, required_age_groups, sup_val, key
   
   erp_data_18_24 <- erp_data[which(erp_data$age_group %in% required_age_group),]
   
-  #erp_data_18_24[which(erp_data_18_24$estimated_regional_population == sup_val), "estimated_regional_population"]  <- NA
-  
+  if(length(which(erp_data_18_24$estimated_regional_population == sup_val)) > 0){
+    erp_data_18_24[which(erp_data_18_24$estimated_regional_population == sup_val), "estimated_regional_population"]  <- NA
+  }
+
   summary_erp_data_18_24 <- erp_data_18_24 %>% group_by(eval(parse(text = key_col)), calendar_year) %>% summarise(total = sum(estimated_regional_population, na.rm  = TRUE))
   
   names(summary_erp_data_18_24)[1] <- key_col

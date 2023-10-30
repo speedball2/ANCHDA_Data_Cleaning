@@ -35,7 +35,7 @@ extract_SA_data <- function(new_data, code_name,new_code_name , uncertainty_coln
   summary_data_SA2_number <- arrange(summary_data_SA2_number, new_code_name, calendar_year )
   write.csv(summary_data_SA2_number, file_name1, row.names = FALSE)
   
-  #return(summary_data_SA2_number)
+  return(summary_data_SA2_number)
   
   #-----------------------------------
 
