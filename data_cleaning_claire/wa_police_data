@@ -456,77 +456,7 @@ joined_data_SA3_erp_prop <- lapply(joined_data_SA3_erp_prop, function(df) {
     mutate(across(9, ~ifelse(is.infinite(.), 9999999, .)))
 })
 
-
-
-
-
-
-
-
-
-
-
-
-base_folder_path <- "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/cda_police"
-
-# Function to save a table as CSV with specific columns
-save_table_as_csv <- function(df, folder_path, geography_name, suffix) {
-  # Select specific columns
-  if (suffix == "7") {
-    selected_columns <- df[, c(1, 2, 3, 4, 5, 6, 7)]
-    col_name <- names(df)[7]
-  } else if (suffix == "9") {
-    selected_columns <- df[, c(1, 2, 3, 4, 5, 6, 9)]
-    col_name <- names(df)[9]
-  }
-  
-  # Create a file name based on geography name and col_name
-  file_name <- file.path(folder_path, paste0("cda_data_3140_",geography_name, "_", col_name, ".csv"))
-  
-  # Save the selected columns to a CSV file
-  write.csv(selected_columns, file_name, row.names = FALSE)
-}
-
-# Save the tables for joined_data_SA3_erp
-for (i in seq_along(joined_data_SA3_erp_prop)) {
-  df <- joined_data_SA3_erp_prop[[i]]
-  geography_name <- sub("_CODE16$", "", names(df)[1])
-  
-  # Save table with suffix "8"
-  save_table_as_csv(df, base_folder_path, geography_name, "7")
-  
-  # Save table with suffix "10"
-  save_table_as_csv(df, base_folder_path, geography_name, "9")
-}
-
-# Save the tables for joined_data_SA2_erp
-for (i in seq_along(joined_data_SA2_erp_prop)) {
-  df <- joined_data_SA2_erp_prop[[i]]
-  geography_name <- sub("_CODE16$", "", names(df)[1])
-  
-  # Save table with suffix "8"
-  save_table_as_csv(df, base_folder_path, geography_name, "7")
-  
-  # Save table with suffix "10"
-  save_table_as_csv(df, base_folder_path, geography_name, "9")
-}
-
-# Save the tables for joined_data_LGA_erp
-for (i in seq_along(joined_data_LGA_erp_prop)) {
-  df <- joined_data_LGA_erp_prop[[i]]
-  geography_name <- sub("_CODE16$", "", names(df)[1])
-  
-  # Save table with suffix "7"
-  save_table_as_csv(df, base_folder_path, geography_name, "7")
-  
-  # Save table with suffix "9"
-  save_table_as_csv(df, base_folder_path, geography_name, "9")
-}
-
-
-
-
-###///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+###/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// save files - separate based on offence type
 
 
 # Function to save a table as CSV with specific columns, based on col[6] value, and remove NA rows in col[1]
