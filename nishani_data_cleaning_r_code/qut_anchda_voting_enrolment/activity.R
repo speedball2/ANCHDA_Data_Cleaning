@@ -102,7 +102,7 @@ final_2019_2022 <- join_SA1_2016_to_other_stat_area(data_2019_2022, SA1_2016_AUS
 
 #new_data <- rbind(rbind(final_2008_2014, final_2015_2018),final_2019_2022)
 
-
+# just using the data from 2019 to 2022
 new_data <- final_2019_2022
 #extract the data for relevant statistical areas
 SA2_out_data <- extract_SA_data(new_data, "SA2_MAINCODE_2016", "SA2_CODE16", "number_of_enrolment_uncertainty_correspondence","./output/AEC_521_young_people_18_24_number_of_enrolled_to_vote_SA2.csv", "./output/AEC_521_young_people_18_24_rate_of_enrolled_to_vote_SA2.csv")
@@ -115,28 +115,28 @@ STE_out_data <- extract_SA_data(new_data, "STATE_CODE_2016", "STE_CODE16", "numb
 #------------------------
 
 
-#NOT TO RUN - AS WE DON USE ERP WHEN CALCUATING RATE OF ENOLMENT
-SA2_total <- calculating_total_erp_SA("./data/ABS_ERP_181_ERP_SA2.csv", 18:24, 9999999, "SA2_CODE16")
+#USE ERP WHEN CALCUATING RATE OF ENOLMENT
+SA2_total <- calculating_total_erp_SA("./data/ABS_Estimated_resident_population_ASGS2016/ABS_ERP_181_ERP_SA2.csv", 18:24, 9999999, "SA2_CODE16")
 
-new_SA1_2016_AUST <- SA1_2016_AUST
-names(new_SA1_2016_AUST)[which(names(new_SA1_2016_AUST) == "SA2_5DIGITCODE_2016")] <- "SA2_CODE16"
-new_SA2_total <- left_join(SA2_total, new_SA1_2016_AUST, by = "SA2_CODE16")
-new_SA2_total <- new_SA2_total[, c("SA2_MAINCODE_2016","calendar_year", "total")]
-new_SA2_total <- new_SA2_total[!duplicated(new_SA2_total),]
-names(new_SA2_total)[1] <- "SA2_CODE16"
+# new_SA1_2016_AUST <- SA1_2016_AUST
+# names(new_SA1_2016_AUST)[which(names(new_SA1_2016_AUST) == "SA2_5DIGITCODE_2016")] <- "SA2_CODE16"
+# new_SA2_total <- left_join(SA2_total, new_SA1_2016_AUST, by = "SA2_CODE16")
+# new_SA2_total <- new_SA2_total[, c("SA2_MAINCODE_2016","calendar_year", "total")]
+# new_SA2_total <- new_SA2_total[!duplicated(new_SA2_total),]
+# names(new_SA2_total)[1] <- "SA2_CODE16"
 
+SA2_total <- calculating_total_erp_SA("./data/ABS_Estimated_resident_population_ASGS2016/ABS_ERP_181_ERP_SA2.csv", 18:24, 9999999, "SA2_CODE16")
+SA3_total <- calculating_total_erp_SA("./data/ABS_Estimated_resident_population_ASGS2016/ABS_ERP_181_ERP_SA3.csv", 18:24, 9999999, "SA3_CODE16")
+SA4_total <- calculating_total_erp_SA("./data/ABS_Estimated_resident_population_ASGS2016/ABS_ERP_181_ERP_SA4.csv", 18:24, 9999999, "SA4_CODE16")
+STE_total <- calculating_total_erp_SA("./data/ABS_Estimated_resident_population_ASGS2016/ABS_ERP_181_ERP_STE.csv", 18:24, 9999999, "STE_CODE16")
 
-SA3_total <- calculating_total_erp_SA("./data/ABS_ERP_181_ERP_SA3.csv", 18:24, 9999999, "SA3_CODE16")
-SA4_total <- calculating_total_erp_SA("./data/ABS_ERP_181_ERP_SA4.csv", 18:24, 9999999, "SA4_CODE16")
-STE_total <- calculating_total_erp_SA("./data/ABS_ERP_181_ERP_STE.csv", 18:24, 9999999, "STE_CODE16")
+calculating_rate_of_enrolment(SA2_out_data, new_SA2_total, c("SA2_CODE16", "calendar_year"), c("SA2_CODE16","sex", "age_group", "calendar_year", "rate_of_enrolment", "number_of_enrolment_uncertainty_correspondence"), "./output/AEC_521_young_people_18_24_rate_of_enrolled_to_vote_SA2.csv", "./output/AEC_521_young_people_18_24_combined_SA2.csv")
 
-calculating_rate_of_enrolment(SA2_out_data, new_SA2_total, c("SA2_CODE16", "calendar_year"), c("SA2_CODE16","sex", "age_group", "calendar_year", "rate_of_enrolment", "number_of_enrolment_uncertainty_correspondence"), "./output/AEC_521_young_people_18_24_rate_of_enrolled_to_vote_SA2.csv")
+calculating_rate_of_enrolment(SA3_out_data, SA3_total, c("SA3_CODE16", "calendar_year"), c("SA3_CODE16","sex", "age_group", "calendar_year", "rate_of_enrolment", "number_of_enrolment_uncertainty_correspondence"), "./output/AEC_521_young_people_18_24_rate_of_enrolled_to_vote_SA3.csv", "./output/AEC_521_young_people_18_24_combined_SA3.csv")
 
-calculating_rate_of_enrolment(SA3_out_data, SA3_total, c("SA3_CODE16", "calendar_year"), c("SA3_CODE16","sex", "age_group", "calendar_year", "rate_of_enrolment", "number_of_enrolment_uncertainty_correspondence"), "./output/AEC_521_young_people_18_24_rate_of_enrolled_to_vote_SA3.csv")
+calculating_rate_of_enrolment(SA4_out_data, SA4_total, c("SA4_CODE16", "calendar_year"),  c("SA4_CODE16","sex", "age_group", "calendar_year", "rate_of_enrolment", "number_of_enrolment_uncertainty_correspondence"), "./output/AEC_521_young_people_18_24_rate_of_enrolled_to_vote_SA4.csv", "./output/AEC_521_young_people_18_24_combined_SA4.csv")
 
-calculating_rate_of_enrolment(SA4_out_data, SA4_total, c("SA4_CODE16", "calendar_year"),  c("SA4_CODE16","sex", "age_group", "calendar_year", "rate_of_enrolment", "number_of_enrolment_uncertainty_correspondence"), "./output/AEC_521_young_people_18_24_rate_of_enrolled_to_vote_SA4.csv")
-
-calculating_rate_of_enrolment(STE_out_data, STE_total, c("STE_CODE16", "calendar_year"),  c("STE_CODE16","sex", "age_group", "calendar_year", "rate_of_enrolment", "number_of_enrolment_uncertainty_correspondence"), "./output/AEC_521_young_people_18_24_rate_of_enrolled_to_vote_STE.csv")
+calculating_rate_of_enrolment(STE_out_data, STE_total, c("STE_CODE16", "calendar_year"),  c("STE_CODE16","sex", "age_group", "calendar_year", "rate_of_enrolment", "number_of_enrolment_uncertainty_correspondence"), "./output/AEC_521_young_people_18_24_rate_of_enrolled_to_vote_STE.csv", "./output/AEC_521_young_people_18_24_combined_STE.csv")
 
 
 #------------------------
