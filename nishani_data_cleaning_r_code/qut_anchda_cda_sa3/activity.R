@@ -431,7 +431,7 @@ data <- read_files("C:/Users/00095998/OneDrive - The University of Western Austr
 new_data <- data_extraction(data, SA3_CODE16 , "all", "0-4", "n_diabetes_related_hospitalisations_for_0_4_year_olds_prior_moving_average_5year" , "rate_diabetes_related_hospitalisations_for_0_4_year_olds_prior_moving_average_5year")
 # Remove rows with SA3_CODE16 equal to "#WA"
 new_data <- new_data[new_data$SA3_CODE16 != "#WA", ]
-write.csv(new_data, "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA3/hospital/CDA_1204_diabetes_related_hospitalisations_for_0_24_year_olds_prior_moving_average_5year_SA3.csv", row.names = FALSE)
+write.csv(new_data, "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA3/hospital/CDA_1204_diabetes_related_hospitalisations_for_0_4_year_olds_prior_moving_average_5year_SA3.csv", row.names = FALSE)
 #------------
 #
 #Diabetes related hospitalisations for 0-24 year olds (per 10,000 persons)
@@ -718,6 +718,9 @@ new_data <- data_extraction(data, SA3_CODE16 , "all", "15-24", "n_mental_health_
 new_data <- new_data[new_data$SA3_CODE16 != "#WA", ]
 write.csv(new_data, "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA3/mental_health/CDA_155_mental_health_related_ED_presentations_for_15_24_year_olds_SA3.csv", row.names = FALSE)
 
+
+
+
 # Community mental health service contacts for 0-24 year olds (per 1,000 persons)
 SA3_CODE16 <- read_files("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/cda_data/workbook_CDA_SA3.xlsx", "iadatasheet_mental", "A5:A40" )
 data <- read_files("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/cda_data/workbook_CDA_SA3.xlsx", "iadatasheet_mental", "TT5:VR40" )
@@ -746,7 +749,7 @@ write.csv(new_data, "C:/Users/00095998/OneDrive - The University of Western Aust
 #--------------------------------
 # Community mental health service contacts for 15-19 year olds (per 1,000 persons)
 SA3_CODE16 <- read_files("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/cda_data/workbook_CDA_SA3.xlsx", "iadatasheet_mental", "A5:A40" )
-data <- read_files("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/cda_data/workbook_CDA_SA3.xlsx", "iadatasheet_mental", "YQ5:ABO40" )
+data <- read_files("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/cda_data/workbook_CDA_SA3.xlsx", "iadatasheet_mental", "ZQ5:ABO40" )
 new_data <- data_extraction(data, SA3_CODE16 , "all", "15-19", "n_community_mental_health_service_contacts" , "rate_community_mental_health_service_contacts")
 # Remove rows with SA3_CODE16 equal to "#WA"
 new_data <- new_data[new_data$SA3_CODE16 != "#WA", ]
@@ -761,13 +764,3 @@ new_data <- data_extraction(data, SA3_CODE16 , "all", "20-24", "n_community_ment
 new_data <- new_data[new_data$SA3_CODE16 != "#WA", ]
 write.csv(new_data, "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA3/mental_health/CDA_157_community_mental_health_service_contacts_for_20_24_year_SA3.csv", row.names = FALSE)
 
-
-
-data_5_9 <- read.csv("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA3/mental_health/CDA_157_community_mental_health_service_contacts_for_5_9_year_SA3.csv", header = TRUE, check.names = FALSE)
-data_10_14 <- read.csv("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA3/mental_health/CDA_157_community_mental_health_service_contacts_for_10_14_year_SA3.csv", header = TRUE, check.names = FALSE)
-data_15_19 <- read.csv("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA3/mental_health/CDA_157_community_mental_health_service_contacts_for_15_19_year_SA3.csv", header = TRUE, check.names = FALSE)
-data_20_24 <- read.csv("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA3/mental_health/CDA_157_community_mental_health_service_contacts_for_20_24_year_SA3.csv", header = TRUE, check.names = FALSE)
-
-
-
-write.csv(rbind(rbind(rbind(data_5_9, data_10_14), data_15_19), data_20_24), "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA3/mental_health/CDA_157_community_mental_health_service_contacts_for_5_24_years_SA3.csv", row.names = FALSE)

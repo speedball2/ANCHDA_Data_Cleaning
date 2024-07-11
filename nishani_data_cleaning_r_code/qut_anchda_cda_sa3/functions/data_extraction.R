@@ -26,7 +26,7 @@ data_extraction <- function(data, SA_CODE16, sex, age_group, count_name, indicat
     new_data[, indicator_name] <- new_data[, indicator_name] / 100
   }
   
-  new_data[, indicator_name] <- round(new_data[, indicator_name], 2)
+  new_data[, indicator_name] <- round(new_data[, indicator_name], 4)
   
   if (length(which(is.na(new_data[, 5]) == TRUE)) > 0) {
     new_data[which(is.na(new_data[, 5]) == TRUE), 5] <- 9999999

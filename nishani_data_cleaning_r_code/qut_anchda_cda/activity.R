@@ -242,8 +242,8 @@ write.csv(new_data, "C:/Users/00095998/OneDrive - The University of Western Aust
 #Cancer related hospitalisations for 0-24 year olds (per 10,000 persons) - Prior moving average (3 year)
 SA_name <- read_files("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/cda_data/workbook_CDA_SA2.xlsx", "iadatasheet_physical", "B5:B258" )
 data <- read_files("C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_RAW/cda_data/workbook_CDA_SA2.xlsx", "iadatasheet_physical", "AAG5:ABY258" ) 
-new_data <- data_extraction(data, SA_name , "all", "0-24", "n_cancer_related_hospitalisations_for_0_24_year_olds_prior_moving_average_3year" , "rate_cancer_related_hospitalisations_for_0_4_year_olds_prior_moving_average_3year", geom_data)
-write.csv(new_data, "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA2/hospital/CDA_1204_cancer_related_hospitalisations_for_0_4_year_olds_prior_moving_average_3year_SA2.csv", row.names = FALSE)
+new_data <- data_extraction(data, SA_name , "all", "0-24", "n_cancer_related_hospitalisations_for_0_24_year_olds_prior_moving_average_3year" , "rate_cancer_related_hospitalisations_for_0_24_year_olds_prior_moving_average_3year", geom_data)
+write.csv(new_data, "C:/Users/00095998/OneDrive - The University of Western Australia/The Mothership/Data_Collections_READY_FOR_QA/CDA/SA2/hospital/CDA_1204_cancer_related_hospitalisations_for_0_24_year_olds_prior_moving_average_3year_SA2.csv", row.names = FALSE)
 #------------
 
 #Cardiovascular related hospitalisations for 0-4 year olds (per 10,000 persons) - Prior moving average (5 year)
